@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { type Project } from "@/types/project";
-import { Lock, Monitor, Smartphone, Tablet } from "lucide-react";
-import { LockIcon } from "@animateicons/react/lucide/lock-icon";
-import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { Lock, Monitor, Smartphone, Tablet, ExternalLink } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -82,9 +79,9 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
               className="flex items-center justify-center gap-1.5 bg-white border border-slate-200 shadow-xs rounded-md px-2.5 sm:px-3.5 py-1 text-[11px] sm:text-xs font-medium text-slate-600 min-w-0 max-w-[150px] xs:max-w-[200px] sm:max-w-sm truncate hover:border-slate-300 hover:text-slate-900 transition-colors cursor-pointer group"
               title={`Visit ${activeProject.domain}`}
             >
-              <AnimatedIcon icon={LockIcon} size={12} className="text-emerald-500 shrink-0" />
+              <Lock size={12} className="text-emerald-500 shrink-0" />
               <span className="truncate">{activeProject.domain}</span>
-              <AnimatedIcon icon={ExternalLinkIcon} size={10} className="text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5 shrink-0" />
+              <ExternalLink size={10} className="text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5 shrink-0" />
             </a>
           </div>
           

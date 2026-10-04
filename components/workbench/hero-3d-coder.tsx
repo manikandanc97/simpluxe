@@ -51,11 +51,19 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
     return () => observer.disconnect();
   }, [mouseX, mouseY]);
 
+  const rectRef = useRef<{left: number, top: number, width: number, height: number} | null>(null);
+
+  const handleMouseEnter = () => {
+    if (containerRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect();
+    }
+  };
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || prefersReducedMotion()) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - (rect.left + rect.width / 2);
-    const y = e.clientY - (rect.top + rect.height / 2);
+    if (!rectRef.current || prefersReducedMotion()) return;
+    const { left, top, width, height } = rectRef.current;
+    const x = e.clientX - (left + width / 2);
+    const y = e.clientY - (top + height / 2);
     mouseX.set(x);
     mouseY.set(y);
   };
@@ -63,11 +71,13 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
+    rectRef.current = null;
   };
 
   return (
     <div
       ref={containerRef}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ "--sync-width": bounds.width } as React.CSSProperties}
@@ -212,7 +222,9 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               src="simpluxe/hero/simplehero"
               alt="Simpluxe 3D Developer Character"
               fill
-              sizes="(max-width: 640px) 240px, (max-width: 1024px) 420px, 500px"
+              sizes="(max-width: 640px) 320px, (max-width: 1024px) 420px, 500px"
+              format="auto"
+              quality="auto:eco"
               className="object-contain drop-shadow-xl"
               priority
               loading="eager"

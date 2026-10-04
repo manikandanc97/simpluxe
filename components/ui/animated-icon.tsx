@@ -4,39 +4,38 @@ import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "motion/react";
 import React, { useCallback, useEffect, useRef } from "react";
 
-// Official Lucide icons from @animateicons/react (https://animateicons.in/)
-import { ArrowLeftIcon } from "@animateicons/react/lucide/arrow-left-icon";
-import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
-import { CheckIcon } from "@animateicons/react/lucide/check-icon";
-import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
-import { CodeIcon } from "@animateicons/react/lucide/code-icon";
-import { ContactIcon } from "@animateicons/react/lucide/contact-icon";
-import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
-import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
-import { FolderIcon } from "@animateicons/react/lucide/folder-icon";
-import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
-import { HouseIcon } from "@animateicons/react/lucide/house-icon";
-import { InfoIcon } from "@animateicons/react/lucide/info-icon";
-import { LaptopIcon } from "@animateicons/react/lucide/laptop-icon";
-import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
-import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
-import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
-import { ListChecksIcon } from "@animateicons/react/lucide/list-checks-icon";
-import { MailIcon } from "@animateicons/react/lucide/mail-icon";
-import { MenuIcon } from "@animateicons/react/lucide/menu-icon";
-import { MessageSquareIcon } from "@animateicons/react/lucide/message-square-icon";
-import { MoonIcon } from "@animateicons/react/lucide/moon-icon";
-import { PencilIcon } from "@animateicons/react/lucide/pencil-icon";
-import { RefreshCwIcon } from "@animateicons/react/lucide/refresh-cw-icon";
-import { SearchIcon } from "@animateicons/react/lucide/search-icon";
-import { SendIcon } from "@animateicons/react/lucide/send-icon";
-import { SlidersHorizontalIcon } from "@animateicons/react/lucide/sliders-horizontal-icon";
-import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
-import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
-import { SunMediumIcon } from "@animateicons/react/lucide/sun-medium-icon";
-import { TypeIcon } from "@animateicons/react/lucide/type-icon";
-import { XIcon } from "@animateicons/react/lucide/x-icon";
-import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
+const ArrowLeftIcon = React.lazy(() => import("@animateicons/react/lucide/arrow-left-icon").then(m => ({ default: m.ArrowLeftIcon as React.ComponentType<IconBaseProps> })));
+const ArrowRightIcon = React.lazy(() => import("@animateicons/react/lucide/arrow-right-icon").then(m => ({ default: m.ArrowRightIcon as React.ComponentType<IconBaseProps> })));
+const CheckIcon = React.lazy(() => import("@animateicons/react/lucide/check-icon").then(m => ({ default: m.CheckIcon as React.ComponentType<IconBaseProps> })));
+const ChevronRightIcon = React.lazy(() => import("@animateicons/react/lucide/chevron-right-icon").then(m => ({ default: m.ChevronRightIcon as React.ComponentType<IconBaseProps> })));
+const CodeIcon = React.lazy(() => import("@animateicons/react/lucide/code-icon").then(m => ({ default: m.CodeIcon as React.ComponentType<IconBaseProps> })));
+const ContactIcon = React.lazy(() => import("@animateicons/react/lucide/contact-icon").then(m => ({ default: m.ContactIcon as React.ComponentType<IconBaseProps> })));
+const CpuIcon = React.lazy(() => import("@animateicons/react/lucide/cpu-icon").then(m => ({ default: m.CpuIcon as React.ComponentType<IconBaseProps> })));
+const ExternalLinkIcon = React.lazy(() => import("@animateicons/react/lucide/external-link-icon").then(m => ({ default: m.ExternalLinkIcon as React.ComponentType<IconBaseProps> })));
+const FolderIcon = React.lazy(() => import("@animateicons/react/lucide/folder-icon").then(m => ({ default: m.FolderIcon as React.ComponentType<IconBaseProps> })));
+const GlobeIcon = React.lazy(() => import("@animateicons/react/lucide/globe-icon").then(m => ({ default: m.GlobeIcon as React.ComponentType<IconBaseProps> })));
+const HouseIcon = React.lazy(() => import("@animateicons/react/lucide/house-icon").then(m => ({ default: m.HouseIcon as React.ComponentType<IconBaseProps> })));
+const InfoIcon = React.lazy(() => import("@animateicons/react/lucide/info-icon").then(m => ({ default: m.InfoIcon as React.ComponentType<IconBaseProps> })));
+const LaptopIcon = React.lazy(() => import("@animateicons/react/lucide/laptop-icon").then(m => ({ default: m.LaptopIcon as React.ComponentType<IconBaseProps> })));
+const LayersIcon = React.lazy(() => import("@animateicons/react/lucide/layers-icon").then(m => ({ default: m.LayersIcon as React.ComponentType<IconBaseProps> })));
+const LayoutGridIcon = React.lazy(() => import("@animateicons/react/lucide/layout-grid-icon").then(m => ({ default: m.LayoutGridIcon as React.ComponentType<IconBaseProps> })));
+const LightbulbIcon = React.lazy(() => import("@animateicons/react/lucide/lightbulb-icon").then(m => ({ default: m.LightbulbIcon as React.ComponentType<IconBaseProps> })));
+const ListChecksIcon = React.lazy(() => import("@animateicons/react/lucide/list-checks-icon").then(m => ({ default: m.ListChecksIcon as React.ComponentType<IconBaseProps> })));
+const MailIcon = React.lazy(() => import("@animateicons/react/lucide/mail-icon").then(m => ({ default: m.MailIcon as React.ComponentType<IconBaseProps> })));
+const MenuIcon = React.lazy(() => import("@animateicons/react/lucide/menu-icon").then(m => ({ default: m.MenuIcon as React.ComponentType<IconBaseProps> })));
+const MessageSquareIcon = React.lazy(() => import("@animateicons/react/lucide/message-square-icon").then(m => ({ default: m.MessageSquareIcon as React.ComponentType<IconBaseProps> })));
+const MoonIcon = React.lazy(() => import("@animateicons/react/lucide/moon-icon").then(m => ({ default: m.MoonIcon as React.ComponentType<IconBaseProps> })));
+const PencilIcon = React.lazy(() => import("@animateicons/react/lucide/pencil-icon").then(m => ({ default: m.PencilIcon as React.ComponentType<IconBaseProps> })));
+const RefreshCwIcon = React.lazy(() => import("@animateicons/react/lucide/refresh-cw-icon").then(m => ({ default: m.RefreshCwIcon as React.ComponentType<IconBaseProps> })));
+const SearchIcon = React.lazy(() => import("@animateicons/react/lucide/search-icon").then(m => ({ default: m.SearchIcon as React.ComponentType<IconBaseProps> })));
+const SendIcon = React.lazy(() => import("@animateicons/react/lucide/send-icon").then(m => ({ default: m.SendIcon as React.ComponentType<IconBaseProps> })));
+const SlidersHorizontalIcon = React.lazy(() => import("@animateicons/react/lucide/sliders-horizontal-icon").then(m => ({ default: m.SlidersHorizontalIcon as React.ComponentType<IconBaseProps> })));
+const SmartphoneIcon = React.lazy(() => import("@animateicons/react/lucide/smartphone-icon").then(m => ({ default: m.SmartphoneIcon as React.ComponentType<IconBaseProps> })));
+const SparklesIcon = React.lazy(() => import("@animateicons/react/lucide/sparkles-icon").then(m => ({ default: m.SparklesIcon as React.ComponentType<IconBaseProps> })));
+const SunMediumIcon = React.lazy(() => import("@animateicons/react/lucide/sun-medium-icon").then(m => ({ default: m.SunMediumIcon as React.ComponentType<IconBaseProps> })));
+const TypeIcon = React.lazy(() => import("@animateicons/react/lucide/type-icon").then(m => ({ default: m.TypeIcon as React.ComponentType<IconBaseProps> })));
+const XIcon = React.lazy(() => import("@animateicons/react/lucide/x-icon").then(m => ({ default: m.XIcon as React.ComponentType<IconBaseProps> })));
+const ZapIcon = React.lazy(() => import("@animateicons/react/lucide/zap-icon").then(m => ({ default: m.ZapIcon as React.ComponentType<IconBaseProps> })));
 
 import {
   type AnimatedIconName,
@@ -271,12 +270,14 @@ export function AnimatedIcon({
           <SolidComponent size={numericSize} className="shrink-0" />
         </motion.div>
       ) : (
-        <IconComponent
-          ref={iconRef}
-          size={numericSize}
-          isAnimated={animateOnHover}
-          className="shrink-0"
-        />
+        <React.Suspense fallback={<span style={{ width: numericSize, height: numericSize }} />}>
+          <IconComponent
+            ref={iconRef}
+            size={numericSize}
+            isAnimated={animateOnHover}
+            className="shrink-0"
+          />
+        </React.Suspense>
       )}
     </span>
   );

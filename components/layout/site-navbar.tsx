@@ -60,9 +60,11 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
             <CldImage
               src="simpluxe/logo/logo"
               alt="Simpluxe Logo"
-              width={96}
-              height={32}
+              width={192}
+              height={64}
               sizes="96px"
+              format="auto"
+              quality="auto:eco"
               className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-[1.02]"
               priority
             />

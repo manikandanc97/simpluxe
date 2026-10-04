@@ -115,15 +115,7 @@ export const metadata: Metadata = {
     description:
       "Premium digital studio engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/favicon/favicon", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [
-      { url: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/favicon/favicon", sizes: "180x180", type: "image/png" },
-    ],
-  },
+  // Let Next.js handle app/icon.svg automatically
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
