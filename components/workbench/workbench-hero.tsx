@@ -64,8 +64,8 @@ export function WorkbenchHero() {
               className="font-satoshi font-extrabold tracking-tighter text-foreground leading-[1.08] sm:leading-none text-4xl xs:text-5xl sm:text-6xl lg:text-7xl flex flex-col gap-1.5 sm:gap-2"
             >
               <div className="overflow-hidden pb-1 -mb-1">
-                <span className="block hero-line-1 will-change-transform">
-                  <AnimatedText text={HERO_CONTENT.headlineLine1} el="span" staggerDelay={0.03} delay={0.1} priority />
+                <span className="block hero-line-1">
+                  {HERO_CONTENT.headlineLine1}
                 </span>
               </div>
               <div className="overflow-hidden pb-4 -mb-4">

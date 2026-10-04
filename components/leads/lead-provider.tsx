@@ -1,8 +1,13 @@
 "use client";
 
 import { type LeadInput } from "@/lib/leads/schema";
+import dynamic from "next/dynamic";
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { LeadDialog } from "./lead-dialog";
+
+const LeadDialog = dynamic(
+  () => import("./lead-dialog").then((mod) => mod.LeadDialog),
+  { ssr: false }
+);
 
 interface LeadContextType {
   openLead: (prefill?: Partial<LeadInput>) => void;
@@ -14,10 +19,12 @@ const LeadContext = createContext<LeadContextType | undefined>(undefined);
 
 export function LeadProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
   const [prefill, setPrefill] = useState<Partial<LeadInput> | undefined>(undefined);
 
   const openLead = (data?: Partial<LeadInput>) => {
     setPrefill(data);
+    setHasOpened(true);
     setOpen(true);
   };
 
@@ -25,10 +32,17 @@ export function LeadProvider({ children }: { children: ReactNode }) {
     setOpen(false);
   };
 
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (nextOpen) setHasOpened(true);
+    setOpen(nextOpen);
+  };
+
   return (
     <LeadContext.Provider value={{ openLead, closeLead, isOpen: open }}>
       {children}
-      <LeadDialog open={open} onOpenChange={setOpen} prefill={prefill} />
+      {hasOpened && (
+        <LeadDialog open={open} onOpenChange={handleOpenChange} prefill={prefill} />
+      )}
     </LeadContext.Provider>
   );
 }

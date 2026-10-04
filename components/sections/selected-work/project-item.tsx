@@ -67,14 +67,14 @@ export function SelectedWorkProjectItem({
         <div className="flex-1 min-w-0 flex flex-col justify-center gap-1">
           {/* Line 1: Title + Result Badge */}
           <div className="flex flex-wrap items-center gap-2 min-w-0">
-            <h4 
+            <h3 
               className={cn(
                 "font-bold text-sm sm:text-base truncate tracking-tight transition-colors max-w-full",
                 isActive ? "text-foreground" : "text-slate-800 group-hover:text-foreground"
               )}
             >
               {project.name}
-            </h4>
+            </h3>
             
             <span 
               className={cn(
