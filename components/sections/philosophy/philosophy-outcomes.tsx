@@ -2,7 +2,7 @@
 
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { REAL_OUTCOMES } from "@/lib/data/philosophy";
+import { REAL_OUTCOMES } from "@/lib/content/philosophy";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { motion } from "motion/react";
 

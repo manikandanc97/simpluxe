@@ -1,6 +1,6 @@
 "use client";
 
-import { type ServiceData } from "@/lib/data/services";
+import { type ServiceData } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Layout, Users, Sliders, Database } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

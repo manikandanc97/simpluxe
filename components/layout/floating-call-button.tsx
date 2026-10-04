@@ -1,6 +1,6 @@
 "use client";
 
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { MessageCircle, Phone, X } from "lucide-react";

@@ -1,6 +1,6 @@
 "use client";
 
-import { PROCESS_STEPS } from "@/lib/data/philosophy";
+import { PROCESS_STEPS } from "@/lib/content/philosophy";
 import { motion } from "motion/react";
 
 interface PhilosophyProcessStepsProps {

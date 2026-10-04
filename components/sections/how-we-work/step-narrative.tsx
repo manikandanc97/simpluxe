@@ -3,7 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import { STEPS } from "@/lib/data/how-we-work";
+import { STEPS } from "@/lib/content/how-we-work";
 import { motion, Variants } from "motion/react";
 import { fadeUp } from "@/lib/motion";
 

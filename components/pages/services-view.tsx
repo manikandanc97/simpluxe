@@ -8,7 +8,7 @@ import { ServicesActiveShowcase } from "@/components/services/services-active-sh
 import { ServicesWhatWeBuild } from "@/components/services/services-what-we-build";
 import { ServicesDeliverablesAudience } from "@/components/services/services-deliverables-audience";
 import { ServicesTechStack } from "@/components/services/services-tech-stack";
-import { SERVICES_LIST } from "@/lib/data/services";
+import { SERVICES_LIST } from "@/lib/content/services";
 import { Container } from "@/components/ui/container";
 
 export function ServicesView() {

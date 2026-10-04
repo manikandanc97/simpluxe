@@ -1,9 +1,9 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
 import { CldImage } from "@/components/ui/cld-image-client";
 import Link from "next/link";
-import { FOOTER_DATA } from "@/lib/data/footer";
+import { FOOTER_DATA } from "@/lib/content/footer";
 import { FooterNav } from "./footer-nav";
 import { FooterCtaButton } from "./footer-cta-button";
 
@@ -54,9 +54,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               </h2>
 
               <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-                A premier software development company engineering custom software,
-                scalable web applications, mobile apps, SaaS platforms, and enterprise
-                solutions for ambitious businesses and founders.
+                {FOOTER_DATA.brandDescription}
               </p>
 
               {/* Social Icons */}
@@ -132,7 +130,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
           {/* Col 2: Navigation / Explore (2 cols) */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
-              EXPLORE
+              {FOOTER_DATA.exploreTitle}
             </h3>
             <FooterNav />
           </div>
@@ -140,7 +138,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
           {/* Col 3: Capabilities (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-6">
             <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
-              CAPABILITIES
+              {FOOTER_DATA.capabilitiesTitle}
             </h3>
             <ul className="flex flex-col gap-4.5 text-sm text-muted-foreground">
               {FOOTER_DATA.capabilities.map((cap) => {
@@ -198,17 +196,17 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                 {/* Live pill */}
                 <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-background border border-border text-xs font-semibold text-foreground shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Let&apos;s Build
+                  {FOOTER_DATA.ctaPillText}
                 </div>
               </div>
 
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-xl font-bold text-foreground tracking-tight">
-                    Have a project in mind?
+                    {FOOTER_DATA.ctaTitle}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Let&apos;s discuss your idea and turn it into a premium digital product.
+                    {FOOTER_DATA.ctaDescription}
                   </p>
                 </div>
 
@@ -221,25 +219,25 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
         {/* Copyright & Bottom Bar */}
         <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Simpluxe Digital Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} {FOOTER_DATA.copyrightText}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Link href="/privacy" className="hover:text-foreground transition-colors">
-              Privacy Policy
+              {FOOTER_DATA.privacyPolicyText}
             </Link>
             <Link href="/terms" className="hover:text-foreground transition-colors">
-              Terms of Service
+              {FOOTER_DATA.termsOfServiceText}
             </Link>
             <Link href="/sitemap" className="hover:text-foreground transition-colors">
-              Sitemap
+              {FOOTER_DATA.sitemapText}
             </Link>
 
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/8 text-primary text-xs font-semibold tracking-wide ml-2 border border-primary/15">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
-              <span>Keep It Simple. Make It Luxury.</span>
+              <span>{FOOTER_DATA.bottomBadgeText}</span>
             </div>
           </div>
         </div>

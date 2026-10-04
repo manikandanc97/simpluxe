@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { SERVICES_LIST } from "@/lib/data/services";
+import { SERVICES_LIST } from "@/lib/content/services";
 import { motion } from "motion/react";
 
 interface ServicesTabsBarProps {

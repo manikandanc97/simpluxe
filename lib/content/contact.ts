@@ -26,3 +26,10 @@ export const CONTACT_STEPS: ContactStep[] = [
   },
 ];
 
+
+export const CONTACT_SECTION_CONTENT = {
+  badge: "Technical Scoping Engine",
+  titleLine1: "Start a Technical",
+  titleLine2: "Conversation.",
+  description: "Tell us about your product goals, architectural constraints, or target timeline. Receive a structured technical assessment within 24 hours.",
+};

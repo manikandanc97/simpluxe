@@ -1,6 +1,6 @@
 "use client";
 
-import { NAV_ITEMS } from "@/config/nav";
+import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/navigation";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { CldImage } from "next-cloudinary";
@@ -110,7 +110,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-xs font-medium text-muted-foreground tracking-tight">
-                Available for projects
+                {NAVBAR_CONTENT.availabilityText}
               </span>
             </div>
             
@@ -121,7 +121,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               id="navbar-start-project"
               className="group shadow-elevated gap-1.5"
             >
-              <span>Start a project</span>
+              <span>{NAVBAR_CONTENT.ctaText}</span>
               <ArrowRight size={14} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Button>
           </div>

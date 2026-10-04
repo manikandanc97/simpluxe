@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { staggerContainer } from "@/lib/motion";
-import { TECH_STACK, type Category } from "@/lib/data/tech-stack";
+import { TECH_STACK, type Category, TECH_STACK_SECTION_CONTENT } from "@/lib/content/tech-stack";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TechCard } from "./tech-stack-card";
 import { TechPerformancePill } from "./tech-stack/tech-performance-pill";
@@ -44,14 +44,14 @@ export function TechStack() {
           <TechPerformancePill />
 
           <SectionHeader
-            eyebrow="OUR TECH STACK"
+            eyebrow={TECH_STACK_SECTION_CONTENT.eyebrow}
             centered
-            title="Modern tools."
-            highlightedText="Real results."
+            title={TECH_STACK_SECTION_CONTENT.title}
+            highlightedText={TECH_STACK_SECTION_CONTENT.highlightedText}
             description={
               <>
-                Battle-tested tools chosen for reliability, performance, and long-term maintainability —
-                <br className="hidden sm:inline" /> not just trends.
+                {TECH_STACK_SECTION_CONTENT.descriptionLine1}
+                <br className="hidden sm:inline" /> {TECH_STACK_SECTION_CONTENT.descriptionLine2}
               </>
             }
           />
@@ -107,7 +107,7 @@ export function TechStack() {
         >
           <div className="hidden sm:block h-px bg-slate-200/80 dark:bg-border/60 flex-1" />
           <p className="text-xs sm:text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-muted-foreground/60 text-center leading-relaxed">
-            We choose tools that fit your project — not the other way around.
+            {TECH_STACK_SECTION_CONTENT.footerNote}
           </p>
           <div className="hidden sm:block h-px bg-slate-200/80 dark:bg-border/60 flex-1" />
         </div>

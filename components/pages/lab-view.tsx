@@ -2,7 +2,7 @@
 
 import { ExperimentCard } from "@/components/sections/lab/experiment-card";
 import { PageBanner } from "@/components/ui/page-banner";
-import { EXPERIMENTS } from "@/lib/data/experiments";
+import { EXPERIMENTS } from "@/lib/content/experiments";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Container } from "@/components/ui/container";
 import { motion } from "motion/react";

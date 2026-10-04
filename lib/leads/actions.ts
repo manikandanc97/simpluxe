@@ -1,6 +1,6 @@
 "use server";
 
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
 import { createClient } from "@supabase/supabase-js";
 import { leadSchema, type LeadState } from "./schema";
 

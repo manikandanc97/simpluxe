@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { FormField, FormLabel, FormMessage } from "@/components/ui/form";
 import { submitLead } from "@/lib/leads/actions";
 import { type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
 import { CheckCircle2, Lock, ShieldCheck, ChevronDown, Check } from "lucide-react";
 import { useActionState, useState, useEffect } from "react";

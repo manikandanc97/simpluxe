@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { Button } from "@/components/ui/button";
-import { SERVICES_LIST } from "@/lib/data/services";
+import { SERVICES_LIST } from "@/lib/content/services";
 import {
   MobileAppsMockup,
   SaaSProductsMockup,

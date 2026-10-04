@@ -8,6 +8,7 @@ import { PhilosophyProcessSteps } from "./philosophy/philosophy-process-steps";
 import { PhilosophyOutcomes } from "./philosophy/philosophy-outcomes";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
+import { PHILOSOPHY_SECTION_CONTENT } from "@/lib/content/philosophy";
 
 export function WhySimpluxe() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,11 +21,11 @@ export function WhySimpluxe() {
     >
       <Container ref={containerRef} className="relative z-10 flex flex-col gap-6 sm:gap-10 lg:gap-12">
         <SectionHeader
-          eyebrow="WHY SIMPLUXE"
+          eyebrow={PHILOSOPHY_SECTION_CONTENT.eyebrow}
           centered
-          title="Built simple. Delivered"
-          highlightedText="sharp."
-          description="A focused team, a clear process, and production-ready work without unnecessary layers."
+          title={PHILOSOPHY_SECTION_CONTENT.title}
+          highlightedText={PHILOSOPHY_SECTION_CONTENT.highlightedText}
+          description={PHILOSOPHY_SECTION_CONTENT.description}
         />
 
         {/* ── Main 3-Column Layout ── */}

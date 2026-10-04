@@ -1,4 +1,5 @@
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
+import { ABOUT_SECTION_CONTENT } from "@/lib/content/about";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AboutHero } from "@/components/about/about-hero";
@@ -29,10 +30,10 @@ export function AboutView() {
             {/* Left Column: Authoritative Header & Global Base */}
             <div className="lg:col-span-5 flex flex-col items-start text-left">
               <SectionHeader
-                eyebrow="Our Ethos & Origin"
-                title="Engineered for"
-                highlightedText="High-Stakes Scale."
-                description="We are a senior-only software development studio partnering directly with founders, CEOs, and engineering leaders who demand architectural rigor over agency overhead."
+                eyebrow={ABOUT_SECTION_CONTENT.eyebrow}
+                title={ABOUT_SECTION_CONTENT.title}
+                highlightedText={ABOUT_SECTION_CONTENT.highlightedText}
+                description={ABOUT_SECTION_CONTENT.description}
                 className="items-start text-left mx-0"
                 maxWidth="max-w-lg"
               />
@@ -45,10 +46,10 @@ export function AboutView() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider font-semibold">
-                      Global Delivery Base
+                      {ABOUT_SECTION_CONTENT.globalBase}
                     </span>
                     <span className="text-sm font-bold text-foreground">
-                      {SITE.location} &bull; Remote Engineering Worldwide
+                      {SITE.location} &bull; {ABOUT_SECTION_CONTENT.remoteEngineering}
                     </span>
                   </div>
                 </Card>
@@ -64,11 +65,11 @@ export function AboutView() {
                     <Zap size={18} />
                   </div>
                   <CardTitle className="text-base sm:text-lg font-bold">
-                    Direct partnership with principal engineers — zero junior delegation
+                    {ABOUT_SECTION_CONTENT.pillar1Title}
                   </CardTitle>
                 </div>
                 <CardDescription className="text-sm leading-relaxed">
-                  When you collaborate with Simpluxe, you don&apos;t get passed through account managers, junior coordinators, or fragmented offshore tiers. Every architecture decision, database schema, and interface interaction is authored and reviewed by battle-tested engineers.
+                  {ABOUT_SECTION_CONTENT.pillar1Desc}
                 </CardDescription>
               </Card>
 
@@ -79,11 +80,11 @@ export function AboutView() {
                     <div className="flex items-center gap-2 text-primary">
                       <Code2 size={16} />
                       <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                        Architectural Longevity
+                        {ABOUT_SECTION_CONTENT.pillar2Title}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Zero framework bloat. We build maintainable Next.js 15 and React systems with strict TypeScript typing that your internal team can inherit effortlessly.
+                      {ABOUT_SECTION_CONTENT.pillar2Desc}
                     </p>
                   </div>
                 </Card>
@@ -93,11 +94,11 @@ export function AboutView() {
                     <div className="flex items-center gap-2 text-primary">
                       <ShieldCheck size={16} />
                       <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                        100% IP & Code Ownership
+                        {ABOUT_SECTION_CONTENT.pillar3Title}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      You own every line of code, design file, and deployment credential from Day 1. Full Git repository transfer with zero recurring vendor lock-in.
+                      {ABOUT_SECTION_CONTENT.pillar3Desc}
                     </p>
                   </div>
                 </Card>

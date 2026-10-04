@@ -202,3 +202,13 @@ export const STEPS: StepConfig[] = [
   },
 ];
 
+export const HOW_WE_WORK_SECTION_CONTENT = {
+  eyebrow: "OUR PROCESS",
+  title: "How We",
+  highlightedText: "Work.",
+  descriptionLine1: "A clear 4-step delivery process to turn your ideas into real, scalable digital products.",
+  descriptionLine2: "No confusion. No black boxes. Just results.",
+  trustNote: "Dedicated senior engineers · Direct communication · Production warranty.",
+  scrollExplore: "Scroll to explore",
+  scrollContinue: "Scroll down to continue",
+};

@@ -115,3 +115,61 @@ export const PROJECTS: Project[] = [
     stack: ["React Native", "Supabase", "Offline Sync"],
   },
 ];
+
+import { SelectedWorkSectionContent } from "@/types/project";
+
+export const SELECTED_WORK_CONTENT: SelectedWorkSectionContent = {
+  eyebrow: "Our Work",
+  title: "Selected",
+  highlightedText: "Work.",
+  description: "Live client systems and digital products engineered for measurable scale.",
+  archiveLinkText: "View complete portfolio archive",
+  buildsTextSuffix: "builds",
+  liveClientSiteText: "Live Client Site",
+};
+
+export const WORK_ENGINEERING_CONTENT = {
+  eyebrow: "Engineering Standards",
+  title: "How We Ensure",
+  highlightedText: "Every Project Succeeds.",
+  description: "Every website, web app, and platform we ship adheres to rigorous engineering benchmarks before touching a production domain.",
+};
+
+export const WORK_ENGINEERING_STANDARDS = [
+  {
+    iconName: "Gauge",
+    iconColor: "text-primary",
+    iconBg: "bg-rose-50 border-rose-100",
+    title: "Sub-Second Performance",
+    metric: "< 0.8s TTFB",
+    description: "We build with zero unnecessary JavaScript bloat. Every asset is optimized, compressed, and served globally through low-latency edge networks.",
+    deliverables: ["99+ Google Lighthouse score", "Core Web Vitals certified", "Sub-second edge caching"],
+  },
+  {
+    iconName: "Code2",
+    iconColor: "text-[var(--chart-2)]",
+    iconBg: "bg-purple-50 border-purple-100",
+    title: "Bespoke Architecture",
+    metric: "100% Tailored",
+    description: "No generic WordPress themes, no off-the-shelf site builder wrappers. Custom-engineered codebases designed specifically for your business workflow.",
+    deliverables: ["Next.js 15 & React 19", "Strict TypeScript typing", "Clean modular directory architecture"],
+  },
+  {
+    iconName: "ShieldCheck",
+    iconColor: "text-primary",
+    iconBg: "bg-pink-50 border-pink-100",
+    title: "Enterprise Security",
+    metric: "Bank-Grade",
+    description: "Zero-trust security practices, encrypted authentication, robust database schema validations, and continuous vulnerability scanning.",
+    deliverables: ["Role-based access controls", "End-to-end SSL/TLS enforcement", "Automated database backups"],
+  },
+  {
+    iconName: "Sparkles",
+    iconColor: "text-emerald-600",
+    iconBg: "bg-emerald-50 border-emerald-100",
+    title: "Full Code Ownership",
+    metric: "0% Lock-in",
+    description: "You retain complete intellectual property rights. On launch day, full GitHub repository ownership and deployment credentials transfer directly to you.",
+    deliverables: ["Full Git repository transfer", "Comprehensive architecture documentation", "Zero recurring licensing fees"],
+  },
+];

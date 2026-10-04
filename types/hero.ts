@@ -12,4 +12,9 @@ export interface HeroContent {
   headlineHighlight: string;
   description: string;
   stats: HeroStat[];
+  ctaPrimary: string;
+  ctaSecondaryTitle: string;
+  ctaSecondarySubtitle: string;
+  scrollIndicatorLabel: string;
+  scrollIndicatorText: string;
 }

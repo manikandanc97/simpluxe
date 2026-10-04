@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { PROJECTS } from "@/lib/data/projects";
+import { PROJECTS } from "@/lib/content/projects";
 
 export function useSelectedWork() {
   const [activeFilter, setActiveFilter] = useState<string>("Websites");

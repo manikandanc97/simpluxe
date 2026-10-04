@@ -5,7 +5,7 @@ import { MousePointer2 } from "lucide-react";
 import { ChevronLeftIcon } from "@animateicons/react/lucide/chevron-left-icon";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { SERVICES_LIST } from "@/lib/data/services";
+import { SERVICES_LIST } from "@/lib/content/services";
 
 interface WhatWeBuildNavProps {
   services: typeof SERVICES_LIST;

@@ -1,58 +1,23 @@
 import { Gauge, ShieldCheck, Code2, Sparkles, CheckCircle2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import { WORK_ENGINEERING_CONTENT, WORK_ENGINEERING_STANDARDS } from "@/lib/content/projects";
 
-const STANDARDS = [
-  {
-    icon: Gauge,
-    iconColor: "text-primary",
-    iconBg: "bg-rose-50 border-rose-100",
-    title: "Sub-Second Performance",
-    metric: "< 0.8s TTFB",
-    description:
-      "We build with zero unnecessary JavaScript bloat. Every asset is optimized, compressed, and served globally through low-latency edge networks.",
-    deliverables: ["99+ Google Lighthouse score", "Core Web Vitals certified", "Sub-second edge caching"],
-  },
-  {
-    icon: Code2,
-    iconColor: "text-[var(--chart-2)]",
-    iconBg: "bg-purple-50 border-purple-100",
-    title: "Bespoke Architecture",
-    metric: "100% Tailored",
-    description:
-      "No generic WordPress themes, no off-the-shelf site builder wrappers. Custom-engineered codebases designed specifically for your business workflow.",
-    deliverables: ["Next.js 15 & React 19", "Strict TypeScript typing", "Clean modular directory architecture"],
-  },
-  {
-    icon: ShieldCheck,
-    iconColor: "text-primary",
-    iconBg: "bg-pink-50 border-pink-100",
-    title: "Enterprise Security",
-    metric: "Bank-Grade",
-    description:
-      "Zero-trust security practices, encrypted authentication, robust database schema validations, and continuous vulnerability scanning.",
-    deliverables: ["Role-based access controls", "End-to-end SSL/TLS enforcement", "Automated database backups"],
-  },
-  {
-    icon: Sparkles,
-    iconColor: "text-emerald-600",
-    iconBg: "bg-emerald-50 border-emerald-100",
-    title: "Full Code Ownership",
-    metric: "0% Lock-in",
-    description:
-      "You retain complete intellectual property rights. On launch day, full GitHub repository ownership and deployment credentials transfer directly to you.",
-    deliverables: ["Full Git repository transfer", "Comprehensive architecture documentation", "Zero recurring licensing fees"],
-  },
-];
+const iconMap = {
+  Gauge,
+  Code2,
+  ShieldCheck,
+  Sparkles,
+};
 
 export function WorkEngineeringStandards() {
   return (
     <div className="w-full pt-16 sm:pt-20 border-t border-surface-elevated">
       {/* ── Section Header ── */}
       <SectionHeader
-        eyebrow="Engineering Standards"
-        title="How We Ensure"
-        highlightedText="Every Project Succeeds."
-        description="Every website, web app, and platform we ship adheres to rigorous engineering benchmarks before touching a production domain."
+        eyebrow={WORK_ENGINEERING_CONTENT.eyebrow}
+        title={WORK_ENGINEERING_CONTENT.title}
+        highlightedText={WORK_ENGINEERING_CONTENT.highlightedText}
+        description={WORK_ENGINEERING_CONTENT.description}
         centered
         maxWidth="max-w-2xl"
         className="mb-12 sm:mb-16 mx-auto"
@@ -60,8 +25,8 @@ export function WorkEngineeringStandards() {
 
       {/* ── 4 Standards Cards Grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {STANDARDS.map((std, i) => {
-          const Icon = std.icon;
+        {WORK_ENGINEERING_STANDARDS.map((std, i) => {
+          const Icon = iconMap[std.iconName as keyof typeof iconMap] || Gauge;
           return (
             <div
               key={i}

@@ -101,3 +101,9 @@ export const REAL_OUTCOMES = [
   },
 ];
 
+export const PHILOSOPHY_SECTION_CONTENT = {
+  eyebrow: "WHY SIMPLUXE",
+  title: "Built simple. Delivered",
+  highlightedText: "sharp.",
+  description: "A focused team, a clear process, and production-ready work without unnecessary layers.",
+};

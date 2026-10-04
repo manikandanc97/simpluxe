@@ -1,4 +1,4 @@
-import { CONTACT_STEPS } from "@/lib/data/contact";
+import { CONTACT_STEPS } from "@/lib/content/contact";
 import { ShieldCheck, FileCheck, Code2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

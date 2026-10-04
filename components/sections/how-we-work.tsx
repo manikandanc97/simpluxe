@@ -1,7 +1,7 @@
 "use client";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { STEPS } from "@/lib/data/how-we-work";
+import { STEPS, HOW_WE_WORK_SECTION_CONTENT } from "@/lib/content/how-we-work";
 import { ShieldCheck } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -58,16 +58,16 @@ export function HowWeWork() {
             
             {/* SECTION HEADER */}
             <SectionHeader
-              eyebrow="OUR PROCESS"
+              eyebrow={HOW_WE_WORK_SECTION_CONTENT.eyebrow}
               centered
-              title="How We"
-              highlightedText="Work."
+              title={HOW_WE_WORK_SECTION_CONTENT.title}
+              highlightedText={HOW_WE_WORK_SECTION_CONTENT.highlightedText}
               className="gap-1.5 sm:gap-2"
               maxWidth="max-w-4xl"
               description={
                 <>
-                  <AnimatedText text="A clear 4-step delivery process to turn your ideas into real, scalable digital products." staggerDelay={0.015} />
-                  <br className="hidden sm:inline" /> <AnimatedText text="No confusion. No black boxes. Just results." staggerDelay={0.015} />
+                  <AnimatedText text={HOW_WE_WORK_SECTION_CONTENT.descriptionLine1} staggerDelay={0.015} />
+                  <br className="hidden sm:inline" /> <AnimatedText text={HOW_WE_WORK_SECTION_CONTENT.descriptionLine2} staggerDelay={0.015} />
                 </>
               }
             />
@@ -106,15 +106,15 @@ export function HowWeWork() {
             <div className="pt-4 border-t border-neutral-200/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left text-xs font-mono text-neutral-500">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="text-xs sm:text-xs">Dedicated senior engineers · Direct communication · Production warranty.</span>
+                <span className="text-xs sm:text-xs">{HOW_WE_WORK_SECTION_CONTENT.trustNote}</span>
               </div>
 
               <div className="hidden sm:flex items-center gap-2 text-xs text-neutral-400 uppercase tracking-wider font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
                 {activeStepIndex === STEPS.length - 1 ? (
-                  <span className="text-rose-600 font-bold">Step 04 / 04 · Scroll down to continue</span>
+                  <span className="text-rose-600 font-bold">Step 04 / 04 · {HOW_WE_WORK_SECTION_CONTENT.scrollContinue}</span>
                 ) : (
-                  <span>Step 0{activeStepIndex + 1} / 04 · Scroll to explore</span>
+                  <span>Step 0{activeStepIndex + 1} / 04 · {HOW_WE_WORK_SECTION_CONTENT.scrollExplore}</span>
                 )}
               </div>
             </div>

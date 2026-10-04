@@ -2,7 +2,7 @@
 
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { STEPS } from "@/lib/data/how-we-work";
+import { STEPS } from "@/lib/content/how-we-work";
 import React from "react";
 
 interface StepNavigationProps {

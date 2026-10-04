@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { PROJECTS } from "@/lib/data/projects";
+import { PROJECTS } from "@/lib/content/projects";
 
 const FILTER_TABS = ["Websites", "Web Apps", "Mobile Apps"] as const;
 

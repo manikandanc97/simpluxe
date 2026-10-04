@@ -8,7 +8,7 @@ import { MotionProvider } from "@/components/providers/motion-provider";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";

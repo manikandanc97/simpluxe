@@ -1,6 +1,6 @@
 "use client";
 
-import { PROJECTS } from "@/lib/data/projects";
+import { PROJECTS, SELECTED_WORK_CONTENT } from "@/lib/content/projects";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatePresence, motion } from "motion/react";
@@ -49,10 +49,10 @@ export function SelectedWork() {
           {/* ── LEFT COLUMN: Heading & Project List ── */}
           <div className="lg:col-span-5 flex flex-col gap-6 min-w-0">
             <SectionHeader
-              eyebrow="Our Work"
-              title="Selected"
-              highlightedText="Work."
-              description="Live client systems and digital products engineered for measurable scale."
+              eyebrow={SELECTED_WORK_CONTENT.eyebrow}
+              title={SELECTED_WORK_CONTENT.title}
+              highlightedText={SELECTED_WORK_CONTENT.highlightedText}
+              description={SELECTED_WORK_CONTENT.description}
               className="items-start text-left mx-0"
               maxWidth="max-w-2xl"
             />
@@ -101,11 +101,11 @@ export function SelectedWork() {
                 href="/work" 
                 className="inline-flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors group"
               >
-                View complete portfolio archive 
+                {SELECTED_WORK_CONTENT.archiveLinkText} 
                 <AnimatedIcon icon={ArrowRightIcon} size={15} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <span className="text-sm font-medium text-slate-400">
-                {filteredProjects.length} of {PROJECTS.length} builds
+                {filteredProjects.length} of {PROJECTS.length} {SELECTED_WORK_CONTENT.buildsTextSuffix}
               </span>
             </div>
           </div>
@@ -128,7 +128,7 @@ export function SelectedWork() {
                 {/* Handwritten "Live Client Site" badge positioned left of arrows */}
                 <div className="sw-live-badge hidden sm:flex pointer-events-none items-center gap-2 z-30 select-none">
                   <span className="font-handwriting text-lg text-primary font-bold -rotate-2 tracking-wide drop-shadow-sm">
-                    Live Client Site
+                    {SELECTED_WORK_CONTENT.liveClientSiteText}
                   </span>
                   <svg width="42" height="34" viewBox="0 0 42 34" fill="none" className="text-primary -ml-1 drop-shadow-sm">
                     <path d="M4 4 C 14 10, 24 18, 30 26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />

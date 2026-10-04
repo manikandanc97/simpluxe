@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState } from "react";
-import { PROJECTS } from "@/lib/data/projects";
+import { PROJECTS } from "@/lib/content/projects";
 import { PROJECT_ENHANCEMENTS } from "@/components/work/work-data";
 import { WorkHero } from "@/components/work/work-hero";
 import { WorkControls } from "@/components/work/work-controls";

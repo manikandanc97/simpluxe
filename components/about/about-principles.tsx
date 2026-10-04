@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PRINCIPLES } from "@/lib/data/about";
+import { PRINCIPLES, ABOUT_PRINCIPLES_CONTENT } from "@/lib/content/about";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export function AboutPrinciples() {
@@ -13,10 +13,10 @@ export function AboutPrinciples() {
     <div className="w-full pt-16 md:pt-20 border-t border-border flex flex-col gap-12 sm:gap-16">
       {/* ── Section Header ── */}
       <SectionHeader
-        eyebrow="Guiding Philosophy"
-        title="The Three Core"
-        highlightedText="Principles."
-        description="The core tenets that guide every architectural decision, interface, and line of code we ship."
+        eyebrow={ABOUT_PRINCIPLES_CONTENT.eyebrow}
+        title={ABOUT_PRINCIPLES_CONTENT.title}
+        highlightedText={ABOUT_PRINCIPLES_CONTENT.highlightedText}
+        description={ABOUT_PRINCIPLES_CONTENT.description}
         centered
         maxWidth="max-w-2xl"
         className="mx-auto"

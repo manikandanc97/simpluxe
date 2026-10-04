@@ -4,12 +4,13 @@ import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, MessageSquare, Zap } from "lucide-react";
+import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 import { useRef } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
+import { CTA_CONTENT } from "@/lib/content/cta";
 
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
@@ -78,7 +79,7 @@ export function CTA({ onStartProject }: CTAProps) {
               >
                 <span className="w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-primary font-extrabold text-xs tracking-wider sm:tracking-widest uppercase font-satoshi whitespace-nowrap">
-                  READY TO BUILD?
+                  {CTA_CONTENT.floatingPillText}
                 </span>
               </div>
             </div>
@@ -92,21 +93,17 @@ export function CTA({ onStartProject }: CTAProps) {
             <div className="flex flex-col items-center lg:items-start gap-6 sm:gap-6 w-full">
               {/* Top Info Header */}
               <SectionHeader
-                eyebrow="FROM IDEA TO IMPACT"
-                title="Let's turn your idea into a"
-                highlightedText="premium digital product."
-                description="High craft, sub-second performance, and zero bloat. We partner with ambitious founders to build products people actually love using."
+                eyebrow={CTA_CONTENT.eyebrow}
+                title={CTA_CONTENT.title}
+                highlightedText={CTA_CONTENT.highlightedText}
+                description={CTA_CONTENT.description}
                 className="lg:items-start lg:text-left mx-0"
                 maxWidth="max-w-full"
               />
 
               {/* 3 Pillars as sleek pills */}
               <div className="cta-content flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2">
-              {[
-                { label: "Simple process.", icon: Zap },
-                { label: "Clear communication.", icon: MessageSquare },
-                { label: "Real results.", icon: CheckCircle2 },
-              ].map((item, index) => {
+              {CTA_CONTENT.pillars.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div
@@ -129,7 +126,7 @@ export function CTA({ onStartProject }: CTAProps) {
                   onClick={handleStart}
                   className="w-full sm:w-auto"
                 >
-                  <span>Start a project</span>
+                  <span>{CTA_CONTENT.primaryButtonText}</span>
                   <AnimatedArrowRight size={15} className="text-white" />
                 </Button>
 
@@ -140,14 +137,14 @@ export function CTA({ onStartProject }: CTAProps) {
                   className="w-full sm:w-auto"
                 >
                   <AnimatedIcon icon={CalendarIcon} size={15} className="text-muted-foreground" />
-                  <span>Schedule a call</span>
+                  <span>{CTA_CONTENT.secondaryButtonText}</span>
                 </Button>
               </div>
 
               {/* Subtle Trust / Response Note */}
               <div className="flex items-center justify-center lg:justify-start gap-2 text-xs sm:text-xs font-medium text-muted-foreground text-center lg:text-left">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                <span>Response within 2 hours • Free 30-min discovery session</span>
+                <span>{CTA_CONTENT.responseNote}</span>
               </div>
             </div>
 

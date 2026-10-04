@@ -14,3 +14,11 @@ export interface FAQItem {
   answer: string;
   highlights?: FAQHighlight[];
 }
+
+export interface FAQSectionContent {
+  eyebrow: string;
+  titleLine1: string;
+  titleLine2?: string;
+  highlightedText: string;
+  description: string;
+}

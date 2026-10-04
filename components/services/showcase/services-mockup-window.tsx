@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { type ServiceData } from "@/lib/data/services";
+import { type ServiceData } from "@/lib/content/services";
 
 interface ServicesMockupWindowProps {
   service: ServiceData;

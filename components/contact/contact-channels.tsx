@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SITE } from "@/config/site";
+import { SITE } from "@/lib/content/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
 import { ArrowRight, Check, Copy } from "lucide-react";

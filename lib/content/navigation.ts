@@ -14,3 +14,13 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "About", route: "/about", icon: Info, commandName: "Go to About" },
   { label: "Contact", route: "/contact", icon: Mail, commandName: "Go to Contact" },
 ];
+
+export interface NavbarContent {
+  availabilityText: string;
+  ctaText: string;
+}
+
+export const NAVBAR_CONTENT: NavbarContent = {
+  availabilityText: "Available for projects",
+  ctaText: "Start a project",
+};

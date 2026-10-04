@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import type { Experiment } from "@/lib/data/experiments";
+import type { Experiment } from "@/lib/content/experiments";
 import { motion } from "motion/react";
 
 interface ExperimentCardProps {

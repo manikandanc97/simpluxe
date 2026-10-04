@@ -36,10 +36,7 @@ export function WorkControls({
         {FILTER_SERVICES.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeFilter === tab.id;
-          const count =
-            tab.id === "all"
-              ? allProjects.length
-              : allProjects.filter((p) => p.serviceType === tab.serviceType).length;
+          const count = allProjects.filter((p) => p.serviceType === tab.serviceType).length;
 
           return (
             <button

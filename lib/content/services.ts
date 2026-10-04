@@ -1239,3 +1239,17 @@ export const SERVICES_LIST: ServiceData[] = [
   }
 ];
 
+export const SERVICES_SECTION_CONTENT = {
+  eyebrow: "WHAT WE BUILD",
+  title: "From Ideas to",
+  highlightedText: "Impact.",
+  description: "We engineer custom software, scalable web applications, and mobile platforms — with enterprise-grade reliability and zero unnecessary overhead.",
+};
+
+export const SERVICES_DELIVERABLES_CONTENT = {
+  eyebrow: "Deliverables",
+  title: "Everything included",
+  description: "A complete solution from planning to launch.",
+  perfectForTitle: "Perfect for",
+  perfectForDesc: "Tailored for your business stage",
+};

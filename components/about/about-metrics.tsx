@@ -1,4 +1,4 @@
-import { METRICS } from "@/lib/data/about";
+import { METRICS } from "@/lib/content/about";
 import { Users, Zap, ShieldCheck, Clock } from "lucide-react";
 
 const METRIC_ICONS = [Users, Zap, ShieldCheck, Clock];

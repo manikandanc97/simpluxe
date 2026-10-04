@@ -2,64 +2,18 @@
 
 import { Code2, Layers, Cpu, Smartphone } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import { ABOUT_TECH_STACK_CONTENT, STACK_CATEGORIES } from "@/lib/content/about";
 
-const STACK_CATEGORIES = [
-  {
-    title: "Frontend Engineering",
-    icon: Code2,
-    badge: "Sub-Second UX",
-    technologies: [
-      { name: "Next.js 15", desc: "App Router & Server Components" },
-      { name: "React 19", desc: "Concurrent rendering & Actions" },
-      { name: "TypeScript Strict", desc: "Type-safe robust logic" },
-      { name: "Tailwind CSS", desc: "Zero-runtime utility styling" },
-      { name: "Motion React", desc: "Fluid 60fps micro-animations" },
-    ],
-  },
-  {
-    title: "Backend & Cloud Edge",
-    icon: Cpu,
-    badge: "Low Latency",
-    technologies: [
-      { name: "FastAPI / Python", desc: "High-throughput asynchronous APIs" },
-      { name: "Node.js & Bun", desc: "Modern JavaScript backend runtimes" },
-      { name: "Cloudflare Edge", desc: "Global CDN caching & Workers" },
-      { name: "Serverless Compute", desc: "Elastic autoscaling architecture" },
-    ],
-  },
-  {
-    title: "Data & Security",
-    icon: Layers,
-    badge: "Enterprise Grade",
-    technologies: [
-      { name: "PostgreSQL", desc: "Relational database reliability" },
-      { name: "Supabase", desc: "Realtime data, auth & storage" },
-      { name: "Prisma ORM", desc: "Type-safe schema migrations" },
-      { name: "Redis", desc: "Sub-millisecond memory caching" },
-    ],
-  },
-  {
-    title: "Mobile Products",
-    icon: Smartphone,
-    badge: "iOS & Android",
-    technologies: [
-      { name: "React Native", desc: "Cross-platform native performance" },
-      { name: "Expo EAS", desc: "Automated cloud builds & OTA updates" },
-      { name: "Offline Sync", desc: "Local database caching" },
-      { name: "Native Biometrics", desc: "FaceID & fingerprint security" },
-    ],
-  },
-];
 
 export function AboutTechStack() {
   return (
     <div className="w-full pt-16 sm:pt-20 border-t border-surface-elevated flex flex-col gap-12 sm:gap-16">
       {/* ── Section Header ── */}
       <SectionHeader
-        eyebrow="Engineering Stack"
-        title={<>Modern technologies. <br className="hidden sm:block" /></>}
-        highlightedText="Zero legacy baggage."
-        description="We intentionally curate our stack to maximize runtime velocity, developer joy, and long-term codebase maintainability."
+        eyebrow={ABOUT_TECH_STACK_CONTENT.eyebrow}
+        title={<>{ABOUT_TECH_STACK_CONTENT.titleLine1} <br className="hidden sm:block" /></>}
+        highlightedText={ABOUT_TECH_STACK_CONTENT.highlightedText}
+        description={ABOUT_TECH_STACK_CONTENT.description}
         centered
         maxWidth="max-w-2xl"
         className="mx-auto"
@@ -68,7 +22,7 @@ export function AboutTechStack() {
       {/* ── 4 Category Grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {STACK_CATEGORIES.map((cat, i) => {
-          const Icon = cat.icon;
+          const Icon = i === 0 ? Code2 : i === 1 ? Cpu : i === 2 ? Layers : Smartphone;
           return (
             <div
               key={i}

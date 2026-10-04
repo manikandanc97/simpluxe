@@ -1,5 +1,5 @@
 import { XCircle, CheckCircle2 } from "lucide-react";
-import { COMPARISONS } from "@/lib/data/about";
+import { COMPARISONS, ABOUT_COMPARISON_CONTENT } from "@/lib/content/about";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export function AboutComparison() {
@@ -7,10 +7,10 @@ export function AboutComparison() {
     <div className="w-full pt-16 sm:pt-20 border-t border-surface-elevated">
       {/* ── Section Header ── */}
       <SectionHeader
-        eyebrow="Comparative Standards"
-        title="Why Founders Choose"
-        highlightedText="Simpluxe."
-        description="A stark, transparent comparison between old-school agency bureaucracy and our streamlined senior software model."
+        eyebrow={ABOUT_COMPARISON_CONTENT.eyebrow}
+        title={ABOUT_COMPARISON_CONTENT.title}
+        highlightedText={ABOUT_COMPARISON_CONTENT.highlightedText}
+        description={ABOUT_COMPARISON_CONTENT.description}
         centered
         maxWidth="max-w-2xl"
         className="mb-12 sm:mb-16 mx-auto"
@@ -21,15 +21,15 @@ export function AboutComparison() {
         {/* Table Header Bar */}
         <div className="grid grid-cols-1 md:grid-cols-12 border-b border-surface-elevated bg-background p-4 sm:p-6 font-mono text-xs font-bold text-foreground">
           <div className="md:col-span-3 text-muted-foreground uppercase tracking-wider">
-            Evaluation Metric
+            {ABOUT_COMPARISON_CONTENT.evaluationMetric}
           </div>
           <div className="md:col-span-4 text-muted-foreground uppercase tracking-wider hidden md:block">
-            Traditional Agencies
+            {ABOUT_COMPARISON_CONTENT.traditionalAgencies}
           </div>
           <div className="md:col-span-5 text-primary uppercase tracking-wider hidden md:flex items-center gap-2">
-            <span>The Simpluxe Studio Model</span>
+            <span>{ABOUT_COMPARISON_CONTENT.simpluxeModel}</span>
             <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-background text-primary border border-surface-elevated">
-              RECOMMENDED
+              {ABOUT_COMPARISON_CONTENT.recommendedBadge}
             </span>
           </div>
         </div>

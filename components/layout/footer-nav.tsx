@@ -1,8 +1,8 @@
 "use client";
 
 import { House, Briefcase, Layers, Info, Mail, Sparkles } from "lucide-react";
-import { NAV_ITEMS } from "@/config/nav";
-import { FOOTER_DATA } from "@/lib/data/footer";
+import { NAV_ITEMS } from "@/lib/content/navigation";
+import { FOOTER_DATA } from "@/lib/content/footer";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

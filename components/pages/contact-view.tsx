@@ -6,6 +6,7 @@ import { LeadForm } from "@/components/leads/lead-form";
 import { Container } from "@/components/ui/container";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { CONTACT_SECTION_CONTENT } from "@/lib/content/contact";
 
 export function ContactView() {
   return (
@@ -39,17 +40,17 @@ export function ContactView() {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" size="lg">
                     <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                    Technical Scoping Engine
+                    {CONTACT_SECTION_CONTENT.badge}
                   </Badge>
                 </div>
                 <CardTitle className="text-2xl sm:text-3xl">
-                  Start a Technical{" "}
+                  {CONTACT_SECTION_CONTENT.titleLine1}{" "}
                   <span className="brand-gradient-text">
-                    Conversation.
+                    {CONTACT_SECTION_CONTENT.titleLine2}
                   </span>
                 </CardTitle>
                 <CardDescription className="text-sm max-w-md">
-                  Tell us about your product goals, architectural constraints, or target timeline. Receive a structured technical assessment within 24 hours.
+                  {CONTACT_SECTION_CONTENT.description}
                 </CardDescription>
               </CardHeader>
 

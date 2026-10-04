@@ -445,3 +445,11 @@ export const TECH_STACK: TechItem[] = [
   },
 ];
 
+export const TECH_STACK_SECTION_CONTENT = {
+  eyebrow: "OUR TECH STACK",
+  title: "Modern tools.",
+  highlightedText: "Real results.",
+  descriptionLine1: "Battle-tested tools chosen for reliability, performance, and long-term maintainability —",
+  descriptionLine2: "not just trends.",
+  footerNote: "We choose tools that fit your project — not the other way around.",
+};

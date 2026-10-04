@@ -1,6 +1,6 @@
 "use client";
 
-import { type ServiceData } from "@/lib/data/services";
+import { type ServiceData, SERVICES_DELIVERABLES_CONTENT } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import { 
   CheckCircle2, Target, Rocket, Building, Shield, RefreshCw, 
@@ -65,7 +65,7 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
         {/* ── Left Column: Deliverables (7 cols) ── */}
         <div className="lg:col-span-7 flex flex-col items-start text-left justify-center">
-          <div className="mb-6 sm:mb-8"><SectionHeader eyebrow="Deliverables" title="Everything included" description="A complete solution from planning to launch." /></div>
+          <div className="mb-6 sm:mb-8"><SectionHeader eyebrow={SERVICES_DELIVERABLES_CONTENT.eyebrow} title={SERVICES_DELIVERABLES_CONTENT.title} description={SERVICES_DELIVERABLES_CONTENT.description} /></div>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -120,10 +120,10 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
                 </div>
                 <div>
                   <h4 className="text-base sm:text-lg font-black text-foreground tracking-tight">
-                    Perfect for
+                    {SERVICES_DELIVERABLES_CONTENT.perfectForTitle}
                   </h4>
                   <p className="text-xs sm:text-xs text-muted-foreground mt-0.5">
-                    Tailored for your business stage
+                    {SERVICES_DELIVERABLES_CONTENT.perfectForDesc}
                   </p>
                 </div>
               </div>

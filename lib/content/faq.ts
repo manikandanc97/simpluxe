@@ -92,3 +92,13 @@ export const FAQS: FAQItem[] = [
     ],
   },
 ];
+
+import { FAQSectionContent } from "@/types/faq";
+
+export const FAQ_SECTION_CONTENT: FAQSectionContent = {
+  eyebrow: "FAQ",
+  titleLine1: "Frequently Asked",
+  titleLine2: "",
+  highlightedText: "Questions.",
+  description: "Honest answers to common questions founders and teams ask before building with us.",
+};

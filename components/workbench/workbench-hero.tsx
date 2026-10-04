@@ -5,7 +5,7 @@ import { ChevronDown, Play, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { useRef } from "react";
-import { HERO_CONTENT } from "@/lib/data/hero";
+import { HERO_CONTENT } from "@/lib/content/hero";
 import { Hero3DCoder } from "./hero-3d-coder";
 import { HeroGridAccents } from "./hero-grid-accents";
 import { AnimatedText } from "@/components/ui/animated-text";
@@ -143,7 +143,7 @@ export function WorkbenchHero() {
                 size="lg"
                 className="group rounded-full shadow-elevated h-12 sm:h-12 w-auto justify-center px-6 sm:px-8"
               >
-                <span className="text-sm sm:text-base whitespace-nowrap">Start a project</span>
+                <span className="text-sm sm:text-base whitespace-nowrap">{HERO_CONTENT.ctaPrimary}</span>
                 <ArrowRight size={16} className="text-white ml-1 shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Button>
               <motion.div
@@ -159,8 +159,8 @@ export function WorkbenchHero() {
                     <Play size={13} className="fill-current" />
                   </div>
                   <div className="flex flex-col text-left shrink-0">
-                    <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">See our work</span>
-                    <span className="text-[10px] sm:text-xs font-medium text-muted-foreground mt-0.5 whitespace-nowrap block">2 min overview</span>
+                    <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">{HERO_CONTENT.ctaSecondaryTitle}</span>
+                    <span className="text-[10px] sm:text-xs font-medium text-muted-foreground mt-0.5 whitespace-nowrap block">{HERO_CONTENT.ctaSecondarySubtitle}</span>
                   </div>
                 </Link>
               </motion.div>
@@ -184,12 +184,12 @@ export function WorkbenchHero() {
       <button
         type="button"
         id="hero-scroll-indicator"
-        aria-label="Scroll down to explore capabilities"
+        aria-label={HERO_CONTENT.scrollIndicatorLabel}
         onClick={handleScrollDown}
         className="hero-scroll group relative mt-6 lg:mt-0 lg:absolute lg:bottom-4 left-auto lg:left-1/2 lg:-translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-slate-400 hover:text-foreground cursor-pointer focus:outline-none transition-all select-none"
       >
         <span className="text-xs font-bold uppercase tracking-widest group-hover:text-primary transition-colors duration-300">
-          scroll
+          {HERO_CONTENT.scrollIndicatorText}
         </span>
         <div
           className="w-4 h-4 rounded-full border-[1.5px] border-slate-300 group-hover:border-primary/50 flex items-center justify-center transition-colors animate-bounce"

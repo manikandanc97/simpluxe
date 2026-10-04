@@ -8,7 +8,7 @@ import {
   TINY_ORB_CONFIGURATIONS,
   DOT_GRID_CONFIGURATIONS,
   WAVE_CURVES,
-} from "@/lib/data/ambient-background";
+} from "@/lib/content/ambient-background";
 
 ;
 

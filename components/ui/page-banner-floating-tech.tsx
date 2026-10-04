@@ -1,7 +1,7 @@
 "use client";
 
-import { TECH_POSITIONS } from "@/lib/data/page-banner";
-import { TECH_STACK } from "@/lib/data/tech-stack";
+import { TECH_POSITIONS } from "@/lib/content/page-banner";
+import { TECH_STACK } from "@/lib/content/tech-stack";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";

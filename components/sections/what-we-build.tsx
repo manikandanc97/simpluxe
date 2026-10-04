@@ -3,7 +3,7 @@
 import { useLead } from "@/components/leads/lead-provider";
 import { useRef, useState } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SERVICES_LIST } from "@/lib/data/services";
+import { SERVICES_LIST, SERVICES_SECTION_CONTENT } from "@/lib/content/services";
 import { WhatWeBuildCard } from "./what-we-build/what-we-build-card";
 import { WhatWeBuildNav } from "./what-we-build/what-we-build-nav";
 import { Section } from "@/components/ui/section";
@@ -44,11 +44,11 @@ export function WhatWeBuild() {
       <Container className="relative z-10 flex flex-col gap-6 sm:gap-8">
         <motion.div variants={fadeUp} {...viewportReveal}>
           <SectionHeader
-          eyebrow="WHAT WE BUILD"
+          eyebrow={SERVICES_SECTION_CONTENT.eyebrow}
           centered
-          title="From Ideas to"
-          highlightedText="Impact."
-          description="We engineer custom software, scalable web applications, and mobile platforms — with enterprise-grade reliability and zero unnecessary overhead."
+          title={SERVICES_SECTION_CONTENT.title}
+          highlightedText={SERVICES_SECTION_CONTENT.highlightedText}
+          description={SERVICES_SECTION_CONTENT.description}
         />
         </motion.div>
 
