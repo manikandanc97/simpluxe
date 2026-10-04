@@ -157,7 +157,6 @@ export const PROJECT_ENHANCEMENTS: Record<string, EnhancedProjectDetails> = {
 };
 
 export const FILTER_SERVICES = [
-  { id: "all", label: "All Works", icon: null, serviceType: null },
   { id: "websites", label: "Websites", icon: "globe", serviceType: "Websites" },
   { id: "web-apps", label: "Web Apps", icon: "grid", serviceType: "Web Apps" },
   { id: "mobile-apps", label: "Mobile Apps", icon: "smartphone", serviceType: "Mobile Apps" },

@@ -6,13 +6,13 @@ import { PROJECTS } from "@/lib/data/projects";
 import { PROJECT_ENHANCEMENTS } from "@/components/work/work-data";
 import { WorkHero } from "@/components/work/work-hero";
 import { WorkControls } from "@/components/work/work-controls";
-import { WorkProjectCard } from "@/components/work/work-project-card";
-import { WorkBrowserFrame } from "@/components/work/work-browser-frame";
+import { SelectedWorkProjectItem } from "@/components/sections/selected-work/project-item";
+import { BrowserMockup } from "@/components/sections/selected-work/browser-mockup";
 import { WorkProjectDetails } from "@/components/work/work-project-details";
-import { WorkFullscreenModal } from "@/components/work/work-fullscreen-modal";
 import { WorkEngineeringStandards } from "@/components/work/work-engineering-standards";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Container } from "@/components/ui/container";
+import { AnimatePresence, motion } from "motion/react";
 
 function WorkViewContent() {
   const searchParams = useSearchParams();
@@ -22,13 +22,12 @@ function WorkViewContent() {
     if (rawServiceParam === "websites") return "websites";
     if (rawServiceParam === "web-apps") return "web-apps";
     if (rawServiceParam === "mobile-apps") return "mobile-apps";
-    return "all";
+    return "websites";
   });
 
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<"latest" | "oldest" | "name">("latest");
   const [activeProjectId, setActiveProjectId] = useState<string>(PROJECTS[0]?.id || "proj-valparai");
-  const [isFullscreenModalOpen, setIsFullscreenModalOpen] = useState(false);
 
   // Filter & Sort logic
   const filteredProjects = useMemo(() => {
@@ -107,41 +106,63 @@ function WorkViewContent() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start pt-6 sm:pt-8">
             {/* ── LEFT COLUMN: Project Selector List ── */}
             <div className="lg:col-span-5 flex flex-col gap-4">
-              {filteredProjects.length === 0 ? (
-                <div className="text-center py-16 px-4 bg-background rounded-2xl border border-dashed border-surface-elevated">
-                  <p className="text-sm text-muted-foreground font-medium">
-                    No projects found matching your criteria.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setActiveFilter("all");
-                      setSearchQuery("");
-                    }}
-                    className="mt-4 text-xs font-bold text-primary hover:underline cursor-pointer"
+              <AnimatePresence mode="wait">
+                {filteredProjects.length === 0 ? (
+                  <motion.div 
+                    key="empty"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center py-16 px-4 bg-background rounded-2xl border border-dashed border-surface-elevated"
                   >
-                    Reset Filters
-                  </button>
-                </div>
-              ) : (
-                filteredProjects.map((project) => (
-                  <WorkProjectCard
-                    key={project.id}
-                    project={project}
-                    isActive={project.id === activeProject?.id}
-                    onClick={() => setActiveProjectId(project.id)}
-                  />
-                ))
-              )}
+                    <p className="text-sm text-muted-foreground font-medium">
+                      No projects found matching your criteria.
+                    </p>
+                    <button
+                      onClick={() => {
+                        setActiveFilter("websites");
+                        setSearchQuery("");
+                      }}
+                      className="mt-4 text-xs font-bold text-primary hover:underline cursor-pointer"
+                    >
+                      Reset Filters
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={activeFilter + searchQuery + sortOption}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: {
+                        opacity: 1,
+                        transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+                      }
+                    }}
+                    className="flex flex-col gap-4"
+                  >
+                    {filteredProjects.map((project) => (
+                      <SelectedWorkProjectItem
+                        key={project.id}
+                        project={project}
+                        isActive={project.id === activeProject?.id}
+                        onSelect={() => setActiveProjectId(project.id)}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* ── RIGHT COLUMN: Active Project Showcase & Details ── */}
             <div className="lg:col-span-7 flex flex-col gap-6 lg:sticky lg:top-24">
               {activeProject && (
                 <>
-                  <WorkBrowserFrame
-                    project={activeProject}
-                    onOpenFullscreen={() => setIsFullscreenModalOpen(true)}
-                  />
+                  <div className="relative group w-full h-[450px] sm:h-[550px] lg:h-[600px]">
+                    <BrowserMockup activeProject={activeProject} />
+                  </div>
                   <WorkProjectDetails
                     project={activeProject}
                     enhancement={activeEnhancement}
@@ -155,13 +176,6 @@ function WorkViewContent() {
         {/* ── 3. Engineering Quality Standards (4 Pillars) ── */}
         <WorkEngineeringStandards />
       </Container>
-
-      {/* ── Fullscreen Live Iframe Preview Modal ── */}
-      <WorkFullscreenModal
-        isOpen={isFullscreenModalOpen}
-        onClose={() => setIsFullscreenModalOpen(false)}
-        project={activeProject}
-      />
     </div>
   );
 }

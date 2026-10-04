@@ -14,6 +14,5 @@ export const FOOTER_DATA: FooterData = {
     { label: "Mobile Apps (iOS & Android)", icon: "smartphone", id: "mobile-apps" },
     { label: "SaaS Platforms", icon: "layers", id: "saas" },
     { label: "Branding & Identity", icon: "palette", id: "branding" },
-    { label: "AI Automation & Agents", icon: "cpu", id: "automation" },
   ],
 };

@@ -8,7 +8,6 @@ export const PROJECT_TYPES = [
   "SaaS products",
   "Branding & identity",
   "UI/UX design",
-  "AI automation",
   "Custom software",
   "Something Else",
   "Not Sure Yet",

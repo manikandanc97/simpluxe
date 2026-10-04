@@ -6,7 +6,6 @@ import {
   Package2,
   Palette,
   Layers,
-  Sparkles,
   Cpu,
   type LucideIcon,
 } from "lucide-react";
@@ -98,7 +97,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Analytics & user telemetry integration"
     ],
     "brandColor": "#922F55",
-    "image": "/images/mockups/websites.jpg",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111610/simpluxe/services/website_cbr8jm.png",
     "tabLabel": "Websites",
     "headline": {
       "normal": "High-converting ",
@@ -246,7 +245,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Deployment & DevOps"
     ],
     "brandColor": "#6C2BB8",
-    "image": "/images/mockups/web-apps.jpg",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111610/simpluxe/services/web-application_v8iwnt.png",
     "tabLabel": "Web Applications",
     "headline": {
       "normal": "Software built around how ",
@@ -395,7 +394,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "High-concurrency flash sale caching"
     ],
     "brandColor": "#0891B2",
-    "image": "/images/mockups/ecommerce.jpg",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111609/simpluxe/services/e-commerce_qpfzex.png",
     "tabLabel": "E-commerce",
     "headline": {
       "normal": "High-converting storefronts built to ",
@@ -543,7 +542,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Over-The-Air (OTA) continuous updates"
     ],
     "brandColor": "#D23D78",
-    "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116453/simpluxe/services/Mobile-App_tviiaz.png",
     "tabLabel": "Mobile Apps",
     "headline": {
       "normal": "Native-grade mobile applications built for ",
@@ -623,7 +622,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "expo",
       "typescript",
       "supabase",
-      "firebase",
       "swift",
       "kotlin"
     ],
@@ -691,7 +689,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Health check monitoring & telemetry alerts"
     ],
     "brandColor": "#5B21B6",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116452/simpluxe/services/SaaS_bllypd.png",
     "tabLabel": "SaaS Products",
     "headline": {
       "normal": "Multi-tenant software platforms engineered from ",
@@ -839,7 +837,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Full source files (AI, SVG, PNG, Figma)"
     ],
     "brandColor": "#F97316",
-    "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116462/simpluxe/services/branding_ekl60d.png",
     "tabLabel": "Branding",
     "headline": {
       "normal": "Distinct visual identity systems that make ",
@@ -983,7 +981,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Live Figma library link with continuous sync"
     ],
     "brandColor": "#7C3AED",
-    "image": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=800",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791118195/simpluxe/services/UI-UX_nwimrf.png",
     "tabLabel": "UI/UX Design",
     "headline": {
       "normal": "Human-centric digital interfaces engineered with ",
@@ -1095,156 +1093,8 @@ export const SERVICES_LIST: ServiceData[] = [
     ]
   },
   {
-    "id": "automation",
-    "number": "08",
-    "name": "AI automation",
-    "category": "Core Systems",
-    "icon": Sparkles,
-    "outcome": "Practical automation that removes repetitive work.",
-    "pillars": [
-      "Workflows",
-      "LLM Agents",
-      "Pipelines",
-      "Integrations"
-    ],
-    "includes": [
-      "Production-ready LLM assistants & custom agents",
-      "Automated document processing, categorization & triage",
-      "Deep integrations with everyday tools (Slack, CRMs, APIs)"
-    ],
-    "shortTagline": "Practical AI workflows and automations that eliminate repetitive work and scale your operations.",
-    "deliverables": [
-      "Workflow discovery & automation feasibility audit",
-      "Custom system prompt engineering & guardrails",
-      "Vector embeddings & semantic retrieval (RAG)",
-      "LLM tool-calling & webhook actions (Function calling)",
-      "Automated document processing & validation pipeline",
-      "Slack, WhatsApp & Email notification bots",
-      "CRM & ERP automated record synchronizer",
-      "Rate-limit & fall-back redundancy engineering",
-      "PII data redaction & compliance safeguards",
-      "Cost-per-token monitoring dashboard",
-      "Continuous prompt evaluation & testing suite"
-    ],
-    "brandColor": "#059669",
-    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-    "tabLabel": "AI Automation",
-    "headline": {
-      "normal": "Practical AI agents and workflows that ",
-      "highlight": "eliminate repetitive manual operations."
-    },
-    "description": "We engineer autonomous LLM-powered agents, intelligent document parsing pipelines, and deep API workflows that save hundreds of human hours every month.",
-    "stats": [
-      {
-        "value": "85%",
-        "label": "Manual operations automated"
-      },
-      {
-        "value": "<250ms",
-        "label": "Average agent inference latency"
-      },
-      {
-        "value": "SOC2",
-        "label": "Data privacy & security safe"
-      }
-    ],
-    "whatWeBuildSubtitle": "Actionable AI infrastructure built for real operational efficiency.",
-    "whatWeBuild": [
-      {
-        "title": "Custom LLM Agents",
-        "description": "Autonomous reasoning agents with access to your tools, databases, and APIs.",
-        "iconType": "bot",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
-      },
-      {
-        "title": "Intelligent Document Extraction",
-        "description": "Automated OCR & extraction of invoices, contracts, and receipts into structured JSON.",
-        "iconType": "file-search",
-        "bgColor": "bg-purple-50 dark:bg-purple-950/40",
-        "iconColor": "text-purple-600 dark:text-purple-400"
-      },
-      {
-        "title": "Support & Triage Bots",
-        "description": "24/7 intelligent ticketing, intent classification, and contextual CRM replies.",
-        "iconType": "message-square",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
-      },
-      {
-        "title": "Internal Knowledge RAG",
-        "description": "Search across company Notion, Google Drive, and PDFs with zero hallucination.",
-        "iconType": "database",
-        "bgColor": "bg-amber-50 dark:bg-amber-950/40",
-        "iconColor": "text-amber-600 dark:text-amber-400"
-      }
-    ],
-    "perfectFor": [
-      {
-        "title": "High-volume operational teams",
-        "desc": "Drowning in manual copy-pasting, invoice entry, and email triage.",
-        "icon": "zap"
-      },
-      {
-        "title": "Customer support departments",
-        "desc": "Answering 80% of tier-1 customer inquiries immediately 24/7.",
-        "icon": "headphones"
-      },
-      {
-        "title": "Finance & compliance firms",
-        "desc": "Extracting structured data from thousands of PDF contracts without errors.",
-        "icon": "file-text"
-      },
-      {
-        "title": "Fast-moving tech startups",
-        "desc": "Embedding native AI intelligence into their core software product.",
-        "icon": "sparkles"
-      }
-    ],
-    "techStack": [
-      "openai",
-      "anthropic",
-      "langchain",
-      "python",
-      "fastapi",
-      "postgresql",
-      "supabase",
-      "docker"
-    ],
-    "faqs": [
-      {
-        "question": "Is our proprietary company data used to train public AI models?",
-        "answer": "No, absolutely not. We use enterprise API agreements (OpenAI, Anthropic) with strict zero-data retention policies where your data is never used for model training."
-      },
-      {
-        "question": "How do you prevent the AI from making up facts (hallucinating)?",
-        "answer": "We use strict Retrieval-Augmented Generation (RAG) with ground-truth citation checks, system guardrails, and validation schemas that reject answers not verified by source documents."
-      },
-      {
-        "question": "Can the AI trigger real actions like sending an email or updating a database?",
-        "answer": "Yes. Using LLM function calling and secure webhooks, the AI can query APIs, update status in your CRM, dispatch emails, or create records with human-in-the-loop approvals."
-      },
-      {
-        "question": "How do you control AI API token costs?",
-        "answer": "We implement semantic caching, prompt token compression, and smart model routing (e.g. fast cheap models for triage, larger reasoning models only when necessary)."
-      }
-    ],
-    "relatedWorkUrl": "/work?category=automation",
-    "mockup": {
-      "type": "ai",
-      "title": "Simpluxe AI Agent Pipeline",
-      "badge": "Autonomous Ops",
-      "subtitle": "RAG Knowledge & Tool-calling Engine"
-    },
-    "shortDeliverables": [
-      "LLM Agents & Assistants",
-      "Document Automation",
-      "Tool Integrations"
-    ]
-  },
-  {
     "id": "custom-software",
-    "number": "09",
+    "number": "08",
     "name": "Custom software",
     "category": "Core Systems",
     "icon": Cpu,
@@ -1260,7 +1110,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Custom REST/GraphQL APIs & third-party system bridges",
       "Robust relational database design & performance tuning"
     ],
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791118195/simpluxe/services/custom_sofware_k29sx9.png",
     "shortTagline": "Bespoke software architecture engineered for complex enterprise logic.",
     "brandColor": "#000000",
     "shortDeliverables": [],
