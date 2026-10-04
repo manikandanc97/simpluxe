@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface SiteNavbarProps {
@@ -117,10 +117,10 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               size="sm"
               onClick={handleStart}
               id="navbar-start-project"
-              className="shadow-elevated gap-1.5"
+              className="group shadow-elevated gap-1.5"
             >
               <span>Start a project</span>
-              <AnimatedArrowRight size={14} className="text-white" />
+              <ArrowRight size={14} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Button>
           </div>
         </div>

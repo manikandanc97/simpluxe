@@ -1,30 +1,17 @@
-"use client";
-
-import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { NAV_ITEMS } from "@/config/nav";
 import { SITE } from "@/config/site";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image-client";
 import Link from "next/link";
 import { FOOTER_DATA } from "@/lib/data/footer";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { FooterNav } from "./footer-nav";
+import { FooterCtaButton } from "./footer-cta-button";
 
 interface SiteFooterProps {
   onStartProject?: () => void;
 }
 
 export function SiteFooter({ onStartProject }: SiteFooterProps) {
-  const { openLead } = useLead();
-  const pathname = usePathname();
-
-  const handleStart = () => {
-    if (onStartProject) onStartProject();
-    else openLead({ source: "footer" });
-  };
 
   return (
     <footer className="w-full bg-background border-t border-border mt-auto relative overflow-hidden">
@@ -147,29 +134,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
             <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
               EXPLORE
             </h3>
-            <ul className="flex flex-col gap-4.5">
-              {NAV_ITEMS.map((item) => {
-                const iconName = FOOTER_DATA.navIcons[item.route] || "sparkles";
-                const isActive = pathname === item.route || (item.route !== "/" && pathname?.startsWith(item.route));
-                return (
-                  <li key={item.route}>
-                    <Link
-                      href={item.route}
-                      className={cn("group text-sm transition-colors inline-flex items-center gap-4", isActive ? "text-primary" : "text-muted-foreground hover:text-foreground")}
-                    >
-                      <span className={cn("w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors", isActive ? "bg-primary text-white shadow-sm" : "bg-primary/10 text-primary group-hover:bg-primary/20")}>
-                        <AnimatedIcon
-                          name={iconName}
-                          size={13}
-                          className="currentColor"
-                        />
-                      </span>
-                      <span className={cn("font-medium", isActive && "font-bold")}>{item.label}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <FooterNav />
           </div>
 
           {/* Col 3: Capabilities (3 cols) */}
@@ -247,13 +212,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                   </p>
                 </div>
 
-                <Button
-                  onClick={handleStart}
-                  className="w-full h-12 group"
-                >
-                  <span>Start a project</span>
-                  <AnimatedArrowRight size={16} className="text-primary-foreground group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <FooterCtaButton onStartProject={onStartProject} />
               </div>
             </div>
           </div>

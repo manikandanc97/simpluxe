@@ -1,10 +1,7 @@
 "use client";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
-import { PlayIcon } from "@animateicons/react/lucide/play-icon";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { ChevronDown, Play, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { useRef } from "react";
@@ -147,7 +144,7 @@ export function WorkbenchHero() {
                 className="group rounded-full shadow-elevated h-12 sm:h-12 w-auto justify-center px-6 sm:px-8"
               >
                 <span className="text-sm sm:text-base whitespace-nowrap">Start a project</span>
-                <AnimatedArrowRight size={16} className="text-white ml-1 shrink-0" />
+                <ArrowRight size={16} className="text-white ml-1 shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Button>
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -159,7 +156,7 @@ export function WorkbenchHero() {
                   className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto"
                 >
                   <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-[rgba(30,24,30,0.08)] text-foreground group-hover:scale-105 transition-transform pl-0.5 shrink-0">
-                    <AnimatedIcon icon={PlayIcon} size={13} className="fill-current" />
+                    <Play size={13} className="fill-current" />
                   </div>
                   <div className="flex flex-col text-left shrink-0">
                     <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">See our work</span>
@@ -197,7 +194,7 @@ export function WorkbenchHero() {
         <div
           className="w-4 h-4 rounded-full border-[1.5px] border-slate-300 group-hover:border-primary/50 flex items-center justify-center transition-colors animate-bounce"
         >
-          <AnimatedIcon icon={ChevronDownIcon} size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
+          <ChevronDown size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
         </div>
       </button>
     </section>
