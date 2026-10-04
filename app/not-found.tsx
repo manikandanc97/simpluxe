@@ -1,6 +1,4 @@
-"use client";
-
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
 
 export default function NotFound() {

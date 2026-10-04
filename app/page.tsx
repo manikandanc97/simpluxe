@@ -2,13 +2,13 @@ import dynamic from "next/dynamic";
 import { WorkbenchHero } from "@/components/workbench/workbench-hero";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 
-const WhatWeBuild = dynamic(() => import("@/components/sections/what-we-build").then(mod => mod.WhatWeBuild));
-const SelectedWork = dynamic(() => import("@/components/sections/selected-work").then(mod => mod.SelectedWork));
-const HowWeWork = dynamic(() => import("@/components/sections/how-we-work").then(mod => mod.HowWeWork));
-const WhySimpluxe = dynamic(() => import("@/components/sections/philosophy").then(mod => mod.WhySimpluxe));
-const TechStack = dynamic(() => import("@/components/sections/tech-stack").then(mod => mod.TechStack));
-const FAQ = dynamic(() => import("@/components/sections/faq").then(mod => mod.FAQ));
-const CTA = dynamic(() => import("@/components/sections/cta").then(mod => mod.CTA));
+import { WhatWeBuild } from "@/components/sections/what-we-build";
+import { SelectedWork } from "@/components/sections/selected-work";
+import { HowWeWork } from "@/components/sections/how-we-work";
+import { WhySimpluxe } from "@/components/sections/philosophy";
+import { TechStack } from "@/components/sections/tech-stack";
+import { FAQ } from "@/components/sections/faq";
+import { CTA } from "@/components/sections/cta";
 
 export default function Home() {
   return (

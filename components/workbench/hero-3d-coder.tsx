@@ -206,9 +206,9 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
 
         {/* ── CENTRAL 3D CHARACTER ── */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          initial={{ scale: 0.95 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="parallax-char relative z-10 w-full max-w-[210px] xs:max-w-[240px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] h-[210px] xs:h-[240px] sm:h-[340px] md:h-[420px] lg:h-[500px] flex items-center justify-center pointer-events-none"
         >
           <motion.div

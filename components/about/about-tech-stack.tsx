@@ -1,5 +1,3 @@
-"use client";
-
 import { Code2, Layers, Cpu, Smartphone } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ABOUT_TECH_STACK_CONTENT, STACK_CATEGORIES } from "@/lib/content/about";

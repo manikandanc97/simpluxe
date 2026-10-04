@@ -153,7 +153,14 @@ export function WorkbenchHero() {
               >
                 <Link
                   href="#selected-work"
-                  className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto"
+                  onClick={(e) => {
+                    const section = document.getElementById("selected-work");
+                    if (section) {
+                      e.preventDefault();
+                      section.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto text-left"
                 >
                   <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-[rgba(30,24,30,0.08)] text-foreground group-hover:scale-105 transition-transform pl-0.5 shrink-0">
                     <Play size={13} className="fill-current" />

@@ -1,36 +1,17 @@
-"use client";
-
-import { useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { staggerContainer } from "@/lib/motion";
-import { TECH_STACK, type Category, TECH_STACK_SECTION_CONTENT } from "@/lib/content/tech-stack";
+import { TECH_STACK_SECTION_CONTENT } from "@/lib/content/tech-stack";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TechCard } from "./tech-stack-card";
 import { TechPerformancePill } from "./tech-stack/tech-performance-pill";
-import { TechCategoryTabs } from "./tech-stack/tech-category-tabs";
 import { TechValueStrip } from "./tech-stack/tech-value-strip";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
-import { fadeUp, viewportReveal } from "@/lib/motion";
+import { FadeUpWrapper } from "@/components/ui/fade-up-wrapper";
+import dynamic from "next/dynamic";
 
+const TechStackInteractive = dynamic(
+  () => import("./tech-stack-interactive").then((mod) => mod.TechStackInteractive),
+  { ssr: true }
+);
 export function TechStack() {
-  const [activeCategory, setActiveCategory] = useState<Category>("Frontend & Web");
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Counts per category
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const tech of TECH_STACK) {
-      counts[tech.category] = (counts[tech.category] || 0) + 1;
-    }
-    return counts;
-  }, []);
-
-  // Filtered list by active category
-  const filtered = useMemo(() => {
-    return TECH_STACK.filter((tech) => tech.category === activeCategory);
-  }, [activeCategory]);
-
   return (
     <Section id="tech-stack">
       {/* Decorative dot matrix in corners */}
@@ -38,9 +19,9 @@ export function TechStack() {
       <div className="pointer-events-none absolute bottom-8 left-8 w-36 h-36 hero-dots opacity-40 dark:opacity-20" />
       <div className="pointer-events-none absolute bottom-8 right-8 w-36 h-36 hero-dots opacity-40 dark:opacity-20" />
 
-      <Container ref={containerRef} className="relative z-10 flex flex-col gap-6 sm:gap-10 lg:gap-12">
+      <Container className="relative z-10 flex flex-col gap-6 sm:gap-10 lg:gap-12">
         {/* ── Top Header with Floating Performance Pill ──────────────────────── */}
-        <motion.div variants={fadeUp} {...viewportReveal} className="relative text-center">
+        <FadeUpWrapper className="relative text-center">
           <TechPerformancePill />
 
           <SectionHeader
@@ -55,47 +36,12 @@ export function TechStack() {
               </>
             }
           />
-        </motion.div>
+        </FadeUpWrapper>
 
         {/* ── Categories + Cards wrapper ────────────────────────────────────── */}
         <div className="flex flex-col gap-8 sm:gap-12">
-          {/* ── Category Pill Tabs with "Tools we love" Handwritten Annotation ──── */}
-          <motion.div variants={fadeUp} {...viewportReveal}>
-            <TechCategoryTabs
-            activeCategory={activeCategory}
-            onSelectCategory={setActiveCategory}
-            categoryCounts={categoryCounts}
-          />
-          </motion.div>
-
-          {/* ── Tech Cards Grid ─────────────────────────────────────────────────── */}
-          <div
-            role="tabpanel"
-            aria-label={`${activeCategory} technologies`}
-            className="relative min-h-[260px]"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCategory}
-                variants={staggerContainer(0.08, 0)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "0px 0px -50px 0px" }}
-                exit="hidden"
-                className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 ${
-                  filtered.length <= 5
-                    ? "lg:grid-cols-5"
-                    : filtered.length === 6
-                    ? "lg:grid-cols-6"
-                    : "lg:grid-cols-6"
-                } gap-4.5 sm:gap-4`}
-              >
-                {filtered.map((tech) => (
-                  <TechCard key={tech.slug} tech={tech} />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+          {/* INTERACTIVE CLIENT BOUNDARY */}
+          <TechStackInteractive />
         </div>
 
         {/* ── Bottom Value Proposition Strip (White Floating Island) ──────────── */}
