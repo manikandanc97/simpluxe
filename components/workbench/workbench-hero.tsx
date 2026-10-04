@@ -5,7 +5,7 @@ import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { PlayIcon } from "@animateicons/react/lucide/play-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import { Button, StaggeredRollingContent } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { useRef } from "react";
 import { HERO_CONTENT } from "@/lib/data/hero";
@@ -65,7 +65,7 @@ export function WorkbenchHero() {
             >
               <div className="overflow-hidden pb-1 -mb-1">
                 <span className="block hero-line-1 will-change-transform">
-                  <AnimatedText text={HERO_CONTENT.headlineLine1} el="span" staggerDelay={0.03} delay={0.1} />
+                  <AnimatedText text={HERO_CONTENT.headlineLine1} el="span" staggerDelay={0.03} delay={0.1} priority />
                 </span>
               </div>
               <div className="overflow-hidden pb-4 -mb-4">

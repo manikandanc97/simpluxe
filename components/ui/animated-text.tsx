@@ -20,6 +20,14 @@ interface AnimatedTextProps {
    * each element independently (avoids the parent-clip inheritance issue).
    */
   charClassName?: string;
+  /**
+   * priority / useCssAnimation: Renders using lightweight CSS keyframe animations
+   * instead of Motion initial="hidden". This ensures the text is immediately
+   * visible in SSR HTML and starts animating at FCP without waiting for JS hydration,
+   * completely avoiding LCP element render delays.
+   */
+  priority?: boolean;
+  useCssAnimation?: boolean;
 }
 
 const defaultItemVariants: Variants = {
@@ -58,8 +66,11 @@ export function AnimatedText({
   asTypewriter = false,
   delay = 0,
   charClassName,
+  priority = false,
+  useCssAnimation = false,
 }: AnimatedTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const isPriority = priority || useCssAnimation;
   // initial:true sets the starting state to "in view" so elements already visible
   // at page load (like the hero section) animate in immediately on mount.
   const isInView = useInView(ref, { once, amount: 0, initial: true });
@@ -73,6 +84,45 @@ export function AnimatedText({
       },
     },
   };
+
+  // Priority / CSS keyframe mode: eliminates LCP element render delay by avoiding
+  // Motion's initial="hidden" SSR inline styles (opacity: 0, blur(8px), translateY).
+  // Starts animating immediately during initial paint (FCP) via pure CSS.
+  if (isPriority) {
+    if (typeof text !== "string") {
+      return (
+        <Wrapper className={cn("inline-block overflow-hidden", className)}>
+          <span
+            ref={ref}
+            className={cn("inline-block animate-hero-word-reveal", charClassName)}
+            style={{ animationDelay: `${delay}s` }}
+          >
+            {text}
+          </span>
+        </Wrapper>
+      );
+    }
+
+    return (
+      <Wrapper className={cn("inline-block", className)}>
+        <span ref={ref} className="inline-block">
+          {text.split(" ").map((word, wordIndex) => (
+            <span key={wordIndex} className="inline-block overflow-hidden whitespace-nowrap">
+              <span
+                className={cn("inline-block animate-hero-word-reveal", charClassName)}
+                style={{
+                  animationDelay: `${delay + wordIndex * staggerDelay}s`,
+                }}
+              >
+                {word}
+              </span>
+              <span className="inline-block select-none">&nbsp;</span>
+            </span>
+          ))}
+        </span>
+      </Wrapper>
+    );
+  }
 
   // Non-string (React node) fallback — animate as a single block
   if (typeof text !== "string") {
@@ -94,7 +144,7 @@ export function AnimatedText({
   // Typewriter mode: char-by-char
   if (asTypewriter) {
     return (
-      <Wrapper className={cn("inline-block", className)}>
+      <Wrapper className={cn("inline", className)}>
         <motion.span
           ref={ref}
           variants={containerVariants}

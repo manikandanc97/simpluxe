@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { type Project } from "@/types/project";
-import { Lock, Maximize2, Monitor, Smartphone, Tablet } from "lucide-react";
+import { Lock, Monitor, Smartphone, Tablet } from "lucide-react";
 import { LockIcon } from "@animateicons/react/lucide/lock-icon";
 import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
@@ -14,10 +14,8 @@ type ViewMode = "mobile" | "tablet" | "desktop";
 
 export function BrowserMockup({ activeProject }: { activeProject: Project }) {
   const [viewMode, setViewMode] = useState<ViewMode>("desktop");
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 640) {

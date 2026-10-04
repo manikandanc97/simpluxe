@@ -3,9 +3,9 @@
 import { SITE } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import { MessageCircle, Phone, X, Sparkles } from "lucide-react";
+import { MessageCircle, Phone, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { hoverLift, tapScale } from "@/lib/motion";
 
 const PHONE_RAW = SITE.phone.replace(/\s/g, "");
@@ -128,6 +128,8 @@ export function FloatingCallButton() {
 
         <motion.button
           type="button"
+          aria-label={open ? "Close contact options" : "Open contact options"}
+          aria-expanded={open}
           onClick={() => setOpen(!open)}
           whileHover={hoverLift}
           whileTap={tapScale}

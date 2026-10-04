@@ -46,70 +46,13 @@ import { hoverLift, tapScale, fadeUp, viewport } from "@/lib/motion";
 
 const MotionButton = motion.create(ButtonPrimitive);
 
-export interface ButtonProps
+interface ButtonProps
   extends Omit<React.ComponentPropsWithoutRef<typeof MotionButton>, "className">,
     VariantProps<typeof buttonVariants> {
   className?: string;
   disableScrollAnimation?: boolean;
 }
 
-export function StaggeredRollingContent({ children, isDuplicate }: { children: React.ReactNode, isDuplicate?: boolean }) {
-  let charIndex = 0;
-  const getDelay = () => charIndex++ * 0.015;
-
-  const renderNode = (node: React.ReactNode): React.ReactNode => {
-    if (typeof node === "string" || typeof node === "number") {
-      return (
-        <span className="flex">
-          {node.toString().split("").map((char, j) => (
-            <span
-              key={j}
-              style={{ transitionDelay: `${getDelay()}s` }}
-              className={cn(
-                "inline-block transition-transform duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] whitespace-pre",
-                isDuplicate 
-                  ? "translate-y-[110%] group-hover/button:translate-y-0"
-                  : "group-hover/button:-translate-y-[110%]"
-              )}
-            >
-              {char}
-            </span>
-          ))}
-        </span>
-      );
-    }
-    
-    if (React.isValidElement(node) && typeof node.type === "string" && node.type !== "svg" && node.type !== "img") {
-      const element = node as React.ReactElement<{ children?: React.ReactNode }>;
-      return React.cloneElement(
-        element,
-        undefined,
-        React.Children.map(element.props.children, renderNode)
-      );
-    }
-
-    if (React.isValidElement(node) && node.type === React.Fragment) {
-       const element = node as React.ReactElement<{ children?: React.ReactNode }>;
-       return React.Children.map(element.props.children, renderNode);
-    }
-
-    return (
-      <span
-        style={{ transitionDelay: `${getDelay()}s` }}
-        className={cn(
-          "inline-block transition-transform duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)]",
-          isDuplicate 
-            ? "translate-y-[110%] group-hover/button:translate-y-0"
-            : "group-hover/button:-translate-y-[110%]"
-        )}
-      >
-        {node}
-      </span>
-    );
-  };
-
-  return <>{React.Children.map(children, renderNode)}</>;
-}
 
 function Button({
   className,

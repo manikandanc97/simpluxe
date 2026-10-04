@@ -97,7 +97,7 @@ export function CTA({ onStartProject }: CTAProps) {
                 highlightedText="premium digital product."
                 description="High craft, sub-second performance, and zero bloat. We partner with ambitious founders to build products people actually love using."
                 className="lg:items-start lg:text-left mx-0"
-                maxWidth="max-w-md"
+                maxWidth="max-w-full"
               />
 
               {/* 3 Pillars as sleek pills */}

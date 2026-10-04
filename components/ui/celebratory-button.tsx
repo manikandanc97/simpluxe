@@ -3,7 +3,6 @@
 import React, { useRef, useState } from "react";
 import { motion, useAnimationControls, type HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
-import { fireCelebratoryConfetti } from "@/lib/confetti";
 import { prefersReducedMotion, hoverLift, tapScale, fadeUp, viewport } from "@/lib/motion";
 
 export interface CelebratoryButtonProps

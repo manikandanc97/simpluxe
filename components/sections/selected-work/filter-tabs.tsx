@@ -1,9 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
-import { ChevronLeftIcon } from "@animateicons/react/lucide/chevron-left-icon";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { motion } from "motion/react";
 import { PROJECTS } from "@/lib/data/projects";
 
@@ -58,29 +55,4 @@ export function FilterTabsList({
   );
 }
 
-interface NavButtonsProps {
-  onPrev: () => void;
-  onNext: () => void;
-}
 
-export function NavButtons({ onPrev, onNext }: NavButtonsProps) {
-  return (
-    <div className="flex items-center gap-0.5 p-1 bg-white/90 backdrop-blur-xl rounded-full border border-slate-200/80 shadow-sm shrink-0">
-      <button 
-        onClick={onPrev} 
-        aria-label="Previous Project"
-        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-foreground hover:bg-slate-100 hover:text-primary transition-colors cursor-pointer active:scale-95 outline-none"
-      >
-        <AnimatedIcon icon={ChevronLeftIcon} size={15} />
-      </button>
-      <div className="w-[1px] h-4 bg-slate-200/80 mx-0.5" />
-      <button 
-        onClick={onNext} 
-        aria-label="Next Project"
-        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-foreground hover:bg-slate-100 hover:text-primary transition-colors cursor-pointer active:scale-95 outline-none"
-      >
-        <AnimatedIcon icon={ChevronRightIcon} size={15} />
-      </button>
-    </div>
-  );
-}

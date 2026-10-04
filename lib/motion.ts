@@ -3,7 +3,7 @@ import { Variants, TargetAndTransition } from "motion/react";
 // ==========================================
 // MOTION TIMING & EASING SYSTEM
 // ==========================================
-export const ease = {
+const ease = {
   // Premium smooth ease-out (fast out, slow in)
   out: [0.16, 1, 0.3, 1] as [number, number, number, number],
   // Smooth symmetric ease (slow out, slow in)
@@ -20,21 +20,12 @@ export function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-export const timing = {
+const timing = {
   micro: 0.2, // 0.15s - 0.2s
   small: 0.3, // 0.2s - 0.3s
   reveal: 0.6, // 0.45s - 0.7s
   section: 0.8, // 0.6s - 0.9s
   large: 1.0, // 0.8s - 1.2s
-};
-
-export const spring = {
-  // Physical UI interactions, layout transitions
-  snappy: { type: "spring" as const, stiffness: 400, damping: 30 },
-  // Smooth continuous UI motion
-  smooth: { type: "spring" as const, stiffness: 100, damping: 20 },
-  // Slow spring for floating / deep spatial elements
-  float: { type: "spring" as const, stiffness: 50, damping: 20 },
 };
 
 // ==========================================
@@ -83,18 +74,6 @@ export const fadeUp: Variants = {
   },
 };
 
-export const fadeIn: Variants = {
-  hidden: { opacity: 0, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: {
-      duration: timing.reveal,
-      ease: ease.out,
-    },
-  },
-};
-
 export const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.95, filter: "blur(8px)" },
   visible: {
@@ -108,43 +87,15 @@ export const scaleIn: Variants = {
   },
 };
 
-export const slideIn = (direction: "up" | "down" | "left" | "right", distance = 40): Variants => {
-  return {
-    hidden: {
-      opacity: 0,
-      y: direction === "up" ? distance : direction === "down" ? -distance : 0,
-      x: direction === "left" ? distance : direction === "right" ? -distance : 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      transition: {
-        duration: timing.reveal,
-        ease: ease.out,
-      },
-    },
-  };
-};
-
 // ==========================================
 // INTERACTION (HOVER & TAP)
 // ==========================================
 
 export const hoverLift: TargetAndTransition = {
-  // Modern buttons don't scale up or lift. We rely on Tailwind for color transitions.
-  // Adding a very subtle brightness shift for a premium feel.
   filter: "brightness(1.08)",
   transition: {
     duration: 0.2,
     ease: "easeOut"
-  },
-};
-
-export const hoverScale: TargetAndTransition = {
-  scale: 1, // Disabled scale for modern feel
-  transition: {
-    duration: 0.2
   },
 };
 

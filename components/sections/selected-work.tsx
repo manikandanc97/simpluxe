@@ -24,8 +24,6 @@ export function SelectedWork() {
     activeId,
     setActiveId,
     activeProject,
-    handleNext,
-    handlePrev,
   } = useSelectedWork();
 
   return (
