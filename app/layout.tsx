@@ -115,7 +115,9 @@ export const metadata: Metadata = {
     description:
       "Premium digital studio engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
   },
-  // Let Next.js handle app/icon.svg automatically
+  icons: {
+    icon: "https://res.cloudinary.com/drdl4pdnx/image/upload/v1790596040/simpluxe/favicon/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
