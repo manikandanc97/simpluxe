@@ -1,5 +1,5 @@
 import { ElementType as LucideIcon } from "react";
-import { GlobeIcon, LayoutDashboardIcon, ShoppingBagIcon, SmartphoneIcon, PackageIcon, PaletteIcon, LayersIcon, CpuIcon, type LucideIcon } from "@animateicons/react/lucide";
+import { GlobeIcon, LayoutDashboardIcon, ShoppingBagIcon, SmartphoneIcon, PackageIcon, PaletteIcon, LayersIcon, CpuIcon } from "@animateicons/react/lucide";
 
 export interface ServiceData {
   id: string;

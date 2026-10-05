@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
-import { Home } from "lucide-react";
+import { HouseIcon } from "@animateicons/react/lucide";
 
 export default function NotFound() {
   return (
@@ -12,7 +12,7 @@ export default function NotFound() {
         </p>
       </div>
       <Link href="/" className={buttonVariants({ variant: "default", size: "lg", className: "gap-2" })}>
-        <Home size={16} />
+        <HouseIcon size={16} />
         <span>Back to Home</span>
       </Link>
     </div>

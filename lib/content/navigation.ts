@@ -1,5 +1,5 @@
 import { ElementType as LucideIcon } from "react";
-import { BriefcaseIcon, HouseIcon, InfoIcon, LayersIcon, MailIcon, type LucideIcon } from "@animateicons/react/lucide";
+import { BriefcaseIcon, InfoIcon, LayersIcon, MailIcon } from "@animateicons/react/lucide";
 
 export interface NavItem {
   label: string;

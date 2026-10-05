@@ -123,7 +123,7 @@ export function WhatWeBuildCard({
       dragElastic={0.06}
       dragTransition={{ bounceStiffness: 450, bounceDamping: 45, power: 0.15, timeConstant: 160 }}
       whileDrag={{ cursor: "grabbing", scale: isActive ? 0.98 : 0.73 }}
-      onDragEnd={(e, { offset: dragOffset, velocity }) => {
+      onDragEnd={(_, { offset: dragOffset, velocity }) => {
         const swipe = dragOffset.x;
         const velocityX = velocity.x;
         if (swipe < -40 || velocityX < -500) {

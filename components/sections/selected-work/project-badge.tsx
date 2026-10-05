@@ -1,6 +1,6 @@
 import { type Project } from "@/types/project";
 import { TrendingUpIcon, ShoppingCartIcon } from "@animateicons/react/lucide";
-import React from "react";
+import type { ReactNode } from "react";
 
 function GoogleIcon() {
   return (
@@ -13,10 +13,10 @@ function GoogleIcon() {
   );
 }
 
-export interface ProjectBadgeInfo {
+interface ProjectBadgeInfo {
   bg: string;
   text: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
 }
 

@@ -1,7 +1,7 @@
 import { ElementType as LucideIcon } from "react";
 import { ZapIcon, MessageSquareIcon, CircleCheckIcon } from "@animateicons/react/lucide";
 
-export interface CTAPillar {
+interface CTAPillar {
   label: string;
   icon: LucideIcon;
 }

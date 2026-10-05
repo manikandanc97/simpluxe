@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { WorkbenchHero } from "@/components/workbench/workbench-hero";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 

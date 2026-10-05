@@ -1,5 +1,4 @@
 import React from "react";
-// Removed lucide-react import
 import {
   NextJsIcon,
   TailwindIcon,

@@ -4,7 +4,6 @@ import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";

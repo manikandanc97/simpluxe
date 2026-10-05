@@ -1,4 +1,3 @@
-import React from "react";
 import { AnimatedIcon } from "../animated-icon";
 
 export function AnimatedArrowRight({ className, size = 16 }: { className?: string; size?: number }) {
@@ -19,8 +18,4 @@ export function AnimatedMessageSquare({ className, size = 16 }: { className?: st
 
 export function AnimatedX({ className, size = 16 }: { className?: string; size?: number }) {
   return <AnimatedIcon name="x" size={size} className={className} />;
-}
-
-export function AnimatedChevronRight({ className, size = 16 }: { className?: string; size?: number }) {
-  return <AnimatedIcon name="chevron-right" size={size} className={className} />;
 }
