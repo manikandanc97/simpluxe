@@ -3,7 +3,7 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { type FAQItem } from "@/types/faq";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 
 import { fadeUp } from "@/lib/motion";
 

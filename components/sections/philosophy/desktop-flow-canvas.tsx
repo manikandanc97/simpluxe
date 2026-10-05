@@ -3,7 +3,7 @@
 import { FLOW_NODES } from "@/lib/content/philosophy";
 import { BoxIcon, LayoutGridIcon, LightbulbIcon, TrendingUpIcon, UsersIcon } from "@animateicons/react/lucide";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
 interface DesktopFlowCanvasProps {

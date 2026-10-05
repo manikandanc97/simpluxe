@@ -15,6 +15,7 @@ interface CommandPaletteProps {
 export function CommandPalette({ onStartProject }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+  const [hasEverOpened, setHasEverOpened] = useState(false);
 
   // Keyboard shortcut: Cmd/Ctrl + K only
   useEffect(() => {
@@ -22,14 +23,18 @@ export function CommandPalette({ onStartProject }: CommandPaletteProps) {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((prev) => !prev);
-        setHasMounted(true);
+        setHasEverOpened(true);
       }
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  if (!hasMounted) return null;
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted || !hasEverOpened) return null;
 
   return (
     <CommandPaletteModal

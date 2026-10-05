@@ -2,7 +2,7 @@
 
 
 import { type TechItem } from "@/types/tech";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
 import { fadeUp, hoverLift } from "@/lib/motion";

@@ -1,7 +1,7 @@
 "use client";
 
 import { CldImage } from "next-cloudinary";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { LayoutGridIcon, ZapIcon, TrendingUpIcon, SparklesIcon, ChartLineIcon, CodeIcon, LayersIcon, CircleCheckIcon, CpuIcon, SmartphoneIcon, ShieldCheckIcon } from "@animateicons/react/lucide";
 import { AnimatedIcon } from "@/components/ui/animated-icon";

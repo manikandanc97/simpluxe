@@ -5,7 +5,7 @@ import { PageBanner } from "@/components/ui/page-banner";
 import { EXPERIMENTS } from "@/lib/content/experiments";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Container } from "@/components/ui/container";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 
 export function LabView() {
   const featured = EXPERIMENTS[0];

@@ -33,7 +33,7 @@ interface CardProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof cardVariants> {}
 
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { hoverLift } from "@/lib/motion";
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(

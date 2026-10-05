@@ -12,7 +12,7 @@ import { WorkProjectDetails } from "@/components/work/work-project-details";
 import { WorkEngineeringStandards } from "@/components/work/work-engineering-standards";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Container } from "@/components/ui/container";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 
 function WorkViewContent() {
   const searchParams = useSearchParams();

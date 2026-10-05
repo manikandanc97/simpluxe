@@ -1,12 +1,16 @@
 "use client";
 
-import { MotionConfig } from "motion/react";
+import { MotionConfig, LazyMotion } from "motion/react";
 import {  } from "react";
+
+const loadFeatures = () => import("motion/react").then((res) => res.domMax);
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
   return (
-    <MotionConfig reducedMotion="user">
-      {children}
-    </MotionConfig>
+    <LazyMotion features={loadFeatures} strict>
+      <MotionConfig reducedMotion="user">
+        {children}
+      </MotionConfig>
+    </LazyMotion>
   );
 }

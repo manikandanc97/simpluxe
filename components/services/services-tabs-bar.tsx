@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { SERVICES_LIST } from "@/lib/content/services";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 
 interface ServicesTabsBarProps {
   activeId: string;

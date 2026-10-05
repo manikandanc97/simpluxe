@@ -2,7 +2,7 @@
 
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import type { Experiment } from "@/lib/content/experiments";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 
 interface ExperimentCardProps {
   experiment: Experiment;

@@ -5,7 +5,7 @@ import { type FAQItem } from "@/types/faq";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FaqContactCard } from "@/components/sections/faq/faq-contact-card";
 import { FaqAccordionItem } from "@/components/sections/faq/faq-accordion-item";
-import { motion, AnimatePresence } from "motion/react";
+import { m as motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { staggerContainer } from "@/lib/motion";
 

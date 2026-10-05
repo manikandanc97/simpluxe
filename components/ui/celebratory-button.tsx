@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useAnimationControls, type HTMLMotionProps } from "motion/react";
+import { m as motion, useAnimationControls, type HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 import { prefersReducedMotion, hoverLift, tapScale, fadeUp, viewport } from "@/lib/motion";
 

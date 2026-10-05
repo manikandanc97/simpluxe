@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
+import { m as motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { AnimatedIcon } from "@/components/ui/animated-icon";

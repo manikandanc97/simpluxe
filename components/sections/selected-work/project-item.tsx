@@ -4,7 +4,7 @@ import { type Project } from "@/types/project";
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import Image from "next/image";
 import { getProjectBadge } from "./project-badge";
 import { BrowserMockup } from "./browser-mockup";

@@ -2,7 +2,7 @@
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CATEGORIES, CATEGORY_ICONS, type Category } from "@/lib/content/tech-stack";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 
 const SPRING = { type: "spring" as const, stiffness: 340, damping: 28 };
 

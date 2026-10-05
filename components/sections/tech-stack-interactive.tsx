@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 import { staggerContainer } from "@/lib/motion";
 import { TECH_STACK, type Category } from "@/lib/content/tech-stack";
 import { TechCard } from "./tech-stack-card";

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChartBarIcon, CircleCheckIcon, FileTextIcon, GitForkIcon, LayersIcon, LightbulbIcon, TargetIcon, UsersIcon } from "@animateicons/react/lucide";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
 export function StepVisualBlueprint() {

@@ -2,7 +2,7 @@
 
 import { CldImage } from "next-cloudinary";
 import { type ServiceData } from "@/lib/content/services";
-import { motion, AnimatePresence } from "motion/react";
+import { m as motion, AnimatePresence } from "motion/react";
 
 interface ServicesTechStackProps {
   service: ServiceData;

@@ -10,7 +10,7 @@ import { HERO_CONTENT } from "@/lib/content/hero";
 import { Hero3DCoder } from "./hero-3d-coder";
 import { HeroGridAccents } from "./hero-grid-accents";
 import { AnimatedText } from "@/components/ui/animated-text";
-import { motion, useScroll, useTransform } from "motion/react";
+import { m as motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 
 export function WorkbenchHero() {
@@ -68,7 +68,7 @@ export function WorkbenchHero() {
               </div>
               <div className="overflow-hidden pb-4 -mb-4">
                 <span className="block relative inline-block hero-line-2 will-change-transform">
-                  <AnimatedText text={HERO_CONTENT.headlineLine2Prefix} el="span" staggerDelay={0.03} delay={0.2} />
+                  <AnimatedText priority text={HERO_CONTENT.headlineLine2Prefix} el="span" staggerDelay={0.03} delay={0.2} />
                   <span className="relative inline-block ml-3">
                     {/* charClassName applies gradient per-word so background-clip:text works */}
                     <AnimatedText
@@ -126,7 +126,7 @@ export function WorkbenchHero() {
             <p
               className="hero-desc type-lead text-muted-foreground max-w-lg text-sm sm:text-base lg:text-lg leading-relaxed"
             >
-              <AnimatedText text={HERO_CONTENT.description} el="span" staggerDelay={0.01} delay={0.4} />
+              <AnimatedText priority text={HERO_CONTENT.description} el="span" staggerDelay={0.01} delay={0.4} />
             </p>
             </div>
 

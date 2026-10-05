@@ -3,7 +3,7 @@
 import { type ServiceData } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import { LayoutDashboardIcon, UsersIcon, SlidersHorizontalIcon, DatabaseIcon } from "@animateicons/react/lucide";
-import { motion, AnimatePresence } from "motion/react";
+import { m as motion, AnimatePresence } from "motion/react";
 import { staggerContainer, fadeUp, hoverLift } from "@/lib/motion";
 interface ServicesWhatWeBuildProps {
   service: ServiceData;

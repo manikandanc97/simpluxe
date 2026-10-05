@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { MockupWrapper } from "./mockup-wrapper";
 
 const BRAND_COLORS = ["#922F55", "#D23D78", "#6C2BB8", "#F97316", "#0891B2"];

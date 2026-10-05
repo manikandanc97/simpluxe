@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { MockupWrapper } from "./mockup-wrapper";
 
 export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {

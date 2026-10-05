@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { DEFAULT_TECH_SLUGS } from "@/lib/content/page-banner";
 import {
   PageBannerBreadcrumb,

@@ -69,7 +69,14 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     inlineCss: true,
+    optimizePackageImports: ["@animateicons/react", "@animateicons/react/lucide", "motion", "motion/react"],
   },
 };
 
-export default nextConfig;
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+const analyze = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
+export default analyze(nextConfig);

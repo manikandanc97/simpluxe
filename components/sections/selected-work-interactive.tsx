@@ -3,7 +3,7 @@
 import { PROJECTS, SELECTED_WORK_CONTENT } from "@/lib/content/projects";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 import Link from "next/link";
 import { useSelectedWork } from "@/hooks/use-selected-work";
 import { BrowserMockup } from "./selected-work/browser-mockup";

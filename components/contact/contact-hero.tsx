@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { CldImage } from "next-cloudinary";
 import { ClockIcon, ShieldCheckIcon, MessageSquareIcon, LockIcon, CircleCheckIcon, SparklesIcon } from "@animateicons/react/lucide";

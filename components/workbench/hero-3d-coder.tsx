@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { m as motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { CldImage } from "next-cloudinary";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import React, { useRef } from "react";
@@ -103,11 +103,9 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="parallax-ui-left absolute top-[2%] sm:top-[6%] left-0 xs:left-0 sm:left-2 md:left-6 lg:left-12 xl:left-16 z-0 scale-[0.48] xs:scale-[0.56] sm:scale-75 md:scale-90 lg:scale-100 origin-left pointer-events-none sm:pointer-events-auto"
         >
-          <motion.div
-            animate={{ y: [3, -3, 3] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            style={{ transform: "translateZ(-10px) rotateY(6deg) rotateZ(-6deg)" }}
-            className="bg-white/85 backdrop-blur-xl border border-[rgba(30,24,30,0.08)] shadow-card rounded-3xl p-3 sm:p-3.5 flex gap-2.5 sm:gap-3.5 font-satoshi relative"
+          <div
+            style={{ transform: "translateZ(-10px) rotateY(6deg) rotateZ(-6deg)", animationDelay: "0.2s" }}
+            className="bg-white/85 backdrop-blur-xl border border-[rgba(30,24,30,0.08)] shadow-card rounded-3xl p-3 sm:p-3.5 flex gap-2.5 sm:gap-3.5 font-satoshi relative animate-float-slow"
           >
             {/* Menu Column */}
             <div className="flex flex-col gap-1.5 w-20 sm:w-24 justify-center">
@@ -202,7 +200,7 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
                 />
               </svg>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* ── CENTRAL 3D CHARACTER ── */}
@@ -212,11 +210,9 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="parallax-char relative z-10 w-full max-w-[210px] xs:max-w-[240px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] h-[210px] xs:h-[240px] sm:h-[340px] md:h-[420px] lg:h-[500px] flex items-center justify-center pointer-events-none"
         >
-          <motion.div
-            animate={{ y: [-3, 3, -3] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          <div
             style={{ transform: "translateZ(25px)" }}
-            className="w-full h-full flex items-center justify-center"
+            className="w-full h-full flex items-center justify-center animate-float-slow"
           >
           <div className="relative w-full h-full flex items-center justify-center">
             <CldImage
@@ -232,7 +228,7 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               fetchPriority="high"
             />
           </div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* ── RIGHT FLOATING FEATURE BADGES ── */}
@@ -247,17 +243,15 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             >
-              <motion.div
+              <div
                 data-slot="card"
-                animate={{ y: [2, -2, 2] }}
-                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
-                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default"
+                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default animate-float-medium"
               >
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <AnimatedIcon name="palette" size={15} className="text-primary" />
                 </div>
                 <span className="text-sm font-bold text-foreground tracking-tight">Modern Design</span>
-              </motion.div>
+              </div>
             </motion.div>
 
             {/* Card 2: Clean Code */}
@@ -266,17 +260,16 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             >
-              <motion.div
+              <div
                 data-slot="card"
-                animate={{ y: [3, -3, 3] }}
-                transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default"
+                style={{ animationDelay: "0.3s" }}
+                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default animate-float-slow"
               >
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <AnimatedIcon name="code" size={15} className="text-primary" />
                 </div>
                 <span className="text-sm font-bold text-foreground tracking-tight">Clean Code</span>
-              </motion.div>
+              </div>
             </motion.div>
 
             {/* Card 3: Scalable Solutions */}
@@ -285,17 +278,16 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
             >
-              <motion.div
+              <div
                 data-slot="card"
-                animate={{ y: [2, -2, 2] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default"
+                style={{ animationDelay: "0.6s" }}
+                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default animate-float-slow"
               >
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <AnimatedIcon name="layers" size={15} className="text-primary" />
                 </div>
                 <span className="text-sm font-bold text-foreground tracking-tight">Scalable Solutions</span>
-              </motion.div>
+              </div>
             </motion.div>
 
             {/* Handwritten Annotation: Ideas into Impact */}

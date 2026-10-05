@@ -1,7 +1,7 @@
 "use client";
 
 import { ActivityIcon } from "@animateicons/react/lucide";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { DesktopFlowCanvas } from "./desktop-flow-canvas";
 import { MobileFlowGrid } from "./mobile-flow-grid";
 

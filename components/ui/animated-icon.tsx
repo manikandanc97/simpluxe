@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useAnimation } from "motion/react";
+import { m as motion, useAnimation } from "motion/react";
 import React, { useCallback, useEffect, useRef, Suspense } from "react";
 
 const ArrowLeftIcon = React.lazy(() => import("@animateicons/react/lucide/arrow-left-icon").then(m => ({ default: m.ArrowLeftIcon as React.ComponentType<IconBaseProps> })));
@@ -36,7 +36,7 @@ const SunMediumIcon = React.lazy(() => import("@animateicons/react/lucide/sun-me
 const TypeIcon = React.lazy(() => import("@animateicons/react/lucide/type-icon").then(m => ({ default: m.TypeIcon as React.ComponentType<IconBaseProps> })));
 const XIcon = React.lazy(() => import("@animateicons/react/lucide/x-icon").then(m => ({ default: m.XIcon as React.ComponentType<IconBaseProps> })));
 const ZapIcon = React.lazy(() => import("@animateicons/react/lucide/zap-icon").then(m => ({ default: m.ZapIcon as React.ComponentType<IconBaseProps> })));
-const PlayIcon = React.lazy(() => import("@animateicons/react/lucide").then(m => ({ default: m.PlayIcon as React.ComponentType<IconBaseProps> })));
+const PlayIcon = React.lazy(() => import("@animateicons/react/lucide/play-icon").then(m => ({ default: m.PlayIcon as React.ComponentType<IconBaseProps> })));
 
 import {
   type AnimatedIconName,

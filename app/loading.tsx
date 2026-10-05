@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useAnimation } from "motion/react";
+import { m as motion, useAnimation } from "motion/react";
 import { CldImage } from "next-cloudinary";
 import { useEffect } from "react";
 

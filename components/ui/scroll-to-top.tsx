@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring } from "motion/react";
+import { m as motion, useScroll, useSpring } from "motion/react";
 import { ArrowUpIcon } from "@animateicons/react/lucide";
 
 export function ScrollToTop() {

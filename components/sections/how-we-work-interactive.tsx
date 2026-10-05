@@ -3,7 +3,7 @@
 import { useLead } from "@/components/leads/lead-provider";
 import { STEPS, HOW_WE_WORK_SECTION_CONTENT } from "@/lib/content/how-we-work";
 import { ShieldCheckIcon } from "@animateicons/react/lucide";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { StepVisual } from "./how-we-work/step-visuals";
 import { StepNavigation } from "./how-we-work/step-navigation";

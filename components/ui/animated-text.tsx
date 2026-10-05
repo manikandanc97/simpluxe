@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useInView, Variants } from "motion/react";
+import { m as motion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 

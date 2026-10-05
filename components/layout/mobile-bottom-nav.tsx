@@ -3,7 +3,7 @@
 import { useMobileMenu } from "@/components/layout/mobile-menu-context";
 import { useLead } from "@/components/leads/lead-provider";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

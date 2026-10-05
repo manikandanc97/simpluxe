@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { type Project } from "@/types/project";
 import { LockIcon, MonitorIcon, SmartphoneIcon, TabletIcon, ExternalLinkIcon } from "@animateicons/react/lucide";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 

@@ -1,7 +1,7 @@
-import { WorkbenchHero } from "@/components/workbench/workbench-hero";
-import { AmbientBackground } from "@/components/ui/ambient-background";
-
 import dynamic from "next/dynamic";
+
+const AmbientBackground = dynamic(() => import("@/components/ui/ambient-background").then((mod) => mod.AmbientBackground));
+const WorkbenchHero = dynamic(() => import("@/components/workbench/workbench-hero").then((mod) => mod.WorkbenchHero));
 
 const WhatWeBuild = dynamic(() => import("@/components/sections/what-we-build").then((mod) => mod.WhatWeBuild));
 const SelectedWork = dynamic(() => import("@/components/sections/selected-work").then((mod) => mod.SelectedWork));

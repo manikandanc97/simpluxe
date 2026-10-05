@@ -6,7 +6,7 @@ import { cn } from "cn"
 
 import { buttonVariants } from "./button-variants";
 import React from "react";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { hoverLift, tapScale, fadeUp, viewport } from "@/lib/motion";
 
 const MotionButton = motion.create(ButtonPrimitive);

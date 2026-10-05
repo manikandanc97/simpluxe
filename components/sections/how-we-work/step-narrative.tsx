@@ -6,7 +6,7 @@ import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-i
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { STEPS } from "@/lib/content/how-we-work";
 import { Button } from "@/components/ui/button";
-import { motion, Variants } from "motion/react";
+import { m as motion, Variants } from "motion/react";
 import { fadeUp } from "@/lib/motion";
 
 const containerVariants: Variants = {

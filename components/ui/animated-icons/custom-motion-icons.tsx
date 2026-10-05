@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useAnimation } from "motion/react";
+import { m as motion, useAnimation } from "motion/react";
 import React, { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { type AnimateIconHandle, type CustomIconProps } from "./types";
 

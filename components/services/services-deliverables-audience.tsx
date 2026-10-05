@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { ElementType as LucideIcon } from "react";
 import { CircleCheckIcon, TargetIcon, RocketIcon, Building2Icon, ShieldIcon, RefreshCwIcon, BriefcaseIcon, MedalIcon, CrownIcon, ShoppingBagIcon, TruckIcon, ZapIcon, RepeatIcon, SmartphoneIcon, UsersIcon, PackageIcon, SparklesIcon, LayoutDashboardIcon, PlayIcon, CodeIcon, TrendingDownIcon, HeadphonesIcon, FileTextIcon, LockOpenIcon, CpuIcon } from "@animateicons/react/lucide";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { motion, AnimatePresence } from "motion/react";
+import { m as motion, AnimatePresence } from "motion/react";
 
 const IconMap: Record<string, LucideIcon> = {
   rocket: RocketIcon,

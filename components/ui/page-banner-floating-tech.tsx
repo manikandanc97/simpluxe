@@ -3,7 +3,7 @@
 import { TECH_POSITIONS } from "@/lib/content/page-banner";
 import { TECH_STACK } from "@/lib/content/tech-stack";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
 interface PageBannerFloatingTechProps {

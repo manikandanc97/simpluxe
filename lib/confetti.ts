@@ -1,4 +1,3 @@
-import confetti from "canvas-confetti";
 import { prefersReducedMotion } from "@/lib/motion";
 
 export interface ConfettiOrigin {
@@ -10,8 +9,10 @@ export interface ConfettiOrigin {
  * Celebratory confetti particle explosion
  * Inspired by Matt Perry's Motion+ celebratory particle physics
  */
-export function fireCelebratoryConfetti(originElement?: HTMLElement | null, customOrigin?: ConfettiOrigin) {
+export async function fireCelebratoryConfetti(originElement?: HTMLElement | null, customOrigin?: ConfettiOrigin) {
   if (typeof window === "undefined" || prefersReducedMotion()) return;
+
+  const confetti = (await import("canvas-confetti")).default;
 
   let originCoord: ConfettiOrigin = { x: 0.5, y: 0.5 };
 

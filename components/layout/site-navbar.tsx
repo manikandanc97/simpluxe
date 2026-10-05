@@ -2,7 +2,7 @@
 
 import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/navigation";
 import { cn } from "@/lib/utils";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { m as motion, useScroll, useMotionValueEvent } from "motion/react";
 import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

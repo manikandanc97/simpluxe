@@ -2,7 +2,7 @@
 
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
 import { MessageCircleIcon, PhoneIcon, XIcon } from "@animateicons/react/lucide";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
 import { useEffect, useState, useRef } from "react";

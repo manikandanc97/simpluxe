@@ -2,7 +2,7 @@
 
 import { PROCESS_STEPS } from "@/lib/content/philosophy";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 
 interface PhilosophyProcessStepsProps {
   inView: boolean;

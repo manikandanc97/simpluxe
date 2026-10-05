@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { fadeUp, viewportReveal } from "@/lib/motion";
 import { ReactNode } from "react";
 

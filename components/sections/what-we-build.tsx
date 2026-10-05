@@ -8,7 +8,7 @@ import { WhatWeBuildCard } from "./what-we-build/what-we-build-card";
 import { WhatWeBuildNav } from "./what-we-build/what-we-build-nav";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import { fadeUp, scaleIn, viewportReveal } from "@/lib/motion";
 
 export function WhatWeBuild() {

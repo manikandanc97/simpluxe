@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m as motion } from "motion/react";
 import {
   type ScreenType,
   ORB_CONFIGURATIONS,
@@ -96,32 +96,27 @@ export function AmbientBackground({
       ))}
 
       {/* ── 4. Prominent 3D Spheres (Pearls) with Organic Floating Animation (Screen-Randomized) ── */}
-      {currentOrbs.map((orb, i) => (
-        <motion.div
-          key={`orb-${effectiveScreen}-${i}`}
-          animate={{
-            y: [0, -10, 0],
-            x: [0, (i % 2 === 0 ? 5 : -5), 0],
-          }}
-          transition={{
-            duration: 5.5 + (i % 3) * 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: (i % 4) * 0.4,
-          }}
-          className={cn(
-            "absolute rounded-full pointer-events-none opacity-85 sm:opacity-95 transition-opacity",
-            orb.size
-          )}
-          style={{
-            top: orb.top,
-            ...(orb.left ? { left: orb.left } : { right: orb.right }),
-            background: getOrbGradient(orb.color),
-            boxShadow:
-              "0 14px 34px rgba(0,0,0,0.08), inset -6px -6px 14px rgba(0,0,0,0.1), inset 6px 6px 14px rgba(255,255,255,0.85)",
-          }}
-        />
-      ))}
+      {currentOrbs.map((orb, i) => {
+        const floatClass = i % 3 === 0 ? "animate-float-slow" : i % 2 === 0 ? "animate-float-medium" : "animate-float-fast";
+        return (
+          <div
+            key={`orb-${effectiveScreen}-${i}`}
+            className={cn(
+              "absolute rounded-full pointer-events-none opacity-85 sm:opacity-95 transition-opacity",
+              orb.size,
+              floatClass
+            )}
+            style={{
+              top: orb.top,
+              ...(orb.left ? { left: orb.left } : { right: orb.right }),
+              background: getOrbGradient(orb.color),
+              boxShadow:
+                "0 14px 34px rgba(0,0,0,0.08), inset -6px -6px 14px rgba(0,0,0,0.1), inset 6px 6px 14px rgba(255,255,255,0.85)",
+              animationDelay: `${(i % 4) * 0.4}s`
+            }}
+          />
+        );
+      })}
 
       {/* ── 5. Tiny Scattered Pearls (Screen-Randomized) ── */}
       {currentTinyOrbs.map((orb, i) => (

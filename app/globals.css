@@ -219,6 +219,30 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(5px); }
+}
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(-5px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.animate-float-medium {
+  animation: float-medium 5s ease-in-out infinite;
+}
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
+
+
 @keyframes hero-word-reveal {
   0% {
     opacity: 0;
