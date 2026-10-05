@@ -35,7 +35,8 @@ export type AnimatedIconName =
   | "folder"
   | "sliders"
   | "search"
-  | "code";
+  | "code"
+  | "play";
 
 export interface AnimateIconHandle {
   startAnimation: () => void;

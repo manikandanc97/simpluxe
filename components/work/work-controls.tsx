@@ -43,7 +43,7 @@ export function WorkControls({
               key={tab.id}
               onClick={() => onFilterChange(tab.id)}
               className={cn(
-                "group relative flex items-center justify-center sm:justify-start gap-2 px-4.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer w-full sm:w-auto",
+                "group relative flex items-center justify-center sm:justify-start gap-2 px-3.5 sm:px-4.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer w-full sm:w-auto",
                 isActive
                   ? "bg-gradient-to-r from-[var(--primary)] to-[var(--primary)] text-white shadow-elevated scale-[1.02]"
                   : "bg-white/90 hover:bg-white text-muted-foreground border border-surface-elevated hover:border-primary/30 shadow-2xs"
@@ -107,7 +107,7 @@ export function WorkControls({
           <button
             type="button"
             onClick={() => setIsSortOpen((prev) => !prev)}
-            className="bg-white border border-surface-elevated rounded-full px-4.5 sm:px-4 py-2 text-xs sm:text-sm font-medium text-foreground flex items-center gap-2 hover:bg-background cursor-pointer shadow-sm transition-all group"
+            className="bg-white border border-surface-elevated rounded-full px-3.5 sm:px-4.5 py-2 text-xs sm:text-sm font-medium text-foreground flex items-center gap-2 hover:bg-background cursor-pointer shadow-sm transition-all group"
           >
             <span>
               {sortOption === "latest"

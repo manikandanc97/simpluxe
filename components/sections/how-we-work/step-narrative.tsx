@@ -4,6 +4,7 @@ import { ChevronDownIcon } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { STEPS } from "@/lib/content/how-we-work";
+import { Button } from "@/components/ui/button";
 import { motion, Variants } from "motion/react";
 import { fadeUp } from "@/lib/motion";
 
@@ -94,10 +95,11 @@ export function StepNarrative({
 
       {/* Bottom Action Row: Primary Next Step Button */}
       <motion.div variants={fadeUp} className="flex items-center gap-4 sm:gap-4 flex-wrap pt-1">
-        <button
+        <Button
+          size="default"
           type="button"
           onClick={onNextStep}
-          className="bg-[var(--primary-hover)] hover:bg-[var(--primary-hover)] text-white font-bold text-xs sm:text-sm px-6 sm:px-6 py-2.5 sm:py-4 rounded-full shadow-lg shadow-[var(--primary-hover)]/20 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 group w-full sm:w-auto"
+          className="w-full sm:w-auto shadow-elevated"
         >
           <span>
             {activeStepIndex === totalSteps - 1
@@ -105,7 +107,7 @@ export function StepNarrative({
               : `Next Step: ${currentStep.nextStepName}`}
           </span>
           <AnimatedArrowRight size={15} className="text-white" />
-        </button>
+        </Button>
 
         {activeStepIndex < totalSteps - 1 && (
           <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-neutral-400 font-medium">

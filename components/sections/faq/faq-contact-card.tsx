@@ -73,12 +73,13 @@ export function FaqContactCard() {
             </div>
 
             <Button
+              size="default"
               type="button"
               onClick={() => openLead({ description: "FAQ - Technical Consultation" })}
-              className="mt-1 sm:mt-1 px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm shrink-0 w-auto"
+              className="mt-1 shrink-0 w-auto"
             >
               <span>Talk to our team</span>
-              <AnimatedArrowRight size={13} className="ml-0.5" />
+              <AnimatedArrowRight size={14} />
             </Button>
           </div>
 

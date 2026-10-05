@@ -111,7 +111,7 @@ export const CelebratoryButton = React.forwardRef<
             damping: 25,
           }}
           className={cn(
-            "group/button font-satoshi inline-flex w-full shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding font-bold tracking-tight whitespace-nowrap transition-colors duration-200 outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 cursor-pointer shadow-elevated hover:shadow-elevated bg-primary text-primary-foreground hover:bg-primary-hover h-11 px-6 text-sm gap-2",
+            "group/button font-satoshi inline-flex w-full shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding font-bold tracking-tight whitespace-nowrap transition-colors duration-200 outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 cursor-pointer shadow-elevated hover:shadow-elevated bg-primary text-primary-foreground hover:bg-primary-hover h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base gap-2",
             className
           )}
           {...props}

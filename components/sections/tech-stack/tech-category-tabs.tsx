@@ -66,7 +66,7 @@ export function TechCategoryTabs({
               aria-selected={isActive}
               onClick={() => onSelectCategory(cat)}
               id={`tech-tab-${cat.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-              className={`relative px-2.5 xs:px-4 sm:px-4.5 py-2 rounded-full text-xs xs:text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
+              className={`relative px-3 sm:px-4.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
                 isActive
                   ? "text-white shadow-lg shadow-[var(--primary-hover)]/25"
                   : "border border-slate-200/80 dark:border-border/70 text-slate-600 dark:text-muted-foreground bg-white dark:bg-card/80 hover:text-slate-900 dark:hover:text-foreground hover:border-slate-300 dark:hover:border-border"

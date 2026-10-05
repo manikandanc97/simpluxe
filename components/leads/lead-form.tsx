@@ -195,7 +195,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
               type="button"
               onClick={() => setIsDropdownOpen((prev) => !prev)}
               className={cn(
-                "w-full h-10 sm:h-10.5 px-4.5 py-2 rounded-xl bg-card border border-border text-xs sm:text-sm font-medium flex items-center justify-between transition-all duration-150 cursor-pointer shadow-2xs hover:border-primary/40 outline-none",
+                "w-full h-10 sm:h-11 px-4 sm:px-4.5 py-2 rounded-xl bg-card border border-border text-xs sm:text-sm font-medium flex items-center justify-between transition-all duration-150 cursor-pointer shadow-2xs hover:border-primary/40 outline-none",
                 isDropdownOpen && "border-primary ring-2 ring-primary/15"
               )}
             >
@@ -300,7 +300,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
         <CelebratoryButton
           type="submit"
           isPending={isPending}
-          className="w-full h-11 text-sm font-bold shadow-elevated gap-2"
+          className="w-full"
         >
           {isPending ? (
             <span className="flex items-center gap-2">

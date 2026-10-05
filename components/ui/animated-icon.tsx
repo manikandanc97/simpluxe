@@ -36,6 +36,7 @@ const SunMediumIcon = React.lazy(() => import("@animateicons/react/lucide/sun-me
 const TypeIcon = React.lazy(() => import("@animateicons/react/lucide/type-icon").then(m => ({ default: m.TypeIcon as React.ComponentType<IconBaseProps> })));
 const XIcon = React.lazy(() => import("@animateicons/react/lucide/x-icon").then(m => ({ default: m.XIcon as React.ComponentType<IconBaseProps> })));
 const ZapIcon = React.lazy(() => import("@animateicons/react/lucide/zap-icon").then(m => ({ default: m.ZapIcon as React.ComponentType<IconBaseProps> })));
+const PlayIcon = React.lazy(() => import("@animateicons/react/lucide").then(m => ({ default: m.PlayIcon as React.ComponentType<IconBaseProps> })));
 
 import {
   type AnimatedIconName,
@@ -87,6 +88,7 @@ const ICON_COMPONENT_MAP: Record<AnimatedIconName, React.ComponentType<IconBaseP
   search: SearchIcon as unknown as React.ComponentType<IconBaseProps>,
   code: CodeIcon as unknown as React.ComponentType<IconBaseProps>,
   contact: ContactIcon as unknown as React.ComponentType<IconBaseProps>,
+  play: PlayIcon as unknown as React.ComponentType<IconBaseProps>,
 };
 
 export function AnimatedIcon({

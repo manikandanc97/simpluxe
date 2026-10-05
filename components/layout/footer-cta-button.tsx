@@ -17,7 +17,7 @@ export function FooterCtaButton({ onStartProject }: FooterCtaButtonProps) {
   };
 
   return (
-    <Button onClick={handleStart} className="w-full h-12 group">
+    <Button size="lg" onClick={handleStart} className="w-full group">
       <span>Start a project</span>
       <ArrowRightIcon size={16} className="text-primary-foreground group-hover:translate-x-1 transition-transform" />
     </Button>
