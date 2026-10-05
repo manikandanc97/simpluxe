@@ -4,6 +4,7 @@ import { CldImage } from "next-cloudinary";
 import { motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { LayoutGridIcon, ZapIcon, TrendingUpIcon, SparklesIcon, ChartLineIcon, CodeIcon, LayersIcon, CircleCheckIcon, CpuIcon, SmartphoneIcon, ShieldCheckIcon } from "@animateicons/react/lucide";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 
 export function ServicesHero() {
@@ -48,9 +49,9 @@ export function ServicesHero() {
           {/* 3 Core Value Props in a Row */}
           <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 pt-2.5 border-t border-surface-elevated/80 w-full">
             {/* Value Prop 1 */}
-            <div className="flex items-center gap-4">
+            <div data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-rose-50 flex items-center justify-center shrink-0 border border-rose-100/80">
-                <LayoutGridIcon size={18} className="text-primary" />
+                <AnimatedIcon icon={LayoutGridIcon} size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -63,9 +64,9 @@ export function ServicesHero() {
             </div>
 
             {/* Value Prop 2 */}
-            <div className="flex items-center gap-4">
+            <div data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center shrink-0 border border-purple-100/80">
-                <ZapIcon size={18} className="text-[var(--chart-2)]" />
+                <AnimatedIcon icon={ZapIcon} size={18} className="text-[var(--chart-2)]" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -78,9 +79,9 @@ export function ServicesHero() {
             </div>
 
             {/* Value Prop 3 */}
-            <div className="flex items-center gap-4">
+            <div data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-pink-50 flex items-center justify-center shrink-0 border border-pink-100/80">
-                <TrendingUpIcon size={18} className="text-primary" />
+                <AnimatedIcon icon={TrendingUpIcon} size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">

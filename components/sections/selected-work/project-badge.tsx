@@ -1,5 +1,6 @@
 import { type Project } from "@/types/project";
 import { TrendingUpIcon, ShoppingCartIcon } from "@animateicons/react/lucide";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import type { ReactNode } from "react";
 
 function GoogleIcon() {
@@ -25,7 +26,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
     return {
       bg: "bg-rose-50 border border-rose-100 shadow-sm",
       text: "text-rose-700",
-      icon: <TrendingUpIcon size={12} className="text-rose-600" />,
+      icon: <AnimatedIcon icon={TrendingUpIcon} size={12} className="text-rose-600" />,
       label: "3.5x Bookings Growth",
     };
   }
@@ -41,7 +42,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
     return {
       bg: "bg-violet-50 border border-violet-100 shadow-sm",
       text: "text-violet-700",
-      icon: <ShoppingCartIcon size={11} className="text-violet-600" />,
+      icon: <AnimatedIcon icon={ShoppingCartIcon} size={11} className="text-violet-600" />,
       label: "10k+ Monthly Orders",
     };
   }

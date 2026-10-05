@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { SERVICES_LIST } from "@/lib/content/services";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { motion } from "motion/react";
 
 interface ServicesTabsBarProps {
@@ -99,6 +100,8 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
               layout
               key={service.id}
               type="button"
+              role="tab"
+              data-slot="tab"
               onClick={() => {
                 if (isDragging.current) return;
                 onSelect(service.id);
@@ -111,7 +114,8 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
               )}
             >
               {Icon && (
-                <Icon
+                <AnimatedIcon
+                  icon={Icon}
                   size={15}
                   className={cn(
                     "transition-transform shrink-0",

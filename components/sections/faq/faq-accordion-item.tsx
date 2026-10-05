@@ -49,7 +49,7 @@ export function FaqAccordionItem({
           {/* Tag + Question */}
           <div className="flex flex-col gap-1 flex-1 min-w-0">
             <div className="flex items-center gap-1.5">
-              <Icon className="w-3.5 h-3.5 text-primary shrink-0" />
+              <AnimatedIcon icon={Icon} size={14} className="w-3.5 h-3.5 text-primary shrink-0" />
               <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
                 {faq.category}
               </span>

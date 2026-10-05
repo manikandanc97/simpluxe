@@ -3,6 +3,7 @@
 import { ChevronDownIcon } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { STEPS } from "@/lib/content/how-we-work";
 import { Button } from "@/components/ui/button";
 import { motion, Variants } from "motion/react";
@@ -69,7 +70,8 @@ export function StepNarrative({
             <motion.div
               variants={fadeUp}
               key={idx}
-              className="bg-neutral-50/70 rounded-2xl border border-neutral-200/70 p-2 sm:p-2.5 hover:bg-white hover:shadow-card hover:border-purple-200/80 transition-all flex items-start gap-2 group"
+              data-slot="card"
+              className="bg-neutral-50/70 rounded-2xl border border-neutral-200/70 p-2 sm:p-2.5 hover:bg-white hover:shadow-card hover:border-purple-200/80 transition-all flex items-start gap-2 group cursor-default"
             >
               <div
                 className={cn(
@@ -78,7 +80,7 @@ export function StepNarrative({
                   feature.iconColor
                 )}
               >
-                <FeatIcon className="w-3.5 h-3.5" />
+                <AnimatedIcon icon={FeatIcon} size={14} className="w-3.5 h-3.5" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="font-bold text-xs sm:text-xs text-neutral-900 leading-tight">

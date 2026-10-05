@@ -1,4 +1,5 @@
 import { GaugeIcon, ShieldCheckIcon, CodeIcon, SparklesIcon, CircleCheckIcon } from "@animateicons/react/lucide";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WORK_ENGINEERING_CONTENT, WORK_ENGINEERING_STANDARDS } from "@/lib/content/projects";
 
@@ -30,7 +31,8 @@ export function WorkEngineeringStandards() {
           return (
             <div
               key={i}
-              className="p-6 rounded-3xl bg-white/90 border border-surface-elevated shadow-card hover:border-primary/30 hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              data-slot="card"
+              className="group p-6 rounded-3xl bg-white/90 border border-surface-elevated shadow-card hover:border-primary/30 hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-default"
             >
               <div>
                 {/* Header with Icon + Metric badge */}
@@ -38,7 +40,7 @@ export function WorkEngineeringStandards() {
                   <div
                     className={`w-12 h-12 rounded-2xl ${std.iconBg} border flex items-center justify-center shrink-0 shadow-2xs`}
                   >
-                    <Icon size={22} className={std.iconColor} />
+                    <AnimatedIcon icon={Icon} size={22} className={std.iconColor} />
                   </div>
                   <span className="text-xs font-mono font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-background text-foreground border border-surface-elevated">
                     {std.metric}
@@ -57,7 +59,7 @@ export function WorkEngineeringStandards() {
               <div className="pt-4 border-t border-[var(--background)] space-y-2">
                 {std.deliverables.map((d, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <CircleCheckIcon size={13} className="text-primary shrink-0" />
+                    <AnimatedIcon icon={CircleCheckIcon} size={13} className="text-primary shrink-0" />
                     <span>{d}</span>
                   </div>
                 ))}

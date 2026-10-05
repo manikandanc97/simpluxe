@@ -107,9 +107,10 @@ export function CTA({ onStartProject }: CTAProps) {
                 return (
                   <div
                     key={index}
-                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4.5 py-1.5 rounded-full bg-card border border-border shadow-2xs text-xs sm:text-sm font-semibold text-foreground"
+                    data-slot="card"
+                    className="group inline-flex items-center gap-1.5 sm:gap-2 px-4.5 py-1.5 rounded-full bg-card border border-border shadow-2xs text-xs sm:text-sm font-semibold text-foreground cursor-default"
                   >
-                    <Icon size={14} className="text-primary shrink-0" />
+                    <AnimatedIcon icon={Icon} size={14} className="text-primary shrink-0" />
                     <span>{item.label}</span>
                   </div>
                 );

@@ -60,7 +60,7 @@ export interface IconBaseProps {
 
 export interface AnimatedIconProps extends React.HTMLAttributes<HTMLSpanElement> {
   name?: AnimatedIconName;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: React.ComponentType<IconBaseProps> | React.ComponentType<unknown> | React.ElementType;
   size?: number | string;
   className?: string;
   animateOnHover?: boolean;
@@ -68,4 +68,5 @@ export interface AnimatedIconProps extends React.HTMLAttributes<HTMLSpanElement>
   solid?: boolean;
   hoverDelay?: number; // Milliseconds to wait before animating on hover (e.g. 1000 for menu items)
   oncePerInteraction?: boolean; // When true, hover and click combined only animates once per hover session
+  parentSelector?: string; // Optional custom selector for the interactive parent element
 }

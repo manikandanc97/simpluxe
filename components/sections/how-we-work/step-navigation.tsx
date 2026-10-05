@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckIcon } from "@animateicons/react/lucide";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { cn } from "@/lib/utils";
 import { STEPS } from "@/lib/content/how-we-work";
 import React from "react";
@@ -31,6 +32,8 @@ export function StepNavigation({
             {/* Step Button Card */}
             <button
               type="button"
+              role="tab"
+              data-slot="tab"
               data-step={index}
               onClick={() => onSelectStep(index)}
               className={cn(
@@ -53,7 +56,7 @@ export function StepNavigation({
                     : "bg-purple-50 text-purple-700 font-bold group-hover:bg-purple-100"
                 )}
               >
-                {isCompleted ? <CheckIcon className="w-3.5 h-3.5 stroke-[2.5]" /> : step.number}
+                {isCompleted ? <AnimatedIcon icon={CheckIcon} size={14} className="w-3.5 h-3.5 stroke-[2.5]" /> : step.number}
               </div>
 
               {/* Step Icon */}
@@ -67,7 +70,7 @@ export function StepNavigation({
                     : "bg-neutral-100 text-neutral-500 group-hover:text-neutral-700"
                 )}
               >
-                <StepIcon className="w-3.5 h-3.5" />
+                <AnimatedIcon icon={StepIcon} size={14} className="w-3.5 h-3.5" />
               </div>
 
               {/* Step Titles */}

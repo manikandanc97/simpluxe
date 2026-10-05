@@ -4,6 +4,7 @@ import { type ServiceData, SERVICES_DELIVERABLES_CONTENT } from "@/lib/content/s
 import { SectionHeader } from "@/components/ui/section-header";
 import { ElementType as LucideIcon } from "react";
 import { CircleCheckIcon, TargetIcon, RocketIcon, Building2Icon, ShieldIcon, RefreshCwIcon, BriefcaseIcon, MedalIcon, CrownIcon, ShoppingBagIcon, TruckIcon, ZapIcon, RepeatIcon, SmartphoneIcon, UsersIcon, PackageIcon, SparklesIcon, LayoutDashboardIcon, PlayIcon, CodeIcon, TrendingDownIcon, HeadphonesIcon, FileTextIcon, LockOpenIcon, CpuIcon } from "@animateicons/react/lucide";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { motion, AnimatePresence } from "motion/react";
 
 const IconMap: Record<string, LucideIcon> = {
@@ -75,8 +76,9 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
               {/* Column 1 */}
               <div className="flex flex-col gap-4 sm:gap-4.5">
                 {col1.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <CircleCheckIcon
+                  <div key={idx} className="group flex items-start gap-2 cursor-default">
+                    <AnimatedIcon
+                      icon={CircleCheckIcon}
                       size={17}
                       className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
                     />
@@ -90,8 +92,9 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
               {/* Column 2 */}
               <div className="flex flex-col gap-4 sm:gap-4.5">
                 {col2.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <CircleCheckIcon
+                  <div key={idx} className="group flex items-start gap-2 cursor-default">
+                    <AnimatedIcon
+                      icon={CircleCheckIcon}
                       size={17}
                       className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
                     />
@@ -120,9 +123,9 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
                   className="flex flex-col gap-4.5"
                 >
                   {/* Perfect For Header treated as first item */}
-                  <div className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group">
+                  <div data-slot="card" className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default">
                     <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
-                      <TargetIcon size={15} />
+                      <AnimatedIcon icon={TargetIcon} size={15} />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
@@ -139,10 +142,11 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
                     return (
                       <div
                         key={idx}
-                        className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group"
+                        data-slot="card"
+                        className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default"
                       >
                         <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
-                          <IconComponent size={15} />
+                          <AnimatedIcon icon={IconComponent} size={15} />
                         </div>
                         <div className="flex flex-col">
                           <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">

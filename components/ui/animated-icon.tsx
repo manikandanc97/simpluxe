@@ -101,6 +101,7 @@ export function AnimatedIcon({
   solid = false,
   hoverDelay = 0,
   oncePerInteraction = false,
+  parentSelector,
   ...props
 }: AnimatedIconProps) {
   const IconComponent = icon || (name ? ICON_COMPONENT_MAP[name] : null) || SparklesIcon;
@@ -170,7 +171,11 @@ export function AnimatedIcon({
     const span = containerRef.current;
     if (!span) return;
 
-    const interactiveParent = span.closest("button, a, [role='button'], [role='tab'], .group, [data-slot='button'], [data-slot='card'], [data-slot='tab']");
+    const interactiveParent = parentSelector
+      ? span.closest(parentSelector)
+      : span.closest(
+          "button, a, [role='button'], [role='tab'], .group, [class*='group/'], [data-slot='button'], [data-slot='card'], [data-slot='tab'], [data-card], .card, [class*='shadow-card'], [class*='hover:shadow'], [class*='hover:border']"
+        );
     if (!interactiveParent) return;
 
     const handleParentEnter = () => {

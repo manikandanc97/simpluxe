@@ -76,6 +76,7 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
             return (
               <motion.div
                 key={stat.label}
+                data-slot="card"
                 initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                 animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.28 + i * 0.08 }}
@@ -83,7 +84,7 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
               >
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-11 h-11 rounded-full bg-rose-50 border border-rose-100/50 flex items-center justify-center text-primary shrink-0">
-                    <StatIcon className="w-[18px] h-[18px]" />
+                    <AnimatedIcon icon={StatIcon} size={18} className="w-[18px] h-[18px]" />
                   </div>
                   <div className="flex flex-col gap-1 min-w-0">
                     <span className="text-xl font-black text-neutral-900 tracking-tight leading-none font-satoshi flex items-baseline gap-[1px]">

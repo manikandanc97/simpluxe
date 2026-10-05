@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { CldImage } from "next-cloudinary";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import React, { useRef } from "react";
 
 import { prefersReducedMotion } from "@/lib/motion";
@@ -246,20 +247,15 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             >
               <motion.div
-              animate={{ y: [2, -2, 2] }}
-              transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44"
-            >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 2a14.5 14.5 0 0 0 0 20 10 10 0 0 0 9.5-6.5" />
-                  <circle cx="8" cy="9" r="1.5" fill="currentColor" />
-                  <circle cx="12" cy="7" r="1.5" fill="currentColor" />
-                  <circle cx="16" cy="10" r="1.5" fill="currentColor" />
-                </svg>
-              </div>
-              <span className="text-sm font-bold text-foreground tracking-tight">Modern Design</span>
+                data-slot="card"
+                animate={{ y: [2, -2, 2] }}
+                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
+                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default"
+              >
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <AnimatedIcon name="palette" size={15} className="text-primary" />
+                </div>
+                <span className="text-sm font-bold text-foreground tracking-tight">Modern Design</span>
               </motion.div>
             </motion.div>
 
@@ -270,16 +266,15 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             >
               <motion.div
-              animate={{ y: [3, -3, 3] }}
-              transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-              className="bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44"
-            >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
-                </svg>
-              </div>
-              <span className="text-sm font-bold text-foreground tracking-tight">Clean Code</span>
+                data-slot="card"
+                animate={{ y: [3, -3, 3] }}
+                transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default"
+              >
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <AnimatedIcon name="code" size={15} className="text-primary" />
+                </div>
+                <span className="text-sm font-bold text-foreground tracking-tight">Clean Code</span>
               </motion.div>
             </motion.div>
 
@@ -290,17 +285,15 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
             >
               <motion.div
-              animate={{ y: [2, -2, 2] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-              className="bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44"
-            >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 3v18h18" />
-                  <path d="m19 9-5 5-4-4-3 3" />
-                </svg>
-              </div>
-              <span className="text-sm font-bold text-foreground tracking-tight">Scalable Solutions</span>
+                data-slot="card"
+                animate={{ y: [2, -2, 2] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                className="group bg-white/90 backdrop-blur-md border border-[rgba(30,24,30,0.08)] shadow-card hover:shadow-elevated rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2.5 sm:gap-3 min-w-40 sm:min-w-44 transition-all duration-300 cursor-default"
+              >
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <AnimatedIcon name="layers" size={15} className="text-primary" />
+                </div>
+                <span className="text-sm font-bold text-foreground tracking-tight">Scalable Solutions</span>
               </motion.div>
             </motion.div>
 

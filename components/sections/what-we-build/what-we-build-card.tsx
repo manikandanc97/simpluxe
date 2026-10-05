@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import { SERVICES_LIST } from "@/lib/content/services";
 import {
@@ -108,8 +109,9 @@ export function WhatWeBuildCard({
         filter: { type: "tween", duration: 0.35, ease: "easeOut" },
         opacity: { type: "tween", duration: 0.3, ease: "easeOut" },
       }}
+      data-slot="card"
       className={cn(
-        "absolute top-0 w-full h-full max-w-3xl lg:max-w-4xl rounded-2xl sm:rounded-3xl p-6 pb-6 sm:pb-6 xs:p-6 sm:p-8 lg:p-10 font-satoshi cursor-pointer overflow-hidden",
+        "group absolute top-0 w-full h-full max-w-3xl lg:max-w-4xl rounded-2xl sm:rounded-3xl p-6 pb-6 sm:pb-6 xs:p-6 sm:p-8 lg:p-10 font-satoshi cursor-pointer overflow-hidden",
         "backdrop-blur-2xl border",
         isActive
           ? "bg-card border-primary/20 z-30 pointer-events-auto"
@@ -177,7 +179,7 @@ export function WhatWeBuildCard({
                       whileHover={{ rotate: 8, scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     >
-                      <IconComponent className="w-4 h-4 stroke-[2.2]" />
+                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-[2.2]" />
                     </motion.div>
                   </FadeUp>
 
@@ -243,7 +245,7 @@ export function WhatWeBuildCard({
                       className="w-9 h-9 rounded-xl flex items-center justify-center"
                       style={{ backgroundColor: `${service.brandColor}1A`, color: service.brandColor }}
                     >
-                      <IconComponent className="w-4 h-4 stroke-[2.2]" />
+                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-[2.2]" />
                     </div>
                   </div>
                   <h3 className="type-h3 text-foreground">

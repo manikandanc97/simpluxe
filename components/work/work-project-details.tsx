@@ -1,5 +1,6 @@
 import { ChartBarIcon, ShieldCheckIcon, StarIcon, UsersIcon } from "@animateicons/react/lucide";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { type Project } from "@/types/project";
 import { type EnhancedProjectDetails } from "./work-data";
@@ -23,10 +24,11 @@ export function WorkProjectDetails({ project, enhancement }: WorkProjectDetailsP
           return (
             <div
               key={idx}
-              className="p-4 sm:p-4.5 rounded-2xl bg-background border border-surface-elevated flex items-center gap-2"
+              data-slot="card"
+              className="group p-4 sm:p-4.5 rounded-2xl bg-background border border-surface-elevated flex items-center gap-2 cursor-default"
             >
               <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[var(--primary)]/15 to-[var(--primary)]/10 flex items-center justify-center text-primary shrink-0">
-                <IconComponent size={16} />
+                <AnimatedIcon icon={IconComponent} size={16} />
               </div>
               <div className="min-w-0">
                 <div className="text-sm sm:text-base font-extrabold text-foreground leading-tight truncate">
