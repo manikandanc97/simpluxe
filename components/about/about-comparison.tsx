@@ -1,4 +1,4 @@
-import { XCircle, CheckCircle2 } from "lucide-react";
+import { CircleXIcon, CircleCheckIcon } from "@animateicons/react/lucide";
 import { COMPARISONS, ABOUT_COMPARISON_CONTENT } from "@/lib/content/about";
 import { SectionHeader } from "@/components/ui/section-header";
 
@@ -48,13 +48,13 @@ export function AboutComparison() {
 
               {/* Traditional Agencies */}
               <div className="md:col-span-4 flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                <XCircle size={16} className="text-[#EF4444] shrink-0 mt-0.5" />
+                <CircleXIcon size={16} className="text-[#EF4444] shrink-0 mt-0.5" />
                 <span>{row.traditional}</span>
               </div>
 
               {/* Simpluxe Model */}
               <div className="md:col-span-5 flex items-start gap-2 text-xs sm:text-sm text-foreground font-semibold bg-background/70 p-4.5 rounded-2xl border border-surface-elevated/80 shadow-2xs">
-                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <CircleCheckIcon size={16} className="text-primary shrink-0 mt-0.5" />
                 <span>{row.simpluxe}</span>
               </div>
             </div>

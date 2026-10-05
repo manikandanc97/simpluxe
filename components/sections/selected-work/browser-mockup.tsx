@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { type Project } from "@/types/project";
-import { Lock, Monitor, Smartphone, Tablet, ExternalLink } from "lucide-react";
+import { LockIcon, MonitorIcon, SmartphoneIcon, TabletIcon, ExternalLinkIcon } from "@animateicons/react/lucide";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -69,7 +69,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
             <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] border border-black/10 shadow-xs" />
           </div>
           
-          {/* Center: Address Pill with Green Lock & Live Link */}
+          {/* Center: Address Pill with Green LockIcon & Live Link */}
           <div className="flex-1 flex justify-center px-1 sm:px-2 min-w-0">
             <a
               href={activeProject.url}
@@ -79,9 +79,9 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
               className="flex items-center justify-center gap-1.5 bg-white border border-slate-200 shadow-xs rounded-md px-2.5 sm:px-3.5 py-1 text-[11px] sm:text-xs font-medium text-slate-600 min-w-0 max-w-[150px] xs:max-w-[200px] sm:max-w-sm truncate hover:border-slate-300 hover:text-slate-900 transition-colors cursor-pointer group"
               title={`Visit ${activeProject.domain}`}
             >
-              <Lock size={12} className="text-emerald-500 shrink-0" />
+              <LockIcon size={12} className="text-emerald-500 shrink-0" />
               <span className="truncate">{activeProject.domain}</span>
-              <ExternalLink size={10} className="text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5 shrink-0" />
+              <ExternalLinkIcon size={10} className="text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5 shrink-0" />
             </a>
           </div>
           
@@ -93,21 +93,21 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
                 className={cn("p-1 sm:p-1.5 rounded transition-all", viewMode === "mobile" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title="Mobile View"
               >
-                <Smartphone size={12} className="sm:w-[14px] sm:h-[14px]" />
+                <SmartphoneIcon size={12} className="sm:w-[14px] sm:h-[14px]" />
               </button>
               <button 
                 onClick={(e) => { e.stopPropagation(); setViewMode("tablet"); }} 
                 className={cn("p-1 sm:p-1.5 rounded transition-all hidden xs:block", viewMode === "tablet" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
-                title="Tablet View"
+                title="TabletIcon View"
               >
-                <Tablet size={12} className="sm:w-[14px] sm:h-[14px]" />
+                <TabletIcon size={12} className="sm:w-[14px] sm:h-[14px]" />
               </button>
               <button 
                 onClick={(e) => { e.stopPropagation(); setViewMode("desktop"); }} 
                 className={cn("p-1 sm:p-1.5 rounded transition-all", viewMode === "desktop" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title="Desktop View"
               >
-                <Monitor size={12} className="sm:w-[14px] sm:h-[14px]" />
+                <MonitorIcon size={12} className="sm:w-[14px] sm:h-[14px]" />
               </button>
             </div>
           </div>
@@ -153,7 +153,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
               ) : (
                 <div className="absolute inset-0 w-full h-full bg-slate-50 flex flex-col items-center justify-center p-6 text-center gap-5">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-slate-100 flex items-center justify-center shadow-sm">
-                    <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-slate-300" strokeWidth={1.5} />
+                    <LockIcon className="w-8 h-8 sm:w-10 sm:h-10 text-slate-300" />
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800 tracking-tight">

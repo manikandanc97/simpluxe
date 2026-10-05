@@ -1,7 +1,7 @@
-import { Clock, Code2, FileText, Layers, Lightbulb, Pencil, Rocket, ShieldCheck, Sparkles, Target, Users } from 'lucide-react';
+import { ClockIcon, CodeIcon, FileTextIcon, LayersIcon, LightbulbIcon, PencilIcon, RocketIcon, ShieldCheckIcon, SparklesIcon, TargetIcon, UsersIcon } from "@animateicons/react/lucide";
 
 interface StepFeature {
-  icon: typeof Users;
+  icon: typeof UsersIcon;
   iconBg: string;
   iconColor: string;
   title: string;
@@ -14,7 +14,7 @@ interface StepConfig {
   stepKicker: string;
   title: string;
   subtitle: string;
-  icon: typeof Lightbulb;
+  icon: typeof LightbulbIcon;
   headlineFirst: string;
   headlineAccent: string;
   summary: string;
@@ -30,35 +30,35 @@ export const STEPS: StepConfig[] = [
     stepKicker: "STEP 01 / 04",
     title: "Discover",
     subtitle: "Understand & Plan",
-    icon: Lightbulb,
+    icon: LightbulbIcon,
     headlineFirst: "Understand",
     headlineAccent: "before we build.",
     summary:
       "We take time to understand your business, users and goals. This helps us create a clear roadmap and technical blueprint for a successful product.",
     features: [
       {
-        icon: Users,
+        icon: UsersIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Business Goals",
         desc: "Understand your vision and market opportunity.",
       },
       {
-        icon: Target,
+        icon: TargetIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "User Research",
         desc: "Identify user needs and key problem areas.",
       },
       {
-        icon: FileText,
+        icon: FileTextIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "Project Scope",
         desc: "Define features, timeline and required resources.",
       },
       {
-        icon: Layers,
+        icon: LayersIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Technical Blueprint",
@@ -74,35 +74,35 @@ export const STEPS: StepConfig[] = [
     stepKicker: "STEP 02 / 04",
     title: "Design",
     subtitle: "UI/UX & Prototype",
-    icon: Pencil,
+    icon: PencilIcon,
     headlineFirst: "Clarity before",
     headlineAccent: "we code.",
     summary:
       "Interactive Figma prototypes and a production token library. You test and validate the screens and interactions before development begins.",
     features: [
       {
-        icon: Layers,
+        icon: LayersIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Interactive Flows",
         desc: "Clickable prototypes validating real user journeys.",
       },
       {
-        icon: Sparkles,
+        icon: SparklesIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "Design Tokens",
         desc: "Strict color, typography, and spacing system.",
       },
       {
-        icon: Target,
+        icon: TargetIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "Design Systems",
         desc: "Reusable component library with accessibility built-in.",
       },
       {
-        icon: Users,
+        icon: UsersIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Usability Testing",
@@ -118,35 +118,35 @@ export const STEPS: StepConfig[] = [
     stepKicker: "STEP 03 / 04",
     title: "Develop",
     subtitle: "Build & Integrate",
-    icon: Code2,
+    icon: CodeIcon,
     headlineFirst: "Code built",
     headlineAccent: "to scale.",
     summary:
       "Next.js App Router, TailwindCSS, TypeScript, and serverless backend architecture. Demo deployments let you watch the product come alive.",
     features: [
       {
-        icon: Code2,
+        icon: CodeIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Modern Stack",
         desc: "Next.js 15, TypeScript, Tailwind, and serverless backend.",
       },
       {
-        icon: Clock,
+        icon: ClockIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "Weekly Staging Builds",
         desc: "Live demo environments to test sprint deliverables.",
       },
       {
-        icon: ShieldCheck,
+        icon: ShieldCheckIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Clean Architecture",
         desc: "Secure endpoints, structured databases, and clean code.",
       },
       {
-        icon: Rocket,
+        icon: RocketIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "CI/CD Pipelines",
@@ -162,35 +162,35 @@ export const STEPS: StepConfig[] = [
     stepKicker: "STEP 04 / 04",
     title: "Launch",
     subtitle: "Deploy & Grow",
-    icon: Rocket,
+    icon: RocketIcon,
     headlineFirst: "Launch is just",
     headlineAccent: "the beginning.",
     summary:
       "DNS cutover, SEO indexing check, telemetry dashboards, and post-launch support to ensure a smooth transition to production.",
     features: [
       {
-        icon: Rocket,
+        icon: RocketIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "Production Cutover",
         desc: "Secure SSL, DNS propagation, and edge caching.",
       },
       {
-        icon: Target,
+        icon: TargetIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "SEO & Analytics",
         desc: "Sitemaps, structured data, and real-time tracking.",
       },
       {
-        icon: ShieldCheck,
+        icon: ShieldCheckIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Performance Audits",
         desc: "Sub-second load times and 95+ Core Web Vitals.",
       },
       {
-        icon: Users,
+        icon: UsersIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
         title: "Post-Launch Warranty",

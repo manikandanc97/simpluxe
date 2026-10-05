@@ -1,4 +1,5 @@
-import { LucideIcon, Zap, MessageSquare, CheckCircle2 } from "lucide-react";
+import { ElementType as LucideIcon } from "react";
+import { ZapIcon, MessageSquareIcon, CircleCheckIcon } from "@animateicons/react/lucide";
 
 export interface CTAPillar {
   label: string;
@@ -27,8 +28,8 @@ export const CTA_CONTENT: CTAContent = {
   responseNote: "Response within 2 hours • Free 30-min discovery session",
   floatingPillText: "READY TO BUILD?",
   pillars: [
-    { label: "Simple process.", icon: Zap },
-    { label: "Clear communication.", icon: MessageSquare },
-    { label: "Real results.", icon: CheckCircle2 },
+    { label: "Simple process.", icon: ZapIcon },
+    { label: "Clear communication.", icon: MessageSquareIcon },
+    { label: "Real results.", icon: CircleCheckIcon },
   ],
 };

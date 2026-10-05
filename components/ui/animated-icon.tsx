@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "motion/react";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, Suspense } from "react";
 
 const ArrowLeftIcon = React.lazy(() => import("@animateicons/react/lucide/arrow-left-icon").then(m => ({ default: m.ArrowLeftIcon as React.ComponentType<IconBaseProps> })));
 const ArrowRightIcon = React.lazy(() => import("@animateicons/react/lucide/arrow-right-icon").then(m => ({ default: m.ArrowRightIcon as React.ComponentType<IconBaseProps> })));
@@ -168,7 +168,7 @@ export function AnimatedIcon({
     const span = containerRef.current;
     if (!span) return;
 
-    const interactiveParent = span.closest("button, a, [role='button'], [role='tab'], .group");
+    const interactiveParent = span.closest("button, a, [role='button'], [role='tab'], .group, [data-slot='button'], [data-slot='card'], [data-slot='tab']");
     if (!interactiveParent) return;
 
     const handleParentEnter = () => {
@@ -270,14 +270,14 @@ export function AnimatedIcon({
           <SolidComponent size={numericSize} className="shrink-0" />
         </motion.div>
       ) : (
-        <React.Suspense fallback={<span style={{ width: numericSize, height: numericSize }} />}>
+        <Suspense fallback={<span style={{ width: numericSize, height: numericSize }} />}>
           <IconComponent
             ref={iconRef}
             size={numericSize}
             isAnimated={animateOnHover}
             className="shrink-0"
           />
-        </React.Suspense>
+        </Suspense>
       )}
     </span>
   );

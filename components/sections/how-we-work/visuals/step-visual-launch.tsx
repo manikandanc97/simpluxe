@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Activity,
-  Globe,
-  Rocket,
-  TrendingUp,
-  Wifi,
-} from "lucide-react";
+import { ActivityIcon, GlobeIcon, RocketIcon, TrendingUpIcon, WifiIcon } from "@animateicons/react/lucide";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
@@ -21,7 +15,7 @@ export function StepVisualLaunch() {
       >
         {/* Window Header */}
         <div className="w-full flex items-center gap-2 ml-4 sm:ml-8">
-          <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--chart-5)]" />
+          <ActivityIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--chart-5)]" />
           <span className="font-bold text-sm sm:text-base text-muted-foreground tracking-tight">
             Live & Growing
           </span>
@@ -35,12 +29,12 @@ export function StepVisualLaunch() {
               <span className="text-lg sm:text-2xl font-black text-neutral-900">10.4k</span>
             </div>
             <div className="px-2 py-0.5 sm:py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs sm:text-xs font-bold flex items-center gap-1">
-              <TrendingUp className="w-3 h-3" /> +42%
+              <TrendingUpIcon className="w-3 h-3" /> +42%
             </div>
           </div>
           {/* Line Chart */}
           <svg className="w-full h-9 sm:h-12" viewBox="0 0 200 40" fill="none">
-            <path d="M 0 35 Q 20 30 40 25 T 80 15 T 120 20 T 160 5 T 200 0" stroke="url(#paint0_linear)" strokeWidth="3" strokeLinecap="round" />
+            <path d="M 0 35 Q 20 30 40 25 T 80 15 T 120 20 T 160 5 T 200 0" stroke="url(#paint0_linear)" strokeLinecap="round" />
             <defs>
               <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
                 <stop stopColor="#9333EA" />
@@ -58,7 +52,7 @@ export function StepVisualLaunch() {
         className="absolute top-2 sm:top-8 left-0 sm:-left-6 bg-[#FFF9C4]/95 border border-[#FFF176] rounded-xl p-1.5 sm:p-2.5 shadow-md shadow-amber-900/10 z-10 w-24 xs:w-28 sm:w-36 pointer-events-none select-none flex flex-col gap-0.5 sm:gap-1 scale-90 sm:scale-100 origin-top-left"
       >
         <div className="flex items-center gap-1">
-          <Rocket className="w-3.5 h-3.5 text-amber-600" />
+          <RocketIcon className="w-3.5 h-3.5 text-amber-600" />
           <span className="font-handwriting font-bold text-xs sm:text-sm text-neutral-800">
             Go Live
           </span>
@@ -68,8 +62,8 @@ export function StepVisualLaunch() {
           <div>• Fast Load</div>
         </div>
         <svg className="absolute -bottom-3 sm:-bottom-4 right-1 w-5 h-5 sm:w-6 sm:h-6 text-primary" viewBox="0 0 28 28" fill="none">
-          <path d="M 6 4 C 10 12, 14 16, 22 22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M 14 22 L 22 22 L 20 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 6 4 C 10 12, 14 16, 22 22" stroke="currentColor" strokeLinecap="round" />
+          <path d="M 14 22 L 22 22 L 20 14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
 
@@ -83,8 +77,8 @@ export function StepVisualLaunch() {
           We are <br /> Live!
         </span>
         <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary ml-auto -mt-1 transform rotate-12" viewBox="0 0 28 28" fill="none">
-          <path d="M 4 18 C 10 10, 18 10, 24 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M 16 6 L 24 6 L 22 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 4 18 C 10 10, 18 10, 24 6" stroke="currentColor" strokeLinecap="round" />
+          <path d="M 16 6 L 24 6 L 22 14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
 
@@ -98,7 +92,7 @@ export function StepVisualLaunch() {
           <span className="font-bold text-xs sm:text-xs text-neutral-800">
             Server Status
           </span>
-          <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500" />
+          <GlobeIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500" />
         </div>
         
         <div className="flex flex-col gap-1 sm:gap-1.5">
@@ -117,8 +111,8 @@ export function StepVisualLaunch() {
         </div>
 
         <svg className="absolute -bottom-8 sm:-bottom-12 left-8 sm:left-14 w-6 h-10 sm:w-10 sm:h-14 text-primary transform -rotate-12" viewBox="0 0 32 48" fill="none">
-          <path d="M 12 4 C 12 20, 20 30, 20 44" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M 12 36 L 20 44 L 28 36" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 12 4 C 12 20, 20 30, 20 44" stroke="currentColor" strokeLinecap="round" />
+          <path d="M 12 36 L 20 44 L 28 36" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
 
@@ -128,7 +122,7 @@ export function StepVisualLaunch() {
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
         className="absolute bottom-8 sm:bottom-28 right-0 sm:right-3 bg-white/95 rounded-xl border border-neutral-200/90 shadow-md p-1.5 px-2 sm:px-2.5 flex items-center gap-1.5 z-20 pointer-events-none select-none scale-85 sm:scale-100 origin-bottom-right"
       >
-        <Wifi className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+        <WifiIcon className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
         <span className="font-handwriting font-bold text-xs text-neutral-800 leading-tight">
           Sub-second <br /> Load
         </span>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SITE } from "@/lib/content/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
-import { ArrowRight, Check, Copy } from "lucide-react";
+import { ArrowRightIcon, CheckIcon, CopyIcon } from "@animateicons/react/lucide";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -61,10 +61,10 @@ export function ContactChannels() {
             <button
               type="button"
               onClick={handleCopyEmail}
-              title="Copy email to clipboard"
+              title="CopyIcon email to clipboard"
               className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer shrink-0 ml-2"
             >
-              {copiedEmail ? <Check size={16} className="text-primary" /> : <Copy size={16} />}
+              {copiedEmail ? <CheckIcon size={16} className="text-primary" /> : <CopyIcon size={16} />}
             </button>
           </div>
         )}
@@ -95,7 +95,7 @@ export function ContactChannels() {
                 </span>
               </div>
             </div>
-            <ArrowRight size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
+            <ArrowRightIcon size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
           </a>
         )}
       </CardContent>

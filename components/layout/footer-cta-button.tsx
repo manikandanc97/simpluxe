@@ -1,7 +1,7 @@
 "use client";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon } from "@animateicons/react/lucide";
 import { Button } from "@/components/ui/button";
 
 interface FooterCtaButtonProps {
@@ -19,7 +19,7 @@ export function FooterCtaButton({ onStartProject }: FooterCtaButtonProps) {
   return (
     <Button onClick={handleStart} className="w-full h-12 group">
       <span>Start a project</span>
-      <ArrowRight size={16} className="text-primary-foreground group-hover:translate-x-1 transition-transform" />
+      <ArrowRightIcon size={16} className="text-primary-foreground group-hover:translate-x-1 transition-transform" />
     </Button>
   );
 }

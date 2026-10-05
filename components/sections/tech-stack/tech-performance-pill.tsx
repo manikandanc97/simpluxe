@@ -1,4 +1,4 @@
-import { Zap } from "lucide-react";
+import { ZapIcon } from "@animateicons/react/lucide";
 
 export function TechPerformancePill() {
   return (
@@ -7,15 +7,15 @@ export function TechPerformancePill() {
         {/* Radiating Accent Sparks on Top-Left */}
         <div className="absolute -top-3.5 -left-3 pointer-events-none text-rose-400">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <line x1="7" y1="17" x2="3" y2="13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-            <line x1="13" y1="17" x2="11" y2="9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-            <line x1="19" y1="17" x2="21" y2="11" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="7" y1="17" x2="3" y2="13" stroke="currentColor" strokeLinecap="round" />
+            <line x1="13" y1="17" x2="11" y2="9" stroke="currentColor" strokeLinecap="round" />
+            <line x1="19" y1="17" x2="21" y2="11" stroke="currentColor" strokeLinecap="round" />
           </svg>
         </div>
 
         {/* Lightning Icon */}
         <div className="text-amber-500">
-          <Zap className="w-5 h-5 fill-amber-500 text-amber-500" />
+          <ZapIcon className="w-5 h-5 fill-amber-500 text-amber-500" />
         </div>
 
         {/* Two Lines of Text */}

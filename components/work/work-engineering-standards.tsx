@@ -1,12 +1,12 @@
-import { Gauge, ShieldCheck, Code2, Sparkles, CheckCircle2 } from "lucide-react";
+import { GaugeIcon, ShieldCheckIcon, CodeIcon, SparklesIcon, CircleCheckIcon } from "@animateicons/react/lucide";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WORK_ENGINEERING_CONTENT, WORK_ENGINEERING_STANDARDS } from "@/lib/content/projects";
 
 const iconMap = {
-  Gauge,
-  Code2,
-  ShieldCheck,
-  Sparkles,
+  GaugeIcon,
+  CodeIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
 };
 
 export function WorkEngineeringStandards() {
@@ -26,7 +26,7 @@ export function WorkEngineeringStandards() {
       {/* ── 4 Standards Cards Grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {WORK_ENGINEERING_STANDARDS.map((std, i) => {
-          const Icon = iconMap[std.iconName as keyof typeof iconMap] || Gauge;
+          const Icon = iconMap[std.iconName as keyof typeof iconMap] || GaugeIcon;
           return (
             <div
               key={i}
@@ -57,7 +57,7 @@ export function WorkEngineeringStandards() {
               <div className="pt-4 border-t border-[var(--background)] space-y-2">
                 {std.deliverables.map((d, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <CheckCircle2 size={13} className="text-primary shrink-0" />
+                    <CircleCheckIcon size={13} className="text-primary shrink-0" />
                     <span>{d}</span>
                   </div>
                 ))}

@@ -2,7 +2,7 @@
 
 import { useLead } from "@/components/leads/lead-provider";
 import { STEPS, HOW_WE_WORK_SECTION_CONTENT } from "@/lib/content/how-we-work";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheckIcon } from "@animateicons/react/lucide";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { StepVisual } from "./how-we-work/step-visuals";
@@ -76,7 +76,7 @@ export function HowWeWorkInteractive() {
       {/* Bottom Trust & Scroll Navigation Affordance Bar */}
       <div className="pt-4 border-t border-neutral-200/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left text-xs font-mono text-neutral-500">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <ShieldCheckIcon className="w-4 h-4 text-emerald-600 shrink-0" />
           <span className="text-xs sm:text-xs">{HOW_WE_WORK_SECTION_CONTENT.trustNote}</span>
         </div>
 

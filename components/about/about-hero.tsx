@@ -3,14 +3,7 @@
 import { motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { CldImage } from "next-cloudinary";
-import {
-  ShieldCheck,
-  Zap,
-  Code2,
-  Sparkles,
-  Layers,
-  CheckCircle2,
-} from "lucide-react";
+import { ShieldCheckIcon, ZapIcon, CodeIcon, SparklesIcon, LayersIcon, CircleCheckIcon } from "@animateicons/react/lucide";
 import { NextJsIcon } from "@/components/work/tech-icons";
 import { Container } from "@/components/ui/container";
 
@@ -61,7 +54,7 @@ export function AboutHero() {
             {/* Value Prop 1 */}
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                <Sparkles size={18} className="text-primary" />
+                <SparklesIcon size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -76,7 +69,7 @@ export function AboutHero() {
             {/* Value Prop 2 */}
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0 border border-border">
-                <Zap size={18} className="text-foreground/80" />
+                <ZapIcon size={18} className="text-foreground/80" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -91,7 +84,7 @@ export function AboutHero() {
             {/* Value Prop 3 */}
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0 border border-primary/15">
-                <ShieldCheck size={18} className="text-primary" />
+                <ShieldCheckIcon size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -158,7 +151,7 @@ export function AboutHero() {
               className="absolute top-3 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-elevated"
             >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-2xs shrink-0">
-                <Code2 size={16} className="text-white" />
+                <CodeIcon size={16} className="text-white" />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -177,7 +170,7 @@ export function AboutHero() {
               className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-secondary text-foreground flex items-center justify-center border border-border shrink-0">
-                <Layers size={14} />
+                <LayersIcon size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -196,7 +189,7 @@ export function AboutHero() {
               className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
-                <Zap size={14} />
+                <ZapIcon size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -214,7 +207,7 @@ export function AboutHero() {
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
-              <CheckCircle2 size={12} className="text-emerald-500" />
+              <CircleCheckIcon size={12} className="text-emerald-500" />
               <span className="text-[10px] sm:text-xs font-bold text-foreground">
                 99.9% Uptime
               </span>
@@ -226,7 +219,7 @@ export function AboutHero() {
               transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
-              <ShieldCheck size={12} className="text-primary" />
+              <ShieldCheckIcon size={12} className="text-primary" />
               <span className="text-[10px] sm:text-xs font-bold text-foreground">
                 Enterprise Secure
               </span>

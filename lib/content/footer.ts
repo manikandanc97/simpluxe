@@ -21,7 +21,7 @@ export const FOOTER_DATA: FooterData = {
   ctaPillText: "Let's Build",
   ctaTitle: "Have a project in mind?",
   ctaDescription: "Let's discuss your idea and turn it into a premium digital product.",
-  copyrightText: "Simpluxe Digital Studio. All rights reserved.",
+  copyrightText: "Simpluxe. All rights reserved.",
   privacyPolicyText: "Privacy Policy",
   termsOfServiceText: "Terms of Service",
   sitemapText: "Sitemap",

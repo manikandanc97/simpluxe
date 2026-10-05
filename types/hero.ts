@@ -1,4 +1,5 @@
-import { LucideIcon } from "lucide-react";
+import { ElementType as LucideIcon } from "react";
+
 
 interface HeroStat {
   value: string;

@@ -100,11 +100,11 @@ export const metadata: Metadata = {
     template: "%s · Simpluxe",
   },
   description:
-    "Simpluxe is a premium digital studio that engineers custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
+    "Simpluxe is a premium software company that engineers custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
   openGraph: {
     title: "Simpluxe — Keep It Simple. Make It Luxury.",
     description:
-      "Premium digital studio engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
+      "Premium software company engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
     url: SITE.url,
     siteName: "Simpluxe",
     type: "website",
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Simpluxe — Keep It Simple. Make It Luxury.",
     description:
-      "Premium digital studio engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
+      "Premium software company engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
   },
   icons: {
     icon: "https://res.cloudinary.com/drdl4pdnx/image/upload/v1790596040/simpluxe/favicon/favicon.png",

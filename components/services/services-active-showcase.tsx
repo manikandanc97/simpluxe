@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ServicesMockupWindow } from "./showcase/services-mockup-window";
+import { EyeIcon } from "@animateicons/react/lucide";
 
 interface ServicesActiveShowcaseProps {
   service: ServiceData;
@@ -73,8 +74,9 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
 
                 <Link
                   href={service.relatedWorkUrl}
-                  className={buttonVariants({ variant: "outline" })}
+                  className={buttonVariants({ variant: "outline", className: "gap-2" })}
                 >
+                  <EyeIcon size={14} />
                   <span>View related work</span>
                 </Link>
               </div>

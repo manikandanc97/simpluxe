@@ -1,4 +1,4 @@
-import { BarChart3, ShieldCheck, Star, Users } from "lucide-react";
+import { ChartBarIcon, ShieldCheckIcon, StarIcon, UsersIcon } from "@animateicons/react/lucide";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { type Project } from "@/types/project";
@@ -15,10 +15,10 @@ export function WorkProjectDetails({ project, enhancement }: WorkProjectDetailsP
       {/* ── Stats Bar (4 Metric Cards in a Row) ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
         {enhancement.metrics.map((m, idx) => {
-          let IconComponent = BarChart3;
-          if (m.iconType === "users") IconComponent = Users;
-          if (m.iconType === "star") IconComponent = Star;
-          if (m.iconType === "shield") IconComponent = ShieldCheck;
+          let IconComponent = ChartBarIcon;
+          if (m.iconType === "users") IconComponent = UsersIcon;
+          if (m.iconType === "star") IconComponent = StarIcon;
+          if (m.iconType === "shield") IconComponent = ShieldCheckIcon;
 
           return (
             <div

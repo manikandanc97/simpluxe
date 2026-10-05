@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity } from "lucide-react";
+import { ActivityIcon } from "@animateicons/react/lucide";
 import { motion } from "motion/react";
 import { DesktopFlowCanvas } from "./desktop-flow-canvas";
 import { MobileFlowGrid } from "./mobile-flow-grid";
@@ -25,7 +25,7 @@ export function FlowDiagram({ inView }: { inView: boolean }) {
           <span className="text-xs sm:text-xs font-mono font-semibold tracking-widest uppercase">
             SIMPLE SYSTEM
           </span>
-          <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+          <ActivityIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import { Code2, Layers, Cpu, Smartphone } from "lucide-react";
+import { CodeIcon, LayersIcon, CpuIcon, SmartphoneIcon } from "@animateicons/react/lucide";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ABOUT_TECH_STACK_CONTENT, STACK_CATEGORIES } from "@/lib/content/about";
 
@@ -20,7 +20,7 @@ export function AboutTechStack() {
       {/* ── 4 Category Grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {STACK_CATEGORIES.map((cat, i) => {
-          const Icon = i === 0 ? Code2 : i === 1 ? Cpu : i === 2 ? Layers : Smartphone;
+          const Icon = i === 0 ? CodeIcon : i === 1 ? CpuIcon : i === 2 ? LayersIcon : SmartphoneIcon;
           return (
             <div
               key={i}

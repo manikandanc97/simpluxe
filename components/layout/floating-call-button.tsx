@@ -3,7 +3,7 @@
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import { MessageCircle, Phone, X } from "lucide-react";
+import { MessageCircleIcon, PhoneIcon, XIcon } from "@animateicons/react/lucide";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
 import { useEffect, useState, useRef } from "react";
 import { hoverLift, tapScale } from "@/lib/motion";
@@ -26,7 +26,7 @@ const ACTION_ITEMS = [
     id: "call",
     label: "Call Us",
     href: `tel:${PHONE_RAW}`,
-    Icon: Phone,
+    Icon: PhoneIcon,
     bg: "bg-primary text-primary-foreground",
     hoverBg: "hover:bg-primary/90",
   },
@@ -114,7 +114,7 @@ export function FloatingCallButton() {
                     {item.id === "whatsapp" ? (
                       <item.Icon className="w-5 h-5 text-white" />
                     ) : (
-                      <item.Icon size={18} fill="currentColor" strokeWidth={2} />
+                      <item.Icon size={18}  />
                     )}
                   </div>
                   <span className="text-sm font-bold text-foreground tracking-tight">
@@ -157,9 +157,9 @@ export function FloatingCallButton() {
             className="relative z-10"
           >
             {open ? (
-              <X size={24} strokeWidth={2.5} className="text-foreground" />
+              <XIcon size={24} className="text-foreground" />
             ) : (
-              <MessageCircle size={24} strokeWidth={2.2} />
+              <MessageCircleIcon size={24} />
             )}
           </motion.div>
         </motion.button>

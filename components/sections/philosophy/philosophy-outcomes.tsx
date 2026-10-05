@@ -36,7 +36,6 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
             transition={{ duration: 0.8, delay: 1.0, ease: "easeInOut" }}
             d="M 6 4 C 10 12, 16 18, 22 22"
             stroke="currentColor"
-            strokeWidth="1.5"
             strokeLinecap="round"
           />
           <motion.path
@@ -45,7 +44,6 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
             transition={{ duration: 0.3, delay: 1.7, ease: "easeOut" }}
             d="M 14 22 L 22 22 L 20 14"
             stroke="currentColor"
-            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -85,7 +83,7 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
               >
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-11 h-11 rounded-full bg-rose-50 border border-rose-100/50 flex items-center justify-center text-primary shrink-0">
-                    <StatIcon className="w-[18px] h-[18px]" strokeWidth={2.5} />
+                    <StatIcon className="w-[18px] h-[18px]" />
                   </div>
                   <div className="flex flex-col gap-1 min-w-0">
                     <span className="text-xl font-black text-neutral-900 tracking-tight leading-none font-satoshi flex items-baseline gap-[1px]">

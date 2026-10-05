@@ -1,7 +1,7 @@
 import { METRICS } from "@/lib/content/about";
-import { Users, Zap, ShieldCheck, Clock } from "lucide-react";
+import { UsersIcon, ZapIcon, ShieldCheckIcon, ClockIcon } from "@animateicons/react/lucide";
 
-const METRIC_ICONS = [Users, Zap, ShieldCheck, Clock];
+const METRIC_ICONS = [UsersIcon, ZapIcon, ShieldCheckIcon, ClockIcon];
 
 export function AboutMetrics() {
   return (

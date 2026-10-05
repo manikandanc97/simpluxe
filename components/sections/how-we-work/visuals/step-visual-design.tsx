@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  LayoutTemplate,
-  MousePointer2,
-  Palette,
-  Pencil,
-} from "lucide-react";
+import { LayoutDashboardIcon, MousePointerIcon, PaletteIcon, PencilIcon } from "@animateicons/react/lucide";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
@@ -20,7 +15,7 @@ export function StepVisualDesign() {
       >
         {/* Window Header */}
         <div className="w-full flex items-center gap-2 ml-4 sm:ml-8">
-          <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
+          <PaletteIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
           <span className="font-bold text-sm sm:text-base text-muted-foreground tracking-tight">
             Design System
           </span>
@@ -37,7 +32,7 @@ export function StepVisualDesign() {
           </div>
 
           <svg className="w-24 sm:w-32 h-3 sm:h-4 text-neutral-200" viewBox="0 0 100 16" fill="none">
-            <path d="M 50 0 L 50 16" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
+            <path d="M 50 0 L 50 16" stroke="currentColor" strokeDasharray="3 3" />
           </svg>
 
           {/* Typography */}
@@ -55,7 +50,7 @@ export function StepVisualDesign() {
         className="absolute top-2 sm:top-8 left-0 sm:-left-6 bg-[#FFF9C4]/95 border border-[#FFF176] rounded-xl p-1.5 sm:p-2.5 shadow-md shadow-amber-900/10 z-10 w-24 xs:w-28 sm:w-36 pointer-events-none select-none flex flex-col gap-0.5 sm:gap-1 scale-90 sm:scale-100 origin-top-left"
       >
         <div className="flex items-center gap-1">
-          <Pencil className="w-3.5 h-3.5 text-amber-600" />
+          <PencilIcon className="w-3.5 h-3.5 text-amber-600" />
           <span className="font-handwriting font-bold text-xs sm:text-sm text-neutral-800">
             UI / UX
           </span>
@@ -65,8 +60,8 @@ export function StepVisualDesign() {
           <div>• User First</div>
         </div>
         <svg className="absolute -bottom-3 sm:-bottom-4 right-1 w-5 h-5 sm:w-6 sm:h-6 text-primary" viewBox="0 0 28 28" fill="none">
-          <path d="M 6 4 C 10 12, 14 16, 22 22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M 14 22 L 22 22 L 20 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 6 4 C 10 12, 14 16, 22 22" stroke="currentColor" strokeLinecap="round" />
+          <path d="M 14 22 L 22 22 L 20 14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
 
@@ -80,8 +75,8 @@ export function StepVisualDesign() {
           Beautiful & <br /> Intuitive
         </span>
         <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary ml-auto -mt-1 transform rotate-12" viewBox="0 0 28 28" fill="none">
-          <path d="M 4 18 C 10 10, 18 10, 24 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M 16 6 L 24 6 L 22 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 4 18 C 10 10, 18 10, 24 6" stroke="currentColor" strokeLinecap="round" />
+          <path d="M 16 6 L 24 6 L 22 14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
 
@@ -95,7 +90,7 @@ export function StepVisualDesign() {
           <span className="font-bold text-xs sm:text-xs text-neutral-800">
             Components
           </span>
-          <LayoutTemplate className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500" />
+          <LayoutDashboardIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500" />
         </div>
         
         <div className="flex flex-col gap-1.5 sm:gap-2">
@@ -114,8 +109,8 @@ export function StepVisualDesign() {
         </div>
 
         <svg className="absolute -bottom-8 sm:-bottom-12 left-8 sm:left-14 w-6 h-10 sm:w-10 sm:h-14 text-primary transform -rotate-12" viewBox="0 0 32 48" fill="none">
-          <path d="M 12 4 C 12 20, 20 30, 20 44" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M 12 36 L 20 44 L 28 36" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 12 4 C 12 20, 20 30, 20 44" stroke="currentColor" strokeLinecap="round" />
+          <path d="M 12 36 L 20 44 L 28 36" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.div>
 
@@ -125,7 +120,7 @@ export function StepVisualDesign() {
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
         className="absolute bottom-8 sm:bottom-28 right-0 sm:right-3 bg-white/95 rounded-xl border border-neutral-200/90 shadow-md p-1.5 px-2 sm:px-2.5 flex items-center gap-1.5 z-20 pointer-events-none select-none scale-85 sm:scale-100 origin-bottom-right"
       >
-        <MousePointer2 className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+        <MousePointerIcon className="w-3.5 h-3.5 text-purple-600 shrink-0" />
         <span className="font-handwriting font-bold text-xs text-neutral-800 leading-tight">
           Interactive <br /> Prototypes
         </span>

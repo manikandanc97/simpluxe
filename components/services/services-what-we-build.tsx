@@ -2,7 +2,7 @@
 
 import { type ServiceData } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
-import { Layout, Users, Sliders, Database } from "lucide-react";
+import { LayoutDashboardIcon, UsersIcon, SlidersHorizontalIcon, DatabaseIcon } from "@animateicons/react/lucide";
 import { motion, AnimatePresence } from "motion/react";
 import { staggerContainer, fadeUp, hoverLift } from "@/lib/motion";
 interface ServicesWhatWeBuildProps {
@@ -43,10 +43,10 @@ export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
                 className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl ${item.bgColor} flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}
               >
                 <div className={item.iconColor}>
-                  {idx === 0 && <Layout size={22} />}
-                  {idx === 1 && <Users size={22} />}
-                  {idx === 2 && <Sliders size={22} />}
-                  {idx === 3 && <Database size={22} />}
+                  {idx === 0 && <LayoutDashboardIcon size={22} />}
+                  {idx === 1 && <UsersIcon size={22} />}
+                  {idx === 2 && <SlidersHorizontalIcon size={22} />}
+                  {idx === 3 && <DatabaseIcon size={22} />}
                 </div>
               </div>
 

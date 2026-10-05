@@ -9,7 +9,7 @@ import { AboutComparison } from "@/components/about/about-comparison";
 import { AboutTechStack } from "@/components/about/about-tech-stack";
 import { Container } from "@/components/ui/container";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
-import { MapPin, ShieldCheck, Zap, Code2 } from "lucide-react";
+import { MapPinIcon, ShieldCheckIcon, ZapIcon, CodeIcon } from "@animateicons/react/lucide";
 
 export function AboutView() {
   return (
@@ -42,7 +42,7 @@ export function AboutView() {
               {SITE.location && (
                 <Card variant="default" padding="compact" className="mt-8 flex flex-row items-center gap-4 w-full max-w-md">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
-                    <MapPin size={18} />
+                    <MapPinIcon size={18} />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider font-semibold">
@@ -62,7 +62,7 @@ export function AboutView() {
               <Card variant="default" padding="default" className="relative overflow-hidden">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
-                    <Zap size={18} />
+                    <ZapIcon size={18} />
                   </div>
                   <CardTitle className="text-base sm:text-lg font-bold">
                     {ABOUT_SECTION_CONTENT.pillar1Title}
@@ -78,7 +78,7 @@ export function AboutView() {
                 <Card variant="default" padding="compact" className="flex flex-col justify-between">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2 text-primary">
-                      <Code2 size={16} />
+                      <CodeIcon size={16} />
                       <span className="text-xs font-mono font-bold uppercase tracking-wider">
                         {ABOUT_SECTION_CONTENT.pillar2Title}
                       </span>
@@ -92,7 +92,7 @@ export function AboutView() {
                 <Card variant="default" padding="compact" className="flex flex-col justify-between">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2 text-primary">
-                      <ShieldCheck size={16} />
+                      <ShieldCheckIcon size={16} />
                       <span className="text-xs font-mono font-bold uppercase tracking-wider">
                         {ABOUT_SECTION_CONTENT.pillar3Title}
                       </span>

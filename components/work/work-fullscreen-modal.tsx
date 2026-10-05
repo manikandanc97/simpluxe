@@ -5,7 +5,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedX } from "@/components/ui/animated-icons/convenience-icons";
 import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
 import { type Project } from "@/types/project";
-import { Image as ImageIcon } from "lucide-react";
+import { ImageIcon as ImageIcon } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 

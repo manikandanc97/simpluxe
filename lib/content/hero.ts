@@ -1,4 +1,4 @@
-import { Users, Briefcase, Star } from "lucide-react";
+import { UsersIcon, BriefcaseIcon, StarIcon } from "@animateicons/react/lucide";
 import { HeroContent } from "@/types/hero";
 
 export const HERO_CONTENT: HeroContent = {
@@ -15,17 +15,17 @@ export const HERO_CONTENT: HeroContent = {
     {
       value: "50+",
       label: "Happy Clients",
-      icon: Users,
+      icon: UsersIcon,
     },
     {
       value: "100+",
       label: "Projects Delivered",
-      icon: Briefcase,
+      icon: BriefcaseIcon,
     },
     {
       value: "5 ★",
       label: "Client Satisfaction",
-      icon: Star,
+      icon: StarIcon,
     },
   ],
 };

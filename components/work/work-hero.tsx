@@ -3,17 +3,7 @@
 import { motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { CldImage } from "next-cloudinary";
-import {
-  Sparkles,
-  Zap,
-  Code2,
-  TrendingUp,
-  Layers,
-  CheckCircle2,
-  ShieldCheck,
-  Smartphone,
-  Cpu,
-} from "lucide-react";
+import { SparklesIcon, ZapIcon, CodeIcon, TrendingUpIcon, LayersIcon, CircleCheckIcon, ShieldCheckIcon, SmartphoneIcon, CpuIcon } from "@animateicons/react/lucide";
 import { NextJsIcon } from "./tech-icons";
 import { Container } from "@/components/ui/container";
 
@@ -64,7 +54,7 @@ export function WorkHero() {
             {/* Value Prop 1 */}
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-2xl bg-rose-50 flex items-center justify-center shrink-0 border border-rose-100/80">
-                <Sparkles size={18} className="text-primary" />
+                <SparklesIcon size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -79,7 +69,7 @@ export function WorkHero() {
             {/* Value Prop 2 */}
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center shrink-0 border border-purple-100/80">
-                <Zap size={18} className="text-[var(--chart-2)]" />
+                <ZapIcon size={18} className="text-[var(--chart-2)]" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -94,7 +84,7 @@ export function WorkHero() {
             {/* Value Prop 3 */}
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-2xl bg-pink-50 flex items-center justify-center shrink-0 border border-pink-100/80">
-                <Code2 size={18} className="text-primary" />
+                <CodeIcon size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -170,7 +160,7 @@ export function WorkHero() {
               className="absolute top-3 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-white/90 shadow-elevated"
             >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-[var(--primary)] to-[var(--primary)] flex items-center justify-center text-white shadow-xs shrink-0">
-                <TrendingUp size={15} className="text-white" />
+                <TrendingUpIcon size={15} className="text-white" />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -189,7 +179,7 @@ export function WorkHero() {
               className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-[var(--accent-soft)] shadow-violet"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-purple-50 text-[var(--chart-2)] flex items-center justify-center border border-purple-100 shrink-0">
-                <Layers size={14} />
+                <LayersIcon size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -207,7 +197,7 @@ export function WorkHero() {
               transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
               className="absolute top-44 sm:top-48 -left-1 sm:left-2 z-20 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-card"
             >
-              <Cpu size={11} className="text-[var(--chart-2)]" />
+              <CpuIcon size={11} className="text-[var(--chart-2)]" />
               <span className="text-[9px] font-bold text-muted-foreground">
                 Scalable Cloud
               </span>
@@ -220,7 +210,7 @@ export function WorkHero() {
               className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-[var(--accent-soft)] shadow-violet"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-indigo-50 text-[var(--chart-2)] flex items-center justify-center border border-indigo-100 shrink-0">
-                <Smartphone size={14} />
+                <SmartphoneIcon size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -247,7 +237,7 @@ export function WorkHero() {
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-xs"
             >
-              <CheckCircle2 size={12} className="text-emerald-500" />
+              <CircleCheckIcon size={12} className="text-emerald-500" />
               <span className="text-[9.5px] sm:text-xs font-bold text-foreground">
                 Sub-Second Speed
               </span>
@@ -259,7 +249,7 @@ export function WorkHero() {
               transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-xs"
             >
-              <ShieldCheck size={12} className="text-[var(--chart-3)]" />
+              <ShieldCheckIcon size={12} className="text-[var(--chart-3)]" />
               <span className="text-[9.5px] sm:text-xs font-bold text-foreground">
                 Secure &amp; Scalable
               </span>

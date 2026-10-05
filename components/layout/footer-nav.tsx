@@ -1,6 +1,6 @@
 "use client";
 
-import { House, Briefcase, Layers, Info, Mail, Sparkles } from "lucide-react";
+import { HouseIcon, BriefcaseIcon, LayersIcon, InfoIcon, MailIcon, SparklesIcon } from "@animateicons/react/lucide";
 import { NAV_ITEMS } from "@/lib/content/navigation";
 import { FOOTER_DATA } from "@/lib/content/footer";
 import { cn } from "@/lib/utils";
@@ -8,12 +8,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LUCIDE_ICON_MAP: Record<string, React.ElementType> = {
-  home: House,
-  briefcase: Briefcase,
-  layers: Layers,
-  info: Info,
-  mail: Mail,
-  sparkles: Sparkles,
+  home: HouseIcon,
+  briefcase: BriefcaseIcon,
+  layers: LayersIcon,
+  info: InfoIcon,
+  mail: MailIcon,
+  sparkles: SparklesIcon,
 };
 
 export function FooterNav() {
@@ -23,7 +23,7 @@ export function FooterNav() {
     <ul className="flex flex-col gap-4.5">
       {NAV_ITEMS.map((item) => {
         const iconName = FOOTER_DATA.navIcons[item.route] || "sparkles";
-        const Icon = LUCIDE_ICON_MAP[iconName] || Sparkles;
+        const Icon = LUCIDE_ICON_MAP[iconName] || SparklesIcon;
         const isActive = pathname === item.route || (item.route !== "/" && pathname?.startsWith(item.route));
         return (
           <li key={item.route}>

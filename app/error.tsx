@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { RefreshCwIcon } from "@animateicons/react/lucide";
 import { useEffect } from "react";
 
 export default function ErrorPage({
@@ -22,7 +23,10 @@ export default function ErrorPage({
           We encountered an unexpected error.
         </p>
       </div>
-      <Button onClick={() => reset()}>Try again</Button>
+      <Button onClick={() => reset()} className="gap-2">
+        <RefreshCwIcon size={16} />
+        <span>Try again</span>
+      </Button>
     </div>
   );
 }

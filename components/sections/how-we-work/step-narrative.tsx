@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { STEPS } from "@/lib/content/how-we-work";
@@ -110,7 +110,7 @@ export function StepNarrative({
         {activeStepIndex < totalSteps - 1 && (
           <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-neutral-400 font-medium">
             <span>or scroll down</span>
-            <ChevronDown className="w-3.5 h-3.5 text-rose-500 animate-bounce" />
+            <ChevronDownIcon className="w-3.5 h-3.5 text-rose-500 animate-bounce" />
           </span>
         )}
       </motion.div>

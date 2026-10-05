@@ -9,7 +9,7 @@ import { submitLead } from "@/lib/leads/actions";
 import { type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
 import { SITE } from "@/lib/content/site";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
-import { CheckCircle2, Lock, ShieldCheck, ChevronDown, Check } from "lucide-react";
+import { CircleCheckIcon, LockIcon, ShieldCheckIcon, ChevronDownIcon, CheckIcon } from "@animateicons/react/lucide";
 import { useActionState, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
@@ -41,7 +41,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
     return (
       <div className="py-12 flex flex-col items-center text-center gap-4">
         <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200/80 flex items-center justify-center">
-          <CheckCircle2 className="w-8 h-8" />
+          <CircleCheckIcon className="w-8 h-8" />
         </div>
         <h3 className="text-2xl font-bold tracking-tight text-foreground font-satoshi">Thanks — we&apos;ve got it.</h3>
         <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
@@ -205,7 +205,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
                   {selectedProjectType}
                 </span>
               </div>
-              <ChevronDown
+              <ChevronDownIcon
                 size={16}
                 className={cn(
                   "text-muted-foreground transition-transform duration-200 shrink-0",
@@ -250,7 +250,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
                           />
                           <span>{type}</span>
                         </div>
-                        {isSelected && <Check size={14} className="text-primary" />}
+                        {isSelected && <CheckIcon size={14} className="text-primary" />}
                       </button>
                     );
                   })}
@@ -322,12 +322,12 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
       {/* Enterprise Trust & Security Badges */}
       <div className="pt-4 border-t border-border flex flex-wrap items-center justify-center gap-4 sm:gap-4 text-xs text-muted-foreground font-mono">
         <div className="flex items-center gap-1.5">
-          <Lock size={13} className="text-emerald-600" />
+          <LockIcon size={13} className="text-emerald-600" />
           <span>256-Bit SSL Encrypted</span>
         </div>
         <span>&bull;</span>
         <div className="flex items-center gap-1.5">
-          <ShieldCheck size={13} className="text-primary" />
+          <ShieldCheckIcon size={13} className="text-primary" />
           <span>Mutual NDA Protected</span>
         </div>
         <span>&bull;</span>

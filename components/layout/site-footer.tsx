@@ -229,9 +229,6 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
             <Link href="/terms" className="hover:text-foreground transition-colors">
               {FOOTER_DATA.termsOfServiceText}
             </Link>
-            <Link href="/sitemap" className="hover:text-foreground transition-colors">
-              {FOOTER_DATA.sitemapText}
-            </Link>
 
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/8 text-primary text-xs font-semibold tracking-wide ml-2 border border-primary/15">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

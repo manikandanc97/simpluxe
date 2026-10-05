@@ -51,7 +51,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
                   step.active ? "text-primary" : "text-primary/70"
                 }`}
               >
-                <StepIcon className="w-4 h-4" strokeWidth={2.5} />
+                <StepIcon className="w-4 h-4"  />
               </div>
 
               {/* Content */}

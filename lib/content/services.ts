@@ -1,14 +1,5 @@
-import {
-  Globe,
-  LayoutDashboard,
-  ShoppingBag,
-  Smartphone,
-  Package2,
-  Palette,
-  Layers,
-  Cpu,
-  type LucideIcon,
-} from "lucide-react";
+import { ElementType as LucideIcon } from "react";
+import { GlobeIcon, LayoutDashboardIcon, ShoppingBagIcon, SmartphoneIcon, PackageIcon, PaletteIcon, LayersIcon, CpuIcon, type LucideIcon } from "@animateicons/react/lucide";
 
 export interface ServiceData {
   id: string;
@@ -68,7 +59,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "id": "websites",
     "number": "01",
     "name": "Websites",
-    "icon": Globe,
+    "icon": GlobeIcon,
     "category": "Client Interface",
     "outcome": "Clear digital experiences built to turn visitors into customers.",
     "pillars": [
@@ -217,7 +208,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "number": "02",
     "name": "Web applications",
     "category": "Client Interface",
-    "icon": LayoutDashboard,
+    "icon": LayoutDashboardIcon,
     "outcome": "Focused software built around how your business actually works.",
     "pillars": [
       "Architecture",
@@ -365,7 +356,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "id": "ecommerce",
     "number": "03",
     "name": "E-commerce",
-    "icon": ShoppingBag,
+    "icon": ShoppingBagIcon,
     "category": "Client Interface",
     "outcome": "High-converting online stores that turn browsers into loyal buyers.",
     "pillars": [
@@ -514,7 +505,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "number": "04",
     "name": "Mobile apps",
     "category": "Client Interface",
-    "icon": Smartphone,
+    "icon": SmartphoneIcon,
     "outcome": "Useful mobile experiences built for real-world customers.",
     "pillars": [
       "Cross-Platform",
@@ -661,7 +652,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "number": "05",
     "name": "SaaS products",
     "category": "Core Systems",
-    "icon": Package2,
+    "icon": PackageIcon,
     "outcome": "From first release to scalable product systems.",
     "pillars": [
       "Monetization",
@@ -809,7 +800,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "number": "06",
     "name": "Branding & identity",
     "category": "Foundation",
-    "icon": Palette,
+    "icon": PaletteIcon,
     "outcome": "A visual identity that makes the business recognizable.",
     "pillars": [
       "Brand Voice",
@@ -953,7 +944,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "number": "07",
     "name": "UI/UX design",
     "category": "Foundation",
-    "icon": Layers,
+    "icon": LayersIcon,
     "outcome": "Intuitive product design that eliminates user friction and confusion.",
     "pillars": [
       "User Journeys",
@@ -1097,7 +1088,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "number": "08",
     "name": "Custom software",
     "category": "Core Systems",
-    "icon": Cpu,
+    "icon": CpuIcon,
     "outcome": "Tailored software solutions engineered for specific business operations.",
     "pillars": [
       "Discovery",

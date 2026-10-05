@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUpIcon } from "@animateicons/react/lucide";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -65,7 +65,6 @@ export function ScrollToTop() {
             r="22"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2.5"
             className="text-muted border-border"
           />
           <motion.circle
@@ -74,7 +73,6 @@ export function ScrollToTop() {
             r="22"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2.5"
             strokeLinecap="round"
             className="text-primary"
             style={{
@@ -82,7 +80,7 @@ export function ScrollToTop() {
             }}
           />
         </svg>
-        <ArrowUp size={18} strokeWidth={2.5} className="text-foreground group-hover:text-primary transition-colors" />
+        <ArrowUpIcon size={18} className="text-foreground group-hover:text-primary transition-colors" />
       </motion.button>
     </motion.div>
   );

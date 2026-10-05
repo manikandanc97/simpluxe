@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MousePointer2 } from "lucide-react";
+import { MousePointerIcon } from "@animateicons/react/lucide";
 import { ChevronLeftIcon } from "@animateicons/react/lucide/chevron-left-icon";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
@@ -29,20 +29,18 @@ export function WhatWeBuildNav({
           Drag to explore
         </span>
         <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-foreground">
-          <MousePointer2 size={12} />
+          <MousePointerIcon size={12} />
         </div>
         <svg width="28" height="18" viewBox="0 0 35 20" fill="none" className="text-primary -ml-0.5 transform scale-x-[-1]">
           <path
             d="M32 16 C20 18, 10 12, 4 4"
             stroke="currentColor"
-            strokeWidth="2"
             strokeLinecap="round"
             fill="none"
           />
           <path
             d="M10 3 L3 4 L6 11"
             stroke="currentColor"
-            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"

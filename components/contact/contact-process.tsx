@@ -1,5 +1,5 @@
 import { CONTACT_STEPS } from "@/lib/content/contact";
-import { ShieldCheck, FileCheck, Code2 } from "lucide-react";
+import { ShieldCheckIcon, FileCheckIcon, CodeIcon } from "@animateicons/react/lucide";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -48,15 +48,15 @@ export function ContactProcess() {
         </span>
         <div className="flex flex-col gap-2 w-full text-xs text-muted-foreground">
           <div className="flex items-start gap-2">
-            <ShieldCheck size={16} className="text-primary shrink-0 mt-0.5" />
+            <ShieldCheckIcon size={16} className="text-primary shrink-0 mt-0.5" />
             <span><strong className="text-foreground">NDA Ready:</strong> Complete confidentiality.</span>
           </div>
           <div className="flex items-start gap-2">
-            <FileCheck size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+            <FileCheckIcon size={16} className="text-emerald-600 shrink-0 mt-0.5" />
             <span><strong className="text-foreground">IP Transfer:</strong> Full repository ownership.</span>
           </div>
           <div className="flex items-start gap-2">
-            <Code2 size={16} className="text-primary/80 shrink-0 mt-0.5" />
+            <CodeIcon size={16} className="text-primary/80 shrink-0 mt-0.5" />
             <span><strong className="text-foreground">No Lock-in:</strong> Clean, maintainable code.</span>
           </div>
         </div>

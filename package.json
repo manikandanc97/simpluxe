@@ -1,5 +1,5 @@
 {
-  "name": "simpleprime",
+  "name": "simpleluxe",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@animateicons/react": "^0.5.0",
+    "@animateicons/react": "^0.11.0",
     "@base-ui/react": "^1.8.0",
     "@supabase/supabase-js": "^2.116.0",
     "@vercel/analytics": "^2.0.1",
@@ -17,7 +17,7 @@
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.3.0",
-    "lucide-react": "^1.48.0",
+    "lucide-react": "^1.52.0",
     "motion": "^13.4.0",
     "next": "16.3.5",
     "next-cloudinary": "^6.19.3",

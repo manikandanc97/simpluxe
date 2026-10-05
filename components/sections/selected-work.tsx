@@ -12,7 +12,8 @@ export function SelectedWork() {
   return (
     <Section 
       id="selected-work"
-      className="font-satoshi selection:bg-primary/20 selection:text-primary overflow-hidden scroll-mt-24"
+      initial="visible"
+      className="font-satoshi selection:bg-primary/20 selection:text-primary overflow-hidden scroll-mt-20"
     >
       {/* ── Background Decorative Elements ── */}
       <div 

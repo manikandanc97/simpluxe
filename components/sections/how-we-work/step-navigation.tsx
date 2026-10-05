@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { CheckIcon } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils";
 import { STEPS } from "@/lib/content/how-we-work";
 import React from "react";
@@ -53,7 +53,7 @@ export function StepNavigation({
                     : "bg-purple-50 text-purple-700 font-bold group-hover:bg-purple-100"
                 )}
               >
-                {isCompleted ? <Check className="w-3.5 h-3.5 stroke-[2.5]" /> : step.number}
+                {isCompleted ? <CheckIcon className="w-3.5 h-3.5 stroke-[2.5]" /> : step.number}
               </div>
 
               {/* Step Icon */}
@@ -103,13 +103,11 @@ export function StepNavigation({
                     <path
                       d="M 4 8 C 20 20, 36 20, 50 8"
                       stroke="currentColor"
-                      strokeWidth="1.5"
                       strokeDasharray="3 3"
                     />
                     <path
                       d="M 43 9 L 50 8 L 48 15"
                       stroke="currentColor"
-                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
@@ -127,13 +125,11 @@ export function StepNavigation({
                     <path
                       d="M 4 14 C 16 14, 22 26, 14 26 C 6 26, 6 14, 22 10 C 36 6, 46 14, 52 22"
                       stroke="currentColor"
-                      strokeWidth="1.5"
                       strokeDasharray="3 3"
                     />
                     <path
                       d="M 51 15 L 52 22 L 46 19"
                       stroke="currentColor"
-                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
@@ -151,13 +147,11 @@ export function StepNavigation({
                     <path
                       d="M 4 18 C 20 6, 36 6, 50 18"
                       stroke="currentColor"
-                      strokeWidth="1.5"
                       strokeDasharray="3 3"
                     />
                     <path
                       d="M 48 11 L 50 18 L 43 17"
                       stroke="currentColor"
-                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />

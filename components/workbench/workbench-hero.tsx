@@ -1,7 +1,7 @@
 "use client";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ChevronDown, Play, ArrowRight } from "lucide-react";
+import { ChevronDownIcon, PlayIcon, ArrowRightIcon } from "@animateicons/react/lucide";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { useRef } from "react";
@@ -89,7 +89,6 @@ export function WorkbenchHero() {
                       <motion.path
                         d="M4 14 C60 4, 150 6, 230 12"
                         stroke="#922F55"
-                        strokeWidth="4.5"
                         strokeLinecap="round"
                         variants={{
                           hidden: { pathLength: 0, opacity: 0 },
@@ -99,7 +98,6 @@ export function WorkbenchHero() {
                       <motion.path
                         d="M40 18 C105 13, 175 14, 215 17"
                         stroke="#D23D78"
-                        strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeOpacity="0.85"
                         variants={{
@@ -110,7 +108,6 @@ export function WorkbenchHero() {
                       <motion.path
                         d="M224 8 L234 12 L227 18"
                         stroke="#6C2BB8"
-                        strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         variants={{
@@ -144,7 +141,7 @@ export function WorkbenchHero() {
                 className="group rounded-full shadow-elevated h-12 sm:h-12 w-auto justify-center px-6 sm:px-8"
               >
                 <span className="text-sm sm:text-base whitespace-nowrap">{HERO_CONTENT.ctaPrimary}</span>
-                <ArrowRight size={16} className="text-white ml-1 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRightIcon size={16} className="text-white ml-1 shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Button>
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -154,16 +151,29 @@ export function WorkbenchHero() {
                 <Link
                   href="#selected-work"
                   onClick={(e) => {
+                    e.preventDefault();
                     const section = document.getElementById("selected-work");
-                    if (section) {
-                      e.preventDefault();
-                      section.scrollIntoView({ behavior: "smooth" });
-                    }
+                    if (!section) return;
+                    // Measure the fixed navbar's actual rendered bottom — accounts for
+                    // the motion.header y-transform and any padding/margin changes.
+                    const header = document.querySelector("header");
+                    const navbarBottom = header
+                      ? header.getBoundingClientRect().bottom
+                      : 72;
+                    // section.getBoundingClientRect().top gives the viewport-relative top.
+                    // Adding scrollY converts it to an absolute document position.
+                    // The Section has initial="visible" so no Framer Motion y-offset applies.
+                    const sectionTop =
+                      section.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({
+                      top: sectionTop - navbarBottom - 16,
+                      behavior: "smooth",
+                    });
                   }}
                   className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto text-left"
                 >
                   <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-[rgba(30,24,30,0.08)] text-foreground group-hover:scale-105 transition-transform pl-0.5 shrink-0">
-                    <Play size={13} className="fill-current" />
+                    <PlayIcon size={13} className="fill-current" />
                   </div>
                   <div className="flex flex-col text-left shrink-0">
                     <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">{HERO_CONTENT.ctaSecondaryTitle}</span>
@@ -201,7 +211,7 @@ export function WorkbenchHero() {
         <div
           className="w-4 h-4 rounded-full border-[1.5px] border-slate-300 group-hover:border-primary/50 flex items-center justify-center transition-colors animate-bounce"
         >
-          <ChevronDown size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
+          <ChevronDownIcon size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
         </div>
       </button>
     </section>

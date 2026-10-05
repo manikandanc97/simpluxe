@@ -1,7 +1,7 @@
 "use client";
 
 import { FLOW_NODES } from "@/lib/content/philosophy";
-import { Box, LayoutGrid, Lightbulb, TrendingUp, Users } from "lucide-react";
+import { BoxIcon, LayoutGridIcon, LightbulbIcon, TrendingUpIcon, UsersIcon } from "@animateicons/react/lucide";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
 
@@ -42,7 +42,6 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           cy="180"
           r="125"
           stroke="#E2E8F0"
-          strokeWidth="1.5"
           strokeDasharray="4 6"
         />
 
@@ -52,7 +51,6 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           cy="180"
           r="95"
           stroke="#FBCFE8"
-          strokeWidth="1.5"
           opacity="0.8"
         />
 
@@ -60,36 +58,32 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         <path
           d="M 180 85 C 215 85, 230 115, 240 128"
           stroke="url(#flowLineGrad)"
-          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         <path
           d="M 420 85 C 385 85, 370 115, 360 128"
           stroke="url(#flowLineGrad)"
-          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         <path
           d="M 180 275 C 215 275, 230 245, 240 232"
           stroke="url(#flowLineGrad)"
-          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         <path
           d="M 420 275 C 385 275, 370 245, 360 232"
           stroke="url(#flowLineGrad)"
-          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         {/* Glowing Nodes on the Ring */}
-        <circle cx="240" cy="128" r="4" fill="#FFFFFF" stroke="#D23D78" strokeWidth="2.5" />
-        <circle cx="360" cy="128" r="4" fill="#FFFFFF" stroke="#7C3AED" strokeWidth="2.5" />
-        <circle cx="240" cy="232" r="4" fill="#FFFFFF" stroke="#D23D78" strokeWidth="2.5" />
-        <circle cx="360" cy="232" r="4" fill="#FFFFFF" stroke="#7C3AED" strokeWidth="2.5" />
+        <circle cx="240" cy="128" r="4" fill="#FFFFFF" stroke="#D23D78" />
+        <circle cx="360" cy="128" r="4" fill="#FFFFFF" stroke="#7C3AED" />
+        <circle cx="240" cy="232" r="4" fill="#FFFFFF" stroke="#D23D78" />
+        <circle cx="360" cy="232" r="4" fill="#FFFFFF" stroke="#7C3AED" />
       </svg>
 
       {/* ── Top Row of Feature Cards ── */}
@@ -103,12 +97,12 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-rose-50 text-primary border-rose-200/60 uppercase tracking-widest leading-none">
-              <LayoutGrid className="w-3 h-3" strokeWidth={2.5} /> {FLOW_NODES.topLeft.badge}
+              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.topLeft.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
             <div className="w-8 h-8 flex items-center justify-center shrink-0 text-primary bg-rose-50/50 rounded-full">
-              <Lightbulb className="w-[18px] h-[18px]" strokeWidth={2.5} />
+              <LightbulbIcon className="w-[18px] h-[18px]" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">
@@ -130,12 +124,12 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-[var(--chart-2)] border-purple-200/60 uppercase tracking-widest leading-none">
-              <LayoutGrid className="w-3 h-3" strokeWidth={2.5} /> {FLOW_NODES.topRight.badge}
+              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.topRight.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
             <div className="w-8 h-8 flex items-center justify-center shrink-0 text-[var(--chart-2)] bg-purple-50/50 rounded-full">
-              <TrendingUp className="w-[18px] h-[18px]" strokeWidth={2.5} />
+              <TrendingUpIcon className="w-[18px] h-[18px]" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">
@@ -179,12 +173,12 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-rose-50 text-primary border-rose-200/60 uppercase tracking-widest leading-none">
-              <LayoutGrid className="w-3 h-3" strokeWidth={2.5} /> {FLOW_NODES.bottomLeft.badge}
+              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.bottomLeft.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
             <div className="w-8 h-8 flex items-center justify-center shrink-0 text-primary bg-rose-50/50 rounded-full">
-              <Box className="w-[18px] h-[18px]" strokeWidth={2.5} />
+              <BoxIcon className="w-[18px] h-[18px]" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">
@@ -206,12 +200,12 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-[var(--chart-2)] border-purple-200/60 uppercase tracking-widest leading-none">
-              <LayoutGrid className="w-3 h-3" strokeWidth={2.5} /> {FLOW_NODES.bottomRight.badge}
+              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.bottomRight.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
             <div className="w-8 h-8 flex items-center justify-center shrink-0 text-[var(--chart-2)] bg-purple-50/50 rounded-full">
-              <Users className="w-[18px] h-[18px]" strokeWidth={2.5} />
+              <UsersIcon className="w-[18px] h-[18px]" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">

@@ -1,5 +1,6 @@
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
+import { Home } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -10,8 +11,9 @@ export default function NotFound() {
           The requested page doesn&apos;t exist. Let&apos;s get you back home.
         </p>
       </div>
-      <Link href="/" className={buttonVariants({ variant: "default", size: "lg" })}>
-        Back to Home &rarr;
+      <Link href="/" className={buttonVariants({ variant: "default", size: "lg", className: "gap-2" })}>
+        <Home size={16} />
+        <span>Back to Home</span>
       </Link>
     </div>
   );

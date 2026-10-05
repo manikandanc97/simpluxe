@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CircleCheckIcon } from "@animateicons/react/lucide";
 import { cn } from "@/lib/utils";
 import { PRINCIPLES, ABOUT_PRINCIPLES_CONTENT } from "@/lib/content/about";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -88,7 +88,7 @@ export function AboutPrinciples() {
 
               {/* Deliverable footnote */}
               <div className="mt-auto pt-6 border-t border-border flex items-center gap-2 type-label text-muted-foreground">
-                <CheckCircle2 size={15} className="text-primary shrink-0" />
+                <CircleCheckIcon size={15} className="text-primary shrink-0" />
                 <span>{principle.deliverable}</span>
               </div>
             </div>

@@ -2,38 +2,34 @@
 
 import { type ServiceData, SERVICES_DELIVERABLES_CONTENT } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
-import { 
-  CheckCircle2, Target, Rocket, Building, Shield, RefreshCw, 
-  Briefcase, Award, Crown, ShoppingBag, Truck, Zap, Repeat, 
-  Smartphone, Users, Package, Sparkles, Layout, Play, Code, 
-  TrendingDown, Headphones, FileText, Unlock, Cpu, type LucideIcon
-} from "lucide-react";
+import { ElementType as LucideIcon } from "react";
+import { CircleCheckIcon, TargetIcon, RocketIcon, Building2Icon, ShieldIcon, RefreshCwIcon, BriefcaseIcon, MedalIcon, CrownIcon, ShoppingBagIcon, TruckIcon, ZapIcon, RepeatIcon, SmartphoneIcon, UsersIcon, PackageIcon, SparklesIcon, LayoutDashboardIcon, PlayIcon, CodeIcon, TrendingDownIcon, HeadphonesIcon, FileTextIcon, LockOpenIcon, CpuIcon, type LucideIcon } from "@animateicons/react/lucide";
 import { motion, AnimatePresence } from "motion/react";
 
 const IconMap: Record<string, LucideIcon> = {
-  rocket: Rocket,
-  crown: Crown,
-  briefcase: Briefcase,
-  award: Award,
-  building: Building,
-  shield: Shield,
-  refresh: RefreshCw,
-  "shopping-bag": ShoppingBag,
-  truck: Truck,
-  zap: Zap,
-  repeat: Repeat,
-  smartphone: Smartphone,
-  users: Users,
-  package: Package,
-  sparkles: Sparkles,
-  layout: Layout,
-  play: Play,
-  code: Code,
-  "trending-down": TrendingDown,
-  headphones: Headphones,
-  "file-text": FileText,
-  unlock: Unlock,
-  cpu: Cpu,
+  rocket: RocketIcon,
+  crown: CrownIcon,
+  briefcase: BriefcaseIcon,
+  award: MedalIcon,
+  building: Building2Icon,
+  shield: ShieldIcon,
+  refresh: RefreshCwIcon,
+  "shopping-bag": ShoppingBagIcon,
+  truck: TruckIcon,
+  zap: ZapIcon,
+  repeat: RepeatIcon,
+  smartphone: SmartphoneIcon,
+  users: UsersIcon,
+  package: PackageIcon,
+  sparkles: SparklesIcon,
+  layout: LayoutDashboardIcon,
+  play: PlayIcon,
+  code: CodeIcon,
+  "trending-down": TrendingDownIcon,
+  headphones: HeadphonesIcon,
+  "file-text": FileTextIcon,
+  unlock: LockOpenIcon,
+  cpu: CpuIcon,
 };
 
 const ColorMap: Record<string, { primary: string; fill: string; bg: string; border: string }> = {
@@ -80,7 +76,7 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
               <div className="flex flex-col gap-4 sm:gap-4.5">
                 {col1.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <CheckCircle2
+                    <CircleCheckIcon
                       size={17}
                       className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
                     />
@@ -95,7 +91,7 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
               <div className="flex flex-col gap-4 sm:gap-4.5">
                 {col2.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <CheckCircle2
+                    <CircleCheckIcon
                       size={17}
                       className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
                     />
@@ -113,21 +109,6 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
         <div className="lg:col-span-5 flex">
           <div className="w-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-surface-elevated shadow-card flex flex-col justify-between text-left">
             <div>
-              {/* Header */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className={`w-10 h-10 rounded-2xl ${colors.bg} border ${colors.border} flex items-center justify-center ${colors.primary} shrink-0 transition-colors duration-300`}>
-                  <Target size={20} />
-                </div>
-                <div>
-                  <h4 className="text-base sm:text-lg font-black text-foreground tracking-tight">
-                    {SERVICES_DELIVERABLES_CONTENT.perfectForTitle}
-                  </h4>
-                  <p className="text-xs sm:text-xs text-muted-foreground mt-0.5">
-                    {SERVICES_DELIVERABLES_CONTENT.perfectForDesc}
-                  </p>
-                </div>
-              </div>
-
               {/* Audience Items List */}
               <AnimatePresence mode="wait">
                 <motion.div
@@ -138,8 +119,23 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
                   transition={{ duration: 0.28 }}
                   className="flex flex-col gap-4.5"
                 >
+                  {/* Perfect For Header treated as first item */}
+                  <div className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group">
+                    <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
+                      <TargetIcon size={15} />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
+                        {SERVICES_DELIVERABLES_CONTENT.perfectForTitle}
+                      </span>
+                      <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
+                        {SERVICES_DELIVERABLES_CONTENT.perfectForDesc}
+                      </span>
+                    </div>
+                  </div>
+
                   {service.perfectFor.map((item, idx) => {
-                    const IconComponent = IconMap[item.icon] || Target;
+                    const IconComponent = IconMap[item.icon] || TargetIcon;
                     return (
                       <div
                         key={idx}

@@ -1,10 +1,10 @@
-import { Box, Briefcase, Database, Layers, Lightbulb, Target, TrendingUp, Users, Zap } from 'lucide-react';
+import { BoxIcon, BriefcaseIcon, DatabaseIcon, LayersIcon, LightbulbIcon, TargetIcon, TrendingUpIcon, UsersIcon, ZapIcon } from "@animateicons/react/lucide";
 
 // ─── Left Column: Process Steps ─────────────────────────────────────────────
 export const PROCESS_STEPS = [
   {
     num: "01",
-    icon: Lightbulb,
+    icon: LightbulbIcon,
     title: "Clarity",
     desc: "Clear goals.",
     subDesc: "No confusion.",
@@ -12,7 +12,7 @@ export const PROCESS_STEPS = [
   },
   {
     num: "02",
-    icon: Zap,
+    icon: ZapIcon,
     title: "Speed",
     desc: "Move fast.",
     subDesc: "Ship early.",
@@ -20,7 +20,7 @@ export const PROCESS_STEPS = [
   },
   {
     num: "03",
-    icon: Layers,
+    icon: LayersIcon,
     title: "Craft",
     desc: "Pixel perfect.",
     subDesc: "Production ready.",
@@ -28,7 +28,7 @@ export const PROCESS_STEPS = [
   },
   {
     num: "04",
-    icon: Users,
+    icon: UsersIcon,
     title: "Ownership",
     desc: "Direct access.",
     subDesc: "We stand with you.",
@@ -44,7 +44,7 @@ export const FLOW_NODES = {
     badgeColor: "rose",
     title: "Direct access",
     desc: "Work directly with the team building your product.",
-    icon: Lightbulb,
+    icon: LightbulbIcon,
   },
   topRight: {
     id: "weekly-progress",
@@ -52,7 +52,7 @@ export const FLOW_NODES = {
     badgeColor: "purple",
     title: "Weekly progress",
     desc: "Transparent updates and real milestones every week.",
-    icon: TrendingUp,
+    icon: TrendingUpIcon,
   },
   bottomLeft: {
     id: "production-quality",
@@ -60,7 +60,7 @@ export const FLOW_NODES = {
     badgeColor: "rose",
     title: "Production quality",
     desc: "Modern tech, clean designs, and scalable architecture.",
-    icon: Box,
+    icon: BoxIcon,
   },
   bottomRight: {
     id: "clear-ownership",
@@ -68,7 +68,7 @@ export const FLOW_NODES = {
     badgeColor: "purple",
     title: "Clear ownership",
     desc: "No handoff friction. We take responsibility end to end.",
-    icon: Users,
+    icon: UsersIcon,
   },
 };
 
@@ -78,26 +78,26 @@ export const REAL_OUTCOMES = [
     value: 5,
     suffix: "+",
     label: "Projects shipped",
-    icon: Briefcase,
+    icon: BriefcaseIcon,
   },
   {
     value: 3,
     suffix: "×",
     label: "Faster iteration",
-    icon: Zap,
+    icon: ZapIcon,
   },
   {
     value: 100,
     suffix: "%",
     label: "Milestone visibility",
-    icon: Target,
+    icon: TargetIcon,
   },
   {
     value: 500,
     prefix: "<",
     suffix: "ms",
     label: "Performance target",
-    icon: Database,
+    icon: DatabaseIcon,
   },
 ];
 

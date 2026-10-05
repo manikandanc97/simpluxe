@@ -41,6 +41,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     return (
       <motion.div
         ref={ref}
+        data-slot="card"
         whileHover={variant === "interactive" ? hoverLift : undefined}
         className={cn(cardVariants({ variant, padding }), className)}
         {...(props as unknown as React.ComponentProps<typeof motion.div>)}
