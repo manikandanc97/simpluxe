@@ -104,8 +104,8 @@ export function AnimatedIcon({
   parentSelector,
   ...props
 }: AnimatedIconProps) {
-  const IconComponent = icon || (name ? ICON_COMPONENT_MAP[name] : null) || SparklesIcon;
-  const SolidComponent = solid && name ? SOLID_ICON_MAP[name] : null;
+  const IconComponent = (icon || (name ? ICON_COMPONENT_MAP[name] : null) || SparklesIcon) as React.ElementType<any>;
+  const SolidComponent = solid && name ? (SOLID_ICON_MAP[name] as React.ElementType<any>) : null;
 
   const iconRef = useRef<AnimateIconHandle>(null);
   const containerRef = useRef<HTMLSpanElement>(null);
