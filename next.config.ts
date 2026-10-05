@@ -57,11 +57,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
         hostname: "www.google.com",
         pathname: "/s2/favicons/**",
       },
@@ -71,6 +66,9 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  experimental: {
+    inlineCss: true,
   },
 };
 

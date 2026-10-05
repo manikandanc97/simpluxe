@@ -229,6 +229,7 @@ export function Hero3DCoder({ className }: Hero3DCoderProps) {
               className="object-contain drop-shadow-xl"
               priority
               loading="eager"
+              fetchPriority="high"
             />
           </div>
           </motion.div>

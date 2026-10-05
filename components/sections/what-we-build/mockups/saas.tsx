@@ -54,9 +54,9 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
 
           {isActive && (
             <motion.div
-              className="absolute top-1/2 left-1/2 h-0.5 bg-gradient-to-r from-[#08B875] to-[#6C2BB8] z-20"
-              initial={{ width: 0, x: -10, y: 0, opacity: 0 }}
-              animate={{ width: [0, 40, 0], x: [-10, -10, 10], opacity: [0, 1, 0] }}
+              className="absolute top-1/2 left-1/2 h-0.5 w-10 bg-gradient-to-r from-[#08B875] to-[#6C2BB8] z-20 origin-left"
+              initial={{ scaleX: 0, x: -10, y: 0, opacity: 0 }}
+              animate={{ scaleX: [0, 1, 0], x: [-10, -10, 10], opacity: [0, 1, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
           )}

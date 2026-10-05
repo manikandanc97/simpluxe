@@ -1,13 +1,15 @@
-import { FloatingCallButton } from "@/components/layout/floating-call-button";
-import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { MobileMenuProvider } from "@/components/layout/mobile-menu-context";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteNavbar } from "@/components/layout/site-navbar";
 import { LeadProvider } from "@/components/leads/lead-provider";
 import { MotionProvider } from "@/components/providers/motion-provider";
-import { CommandPalette } from "@/components/ui/command-palette";
-import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
+import dynamic from "next/dynamic";
+
+const FloatingCallButton = dynamic(() => import("@/components/layout/floating-call-button").then((mod) => mod.FloatingCallButton));
+const MobileBottomNav = dynamic(() => import("@/components/layout/mobile-bottom-nav").then((mod) => mod.MobileBottomNav));
+const SiteFooter = dynamic(() => import("@/components/layout/site-footer").then((mod) => mod.SiteFooter));
+const CommandPalette = dynamic(() => import("@/components/ui/command-palette").then((mod) => mod.CommandPalette));
+const ScrollToTop = dynamic(() => import("@/components/ui/scroll-to-top").then((mod) => mod.ScrollToTop));
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";

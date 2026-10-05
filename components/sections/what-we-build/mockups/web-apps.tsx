@@ -71,11 +71,11 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
               </div>
 
               <div className="bg-slate-50 border border-black/[0.04] rounded-lg p-2 flex items-end justify-between h-14 gap-1.5 overflow-hidden">
-                <motion.div animate={isActive ? { height: ["40%", "70%", "40%"] } : { height: "40%" }} transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0 }} className="w-full bg-[#E8D9FE] rounded-t" />
-                <motion.div animate={isActive ? { height: ["75%", "50%", "75%"] } : { height: "75%" }} transition={{ duration: 3.5, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.2 }} className="w-full bg-primary rounded-t" />
-                <motion.div animate={isActive ? { height: ["95%", "80%", "95%"] } : { height: "95%" }} transition={{ duration: 4, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.4 }} className="w-full bg-[#6C2BB8] rounded-t" />
-                <motion.div animate={isActive ? { height: ["60%", "90%", "60%"] } : { height: "60%" }} transition={{ duration: 3.2, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.1 }} className="w-full bg-[#F05BAD] rounded-t" />
-                <motion.div animate={isActive ? { height: ["80%", "45%", "80%"] } : { height: "80%" }} transition={{ duration: 3.8, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.3 }} className="w-full bg-[#4BA8FF] rounded-t" />
+                <motion.div animate={isActive ? { scaleY: [0.4, 0.7, 0.4] } : { scaleY: 0.4 }} transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0 }} className="w-full bg-[#E8D9FE] rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.75, 0.5, 0.75] } : { scaleY: 0.75 }} transition={{ duration: 3.5, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.2 }} className="w-full bg-primary rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.95, 0.8, 0.95] } : { scaleY: 0.95 }} transition={{ duration: 4, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.4 }} className="w-full bg-[#6C2BB8] rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.6, 0.9, 0.6] } : { scaleY: 0.6 }} transition={{ duration: 3.2, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.1 }} className="w-full bg-[#F05BAD] rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.8, 0.45, 0.8] } : { scaleY: 0.8 }} transition={{ duration: 3.8, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.3 }} className="w-full bg-[#4BA8FF] rounded-t h-full origin-bottom" />
               </div>
             </motion.div>
 
