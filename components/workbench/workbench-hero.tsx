@@ -149,24 +149,26 @@ export function WorkbenchHero() {
                 transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
-                  href="#selected-work"
+                  href="#selected-work-scroll-anchor"
                   onClick={(e) => {
                     e.preventDefault();
-                    const section = document.getElementById("selected-work");
-                    if (!section) return;
-                    // Measure the fixed navbar's actual rendered bottom — accounts for
-                    // the motion.header y-transform and any padding/margin changes.
+                    const target = document.getElementById("selected-work-scroll-anchor");
                     const header = document.querySelector("header");
-                    const navbarBottom = header
-                      ? header.getBoundingClientRect().bottom
-                      : 72;
-                    // section.getBoundingClientRect().top gives the viewport-relative top.
-                    // Adding scrollY converts it to an absolute document position.
-                    // The Section has initial="visible" so no Framer Motion y-offset applies.
-                    const sectionTop =
-                      section.getBoundingClientRect().top + window.scrollY;
+
+                    if (!target) return;
+
+                    const headerBottom =
+                      header?.getBoundingClientRect().bottom ?? 0;
+
+                    const targetTop =
+                      target.getBoundingClientRect().top +
+                      window.scrollY;
+
+                    const scrollTop =
+                      targetTop - headerBottom - 16;
+
                     window.scrollTo({
-                      top: sectionTop - navbarBottom - 16,
+                      top: Math.max(0, scrollTop),
                       behavior: "smooth",
                     });
                   }}

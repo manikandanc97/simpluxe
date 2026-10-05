@@ -10,11 +10,16 @@ const SelectedWorkInteractive = dynamic(
 );
 export function SelectedWork() {
   return (
-    <Section 
-      id="selected-work"
-      initial="visible"
-      className="font-satoshi selection:bg-primary/20 selection:text-primary overflow-hidden scroll-mt-20"
-    >
+    <>
+      <div
+        id="selected-work-scroll-anchor"
+        aria-hidden="true"
+        className="w-full h-0 pointer-events-none scroll-mt-20"
+      />
+      <Section 
+        id="selected-work"
+        className="font-satoshi selection:bg-primary/20 selection:text-primary overflow-hidden"
+      >
       {/* ── Background Decorative Elements ── */}
       <div 
         className="absolute left-0 top-0 bottom-0 w-full max-w-96 pointer-events-none opacity-40 z-0"
@@ -40,5 +45,6 @@ export function SelectedWork() {
         </div>
       </Container>
     </Section>
+    </>
   );
 }

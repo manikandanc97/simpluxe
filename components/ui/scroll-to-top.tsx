@@ -31,10 +31,11 @@ export function ScrollToTop() {
 
   return (
     <motion.div
-      initial={{ height: 0, opacity: 0 }}
+      initial={{ opacity: 0, scale: 0.8 }}
       animate={{ 
-        height: isVisible ? "auto" : 0,
         opacity: isVisible ? 1 : 0,
+        scale: isVisible ? 1 : 0.8,
+        pointerEvents: isVisible ? "auto" : "none",
       }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
       className="flex flex-col items-center justify-end overflow-hidden"
@@ -45,7 +46,6 @@ export function ScrollToTop() {
         animate={{ 
           scale: isVisible ? 1 : 0.5,
           y: isVisible ? 0 : 20,
-          pointerEvents: isVisible ? "auto" : "none"
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         whileHover={{ scale: 1.05 }}
