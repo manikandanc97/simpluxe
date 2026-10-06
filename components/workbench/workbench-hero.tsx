@@ -4,6 +4,7 @@ import { useLead } from "@/components/leads/lead-provider";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { m as motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { useRef } from "react";
@@ -142,9 +143,10 @@ export function WorkbenchHero() {
                 <span className="text-sm sm:text-base whitespace-nowrap">{HERO_CONTENT.ctaPrimary}</span>
                 <ArrowRightIcon size={16} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Button>
-              <div
-                className="opacity-0 translate-y-[15px]"
-                style={{ animation: 'fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards' }}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
                   href="#selected-work-scroll-anchor"
@@ -173,14 +175,14 @@ export function WorkbenchHero() {
                   className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto text-left"
                 >
                   <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-[rgba(30,24,30,0.08)] text-foreground group-hover:scale-105 group-hover:border-primary/25 transition-all pl-0.5 shrink-0">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-foreground transition-colors group-hover:text-primary"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <AnimatedIcon name="play" size={13} className="text-foreground transition-colors group-hover:text-primary" />
                   </div>
                   <div className="flex flex-col text-left shrink-0">
                     <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">{HERO_CONTENT.ctaSecondaryTitle}</span>
                     <span className="text-[10px] sm:text-xs font-medium text-muted-foreground mt-0.5 whitespace-nowrap block">{HERO_CONTENT.ctaSecondarySubtitle}</span>
                   </div>
                 </Link>
-              </div>
+              </motion.div>
             </div>
 
             </div>
