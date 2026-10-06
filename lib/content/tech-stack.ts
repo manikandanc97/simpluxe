@@ -9,7 +9,6 @@ export const CATEGORY_ICONS: Record<Category, AnimatedIconName> = {
   Mobile: "smartphone",
   "Backend & APIs": "cpu",
   "Database & Cloud": "layers",
-  "AI & Automation": "sparkles",
   "Design & Tools": "palette",
 };
 
@@ -278,59 +277,6 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.cloudflare.com",
   },
 
-  // ── AI & Automation (5) ──────────────────────────────────────────────────────
-  {
-    name: "OpenAI",
-    slug: "openai",
-    category: "AI & Automation",
-    description: "Industry-leading GPT & multimodal foundation models.",
-    badge: "AI Models",
-    dotColor: "#10B981",
-    accentColor: "#10A37F",
-    learnMoreUrl: "https://openai.com",
-    invertInDark: true,
-  },
-  {
-    name: "Anthropic",
-    slug: "anthropic",
-    category: "AI & Automation",
-    description: "Claude models built for deep reasoning and code.",
-    badge: "AI Models",
-    dotColor: "#D97706",
-    accentColor: "#D97706",
-    learnMoreUrl: "https://anthropic.com",
-  },
-  {
-    name: "Hugging Face",
-    slug: "huggingface",
-    category: "AI & Automation",
-    description: "Largest hub of open-source models & datasets.",
-    badge: "Model Hub",
-    dotColor: "#FACC15",
-    accentColor: "#FFD21E",
-    learnMoreUrl: "https://huggingface.co",
-  },
-  {
-    name: "LangChain",
-    slug: "langchain",
-    category: "AI & Automation",
-    description: "Composability framework for production AI agents.",
-    badge: "AI Framework",
-    dotColor: "#14B8A6",
-    accentColor: "#1C3C3C",
-    learnMoreUrl: "https://www.langchain.com",
-    invertInDark: true,
-  },
-  {
-    name: "PyTorch",
-    slug: "pytorch",
-    category: "AI & Automation",
-    description: "Flexible deep learning framework for model training.",
-    badge: "Deep Learning",
-    dotColor: "#EF4444",
-    accentColor: "#EE4C2C",
-    learnMoreUrl: "https://pytorch.org",
-  },
 
   // ── Design & Tools (11) ──────────────────────────────────────────────────────
   {

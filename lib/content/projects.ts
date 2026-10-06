@@ -137,7 +137,7 @@ export const WORK_ENGINEERING_CONTENT = {
 
 export const WORK_ENGINEERING_STANDARDS = [
   {
-    iconName: "Gauge",
+    iconName: "GaugeIcon",
     iconColor: "text-primary",
     iconBg: "bg-rose-50 border-rose-100",
     title: "Sub-Second Performance",
@@ -146,7 +146,7 @@ export const WORK_ENGINEERING_STANDARDS = [
     deliverables: ["99+ Google Lighthouse score", "Core Web Vitals certified", "Sub-second edge caching"],
   },
   {
-    iconName: "Code2",
+    iconName: "CodeIcon",
     iconColor: "text-[var(--chart-2)]",
     iconBg: "bg-purple-50 border-purple-100",
     title: "Bespoke Architecture",
@@ -155,7 +155,7 @@ export const WORK_ENGINEERING_STANDARDS = [
     deliverables: ["Next.js 15 & React 19", "Strict TypeScript typing", "Clean modular directory architecture"],
   },
   {
-    iconName: "ShieldCheck",
+    iconName: "ShieldCheckIcon",
     iconColor: "text-primary",
     iconBg: "bg-pink-50 border-pink-100",
     title: "Enterprise Security",
@@ -164,7 +164,7 @@ export const WORK_ENGINEERING_STANDARDS = [
     deliverables: ["Role-based access controls", "End-to-end SSL/TLS enforcement", "Automated database backups"],
   },
   {
-    iconName: "Sparkles",
+    iconName: "SparklesIcon",
     iconColor: "text-emerald-600",
     iconBg: "bg-emerald-50 border-emerald-100",
     title: "Full Code Ownership",

@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 
 const FloatingCallButton = dynamic(() => import("@/components/layout/floating-call-button").then((mod) => mod.FloatingCallButton));
 const MobileBottomNav = dynamic(() => import("@/components/layout/mobile-bottom-nav").then((mod) => mod.MobileBottomNav));
-const SiteFooter = dynamic(() => import("@/components/layout/site-footer").then((mod) => mod.SiteFooter));
+import { SiteFooter } from "@/components/layout/site-footer";
 const CommandPalette = dynamic(() => import("@/components/ui/command-palette").then((mod) => mod.CommandPalette));
 const ScrollToTop = dynamic(() => import("@/components/ui/scroll-to-top").then((mod) => mod.ScrollToTop));
 import { SITE } from "@/lib/content/site";
@@ -133,9 +133,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
       <html
       lang="en"
-      className={cn("h-full antialiased scroll-smooth", satoshi.variable, inter.variable, manrope.variable, caveat.variable, "font-sans")}
+      className={cn("h-full antialiased", satoshi.variable, inter.variable, manrope.variable, caveat.variable, "font-sans")}
       suppressHydrationWarning
-      data-scroll-behavior="smooth"
     >
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />

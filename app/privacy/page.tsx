@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
           <section className="flex flex-col gap-3">
             <h2 className="text-xl font-bold text-foreground">4. Contact Us</h2>
             <p>
-              If you have questions or comments about this notice, you may email us at <a href="mailto:privacy@simpluxe.com" className="text-primary hover:underline">privacy@simpluxe.com</a>.
+              If you have questions or comments about this notice, you may email us at <a href="mailto:connect@simpluxe.in" className="text-primary hover:underline">connect@simpluxe.in</a>.
             </p>
           </section>
         </div>

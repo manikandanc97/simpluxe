@@ -25,7 +25,7 @@ export function ContactView() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* ── LEFT COLUMN: Channels & Stepper ── */}
-          <div className="lg:col-span-5 flex flex-col gap-10">
+          <div className="lg:col-span-5 flex flex-col gap-6">
             <ContactChannels />
             <ContactProcess />
           </div>
@@ -49,7 +49,7 @@ export function ContactView() {
                     {CONTACT_SECTION_CONTENT.titleLine2}
                   </span>
                 </CardTitle>
-                <CardDescription className="text-sm max-w-md">
+                <CardDescription className="text-sm">
                   {CONTACT_SECTION_CONTENT.description}
                 </CardDescription>
               </CardHeader>

@@ -3,7 +3,6 @@ export const TECH_CATEGORIES = [
   "Mobile",
   "Backend & APIs",
   "Database & Cloud",
-  "AI & Automation",
   "Design & Tools",
 ] as const;
 

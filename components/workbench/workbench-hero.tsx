@@ -12,9 +12,7 @@ import { HERO_CONTENT } from "@/lib/content/hero";
 import { Hero3DCoder } from "./hero-3d-coder";
 import { HeroGridAccents } from "./hero-grid-accents";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-const HeroInteractionEnhancer = dynamic(() => import("./hero-interaction-enhancer"), { ssr: false });
+import HeroInteractionEnhancer from "./hero-interaction-enhancer";
 
 export function WorkbenchHero() {
   const { openLead } = useLead();
