@@ -16,28 +16,14 @@ type ViewMode = "mobile" | "tablet" | "desktop";
 export function BrowserMockup({ activeProject }: { activeProject: Project }) {
   const [viewMode, setViewMode] = useState<ViewMode>("desktop");
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setViewMode("mobile");
-      } else if (width < 1024) {
-        setViewMode("tablet");
-      } else {
-        setViewMode("desktop");
-      }
-    };
-    
-    // Set initial view based on current device
-    handleResize();
-  }, []);
+
 
   const getContainerStyles = () => {
     switch (viewMode) {
       case "mobile":
-        return "mx-auto rounded-[2rem] border border-slate-200/90";
+        return "mx-auto rounded-3xl border border-slate-200/90";
       case "tablet":
-        return "mx-auto rounded-[1.5rem] border border-slate-200/90";
+        return "mx-auto rounded-3xl border border-slate-200/90";
       case "desktop":
         return "mx-auto rounded-2xl border border-slate-200/90";
       default:
@@ -67,7 +53,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
         <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 bg-background border-b border-slate-200/80 select-none shrink-0">
           
           {/* Left: Traffic Dots */}
-          <div className="flex items-center gap-1.5 shrink-0 w-[50px] sm:w-[90px]">
+          <div className="flex items-center gap-1.5 shrink-0 w-12 sm:w-24">
             <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF5F56] border border-black/10 shadow-xs" />
             <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] border border-black/10 shadow-xs" />
             <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] border border-black/10 shadow-xs" />
@@ -80,7 +66,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center justify-center gap-1.5 bg-white border border-slate-200 shadow-xs rounded-md px-2.5 sm:px-3.5 py-1 text-[11px] sm:text-xs font-medium text-slate-600 min-w-0 max-w-[150px] xs:max-w-[200px] sm:max-w-sm truncate hover:border-slate-300 hover:text-slate-900 transition-colors cursor-pointer group"
+              className="flex items-center justify-center gap-1.5 bg-white border border-slate-200 shadow-xs rounded-md px-2.5 sm:px-3.5 py-1 text-[11px] sm:text-xs font-medium text-slate-600 min-w-0 max-w-40 xs:max-w-52 sm:max-w-sm truncate hover:border-slate-300 hover:text-slate-900 transition-colors cursor-pointer group"
               title={`Visit ${activeProject.domain}`}
             >
               <LockIcon size={12} className="text-emerald-500 shrink-0" />
@@ -90,28 +76,28 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
           </div>
           
           {/* Right: View Toggles */}
-          <div className="flex items-center justify-end shrink-0 w-[50px] sm:w-[90px]">
+          <div className="flex items-center justify-end shrink-0 w-12 sm:w-24">
             <div className="flex items-center justify-center bg-slate-100/80 rounded-md p-0.5 sm:p-1 border border-slate-200/60">
               <button 
                 onClick={(e) => { e.stopPropagation(); setViewMode("mobile"); }} 
                 className={cn("p-1 sm:p-1.5 rounded transition-all", viewMode === "mobile" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title="Mobile View"
               >
-                <SmartphoneIcon size={12} className="sm:w-[14px] sm:h-[14px]" />
+                <SmartphoneIcon size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
               <button 
                 onClick={(e) => { e.stopPropagation(); setViewMode("tablet"); }} 
                 className={cn("p-1 sm:p-1.5 rounded transition-all hidden xs:block", viewMode === "tablet" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title="TabletIcon View"
               >
-                <TabletIcon size={12} className="sm:w-[14px] sm:h-[14px]" />
+                <TabletIcon size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
               <button 
                 onClick={(e) => { e.stopPropagation(); setViewMode("desktop"); }} 
                 className={cn("p-1 sm:p-1.5 rounded transition-all", viewMode === "desktop" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title="Desktop View"
               >
-                <MonitorIcon size={12} className="sm:w-[14px] sm:h-[14px]" />
+                <MonitorIcon size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
             </div>
           </div>
@@ -179,3 +165,4 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
     </div>
   );
 }
+                 

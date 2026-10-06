@@ -160,7 +160,7 @@ function WorkViewContent() {
             <div className="lg:col-span-7 flex flex-col gap-6 lg:sticky lg:top-24">
               {activeProject && (
                 <>
-                  <div className="relative group w-full h-[450px] sm:h-[550px] lg:h-[600px]">
+                  <div className="relative group w-full h-[450px] sm:h-[550px] lg:h-[600px] hidden lg:block">
                     <BrowserMockup activeProject={activeProject} />
                   </div>
                   <WorkProjectDetails
