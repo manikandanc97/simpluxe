@@ -1,4 +1,7 @@
-import { CodeIcon, LayersIcon, CpuIcon, SmartphoneIcon } from "@animateicons/react/lucide";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
+import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ABOUT_TECH_STACK_CONTENT, STACK_CATEGORIES } from "@/lib/content/about";
 

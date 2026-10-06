@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { m as motion, useScroll, useSpring } from "motion/react";
-import { ArrowUpIcon } from "@animateicons/react/lucide";
+import { ArrowUpIcon } from "@animateicons/react/lucide/arrow-up-icon";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);

@@ -9,7 +9,11 @@ import { submitLead } from "@/lib/leads/actions";
 import { type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
 import { SITE } from "@/lib/content/site";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
-import { CircleCheckIcon, LockIcon, ShieldCheckIcon, ChevronDownIcon, CheckIcon } from "@animateicons/react/lucide";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { LockIcon } from "@animateicons/react/lucide/lock-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
 import { useActionState, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 

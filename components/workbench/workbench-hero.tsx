@@ -1,7 +1,8 @@
 "use client";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ChevronDownIcon, ArrowRightIcon } from "@animateicons/react/lucide";
+import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
+import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -9,19 +10,19 @@ import { useRef } from "react";
 import { HERO_CONTENT } from "@/lib/content/hero";
 import { Hero3DCoder } from "./hero-3d-coder";
 import { HeroGridAccents } from "./hero-grid-accents";
-import { AnimatedText } from "@/components/ui/animated-text";
-import { m as motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const HeroInteractionEnhancer = dynamic(() => import("./hero-interaction-enhancer"), { ssr: false });
 
 export function WorkbenchHero() {
   const { openLead } = useLead();
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollY } = useScroll();
-  
-  const yText = useTransform(scrollY, [0, 500], [0, 100]);
-  const opacityText = useTransform(scrollY, [0, 300], [1, 0]);
-  const yArt = useTransform(scrollY, [0, 500], [0, 50]);
-  const scaleArt = useTransform(scrollY, [0, 500], [1, 1.05]);
+  const textColRef = useRef<HTMLDivElement>(null);
+  const artworkRef = useRef<HTMLDivElement>(null);
+  const parallaxCanvasRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const underlineRef = useRef<SVGSVGElement>(null);
 
   const handleScrollDown = () => {
     const nextSection = document.getElementById("capabilities") || document.getElementById("what-we-build");
@@ -51,8 +52,8 @@ export function WorkbenchHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center w-full">
           
           {/* LEFT: Text Content */}
-          <motion.div 
-            style={{ y: yText, opacity: opacityText }}
+          <div 
+            ref={textColRef}
             className="hero-text-col lg:col-span-5 xl:col-span-6 flex flex-col items-start text-left max-w-xl z-10 gap-6 sm:gap-10"
           >
             <div className="flex flex-col gap-4 sm:gap-6">
@@ -68,55 +69,48 @@ export function WorkbenchHero() {
               </div>
               <div className="overflow-hidden pb-4 -mb-4">
                 <span className="block relative inline-block hero-line-2 will-change-transform">
-                  <AnimatedText priority text={HERO_CONTENT.headlineLine2Prefix} el="span" staggerDelay={0.03} delay={0.2} />
+                  <span className="inline-block overflow-hidden">
+                    <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: '0.2s' }}>
+                      {HERO_CONTENT.headlineLine2Prefix}
+                    </span>
+                  </span>
                   <span className="relative inline-block ml-3">
-                    {/* charClassName applies gradient per-word so background-clip:text works */}
-                    <AnimatedText
-                      text={HERO_CONTENT.headlineHighlight}
-                      el="span"
-                      asTypewriter
-                      delay={0.35}
-                      charClassName="brand-gradient-char"
-                    />
+                    <span className="inline-block overflow-hidden">
+                      <span className="inline-block animate-hero-word-reveal brand-gradient-char" style={{ animationDelay: '0.35s' }}>
+                        {HERO_CONTENT.headlineHighlight}
+                      </span>
+                    </span>
                     {/* Hand-drawn style SVG underline — draws in after text animates */}
-                    <motion.svg
+                    <svg
+                      ref={underlineRef}
                       className="hero-underline absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-3.5 overflow-visible pointer-events-none"
                       viewBox="0 0 240 24"
                       fill="none"
                       preserveAspectRatio="none"
-                      initial="hidden"
-                      animate="visible"
                     >
-                      <motion.path
+                      <path
                         d="M4 14 C60 4, 150 6, 230 12"
                         stroke="#922F55"
                         strokeLinecap="round"
-                        variants={{
-                          hidden: { pathLength: 0, opacity: 0 },
-                          visible: { pathLength: 1, opacity: 1, transition: { duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] } },
-                        }}
+                        strokeWidth="4"
+                        className="opacity-0"
                       />
-                      <motion.path
+                      <path
                         d="M40 18 C105 13, 175 14, 215 17"
                         stroke="#D23D78"
                         strokeLinecap="round"
-                        strokeOpacity="0.85"
-                        variants={{
-                          hidden: { pathLength: 0, opacity: 0 },
-                          visible: { pathLength: 1, opacity: 0.85, transition: { duration: 0.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] } },
-                        }}
+                        strokeWidth="4"
+                        className="opacity-0"
                       />
-                      <motion.path
+                      <path
                         d="M224 8 L234 12 L227 18"
                         stroke="#6C2BB8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        variants={{
-                          hidden: { pathLength: 0, opacity: 0 },
-                          visible: { pathLength: 1, opacity: 1, transition: { duration: 0.3, delay: 1.4, ease: "easeOut" } },
-                        }}
+                        strokeWidth="4"
+                        className="opacity-0"
                       />
-                    </motion.svg>
+                    </svg>
                   </span>
                 </span>
               </div>
@@ -126,7 +120,11 @@ export function WorkbenchHero() {
             <p
               className="hero-desc type-lead text-muted-foreground max-w-lg text-sm sm:text-base lg:text-lg leading-relaxed"
             >
-              <AnimatedText priority text={HERO_CONTENT.description} el="span" staggerDelay={0.01} delay={0.4} />
+              <span className="inline-block overflow-hidden">
+                <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: '0.4s' }}>
+                  {HERO_CONTENT.description}
+                </span>
+              </span>
             </p>
             </div>
 
@@ -144,10 +142,9 @@ export function WorkbenchHero() {
                 <span className="text-sm sm:text-base whitespace-nowrap">{HERO_CONTENT.ctaPrimary}</span>
                 <ArrowRightIcon size={16} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Button>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              <div
+                className="opacity-0 translate-y-[15px]"
+                style={{ animation: 'fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards' }}
               >
                 <Link
                   href="#selected-work-scroll-anchor"
@@ -176,26 +173,26 @@ export function WorkbenchHero() {
                   className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto text-left"
                 >
                   <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-[rgba(30,24,30,0.08)] text-foreground group-hover:scale-105 group-hover:border-primary/25 transition-all pl-0.5 shrink-0">
-                    <AnimatedIcon name="play" size={13} className="text-foreground transition-colors group-hover:text-primary" />
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-foreground transition-colors group-hover:text-primary"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                   </div>
                   <div className="flex flex-col text-left shrink-0">
                     <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">{HERO_CONTENT.ctaSecondaryTitle}</span>
                     <span className="text-[10px] sm:text-xs font-medium text-muted-foreground mt-0.5 whitespace-nowrap block">{HERO_CONTENT.ctaSecondarySubtitle}</span>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             </div>
 
             </div>
-          </motion.div>
+          </div>
 
           {/* RIGHT: 3D Character & Floating UI Cards */}
-          <motion.div
-            style={{ y: yArt, scale: scaleArt }}
+          <div
+            ref={artworkRef}
             className="hero-artwork lg:col-span-7 xl:col-span-6 flex justify-center items-center w-full relative min-h-64 sm:min-h-96"
           >
-            <Hero3DCoder />
-          </motion.div>
+            <Hero3DCoder parallaxCanvasRef={parallaxCanvasRef} cardsRef={cardsRef} />
+          </div>
           
         </div>
       </Container>
@@ -217,6 +214,15 @@ export function WorkbenchHero() {
           <ChevronDownIcon size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
         </div>
       </button>
+
+      <HeroInteractionEnhancer 
+        heroRef={heroRef}
+        textColRef={textColRef}
+        artworkRef={artworkRef}
+        parallaxCanvasRef={parallaxCanvasRef}
+        cardsRef={cardsRef}
+        underlineRef={underlineRef}
+      />
     </section>
   );
 }

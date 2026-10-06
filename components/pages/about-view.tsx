@@ -9,7 +9,10 @@ import { AboutComparison } from "@/components/about/about-comparison";
 import { AboutTechStack } from "@/components/about/about-tech-stack";
 import { Container } from "@/components/ui/container";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
-import { MapPinIcon, ShieldCheckIcon, ZapIcon, CodeIcon } from "@animateicons/react/lucide";
+import { MapPinIcon } from "@animateicons/react/lucide/map-pin-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
 
 export function AboutView() {
   return (

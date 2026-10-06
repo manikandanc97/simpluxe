@@ -1,4 +1,5 @@
 import { m as motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 import { type ServiceData } from "@/lib/content/services";
 
 interface ServicesMockupWindowProps {
@@ -20,9 +21,11 @@ export function ServicesMockupWindow({ service }: ServicesMockupWindowProps) {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden"
         >
-          <img 
+          <Image 
             src={service.image} 
             alt={service.name} 
+            width={1200}
+            height={800}
             className="w-full h-auto object-contain" 
           />
         </motion.div>

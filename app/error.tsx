@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { RefreshCwIcon } from "@animateicons/react/lucide";
+import { RefreshCwIcon } from "@animateicons/react/lucide/refresh-cw-icon";
 import { useEffect } from "react";
 
 export default function ErrorPage({

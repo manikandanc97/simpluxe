@@ -1,5 +1,7 @@
 import { CONTACT_STEPS } from "@/lib/content/contact";
-import { ShieldCheckIcon, FileCheckIcon, CodeIcon } from "@animateicons/react/lucide";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { FileCheckIcon } from "@animateicons/react/lucide/file-check-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 

@@ -18,6 +18,13 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+const satoshi = localFont({
+  src: "../public/fonts/satoshi-variable.woff2",
+  variable: "--font-satoshi",
+  display: "swap",
+  weight: "300 900",
+  style: "normal",
+});
 
 const inter = localFont({
   src: [
@@ -126,12 +133,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
       <html
       lang="en"
-      className={cn("h-full antialiased scroll-smooth", inter.variable, manrope.variable, caveat.variable, "font-sans")}
+      className={cn("h-full antialiased scroll-smooth", satoshi.variable, inter.variable, manrope.variable, caveat.variable, "font-sans")}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
       <head>
-        <link rel="preload" href="/fonts/satoshi-variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full flex flex-col">
@@ -164,8 +170,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </LeadProvider>
         </MotionProvider>
         
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

@@ -1,7 +1,11 @@
 import { FLOW_NODES } from "@/lib/content/philosophy";
-import { BoxIcon, LayoutGridIcon, LightbulbIcon, TrendingUpIcon, UsersIcon } from "@animateicons/react/lucide";
+import { BoxIcon } from "@animateicons/react/lucide/box-icon";
+import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
+import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
+import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 export function MobileFlowGrid() {
   return (

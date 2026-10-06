@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CircleCheckIcon } from "@animateicons/react/lucide";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { cn } from "@/lib/utils";
 import { PRINCIPLES, ABOUT_PRINCIPLES_CONTENT } from "@/lib/content/about";
 import { SectionHeader } from "@/components/ui/section-header";

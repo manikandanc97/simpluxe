@@ -1,4 +1,6 @@
-import { UsersIcon, BriefcaseIcon, StarIcon } from "@animateicons/react/lucide";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
+import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
+import { StarIcon } from "@animateicons/react/lucide/star-icon";
 import { HeroContent } from "@/types/hero";
 
 export const HERO_CONTENT: HeroContent = {

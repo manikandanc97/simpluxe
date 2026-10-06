@@ -1,5 +1,6 @@
 import { type Project } from "@/types/project";
-import { TrendingUpIcon, ShoppingCartIcon } from "@animateicons/react/lucide";
+import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
+import { ShoppingCartIcon } from "@animateicons/react/lucide/shopping-cart-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import type { ReactNode } from "react";
 

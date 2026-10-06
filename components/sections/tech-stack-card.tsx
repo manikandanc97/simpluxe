@@ -3,7 +3,7 @@
 
 import { type TechItem } from "@/types/tech";
 import { m as motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 import { fadeUp, hoverLift } from "@/lib/motion";
 

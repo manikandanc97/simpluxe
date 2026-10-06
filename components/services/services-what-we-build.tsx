@@ -2,7 +2,10 @@
 
 import { type ServiceData } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
-import { LayoutDashboardIcon, UsersIcon, SlidersHorizontalIcon, DatabaseIcon } from "@animateicons/react/lucide";
+import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
+import { SlidersHorizontalIcon } from "@animateicons/react/lucide/sliders-horizontal-icon";
+import { DatabaseIcon } from "@animateicons/react/lucide/database-icon";
 import { m as motion, AnimatePresence } from "motion/react";
 import { staggerContainer, fadeUp, hoverLift } from "@/lib/motion";
 interface ServicesWhatWeBuildProps {

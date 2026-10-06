@@ -1,8 +1,15 @@
 "use client";
 
-import { ChartBarIcon, CircleCheckIcon, FileTextIcon, GitForkIcon, LayersIcon, LightbulbIcon, TargetIcon, UsersIcon } from "@animateicons/react/lucide";
+import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { FileTextIcon } from "@animateicons/react/lucide/file-text-icon";
+import { GitForkIcon } from "@animateicons/react/lucide/git-fork-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
+import { TargetIcon } from "@animateicons/react/lucide/target-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { m as motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 export function StepVisualBlueprint() {
   return (

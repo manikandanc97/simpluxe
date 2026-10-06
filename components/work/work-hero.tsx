@@ -2,8 +2,16 @@
 
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
-import { CldImage } from "next-cloudinary";
-import { SparklesIcon, ZapIcon, CodeIcon, TrendingUpIcon, LayersIcon, CircleCheckIcon, ShieldCheckIcon, SmartphoneIcon, CpuIcon } from "@animateicons/react/lucide";
+import { CldImage } from "@/components/ui/cld-image";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
+import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 import { NextJsIcon } from "./tech-icons";
 import { Container } from "@/components/ui/container";
 

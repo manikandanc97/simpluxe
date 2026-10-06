@@ -1,7 +1,7 @@
 "use client";
 
 import { m as motion } from "motion/react";
-import { MousePointerIcon } from "@animateicons/react/lucide";
+import { MousePointerIcon } from "@animateicons/react/lucide/mouse-pointer-icon";
 import { ChevronLeftIcon } from "@animateicons/react/lucide/chevron-left-icon";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";

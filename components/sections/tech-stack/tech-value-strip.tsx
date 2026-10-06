@@ -1,6 +1,9 @@
 "use client";
 
-import { ChartBarIcon, InfinityIcon as InfinityIcon, ShieldCheckIcon, ZapIcon } from "@animateicons/react/lucide";
+import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
+import { InfinityIcon } from "@animateicons/react/lucide/infinity-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 import { m as motion } from "motion/react";
 import { fadeUp, staggerContainer, viewportReveal } from "@/lib/motion";
 

@@ -1,4 +1,12 @@
-import { BoxIcon, BriefcaseIcon, DatabaseIcon, LayersIcon, LightbulbIcon, TargetIcon, TrendingUpIcon, UsersIcon, ZapIcon } from "@animateicons/react/lucide";
+import { BoxIcon } from "@animateicons/react/lucide/box-icon";
+import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
+import { DatabaseIcon } from "@animateicons/react/lucide/database-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
+import { TargetIcon } from "@animateicons/react/lucide/target-icon";
+import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 
 // ─── Left Column: Process Steps ─────────────────────────────────────────────
 export const PROCESS_STEPS = [

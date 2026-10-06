@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { type Project } from "@/types/project";
-import { LockIcon, MonitorIcon, SmartphoneIcon, TabletIcon, ExternalLinkIcon } from "@animateicons/react/lucide";
+import { LockIcon } from "@animateicons/react/lucide/lock-icon";
+import { MonitorIcon } from "@animateicons/react/lucide/monitor-icon";
+import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
+import { TabletIcon } from "@animateicons/react/lucide/tablet-icon";
+import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
 import { AnimatePresence, m as motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";

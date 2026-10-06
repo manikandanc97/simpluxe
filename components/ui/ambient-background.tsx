@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { m as motion } from "motion/react";
 import {
   type ScreenType,
   ORB_CONFIGURATIONS,
@@ -136,11 +135,13 @@ export function AmbientBackground({
         />
       ))}
       
-      {/* ── 6. Subtle Global Noise Texture for Softness ── */}
+      {/* ── 6. Subtle Static Noise Texture for Softness ── */}
       <div 
         className="absolute inset-0 opacity-[0.035] mix-blend-overlay pointer-events-none"
         style={{
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+          backgroundImage: "url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4t5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dme8+EB8SCVAM6q5BWMJKS2QFv4c8CvkPxQ5YfQBxIEshhC0Y+Sn/1A2CwGHQ5LRe8j0zf6h5ceCJ1CDNN7k5qmCeXi8j6RrGwENMmhIlmxYPQCrTvBfAvAQBqYHvJDEzFYWEaEEIsHqKVnRDmMg7oCfk+L0+IQHK3x2f1L1r8jQe64LFQh+Jfk6mOXVk6dclE4tFuL4YTIV6G1RKkYpOiLjAR2l0pPSWKU2Dh8bIAu9WA8YCdQGlRU4RBaT54GNEA6xqfUH6EhB7cMKORVBgpBFABkVOA6Ib1jHDYEOkNk0AoOAN7yBYElAWkNmDCN0I2D+B3jzXIBFQCAnWW7EArG7HAYAQpaMB9IkgvmopQKFQ4D+AvASrF+mQKaXo0Bg/nJRFcGpPBMGKQtYLMPUQgGFSVENHjVJjUkO1WBigV53HHkJosmLggGkyBX16nJq58jT3PMDFJiR2XNVzTp+k9kDjBgC65JgDWWVY4eiKD5v4y+EQ8tXR1oMqiLiQoEfbgKhQFHD7WMFuarQ0QpY6f6rZXSJL6eDXdaqXAAAA\")",
+          backgroundRepeat: "repeat",
+          backgroundSize: "50px 50px",
         }}
       />
 

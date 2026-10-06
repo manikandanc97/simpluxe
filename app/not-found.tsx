@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
-import { HouseIcon } from "@animateicons/react/lucide";
+import { HouseIcon } from "@animateicons/react/lucide/house-icon";
 
 export default function NotFound() {
   return (

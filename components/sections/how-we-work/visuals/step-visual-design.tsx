@@ -1,8 +1,11 @@
 "use client";
 
-import { LayoutDashboardIcon, MousePointerIcon, PaletteIcon, PencilIcon } from "@animateicons/react/lucide";
+import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
+import { MousePointerIcon } from "@animateicons/react/lucide/mouse-pointer-icon";
+import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
+import { PencilIcon } from "@animateicons/react/lucide/pencil-icon";
 import { m as motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 export function StepVisualDesign() {
   return (

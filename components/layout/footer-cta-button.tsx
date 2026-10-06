@@ -1,7 +1,7 @@
 "use client";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ArrowRightIcon } from "@animateicons/react/lucide";
+import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { Button } from "@/components/ui/button";
 
 interface FooterCtaButtonProps {

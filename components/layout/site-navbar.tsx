@@ -3,13 +3,13 @@
 import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/navigation";
 import { cn } from "@/lib/utils";
 import { m as motion, useScroll, useMotionValueEvent } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ArrowRightIcon } from "@animateicons/react/lucide";
+import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { Button } from "@/components/ui/button";
 
 interface SiteNavbarProps {

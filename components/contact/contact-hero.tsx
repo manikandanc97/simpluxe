@@ -2,8 +2,13 @@
 
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
-import { CldImage } from "next-cloudinary";
-import { ClockIcon, ShieldCheckIcon, MessageSquareIcon, LockIcon, CircleCheckIcon, SparklesIcon } from "@animateicons/react/lucide";
+import { CldImage } from "@/components/ui/cld-image";
+import { ClockIcon } from "@animateicons/react/lucide/clock-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { MessageSquareIcon } from "@animateicons/react/lucide/message-square-icon";
+import { LockIcon } from "@animateicons/react/lucide/lock-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
 import { Container } from "@/components/ui/container";
 

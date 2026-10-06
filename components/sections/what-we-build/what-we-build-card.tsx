@@ -6,16 +6,44 @@ import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-i
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import { SERVICES_LIST } from "@/lib/content/services";
-import {
-  MobileAppsMockup,
-  SaaSProductsMockup,
-  WebAppsMockup,
-  WebsitesMockup,
-  EcommerceMockup,
-  BrandingMockup,
-  UIUXMockup,
-  AutomationMockup,
-} from "./mockups/index";
+import dynamic from "next/dynamic";
+
+const loadingSkeleton = () => (
+  <div className="w-full max-w-72 h-[250px] bg-slate-100/40 animate-pulse rounded-[24px] border border-black/[0.04]" />
+);
+
+const WebsitesMockup = dynamic(
+  () => import("./mockups/websites").then((mod) => mod.WebsitesMockup),
+  { loading: loadingSkeleton }
+);
+const WebAppsMockup = dynamic(
+  () => import("./mockups/web-apps").then((mod) => mod.WebAppsMockup),
+  { loading: loadingSkeleton }
+);
+const EcommerceMockup = dynamic(
+  () => import("./mockups/ecommerce").then((mod) => mod.EcommerceMockup),
+  { loading: loadingSkeleton }
+);
+const MobileAppsMockup = dynamic(
+  () => import("./mockups/mobile-apps").then((mod) => mod.MobileAppsMockup),
+  { loading: loadingSkeleton }
+);
+const SaaSProductsMockup = dynamic(
+  () => import("./mockups/saas").then((mod) => mod.SaaSProductsMockup),
+  { loading: loadingSkeleton }
+);
+const BrandingMockup = dynamic(
+  () => import("./mockups/branding").then((mod) => mod.BrandingMockup),
+  { loading: loadingSkeleton }
+);
+const UIUXMockup = dynamic(
+  () => import("./mockups/ui-ux").then((mod) => mod.UIUXMockup),
+  { loading: loadingSkeleton }
+);
+const AutomationMockup = dynamic(
+  () => import("./mockups/automation").then((mod) => mod.AutomationMockup),
+  { loading: loadingSkeleton }
+);
 
 const MOCKUPS: Record<string, React.ElementType> = {
   websites: WebsitesMockup,

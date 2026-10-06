@@ -1,6 +1,6 @@
 "use client";
 
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 import { type ServiceData } from "@/lib/content/services";
 import { m as motion, AnimatePresence } from "motion/react";
 

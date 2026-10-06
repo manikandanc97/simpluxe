@@ -4,7 +4,9 @@ import { useState } from "react";
 import { SITE } from "@/lib/content/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
-import { ArrowRightIcon, CheckIcon, CopyIcon } from "@animateicons/react/lucide";
+import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
+import { CopyIcon } from "@animateicons/react/lucide/copy-icon";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 

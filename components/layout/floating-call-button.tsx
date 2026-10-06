@@ -3,7 +3,9 @@
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, m as motion } from "motion/react";
-import { MessageCircleIcon, PhoneIcon, XIcon } from "@animateicons/react/lucide";
+import { MessageCircleIcon } from "@animateicons/react/lucide/message-circle-icon";
+import { PhoneIcon } from "@animateicons/react/lucide/phone-icon";
+import { XIcon } from "@animateicons/react/lucide/x-icon";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
 import { useEffect, useState, useRef } from "react";
 import { hoverLift, tapScale } from "@/lib/motion";

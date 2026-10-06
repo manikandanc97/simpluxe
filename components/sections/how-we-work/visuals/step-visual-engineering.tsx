@@ -1,8 +1,12 @@
 "use client";
 
-import { CodeIcon, DatabaseIcon, MonitorIcon, ServerIcon, ShieldCheckIcon } from "@animateicons/react/lucide";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { DatabaseIcon } from "@animateicons/react/lucide/database-icon";
+import { MonitorIcon } from "@animateicons/react/lucide/monitor-icon";
+import { ServerIcon } from "@animateicons/react/lucide/server-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { m as motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 export function StepVisualEngineering() {
   return (

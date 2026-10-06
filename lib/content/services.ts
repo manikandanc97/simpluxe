@@ -1,5 +1,12 @@
 import { ElementType as LucideIcon } from "react";
-import { GlobeIcon, LayoutDashboardIcon, ShoppingBagIcon, SmartphoneIcon, PackageIcon, PaletteIcon, LayersIcon, CpuIcon } from "@animateicons/react/lucide";
+import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
+import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
+import { ShoppingBagIcon } from "@animateicons/react/lucide/shopping-bag-icon";
+import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
+import { PackageIcon } from "@animateicons/react/lucide/package-icon";
+import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 
 export interface ServiceData {
   id: string;

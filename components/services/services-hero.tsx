@@ -1,9 +1,19 @@
 "use client";
 
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
-import { LayoutGridIcon, ZapIcon, TrendingUpIcon, SparklesIcon, ChartLineIcon, CodeIcon, LayersIcon, CircleCheckIcon, CpuIcon, SmartphoneIcon, ShieldCheckIcon } from "@animateicons/react/lucide";
+import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
+import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
+import { ChartLineIcon } from "@animateicons/react/lucide/chart-line-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
+import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 

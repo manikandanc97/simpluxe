@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon } from "@animateicons/react/lucide";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { cn } from "@/lib/utils";
 import { STEPS } from "@/lib/content/how-we-work";

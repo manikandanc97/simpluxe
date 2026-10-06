@@ -1,4 +1,21 @@
-import { ActivityIcon, MedalIcon, CalendarIcon, CircleCheckIcon, ClockIcon, CodeIcon, FileTextIcon, FolderOpenIcon, MapIcon, RefreshCwIcon, ShieldCheckIcon, ThumbsUpIcon, TimerIcon, LockOpenIcon, UserCheckIcon, UsersIcon, WrenchIcon, ZapIcon } from "@animateicons/react/lucide";
+import { ActivityIcon } from "@animateicons/react/lucide/activity-icon";
+import { MedalIcon } from "@animateicons/react/lucide/medal-icon";
+import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { ClockIcon } from "@animateicons/react/lucide/clock-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { FileTextIcon } from "@animateicons/react/lucide/file-text-icon";
+import { FolderOpenIcon } from "@animateicons/react/lucide/folder-open-icon";
+import { MapIcon } from "@animateicons/react/lucide/map-icon";
+import { RefreshCwIcon } from "@animateicons/react/lucide/refresh-cw-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { ThumbsUpIcon } from "@animateicons/react/lucide/thumbs-up-icon";
+import { TimerIcon } from "@animateicons/react/lucide/timer-icon";
+import { LockOpenIcon } from "@animateicons/react/lucide/lock-open-icon";
+import { UserCheckIcon } from "@animateicons/react/lucide/user-check-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
+import { WrenchIcon } from "@animateicons/react/lucide/wrench-icon";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 import { FAQItem } from "@/types/faq";
 
 export const FAQS: FAQItem[] = [

@@ -3,7 +3,7 @@
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { Button } from "@/components/ui/button";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 export function FaqContactCard() {
   const { openLead } = useLead();

@@ -6,7 +6,7 @@ import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-i
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
 import { m as motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 import { useRef } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { CTA_CONTENT } from "@/lib/content/cta";

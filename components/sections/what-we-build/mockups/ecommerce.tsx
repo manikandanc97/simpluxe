@@ -242,20 +242,23 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               </div>
 
               {/* Pay button with loading */}
-              <motion.div
-                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                className="w-full h-8 rounded-xl flex items-center justify-center gap-2 text-white text-xs font-bold"
-                style={{ background: "linear-gradient(90deg, #0891B2, #0e7490, #06b6d4, #0891B2)", backgroundSize: "300% 100%" }}
-              >
-                {/* Spinner */}
+              <div className="relative w-full h-8 rounded-xl overflow-hidden flex items-center justify-center gap-2 text-white text-xs font-bold bg-[#0891B2]">
+                {/* GPU-friendly shimmer effect */}
                 <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                  className="w-3 h-3 rounded-full border-2 border-white/40 border-t-white"
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#06b6d4]/40 to-transparent w-full"
                 />
-                Processing payment…
-              </motion.div>
+                <div className="relative z-10 flex items-center gap-2">
+                  {/* Spinner */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                    className="w-3 h-3 rounded-full border-2 border-white/40 border-t-white"
+                  />
+                  Processing payment…
+                </div>
+              </div>
 
               {/* Security badges */}
               <div className="flex items-center justify-center gap-3">

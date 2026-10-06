@@ -1,8 +1,12 @@
 "use client";
 
-import { ActivityIcon, GlobeIcon, RocketIcon, TrendingUpIcon, WifiIcon } from "@animateicons/react/lucide";
+import { ActivityIcon } from "@animateicons/react/lucide/activity-icon";
+import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
+import { RocketIcon } from "@animateicons/react/lucide/rocket-icon";
+import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
+import { WifiIcon } from "@animateicons/react/lucide/wifi-icon";
 import { m as motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import { CldImage } from "@/components/ui/cld-image";
 
 export function StepVisualLaunch() {
   return (

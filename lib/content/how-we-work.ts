@@ -1,4 +1,14 @@
-import { ClockIcon, CodeIcon, FileTextIcon, LayersIcon, LightbulbIcon, PencilIcon, RocketIcon, ShieldCheckIcon, SparklesIcon, TargetIcon, UsersIcon } from "@animateicons/react/lucide";
+import { ClockIcon } from "@animateicons/react/lucide/clock-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { FileTextIcon } from "@animateicons/react/lucide/file-text-icon";
+import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
+import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
+import { PencilIcon } from "@animateicons/react/lucide/pencil-icon";
+import { RocketIcon } from "@animateicons/react/lucide/rocket-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
+import { TargetIcon } from "@animateicons/react/lucide/target-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 
 interface StepFeature {
   icon: typeof UsersIcon;

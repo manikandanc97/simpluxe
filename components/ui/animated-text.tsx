@@ -103,6 +103,27 @@ export function AnimatedText({
       );
     }
 
+    if (asTypewriter) {
+      return (
+        <Wrapper className={cn("inline-block", className)}>
+          <span ref={ref} className="inline-block" aria-label={text}>
+            {text.split("").map((char, i) => (
+              <span
+                key={i}
+                className={cn("inline-block animate-hero-word-reveal", charClassName)}
+                style={{
+                  ...(char === " " ? { width: "0.3em" } : {}),
+                  animationDelay: `${delay + i * (staggerDelay || 0.04)}s`,
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </span>
+            ))}
+          </span>
+        </Wrapper>
+      );
+    }
+
     return (
       <Wrapper className={cn("inline-block", className)}>
         <span ref={ref} className="inline-block">

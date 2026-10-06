@@ -1,4 +1,5 @@
-import { CircleXIcon, CircleCheckIcon } from "@animateicons/react/lucide";
+import { CircleXIcon } from "@animateicons/react/lucide/circle-x-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { COMPARISONS, ABOUT_COMPARISON_CONTENT } from "@/lib/content/about";
 import { SectionHeader } from "@/components/ui/section-header";
 

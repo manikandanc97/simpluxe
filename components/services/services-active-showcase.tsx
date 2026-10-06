@@ -7,7 +7,7 @@ import { m as motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ServicesMockupWindow } from "./showcase/services-mockup-window";
-import { EyeIcon } from "@animateicons/react/lucide";
+import { EyeIcon } from "@animateicons/react/lucide/eye-icon";
 
 interface ServicesActiveShowcaseProps {
   service: ServiceData;

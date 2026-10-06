@@ -1,4 +1,7 @@
-import { ChartBarIcon, ShieldCheckIcon, StarIcon, UsersIcon } from "@animateicons/react/lucide";
+import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { StarIcon } from "@animateicons/react/lucide/star-icon";
+import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { buttonVariants } from "@/components/ui/button";

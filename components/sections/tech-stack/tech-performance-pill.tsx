@@ -1,4 +1,4 @@
-import { ZapIcon } from "@animateicons/react/lucide";
+import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 
 export function TechPerformancePill() {
   return (

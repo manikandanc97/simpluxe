@@ -1,7 +1,7 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 import { SITE } from "@/lib/content/site";
-import { CldImage } from "@/components/ui/cld-image-client";
+import { CldImage } from "@/components/ui/cld-image";
 import Link from "next/link";
 import { FOOTER_DATA } from "@/lib/content/footer";
 import { FooterNav } from "./footer-nav";

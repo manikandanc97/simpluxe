@@ -1,4 +1,8 @@
-import { GaugeIcon, ShieldCheckIcon, CodeIcon, SparklesIcon, CircleCheckIcon } from "@animateicons/react/lucide";
+import { GaugeIcon } from "@animateicons/react/lucide/gauge-icon";
+import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
+import { CodeIcon } from "@animateicons/react/lucide/code-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
+import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WORK_ENGINEERING_CONTENT, WORK_ENGINEERING_STANDARDS } from "@/lib/content/projects";

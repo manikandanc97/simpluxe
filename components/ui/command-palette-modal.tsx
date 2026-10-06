@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { SearchIcon } from "@animateicons/react/lucide";
+import { SearchIcon } from "@animateicons/react/lucide/search-icon";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 

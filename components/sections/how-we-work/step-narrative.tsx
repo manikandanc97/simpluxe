@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDownIcon } from "@animateicons/react/lucide";
+import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
