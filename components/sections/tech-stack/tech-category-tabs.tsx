@@ -1,5 +1,7 @@
 "use client";
 
+import { TECH_CATEGORY_TABS_COPY } from "@/lib/content/tech-stack";
+
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CATEGORIES, CATEGORY_ICONS, type Category } from "@/lib/content/tech-stack";
 import { m as motion } from "motion/react";
@@ -23,11 +25,9 @@ export function TechCategoryTabs({
       <div className="absolute -top-12 sm:-top-16 left-1 sm:left-4 md:left-8 lg:left-14 z-20 pointer-events-none select-none flex items-end gap-2 sm:gap-4 scale-90 sm:scale-100 origin-bottom-left">
         <span
           className="font-handwriting text-base sm:text-xl font-bold text-slate-800 dark:text-slate-200 -rotate-10 leading-tight tracking-wide"
-          style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
         >
-          Tools<br />we love
-        </span>
-        <div className="ml-0.5 sm:ml-1 text-[var(--primary-hover)] dark:text-rose-400">
+          {TECH_CATEGORY_TABS_COPY.tools}<br />{TECH_CATEGORY_TABS_COPY.weLove}</span>
+        <div className="ml-0.5 sm:ml-1 text-primary-hover dark:text-rose-400">
           <svg width="34" height="34" viewBox="0 0 38 38" fill="none" className="w-7 h-7 sm:w-9 sm:h-9">
             <path
               d="M 4 4 C 15 4, 28 12, 24 28"
@@ -51,8 +51,8 @@ export function TechCategoryTabs({
       {/* Tabs Bar */}
       <div
         className="ts-tabs grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-1.5 sm:gap-2 w-full max-w-lg sm:max-w-none mx-auto"
-        role="tablist"
-        aria-label="Technology categories"
+        role="group"
+        aria-label={TECH_CATEGORY_TABS_COPY.technologyCategories}
       >
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat;
@@ -62,13 +62,12 @@ export function TechCategoryTabs({
           return (
             <button
               key={cat}
-              role="tab"
-              aria-selected={isActive}
+              aria-pressed={isActive}
               onClick={() => onSelectCategory(cat)}
               id={`tech-tab-${cat.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-              className={`relative px-3 sm:px-4.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
+              className={`relative isolate px-3 sm:px-4.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
                 isActive
-                  ? "text-white shadow-lg shadow-[var(--primary-hover)]/25"
+                  ? "text-white shadow-lg shadow-primary-hover/25"
                   : "border border-slate-200/80 dark:border-border/70 text-slate-600 dark:text-muted-foreground bg-white dark:bg-card/80 hover:text-slate-900 dark:hover:text-foreground hover:border-slate-300 dark:hover:border-border"
               }`}
             >
@@ -76,7 +75,7 @@ export function TechCategoryTabs({
               {isActive && (
                 <motion.span
                   layoutId="tech-active-pill"
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--primary-hover)] via-[var(--primary-hover)] to-[var(--primary-hover)]"
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-hover via-primary-hover to-primary-hover"
                   style={{ zIndex: -1 }}
                   transition={SPRING}
                 />

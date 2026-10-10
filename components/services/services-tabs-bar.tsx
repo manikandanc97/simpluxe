@@ -100,7 +100,7 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
               layout
               key={service.id}
               type="button"
-              role="tab"
+              aria-pressed={isActive}
               data-slot="tab"
               onClick={() => {
                 if (isDragging.current) return;
@@ -109,7 +109,7 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
               className={cn(
                 "group relative flex items-center gap-2 px-4.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shrink-0 whitespace-nowrap",
                 isActive
-                  ? "bg-gradient-to-r from-[var(--primary)] to-[var(--primary)] text-white shadow-elevated scale-[1.02]"
+                  ? "bg-gradient-to-r from-primary to-primary text-white shadow-elevated scale-102"
                   : "bg-white/90 hover:bg-white text-muted-foreground border border-surface-elevated hover:border-primary/30 shadow-2xs"
               )}
             >
@@ -129,7 +129,7 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
                   "text-xs font-bold px-2 py-0.5 rounded-full transition-colors",
                   isActive
                     ? "bg-white/20 text-white backdrop-blur-xs"
-                    : "bg-[var(--surface-elevated)] text-muted-foreground group-hover:bg-[var(--surface-elevated)]"
+                    : "bg-surface-elevated text-muted-foreground group-hover:bg-surface-elevated"
                 )}
               >
                 {count}

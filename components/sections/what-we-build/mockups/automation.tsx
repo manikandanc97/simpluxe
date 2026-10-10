@@ -1,35 +1,37 @@
 "use client";
 
+import { AUTOMATION_COPY } from "@/lib/content/services";
+
 import { m as motion } from "motion/react";
 import { MockupWrapper } from "./mockup-wrapper";
 
 const WORKFLOW_NODES = [
-  { label: "Trigger: New Email",  color: "#0891B2", icon: "→", delay: 0 },
-  { label: "Extract: Key Data",   color: "#7C3AED", icon: "⬡", delay: 0.4 },
-  { label: "AI: Classify Intent", color: "#059669", icon: "✦", delay: 0.8 },
-  { label: "Action: Auto-Reply",  color: "#F97316", icon: "↗", delay: 1.2 },
+  { label: AUTOMATION_COPY.triggerNewEmail,  color: "#0891B2", icon: "→", delay: 0 },
+  { label: AUTOMATION_COPY.extractKeyData,   color: "#7C3AED", icon: "⬡", delay: 0.4 },
+  { label: AUTOMATION_COPY.aiClassifyIntent, color: "#059669", icon: "✦", delay: 0.8 },
+  { label: AUTOMATION_COPY.actionAutoReply,  color: "#F97316", icon: "↗", delay: 1.2 },
 ] as const;
 
 export function AutomationMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
       isActive={isActive}
-      gradientClass="bg-gradient-to-tr from-[#ECFDF5]/60 via-[#F0FDF4]/50 to-[#EDE9FE]/60"
+      gradientClass="bg-gradient-to-tr from-emerald-50/60 via-green-50/50 to-violet-100/60"
       innerClassName="max-w-80 p-3.5 gap-3"
       floatDuration={5}
     >
         {/* Header */}
         <div className="flex items-center gap-2 pb-1.5 border-b border-black/[0.05]">
           <div className="flex gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
-            <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
-            <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+            <div className="w-2 h-2 rounded-full bg-red-400" />
+            <div className="w-2 h-2 rounded-full bg-amber-400" />
+            <div className="w-2 h-2 rounded-full bg-green-500" />
           </div>
-          <span className="text-xs font-semibold text-muted-foreground ml-1">ai-agent · running</span>
+          <span className="text-xs font-semibold text-muted-foreground ml-1">{AUTOMATION_COPY.aiAgentRunning}</span>
           <motion.div
             animate={isActive ? { opacity: [1, 0, 1] } : { opacity: 1 }}
             transition={{ duration: 1, repeat: isActive ? Infinity : 0 }}
-            className="w-1.5 h-1.5 rounded-full bg-[#059669] ml-auto"
+            className="w-1.5 h-1.5 rounded-full bg-chart-5 ml-auto"
           />
         </div>
 
@@ -63,7 +65,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
                 {node.icon}
               </motion.div>
 
-              <span className="text-xs font-semibold text-[#2D2B32] flex-1">{node.label}</span>
+              <span className="text-xs font-semibold text-zinc-800 flex-1">{node.label}</span>
 
               {/* Active pulse bar */}
               {isActive && (
@@ -79,15 +81,15 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Terminal output — light style */}
-        <div className="bg-slate-50 border border-black/[0.05] rounded-xl px-3 py-2 flex items-center gap-1.5 font-mono text-[9px]">
+        <div className="bg-slate-50 border border-black/[0.05] rounded-xl px-3 py-2 flex items-center gap-1.5 font-mono text-2xs">
           <motion.div
             animate={isActive ? { opacity: [1, 0, 1] } : { opacity: 1 }}
             transition={{ duration: 0.8, repeat: isActive ? Infinity : 0 }}
             className="w-1 h-3 rounded-full bg-foreground/40 flex-shrink-0"
           />
-          <span className="text-[#059669] font-semibold">Processing</span>
-          <span className="text-muted-foreground"> 3 workflows · </span>
-          <span className="text-[#0891B2] font-semibold">98% faster</span>
+          <span className="text-chart-5 font-semibold">{AUTOMATION_COPY.processing}</span>
+          <span className="text-muted-foreground"> {AUTOMATION_COPY.text3Workflows}</span>
+          <span className="text-chart-3 font-semibold">{AUTOMATION_COPY.text98Faster}</span>
         </div>
 
     </MockupWrapper>

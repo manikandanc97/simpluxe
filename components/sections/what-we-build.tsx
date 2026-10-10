@@ -1,5 +1,7 @@
 "use client";
 
+import { WHAT_WE_BUILD_COPY } from "@/lib/content/services";
+
 import { useLead } from "@/components/leads/lead-provider";
 import { useRef, useState } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -31,7 +33,7 @@ export function WhatWeBuild() {
   const handleOpenLead = (serviceName: string) => {
     openLead({
       source: "what-we-build",
-      description: `Interested in: ${serviceName}.`,
+      description: WHAT_WE_BUILD_COPY.projectInterest(serviceName),
     });
   };
 
@@ -53,8 +55,8 @@ export function WhatWeBuild() {
         </motion.div>
 
         <motion.div variants={scaleIn} {...viewportReveal} ref={parallaxWrapperRef} className="w-full">
-          <div ref={containerRef} className="wwb-outer-card relative w-full py-2 perspective-[1400px] overflow-hidden sm:overflow-visible">
-            <div className="flex items-center justify-center min-h-[620px] xs:min-h-[580px] sm:min-h-[520px] md:min-h-[460px] lg:min-h-[420px] xl:min-h-[420px] relative w-full">
+          <div ref={containerRef} className="wwb-outer-card relative w-full py-2 perspective-scene overflow-hidden sm:overflow-visible">
+            <div className="flex items-center justify-center relative w-full">
               {displayServices.map((service, index) => (
                 <WhatWeBuildCard
                   key={service.id}

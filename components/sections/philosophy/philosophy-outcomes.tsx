@@ -1,5 +1,7 @@
 "use client";
 
+import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/content/philosophy";
+
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { REAL_OUTCOMES } from "@/lib/content/philosophy";
@@ -20,13 +22,11 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
         transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
         className="hidden sm:block absolute -top-12 right-2 lg:-top-16 lg:right-10 pointer-events-none select-none z-40"
       >
-        <span className="font-handwriting text-sm sm:text-base text-[var(--primary-hover)] block rotate-3 leading-tight text-center drop-shadow-sm">
-          From
-          <br />
-          Idea to Impact
-        </span>
+        <span className="font-handwriting text-sm sm:text-base text-primary-hover block rotate-3 leading-tight text-center drop-shadow-sm">
+          {PHILOSOPHY_OUTCOMES_COPY.from}<br />
+          {PHILOSOPHY_OUTCOMES_COPY.ideaToImpact}</span>
         <svg
-          className="w-8 h-8 text-[var(--primary-hover)] -ml-2 -mt-0.5 rotate-[120deg]"
+          className="w-8 h-8 text-primary-hover -ml-2 -mt-0.5 rotate-120"
           viewBox="0 0 28 28"
           fill="none"
         >
@@ -59,14 +59,13 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
       >
         {/* Header */}
         <div className="flex items-center gap-2 px-1">
-          <div className="flex items-end gap-0.5 text-[var(--primary-hover)]">
-            <span className="w-1.5 h-2.5 bg-[var(--primary-hover)] rounded-[1px]" />
-            <span className="w-1.5 h-4 bg-[var(--primary-hover)] rounded-[1px]" />
-            <span className="w-1.5 h-3 bg-[var(--primary-hover)] rounded-[1px]" />
+          <div className="flex items-end gap-0.5 text-primary-hover">
+            <span className="w-1.5 h-2.5 bg-primary-hover rounded-xs" />
+            <span className="w-1.5 h-4 bg-primary-hover rounded-xs" />
+            <span className="w-1.5 h-3 bg-primary-hover rounded-xs" />
           </div>
-          <span className="text-xs font-bold tracking-[0.2em] text-[var(--primary-hover)] uppercase">
-            REAL OUTCOMES
-          </span>
+          <span className="text-xs font-bold tracking-widest text-primary-hover uppercase">
+            {PHILOSOPHY_OUTCOMES_COPY.realOutcomes}</span>
         </div>
 
         {/* 4 Outcome Stat Cards */}
@@ -84,10 +83,10 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
               >
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-11 h-11 rounded-full bg-rose-50 border border-rose-100/50 flex items-center justify-center text-primary shrink-0">
-                    <AnimatedIcon icon={StatIcon} size={18} className="w-[18px] h-[18px]" />
+                    <AnimatedIcon icon={StatIcon} size={18} className="w-4.5 h-4.5" />
                   </div>
                   <div className="flex flex-col gap-1 min-w-0">
-                    <span className="text-xl font-black text-neutral-900 tracking-tight leading-none font-satoshi flex items-baseline gap-[1px]">
+                    <span className="text-xl font-black text-neutral-900 tracking-tight leading-none font-satoshi flex items-baseline gap-0.25">
                       {stat.prefix && <span className="text-lg">{stat.prefix}</span>}
                       <AnimatedCounter
                         value={stat.value}

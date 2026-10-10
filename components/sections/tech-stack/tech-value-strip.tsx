@@ -1,5 +1,7 @@
 "use client";
 
+import { TECH_VALUE_STRIP_COPY } from "@/lib/content/tech-stack";
+
 import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
 import { InfinityIcon } from "@animateicons/react/lucide/infinity-icon";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
@@ -12,7 +14,7 @@ export function TechValueStrip() {
     <motion.div 
       variants={staggerContainer(0.1, 0.2)}
       {...viewportReveal}
-      className="ts-value-strip max-w-5xl mx-auto bg-white/95 dark:bg-card/90 backdrop-blur-md border border-slate-200/80 dark:border-border/70 rounded-2xl sm:rounded-full py-4 px-4 sm:px-8 lg:px-12 shadow-[0_8px_30px_rgb(0,0,0,0.03)] w-full"
+      className="ts-value-strip max-w-5xl mx-auto bg-white/95 dark:bg-card/90 backdrop-blur-md border border-slate-200/80 dark:border-border/70 rounded-2xl sm:rounded-full py-4 px-4 sm:px-8 lg:px-12 shadow-card w-full"
     >
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4.5 sm:gap-6">
         {/* 1. Reliable */}
@@ -22,11 +24,9 @@ export function TechValueStrip() {
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
-              Reliable
-            </span>
+              {TECH_VALUE_STRIP_COPY.reliable}</span>
             <span className="text-xs text-slate-500 dark:text-muted-foreground leading-tight truncate xs:whitespace-normal">
-              Battle-tested in real projects
-            </span>
+              {TECH_VALUE_STRIP_COPY.battleTestedInRealProjects}</span>
           </div>
         </motion.div>
 
@@ -37,11 +37,9 @@ export function TechValueStrip() {
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
-              Performant
-            </span>
+              {TECH_VALUE_STRIP_COPY.performant}</span>
             <span className="text-xs text-slate-500 dark:text-muted-foreground leading-tight">
-              Optimized for speed
-            </span>
+              {TECH_VALUE_STRIP_COPY.optimizedForSpeed}</span>
           </div>
         </motion.div>
 
@@ -52,11 +50,9 @@ export function TechValueStrip() {
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
-              Scalable
-            </span>
+              {TECH_VALUE_STRIP_COPY.scalable}</span>
             <span className="text-xs text-slate-500 dark:text-muted-foreground leading-tight">
-              Grows with your business
-            </span>
+              {TECH_VALUE_STRIP_COPY.growsWithYourBusiness}</span>
           </div>
         </motion.div>
 
@@ -67,11 +63,9 @@ export function TechValueStrip() {
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
-              Future-ready
-            </span>
+              {TECH_VALUE_STRIP_COPY.futureReady}</span>
             <span className="text-xs text-slate-500 dark:text-muted-foreground leading-tight">
-              Always evolving with best tools
-            </span>
+              {TECH_VALUE_STRIP_COPY.alwaysEvolvingWithBestTools}</span>
           </div>
         </motion.div>
       </div>

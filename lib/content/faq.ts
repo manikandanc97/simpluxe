@@ -1,3 +1,4 @@
+import { COMMON } from "./common";
 import { ActivityIcon } from "@animateicons/react/lucide/activity-icon";
 import { MedalIcon } from "@animateicons/react/lucide/medal-icon";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
@@ -16,8 +17,9 @@ import { UserCheckIcon } from "@animateicons/react/lucide/user-check-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { WrenchIcon } from "@animateicons/react/lucide/wrench-icon";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
-import { FAQItem } from "@/types/faq";
+import { FAQItem, FAQSectionContent } from "@/types/faq";
 
+// faq
 export const FAQS: FAQItem[] = [
   {
     id: "faq-pricing",
@@ -72,7 +74,7 @@ export const FAQS: FAQItem[] = [
     highlights: [
       { text: "30-Day Warranty", icon: MedalIcon },
       { text: "Proactive Monitoring", icon: ActivityIcon },
-      { text: "Guaranteed SLA", icon: ThumbsUpIcon },
+      { text: COMMON.labels.guaranteedSla, icon: ThumbsUpIcon },
     ],
   },
   {
@@ -91,8 +93,6 @@ export const FAQS: FAQItem[] = [
   },
 ];
 
-import { FAQSectionContent } from "@/types/faq";
-
 export const FAQ_SECTION_CONTENT: FAQSectionContent = {
   eyebrow: "FAQ",
   titleLine1: "Frequently Asked",
@@ -100,3 +100,21 @@ export const FAQ_SECTION_CONTENT: FAQSectionContent = {
   highlightedText: "Questions.",
   description: "Honest answers to common questions founders and teams ask before building with us.",
 };
+
+// faq
+export const FAQ_CONTACT_CARD_COPY = {
+  characterAlt: "Technical Lead with laptop",
+  stillHaveA: "Still have a",
+  question: "question?",
+  weReHereToHelp: "We're here to help",
+  canTFindYourAnswer: "Can't find your answer?",
+  talkToOurTeamAndGet: "Talk to our team and get a clear answer for your requirement.",
+  faqTechnicalConsultation: "FAQ - Technical Consultation",
+  talkToOurTeam: "Talk to our team",
+  text100: "100%",
+  honestAnswers: "Honest Answers",
+  direct: COMMON.labels.direct,
+  projectReview: COMMON.labels.projectReview,
+  zero: COMMON.labels.zero,
+  salesPressure: "Sales Pressure",
+} as const;

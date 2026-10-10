@@ -1,5 +1,7 @@
 "use client";
 
+import { ANIMATED_TEXT_COPY } from "@/lib/content/ui";
+
 import * as React from "react";
 import { m as motion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
@@ -137,7 +139,7 @@ export function AnimatedText({
               >
                 {word}
               </span>
-              <span className="inline-block select-none">&nbsp;</span>
+              <span className="inline-block select-none">{ANIMATED_TEXT_COPY.symbol}</span>
             </span>
           ))}
         </span>
@@ -207,7 +209,7 @@ export function AnimatedText({
             >
               {word}
             </motion.span>
-            <span className="inline-block select-none">&nbsp;</span>
+            <span className="inline-block select-none">{ANIMATED_TEXT_COPY.symbol}</span>
           </span>
         ))}
       </motion.span>

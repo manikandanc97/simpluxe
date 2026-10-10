@@ -40,7 +40,7 @@ export function ServicesView() {
   const activeService = useMemo(() => {
     return (
       SERVICES_LIST.find((s) => s.id === activeServiceId) ||
-      SERVICES_LIST[1]
+      SERVICES_LIST[0]
     );
   }, [activeServiceId]);
 
@@ -48,7 +48,7 @@ export function ServicesView() {
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
       {/* ── Background Atmospheric Elements ── */}
       <AmbientBackground screen="services" />
-      <div className="absolute inset-0 bg-[radial-gradient(#d3ccd8_1px,transparent_1px)]  opacity-35 pointer-events-none" />
+      <div className="absolute inset-0 bg-dots-soft  opacity-35 pointer-events-none" />
 
       {/* ── 1. Hero Section (Title, CTAs, Highlights & Cloudinary 3D Section Banner) ── */}
       <ServicesHero />

@@ -1,11 +1,13 @@
 "use client";
 
+import { WORK_CONTROLS_COPY } from "@/lib/content/projects";
+
 import { useState } from "react";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
 import { AnimatedX } from "@/components/ui/animated-icons/convenience-icons";
 import { cn } from "@/lib/utils";
-import { FILTER_SERVICES } from "./work-data";
+import { FILTER_SERVICES } from "@/lib/content/projects";
 import { type Project } from "@/types/project";
 
 interface WorkControlsProps {
@@ -41,11 +43,12 @@ export function WorkControls({
           return (
             <button
               key={tab.id}
+              aria-pressed={isActive}
               onClick={() => onFilterChange(tab.id)}
               className={cn(
                 "group relative flex items-center justify-center sm:justify-start gap-2 px-3.5 sm:px-4.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer w-full sm:w-auto",
                 isActive
-                  ? "bg-gradient-to-r from-[var(--primary)] to-[var(--primary)] text-white shadow-elevated scale-[1.02]"
+                  ? "bg-gradient-to-r from-primary to-primary text-white shadow-elevated scale-102"
                   : "bg-white/90 hover:bg-white text-muted-foreground border border-surface-elevated hover:border-primary/30 shadow-2xs"
               )}
             >
@@ -65,7 +68,7 @@ export function WorkControls({
                   "text-xs font-bold px-2 py-0.5 rounded-full transition-colors",
                   isActive
                     ? "bg-white/20 text-white backdrop-blur-xs"
-                    : "bg-[var(--surface-elevated)] text-muted-foreground group-hover:bg-[var(--surface-elevated)]"
+                    : "bg-surface-elevated text-muted-foreground group-hover:bg-surface-elevated"
                 )}
               >
                 {count}
@@ -88,13 +91,14 @@ export function WorkControls({
             type="text"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search projects..."
+            placeholder={WORK_CONTROLS_COPY.searchProjects}
+            aria-label={WORK_CONTROLS_COPY.searchProjects2}
             className="w-full sm:w-56 pl-9 pr-4 py-2 bg-background hover:bg-background border border-surface-elevated rounded-full text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-white transition-all"
           />
           {searchQuery && (
             <button
               onClick={() => onSearchChange("")}
-              aria-label="Clear search"
+              aria-label={WORK_CONTROLS_COPY.clearSearch}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
             >
               <AnimatedX size={14} />
@@ -111,10 +115,10 @@ export function WorkControls({
           >
             <span>
               {sortOption === "latest"
-                ? "Latest First"
+                ? WORK_CONTROLS_COPY.latestFirst
                 : sortOption === "oldest"
-                ? "Oldest First"
-                : "Alphabetical"}
+                ? WORK_CONTROLS_COPY.oldestFirst
+                : WORK_CONTROLS_COPY.alphabetical}
             </span>
             <AnimatedIcon 
               icon={ChevronDownIcon}
@@ -138,8 +142,7 @@ export function WorkControls({
                   sortOption === "latest" ? "text-primary font-bold" : "text-muted-foreground"
                 )}
               >
-                Latest First
-              </button>
+                {WORK_CONTROLS_COPY.latestFirst}</button>
               <button
                 onClick={() => {
                   onSortChange("oldest");
@@ -150,8 +153,7 @@ export function WorkControls({
                   sortOption === "oldest" ? "text-primary font-bold" : "text-muted-foreground"
                 )}
               >
-                Oldest First
-              </button>
+                {WORK_CONTROLS_COPY.oldestFirst}</button>
               <button
                 onClick={() => {
                   onSortChange("name");
@@ -162,8 +164,7 @@ export function WorkControls({
                   sortOption === "name" ? "text-primary font-bold" : "text-muted-foreground"
                 )}
               >
-                Alphabetical
-              </button>
+                {WORK_CONTROLS_COPY.alphabetical}</button>
             </div>
           )}
         </div>

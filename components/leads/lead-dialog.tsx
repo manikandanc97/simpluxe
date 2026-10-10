@@ -1,5 +1,7 @@
 "use client";
 
+import { LEAD_DIALOG_COPY } from "@/lib/content/leads";
+
 import {
   Dialog,
   DialogContent,
@@ -19,17 +21,15 @@ interface LeadDialogProps {
 export function LeadDialog({ open, onOpenChange, prefill }: LeadDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl w-full max-h-[90vh] overflow-y-auto overflow-x-hidden p-6 flex flex-col gap-4">
+      <DialogContent className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl w-full max-h-dialog overflow-y-auto overflow-x-hidden p-6 flex flex-col gap-4">
         <DialogHeader className="text-left flex flex-col gap-2">
           <DialogTitle className="text-2xl font-bold tracking-tight">
-            Start a project
-          </DialogTitle>
+            {LEAD_DIALOG_COPY.startAProject}</DialogTitle>
           <DialogDescription className="text-sm text-muted-foreground">
-            Tell us what you want to build. We&apos;ll help you strip away the noise and ship a focused product.
-          </DialogDescription>
+            {LEAD_DIALOG_COPY.tellUsWhatYouWantTo}</DialogDescription>
         </DialogHeader>
 
-        <LeadForm prefill={prefill} onSuccess={() => {}} />
+        <LeadForm prefill={prefill} />
       </DialogContent>
     </Dialog>
   );

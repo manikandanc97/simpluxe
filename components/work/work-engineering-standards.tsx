@@ -60,7 +60,7 @@ export function WorkEngineeringStandards() {
               </div>
 
               {/* Deliverables checklist */}
-              <div className="pt-4 border-t border-[var(--background)] space-y-2">
+              <div className="pt-4 border-t border-background space-y-2">
                 {std.deliverables.map((d, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
                     <AnimatedIcon icon={CircleCheckIcon} size={13} className="text-primary shrink-0" />

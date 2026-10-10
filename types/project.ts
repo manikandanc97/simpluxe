@@ -1,4 +1,6 @@
-type ServiceType = "Websites" | "Web Apps" | "Mobile Apps";
+import type { COMMON } from "@/lib/content/common";
+
+type ServiceType = typeof COMMON.serviceNames.websites | typeof COMMON.serviceNames.webAppsFilter | typeof COMMON.serviceNames.mobileAppsFilter;
 
 export interface Project {
   id: string;

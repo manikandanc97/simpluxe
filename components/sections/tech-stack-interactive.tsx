@@ -1,15 +1,17 @@
 "use client";
 
+import { TECH_STACK_INTERACTIVE_COPY } from "@/lib/content/tech-stack";
+
 import { useMemo, useState } from "react";
 import { AnimatePresence, m as motion } from "motion/react";
 import { staggerContainer } from "@/lib/motion";
-import { TECH_STACK, type Category } from "@/lib/content/tech-stack";
+import { CATEGORIES, TECH_STACK, type Category } from "@/lib/content/tech-stack";
 import { TechCard } from "./tech-stack-card";
 import { TechCategoryTabs } from "./tech-stack/tech-category-tabs";
 import { fadeUp, viewportReveal } from "@/lib/motion";
 
 export function TechStackInteractive() {
-  const [activeCategory, setActiveCategory] = useState<Category>("Frontend & Web");
+  const [activeCategory, setActiveCategory] = useState<Category>(CATEGORIES[0]);
 
   // Counts per category
   const categoryCounts = useMemo(() => {
@@ -38,9 +40,9 @@ export function TechStackInteractive() {
 
       {/* ── Tech Cards Grid ─────────────────────────────────────────────────── */}
       <div
-        role="tabpanel"
-        aria-label={`${activeCategory} technologies`}
-        className="relative min-h-[260px]"
+        role="region"
+        aria-label={TECH_STACK_INTERACTIVE_COPY.technologiesLabel(activeCategory)}
+        className="relative min-h-65"
       >
         <AnimatePresence mode="wait">
           <motion.div

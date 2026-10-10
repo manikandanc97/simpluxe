@@ -1,12 +1,6 @@
-export const TECH_CATEGORIES = [
-  "Frontend & Web",
-  "Mobile",
-  "Backend & APIs",
-  "Database & Cloud",
-  "Design & Tools",
-] as const;
+import type { CATEGORIES } from "@/lib/content/tech-stack";
 
-export type TechCategory = (typeof TECH_CATEGORIES)[number];
+export type TechCategory = (typeof CATEGORIES)[number];
 
 export interface TechItem {
   name: string;

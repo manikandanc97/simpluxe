@@ -1,6 +1,8 @@
 "use client";
 
-import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/navigation";
+import { SITE_NAVBAR_COPY } from "@/lib/content/layout";
+
+import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/layout";
 import { cn } from "@/lib/utils";
 import { m as motion, useScroll, useMotionValueEvent } from "motion/react";
 import { CldImage } from "@/components/ui/cld-image";
@@ -55,24 +57,24 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
           <Link
             href="/"
             className="group flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-ring rounded-lg outline-none shrink-0"
-            aria-label="Simpluxe Home"
+            aria-label={SITE_NAVBAR_COPY.simpluxeHome}
           >
             <CldImage
               src="simpluxe/logo/logo"
-              alt="Simpluxe Logo"
+              alt={SITE_NAVBAR_COPY.simpluxeLogo}
               width={192}
               height={64}
               sizes="96px"
               format="auto"
               quality="auto:eco"
-              className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-102"
               priority
             />
           </Link>
 
           {/* Desktop Navigation */}
           <nav
-            aria-label="Primary navigation"
+            aria-label={SITE_NAVBAR_COPY.primaryNavigation}
             className="hidden lg:flex items-center gap-8 xl:gap-10"
           >
             {NAV_ITEMS.map((item) => {

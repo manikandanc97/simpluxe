@@ -1,5 +1,7 @@
 "use client";
 
+import { FLOATING_CALL_BUTTON_COPY } from "@/lib/content/contact";
+
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, m as motion } from "motion/react";
@@ -11,22 +13,22 @@ import { useEffect, useState, useRef } from "react";
 import { hoverLift, tapScale } from "@/lib/motion";
 
 const PHONE_RAW = SITE.phone.replace(/\s/g, "");
-const WA_NUM = SITE.whatsapp.replace(/\D/g, "") || SITE.phone.replace(/\D/g, "");
-const WA_MESSAGE = encodeURIComponent("Hi Simpluxe! I'd like to discuss a project.");
+const WA_NUM = SITE.whatsapp;
+const WA_MESSAGE = encodeURIComponent(FLOATING_CALL_BUTTON_COPY.whatsappMessage);
 const WA_URL = `https://wa.me/${WA_NUM}?text=${WA_MESSAGE}`;
 
 const ACTION_ITEMS = [
   {
     id: "whatsapp",
-    label: "WhatsApp",
+    label: FLOATING_CALL_BUTTON_COPY.whatsapp,
     href: WA_URL,
     Icon: WhatsAppIcon,
-    bg: "bg-[#25D366] text-white",
-    hoverBg: "hover:bg-[#20bd5a]",
+    bg: "bg-whatsapp text-white",
+    hoverBg: "hover:bg-whatsapp-hover",
   },
   {
     id: "call",
-    label: "Call Us",
+    label: FLOATING_CALL_BUTTON_COPY.callUs,
     href: `tel:${PHONE_RAW}`,
     Icon: PhoneIcon,
     bg: "bg-primary text-primary-foreground",
@@ -91,7 +93,7 @@ export function FloatingCallButton() {
               }}
               className="flex flex-col gap-3 items-end"
             >
-              {ACTION_ITEMS.map((item) => (
+              {ACTION_ITEMS.filter((item) => item.id === "whatsapp" ? Boolean(WA_NUM) : Boolean(PHONE_RAW)).map((item) => (
                 <motion.a
                   key={item.id}
                   href={item.href}
@@ -130,13 +132,13 @@ export function FloatingCallButton() {
 
         <motion.button
           type="button"
-          aria-label={open ? "Close contact options" : "Open contact options"}
+          aria-label={open ? FLOATING_CALL_BUTTON_COPY.closeContactOptions : FLOATING_CALL_BUTTON_COPY.openContactOptions}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
           whileHover={hoverLift}
           whileTap={tapScale}
           className={cn(
-            "relative w-[52px] h-[52px] sm:w-[56px] sm:h-[56px] rounded-full flex items-center justify-center text-white shadow-elevated transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            "relative w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white shadow-elevated transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring",
             open ? "bg-foreground/90" : "bg-primary"
           )}
         >

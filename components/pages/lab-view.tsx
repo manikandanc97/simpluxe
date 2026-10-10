@@ -1,8 +1,10 @@
 "use client";
 
+import { LAB_VIEW_COPY } from "@/lib/content/lab";
+
 import { ExperimentCard } from "@/components/sections/lab/experiment-card";
 import { PageBanner } from "@/components/ui/page-banner";
-import { EXPERIMENTS } from "@/lib/content/experiments";
+import { EXPERIMENTS } from "@/lib/content/lab";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Container } from "@/components/ui/container";
 import { m as motion } from "motion/react";
@@ -16,16 +18,16 @@ export function LabView() {
       <AmbientBackground variant="subpage" />
       <PageBanner
         breadcrumb={[
-          { label: "Home", href: "/" },
-          { label: "Ideas" },
+          { label: LAB_VIEW_COPY.home, href: "/" },
+          { label: LAB_VIEW_COPY.ideas },
         ]}
-        badge="Software R&D & Prototypes"
+        badge={LAB_VIEW_COPY.badge}
         title={
           <span>
-            Ideas & <span className="text-primary">Prototypes.</span>
+            {LAB_VIEW_COPY.ideas2}<span className="text-primary">{LAB_VIEW_COPY.prototypes}</span>
           </span>
         }
-        description="Experiments, concepts, and things we're exploring. A space for testing interactive ideas, generative interfaces, and design physics before client builds."
+        description={LAB_VIEW_COPY.description}
         techStack={["openai", "huggingface", "langchain", "pytorch", "fastapi", "typescript"]}
       />
 

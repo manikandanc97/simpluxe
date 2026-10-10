@@ -1,5 +1,7 @@
 "use client";
 
+import { ECOMMERCE_COPY } from "@/lib/content/services";
+
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { MockupWrapper } from "./mockup-wrapper";
@@ -15,9 +17,9 @@ const STAGE_DURATION: Record<Stage, number> = {
 };
 
 const PRODUCTS = [
-  { color: "from-[#0891B2]/25 to-[#0891B2]/50", label: "₹2,499", name: "Wireless Headset" },
-  { color: "from-[#7C3AED]/25 to-[#7C3AED]/50", label: "₹1,199", name: "Smart Watch" },
-  { color: "from-[#D23D78]/25 to-[#D23D78]/50", label: "₹899",   name: "Air Buds" },
+  { color: "from-chart-3/25 to-chart-3/50", label: ECOMMERCE_COPY.text2499, name: ECOMMERCE_COPY.wirelessHeadset },
+  { color: "from-chart-2/25 to-chart-2/50", label: ECOMMERCE_COPY.text1199, name: ECOMMERCE_COPY.smartWatch },
+  { color: "from-pink-600/25 to-pink-600/50", label: ECOMMERCE_COPY.text899,   name: ECOMMERCE_COPY.airBuds },
 ] as const;
 
 const SELECTED_PRODUCT = 0; // always animate the first product being selected
@@ -45,19 +47,19 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
       isActive={isActive}
-      gradientClass="bg-gradient-to-tr from-[#CFFAFE]/60 via-[#E0F2FE]/50 to-[#F0FDFA]/60"
-      innerClassName="max-w-72 h-[250px] p-3.5 gap-3 overflow-hidden justify-center"
+      gradientClass="bg-gradient-to-tr from-cyan-100/60 via-sky-100/50 to-teal-50/60"
+      innerClassName="max-w-72 h-62.5 p-3.5 gap-3 overflow-hidden justify-center"
       outerChildren={
         <motion.div
           animate={isActive ? { y: [0, -6, 0], opacity: [0.85, 1, 0.85] } : { y: 0 }}
           transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
-          className="absolute top-2 right-2 sm:-top-3 sm:-right-3 z-10 text-white text-[9px] font-bold px-2 py-1 rounded-full shadow-lg"
+          className="absolute top-2 right-2 sm:-top-3 sm:-right-3 z-10 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-lg"
           style={{
             backgroundColor: stage === "success" ? "#059669" : "#0891B2",
             transition: "background-color 0.4s ease",
           }}
         >
-          {stage === "success" ? "✓ Order Done!" : "+42% Conv."}
+          {stage === "success" ? ECOMMERCE_COPY.orderDone : ECOMMERCE_COPY.text42Conv}
         </motion.div>
       }
     >
@@ -77,13 +79,13 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               {/* Browser bar */}
               <div className="flex items-center justify-between border-b border-black/[0.04] pb-1">
                 <div className="flex gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
-                  <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
-                  <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+                  <div className="w-2 h-2 rounded-full bg-red-400" />
+                  <div className="w-2 h-2 rounded-full bg-amber-400" />
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
                 </div>
                 {/* Cart badge */}
                 <div className="relative">
-                  <div className="w-6 h-6 rounded-lg bg-[#0891B2]/10 flex items-center justify-center text-[#0891B2]">
+                  <div className="w-6 h-6 rounded-lg bg-chart-3/10 flex items-center justify-center text-chart-3">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
                     </svg>
@@ -91,13 +93,13 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                   <motion.div
                     animate={stage === "selected" ? { scale: [1, 1.5, 1], backgroundColor: ["#0891B2", "#059669", "#0891B2"] } : { scale: 1 }}
                     transition={{ duration: 0.5, repeat: stage === "selected" ? 2 : 0 }}
-                    className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#0891B2] flex items-center justify-center"
+                    className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-chart-3 flex items-center justify-center"
                   >
                     <motion.span
                       animate={stage === "selected" ? { opacity: [0, 1] } : { opacity: 1 }}
-                      className="text-[6px] text-white font-bold"
+                      className="text-micro text-white font-bold"
                     >
-                      {stage === "selected" ? "1" : "0"}
+                      {stage === "selected" ? ECOMMERCE_COPY.cartCountSelected : ECOMMERCE_COPY.cartCountEmpty}
                     </motion.span>
                   </motion.div>
                 </div>
@@ -125,12 +127,12 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                         <motion.div
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          className="absolute inset-0 rounded-xl border-2 border-[#0891B2]"
+                          className="absolute inset-0 rounded-xl border-2 border-chart-3"
                         />
                       )}
                     </div>
                     <div className="w-full h-1.5 rounded-full bg-slate-200" />
-                    <span className="text-[9px] font-bold text-foreground">{product.label}</span>
+                    <span className="text-2xs font-bold text-foreground">{product.label}</span>
 
                     {/* "Tap" ripple on selected */}
                     {stage === "selected" && i === SELECTED_PRODUCT && (
@@ -138,7 +140,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                         initial={{ scale: 0.3, opacity: 0.8 }}
                         animate={{ scale: 2.5, opacity: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="absolute inset-0 m-auto w-8 h-8 rounded-full bg-[#0891B2]/30 pointer-events-none"
+                        className="absolute inset-0 m-auto w-8 h-8 rounded-full bg-chart-3/30 pointer-events-none"
                       />
                     )}
                   </motion.div>
@@ -148,10 +150,10 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               {/* Add to cart row */}
               <div className="flex items-center gap-2">
                 <div className="flex-1 bg-slate-50 border border-black/[0.05] rounded-lg p-1.5 flex items-center gap-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#0891B2]/25 to-[#0891B2]/50 flex-shrink-0" />
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-chart-3/25 to-chart-3/50 flex-shrink-0" />
                   <div className="flex flex-col gap-0.5 flex-1">
-                    <span className="text-[9px] font-semibold text-foreground leading-none">{PRODUCTS[SELECTED_PRODUCT].name}</span>
-                    <span className="text-[8px] text-[#0891B2] font-bold">{PRODUCTS[SELECTED_PRODUCT].label}</span>
+                    <span className="text-2xs font-semibold text-foreground leading-none">{PRODUCTS[SELECTED_PRODUCT].name}</span>
+                    <span className="text-3xs text-chart-3 font-bold">{PRODUCTS[SELECTED_PRODUCT].label}</span>
                   </div>
                 </div>
                 <motion.div
@@ -172,15 +174,13 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </motion.svg>
-                      Added
-                    </>
+                      {ECOMMERCE_COPY.added}</>
                   ) : (
                     <>
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
                         <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
                       </svg>
-                      Add
-                    </>
+                      {ECOMMERCE_COPY.add}</>
                   )}
                 </motion.div>
               </div>
@@ -199,24 +199,24 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
             >
               {/* Header */}
               <div className="flex items-center gap-2 border-b border-black/[0.04] pb-1.5">
-                <div className="w-5 h-5 rounded-lg bg-[#0891B2]/10 flex items-center justify-center text-[#0891B2]">
+                <div className="w-5 h-5 rounded-lg bg-chart-3/10 flex items-center justify-center text-chart-3">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
                   </svg>
                 </div>
-                <span className="text-xs font-bold text-foreground">Secure Checkout</span>
+                <span className="text-xs font-bold text-foreground">{ECOMMERCE_COPY.secureCheckout}</span>
                 <div className="ml-auto flex items-center gap-1">
                   <div className="w-3 h-3 rounded-full bg-emerald-400" />
-                  <span className="text-[8px] text-emerald-600 font-semibold">SSL</span>
+                  <span className="text-3xs text-emerald-600 font-semibold">{ECOMMERCE_COPY.ssl}</span>
                 </div>
               </div>
 
               {/* Order summary */}
               <div className="bg-slate-50 rounded-xl p-2 flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0891B2]/25 to-[#0891B2]/50 flex-shrink-0" />
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-chart-3/25 to-chart-3/50 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="text-[9px] font-semibold text-foreground">{PRODUCTS[SELECTED_PRODUCT].name}</div>
-                  <div className="text-[9px] text-muted-foreground">Qty: 1</div>
+                  <div className="text-2xs font-semibold text-foreground">{PRODUCTS[SELECTED_PRODUCT].name}</div>
+                  <div className="text-2xs text-muted-foreground">{ECOMMERCE_COPY.qty1}</div>
                 </div>
                 <span className="text-xs font-black text-foreground">{PRODUCTS[SELECTED_PRODUCT].label}</span>
               </div>
@@ -229,7 +229,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                     <rect x="2" y="7" width="10" height="6" rx="1" fill="#FFD700"/>
                   </svg>
                   <div className="flex-1 h-1.5 rounded-full bg-slate-200" />
-                  <span className="text-[8px] font-mono text-muted-foreground">••••</span>
+                  <span className="text-3xs font-mono text-muted-foreground">{ECOMMERCE_COPY.symbol}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-1.5">
                   <div className="bg-white border border-black/[0.07] rounded-lg px-2 py-1.5 h-5 flex items-center">
@@ -242,12 +242,12 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               </div>
 
               {/* Pay button with loading */}
-              <div className="relative w-full h-8 rounded-xl overflow-hidden flex items-center justify-center gap-2 text-white text-xs font-bold bg-[#0891B2]">
+              <div className="relative w-full h-8 rounded-xl overflow-hidden flex items-center justify-center gap-2 text-white text-xs font-bold bg-chart-3">
                 {/* GPU-friendly shimmer effect */}
                 <motion.div
                   animate={{ x: ["-100%", "200%"] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#06b6d4]/40 to-transparent w-full"
+                  className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent w-full"
                 />
                 <div className="relative z-10 flex items-center gap-2">
                   {/* Spinner */}
@@ -256,14 +256,13 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                     transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
                     className="w-3 h-3 rounded-full border-2 border-white/40 border-t-white"
                   />
-                  Processing payment…
-                </div>
+                  {ECOMMERCE_COPY.processingPayment}</div>
               </div>
 
               {/* Security badges */}
               <div className="flex items-center justify-center gap-3">
-                {["Razorpay", "Stripe", "UPI"].map((p) => (
-                  <span key={p} className="text-[7px] font-semibold text-muted-foreground bg-slate-100 px-1.5 py-0.5 rounded">{p}</span>
+                {[ECOMMERCE_COPY.razorpay, ECOMMERCE_COPY.stripe, ECOMMERCE_COPY.upi].map((p) => (
+                  <span key={p} className="text-3xs font-semibold text-muted-foreground bg-slate-100 px-1.5 py-0.5 rounded">{p}</span>
                 ))}
               </div>
             </motion.div>
@@ -316,8 +315,8 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                 transition={{ delay: 0.4 }}
                 className="flex flex-col items-center gap-1 text-center"
               >
-                <span className="text-sm font-extrabold tracking-tight text-foreground">Order Placed! 🎉</span>
-                <span className="text-[9px] text-muted-foreground font-medium">{PRODUCTS[SELECTED_PRODUCT].name} · {PRODUCTS[SELECTED_PRODUCT].label}</span>
+                <span className="text-sm font-extrabold tracking-tight text-foreground">{ECOMMERCE_COPY.orderPlaced}</span>
+                <span className="text-2xs text-muted-foreground font-medium">{PRODUCTS[SELECTED_PRODUCT].name} {ECOMMERCE_COPY.symbol2}{PRODUCTS[SELECTED_PRODUCT].label}</span>
               </motion.div>
 
               {/* Order ID + ETA */}
@@ -328,12 +327,12 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                 className="w-full bg-emerald-50 border border-emerald-100 rounded-xl p-2 flex items-center justify-between"
               >
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-[8px] text-muted-foreground">Order ID</span>
-                  <span className="text-[9px] font-mono font-bold text-foreground">#ST-{Math.floor(8000 + Math.random() * 999)}</span>
+                  <span className="text-3xs text-muted-foreground">{ECOMMERCE_COPY.orderId}</span>
+                  <span className="text-2xs font-mono font-bold text-foreground">{ECOMMERCE_COPY.st}{Math.floor(8000 + Math.random() * 999)}</span>
                 </div>
                 <div className="flex flex-col gap-0.5 items-end">
-                  <span className="text-[8px] text-muted-foreground">Delivery ETA</span>
-                  <span className="text-[9px] font-bold text-emerald-600">2–3 days</span>
+                  <span className="text-3xs text-muted-foreground">{ECOMMERCE_COPY.deliveryEta}</span>
+                  <span className="text-2xs font-bold text-emerald-600">{ECOMMERCE_COPY.text23Days}</span>
                 </div>
               </motion.div>
 

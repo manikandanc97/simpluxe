@@ -1,5 +1,7 @@
 "use client";
 
+import { TECH_STACK_CARD_COPY } from "@/lib/content/tech-stack";
+
 
 import { type TechItem } from "@/types/tech";
 import { m as motion } from "motion/react";
@@ -19,7 +21,7 @@ export function TechCard({ tech }: { tech: TechItem }) {
       <div className="relative w-15 h-15 rounded-2xl bg-muted/40 border border-border/60 flex items-center justify-center p-4 shadow-sm group-hover:scale-105 transition-transform duration-300">
         <CldImage
           src={`simpluxe/tech/${tech.slug}`}
-          alt={`${tech.name} logo`}
+          alt={TECH_STACK_CARD_COPY.logoAlt(tech.name)}
           width={38}
           height={38}
           className={`w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 ${

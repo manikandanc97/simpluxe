@@ -1,5 +1,7 @@
 "use client";
 
+import { MOBILE_BOTTOM_NAV_COPY } from "@/lib/content/layout";
+
 import { useMobileMenu } from "@/components/layout/mobile-menu-context";
 import { useLead } from "@/components/leads/lead-provider";
 import { cn } from "@/lib/utils";
@@ -10,13 +12,13 @@ import { usePathname } from "next/navigation";
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
 
 const LEFT_TABS: { label: string; route: string; iconName: AnimatedIconName }[] = [
-  { label: "Home", route: "/", iconName: "home" },
-  { label: "Work", route: "/work", iconName: "briefcase" },
+  { label: MOBILE_BOTTOM_NAV_COPY.home, route: "/", iconName: "home" },
+  { label: MOBILE_BOTTOM_NAV_COPY.work, route: "/work", iconName: "briefcase" },
 ];
 
 const RIGHT_TABS: { label: string; route: string; iconName: AnimatedIconName }[] = [
-  { label: "Services", route: "/services", iconName: "layers" },
-  { label: "Contact", route: "/contact", iconName: "mail" },
+  { label: MOBILE_BOTTOM_NAV_COPY.services, route: "/services", iconName: "layers" },
+  { label: MOBILE_BOTTOM_NAV_COPY.contact, route: "/contact", iconName: "mail" },
 ];
 
 export function MobileBottomNav() {
@@ -45,7 +47,7 @@ export function MobileBottomNav() {
           className={cn(
             "transition-colors duration-200",
             isActive
-              ? "text-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.4)]"
+              ? "text-primary drop-shadow-elevated"
               : "text-muted-foreground group-hover:text-foreground"
           )}
         />
@@ -62,8 +64,8 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      aria-label="Mobile Bottom App Navigation"
-      className="fixed bottom-[calc(env(safe-area-inset-bottom,0px)+12px)] inset-x-0 z-40 md:hidden pointer-events-none flex justify-center px-4"
+      aria-label={MOBILE_BOTTOM_NAV_COPY.mobileBottomAppNavigation}
+      className="fixed bottom-safe-nav inset-x-0 z-40 md:hidden pointer-events-none flex justify-center px-4"
     >
       <div
         className="relative w-full h-12"
@@ -80,12 +82,12 @@ export function MobileBottomNav() {
           }}
         >
           {/* Left Side Tabs */}
-          <div className="flex items-center justify-around w-[40%]">
+          <div className="flex items-center justify-around w-2/5">
             {LEFT_TABS.map(renderTab)}
           </div>
 
           {/* Right Side Tabs */}
-          <div className="flex items-center justify-around w-[40%]">
+          <div className="flex items-center justify-around w-2/5">
             {RIGHT_TABS.map(renderTab)}
           </div>
         </div>
@@ -104,9 +106,9 @@ export function MobileBottomNav() {
           <button
             type="button"
             onClick={() => openLead({ source: "mobile-nav" })}
-            aria-label="Start a project"
+            aria-label={MOBILE_BOTTOM_NAV_COPY.startAProject}
             className={cn(
-              "relative flex items-center justify-center w-11 h-11 rounded-full shadow-[0_4px_16px_rgba(var(--primary),0.35)] transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-primary ring-offset-2 ring-offset-background active:scale-90",
+              "relative flex items-center justify-center w-11 h-11 rounded-full shadow-card transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-primary ring-offset-2 ring-offset-background active:scale-90",
               "bg-primary text-primary-foreground hover:scale-105"
             )}
           >

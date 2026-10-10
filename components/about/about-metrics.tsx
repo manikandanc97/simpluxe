@@ -1,3 +1,4 @@
+import { ABOUT_METRICS_COPY } from "@/lib/content/about";
 import { METRICS } from "@/lib/content/about";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
@@ -21,8 +22,7 @@ export function AboutMetrics() {
                 <Icon size={18} />
               </div>
               <span className="text-xs font-mono font-bold tracking-wider text-primary uppercase px-2 py-0.5 rounded-full bg-background border border-surface-elevated">
-                VERIFIED
-              </span>
+                {ABOUT_METRICS_COPY.verified}</span>
             </div>
 
             <div className="flex flex-col gap-1">

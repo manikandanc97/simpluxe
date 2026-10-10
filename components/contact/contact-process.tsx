@@ -1,3 +1,4 @@
+import { CONTACT_PROCESS_COPY } from "@/lib/content/contact";
 import { CONTACT_STEPS } from "@/lib/content/contact";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,13 +10,11 @@ export function ContactProcess() {
         <div className="flex items-center gap-2">
           <Badge variant="outline" size="lg">
             <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
-            Expectations
-          </Badge>
+            {CONTACT_PROCESS_COPY.expectations}</Badge>
         </div>
-        <CardTitle className="text-xl sm:text-2xl">What Happens Next?</CardTitle>
+        <CardTitle className="text-xl sm:text-2xl">{CONTACT_PROCESS_COPY.whatHappensNext}</CardTitle>
         <CardDescription>
-          A clear execution framework from intake to launch.
-        </CardDescription>
+          {CONTACT_PROCESS_COPY.aClearExecutionFrameworkFromIntake}</CardDescription>
       </CardHeader>
 
       <CardContent className="gap-4">

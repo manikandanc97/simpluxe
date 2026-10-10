@@ -1,5 +1,7 @@
 "use client";
 
+import { WHAT_WE_BUILD_CARD_COPY } from "@/lib/content/services";
+
 import { m as motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
@@ -9,7 +11,7 @@ import { SERVICES_LIST } from "@/lib/content/services";
 import dynamic from "next/dynamic";
 
 const loadingSkeleton = () => (
-  <div className="w-full max-w-72 h-[250px] bg-slate-100/40 animate-pulse rounded-[24px] border border-black/[0.04]" />
+  <div className="w-full max-w-72 h-62.5 bg-slate-100/40 animate-pulse rounded-3xl border border-black/[0.04]" />
 );
 
 const WebsitesMockup = dynamic(
@@ -109,7 +111,7 @@ export function WhatWeBuildCard({
   const isActive = offset === 0;
   const isVisible = Math.abs(offset) <= 1;
 
-  const MockupComponent = MOCKUPS[service.id] || MOCKUPS["websites"];
+  const MockupComponent = MOCKUPS[service.id];
   const IconComponent = service.icon;
 
   return (
@@ -138,12 +140,15 @@ export function WhatWeBuildCard({
         opacity: { type: "tween", duration: 0.3, ease: "easeOut" },
       }}
       data-slot="card"
+      aria-hidden={!isActive}
+      inert={!isActive}
       className={cn(
-        "group absolute top-0 w-full h-full max-w-3xl lg:max-w-4xl rounded-2xl sm:rounded-3xl p-6 pb-6 sm:pb-6 xs:p-6 sm:p-8 lg:p-10 font-satoshi cursor-pointer overflow-hidden",
+        "group w-full max-w-3xl lg:max-w-4xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 font-satoshi cursor-pointer",
+        isActive ? "relative" : "absolute top-0 h-full",
         "backdrop-blur-2xl border",
         isActive
           ? "bg-card border-primary/20 z-30 pointer-events-auto"
-          : "bg-card/60 border-border z-10 pointer-events-auto"
+          : "bg-card/60 border-border z-10 pointer-events-none"
       )}
       style={{
         transformStyle: "preserve-3d",
@@ -163,7 +168,7 @@ export function WhatWeBuildCard({
         }
       }}
     >
-      <div className="wwb-card-content h-full w-full relative group-hover/wwb:translate-y-[-2px] transition-transform duration-500">
+      <div className="wwb-card-content h-full w-full relative group-hover/wwb:-translate-y-0.5 transition-transform duration-500">
         {/* Ambient glow — only on active */}
         {isActive && (
           <motion.div
@@ -207,7 +212,7 @@ export function WhatWeBuildCard({
                       whileHover={{ rotate: 8, scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     >
-                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-[2.2]" />
+                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-medium" />
                     </motion.div>
                   </FadeUp>
 
@@ -228,7 +233,7 @@ export function WhatWeBuildCard({
                     {service.shortDeliverables?.slice(0, 2).map((item, i) => (
                       <motion.span
                         key={i}
-                        className="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary border border-border text-foreground type-label max-w-full whitespace-nowrap"
+                        className="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary border border-border text-foreground type-label max-w-full whitespace-normal"
                         initial={{ opacity: 0, scale: 0.88 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.26 + i * 0.055, duration: 0.3, ease: "easeOut" }}
@@ -246,7 +251,7 @@ export function WhatWeBuildCard({
                         onOpenLead(service.name);
                       }}
                     >
-                      <span>Explore {service.name}</span>
+                      <span>{WHAT_WE_BUILD_CARD_COPY.explore}{service.name}</span>
                       <AnimatedArrowRight size={15} className="text-white" />
                     </Button>
                   </FadeUp>
@@ -273,7 +278,7 @@ export function WhatWeBuildCard({
                       className="w-9 h-9 rounded-xl flex items-center justify-center"
                       style={{ backgroundColor: `${service.brandColor}1A`, color: service.brandColor }}
                     >
-                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-[2.2]" />
+                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-medium" />
                     </div>
                   </div>
                   <h3 className="type-h3 text-foreground">
@@ -294,7 +299,15 @@ export function WhatWeBuildCard({
               transition={{ type: "spring", stiffness: 300, damping: 28 }}
             >
               <div className="w-full max-w-xs mx-auto flex items-start justify-center px-2 sm:px-4">
-                <MockupComponent isActive={isActive} />
+                {MockupComponent ? <MockupComponent isActive={isActive} /> : (
+                  <div className="w-full rounded-2xl border border-border bg-secondary/50 p-5 flex flex-col gap-4">
+                    <AnimatedIcon icon={IconComponent} size={28} className="text-primary" />
+                    <p className="font-bold text-foreground">{service.name}</p>
+                    <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+                      {service.pillars.map((pillar) => <li key={pillar}>{pillar}</li>)}
+                    </ul>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { DESKTOP_FLOW_CANVAS_COPY } from "@/lib/content/philosophy";
+
 import { FLOW_NODES } from "@/lib/content/philosophy";
 import { BoxIcon } from "@animateicons/react/lucide/box-icon";
 import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
@@ -108,7 +110,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           </div>
           <div className="flex items-start gap-3 pt-1">
             <div className="w-8 h-8 flex items-center justify-center shrink-0 text-primary bg-rose-50/50 rounded-full">
-              <AnimatedIcon icon={LightbulbIcon} size={18} className="w-[18px] h-[18px]" />
+              <AnimatedIcon icon={LightbulbIcon} size={18} className="w-4.5 h-4.5" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">
@@ -130,13 +132,13 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           className="group relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 sm:p-5 hover:shadow-lg hover:border-purple-100 transition-all duration-300 w-52 sm:w-60 cursor-default"
         >
           <div className="absolute -top-3.5 right-6 z-20">
-            <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-[var(--chart-2)] border-purple-200/60 uppercase tracking-widest leading-none">
+            <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-chart-2 border-purple-200/60 uppercase tracking-widest leading-none">
               <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.topRight.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
-            <div className="w-8 h-8 flex items-center justify-center shrink-0 text-[var(--chart-2)] bg-purple-50/50 rounded-full">
-              <AnimatedIcon icon={TrendingUpIcon} size={18} className="w-[18px] h-[18px]" />
+            <div className="w-8 h-8 flex items-center justify-center shrink-0 text-chart-2 bg-purple-50/50 rounded-full">
+              <AnimatedIcon icon={TrendingUpIcon} size={18} className="w-4.5 h-4.5" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">
@@ -160,10 +162,10 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-white shadow-elevated border border-rose-50 flex flex-col items-center justify-center p-3 sm:p-4">
           <CldImage
             src="simpluxe/logo/logo"
-            alt="Simpluxe Logo"
+            alt={DESKTOP_FLOW_CANVAS_COPY.simpluxeLogo}
             width={180}
             height={40}
-            className="w-[90%] h-auto object-contain drop-shadow-sm select-none"
+            className="w-9/10 h-auto object-contain drop-shadow-sm select-none"
             priority
           />
         </div>
@@ -186,7 +188,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           </div>
           <div className="flex items-start gap-3 pt-1">
             <div className="w-8 h-8 flex items-center justify-center shrink-0 text-primary bg-rose-50/50 rounded-full">
-              <AnimatedIcon icon={BoxIcon} size={18} className="w-[18px] h-[18px]" />
+              <AnimatedIcon icon={BoxIcon} size={18} className="w-4.5 h-4.5" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">
@@ -208,13 +210,13 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           className="group relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 sm:p-5 hover:shadow-lg hover:border-purple-100 transition-all duration-300 w-52 sm:w-60 cursor-default"
         >
           <div className="absolute -top-3.5 right-6 z-20">
-            <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-[var(--chart-2)] border-purple-200/60 uppercase tracking-widest leading-none">
+            <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-chart-2 border-purple-200/60 uppercase tracking-widest leading-none">
               <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.bottomRight.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
-            <div className="w-8 h-8 flex items-center justify-center shrink-0 text-[var(--chart-2)] bg-purple-50/50 rounded-full">
-              <AnimatedIcon icon={UsersIcon} size={18} className="w-[18px] h-[18px]" />
+            <div className="w-8 h-8 flex items-center justify-center shrink-0 text-chart-2 bg-purple-50/50 rounded-full">
+              <AnimatedIcon icon={UsersIcon} size={18} className="w-4.5 h-4.5" />
             </div>
             <div className="flex flex-col gap-1.5">
               <p className="font-bold text-sm text-neutral-900 leading-tight">

@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "group/button font-satoshi inline-flex shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding text-sm font-bold tracking-tight whitespace-nowrap outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 cursor-pointer [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:transition-transform [&_svg]:duration-200 [&_svg]:ease-out hover:[&_svg]:scale-110 active:[&_svg]:scale-90",
+  "group/button font-satoshi inline-flex shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding text-sm font-bold tracking-tight whitespace-nowrap outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-haspopup:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 cursor-pointer icon:pointer-events-none icon:shrink-0 icon-default:size-4 icon:transition-transform icon:duration-200 icon:ease-out hover:icon:scale-110 active:icon:scale-90",
   {
     variants: {
       variant: {
@@ -9,7 +9,7 @@ export const buttonVariants = cva(
         outline:
           "bg-white text-foreground border border-black/10 hover:border-black/25 hover:bg-neutral-50 shadow-xs",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "bg-secondary text-secondary-foreground hover:bg-secondary-hover aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
@@ -23,7 +23,7 @@ export const buttonVariants = cva(
         lg: "h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base gap-2 sm:gap-2.5",
         xl: "h-13 sm:h-14 px-7 sm:px-8 text-base gap-2.5",
         icon: "size-10",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
+        "icon-xs": "size-6 icon-default:size-3",
         "icon-sm": "size-8",
         "icon-lg": "size-12",
       },

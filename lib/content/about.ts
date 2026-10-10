@@ -1,3 +1,7 @@
+import { COMMON } from "./common";
+import { SITE } from "./site";
+
+// about
 export interface AboutMetric {
   value: string;
   label: string;
@@ -27,7 +31,7 @@ export const METRICS: AboutMetric[] = [
   },
   {
     value: "< 1.2s",
-    label: "Sub-Second Speeds",
+    label: "Fast Load Speeds",
     sub: "Lighthouse 95+ performance on production networks",
   },
   {
@@ -36,8 +40,8 @@ export const METRICS: AboutMetric[] = [
     sub: "You own 100% of all code, assets, and infrastructure",
   },
   {
-    value: "24h",
-    label: "Guaranteed Response",
+    value: SITE.responseTime || COMMON.labels.direct,
+    label: "Engineer Response",
     sub: "Direct communication with engineers who know your codebase",
   },
 ];
@@ -105,10 +109,11 @@ export const ABOUT_SECTION_CONTENT = {
   pillar1Title: "Direct partnership with principal engineers — zero junior delegation",
   pillar1Desc: "When you collaborate with Simpluxe, you don't get passed through account managers, junior coordinators, or fragmented offshore tiers. Every architecture decision, database schema, and interface interaction is authored and reviewed by battle-tested engineers.",
   pillar2Title: "Architectural Longevity",
-  pillar2Desc: "Zero framework bloat. We build maintainable Next.js 15 and React systems with strict TypeScript typing that your internal team can inherit effortlessly.",
+  pillar2Desc: "Zero framework bloat. We build maintainable Next.js 16 and React systems with strict TypeScript typing that your internal team can inherit effortlessly.",
   pillar3Title: "100% IP & Code Ownership",
   pillar3Desc: "You own every line of code, design file, and deployment credential from Day 1. Full Git repository transfer with zero recurring vendor lock-in.",
 };
+
 export const ABOUT_COMPARISON_CONTENT = {
   eyebrow: "Comparative Standards",
   title: "Why Founders Choose",
@@ -139,10 +144,10 @@ export const STACK_CATEGORIES = [
     title: "Frontend Engineering",
     badge: "Sub-Second UX",
     technologies: [
-      { name: "Next.js 15", desc: "App Router & Server Components" },
+      { name: COMMON.technology.nextjs16, desc: "App Router & Server Components" },
       { name: "React 19", desc: "Concurrent rendering & Actions" },
       { name: "TypeScript Strict", desc: "Type-safe robust logic" },
-      { name: "Tailwind CSS", desc: "Zero-runtime utility styling" },
+      { name: COMMON.technology.tailwind, desc: "Zero-runtime utility styling" },
       { name: "Motion React", desc: "Fluid 60fps micro-animations" },
     ],
   },
@@ -160,20 +165,60 @@ export const STACK_CATEGORIES = [
     title: "Data & Security",
     badge: "Enterprise Grade",
     technologies: [
-      { name: "PostgreSQL", desc: "Relational database reliability" },
-      { name: "Supabase", desc: "Realtime data, auth & storage" },
-      { name: "Prisma ORM", desc: "Type-safe schema migrations" },
-      { name: "Redis", desc: "Sub-millisecond memory caching" },
+      { name: COMMON.technology.postgres, desc: "Relational database reliability" },
+      { name: COMMON.technology.supabase, desc: "Realtime data, auth & storage" },
+      { name: COMMON.technology.prismaOrm, desc: "Type-safe schema migrations" },
+      { name: COMMON.technology.redis, desc: "Sub-millisecond memory caching" },
     ],
   },
   {
     title: "Mobile Products",
-    badge: "iOS & Android",
+    badge: COMMON.labels.iosAndroid,
     technologies: [
-      { name: "React Native", desc: "Cross-platform native performance" },
+      { name: COMMON.technology.reactNative, desc: "Cross-platform native performance" },
       { name: "Expo EAS", desc: "Automated cloud builds & OTA updates" },
-      { name: "Offline Sync", desc: "Local database caching" },
+      { name: COMMON.labels.offlineSync, desc: "Local database caching" },
       { name: "Native Biometrics", desc: "FaceID & fingerprint security" },
     ],
   },
 ];
+
+// about
+export const ABOUT_HERO_COPY = {
+  home: COMMON.pages.home,
+  symbol: COMMON.symbols.slash,
+  about: COMMON.pages.about,
+  engineeringExcellenceShapedAround: "Engineering excellence shaped around",
+  yourVision: "your vision.",
+  weAreADedicatedSoftwareStudio: "We are a dedicated software studio built on the conviction that digital products should be clear, lightning-fast, and engineered to solve real business challenges without bureaucratic overhead.",
+  highCraft: "High Craft",
+  pixelPerfectExecution: "Pixel-perfect execution",
+  zeroBloat: "Zero Bloat",
+  leanRapidArchitecture: "Lean, rapid architecture",
+  productionReady: COMMON.labels.productionReady,
+  scaleWithConfidence: "Scale with confidence",
+  nextJs16Native: "Next.js 16 Native",
+  turbopackArchitecture: "Turbopack Architecture",
+  fullStack: "Full Stack",
+  symbol2: COMMON.symbols.bullet,
+  modernTooling: "Modern Tooling",
+  globalDelivery: "Global Delivery",
+  typescript: COMMON.technology.typescript,
+  text100TypeSafe: "100% Type-Safe",
+  systemDesign: "System Design",
+  scalablePatterns: "Scalable Patterns",
+  subSecondSpeed: COMMON.labels.subSecondSpeed,
+  edgeOptimized: "Edge Optimized",
+  text999Uptime: "99.9% Uptime",
+  enterpriseSecure: "Enterprise Secure",
+  engineeringExcellenceShapedAroundYourVision: "Engineering excellence shaped around your vision",
+} as const;
+
+export const ABOUT_METRICS_COPY = {
+  verified: "VERIFIED",
+} as const;
+
+// pages
+export const ABOUT_VIEW_COPY = {
+  symbol: " • ",
+} as const;

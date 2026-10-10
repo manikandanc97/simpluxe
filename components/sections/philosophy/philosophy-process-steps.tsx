@@ -1,5 +1,7 @@
 "use client";
 
+import { PHILOSOPHY_PROCESS_STEPS_COPY } from "@/lib/content/philosophy";
+
 import { PROCESS_STEPS } from "@/lib/content/philosophy";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { m as motion } from "motion/react";
@@ -14,9 +16,8 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
       {/* Header */}
       <div className="flex items-center gap-2 px-1">
         <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-        <span className="text-xs font-bold tracking-[0.2em] text-primary uppercase">
-          PROCESS / 04
-        </span>
+        <span className="text-xs font-bold tracking-widest text-primary uppercase">
+          {PHILOSOPHY_PROCESS_STEPS_COPY.process04}</span>
       </div>
 
       {/* 4 Cards */}
@@ -30,7 +31,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
               initial={{ opacity: 0, x: -24, filter: "blur(8px)" }}
               animate={inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 + idx * 0.08 }}
-              className={`group relative rounded-[22px] p-2.5 sm:p-4 pr-4 flex items-center gap-4 bg-white border transition-all duration-300 ${
+              className={`group relative rounded-3xl p-2.5 sm:p-4 pr-4 flex items-center gap-4 bg-white border transition-all duration-300 ${
                 step.active
                   ? "border-rose-100/80 shadow-elevated"
                   : "border-neutral-100/80 shadow-card hover:shadow-md"
@@ -40,7 +41,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-black shrink-0 font-mono ${
                   step.active
-                    ? "bg-[var(--primary-hover)] text-white shadow-sm"
+                    ? "bg-primary-hover text-white shadow-sm"
                     : "bg-neutral-50/80 text-neutral-800"
                 }`}
               >
@@ -70,7 +71,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
               {step.active && (
                 <div className="hidden xl:block absolute -right-1.5 top-1/2 -translate-y-1/2 z-40 pointer-events-none">
                   {/* Dot */}
-                  <span className="block w-2.5 h-2.5 rounded-full bg-[var(--primary-hover)] border-2 border-white shadow-sm" />
+                  <span className="block w-2.5 h-2.5 rounded-full bg-primary-hover border-2 border-white shadow-sm" />
 
                   {/* Single unbroken swooping curved dashed line from Card 01 dot to Direct access card */}
                   <svg
@@ -106,13 +107,11 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
         transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
         className="relative pt-2 pl-4 select-none pointer-events-none"
       >
-        <span className="font-handwriting text-sm sm:text-base text-[var(--primary-hover)] block -rotate-3 leading-tight drop-shadow-sm">
-          Simple Process
-          <br />
-          Real Results
-        </span>
+        <span className="font-handwriting text-sm sm:text-base text-primary-hover block -rotate-3 leading-tight drop-shadow-sm">
+          {PHILOSOPHY_PROCESS_STEPS_COPY.simpleProcess}<br />
+          {PHILOSOPHY_PROCESS_STEPS_COPY.realResults}</span>
         <svg
-          className="w-8 h-8 text-[var(--primary-hover)] ml-20 -mt-1 rotate-12"
+          className="w-8 h-8 text-primary-hover ml-20 -mt-1 rotate-12"
           viewBox="0 0 28 28"
           fill="none"
         >

@@ -1,7 +1,9 @@
 "use client";
 
+import { EXPERIMENT_CARD_COPY } from "@/lib/content/lab";
+
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import type { Experiment } from "@/lib/content/experiments";
+import type { Experiment } from "@/lib/content/lab";
 import { m as motion } from "motion/react";
 
 interface ExperimentCardProps {
@@ -33,13 +35,13 @@ export function ExperimentCard({ experiment, isFeatured = false }: ExperimentCar
         );
       case "dots":
         return (
-          <div className="absolute inset-0 opacity-25 group-hover:opacity-50 transition-opacity duration-500 bg-[radial-gradient(var(--color-foreground)_1.5px,transparent_1.5px)] [background-size:20px_20px]" />
+          <div className="absolute inset-0 opacity-25 group-hover:opacity-50 transition-opacity duration-500 bg-dots-foreground bg-dots-size" />
         );
       case "waves":
         return (
           <div className="absolute inset-0 overflow-hidden flex items-center justify-center opacity-25 group-hover:opacity-50 transition-opacity duration-500">
-            <div className="w-[140%] h-[140%] border border-foreground/30 rounded-full absolute translate-x-1/4 group-hover:translate-x-1/3 group-hover:border-primary/40 transition-all duration-1000" />
-            <div className="w-[110%] h-[110%] border border-foreground/30 rounded-full absolute -translate-x-1/4 group-hover:-translate-x-1/3 transition-transform duration-1000" />
+            <div className="w-7/5 h-7/5 border border-foreground/30 rounded-full absolute translate-x-1/4 group-hover:translate-x-1/3 group-hover:border-primary/40 transition-all duration-1000" />
+            <div className="w-11/10 h-11/10 border border-foreground/30 rounded-full absolute -translate-x-1/4 group-hover:-translate-x-1/3 transition-transform duration-1000" />
           </div>
         );
       case "abstract":
@@ -110,9 +112,9 @@ export function ExperimentCard({ experiment, isFeatured = false }: ExperimentCar
         </div>
 
         <div className="pt-6 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
-          <span className="font-mono">Software Prototype</span>
+          <span className="font-mono">{EXPERIMENT_CARD_COPY.softwarePrototype}</span>
           <span className="group-hover:text-primary transition-colors font-medium inline-flex items-center gap-1.5">
-            <span>Explore concept</span>
+            <span>{EXPERIMENT_CARD_COPY.exploreConcept}</span>
             <AnimatedArrowRight size={13} />
           </span>
         </div>

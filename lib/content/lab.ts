@@ -1,3 +1,6 @@
+import { COMMON } from "./common";
+
+// experiments
 export interface Experiment {
   id: string;
   number: string;
@@ -52,3 +55,19 @@ export const EXPERIMENTS: Experiment[] = [
     spanClass: "md:col-span-2 lg:col-span-2", // Asymmetric balance
   },
 ];
+
+// lab
+export const EXPERIMENT_CARD_COPY = {
+  softwarePrototype: "Software Prototype",
+  exploreConcept: "Explore concept",
+} as const;
+
+// pages
+export const LAB_VIEW_COPY = {
+  badge: "Software R&D & Prototypes",
+  description: "Experiments, concepts, and things we're exploring. A space for testing interactive ideas, generative interfaces, and design physics before client builds.",
+  home: COMMON.pages.home,
+  ideas: COMMON.pages.ideas,
+  ideas2: "Ideas & ",
+  prototypes: "Prototypes.",
+} as const;

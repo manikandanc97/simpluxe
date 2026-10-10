@@ -6,6 +6,7 @@ import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { AnimatePresence, m as motion } from "motion/react";
 
 import { fadeUp } from "@/lib/motion";
+import { useId } from "react";
 
 interface FaqAccordionItemProps {
   faq: FAQItem;
@@ -19,6 +20,8 @@ export function FaqAccordionItem({
   onToggle,
 }: FaqAccordionItemProps) {
   const Icon = faq.icon;
+  const answerId = useId();
+  const questionId = useId();
 
   return (
     <motion.div
@@ -32,7 +35,10 @@ export function FaqAccordionItem({
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 p-4 sm:p-6 text-left cursor-pointer outline-none"
+        id={questionId}
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? answerId : undefined}
+        className="w-full flex items-center justify-between gap-4 p-4 sm:p-6 text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
       >
         <div className="flex items-center gap-4.5 sm:gap-4 flex-1 min-w-0">
           {/* Number Box */}
@@ -50,7 +56,7 @@ export function FaqAccordionItem({
           <div className="flex flex-col gap-1 flex-1 min-w-0">
             <div className="flex items-center gap-1.5">
               <AnimatedIcon icon={Icon} size={14} className="w-3.5 h-3.5 text-primary shrink-0" />
-              <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
+              <span className="text-2xs font-bold uppercase tracking-wider text-primary">
                 {faq.category}
               </span>
             </div>
@@ -68,7 +74,7 @@ export function FaqAccordionItem({
               : "bg-muted border-border text-muted-foreground group-hover:text-foreground"
           }`}
         >
-          <AnimatedIcon icon={ChevronDownIcon} size={15} className="w-3.5 h-3.5 stroke-[2.5]" />
+          <AnimatedIcon icon={ChevronDownIcon} size={15} className="w-3.5 h-3.5 stroke-bold" />
         </div>
       </button>
 
@@ -76,6 +82,9 @@ export function FaqAccordionItem({
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={answerId}
+            role="region"
+            aria-labelledby={questionId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

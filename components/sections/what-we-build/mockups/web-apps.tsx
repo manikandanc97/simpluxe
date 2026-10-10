@@ -1,5 +1,7 @@
 "use client";
 
+import { WEB_APPS_COPY } from "@/lib/content/services";
+
 import { m as motion } from "motion/react";
 import { MockupWrapper } from "./mockup-wrapper";
 
@@ -7,18 +9,18 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
       isActive={isActive}
-      gradientClass="bg-gradient-to-tr from-[#DBEAFE]/60 via-[#E0E7FF]/50 to-[#F3E8FF]/60"
+      gradientClass="bg-gradient-to-tr from-blue-100/60 via-indigo-100/50 to-purple-100/60"
       innerClassName="max-w-80 sm:max-w-80 p-3.5 sm:p-4 gap-3"
       floatDuration={4.5}
       floatY={4}
     >
         <div className="flex items-center justify-between pb-1 border-b border-black/[0.04]">
           <div className="flex gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
-            <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
-            <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+            <div className="w-2 h-2 rounded-full bg-red-400" />
+            <div className="w-2 h-2 rounded-full bg-amber-400" />
+            <div className="w-2 h-2 rounded-full bg-green-500" />
           </div>
-          <span className="text-xs font-mono text-muted-foreground">app.simpleprime.io</span>
+          <span className="text-xs font-mono text-muted-foreground">{WEB_APPS_COPY.appSimpleprimeIo}</span>
         </div>
 
         <div className="grid grid-cols-12 gap-2.5 relative">
@@ -37,7 +39,7 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
             </svg>
           </motion.div>
 
-          <div className="col-span-4 bg-[#1B1B1D] rounded-xl p-2 flex flex-col gap-1.5 shadow-inner relative z-10">
+          <div className="col-span-4 bg-zinc-900 rounded-xl p-2 flex flex-col gap-1.5 shadow-inner relative z-10">
             <div className="w-full h-2 rounded bg-white/20" />
             <motion.div
               animate={isActive ? { backgroundColor: ["rgba(146,47,85,1)", "rgba(146,47,85,1)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.1)", "rgba(146,47,85,1)"] } : { backgroundColor: "rgba(146,47,85,1)" }}
@@ -61,21 +63,21 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
             >
               <div className="grid grid-cols-2 gap-1.5">
                 <div className="bg-slate-50 border border-black/[0.04] rounded-lg p-1.5">
-                  <span className="text-xs text-muted-foreground block">Users</span>
-                  <span className="text-xs font-bold text-foreground">14.2k</span>
+                  <span className="text-xs text-muted-foreground block">{WEB_APPS_COPY.users}</span>
+                  <span className="text-xs font-bold text-foreground">{WEB_APPS_COPY.text142k}</span>
                 </div>
                 <div className="bg-slate-50 border border-black/[0.04] rounded-lg p-1.5">
-                  <span className="text-xs text-muted-foreground block">Uptime</span>
-                  <span className="text-xs font-bold text-[#08B875]">99.9%</span>
+                  <span className="text-xs text-muted-foreground block">{WEB_APPS_COPY.uptime}</span>
+                  <span className="text-xs font-bold text-emerald-500">{WEB_APPS_COPY.text999}</span>
                 </div>
               </div>
 
               <div className="bg-slate-50 border border-black/[0.04] rounded-lg p-2 flex items-end justify-between h-14 gap-1.5 overflow-hidden">
-                <motion.div animate={isActive ? { scaleY: [0.4, 0.7, 0.4] } : { scaleY: 0.4 }} transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0 }} className="w-full bg-[#E8D9FE] rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.4, 0.7, 0.4] } : { scaleY: 0.4 }} transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0 }} className="w-full bg-violet-100 rounded-t h-full origin-bottom" />
                 <motion.div animate={isActive ? { scaleY: [0.75, 0.5, 0.75] } : { scaleY: 0.75 }} transition={{ duration: 3.5, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.2 }} className="w-full bg-primary rounded-t h-full origin-bottom" />
-                <motion.div animate={isActive ? { scaleY: [0.95, 0.8, 0.95] } : { scaleY: 0.95 }} transition={{ duration: 4, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.4 }} className="w-full bg-[#6C2BB8] rounded-t h-full origin-bottom" />
-                <motion.div animate={isActive ? { scaleY: [0.6, 0.9, 0.6] } : { scaleY: 0.6 }} transition={{ duration: 3.2, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.1 }} className="w-full bg-[#F05BAD] rounded-t h-full origin-bottom" />
-                <motion.div animate={isActive ? { scaleY: [0.8, 0.45, 0.8] } : { scaleY: 0.8 }} transition={{ duration: 3.8, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.3 }} className="w-full bg-[#4BA8FF] rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.95, 0.8, 0.95] } : { scaleY: 0.95 }} transition={{ duration: 4, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.4 }} className="w-full bg-violet-700 rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.6, 0.9, 0.6] } : { scaleY: 0.6 }} transition={{ duration: 3.2, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.1 }} className="w-full bg-pink-400 rounded-t h-full origin-bottom" />
+                <motion.div animate={isActive ? { scaleY: [0.8, 0.45, 0.8] } : { scaleY: 0.8 }} transition={{ duration: 3.8, repeat: isActive ? Infinity : 0, ease: "easeInOut", delay: 0.3 }} className="w-full bg-blue-400 rounded-t h-full origin-bottom" />
               </div>
             </motion.div>
 

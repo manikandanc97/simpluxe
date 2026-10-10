@@ -1,10 +1,11 @@
+import { CONTACT_PAGE_COPY } from "@/lib/content/metadata";
 import { ContactView } from "@/components/pages/contact-view";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: CONTACT_PAGE_COPY.title,
   description:
-    "Get in touch with Simpluxe. Discuss your web application, mobile app, software architecture, or schedule a direct engineering consultation.",
+    CONTACT_PAGE_COPY.description,
 };
 
 export default function ContactPage() {

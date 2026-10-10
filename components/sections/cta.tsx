@@ -1,5 +1,7 @@
 "use client";
 
+import { CTA_COPY } from "@/lib/content/cta";
+
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
@@ -21,7 +23,6 @@ export function CTA({ onStartProject }: CTAProps) {
   const { openLead } = useLead();
   const ref = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const illustrationRef = useRef<HTMLDivElement>(null);
 
   const handleStart = () => {
     if (onStartProject) onStartProject();
@@ -29,7 +30,7 @@ export function CTA({ onStartProject }: CTAProps) {
   };
 
   const handleSchedule = () => {
-    openLead({ source: "cta-schedule", description: "Interested in scheduling a discovery call." });
+    openLead({ source: "cta-schedule", description: CTA_COPY.interestedInSchedulingADiscoveryCall });
   };
 
   return (
@@ -47,17 +48,11 @@ export function CTA({ onStartProject }: CTAProps) {
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-center">
-          
-          {/* ── Left Column: 3D Illustration ── */}
-          <div
-            ref={illustrationRef}
-            className="hidden lg:flex lg:col-span-5 xl:col-span-5 justify-center items-center relative"
-          >
-            {/* Subtle glow backdrop for the 3D illustration */}
-            <div className="absolute w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-[var(--primary)]/12 via-[var(--chart-2)]/10 to-transparent blur-2xl pointer-events-none" />
+          {/* Original 3D illustration */}
+          <div className="hidden lg:flex lg:col-span-5 xl:col-span-5 justify-center items-center relative">
+            <div className="absolute w-4/5 h-4/5 rounded-full bg-gradient-to-tr from-primary/12 via-chart-2/10 to-transparent blur-2xl pointer-events-none" />
 
             <div className="cta-parallax relative w-64 h-64 xs:w-72 xs:h-72 sm:w-96 sm:h-96 lg:w-96 lg:h-96">
-              {/* Gentle floating motion */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -65,17 +60,14 @@ export function CTA({ onStartProject }: CTAProps) {
               >
                 <CldImage
                   src="simpluxe/cta/simplemind"
-                  alt="Turn your idea into a premium digital product"
+                  alt={CTA_COPY.illustrationAlt}
                   fill
                   sizes="(max-width: 640px) 260px, (max-width: 1024px) 380px, 400px"
                   className="object-contain drop-shadow-elevated"
                 />
               </motion.div>
 
-              {/* READY TO BUILD? Floating Pill */}
-              <div
-                className="absolute right-[2%] bottom-[16%] xs:right-[4%] xs:bottom-[20%] sm:right-[8%] sm:bottom-[22%] z-20 inline-flex items-center gap-1.5 xs:gap-2 px-4.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-card/95 backdrop-blur-md shadow-card border border-border hover:scale-105 transition-transform duration-300"
-              >
+              <div className="absolute right-1/50 bottom-4/25 xs:right-1/25 xs:bottom-1/5 sm:right-2/25 sm:bottom-11/50 z-20 inline-flex items-center gap-1.5 xs:gap-2 px-4.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-card/95 backdrop-blur-md shadow-card border border-border hover:scale-105 transition-transform duration-300">
                 <span className="w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-primary font-extrabold text-xs tracking-wider sm:tracking-widest uppercase font-satoshi whitespace-nowrap">
                   {CTA_CONTENT.floatingPillText}
@@ -83,8 +75,7 @@ export function CTA({ onStartProject }: CTAProps) {
               </div>
             </div>
           </div>
-
-          {/* ── Right Column: Content & Actions ── */}
+          
           <div
             ref={contentRef}
             className="lg:col-span-7 xl:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left font-satoshi gap-6 sm:gap-8 lg:gap-10 w-full"

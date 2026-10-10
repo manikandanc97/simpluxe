@@ -36,7 +36,7 @@ export function AboutComparison() {
         </div>
 
         {/* Table Rows */}
-        <div className="divide-y divide-[var(--surface-elevated)]">
+        <div className="divide-y divide-surface-elevated">
           {COMPARISONS.map((row, i) => (
             <div
               key={i}
@@ -49,7 +49,7 @@ export function AboutComparison() {
 
               {/* Traditional Agencies */}
               <div className="md:col-span-4 flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                <CircleXIcon size={16} className="text-[#EF4444] shrink-0 mt-0.5" />
+                <CircleXIcon size={16} className="text-red-500 shrink-0 mt-0.5" />
                 <span>{row.traditional}</span>
               </div>
 

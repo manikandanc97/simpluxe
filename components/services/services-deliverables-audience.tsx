@@ -58,15 +58,15 @@ const IconMap: Record<string, LucideIcon> = {
 };
 
 const ColorMap: Record<string, { primary: string; fill: string; bg: string; border: string }> = {
-  websites: { primary: "text-primary", fill: "fill-[var(--primary)]/10", bg: "bg-rose-50", border: "border-rose-100" },
-  "web-apps": { primary: "text-[var(--chart-2)]", fill: "fill-[var(--chart-2)]/10", bg: "bg-purple-50", border: "border-purple-100" },
-  ecommerce: { primary: "text-[var(--chart-3)]", fill: "fill-[var(--chart-3)]/10", bg: "bg-cyan-50", border: "border-cyan-100" },
-  "mobile-apps": { primary: "text-primary", fill: "fill-[var(--primary)]/10", bg: "bg-pink-50", border: "border-pink-100" },
-  saas: { primary: "text-[var(--chart-2)]", fill: "fill-[var(--chart-2)]/10", bg: "bg-violet-50", border: "border-violet-100" },
-  branding: { primary: "text-[var(--chart-4)]", fill: "fill-[var(--chart-4)]/10", bg: "bg-orange-50", border: "border-orange-100" },
-  "ui-ux": { primary: "text-[var(--chart-2)]", fill: "fill-[var(--chart-2)]/10", bg: "bg-purple-50", border: "border-purple-100" },
-  automation: { primary: "text-[var(--chart-5)]", fill: "fill-[var(--chart-5)]/10", bg: "bg-emerald-50", border: "border-emerald-100" },
-  "custom-software": { primary: "text-[var(--chart-1)]", fill: "fill-[var(--chart-1)]/10", bg: "bg-blue-50", border: "border-blue-100" },
+  websites: { primary: "text-primary", fill: "fill-primary/10", bg: "bg-rose-50", border: "border-rose-100" },
+  "web-apps": { primary: "text-chart-2", fill: "fill-chart-2/10", bg: "bg-purple-50", border: "border-purple-100" },
+  ecommerce: { primary: "text-chart-3", fill: "fill-chart-3/10", bg: "bg-cyan-50", border: "border-cyan-100" },
+  "mobile-apps": { primary: "text-primary", fill: "fill-primary/10", bg: "bg-pink-50", border: "border-pink-100" },
+  saas: { primary: "text-chart-2", fill: "fill-chart-2/10", bg: "bg-violet-50", border: "border-violet-100" },
+  branding: { primary: "text-chart-4", fill: "fill-chart-4/10", bg: "bg-orange-50", border: "border-orange-100" },
+  "ui-ux": { primary: "text-chart-2", fill: "fill-chart-2/10", bg: "bg-purple-50", border: "border-purple-100" },
+  automation: { primary: "text-chart-5", fill: "fill-chart-5/10", bg: "bg-emerald-50", border: "border-emerald-100" },
+  "custom-software": { primary: "text-chart-1", fill: "fill-chart-1/10", bg: "bg-blue-50", border: "border-blue-100" },
 };
 
 interface ServicesDeliverablesAudienceProps {

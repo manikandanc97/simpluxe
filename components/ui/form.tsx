@@ -1,3 +1,4 @@
+import { FORM_COPY } from "@/lib/content/ui";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +26,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
     >
       <span>
         {children}
-        {required && <span className="text-primary ml-1 font-bold">*</span>}
+        {required && <span className="text-primary ml-1 font-bold">{FORM_COPY.symbol}</span>}
       </span>
     </label>
   )

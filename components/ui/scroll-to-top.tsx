@@ -1,5 +1,7 @@
 "use client";
 
+import { SCROLL_TO_TOP_COPY } from "@/lib/content/ui";
+
 import { useEffect, useState } from "react";
 import { m as motion, useScroll, useSpring } from "motion/react";
 import { ArrowUpIcon } from "@animateicons/react/lucide/arrow-up-icon";
@@ -41,6 +43,8 @@ export function ScrollToTop() {
       className="flex flex-col items-center justify-end overflow-hidden"
     >
       <motion.button
+        tabIndex={isVisible ? 0 : -1}
+        aria-hidden={!isVisible}
         onClick={scrollToTop}
         initial={{ scale: 0.5, y: 20 }}
         animate={{ 
@@ -50,8 +54,8 @@ export function ScrollToTop() {
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative z-40 flex items-center justify-center w-10 h-10 sm:w-[42px] sm:h-[42px] rounded-full bg-card shadow-elevated border border-border group mb-2"
-        aria-label="Scroll to top"
+        className="relative z-40 flex items-center justify-center w-10 h-10 sm:w-10.5 sm:h-10.5 rounded-full bg-card shadow-elevated border border-border group mb-2"
+        aria-label={SCROLL_TO_TOP_COPY.scrollToTop}
       >
         <svg
           width="100%"

@@ -1,5 +1,7 @@
 "use client";
 
+import { ANIMATED_COUNTER_COPY } from "@/lib/content/ui";
+
 import { animate, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 
@@ -52,7 +54,7 @@ export function AnimatedCounter({
       className={className}
       aria-label={`${prefix}${value}${suffix}`}
     >
-      {prefix}0{suffix}
+      {prefix}{ANIMATED_COUNTER_COPY.text0}{suffix}
     </span>
   );
 }

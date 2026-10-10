@@ -1,5 +1,7 @@
 "use client";
 
+import { HOW_WE_WORK_INTERACTIVE_COPY } from "@/lib/content/how-we-work";
+
 import { useLead } from "@/components/leads/lead-provider";
 import { STEPS, HOW_WE_WORK_SECTION_CONTENT } from "@/lib/content/how-we-work";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
@@ -51,7 +53,7 @@ export function HowWeWorkInteractive() {
       />
 
       {/* MAIN BENTO CARD (Left Narrative + Right 3D Visual Scene) */}
-      <div className="w-full bg-white rounded-2xl sm:rounded-3xl border border-neutral-200/80 shadow-card p-4 xs:p-6 sm:p-6 lg:p-8 relative overflow-hidden min-h-[400px] lg:h-auto lg:flex-1 lg:max-h-[500px] flex items-center">
+      <div className="w-full bg-white rounded-2xl sm:rounded-3xl border border-neutral-200/80 shadow-card p-4 xs:p-6 sm:p-6 lg:p-8 relative overflow-hidden min-h-100 lg:h-auto lg:flex-1 flex items-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep.id}
@@ -83,9 +85,9 @@ export function HowWeWorkInteractive() {
         <div className="hidden sm:flex items-center gap-2 text-xs text-neutral-400 uppercase tracking-wider font-semibold">
           <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
           {activeStepIndex === STEPS.length - 1 ? (
-            <span className="text-rose-600 font-bold">Step 04 / 04 · {HOW_WE_WORK_SECTION_CONTENT.scrollContinue}</span>
+            <span className="text-rose-600 font-bold">{HOW_WE_WORK_INTERACTIVE_COPY.step0404}{HOW_WE_WORK_SECTION_CONTENT.scrollContinue}</span>
           ) : (
-            <span>Step 0{activeStepIndex + 1} / 04 · {HOW_WE_WORK_SECTION_CONTENT.scrollExplore}</span>
+            <span>{HOW_WE_WORK_INTERACTIVE_COPY.step0}{activeStepIndex + 1} {HOW_WE_WORK_INTERACTIVE_COPY.text04}{HOW_WE_WORK_SECTION_CONTENT.scrollExplore}</span>
           )}
         </div>
       </div>

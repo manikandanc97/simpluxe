@@ -13,7 +13,7 @@ export function ContactView() {
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
       {/* ── Background Atmospheric Elements ── */}
       <AmbientBackground screen="contact" />
-      <div className="absolute inset-0 bg-[radial-gradient(#d3ccd8_1px,transparent_1px)] opacity-35 pointer-events-none" />
+      <div className="absolute inset-0 bg-dots-soft opacity-35 pointer-events-none" />
 
       {/* ── 1. Hero Section (Breadcrumb, Title, Value Props & 3D Interactive Showcase) ── */}
       <ContactHero />

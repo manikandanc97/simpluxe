@@ -1,3 +1,4 @@
+import { PROJECT_BADGE_COPY } from "@/lib/content/projects";
 import { type Project } from "@/types/project";
 import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
 import { ShoppingCartIcon } from "@animateicons/react/lucide/shopping-cart-icon";
@@ -28,7 +29,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
       bg: "bg-rose-50 border border-rose-100 shadow-sm",
       text: "text-rose-700",
       icon: <AnimatedIcon icon={TrendingUpIcon} size={12} className="text-rose-600" />,
-      label: "3.5x Bookings Growth",
+      label: PROJECT_BADGE_COPY.text35xBookingsGrowth,
     };
   }
   if (project.id === "proj-grn") {
@@ -36,7 +37,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
       bg: "bg-indigo-50 border border-indigo-100 shadow-sm",
       text: "text-indigo-700",
       icon: <GoogleIcon />,
-      label: "5x Organic Traffic Growth",
+      label: PROJECT_BADGE_COPY.text5xOrganicTrafficGrowth,
     };
   }
   if (project.id === "proj-viha") {
@@ -44,7 +45,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
       bg: "bg-violet-50 border border-violet-100 shadow-sm",
       text: "text-violet-700",
       icon: <AnimatedIcon icon={ShoppingCartIcon} size={11} className="text-violet-600" />,
-      label: "10k+ Monthly Orders",
+      label: PROJECT_BADGE_COPY.text10kMonthlyOrders,
     };
   }
   if (project.id === "proj-clixprocrm") {
@@ -52,7 +53,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
       bg: "bg-blue-50 border border-blue-100 shadow-sm",
       text: "text-blue-700",
       icon: <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />,
-      label: "Work In Progress",
+      label: PROJECT_BADGE_COPY.workInProgress,
     };
   }
   if (project.id === "proj-grn-app") {
@@ -60,7 +61,7 @@ export function getProjectBadge(project: Project): ProjectBadgeInfo {
       bg: "bg-purple-50 border border-purple-100 shadow-sm",
       text: "text-purple-700",
       icon: <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse" />,
-      label: "Coming Soon",
+      label: PROJECT_BADGE_COPY.comingSoon,
     };
   }
   return {

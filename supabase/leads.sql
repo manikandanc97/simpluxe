@@ -1,4 +1,4 @@
--- SimpleDiff Leads Table
+-- Simpluxe Leads Table
 -- Run this in your Supabase SQL editor to create the leads table with RLS enabled.
 
 create table if not exists public.leads (

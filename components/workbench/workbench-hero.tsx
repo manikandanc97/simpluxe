@@ -17,8 +17,6 @@ import HeroInteractionEnhancer from "./hero-interaction-enhancer";
 export function WorkbenchHero() {
   const { openLead } = useLead();
   const heroRef = useRef<HTMLElement>(null);
-  const textColRef = useRef<HTMLDivElement>(null);
-  const artworkRef = useRef<HTMLDivElement>(null);
   const parallaxCanvasRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<SVGSVGElement>(null);
@@ -52,22 +50,21 @@ export function WorkbenchHero() {
           
           {/* LEFT: Text Content */}
           <div 
-            ref={textColRef}
             className="hero-text-col lg:col-span-5 xl:col-span-6 flex flex-col items-start text-left max-w-xl z-10 gap-6 sm:gap-10"
           >
             <div className="flex flex-col gap-4 sm:gap-6">
 
             {/* Headline */}
             <h1 
-              className="font-satoshi font-extrabold tracking-tighter text-foreground leading-[1.08] sm:leading-none text-4xl xs:text-5xl sm:text-6xl lg:text-7xl flex flex-col gap-1.5 sm:gap-2"
+              className="font-satoshi font-extrabold tracking-tighter text-foreground leading-none sm:leading-none text-4xl xs:text-5xl sm:text-6xl lg:text-7xl flex flex-col gap-1.5 sm:gap-2"
             >
-              <div className="overflow-hidden pb-1 -mb-1">
+              <span className="overflow-hidden pb-1 -mb-1">
                 <span className="block hero-line-1">
                   {HERO_CONTENT.headlineLine1}
                 </span>
-              </div>
-              <div className="overflow-hidden pb-4 -mb-4">
-                <span className="block relative inline-block hero-line-2 will-change-transform">
+              </span>
+              <span className="overflow-hidden pb-4 -mb-4">
+                <span className="block relative hero-line-2 will-change-transform">
                   <span className="inline-block overflow-hidden">
                     <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: '0.2s' }}>
                       {HERO_CONTENT.headlineLine2Prefix}
@@ -112,7 +109,7 @@ export function WorkbenchHero() {
                     </svg>
                   </span>
                 </span>
-              </div>
+              </span>
             </h1>
 
             {/* Paragraph */}
@@ -130,7 +127,7 @@ export function WorkbenchHero() {
             <div className="flex flex-col gap-8 sm:gap-16 w-full">
             {/* CTA Buttons */}
             <div
-              className="hero-cta flex flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto font-satoshi"
+              className="hero-cta flex flex-wrap items-center gap-4 sm:gap-6 w-full sm:w-auto font-satoshi"
             >
               <Button
                 id="hero-start-project"
@@ -172,12 +169,12 @@ export function WorkbenchHero() {
                   }}
                   className="group flex items-center justify-start gap-2 sm:gap-4.5 hover:opacity-85 transition-opacity py-1 w-auto text-left"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-[rgba(30,24,30,0.08)] text-foreground group-hover:scale-105 group-hover:border-primary/25 transition-all pl-0.5 shrink-0">
+                  <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-sm border border-foreground/10 text-foreground group-hover:scale-105 group-hover:border-primary/25 transition-all pl-0.5 shrink-0">
                     <AnimatedIcon name="play" size={13} className="text-foreground transition-colors group-hover:text-primary" />
                   </div>
                   <div className="flex flex-col text-left shrink-0">
                     <span className="text-xs sm:text-base font-bold text-foreground leading-tight tracking-tight whitespace-nowrap block">{HERO_CONTENT.ctaSecondaryTitle}</span>
-                    <span className="text-[10px] sm:text-xs font-medium text-muted-foreground mt-0.5 whitespace-nowrap block">{HERO_CONTENT.ctaSecondarySubtitle}</span>
+                    <span className="text-2xs sm:text-xs font-medium text-muted-foreground mt-0.5 whitespace-nowrap block">{HERO_CONTENT.ctaSecondarySubtitle}</span>
                   </div>
                 </Link>
               </motion.div>
@@ -188,7 +185,6 @@ export function WorkbenchHero() {
 
           {/* RIGHT: 3D Character & Floating UI Cards */}
           <div
-            ref={artworkRef}
             className="hero-artwork lg:col-span-7 xl:col-span-6 flex justify-center items-center w-full relative min-h-64 sm:min-h-96"
           >
             <Hero3DCoder parallaxCanvasRef={parallaxCanvasRef} cardsRef={cardsRef} />
@@ -203,13 +199,13 @@ export function WorkbenchHero() {
         id="hero-scroll-indicator"
         aria-label={HERO_CONTENT.scrollIndicatorLabel}
         onClick={handleScrollDown}
-        className="hero-scroll group relative mt-6 lg:mt-0 lg:absolute lg:bottom-4 left-auto lg:left-1/2 lg:-translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-slate-400 hover:text-foreground cursor-pointer focus:outline-none transition-all select-none"
+        className="hero-scroll group relative mt-6 lg:mt-0 lg:absolute lg:bottom-4 left-auto lg:left-1/2 lg:-translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-slate-400 hover:text-foreground cursor-pointer focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4 transition-all select-none"
       >
         <span className="text-xs font-bold uppercase tracking-widest group-hover:text-primary transition-colors duration-300">
           {HERO_CONTENT.scrollIndicatorText}
         </span>
         <div
-          className="w-4 h-4 rounded-full border-[1.5px] border-slate-300 group-hover:border-primary/50 flex items-center justify-center transition-colors animate-bounce"
+          className="w-4 h-4 rounded-full border-2 border-slate-300 group-hover:border-primary/50 flex items-center justify-center transition-colors animate-bounce"
         >
           <ChevronDownIcon size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
         </div>
@@ -217,10 +213,7 @@ export function WorkbenchHero() {
 
       <HeroInteractionEnhancer 
         heroRef={heroRef}
-        textColRef={textColRef}
-        artworkRef={artworkRef}
         parallaxCanvasRef={parallaxCanvasRef}
-        cardsRef={cardsRef}
         underlineRef={underlineRef}
       />
     </section>

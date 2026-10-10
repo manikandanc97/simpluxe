@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { m as motion, useAnimation } from "motion/react";
-import React, { useCallback, useEffect, useRef, Suspense } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 import { ArrowLeftIcon } from "@animateicons/react/lucide/arrow-left-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";

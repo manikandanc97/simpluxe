@@ -1,5 +1,7 @@
 "use client";
 
+import { STEP_NARRATIVE_COPY } from "@/lib/content/how-we-work";
+
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
@@ -44,12 +46,12 @@ export function StepNarrative({
             {currentStep.stepKicker}
           </span>
           <span className="hidden sm:inline-block text-xs font-mono text-neutral-400">
-            {activeStepIndex + 1} / {totalSteps}
+            {activeStepIndex + 1} {STEP_NARRATIVE_COPY.symbol}{totalSteps}
           </span>
         </motion.div>
 
         {/* Big Headline */}
-        <motion.h3 variants={fadeUp} className="font-satoshi font-black text-2xl xs:text-3xl sm:text-3xl lg:text-3xl xl:text-4xl text-neutral-900 tracking-tight leading-[1.15]">
+        <motion.h3 variants={fadeUp} className="font-satoshi font-black text-2xl xs:text-3xl sm:text-3xl lg:text-3xl xl:text-4xl text-neutral-900 tracking-tight leading-none">
           {currentStep.headlineFirst}{" "}
           <span className="bg-gradient-to-r from-purple-600 via-rose-600 to-pink-600 bg-clip-text text-transparent">
             {currentStep.headlineAccent}
@@ -105,15 +107,15 @@ export function StepNarrative({
         >
           <span>
             {activeStepIndex === totalSteps - 1
-              ? "Start Your Project"
-              : `Next Step: ${currentStep.nextStepName}`}
+              ? STEP_NARRATIVE_COPY.startYourProject
+              : STEP_NARRATIVE_COPY.nextStep(currentStep.nextStepName)}
           </span>
           <AnimatedArrowRight size={15} className="text-white" />
         </Button>
 
         {activeStepIndex < totalSteps - 1 && (
           <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-neutral-400 font-medium">
-            <span>or scroll down</span>
+            <span>{STEP_NARRATIVE_COPY.orScrollDown}</span>
             <ChevronDownIcon className="w-3.5 h-3.5 text-rose-500 animate-bounce" />
           </span>
         )}

@@ -1,3 +1,6 @@
+
+
+// ambient-background
 export type ScreenType = "home" | "work" | "services" | "about" | "contact" | "subpage";
 
 export interface OrbConfig {
@@ -29,7 +32,6 @@ export interface WaveCurveConfig {
   dashed?: boolean;
 }
 
-// 1. Curated Randomized 3D Spheres (Pearls) per screen
 export const ORB_CONFIGURATIONS: Record<ScreenType, OrbConfig[]> = {
   // ── HOME: Long Multi-section layout ──
   home: [
@@ -109,7 +111,6 @@ export const ORB_CONFIGURATIONS: Record<ScreenType, OrbConfig[]> = {
   ],
 };
 
-// 2. Randomized Tiny Scattered Beads per screen
 export const TINY_ORB_CONFIGURATIONS: Record<ScreenType, TinyOrbConfig[]> = {
   home: [
     { top: "8%", left: "15%", color: "#fca5a5", size: "w-2 h-2 sm:w-3 sm:h-3" },
@@ -165,7 +166,6 @@ export const TINY_ORB_CONFIGURATIONS: Record<ScreenType, TinyOrbConfig[]> = {
   ],
 };
 
-// 3. Dot Grids randomized per screen
 export const DOT_GRID_CONFIGURATIONS: Record<ScreenType, DotGridConfig[]> = {
   home: [
     { top: "5%", right: "10%" },
@@ -213,7 +213,6 @@ export const DOT_GRID_CONFIGURATIONS: Record<ScreenType, DotGridConfig[]> = {
   ],
 };
 
-// 4. Wave Paths randomized per screen
 export const WAVE_CURVES: Record<ScreenType, WaveCurveConfig[]> = {
   home: [
     { d: "M-10,18 C 30,8 70,28 110,18", stroke: "#d8b4e2", width: "0.2", dashed: true },

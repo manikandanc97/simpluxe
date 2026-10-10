@@ -1,7 +1,6 @@
 "use client";
 
 import { MotionConfig, LazyMotion } from "motion/react";
-import {  } from "react";
 
 const loadFeatures = () => import("motion/react").then((res) => res.domMax);
 

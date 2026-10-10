@@ -1,5 +1,7 @@
 "use client";
 
+import { SELECTED_WORK_INTERACTIVE_COPY } from "@/lib/content/projects";
+
 import { PROJECTS, SELECTED_WORK_CONTENT } from "@/lib/content/projects";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
@@ -73,7 +75,7 @@ export function SelectedWorkInteractive() {
             <AnimatedIcon icon={ArrowRightIcon} size={15} className="group-hover:translate-x-1 transition-transform" />
           </Link>
           <span className="text-sm font-medium text-slate-400">
-            {filteredProjects.length} of {PROJECTS.length} {SELECTED_WORK_CONTENT.buildsTextSuffix}
+            {filteredProjects.length} {SELECTED_WORK_INTERACTIVE_COPY.of}{PROJECTS.length} {SELECTED_WORK_CONTENT.buildsTextSuffix}
           </span>
         </div>
       </div>
@@ -82,7 +84,7 @@ export function SelectedWorkInteractive() {
       <div className="hidden lg:flex lg:col-span-7 flex-col gap-4 relative pt-2 lg:pt-0 min-w-0">
         
         {/* Top Header: Filter Tabs & Live Client Site Badge + Prev/Next Arrows */}
-        <div className="sw-filter flex items-center justify-between gap-4 relative z-10">
+        <div className="sw-filter flex flex-wrap items-center justify-between gap-4 relative z-10">
           
           {/* Left: Filter Tabs */}
           <FilterTabsList
@@ -107,7 +109,7 @@ export function SelectedWorkInteractive() {
         </div>
 
         {/* ── Browser Window Mockup Frame ── */}
-        <div className="sw-browser flex-1 relative min-h-[400px]">
+        <div className="sw-browser flex-1 relative min-h-100">
           <div className="sw-browser-parallax absolute inset-0 w-full h-full">
             {activeProject && <BrowserMockup activeProject={activeProject} />}
           </div>

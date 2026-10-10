@@ -3,7 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { m as motion } from "motion/react";
-import { DEFAULT_TECH_SLUGS } from "@/lib/content/page-banner";
+import { DEFAULT_TECH_SLUGS } from "@/lib/visuals/page-banner";
 import {
   PageBannerBreadcrumb,
   type BreadcrumbItem,
@@ -42,7 +42,7 @@ export function PageBanner({
     >
       {/* ─── Subtle dot-grid on primary ──────────────────────── */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 opacity-7"
         style={{
           backgroundImage: `radial-gradient(circle, rgba(255,255,255,1) 1px, transparent 1px)`,
           backgroundSize: "28px 28px",
@@ -112,9 +112,9 @@ export function PageBanner({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
-            "font-black tracking-tight text-white leading-[1.05]",
+            "font-black tracking-tight text-white leading-none",
             "flex flex-wrap items-center justify-center gap-2 sm:gap-4",
-            "text-[clamp(1.75rem,3.5vw,2.5rem)]"
+            "text-heading-fluid"
           )}
         >
           {title}
@@ -128,7 +128,7 @@ export function PageBanner({
             transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
               "text-white/60 leading-relaxed font-normal max-w-lg",
-              "text-[clamp(0.8125rem,1.4vw,0.9375rem)]"
+              "text-body-fluid"
             )}
           >
             {description}

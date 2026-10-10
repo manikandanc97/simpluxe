@@ -1,5 +1,7 @@
 "use client";
 
+import { SERVICES_WHAT_WE_BUILD_COPY } from "@/lib/content/services";
+
 import { type ServiceData } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
@@ -18,8 +20,8 @@ export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
       {/* ── Section Header ── */}
       <div className="mb-6 sm:mb-8">
         <SectionHeader
-          eyebrow={`${service.whatWeBuild.length} Capabilities`}
-          title="What we build"
+          eyebrow={SERVICES_WHAT_WE_BUILD_COPY.capabilitiesCount(service.whatWeBuild.length)}
+          title={SERVICES_WHAT_WE_BUILD_COPY.whatWeBuild}
           description={service.whatWeBuildSubtitle}
         />
       </div>

@@ -1,10 +1,11 @@
+import { ABOUT_PAGE_COPY } from "@/lib/content/metadata";
 import { AboutView } from "@/components/pages/about-view";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: ABOUT_PAGE_COPY.title,
   description:
-    "About Simpluxe — A premier software development company built on the belief that custom software and digital systems should be simple, focused, and high-performance.",
+    ABOUT_PAGE_COPY.description,
 };
 
 export default function AboutPage() {

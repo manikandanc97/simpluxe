@@ -1,3 +1,4 @@
+import { TECH_PERFORMANCE_PILL_COPY } from "@/lib/content/tech-stack";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 
 export function TechPerformancePill() {
@@ -21,11 +22,9 @@ export function TechPerformancePill() {
         {/* Two Lines of Text */}
         <div className="flex flex-col text-left leading-tight">
           <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
-            Fast
-          </span>
+            {TECH_PERFORMANCE_PILL_COPY.fast}</span>
           <span className="text-xs font-medium text-slate-400 dark:text-muted-foreground">
-            Performant
-          </span>
+            {TECH_PERFORMANCE_PILL_COPY.performant}</span>
         </div>
       </div>
     </div>

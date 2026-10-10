@@ -65,7 +65,7 @@ export function SharedFaqSection({
           </div>
 
           {/* Top-right diagonal accent lines */}
-          <div className="absolute top-8 right-12 sm:right-16 flex gap-1.5 rotate-[35deg] opacity-75">
+          <div className="absolute top-8 right-12 sm:right-16 flex gap-1.5 rotate-35 opacity-75">
             <div className="w-0.5 h-4 bg-primary rounded-full" />
             <div className="w-0.5 h-5 bg-primary rounded-full -translate-y-1" />
             <div className="w-0.5 h-4 bg-primary rounded-full" />

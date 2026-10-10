@@ -1,5 +1,7 @@
 "use client";
 
+import { SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/content/services";
+
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { type ServiceData } from "@/lib/content/services";
@@ -37,14 +39,14 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                     <span className="text-primary font-black text-base sm:text-lg tracking-tight font-satoshi">
                       {service.number}
                     </span>
-                    <span className="text-primary font-black">•</span>
+                    <span className="text-primary font-black">{SERVICES_ACTIVE_SHOWCASE_COPY.symbol}</span>
                     <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-muted-foreground font-satoshi">
                       {service.name}
                     </span>
                   </div>
 
                   {/* Dynamic Headline */}
-                  <h2 className="text-3xl sm:text-4xl lg:text-4xl sm:text-5xl font-black text-foreground tracking-tight leading-[1.12] font-satoshi">
+                  <h2 className="text-3xl sm:text-4xl lg:text-4xl sm:text-5xl font-black text-foreground tracking-tight leading-none font-satoshi">
                     {service.headline.normal}
                     <span className="text-primary">
                       {service.headline.highlight}
@@ -64,11 +66,11 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                   onClick={() =>
                     openLead({
                       source: "services-configurator",
-                      description: `Interested in ${service.name} services.`,
+                      description: SERVICES_ACTIVE_SHOWCASE_COPY.projectInterest(service.name),
                     })
                   }
                 >
-                  <span>Start a project</span>
+                  <span>{SERVICES_ACTIVE_SHOWCASE_COPY.startAProject}</span>
                   <AnimatedArrowRight size={14} />
                 </Button>
 
@@ -77,7 +79,7 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                   className={buttonVariants({ variant: "outline", className: "gap-2" })}
                 >
                   <EyeIcon size={14} />
-                  <span>View related work</span>
+                  <span>{SERVICES_ACTIVE_SHOWCASE_COPY.viewRelatedWork}</span>
                 </Link>
               </div>
 

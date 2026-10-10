@@ -10,7 +10,7 @@ export function ServicesMockupWindow({ service }: ServicesMockupWindowProps) {
   return (
     <div className="lg:col-span-7 relative flex items-center justify-center">
       {/* Subtle Ambient Backlight Glow */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 via-[var(--accent-soft)]/30 to-[var(--accent-soft)]/30 rounded-3xl blur-2xl -z-10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-accent-soft/30 to-accent-soft/30 rounded-3xl blur-2xl -z-10" />
 
       <AnimatePresence mode="wait">
         <motion.div

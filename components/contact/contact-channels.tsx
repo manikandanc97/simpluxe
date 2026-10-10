@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { CONTACT_CHANNELS_COPY } from "@/lib/content/contact";
+
+import { useEffect, useRef, useState } from "react";
 import { SITE } from "@/lib/content/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
@@ -12,12 +14,18 @@ import { Badge } from "@/components/ui/badge";
 
 export function ContactChannels() {
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  useEffect(() => () => clearTimeout(copyTimer.current), []);
 
-  const handleCopyEmail = () => {
-    if (SITE.email) {
-      navigator.clipboard.writeText(SITE.email);
+  const handleCopyEmail = async () => {
+    if (!SITE.email) return;
+    try {
+      await navigator.clipboard.writeText(SITE.email);
       setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2000);
+      clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopiedEmail(false), 2000);
+    } catch {
+      setCopiedEmail(false);
     }
   };
 
@@ -27,13 +35,11 @@ export function ContactChannels() {
         <div className="flex items-center gap-2">
           <Badge variant="outline" size="lg">
             <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
-            Direct Engineering Channels
-          </Badge>
+            {CONTACT_CHANNELS_COPY.directEngineeringChannels}</Badge>
         </div>
-        <CardTitle className="text-xl sm:text-2xl">Direct Executive Line</CardTitle>
+        <CardTitle className="text-xl sm:text-2xl">{CONTACT_CHANNELS_COPY.directExecutiveLine}</CardTitle>
         <CardDescription>
-          Skip account managers. Connect directly with principal software engineers.
-        </CardDescription>
+          {CONTACT_CHANNELS_COPY.skipAccountManagersConnectDirectlyWith}</CardDescription>
       </CardHeader>
 
       <CardContent className="gap-4">
@@ -49,11 +55,8 @@ export function ContactChannels() {
               <div className="flex flex-col gap-0.5 truncate">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                    Direct Email
-                  </span>
-                  <Badge variant="emerald" size="sm">
-                    &lt; 24h SLA
-                  </Badge>
+                    {CONTACT_CHANNELS_COPY.directEmail}</span>
+                  {SITE.responseTime && <Badge variant="emerald" size="sm">{SITE.responseTime}</Badge>}
                 </div>
                 <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate">
                   {SITE.email}
@@ -63,7 +66,8 @@ export function ContactChannels() {
             <button
               type="button"
               onClick={handleCopyEmail}
-              title="CopyIcon email to clipboard"
+              title={copiedEmail ? CONTACT_CHANNELS_COPY.emailCopied : CONTACT_CHANNELS_COPY.copyEmailToClipboard}
+              aria-label={copiedEmail ? CONTACT_CHANNELS_COPY.emailCopied : CONTACT_CHANNELS_COPY.copyEmailToClipboard}
               className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer shrink-0 ml-2"
             >
               {copiedEmail ? <CheckIcon size={16} className="text-primary" /> : <CopyIcon size={16} />}
@@ -85,16 +89,14 @@ export function ContactChannels() {
               <div className="flex flex-col gap-0.5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
-                    Instant Consultation
-                  </span>
+                    {CONTACT_CHANNELS_COPY.instantConsultation}</span>
                   <Badge variant="emerald" size="sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Available Now
+                    {SITE.availability}
                   </Badge>
                 </div>
                 <span className="text-sm font-bold text-foreground group-hover:text-emerald-700 transition-colors">
-                  Chat on WhatsApp
-                </span>
+                  {CONTACT_CHANNELS_COPY.chatOnWhatsapp}</span>
               </div>
             </div>
             <ArrowRightIcon size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />

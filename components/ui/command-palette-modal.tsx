@@ -1,5 +1,7 @@
 "use client";
 
+import { COMMAND_PALETTE_MODAL_COPY } from "@/lib/content/ui";
+
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "@animateicons/react/lucide/search-icon";
@@ -7,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { NAV_ITEMS } from "@/lib/content/navigation";
+import { NAV_ITEMS } from "@/lib/content/layout";
 import { cn } from "@/lib/utils";
 
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
@@ -53,7 +55,7 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
     })),
     {
       id: "cmd-start-project",
-      label: "Start a project",
+      label: COMMAND_PALETTE_MODAL_COPY.startAProject,
       iconName: "sparkles",
       action: () => {
         if (onStartProject) onStartProject();
@@ -94,7 +96,7 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent showCloseButton={false} className="sm:max-w-lg p-0 overflow-hidden gap-0">
-        <DialogTitle className="sr-only">Command menu</DialogTitle>
+        <DialogTitle className="sr-only">{COMMAND_PALETTE_MODAL_COPY.commandMenu}</DialogTitle>
         <div className="flex items-center border-b border-border px-3">
           <SearchIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
           <Input
@@ -105,7 +107,7 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
             aria-autocomplete="list"
             aria-controls={listboxId}
             aria-activedescendant={activeDescendantId}
-            placeholder="Type a command or search..."
+            placeholder={COMMAND_PALETTE_MODAL_COPY.typeACommandOrSearch}
             className="flex h-12 w-full border-0 bg-transparent py-4 text-sm outline-none focus-visible:ring-0 shadow-none focus-visible:border-0"
             value={query}
             onChange={(e) => {
@@ -118,11 +120,11 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
         <div
           id={listboxId}
           role="listbox"
-          aria-label="Commands"
+          aria-label={COMMAND_PALETTE_MODAL_COPY.commands}
           className="max-h-72 overflow-y-auto p-2 flex flex-col gap-1"
         >
           {filtered.length === 0 ? (
-            <p className="p-4 text-sm text-muted-foreground text-center">No results found.</p>
+            <p className="p-4 text-sm text-muted-foreground text-center">{COMMAND_PALETTE_MODAL_COPY.noResultsFound}</p>
           ) : (
             filtered.map((cmd, index) => {
               const isSelected = index === selectedIndex;

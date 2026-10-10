@@ -1,5 +1,7 @@
 "use client";
 
+import { UI_UX_COPY } from "@/lib/content/services";
+
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { MockupWrapper } from "./mockup-wrapper";
@@ -14,10 +16,10 @@ const LAYOUT_DURATION: Record<Layout, number> = {
   split: 2200,
 };
 const LAYOUT_META: Record<Layout, { icon: string; label: string; color: string }> = {
-  list:  { icon: "☰", label: "List",  color: "#7C3AED" },
-  grid:  { icon: "⊞", label: "Grid",  color: "#0891B2" },
-  card:  { icon: "▭", label: "Card",  color: "#D23D78" },
-  split: { icon: "⊟", label: "Split", color: "#059669" },
+  list:  { icon: "☰", label: UI_UX_COPY.list,  color: "#7C3AED" },
+  grid:  { icon: "⊞", label: UI_UX_COPY.grid,  color: "#0891B2" },
+  card:  { icon: "▭", label: UI_UX_COPY.card,  color: "#D23D78" },
+  split: { icon: "⊟", label: UI_UX_COPY.split, color: "#059669" },
 };
 
 // ── Shared skeleton atoms ──────────────────────────────────
@@ -67,10 +69,10 @@ function ListLayout() {
 // ── Grid Layout ────────────────────────────────────────────
 function GridLayout() {
   const cells = [
-    { bg: "from-[#7C3AED]/15 to-[#7C3AED]/30", accent: "#7C3AED" },
-    { bg: "from-[#D23D78]/15 to-[#D23D78]/30", accent: "#D23D78" },
-    { bg: "from-[#0891B2]/15 to-[#0891B2]/30", accent: "#0891B2" },
-    { bg: "from-[#059669]/15 to-[#059669]/30", accent: "#059669" },
+    { bg: "from-chart-2/15 to-chart-2/30", accent: "#7C3AED" },
+    { bg: "from-pink-600/15 to-pink-600/30", accent: "#D23D78" },
+    { bg: "from-chart-3/15 to-chart-3/30", accent: "#0891B2" },
+    { bg: "from-chart-5/15 to-chart-5/30", accent: "#059669" },
   ];
   return (
     <motion.div
@@ -87,14 +89,13 @@ function GridLayout() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: i * 0.07, type: "spring", stiffness: 400, damping: 24 }}
-          className={`rounded-xl bg-gradient-to-br ${cell.bg} border border-white/60 p-2 flex flex-col gap-1.5 aspect-[4/3]`}
+          className={`rounded-xl bg-gradient-to-br ${cell.bg} border border-white/60 p-2 flex flex-col gap-1.5 aspect-4/3`}
         >
           <div className="w-5 h-5 rounded-lg" style={{ backgroundColor: `${cell.accent}40` }} />
           <Bar w="w-full" color="bg-white/60" />
           <Bar w="w-3/4" color="bg-white/40" />
-          <div className="mt-auto self-start px-1.5 py-0.5 rounded-md text-[6px] font-bold text-white" style={{ backgroundColor: cell.accent }}>
-            View
-          </div>
+          <div className="mt-auto self-start px-1.5 py-0.5 rounded-md text-micro font-bold text-white" style={{ backgroundColor: cell.accent }}>
+            {UI_UX_COPY.view}</div>
         </motion.div>
       ))}
     </motion.div>
@@ -128,8 +129,8 @@ function CardLayout() {
           <Bar w="w-full" color="bg-white/30" h="h-1.5" />
           <Bar w="w-3/4" color="bg-white/20" h="h-1.5" />
           <div className="flex gap-1.5">
-            <div className="px-2 py-0.5 rounded-md bg-white text-[6px] font-bold text-[#7C3AED]">Primary</div>
-            <div className="px-2 py-0.5 rounded-md bg-white/20 text-[6px] font-semibold text-white">Secondary</div>
+            <div className="px-2 py-0.5 rounded-md bg-white text-micro font-bold text-chart-2">{UI_UX_COPY.primary}</div>
+            <div className="px-2 py-0.5 rounded-md bg-white/20 text-micro font-semibold text-white">{UI_UX_COPY.secondary}</div>
           </div>
         </div>
         {/* Image area */}
@@ -166,7 +167,7 @@ function CardLayout() {
 
 // ── Split Layout ───────────────────────────────────────────
 function SplitLayout() {
-  const items = ["Dashboard", "Analytics", "Settings", "Users"];
+  const items = UI_UX_COPY.sidebarItems;
   return (
     <motion.div
       key="split"
@@ -181,20 +182,20 @@ function SplitLayout() {
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: "auto", opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="flex flex-col gap-1 bg-[#1B1B2F] rounded-xl p-2 flex-shrink-0"
+        className="flex flex-col gap-1 bg-slate-900 rounded-xl p-2 flex-shrink-0"
         style={{ width: 56 }}
       >
-        <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-[#7C3AED] to-[#D23D78]" />
+        <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-chart-2 to-pink-600" />
         {items.map((item, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, x: -6 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 + i * 0.06 }}
-            className={`rounded-lg px-1.5 py-1 flex items-center gap-1 ${i === 0 ? "bg-[#7C3AED]" : "bg-white/5"}`}
+            className={`rounded-lg px-1.5 py-1 flex items-center gap-1 ${i === 0 ? "bg-chart-2" : "bg-white/5"}`}
           >
             <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: i === 0 ? "white" : "rgba(255,255,255,0.3)" }} />
-            <span className="text-[5px] font-medium" style={{ color: i === 0 ? "white" : "rgba(255,255,255,0.5)" }}>{item}</span>
+            <span className="text-micro font-medium" style={{ color: i === 0 ? "white" : "rgba(255,255,255,0.5)" }}>{item}</span>
           </motion.div>
         ))}
       </motion.div>
@@ -204,8 +205,8 @@ function SplitLayout() {
         {/* Top stat row */}
         <div className="grid grid-cols-2 gap-1.5">
           {[
-            { label: "Active", val: "4.2k", color: "#7C3AED" },
-            { label: "Revenue", val: "₹1.2L", color: "#059669" },
+            { label: UI_UX_COPY.active, val: UI_UX_COPY.activeValue, color: "#7C3AED" },
+            { label: UI_UX_COPY.revenue, val: UI_UX_COPY.revenueValue, color: "#059669" },
           ].map((s, i) => (
             <motion.div
               key={i}
@@ -214,7 +215,7 @@ function SplitLayout() {
               transition={{ delay: 0.2 + i * 0.07 }}
               className="bg-white rounded-xl p-2 border border-black/[0.04] shadow-xs"
             >
-              <div className="text-[5px] text-muted-foreground font-medium">{s.label}</div>
+              <div className="text-micro text-muted-foreground font-medium">{s.label}</div>
               <div className="text-xs font-black" style={{ color: s.color }}>{s.val}</div>
             </motion.div>
           ))}
@@ -230,7 +231,7 @@ function SplitLayout() {
           <Bar w="w-16" color="bg-slate-300" h="h-1.5" />
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]/40 flex-shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-chart-2/40 flex-shrink-0" />
               <Bar w={["w-full", "w-4/5", "w-5/6"][i]} color="bg-slate-100" h="h-1.5" />
             </div>
           ))}
@@ -272,7 +273,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
       isActive={isActive}
-      gradientClass="bg-gradient-to-tr from-[#EDE9FE]/60 via-[#F5F3FF]/50 to-[#FDF2F8]/60"
+      gradientClass="bg-gradient-to-tr from-violet-100/60 via-violet-50/50 to-pink-50/60"
       innerClassName="max-w-72 p-3.5 gap-3 overflow-hidden"
       floatDuration={4.5}
     >
@@ -294,7 +295,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
                   color: l === layout ? "#ffffff" : "#68666C",
                 }}
                 transition={{ duration: 0.25 }}
-                className="w-6 h-5 rounded-md flex items-center justify-center text-[9px] font-bold cursor-pointer"
+                className="w-6 h-5 rounded-md flex items-center justify-center text-2xs font-bold cursor-pointer"
               >
                 {LAYOUT_META[l].icon}
               </motion.div>
@@ -306,7 +307,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
             key={layout}
             initial={{ opacity: 0, x: 4 }}
             animate={{ opacity: 1, x: 0 }}
-            className="px-1.5 py-0.5 rounded-md text-[7px] font-bold text-white"
+            className="px-1.5 py-0.5 rounded-md text-3xs font-bold text-white"
             style={{ backgroundColor: meta.color }}
           >
             {meta.label}
@@ -314,7 +315,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Canvas — layout transitions here */}
-        <div className="relative overflow-hidden w-full h-[120px]">
+        <div className="relative overflow-hidden w-full h-30">
           <AnimatePresence mode="wait">
             {layout === "list"  && <ListLayout  key="list"  />}
             {layout === "grid"  && <GridLayout  key="grid"  />}
@@ -331,7 +332,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
               transition={{ duration: 1.5, repeat: Infinity }}
               className="w-1.5 h-1.5 rounded-full"
             />
-            <span className="text-[7px] text-muted-foreground font-medium">Layout preview</span>
+            <span className="text-3xs text-muted-foreground font-medium">{UI_UX_COPY.layoutPreview}</span>
           </div>
           <div className="flex gap-1">
             {LAYOUTS.map((l, i) => (

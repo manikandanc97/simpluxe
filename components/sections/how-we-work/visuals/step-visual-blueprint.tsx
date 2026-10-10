@@ -1,5 +1,7 @@
 "use client";
 
+import { STEP_VISUAL_BLUEPRINT_COPY } from "@/lib/content/how-we-work";
+
 import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { FileTextIcon } from "@animateicons/react/lucide/file-text-icon";
@@ -8,213 +10,101 @@ import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
 import { TargetIcon } from "@animateicons/react/lucide/target-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
-import { m as motion } from "motion/react";
 import { CldImage } from "@/components/ui/cld-image";
+import { scene } from "./step-visual-classes";
 
 export function StepVisualBlueprint() {
   return (
-    <div className="relative w-full h-[280px] xs:h-[320px] sm:h-96 lg:h-[300px] xl:h-96 flex items-end justify-center overflow-visible">
-      {/* Layer 1: Floating "Project Blueprint" Window Card */}
-      <motion.div
-        animate={{ y: [-3, 3, -3], rotate: [-1, -1, -1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-4 sm:top-24 bottom-6 sm:bottom-6 left-0 sm:left-4 right-0 sm:right-16 bg-white/90 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white shadow-card p-3 sm:p-6 z-0 overflow-hidden select-none flex flex-col items-center gap-2 sm:gap-4 scale-90 sm:scale-100 origin-bottom"
-      >
-        {/* Window Header */}
-        <div className="w-full flex items-center gap-2 ml-4 sm:ml-8">
-          <GitForkIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
-          <span className="font-bold text-sm sm:text-base text-muted-foreground tracking-tight">
-            Project Blueprint
-          </span>
-        </div>
-
-        {/* Blueprint Flowchart Diagram */}
-        <div className="flex flex-col items-center">
-          {/* Root Node */}
-          <div className="bg-white border border-neutral-100 rounded-full px-2.5 sm:px-4 py-1 sm:py-1.5 flex items-center gap-1.5 text-xs sm:text-xs font-semibold text-neutral-800 shadow-card">
-            <UsersIcon className="w-3 h-3 text-purple-600" />
-            <span>Business Goals</span>
+    <div className={scene.scene}>
+      {/* Cards share the image canvas, with room for every label to float. */}
+      <div className={scene.canvas}>
+        <div className={scene.blueprint} aria-hidden="true">
+          <div className={scene.blueprintHeader}>
+            <GitForkIcon />
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.projectBlueprint}</span>
           </div>
-
-          {/* Branching SVG Lines */}
-          <svg className="w-36 sm:w-48 h-3.5 sm:h-4 text-neutral-200" viewBox="0 0 200 16" fill="none">
-            <path d="M 100 0 L 100 8 M 30 8 L 170 8 M 30 8 L 30 16 M 170 8 L 170 16" stroke="currentColor" />
+          <svg className="absolute inset-0 size-full text-zinc-100" viewBox="0 0 580 300" preserveAspectRatio="none" fill="none">
+            <path
+              d="M290 117V135H151V153M290 135H429V153M151 210V222H290V234M429 210V222H290"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
           </svg>
-
-          {/* Child Nodes Row */}
-          <div className="flex items-center justify-between w-full max-w-48 sm:max-w-64 gap-1.5 sm:gap-2">
-            <div className="bg-white border border-neutral-100 rounded-full px-2 sm:px-4 py-1 sm:py-1.5 flex items-center gap-1 text-xs sm:text-xs font-semibold text-neutral-800 shadow-card">
-              <TargetIcon className="w-3 h-3 text-rose-500" />
-              <span>User Research</span>
-            </div>
-            <div className="bg-white border border-neutral-100 rounded-full px-2 sm:px-4 py-1 sm:py-1.5 flex items-center gap-1 text-xs sm:text-xs font-semibold text-neutral-800 shadow-card">
-              <FileTextIcon className="w-3 h-3 text-purple-600" />
-              <span>Feature Scope</span>
-            </div>
+          <div className="absolute flex items-center justify-center gap-scene-1 rounded-scene-5 border border-zinc-100 bg-white text-scene-6 leading-tight font-semibold text-zinc-600 shadow-card icon:size-scene-icon-1-9cqw icon:shrink-0 top-13/50 left-3/20 h-13/100 w-7/10">
+            <UsersIcon className="text-purple-500" />
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.businessGoals}</span>
           </div>
+          <div className="absolute flex items-center justify-center gap-scene-1 rounded-scene-5 border border-zinc-100 bg-white text-scene-6 leading-tight font-semibold text-zinc-600 shadow-card icon:size-scene-icon-1-9cqw icon:shrink-0 top-51/100 left-1/25 h-19/100 w-11/25">
+            <TargetIcon className="text-rose-500" />
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.user}<br />{STEP_VISUAL_BLUEPRINT_COPY.research}</span>
+          </div>
+          <div className="absolute flex items-center justify-center gap-scene-1 rounded-scene-5 border border-zinc-100 bg-white text-scene-6 leading-tight font-semibold text-zinc-600 shadow-card icon:size-scene-icon-1-9cqw icon:shrink-0 top-51/100 left-13/25 h-19/100 w-11/25">
+            <FileTextIcon className="text-purple-500" />
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.feature}<br />{STEP_VISUAL_BLUEPRINT_COPY.scope}</span>
+          </div>
+          <div className="absolute flex items-center justify-center gap-scene-1 rounded-scene-5 border border-zinc-100 bg-white text-scene-6 leading-tight font-semibold text-zinc-600 shadow-card icon:size-scene-icon-1-9cqw icon:shrink-0 top-39/50 left-3/20 h-13/100 w-7/10">
+            <LayersIcon className="text-blue-500" />
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.technicalPlan}</span>
+          </div>
+        </div>
 
-          {/* Converging SVG Lines */}
-          <svg className="w-36 sm:w-48 h-3.5 sm:h-4 text-neutral-200" viewBox="0 0 200 16" fill="none">
-            <path d="M 30 0 L 30 8 M 170 0 L 170 8 M 30 8 L 170 8 M 100 8 L 100 16" stroke="currentColor" />
+        <div className={scene.ideas} aria-hidden="true">
+          <div className={scene.ideasHeader}>
+            <LightbulbIcon />
+            <span className="font-handwriting">{STEP_VISUAL_BLUEPRINT_COPY.ideas}</span>
+          </div>
+          <div className={`${scene.ideasList} font-handwriting`}>
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.businessGoals2}</span>
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.targetAudience}</span>
+          </div>
+          <svg className={scene.ideasArrow} viewBox="0 0 28 28" fill="none">
+            <path d="M6 4C10 12 14 16 22 22M14 22H22L20 14" />
           </svg>
+        </div>
 
-          {/* Bottom Node */}
-          <div className="bg-white border border-neutral-100 rounded-full px-2.5 sm:px-4 py-1 sm:py-1.5 flex items-center gap-1.5 text-xs sm:text-xs font-semibold text-neutral-800 shadow-card">
-            <LayersIcon className="w-3 h-3 text-blue-600" />
-            <span>Technical Plan</span>
+        <div className={`${scene.annotation} font-handwriting`} aria-hidden="true">
+          <span>{STEP_VISUAL_BLUEPRINT_COPY.fromStrategy}<br />{STEP_VISUAL_BLUEPRINT_COPY.toProduct}</span>
+          <svg viewBox="0 0 28 28" fill="none">
+            <path d="M4 18C10 10 18 10 24 6M16 6H24L22 14" />
+          </svg>
+        </div>
+
+        <div className={`${scene.market} ${scene.marketSurface}`} aria-hidden="true">
+          <div className={scene.marketHeader}>
+            <span>{STEP_VISUAL_BLUEPRINT_COPY.marketResearch}</span>
+            <ChartBarIcon className="text-primary" />
           </div>
-        </div>
-      </motion.div>
-
-      {/* Layer 2: Yellow Sticky Note (Top-Left of Blueprint) */}
-      <motion.div
-        animate={{ y: [-4, 4, -4], rotate: [-8, -4, -8] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-        className="absolute top-2 sm:top-8 left-0 sm:-left-6 bg-[#FFF9C4]/95 border border-[#FFF176] rounded-xl p-1.5 sm:p-2.5 shadow-md shadow-amber-900/10 z-10 w-24 xs:w-28 sm:w-36 pointer-events-none select-none flex flex-col gap-0.5 sm:gap-1 scale-90 sm:scale-100 origin-top-left"
-      >
-        <div className="flex items-center gap-1">
-          <LightbulbIcon className="w-3.5 h-3.5 text-amber-600" />
-          <span className="font-handwriting font-bold text-xs sm:text-sm text-neutral-800">
-            Ideas
-          </span>
-        </div>
-        <div className="font-handwriting text-xs sm:text-xs text-neutral-700 leading-tight flex flex-col gap-0.5">
-          <div>• Business Goals</div>
-          <div>• TargetIcon Audience</div>
-        </div>
-
-        {/* Hand-drawn Red Arrow pointing to Blueprint */}
-        <svg
-          className="absolute -bottom-3 sm:-bottom-4 right-1 w-5 h-5 sm:w-6 sm:h-6 text-primary"
-          viewBox="0 0 28 28"
-          fill="none"
-        >
-          <path
-            d="M 6 4 C 10 12, 14 16, 22 22"
-            stroke="currentColor"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 14 22 L 22 22 L 20 14"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </motion.div>
-
-      {/* Layer 3: Handwritten Annotation (Top-Right) */}
-      <motion.div
-        animate={{ y: [2, -2, 2], rotate: [-2, 0, -2] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-2 sm:top-18 right-2 sm:right-52 z-10 text-right pointer-events-none select-none scale-85 sm:scale-100 origin-top-right"
-      >
-        <span className="font-handwriting font-bold text-xs sm:text-sm text-primary tracking-tight block transform -rotate-3 leading-tight">
-          From Strategy <br /> to Product
-        </span>
-        <svg
-          className="w-5 h-5 sm:w-6 sm:h-6 text-primary ml-auto -mt-1 transform rotate-12"
-          viewBox="0 0 28 28"
-          fill="none"
-        >
-          <path
-            d="M 4 18 C 10 10, 18 10, 24 6"
-            stroke="currentColor"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 16 6 L 24 6 L 22 14"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </motion.div>
-
-      {/* Layer 4: Floating "Market Research" Card (Right Side) */}
-      <motion.div
-        animate={{ y: [-5, 5, -5], rotate: [0, 2, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className="absolute top-4 sm:top-18 right-0 sm:-right-6 lg:-right-2 bg-white/95 backdrop-blur-md rounded-2xl border border-neutral-100 shadow-xl shadow-neutral-900/5 p-2.5 sm:p-4 z-10 w-36 xs:w-40 sm:w-48 pointer-events-none select-none flex flex-col gap-1.5 scale-90 sm:scale-100 origin-top-right"
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <span className="font-bold text-xs sm:text-xs text-neutral-800">
-            Market Research
-          </span>
-          <ChartBarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
-        </div>
-
-        {/* Skeletal bars */}
-        <div className="flex flex-col gap-1 mb-0.5">
-          <div className="w-14 h-1.5 bg-neutral-200/80 rounded-full" />
-          <div className="w-8 h-1.5 bg-neutral-100 rounded-full" />
-        </div>
-
-        {/* Checklist items */}
-        <div className="flex flex-col gap-1 sm:gap-1.5">
-          <div className="flex items-center gap-1.5">
-            <CircleCheckIcon className="w-3 h-3 text-purple-600 shrink-0" />
-            <span className="text-xs sm:text-xs font-semibold text-neutral-700 truncate">
-              Competitor Analysis
-            </span>
+          <div className="mt-scene-1-1 mb-scene-1-6 flex flex-col gap-scene-0-6 span:h-scene-0-9 span:w-scene-9-2 span:rounded-scene-1 span:bg-neutral-200 span-following:w-scene-5-2 span-following:bg-neutral-100">
+            <span />
+            <span />
           </div>
-          <div className="flex items-center gap-1.5">
-            <CircleCheckIcon className="w-3 h-3 text-purple-600 shrink-0" />
-            <span className="text-xs sm:text-xs font-semibold text-neutral-700 truncate">
-              User Insights
-            </span>
+          <div className="flex flex-col gap-scene-1 direct-div:flex direct-div:items-center direct-div:gap-scene-1 direct-div:text-scene-5 direct-div:leading-snug direct-div:font-semibold direct-div:text-zinc-600 icon:size-scene-icon-1-9cqw icon:shrink-0 icon:text-purple-500">
+            {[STEP_VISUAL_BLUEPRINT_COPY.competitorAnalysis, STEP_VISUAL_BLUEPRINT_COPY.userInsights, STEP_VISUAL_BLUEPRINT_COPY.featurePriorities].map((item) => (
+              <div key={item}>
+                <CircleCheckIcon />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
-          <div className="flex items-center gap-1.5">
-            <CircleCheckIcon className="w-3 h-3 text-purple-600 shrink-0" />
-            <span className="text-xs sm:text-xs font-semibold text-neutral-700 truncate">
-              Feature Priorities
-            </span>
-          </div>
+          <svg className={scene.marketArrow} viewBox="0 0 32 48" fill="none">
+            <path d="M12 4C12 20 20 30 20 44M12 36L20 44L28 36" />
+          </svg>
         </div>
 
-        {/* Downward Hand-drawn Arrow */}
-        <svg
-          className="absolute -bottom-8 sm:-bottom-12 left-8 sm:left-14 w-6 h-10 sm:w-10 sm:h-14 text-primary transform -rotate-12"
-          viewBox="0 0 32 48"
-          fill="none"
-        >
-          <path
-            d="M 12 4 C 12 20, 20 30, 20 44"
-            stroke="currentColor"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 12 36 L 20 44 L 28 36"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </motion.div>
+        <div className={`${scene.result} font-handwriting`} aria-hidden="true">
+          <span>{STEP_VISUAL_BLUEPRINT_COPY.clearPlan}<br />{STEP_VISUAL_BLUEPRINT_COPY.betterResults}</span>
+        </div>
 
-      {/* Layer 5: Handwritten Sticky Badge (Bottom-Right) */}
-      <motion.div
-        animate={{ y: [3, -3, 3], rotate: [1, 3, 1] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-        className="absolute bottom-8 sm:bottom-28 right-0 sm:right-3 bg-white/95 rounded-xl border border-neutral-200/90 shadow-md p-1.5 px-2 sm:px-2.5 flex items-center gap-1.5 z-20 pointer-events-none select-none scale-85 sm:scale-100 origin-bottom-right"
-      >
-        <ChartBarIcon className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-        <span className="font-handwriting font-bold text-xs text-neutral-800 leading-tight">
-          Clear Plan <br /> Better Results
-        </span>
-      </motion.div>
-
-      {/* Layer 6: Foreground 3D Character at Desk (discover.png) */}
-      <div className="relative z-20 w-full flex items-end justify-center pointer-events-none">
-        <CldImage
-          src="simpluxe/process/discover"
-          alt="Discover Phase - Simpluxe"
-          width={1774}
-          height={887}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 600px"
-          className="w-full max-w-sm xs:max-w-md sm:max-w-xl lg:max-w-2xl object-contain drop-shadow-xl select-none"
-        />
+        <div className={scene.character}>
+          <CldImage
+            src="simpluxe/process/discover"
+            alt={STEP_VISUAL_BLUEPRINT_COPY.simpluxeDiscoveryPhasePlanningAProject}
+            width={1774}
+            height={887}
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 85vw, 550px"
+            className={scene.image}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 "use client";
 
+import { CONTACT_HERO_COPY } from "@/lib/content/contact";
+
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { CldImage } from "@/components/ui/cld-image";
@@ -11,6 +13,7 @@ import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
 import { Container } from "@/components/ui/container";
+import { SITE } from "@/lib/content/site";
 
 export function ContactHero() {
   return (
@@ -21,7 +24,7 @@ export function ContactHero() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute top-1/3 right-10 w-[32rem] h-[32rem] rounded-full bg-gradient-to-br from-primary/5 via-blue-500/5 to-transparent blur-3xl -z-10"
+        className="pointer-events-none absolute top-1/3 right-10 w-128 h-128 rounded-full bg-gradient-to-br from-primary/5 via-blue-500/5 to-transparent blur-3xl -z-10"
         aria-hidden="true"
       />
 
@@ -33,25 +36,21 @@ export function ContactHero() {
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
                 <a href="/" className="hover:text-foreground transition-colors">
-                  Home
-                </a>
-                <span className="text-muted-foreground/60">/</span>
-                <span className="text-primary font-semibold">Contact</span>
+                  {CONTACT_HERO_COPY.home}</a>
+                <span className="text-muted-foreground/60">{CONTACT_HERO_COPY.symbol}</span>
+                <span className="text-primary font-semibold">{CONTACT_HERO_COPY.contact}</span>
               </motion.nav>
 
               {/* Main Title */}
               <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
-                Let&apos;s build your system{" "}
-                <span className="text-primary">the right way.</span>
+                {CONTACT_HERO_COPY.letSBuildYourSystem}{" "}
+                <span className="text-primary">{CONTACT_HERO_COPY.theRightWay}</span>
               </motion.h1>
             </div>
 
             {/* Description */}
             <motion.p variants={fadeUp} className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed font-normal">
-              Direct collaboration with senior software architects. Tell us about
-              your product goals, desired timeline, or architectural requirements
-              to receive a structured technical assessment.
-            </motion.p>
+              {CONTACT_HERO_COPY.directCollaborationWithSeniorSoftwareArchitects}</motion.p>
           </div>
 
           {/* 3 Core Value Props in a Row */}
@@ -63,11 +62,10 @@ export function ContactHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  &lt; 24h Response
+                  {SITE.responseTime || CONTACT_HERO_COPY.directResponse}
                 </span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Guaranteed review SLA
-                </span>
+                  {CONTACT_HERO_COPY.projectRequirementsReview}</span>
               </div>
             </div>
 
@@ -78,11 +76,9 @@ export function ContactHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  Mutual NDA
-                </span>
+                  {CONTACT_HERO_COPY.mutualNda}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  100% Confidential
-                </span>
+                  {CONTACT_HERO_COPY.text100Confidential}</span>
               </div>
             </div>
 
@@ -93,11 +89,9 @@ export function ContactHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  Direct Line
-                </span>
+                  {CONTACT_HERO_COPY.directLine}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Senior engineers only
-                </span>
+                  {CONTACT_HERO_COPY.seniorEngineersOnly}</span>
               </div>
             </div>
           </motion.div>
@@ -111,10 +105,10 @@ export function ContactHero() {
           <div className="pointer-events-none absolute bottom-4 left-1/3 w-40 h-40 rounded-full bg-blue-400/10 blur-2xl -z-10" />
 
           {/* Outer Showcase Container with Dot Grid Pattern Backdrop */}
-          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-[1.12/1] flex items-center justify-center">
+          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-card flex items-center justify-center">
             
             {/* Background Subtle Dot Pattern Card */}
-            <div className="absolute inset-1 sm:inset-3 rounded-2xl bg-card/60 border border-border [background-image:radial-gradient(#d3ccd8_1.2px,transparent_1.2px)] [background-size:22px_22px] -z-10 shadow-card" />
+            <div className="absolute inset-1 sm:inset-3 rounded-2xl bg-card/60 border border-border bg-dots-panel bg-dots-panel-size -z-10 shadow-card" />
 
             {/* ── Floating Badge 1 (Top Left): WhatsApp Direct ── */}
             <motion.div
@@ -123,15 +117,13 @@ export function ContactHero() {
               className="absolute top-3 sm:top-4 left-2 sm:left-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-50 flex items-center justify-center shadow-2xs shrink-0 border border-emerald-100">
-                <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                <WhatsAppIcon className="w-4 h-4 text-whatsapp" />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  WhatsApp Direct
-                </div>
-                <div className="text-[10px] font-semibold text-[#25D366] leading-tight">
-                  Instant Response
-                </div>
+                  {CONTACT_HERO_COPY.whatsappDirect}</div>
+                <div className="text-2xs font-semibold text-whatsapp leading-tight">
+                  {CONTACT_HERO_COPY.instantResponse}</div>
               </div>
             </motion.div>
 
@@ -142,11 +134,9 @@ export function ContactHero() {
               className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1.5 px-4 py-1 rounded-full bg-card/90 backdrop-blur-md border border-border shadow-2xs text-xs font-bold text-muted-foreground whitespace-nowrap"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Available</span>
-              <span className="text-muted-foreground/60">•</span>
-              <span>Accepting Projects</span>
-              <span className="text-muted-foreground/60">•</span>
-              <span className="text-primary">24h Reply</span>
+              <span>{SITE.availability}</span>
+              <span className="text-muted-foreground/60">{CONTACT_HERO_COPY.symbol2}</span>
+              <span className="text-primary">{SITE.responseTime || CONTACT_HERO_COPY.directContact}</span>
             </motion.div>
 
             {/* ── Floating Badge 3 (Top Right): Mutual NDA ── */}
@@ -160,11 +150,9 @@ export function ContactHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  Mutual NDA
-                </div>
+                  {CONTACT_HERO_COPY.mutualNda}</div>
                 <div className="text-xs font-bold text-primary leading-tight">
-                  100% Confidential
-                </div>
+                  {CONTACT_HERO_COPY.text100Confidential}</div>
               </div>
             </motion.div>
 
@@ -179,11 +167,9 @@ export function ContactHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  Free Assessment
-                </div>
-                <div className="text-[10px] font-semibold text-muted-foreground leading-tight">
-                  Scope &amp; Architecture
-                </div>
+                  {CONTACT_HERO_COPY.freeAssessment}</div>
+                <div className="text-2xs font-semibold text-muted-foreground leading-tight">
+                  {CONTACT_HERO_COPY.scopeArchitecture}</div>
               </div>
             </motion.div>
 
@@ -194,8 +180,8 @@ export function ContactHero() {
               className="absolute top-44 sm:top-48 -left-1 sm:left-2 z-20 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <ClockIcon size={11} className="text-primary" />
-              <span className="text-[10px] font-bold text-muted-foreground font-mono">
-                SLA: &lt; 24h
+              <span className="text-2xs font-bold text-muted-foreground font-mono">
+                {SITE.responseTime || CONTACT_HERO_COPY.projectReview}
               </span>
             </motion.div>
 
@@ -210,11 +196,9 @@ export function ContactHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  Direct Line
-                </div>
-                <div className="text-[10px] font-semibold text-primary leading-tight">
-                  No Salespeople
-                </div>
+                  {CONTACT_HERO_COPY.directLine}</div>
+                <div className="text-2xs font-semibold text-primary leading-tight">
+                  {CONTACT_HERO_COPY.noSalespeople}</div>
               </div>
             </motion.div>
 
@@ -225,9 +209,8 @@ export function ContactHero() {
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
               <CircleCheckIcon size={12} className="text-emerald-500" />
-              <span className="text-[10px] sm:text-xs font-bold text-foreground">
-                Guaranteed SLA
-              </span>
+              <span className="text-2xs sm:text-xs font-bold text-foreground">
+                {CONTACT_HERO_COPY.guaranteedSla}</span>
             </motion.div>
 
             {/* ── Floating Badge 7 (Bottom Right): Zero Obligation ── */}
@@ -237,9 +220,8 @@ export function ContactHero() {
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
               <ShieldCheckIcon size={12} className="text-primary" />
-              <span className="text-[10px] sm:text-xs font-bold text-foreground">
-                Zero Obligation
-              </span>
+              <span className="text-2xs sm:text-xs font-bold text-foreground">
+                {CONTACT_HERO_COPY.zeroObligation}</span>
             </motion.div>
 
             {/* ── 3D Character Illustration with Smooth Bottom Gradient Fade ── */}
@@ -255,7 +237,7 @@ export function ContactHero() {
               >
                 <CldImage
                   src="simpluxe/section-banner/ChatGPT_Image_Sep_28_2026_07_25_40_PM_hjumpi"
-                  alt="Let's build your system the right way"
+                  alt={CONTACT_HERO_COPY.letSBuildYourSystemThe}
                   width={768}
                   height={512}
                   priority
@@ -265,7 +247,7 @@ export function ContactHero() {
               </div>
 
               {/* Ambient soft shadow */}
-              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-8 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-xl -z-5" />
+              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 w-17/20 h-8 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-xl -z-5" />
 
               {/* Bottom gradient blend with page background */}
               <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-16 bg-gradient-to-t from-background via-background/85 to-transparent z-15" />

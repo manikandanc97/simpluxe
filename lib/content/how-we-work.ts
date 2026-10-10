@@ -1,3 +1,4 @@
+import { COMMON } from "./common";
 import { ClockIcon } from "@animateicons/react/lucide/clock-icon";
 import { CodeIcon } from "@animateicons/react/lucide/code-icon";
 import { FileTextIcon } from "@animateicons/react/lucide/file-text-icon";
@@ -10,6 +11,9 @@ import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { TargetIcon } from "@animateicons/react/lucide/target-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 
+const DEVELOPMENT_IMAGE = "simpluxe/process/design-develop";
+
+// how-we-work
 interface StepFeature {
   icon: typeof UsersIcon;
   iconBg: string;
@@ -50,7 +54,7 @@ export const STEPS: StepConfig[] = [
         icon: UsersIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
-        title: "Business Goals",
+        title: COMMON.labels.businessGoals,
         desc: "Understand your vision and market opportunity.",
       },
       {
@@ -75,14 +79,14 @@ export const STEPS: StepConfig[] = [
         desc: "Plan architecture and scalability for the future.",
       },
     ],
-    nextStepName: "Design",
+    nextStepName: COMMON.process.design,
     imageSrc: "simpluxe/process/discover",
   },
   {
     id: "design",
     number: "02",
     stepKicker: "STEP 02 / 04",
-    title: "Design",
+    title: COMMON.process.design,
     subtitle: "UI/UX & Prototype",
     icon: PencilIcon,
     headlineFirst: "Clarity before",
@@ -101,14 +105,14 @@ export const STEPS: StepConfig[] = [
         icon: SparklesIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
-        title: "Design Tokens",
+        title: COMMON.labels.designTokens,
         desc: "Strict color, typography, and spacing system.",
       },
       {
         icon: TargetIcon,
         iconBg: "bg-rose-50",
         iconColor: "text-rose-500",
-        title: "Design Systems",
+        title: COMMON.labels.designSystems,
         desc: "Reusable component library with accessibility built-in.",
       },
       {
@@ -119,14 +123,14 @@ export const STEPS: StepConfig[] = [
         desc: "Pre-code feedback loops with real stakeholder testing.",
       },
     ],
-    nextStepName: "Develop",
-    imageSrc: "simpluxe/process/design-develop",
+    nextStepName: COMMON.process.develop,
+    imageSrc: DEVELOPMENT_IMAGE,
   },
   {
     id: "develop",
     number: "03",
     stepKicker: "STEP 03 / 04",
-    title: "Develop",
+    title: COMMON.process.develop,
     subtitle: "Build & Integrate",
     icon: CodeIcon,
     headlineFirst: "Code built",
@@ -139,7 +143,7 @@ export const STEPS: StepConfig[] = [
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
         title: "Modern Stack",
-        desc: "Next.js 15, TypeScript, Tailwind, and serverless backend.",
+        desc: "Next.js 16, TypeScript, Tailwind, and serverless backend.",
       },
       {
         icon: ClockIcon,
@@ -152,7 +156,7 @@ export const STEPS: StepConfig[] = [
         icon: ShieldCheckIcon,
         iconBg: "bg-purple-50",
         iconColor: "text-purple-600",
-        title: "Clean Architecture",
+        title: COMMON.labels.cleanArchitecture,
         desc: "Secure endpoints, structured databases, and clean code.",
       },
       {
@@ -163,14 +167,14 @@ export const STEPS: StepConfig[] = [
         desc: "Automated test suites and zero-downtime deployments.",
       },
     ],
-    nextStepName: "Launch",
-    imageSrc: "simpluxe/process/design-develop",
+    nextStepName: COMMON.process.launch,
+    imageSrc: DEVELOPMENT_IMAGE,
   },
   {
     id: "launch",
     number: "04",
     stepKicker: "STEP 04 / 04",
-    title: "Launch",
+    title: COMMON.process.launch,
     subtitle: "Deploy & Grow",
     icon: RocketIcon,
     headlineFirst: "Launch is just",
@@ -215,10 +219,104 @@ export const STEPS: StepConfig[] = [
 export const HOW_WE_WORK_SECTION_CONTENT = {
   eyebrow: "OUR PROCESS",
   title: "How We",
-  highlightedText: "Work.",
+  highlightedText: COMMON.labels.workHighlight,
   descriptionLine1: "A clear 4-step delivery process to turn your ideas into real, scalable digital products.",
   descriptionLine2: "No confusion. No black boxes. Just results.",
   trustNote: "Dedicated senior engineers · Direct communication · Production warranty.",
-  scrollExplore: "Scroll to explore",
-  scrollContinue: "Scroll down to continue",
+  scrollExplore: "See your idea take shape",
+  scrollContinue: "Ready to build with us?",
 };
+
+// how-we-work
+export const STEP_NARRATIVE_COPY = {
+  nextStep: (step: string | undefined) => `Next Step: ${step}`,
+  symbol: " / ",
+  startYourProject: "Start Your Project",
+  orScrollDown: "or scroll down",
+} as const;
+
+export const STEP_VISUAL_BLUEPRINT_COPY = {
+  projectBlueprint: "Project Blueprint",
+  businessGoals: COMMON.labels.businessGoals,
+  user: "User",
+  research: "Research",
+  feature: "Feature",
+  scope: "Scope",
+  technicalPlan: "Technical Plan",
+  ideas: COMMON.pages.ideas,
+  businessGoals2: "• Business Goals",
+  targetAudience: "• Target Audience",
+  fromStrategy: "From Strategy",
+  toProduct: "to Product",
+  marketResearch: "Market Research",
+  competitorAnalysis: "Competitor Analysis",
+  userInsights: "User Insights",
+  featurePriorities: "Feature Priorities",
+  clearPlan: "Clear Plan",
+  betterResults: "Better Results",
+  simpluxeDiscoveryPhasePlanningAProject: "Simpluxe discovery phase: planning a project at the desk",
+} as const;
+
+export const STEP_VISUAL_DESIGN_COPY = {
+  designSystem: "Design System",
+  aa: COMMON.symbols.typeSample,
+  satoshiInter: "Satoshi / Inter",
+  uiUx: "UI / UX",
+  pixelPerfect: "• Pixel Perfect",
+  userFirst: "• User First",
+  beautiful: "Beautiful &",
+  intuitive: "Intuitive",
+  components: "Components",
+  interactive: "Interactive",
+  prototypes: COMMON.labels.prototypes,
+  simpluxeDesignPhaseCreatingInterfacesAt: "Simpluxe design phase: creating interfaces at the desk",
+} as const;
+
+export const STEP_VISUAL_ENGINEERING_COPY = {
+  architecture: COMMON.labels.architecture,
+  db: "DB",
+  api: "API",
+  client: "CLIENT",
+  techStack: COMMON.labels.techStack,
+  nextJs16: "• Next.js 16",
+  typescript: "• TypeScript",
+  builtTo: "Built to",
+  scale: "Scale",
+  bash: "bash",
+  symbol: "$",
+  npmRunBuild: " npm run build",
+  compiling: "Compiling...",
+  compiledIn21s: "✓ Compiled in 2.1s",
+  zero: COMMON.labels.zero,
+  downtime: "Downtime",
+  simpluxeDevelopmentPhaseBuildingSoftwareAt: "Simpluxe development phase: building software at the desk",
+} as const;
+
+export const STEP_VISUAL_LAUNCH_COPY = {
+  liveGrowing: "Live & Growing",
+  activeUsers: "Active Users",
+  text104k: "10.4k",
+  text42: "+42%",
+  goLive: "Go Live",
+  seoReady: "• SEO Ready",
+  fastLoad: "• Fast Load",
+  weAre: "We are",
+  live: "Live!",
+  serverStatus: "Server Status",
+  ssl: COMMON.labels.ssl,
+  active: COMMON.labels.active,
+  cdn: "CDN",
+  global: "Global",
+  uptime: COMMON.labels.uptime,
+  text999: "99.9%",
+  subSecond: "Sub-second",
+  load: "Load",
+  simpluxeLaunchPhaseCelebratingALive: "Simpluxe launch phase: celebrating a live product at the desk",
+} as const;
+
+// sections
+export const HOW_WE_WORK_INTERACTIVE_COPY = {
+  step0404: "Step 04 / 04 · ",
+  step0: "Step 0",
+  text04: " / 04 · ",
+} as const;

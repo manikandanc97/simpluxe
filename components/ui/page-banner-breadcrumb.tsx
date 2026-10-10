@@ -1,5 +1,7 @@
 "use client";
 
+import { PAGE_BANNER_BREADCRUMB_COPY } from "@/lib/content/ui";
+
 import React from "react";
 import Link from "next/link";
 import { m as motion } from "motion/react";
@@ -24,7 +26,7 @@ export function PageBannerBreadcrumb({ breadcrumb }: PageBannerBreadcrumbProps) 
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      aria-label="Breadcrumb"
+      aria-label={PAGE_BANNER_BREADCRUMB_COPY.breadcrumb}
       className="inline-flex items-center gap-1.5 text-xs sm:text-xs font-medium text-white/70 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/25 hover:bg-white/15 hover:border-white/40 transition-colors cursor-default"
     >
       {parentBreadcrumbs.map((crumb, i) => (

@@ -1,52 +1,21 @@
 "use client";
 
 import { useEffect } from "react";
-import { useScroll, useTransform, useSpring, useMotionValue, useMotionValueEvent, animate } from "motion/react";
+import { useTransform, useSpring, useMotionValue, useMotionValueEvent, useReducedMotion, animate } from "motion/react";
 
 interface EnhancerProps {
   heroRef: React.RefObject<HTMLElement | null>;
-  textColRef: React.RefObject<HTMLDivElement | null>;
-  artworkRef: React.RefObject<HTMLDivElement | null>;
   parallaxCanvasRef: React.RefObject<HTMLDivElement | null>;
-  cardsRef: React.RefObject<HTMLDivElement | null>;
   underlineRef: React.RefObject<SVGSVGElement | null>;
 }
 
 export default function HeroInteractionEnhancer({
   heroRef,
-  textColRef,
-  artworkRef,
   parallaxCanvasRef,
-  cardsRef,
   underlineRef,
 }: EnhancerProps) {
-  // ── Scroll Parallax ──
-  const { scrollY } = useScroll();
-  const yText = useTransform(scrollY, [0, 500], [0, 100]);
-  const opacityText = useTransform(scrollY, [0, 300], [1, 0]);
-  const yArt = useTransform(scrollY, [0, 500], [0, 50]);
-  const scaleArt = useTransform(scrollY, [0, 500], [1, 1.05]);
+  const reducedMotion = useReducedMotion();
 
-  useMotionValueEvent(yText, "change", (latest) => {
-    if (textColRef.current) textColRef.current.style.transform = `translateY(${latest}px)`;
-  });
-  useMotionValueEvent(opacityText, "change", (latest) => {
-    if (textColRef.current) textColRef.current.style.opacity = `${latest}`;
-  });
-  useMotionValueEvent(yArt, "change", (latest) => {
-    if (artworkRef.current) {
-      const currentScale = scaleArt.get();
-      artworkRef.current.style.transform = `translateY(${latest}px) scale(${currentScale})`;
-    }
-  });
-  useMotionValueEvent(scaleArt, "change", (latest) => {
-    if (artworkRef.current) {
-      const currentY = yArt.get();
-      artworkRef.current.style.transform = `translateY(${currentY}px) scale(${latest})`;
-    }
-  });
-
-  // ── Mouse 3D Parallax ──
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -73,6 +42,8 @@ export default function HeroInteractionEnhancer({
   });
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!parallaxCanvasRef.current) return;
       const rect = parallaxCanvasRef.current.getBoundingClientRect();
@@ -98,12 +69,16 @@ export default function HeroInteractionEnhancer({
         hero.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
-  }, [mouseX, mouseY, heroRef, parallaxCanvasRef]);
+  }, [mouseX, mouseY, heroRef, parallaxCanvasRef, reducedMotion]);
 
   // ── Entry Animations ──
   useEffect(() => {
     if (underlineRef.current) {
       const paths = underlineRef.current.querySelectorAll("path");
+      if (reducedMotion) {
+        paths.forEach((path) => { path.style.opacity = "1"; });
+        return;
+      }
       if (paths[0]) {
         animate(paths[0], { pathLength: [0, 1], opacity: [0, 1] }, { duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] });
       }
@@ -114,7 +89,7 @@ export default function HeroInteractionEnhancer({
         animate(paths[2], { pathLength: [0, 1], opacity: [0, 1] }, { duration: 0.3, delay: 1.4, ease: "easeOut" });
       }
     }
-  }, [underlineRef]);
+  }, [underlineRef, reducedMotion]);
 
   return null;
 }

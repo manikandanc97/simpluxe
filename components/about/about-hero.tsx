@@ -1,5 +1,7 @@
 "use client";
 
+import { ABOUT_HERO_COPY } from "@/lib/content/about";
+
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import { CldImage } from "@/components/ui/cld-image";
@@ -21,7 +23,7 @@ export function AboutHero() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute top-1/3 right-10 w-[32rem] h-[32rem] rounded-full bg-gradient-to-br from-primary/5 via-blue-500/5 to-transparent blur-3xl -z-10"
+        className="pointer-events-none absolute top-1/3 right-10 w-128 h-128 rounded-full bg-gradient-to-br from-primary/5 via-blue-500/5 to-transparent blur-3xl -z-10"
         aria-hidden="true"
       />
 
@@ -33,25 +35,21 @@ export function AboutHero() {
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
                 <a href="/" className="hover:text-foreground transition-colors">
-                  Home
-                </a>
-                <span className="text-muted-foreground/60">/</span>
-                <span className="text-primary font-semibold">About</span>
+                  {ABOUT_HERO_COPY.home}</a>
+                <span className="text-muted-foreground/60">{ABOUT_HERO_COPY.symbol}</span>
+                <span className="text-primary font-semibold">{ABOUT_HERO_COPY.about}</span>
               </motion.nav>
 
               {/* Main Title */}
               <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
-                Engineering excellence shaped around{" "}
-                <span className="text-primary">your vision.</span>
+                {ABOUT_HERO_COPY.engineeringExcellenceShapedAround}{" "}
+                <span className="text-primary">{ABOUT_HERO_COPY.yourVision}</span>
               </motion.h1>
             </div>
 
             {/* Description */}
             <motion.p variants={fadeUp} className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed font-normal">
-              We are a dedicated software studio built on the conviction that
-              digital products should be clear, lightning-fast, and engineered to
-              solve real business challenges without bureaucratic overhead.
-            </motion.p>
+              {ABOUT_HERO_COPY.weAreADedicatedSoftwareStudio}</motion.p>
           </div>
 
           {/* 3 Core Value Props in a Row */}
@@ -63,11 +61,9 @@ export function AboutHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  High Craft
-                </span>
+                  {ABOUT_HERO_COPY.highCraft}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Pixel-perfect execution
-                </span>
+                  {ABOUT_HERO_COPY.pixelPerfectExecution}</span>
               </div>
             </div>
 
@@ -78,11 +74,9 @@ export function AboutHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  Zero Bloat
-                </span>
+                  {ABOUT_HERO_COPY.zeroBloat}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Lean, rapid architecture
-                </span>
+                  {ABOUT_HERO_COPY.leanRapidArchitecture}</span>
               </div>
             </div>
 
@@ -93,11 +87,9 @@ export function AboutHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  Production-Ready
-                </span>
+                  {ABOUT_HERO_COPY.productionReady}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Scale with confidence
-                </span>
+                  {ABOUT_HERO_COPY.scaleWithConfidence}</span>
               </div>
             </div>
           </motion.div>
@@ -111,12 +103,12 @@ export function AboutHero() {
           <div className="pointer-events-none absolute bottom-4 left-1/3 w-40 h-40 rounded-full bg-blue-400/10 blur-2xl -z-10" />
 
           {/* Outer Showcase Container with Dot Grid Pattern Backdrop */}
-          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-[1.12/1] flex items-center justify-center">
+          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-card flex items-center justify-center">
             
             {/* Background Subtle Dot Pattern Card */}
-            <div className="absolute inset-1 sm:inset-3 rounded-2xl bg-card/60 border border-border [background-image:radial-gradient(#d3ccd8_1.2px,transparent_1.2px)] [background-size:22px_22px] -z-10 shadow-card" />
+            <div className="absolute inset-1 sm:inset-3 rounded-2xl bg-card/60 border border-border bg-dots-panel bg-dots-panel-size -z-10 shadow-card" />
 
-            {/* ── Floating Badge 1 (Top Left): Next.js 15 Native ── */}
+            {/* ── Floating Badge 1 (Top Left): Next.js 16 Native ── */}
             <motion.div
               animate={{ y: [0, -5, 0], x: [0, 2, 0] }}
               transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
@@ -127,11 +119,9 @@ export function AboutHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  Next.js 15 Native
-                </div>
-                <div className="text-[10px] font-semibold text-primary leading-tight">
-                  Turbopack Architecture
-                </div>
+                  {ABOUT_HERO_COPY.nextJs16Native}</div>
+                <div className="text-2xs font-semibold text-primary leading-tight">
+                  {ABOUT_HERO_COPY.turbopackArchitecture}</div>
               </div>
             </motion.div>
 
@@ -142,11 +132,11 @@ export function AboutHero() {
               className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1.5 px-4 py-1 rounded-full bg-card/90 backdrop-blur-md border border-border shadow-2xs text-xs font-bold text-muted-foreground whitespace-nowrap"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Full Stack</span>
-              <span className="text-muted-foreground/60">•</span>
-              <span>Modern Tooling</span>
-              <span className="text-muted-foreground/60">•</span>
-              <span className="text-primary">Global Delivery</span>
+              <span>{ABOUT_HERO_COPY.fullStack}</span>
+              <span className="text-muted-foreground/60">{ABOUT_HERO_COPY.symbol2}</span>
+              <span>{ABOUT_HERO_COPY.modernTooling}</span>
+              <span className="text-muted-foreground/60">{ABOUT_HERO_COPY.symbol2}</span>
+              <span className="text-primary">{ABOUT_HERO_COPY.globalDelivery}</span>
             </motion.div>
 
             {/* ── Floating Badge 3 (Top Right): 100% Type-Safe ── */}
@@ -160,11 +150,9 @@ export function AboutHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  TypeScript
-                </div>
+                  {ABOUT_HERO_COPY.typescript}</div>
                 <div className="text-xs font-bold text-primary leading-tight">
-                  100% Type-Safe
-                </div>
+                  {ABOUT_HERO_COPY.text100TypeSafe}</div>
               </div>
             </motion.div>
 
@@ -179,11 +167,9 @@ export function AboutHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  System Design
-                </div>
-                <div className="text-[10px] font-semibold text-muted-foreground leading-tight">
-                  Scalable Patterns
-                </div>
+                  {ABOUT_HERO_COPY.systemDesign}</div>
+                <div className="text-2xs font-semibold text-muted-foreground leading-tight">
+                  {ABOUT_HERO_COPY.scalablePatterns}</div>
               </div>
             </motion.div>
 
@@ -198,11 +184,9 @@ export function AboutHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
-                  Sub-Second Speed
-                </div>
-                <div className="text-[10px] font-semibold text-primary leading-tight">
-                  Edge Optimized
-                </div>
+                  {ABOUT_HERO_COPY.subSecondSpeed}</div>
+                <div className="text-2xs font-semibold text-primary leading-tight">
+                  {ABOUT_HERO_COPY.edgeOptimized}</div>
               </div>
             </motion.div>
 
@@ -213,9 +197,8 @@ export function AboutHero() {
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
               <CircleCheckIcon size={12} className="text-emerald-500" />
-              <span className="text-[10px] sm:text-xs font-bold text-foreground">
-                99.9% Uptime
-              </span>
+              <span className="text-2xs sm:text-xs font-bold text-foreground">
+                {ABOUT_HERO_COPY.text999Uptime}</span>
             </motion.div>
 
             {/* ── Floating Badge 7 (Bottom Right): Secure ── */}
@@ -225,9 +208,8 @@ export function AboutHero() {
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
               <ShieldCheckIcon size={12} className="text-primary" />
-              <span className="text-[10px] sm:text-xs font-bold text-foreground">
-                Enterprise Secure
-              </span>
+              <span className="text-2xs sm:text-xs font-bold text-foreground">
+                {ABOUT_HERO_COPY.enterpriseSecure}</span>
             </motion.div>
 
             {/* ── 3D Character Illustration with Smooth Bottom Gradient Fade ── */}
@@ -243,7 +225,7 @@ export function AboutHero() {
               >
                 <CldImage
                   src="simpluxe/section-banner/ChatGPT_Image_Sep_28_2026_07_25_40_PM_hjumpi"
-                  alt="Engineering excellence shaped around your vision"
+                  alt={ABOUT_HERO_COPY.engineeringExcellenceShapedAroundYourVision}
                   width={768}
                   height={512}
                   priority
@@ -253,7 +235,7 @@ export function AboutHero() {
               </div>
 
               {/* Ambient soft shadow */}
-              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-8 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-xl -z-5" />
+              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 w-17/20 h-8 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-xl -z-5" />
 
               {/* Bottom gradient blend with page background */}
               <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-16 bg-gradient-to-t from-background via-background/85 to-transparent z-15" />

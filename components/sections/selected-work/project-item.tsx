@@ -1,5 +1,7 @@
 "use client";
 
+import { PROJECT_ITEM_COPY } from "@/lib/content/projects";
+
 import { type Project } from "@/types/project";
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
@@ -24,7 +26,6 @@ export function SelectedWorkProjectItem({
 
   return (
     <motion.div
-      onClick={onSelect}
       variants={{
         hidden: { opacity: 0, y: 16 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
@@ -38,7 +39,13 @@ export function SelectedWorkProjectItem({
       )}
     >
       {/* Top Row: Number, Logo, Details, Chevron */}
-      <div className="flex items-center gap-4 sm:gap-4 w-full">
+      <button
+        type="button"
+        onClick={onSelect}
+        aria-pressed={isActive}
+        aria-label={PROJECT_ITEM_COPY.previewLabel(project.name)}
+        className="flex items-center gap-3 sm:gap-4 w-full text-left rounded-xl focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4"
+      >
         {/* Project Number */}
         <span 
           className={cn(
@@ -53,7 +60,7 @@ export function SelectedWorkProjectItem({
         <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center rounded-xl bg-white border border-slate-200/80 p-1.5 shadow-2xs">
           <Image
             src={project.logo || `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${project.url}&size=128`}
-            alt={`${project.name} Logo`}
+            alt={PROJECT_ITEM_COPY.logoAlt(project.name)}
             width={48}
             height={48}
             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
@@ -67,14 +74,14 @@ export function SelectedWorkProjectItem({
         <div className="flex-1 min-w-0 flex flex-col justify-center gap-1">
           {/* Line 1: Title + Result Badge */}
           <div className="flex flex-wrap items-center gap-2 min-w-0">
-            <h3 
+            <span
               className={cn(
                 "font-bold text-sm sm:text-base truncate tracking-tight transition-colors max-w-full",
                 isActive ? "text-foreground" : "text-slate-800 group-hover:text-foreground"
               )}
             >
               {project.name}
-            </h3>
+            </span>
             
             <span 
               className={cn(
@@ -117,11 +124,11 @@ export function SelectedWorkProjectItem({
         >
           <AnimatedIcon icon={ChevronRightIcon} size={15} />
         </div>
-      </div>
+      </button>
 
       {/* Mobile Mockup (Visible only when active and on mobile) */}
       {isActive && (
-        <div className="block lg:hidden w-full pt-2 pb-1 h-[350px] xs:h-[400px] sm:h-[450px]">
+        <div className="block lg:hidden w-full pt-2 pb-1 h-87.5 xs:h-100 sm:h-112.5">
           <BrowserMockup activeProject={project} />
         </div>
       )}

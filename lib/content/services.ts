@@ -1,3 +1,4 @@
+import { COMMON } from "./common";
 import { ElementType as LucideIcon } from "react";
 import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
@@ -8,13 +9,14 @@ import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 
+// services
 export interface ServiceData {
   id: string;
   number: string;
   name: string;
   tabLabel: string;
   icon: LucideIcon;
-  category: "Client Interface" | "Core Systems" | "Foundation";
+  category: typeof COMMON.categories.clientInterface | typeof COMMON.categories.coreSystems | typeof COMMON.categories.foundation;
   outcome: string;
   pillars: string[];
   includes: string[];
@@ -60,20 +62,19 @@ export interface ServiceData {
   };
 }
 
-
 export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "websites",
     "number": "01",
-    "name": "Websites",
+    "name": COMMON.serviceNames.websites,
     "icon": GlobeIcon,
-    "category": "Client Interface",
+    "category": COMMON.categories.clientInterface,
     "outcome": "Clear digital experiences built to turn visitors into customers.",
     "pillars": [
-      "Strategy",
-      "Design",
+      COMMON.process.strategy,
+      COMMON.process.design,
       "Development",
-      "Performance"
+      COMMON.labels.performance
     ],
     "includes": [
       "Custom responsive design & design systems",
@@ -89,14 +90,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "Next.js Static & Server-side rendering",
       "Core Web Vitals & 100/100 Lighthouse score",
       "SEO schema metadata & social cards",
-      "Interactive micro-animations (Framer Motion)",
+      "Interactive micro-animations (Motion)",
       "Global edge CDN deployment & caching",
       "Form capture & CRM lead routing",
       "Analytics & user telemetry integration"
     ],
     "brandColor": "#922F55",
     "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111610/simpluxe/services/website_cbr8jm.png",
-    "tabLabel": "Websites",
+    "tabLabel": COMMON.serviceNames.websites,
     "headline": {
       "normal": "High-converting ",
       "highlight": "digital experiences."
@@ -174,10 +175,9 @@ export const SERVICES_LIST: ServiceData[] = [
       "react",
       "typescript",
       "tailwindcss",
-      "supabase",
       "vercel",
-      "cloudflare",
-      "figma"
+      "godaddy",
+      "hostinger"
     ],
     "faqs": [
       {
@@ -197,7 +197,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes, we manage full production deployment, automatic HTTPS certificate provisioning, DNS routing, and global CDN caching."
       }
     ],
-    "relatedWorkUrl": "/work?category=websites",
+    "relatedWorkUrl": "/work?service=websites",
     "mockup": {
       "type": "websites",
       "title": "Simpluxe Digital Flagship",
@@ -213,12 +213,12 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "web-apps",
     "number": "02",
-    "name": "Web applications",
-    "category": "Client Interface",
+    "name": COMMON.serviceNames.webApplications,
+    "category": COMMON.categories.clientInterface,
     "icon": LayoutDashboardIcon,
     "outcome": "Focused software built around how your business actually works.",
     "pillars": [
-      "Architecture",
+      COMMON.labels.architecture,
       "Product UX",
       "Fullstack",
       "Real-time"
@@ -232,7 +232,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "deliverables": [
       "Requirements analysis",
       "Information architecture",
-      "UI/UX design",
+      COMMON.serviceNames.uiUx,
       "Frontend development",
       "Backend & API development",
       "Database architecture",
@@ -244,7 +244,7 @@ export const SERVICES_LIST: ServiceData[] = [
     ],
     "brandColor": "#6C2BB8",
     "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111610/simpluxe/services/web-application_v8iwnt.png",
-    "tabLabel": "Web Applications",
+    "tabLabel": COMMON.serviceNames.webApplicationsTitle,
     "headline": {
       "normal": "Software built around how ",
       "highlight": "your business actually works."
@@ -270,29 +270,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Business Platforms",
         "description": "Custom platforms for complex operations.",
         "iconType": "platform",
-        "bgColor": "bg-[var(--accent-soft)] dark:bg-purple-950/40",
-        "iconColor": "text-[var(--chart-2)] dark:text-purple-400"
+        "bgColor": "bg-accent-soft dark:bg-purple-950/40",
+        "iconColor": "text-chart-2 dark:text-purple-400"
       },
       {
         "title": "Customer Portals",
         "description": "Secure and intuitive user experiences.",
         "iconType": "portal",
-        "bgColor": "bg-[var(--accent-soft)] dark:bg-pink-950/40",
-        "iconColor": "text-[var(--primary)] dark:text-pink-400"
+        "bgColor": "bg-accent-soft dark:bg-pink-950/40",
+        "iconColor": "text-primary dark:text-pink-400"
       },
       {
         "title": "Internal Tools",
         "description": "Streamline your team's daily operations.",
         "iconType": "tool",
-        "bgColor": "bg-[var(--chart-4)]/10 dark:bg-orange-950/40",
-        "iconColor": "text-[var(--chart-4)] dark:text-orange-400"
+        "bgColor": "bg-chart-4/10 dark:bg-orange-950/40",
+        "iconColor": "text-chart-4 dark:text-orange-400"
       },
       {
         "title": "CRM Systems",
         "description": "Manage customers, sales and workflows.",
         "iconType": "crm",
-        "bgColor": "bg-[var(--chart-3)]/10 dark:bg-sky-950/40",
-        "iconColor": "text-[var(--chart-3)] dark:text-sky-400"
+        "bgColor": "bg-chart-3/10 dark:bg-sky-950/40",
+        "iconColor": "text-chart-3 dark:text-sky-400"
       }
     ],
     "perfectFor": [
@@ -320,13 +320,18 @@ export const SERVICES_LIST: ServiceData[] = [
     "techStack": [
       "nextjs",
       "react",
-      "nodejs",
-      "postgresql",
-      "prisma",
-      "supabase",
       "typescript",
-      "docker",
-      "cloudflare"
+      "tailwindcss",
+      "nodejs",
+      "expressjs",
+      "restapi",
+      "prisma",
+      "postgresql",
+      "supabase",
+      "supabaseauth",
+      "oauth",
+      "jwt",
+      "hostingervps"
     ],
     "faqs": [
       {
@@ -346,7 +351,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "We provide a 30-day post-launch warranty, followed by flexible ongoing SLA maintenance packages including zero-downtime deployments, security patches, and performance monitoring."
       }
     ],
-    "relatedWorkUrl": "/work?category=web-apps",
+    "relatedWorkUrl": "/work?service=web-apps",
     "mockup": {
       "type": "dashboard",
       "title": "SIMPLUXE Cloud Workspace",
@@ -362,14 +367,14 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "ecommerce",
     "number": "03",
-    "name": "E-commerce",
+    "name": COMMON.serviceNames.ecommerce,
     "icon": ShoppingBagIcon,
-    "category": "Client Interface",
+    "category": COMMON.categories.clientInterface,
     "outcome": "High-converting online stores that turn browsers into loyal buyers.",
     "pillars": [
       "Catalog",
       "Payments",
-      "Performance",
+      COMMON.labels.performance,
       "Conversions"
     ],
     "includes": [
@@ -393,7 +398,7 @@ export const SERVICES_LIST: ServiceData[] = [
     ],
     "brandColor": "#0891B2",
     "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111609/simpluxe/services/e-commerce_qpfzex.png",
-    "tabLabel": "E-commerce",
+    "tabLabel": COMMON.serviceNames.ecommerce,
     "headline": {
       "normal": "High-converting storefronts built to ",
       "highlight": "maximize speed & revenue."
@@ -494,7 +499,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes. We support custom weekly, monthly, and quarterly recurring billing with automated invoice generation and customer self-serve pause/skip controls."
       }
     ],
-    "relatedWorkUrl": "/work?category=ecommerce",
+    "relatedWorkUrl": "/work",
     "mockup": {
       "type": "ecommerce",
       "title": "Simpluxe Storefront Engine",
@@ -510,12 +515,12 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "mobile-apps",
     "number": "04",
-    "name": "Mobile apps",
-    "category": "Client Interface",
+    "name": COMMON.serviceNames.mobileApps,
+    "category": COMMON.categories.clientInterface,
     "icon": SmartphoneIcon,
     "outcome": "Useful mobile experiences built for real-world customers.",
     "pillars": [
-      "Cross-Platform",
+      COMMON.labels.crossPlatform,
       "Native Feel",
       "Offline First",
       "App Store"
@@ -541,7 +546,7 @@ export const SERVICES_LIST: ServiceData[] = [
     ],
     "brandColor": "#D23D78",
     "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116453/simpluxe/services/Mobile-App_tviiaz.png",
-    "tabLabel": "Mobile Apps",
+    "tabLabel": COMMON.serviceNames.mobileAppsFilter,
     "headline": {
       "normal": "Native-grade mobile applications built for ",
       "highlight": "daily user engagement."
@@ -641,11 +646,11 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "With Expo and EAS Over-The-Air (OTA) updates, critical bug fixes and UI updates can be deployed directly to user devices instantly without waiting for app store re-review."
       }
     ],
-    "relatedWorkUrl": "/work?category=mobile-apps",
+    "relatedWorkUrl": "/work?service=mobile-apps",
     "mockup": {
       "type": "mobile",
       "title": "Simpluxe Mobile Native Hub",
-      "badge": "iOS & Android",
+      "badge": COMMON.labels.iosAndroid,
       "subtitle": "60 FPS offline-first mobile app"
     },
     "shortDeliverables": [
@@ -657,8 +662,8 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "saas",
     "number": "05",
-    "name": "SaaS products",
-    "category": "Core Systems",
+    "name": COMMON.serviceNames.saas,
+    "category": COMMON.categories.coreSystems,
     "icon": PackageIcon,
     "outcome": "From first release to scalable product systems.",
     "pillars": [
@@ -789,7 +794,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes. We can architect enterprise SSO integration (SAML 2.0, Okta, Google Workspace, Azure AD) for frictionless corporate IT compliance."
       }
     ],
-    "relatedWorkUrl": "/work?category=saas",
+    "relatedWorkUrl": "/work",
     "mockup": {
       "type": "saas",
       "title": "Simpluxe Multi-Tenant Core",
@@ -805,8 +810,8 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "branding",
     "number": "06",
-    "name": "Branding & identity",
-    "category": "Foundation",
+    "name": COMMON.serviceNames.branding,
+    "category": COMMON.categories.foundation,
     "icon": PaletteIcon,
     "outcome": "A visual identity that makes the business recognizable.",
     "pillars": [
@@ -860,7 +865,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "whatWeBuild": [
       {
         "title": "Logo Systems & Marks",
-        "description": "Primary, secondary, and responsive responsive responsive icon marks for all scales.",
+        "description": "Primary, secondary, and responsive icon marks for all scales.",
         "iconType": "palette",
         "bgColor": "bg-amber-50 dark:bg-amber-950/40",
         "iconColor": "text-amber-600 dark:text-amber-400"
@@ -933,11 +938,11 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "You receive organized Figma libraries, vector AI/EPS files for print, SVG vectors for the web, high-res transparent PNGs, and a complete Brand Guidelines PDF."
       }
     ],
-    "relatedWorkUrl": "/work?category=branding",
+    "relatedWorkUrl": "/work",
     "mockup": {
       "type": "branding",
       "title": "Simpluxe Brand Identity Guide",
-      "badge": "Design Tokens",
+      "badge": COMMON.labels.designTokens,
       "subtitle": "Bespoke typography & vector marks"
     },
     "shortDeliverables": [
@@ -949,15 +954,15 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "ui-ux",
     "number": "07",
-    "name": "UI/UX design",
-    "category": "Foundation",
+    "name": COMMON.serviceNames.uiUx,
+    "category": COMMON.categories.foundation,
     "icon": LayersIcon,
     "outcome": "Intuitive product design that eliminates user friction and confusion.",
     "pillars": [
       "User Journeys",
       "Wireframes",
-      "Prototypes",
-      "Design Tokens"
+      COMMON.labels.prototypes,
+      COMMON.labels.designTokens
     ],
     "includes": [
       "User research, mental models & journey mapping",
@@ -980,7 +985,7 @@ export const SERVICES_LIST: ServiceData[] = [
     ],
     "brandColor": "#7C3AED",
     "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791118195/simpluxe/services/UI-UX_nwimrf.png",
-    "tabLabel": "UI/UX Design",
+    "tabLabel": COMMON.labels.uiUxDesign,
     "headline": {
       "normal": "Human-centric digital interfaces engineered with ",
       "highlight": "zero cognitive friction."
@@ -996,7 +1001,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "label": "User journeys mapped"
       },
       {
-        "value": "Figma",
+        "value": COMMON.technology.figma,
         "label": "Production-ready token systems"
       }
     ],
@@ -1077,7 +1082,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes. We meticulously detail loading skeletons, error tooltips, empty states, and spring animations so developers don't have to guess."
       }
     ],
-    "relatedWorkUrl": "/work?category=ui-ux",
+    "relatedWorkUrl": "/work",
     "mockup": {
       "type": "design",
       "title": "Simpluxe Design Token Kit",
@@ -1093,15 +1098,15 @@ export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "custom-software",
     "number": "08",
-    "name": "Custom software",
-    "category": "Core Systems",
+    "name": COMMON.serviceNames.customSoftware,
+    "category": COMMON.categories.coreSystems,
     "icon": CpuIcon,
     "outcome": "Tailored software solutions engineered for specific business operations.",
     "pillars": [
       "Discovery",
       "API Bridges",
       "Databases",
-      "Legacy Modernization"
+      COMMON.labels.legacyModernization
     ],
     "includes": [
       "Internal operational tools & admin management portals",
@@ -1111,7 +1116,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791118195/simpluxe/services/custom_sofware_k29sx9.png",
     "shortTagline": "Bespoke software architecture engineered for complex enterprise logic.",
     "brandColor": "#000000",
-    "shortDeliverables": [],
+    "shortDeliverables": ["Custom APIs", "Business Systems", COMMON.labels.fullCodeOwnership],
 
     "tabLabel": "Custom Software",
     "headline": {
@@ -1121,7 +1126,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "description": "When off-the-shelf software falls short, we engineer custom backend systems, resilient microservices, and dedicated business engines built precisely for your organizational requirements.",
     "stats": [
       {
-        "value": "Zero",
+        "value": COMMON.labels.zero,
         "label": "Vendor lock-in or bloat"
       },
       {
@@ -1150,7 +1155,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "iconColor": "text-purple-600 dark:text-purple-400"
       },
       {
-        "title": "Legacy Modernization",
+        "title": COMMON.labels.legacyModernization,
         "description": "Gradual zero-downtime refactoring of monolithic legacy code into modern stacks.",
         "iconType": "refresh",
         "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
@@ -1227,7 +1232,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "We implement atomic database transactions, rigorous automated regression testing, database connection pooling, and automated error tracking."
       }
     ],
-    "relatedWorkUrl": "/work?category=custom-software",
+    "relatedWorkUrl": "/work",
     "mockup": {
       "type": "custom",
       "title": "Simpluxe Enterprise System Core",
@@ -1251,3 +1256,205 @@ export const SERVICES_DELIVERABLES_CONTENT = {
   perfectForTitle: "Perfect for",
   perfectForDesc: "Tailored for your business stage",
 };
+
+// services
+export const SERVICES_ACTIVE_SHOWCASE_COPY = {
+  projectInterest: (name: string) => `Interested in ${name} services.`,
+  symbol: COMMON.symbols.bullet,
+  startAProject: COMMON.actions.startProject,
+  viewRelatedWork: "View related work",
+} as const;
+
+export const SERVICES_HERO_COPY = {
+  home: COMMON.pages.home,
+  symbol: COMMON.symbols.slash,
+  services: COMMON.pages.services,
+  digitalServicesFor: "Digital services for ",
+  yourBusiness: "your business.",
+  fromWebsitesAndMobileProductsTo: "From websites and mobile products to AI-powered systems, we design and build the exact digital capabilities your business needs.",
+  text9Capabilities: "9 capabilities",
+  endToEndDigitalServices: "End-to-end digital services",
+  designDevelopment: "Design + Development",
+  modernAndScalable: "Modern and scalable",
+  builtForGrowth: "Built for growth",
+  realBusinessOutcomes: "Real business outcomes",
+  nextJsReact: "Next.js & React",
+  cleanArchitecture: COMMON.labels.cleanArchitecture,
+  strategy: COMMON.process.strategy,
+  symbol2: COMMON.symbols.bullet,
+  design: COMMON.process.design,
+  launch: COMMON.process.launch,
+  typescript: COMMON.technology.typescriptTag,
+  ideasTo: "Ideas to",
+  realProducts: "Real Products",
+  designSystems: COMMON.labels.designSystems,
+  figmaToCode: "Figma to Code",
+  scalableCloud: COMMON.labels.scalableCloud,
+  mobileWeb: COMMON.labels.mobileWeb,
+  iosAndroidReact: COMMON.labels.mobilePlatforms,
+  fastapi: COMMON.technology.fastapiTag,
+  reports: "Reports",
+  text284: "+28.4%",
+  growth: " Growth",
+  subSecondSpeed: COMMON.labels.subSecondSpeed,
+  secureScalable: COMMON.labels.secureScalable,
+  symbol3: COMMON.symbols.sparkle,
+  symbol4: COMMON.symbols.hollowSparkle,
+  digitalServicesShapedAroundYourBusiness: "Digital services, shaped around your business",
+} as const;
+
+export const SERVICES_TECH_STACK_COPY = {
+  techStack: COMMON.labels.techStack,
+  recommendedTechStacks: "Recommended Tech Stacks",
+  theRightToolsForTheRight: "The right tools for the right solution, categorized by necessity.",
+} as const;
+
+export const SERVICES_WHAT_WE_BUILD_COPY = {
+  capabilitiesCount: (count: number) => `${count} Capabilities`,
+  whatWeBuild: "What we build",
+} as const;
+
+// what-we-build
+export const AUTOMATION_COPY = {
+  triggerNewEmail: "Trigger: New Email",
+  extractKeyData: "Extract: Key Data",
+  aiClassifyIntent: "AI: Classify Intent",
+  actionAutoReply: "Action: Auto-Reply",
+  aiAgentRunning: "ai-agent · running",
+  processing: "Processing",
+  text3Workflows: " 3 workflows · ",
+  text98Faster: "98% faster",
+} as const;
+
+export const BRANDING_COPY = {
+  st: "ST",
+  aa: COMMON.symbols.typeSample,
+  inter: "Inter",
+  satoshi: "Satoshi",
+  mono: "Mono",
+} as const;
+
+export const ECOMMERCE_COPY = {
+  cartCountSelected: "1",
+  cartCountEmpty: "0",
+  text2499: "₹2,499",
+  wirelessHeadset: "Wireless Headset",
+  text1199: "₹1,199",
+  smartWatch: "Smart Watch",
+  text899: "₹899",
+  airBuds: "Air Buds",
+  orderDone: "✓ Order Done!",
+  text42Conv: "+42% Conv.",
+  added: "Added",
+  add: "Add",
+  secureCheckout: "Secure Checkout",
+  ssl: COMMON.labels.ssl,
+  qty1: "Qty: 1",
+  symbol: "••••",
+  processingPayment: "Processing payment…",
+  razorpay: COMMON.technology.razorpay,
+  stripe: COMMON.technology.stripe,
+  upi: "UPI",
+  orderPlaced: "Order Placed! 🎉",
+  symbol2: " · ",
+  orderId: "Order ID",
+  st: "#ST-",
+  deliveryEta: "Delivery ETA",
+  text23Days: "2–3 days",
+} as const;
+
+export const MOBILE_APPS_COPY = {
+  profileStats: ["142", "2.1k", "318"],
+  activityTimes: ["2m", "8m", "1h"],
+  feedSecondTime: "5m ago",
+  feedFirstTime: "2m ago",
+  feedSecondUser: "Rahul S.",
+  feedFirstUser: "Priya K.",
+  home: COMMON.pages.home,
+  explore: "Explore",
+  saved: "Saved",
+  activity: "Activity",
+  goodMorning: "Good morning 👋",
+  hiArjun: "Hi, Arjun!",
+  ak: "AK",
+  premiumPlan: "PREMIUM PLAN",
+  unlockAllProFeatures: "Unlock all Pro Features",
+  upgradeNow: "Upgrade Now",
+  orders: "Orders",
+  text24: "24",
+  points: "Points",
+  text12k: "1.2k",
+  text480: "₹480",
+  justLaunchedTheNewApp: "Just launched the new app! 🚀",
+  checkOutThisFeatureUpdate: "Check out this feature update 💡",
+  feed: "Feed",
+  text48: "♡ 48",
+  text12: "◎ 12",
+  share: "↑ Share",
+  arjunKumar: "Arjun Kumar",
+  arjunProMember: "@arjun · Pro Member",
+  posts: "Posts",
+  followers: "Followers",
+  following: "Following",
+  editProfile: "Edit Profile",
+  priyaLikedYourPost: "Priya liked your post",
+  newFollowerRahulS: "New follower: Rahul S.",
+  yourPostGot48Views: "Your post got 48 views",
+  profileCompletion: "Profile completion",
+  text82: "82%",
+  text941: "9:41",
+} as const;
+
+export const SAAS_COPY = {
+  enterpriseSaas: "ENTERPRISE SAAS",
+  symbol: "✓",
+  multiTenantCloudSync: " Multi-tenant Cloud Sync",
+  automatedStripeBilling: " Automated Stripe Billing",
+  postgresDb: "Postgres DB",
+  edgeApi: "Edge API",
+} as const;
+
+export const UI_UX_COPY = {
+  sidebarItems: ["Dashboard", "Analytics", "Settings", COMMON.labels.users],
+  activeValue: "4.2k",
+  revenueValue: "₹1.2L",
+  list: "List",
+  grid: "Grid",
+  card: "Card",
+  split: "Split",
+  view: "View",
+  primary: "Primary",
+  secondary: "Secondary",
+  active: COMMON.labels.active,
+  revenue: "Revenue",
+  layoutPreview: "Layout preview",
+} as const;
+
+export const WEB_APPS_COPY = {
+  appSimpleprimeIo: "app.simpleprime.io",
+  users: COMMON.labels.users,
+  text142k: "14.2k",
+  uptime: COMMON.labels.uptime,
+  text999: "99.9%",
+} as const;
+
+export const WEBSITES_COPY = {
+  buildYourNextIdea: "Build Your Next Idea",
+  tt: "Tt",
+} as const;
+
+export const WHAT_WE_BUILD_CARD_COPY = {
+  explore: "Explore ",
+} as const;
+
+export const WHAT_WE_BUILD_NAV_COPY = {
+  showServiceLabel: (name: string) => `Show ${name}`,
+  dragToExplore: "Drag to explore",
+  previousService: "Previous service",
+  nextService: "Next service",
+} as const;
+
+// sections
+export const WHAT_WE_BUILD_COPY = {
+  projectInterest: (name: string) => `Interested in: ${name}.`,
+} as const;

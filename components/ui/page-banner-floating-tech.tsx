@@ -1,6 +1,6 @@
 "use client";
 
-import { TECH_POSITIONS } from "@/lib/content/page-banner";
+import { TECH_POSITIONS } from "@/lib/visuals/page-banner";
 import { TECH_STACK } from "@/lib/content/tech-stack";
 import { cn } from "@/lib/utils";
 import { m as motion } from "motion/react";

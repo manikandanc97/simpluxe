@@ -1,3 +1,6 @@
+
+
+// page-banner
 export interface TechPositionConfig {
   className: string;
   duration: number;
@@ -16,10 +19,9 @@ export const DEFAULT_TECH_SLUGS: string[] = [
   "docker",
 ];
 
-// 6 positions scattered symmetrically on outer gutters
 export const TECH_POSITIONS: TechPositionConfig[] = [
   {
-    className: "top-[8%] sm:top-[12%] left-[2%] sm:left-[5%] lg:left-[8%]",
+    className: "top-2/25 sm:top-3/25 left-1/50 sm:left-1/20 lg:left-2/25",
     duration: 6.5,
     delay: 0,
     yOffset: 8,
@@ -27,7 +29,7 @@ export const TECH_POSITIONS: TechPositionConfig[] = [
     hideOnMobile: true,
   },
   {
-    className: "top-[calc(50%-22px)] sm:top-[calc(50%-26px)] left-[1.5%] sm:left-[3%] lg:left-[5%]",
+    className: "top-banner-icon sm:top-banner-icon-lg left-3/200 sm:left-3/100 lg:left-1/20",
     duration: 8,
     delay: 1.2,
     yOffset: 10,
@@ -35,7 +37,7 @@ export const TECH_POSITIONS: TechPositionConfig[] = [
     hideOnMobile: false,
   },
   {
-    className: "bottom-[8%] sm:bottom-[12%] left-[3%] sm:left-[6%] lg:left-[9%]",
+    className: "bottom-2/25 sm:bottom-3/25 left-3/100 sm:left-3/50 lg:left-9/100",
     duration: 7,
     delay: 0.4,
     yOffset: 7,
@@ -43,7 +45,7 @@ export const TECH_POSITIONS: TechPositionConfig[] = [
     hideOnMobile: true,
   },
   {
-    className: "top-[8%] sm:top-[12%] right-[2%] sm:right-[5%] lg:right-[8%]",
+    className: "top-2/25 sm:top-3/25 right-1/50 sm:right-1/20 lg:right-2/25",
     duration: 7.2,
     delay: 0.8,
     yOffset: 9,
@@ -51,7 +53,7 @@ export const TECH_POSITIONS: TechPositionConfig[] = [
     hideOnMobile: true,
   },
   {
-    className: "top-[calc(50%-22px)] sm:top-[calc(50%-26px)] right-[1.5%] sm:right-[3%] lg:right-[5%]",
+    className: "top-banner-icon sm:top-banner-icon-lg right-3/200 sm:right-3/100 lg:right-1/20",
     duration: 6,
     delay: 1.6,
     yOffset: 8,
@@ -59,7 +61,7 @@ export const TECH_POSITIONS: TechPositionConfig[] = [
     hideOnMobile: false,
   },
   {
-    className: "bottom-[8%] sm:bottom-[12%] right-[3%] sm:right-[6%] lg:right-[9%]",
+    className: "bottom-2/25 sm:bottom-3/25 right-3/100 sm:right-3/50 lg:right-9/100",
     duration: 8.5,
     delay: 0.2,
     yOffset: 10,

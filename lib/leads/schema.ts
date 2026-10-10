@@ -1,17 +1,9 @@
+import { LEAD_SCHEMA_COPY } from "@/lib/content/leads";
 import { z } from "zod";
 
-export const PROJECT_TYPES = [
-  "Websites",
-  "Web applications",
-  "E-commerce",
-  "Mobile apps",
-  "SaaS products",
-  "Branding & identity",
-  "UI/UX design",
-  "Custom software",
-  "Something Else",
-  "Not Sure Yet",
-] as const;
+import { PROJECT_TYPES } from "@/lib/content/leads";
+
+export { PROJECT_TYPES };
 
 const LEAD_SOURCES = [
   "cta",
@@ -30,27 +22,27 @@ export const leadSchema = z.object({
   firstName: z
     .string()
     .trim()
-    .min(2, "First name must be at least 2 characters")
-    .max(50, "First name must be less than 50 characters"),
+    .min(2, LEAD_SCHEMA_COPY.firstNameMustBeAtLeast)
+    .max(50, LEAD_SCHEMA_COPY.firstNameMustBeLessThan),
   lastName: z
     .string()
     .trim()
-    .min(1, "Last name is required")
-    .max(50, "Last name must be less than 50 characters"),
+    .min(1, LEAD_SCHEMA_COPY.lastNameIsRequired)
+    .max(50, LEAD_SCHEMA_COPY.lastNameMustBeLessThan),
   email: z
     .string()
     .trim()
-    .email("Please enter a valid email address"),
+    .email(LEAD_SCHEMA_COPY.pleaseEnterAValidEmailAddress),
   phone: z
     .string()
     .trim()
-    .max(30, "Phone number must be at most 30 characters")
+    .max(30, LEAD_SCHEMA_COPY.phoneNumberMustBeAtMost)
     .optional()
     .or(z.literal("")),
   company: z
     .string()
     .trim()
-    .max(100, "Company name must be at most 100 characters")
+    .max(100, LEAD_SCHEMA_COPY.companyNameMustBeAtMost)
     .optional()
     .or(z.literal("")),
   projectType: z
@@ -72,8 +64,8 @@ export const leadSchema = z.object({
   description: z
     .string()
     .trim()
-    .min(10, "Please describe your project in at least 10 characters")
-    .max(2000, "Description must be less than 2000 characters"),
+    .min(10, LEAD_SCHEMA_COPY.pleaseDescribeYourProjectInAt)
+    .max(2000, LEAD_SCHEMA_COPY.descriptionMustBeLessThan2000),
   source: z.enum(LEAD_SOURCES),
   blueprintSummary: z
     .string()
@@ -83,11 +75,11 @@ export const leadSchema = z.object({
     .or(z.literal("")),
   website: z
     .string()
-    .max(0, "Honeypot filled")
+    .max(200)
     .optional()
     .or(z.literal("")),
-  t: z.coerce.number(),
-  consent: z.literal(true, { message: "Consent is required" }),
+  t: z.coerce.number().int().positive(),
+  consent: z.literal(true, { message: LEAD_SCHEMA_COPY.consentIsRequired }),
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;

@@ -1,3 +1,4 @@
+import { ABOUT_VIEW_COPY } from "@/lib/content/about";
 import { SITE } from "@/lib/content/site";
 import { ABOUT_SECTION_CONTENT } from "@/lib/content/about";
 import { AmbientBackground } from "@/components/ui/ambient-background";
@@ -19,7 +20,7 @@ export function AboutView() {
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
       {/* ── Background Atmospheric Elements ── */}
       <AmbientBackground screen="about" />
-      <div className="absolute inset-0 bg-[radial-gradient(#d3ccd8_1px,transparent_1px)] opacity-35 pointer-events-none" />
+      <div className="absolute inset-0 bg-dots-soft opacity-35 pointer-events-none" />
 
       {/* ── 1. Hero Section (Breadcrumb, Title, Value Props & 3D Studio Showcase) ── */}
       <AboutHero />
@@ -52,7 +53,7 @@ export function AboutView() {
                       {ABOUT_SECTION_CONTENT.globalBase}
                     </span>
                     <span className="text-sm font-bold text-foreground">
-                      {SITE.location} &bull; {ABOUT_SECTION_CONTENT.remoteEngineering}
+                      {SITE.location} {ABOUT_VIEW_COPY.symbol}{ABOUT_SECTION_CONTENT.remoteEngineering}
                     </span>
                   </div>
                 </Card>

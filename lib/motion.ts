@@ -6,10 +6,6 @@ import { Variants, TargetAndTransition } from "motion/react";
 const ease = {
   // Premium smooth ease-out (fast out, slow in)
   out: [0.16, 1, 0.3, 1] as [number, number, number, number],
-  // Smooth symmetric ease (slow out, slow in)
-  inOut: [0.65, 0, 0.35, 1] as [number, number, number, number],
-  // For dramatic large visual transitions
-  smooth: [0.22, 1, 0.36, 1] as [number, number, number, number],
 };
 
 /**
@@ -21,11 +17,7 @@ export function prefersReducedMotion(): boolean {
 }
 
 const timing = {
-  micro: 0.2, // 0.15s - 0.2s
-  small: 0.3, // 0.2s - 0.3s
   reveal: 0.6, // 0.45s - 0.7s
-  section: 0.8, // 0.6s - 0.9s
-  large: 1.0, // 0.8s - 1.2s
 };
 
 // ==========================================

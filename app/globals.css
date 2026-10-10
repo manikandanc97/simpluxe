@@ -2,20 +2,32 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --animate-process-float: process-float 6s ease-in-out infinite;
+  --animate-process-bob: process-bob 6s ease-in-out infinite;
+
+  @keyframes process-float {
+    0%, 100% {
+      transform: translateY(calc(-1 * var(--float-distance, 0.5cqw))) rotate(calc(var(--tilt, 0deg) - 1deg));
+    }
+    50% {
+      transform: translateY(var(--float-distance, 0.5cqw)) rotate(calc(var(--tilt, 0deg) + 1deg));
+    }
+  }
+
+  @keyframes process-bob {
+    0%, 100% { transform: translateY(-0.3cqw); }
+    50% { transform: translateY(0.3cqw); }
+  }
+}
+
 @theme inline {
+  --breakpoint-xs: 30rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-satoshi), var(--font-manrope), system-ui, sans-serif;
   --font-mono: var(--font-inter);
   --font-heading: var(--font-satoshi), var(--font-manrope), system-ui, sans-serif;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -49,10 +61,6 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --color-diff-add: var(--diff-add);
-  --color-diff-remove: var(--diff-remove);
-  --color-diff-add-bg: var(--diff-add-bg);
-  --color-diff-remove-bg: var(--diff-remove-bg);
   --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.03);
   --shadow-elevated: 0 16px 40px rgba(146, 47, 85, 0.08);
   --shadow-cta: 0 24px 50px rgba(18, 17, 20, 0.40);
@@ -76,14 +84,6 @@
 }
 
 /* ── Typography Scale Classes (Global Standard) ── */
-.type-h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 5vw, 4rem); /* 36px mobile -> 64px desktop */
-  line-height: 1.08;
-  font-weight: 900;
-  letter-spacing: -0.025em;
-}
-
 .type-h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.8vw, 2rem); /* 24px mobile -> 32px desktop */
@@ -102,11 +102,6 @@
 
 .type-lead {
   font-size: clamp(0.9375rem, 1.5vw + 0.5rem, 1.25rem); /* 15px mobile -> 20px desktop */
-  line-height: 1.625;
-}
-
-.type-body {
-  font-size: 1rem; /* 16px */
   line-height: 1.625;
 }
 
@@ -150,18 +145,6 @@
   --chart-4: #EA580C;
   --chart-5: #059669;
   --radius: 0.5rem;
-  --sidebar: #F5F5F7;
-  --sidebar-foreground: #1D1D1F;
-  --sidebar-primary: #000000;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E5E5EA;
-  --sidebar-accent-foreground: #1D1D1F;
-  --sidebar-border: #D1D1D6;
-  --sidebar-ring: #0071E3;
-  --diff-add: oklch(0.35 0.16 150);
-  --diff-remove: oklch(0.38 0.22 25);
-  --diff-add-bg: oklch(0.94 0.05 150);
-  --diff-remove-bg: oklch(0.94 0.05 25);
 }
 
 @layer base {
@@ -204,11 +187,6 @@
 }
 
 /* ─── Keyframes ─────────────────────────────────────────── */
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 @keyframes float-slow {
   0%, 100% { transform: translateY(0); }
@@ -253,18 +231,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none !important;
+  }
   .animate-hero-word-reveal {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
   }
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* ─── Hero Section Utilities ─────────────────────── */
@@ -313,3 +292,220 @@
   scrollbar-width: none; /* Firefox */
 }
 
+
+/* Shared design tokens: use named Tailwind utilities in components. */
+@theme {
+  --container-scene-sm: 22.5rem;
+  --container-scene-xs: 17.5rem;
+  --spacing-scene-7: 7cqw;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20BD5A;
+  --color-linkedin: #0A66C2;
+  --color-instagram: #E1306C;
+  --aspect-card: 1.12/1;
+  --text-2xs: 10px;
+  --drop-shadow-elevated: 0 8px 16px rgb(146 47 85 / 0.15);
+  --blur-ambient-lg: 110px;
+  --spacing-scene-1: 1cqw;
+  --radius-scene-5: 5cqw;
+  --text-scene-6: clamp(9px, 2.05cqw, 15px);
+  --spacing-scene-icon-1-9cqw: clamp(9px, 1.9cqw, 14px);
+  --spacing-scene-1-1: 1.1cqw;
+  --spacing-scene-1-6: 1.6cqw;
+  --spacing-scene-0-6: 0.6cqw;
+  --spacing-scene-0-9: 0.9cqw;
+  --spacing-scene-9-2: 9.2cqw;
+  --radius-scene-1: 1cqw;
+  --spacing-scene-5-2: 5.2cqw;
+  --text-scene-5: clamp(9px, 1.95cqw, 15px);
+  --aspect-process: 755/520;
+  --aspect-process-tall: 755/600;
+  --radius-scene-3-2: 3.2cqw;
+  --text-scene-9: clamp(9px, 2.45cqw, 18px);
+  --spacing-scene-icon-2-4cqw: clamp(10px, 2.4cqw, 18px);
+  --radius-scene-1-8: 1.8cqw;
+  --spacing-scene-1-9: 1.9cqw;
+  --spacing-scene-1-65: 1.65cqw;
+  --spacing-scene-2-1: 2.1cqw;
+  --text-scene-8: clamp(10px, 2.4cqw, 18px);
+  --spacing-scene-0-45: 0.45cqw;
+  --spacing-scene-0-8: 0.8cqw;
+  --spacing-scene-3-7: 3.7cqw;
+  --radius-scene-2-65: 2.65cqw;
+  --spacing-scene-2-5: 2.5cqw;
+  --spacing-scene-2-4: 2.4cqw;
+  --spacing-scene-3: 3cqw;
+  --spacing-scene-8-8: 8.8cqw;
+  --spacing-scene-6-4: 6.4cqw;
+  --spacing-scene-4-2: 4.2cqw;
+  --radius-scene-2: 2cqw;
+  --text-scene-7: clamp(10px, 2.1cqw, 16px);
+  --spacing-scene-1-3: 1.3cqw;
+  --spacing-scene-3-2: 3.2cqw;
+  --spacing-scene-0-4: 0.4cqw;
+  --text-scene-10: clamp(18px, 4.4cqw, 32px);
+  --text-scene-2: clamp(9px, 1.7cqw, 13px);
+  --spacing-scene-1-7: 1.7cqw;
+  --spacing-scene-4: 4cqw;
+  --spacing-scene-0-7: 0.7cqw;
+  --spacing-scene-1-5: 1.5cqw;
+  --spacing-scene-7-8: 7.8cqw;
+  --spacing-scene-0-3: 0.3cqw;
+  --spacing-scene-6-5: 6.5cqw;
+  --spacing-scene-2: 2cqw;
+  --spacing-scene-1-4: 1.4cqw;
+  --text-scene-4: clamp(9px, 1.9cqw, 14px);
+  --spacing-scene-icon-3cqw: clamp(12px, 3cqw, 22px);
+  --spacing-scene-0-5: 0.5cqw;
+  --spacing-scene-13: 13cqw;
+  --text-scene-11: clamp(20px, 4.4cqw, 33px);
+  --radius-scene-3: 3cqw;
+  --text-scene-1: clamp(9px, 1.65cqw, 12px);
+  --spacing-scene-icon-1-7cqw: clamp(9px, 1.7cqw, 13px);
+  --text-scene-3: clamp(9px, 1.85cqw, 14px);
+  --text-3xs: 8px;
+  --text-micro: 6px;
+  --perspective-scene: 1200px;
+  --blur-ambient: 70px;
+  --blur-ambient-xl: 150px;
+  --text-heading-fluid: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-body-fluid: clamp(0.8125rem, 1.4vw, 0.9375rem);
+}
+
+@custom-variant icon (& svg);
+@custom-variant icon-default (& svg:not([class*='size-']));
+@custom-variant path (& path);
+@custom-variant span (& span);
+@custom-variant span-second (& span:nth-child(2));
+@custom-variant span-third (& span:nth-child(3));
+@custom-variant span-fourth (& span:nth-child(4));
+@custom-variant span-first (& span:first-child);
+@custom-variant span-following (& span + span);
+@custom-variant direct-span (& > span);
+@custom-variant direct-div (& > div);
+@custom-variant indicator (& i);
+@custom-variant link (& a);
+@custom-variant aria-haspopup (&[aria-haspopup]);
+@custom-variant scrollbar (&::-webkit-scrollbar);
+@custom-variant indicator-second (& i:nth-child(2));
+@custom-variant indicator-third (& i:nth-child(3));
+@custom-variant direct-div-second (& > div:nth-child(2));
+@custom-variant direct-div-last (& > div:last-child);
+
+@utility min-h-status { min-height: 60vh; }
+@utility max-h-dialog { max-height: 90vh; }
+@utility stroke-soft { stroke-width: 1.5; }
+@utility stroke-medium { stroke-width: 2.2; }
+@utility stroke-bold { stroke-width: 2.5; }
+@utility my-footer-art { margin-block: -6%; }
+@utility my-footer-art-md { margin-block: -8%; }
+@utility my-footer-art-lg { margin-block: -10%; }
+
+@utility bg-dots-panel {
+  background-image: radial-gradient(#d3ccd8 1.2px, transparent 1.2px);
+}
+@utility bg-dots-panel-size {
+  background-size: 1.375rem 1.375rem;
+}
+@utility bg-dots-size {
+  background-size: 1.25rem 1.25rem;
+}
+@utility mask-nav-edge {
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+@utility mask-none {
+  mask-image: none;
+}
+@utility stroke-cap-round {
+  stroke-linecap: round;
+}
+@utility stroke-join-round {
+  stroke-linejoin: round;
+}
+@utility scrollbar-legacy-none {
+  -ms-overflow-style: none;
+}
+@utility scrollbar-width-none {
+  scrollbar-width: none;
+}
+@utility bottom-safe-actions {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 6rem);
+}
+@utility bottom-safe-nav {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+}
+@utility pb-safe-nav {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 5rem);
+}
+@utility bg-dots-soft {
+  background-image: radial-gradient(#d3ccd8 1px, transparent 1px);
+}
+@utility scene-tilt-negative-1 {
+  --tilt: -1deg;
+}
+@utility scene-tilt-negative-6 {
+  --tilt: -6deg;
+}
+@utility scene-tilt-negative-2 {
+  --tilt: -2deg;
+}
+@utility scene-tilt-1 {
+  --tilt: 1deg;
+}
+@utility scene-tilt-2 {
+  --tilt: 2deg;
+}
+@utility float-duration-8s {
+  animation-duration: 8s;
+}
+@utility float-duration-6s {
+  animation-duration: 6s;
+}
+@utility float-delay-negative-0-2s {
+  animation-delay: -0.2s;
+}
+@utility float-duration-5s {
+  animation-duration: 5s;
+}
+@utility float-delay-negative-1s {
+  animation-delay: -1s;
+}
+@utility float-duration-7s {
+  animation-duration: 7s;
+}
+@utility float-delay-negative-0-5s {
+  animation-delay: -0.5s;
+}
+@utility float-duration-5-5s {
+  animation-duration: 5.5s;
+}
+@utility float-delay-negative-1-2s {
+  animation-delay: -1.2s;
+}
+@utility grid-cols-process {
+  grid-template-columns: 1fr 0.25fr 1fr;
+}
+@utility grid-rows-process {
+  grid-template-rows: 1fr 0.35fr 1fr;
+}
+@utility bg-dots-foreground {
+  background-image: radial-gradient(var(--color-foreground) 1.5px, transparent 1.5px);
+}
+@utility grid-cols-work {
+  grid-template-columns: 15rem minmax(0, 1fr) 15rem;
+}
+@utility grid-cols-work-wide {
+  grid-template-columns: 15.625rem minmax(0, 1fr) 15.625rem;
+}
+@utility bg-secondary-hover {
+  background-color: color-mix(in oklch, var(--secondary), var(--foreground) 5%);
+}
+@utility max-w-dialog {
+  max-width: calc(100% - 2rem);
+}
+@utility top-banner-icon {
+  top: calc(50% - 1.375rem);
+}
+@utility top-banner-icon-lg {
+  top: calc(50% - 1.625rem);
+}

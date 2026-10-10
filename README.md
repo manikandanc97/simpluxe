@@ -1,151 +1,75 @@
 # Simpluxe
 
-> **Keep It Simple. Make It Luxury.**
+Keep It Simple. Make It Luxury.
 
-Simpluxe is a software development company that designs, engineers, and deploys custom software, web applications, mobile apps, SaaS platforms, and enterprise solutions for businesses, startups, and founders.
+A Next.js website for Simpluxe, with services, portfolio, about, contact, ideas, and policy pages.
 
-We eliminate boilerplate, over-engineering, and technical bloat to ship clean, fast, and high-impact digital products.
+## Stack
 
----
+- Next.js 16 App Router, React 19, and TypeScript
+- Tailwind CSS v4 with shared tokens and utilities in app/globals.css
+- Base UI primitives and @animateicons/react icons
+- Motion for interactions and animation
+- Local Satoshi, Inter, Manrope, and Caveat fonts
+- Cloudinary for image delivery
+- Zod validation and Supabase for lead capture
+- Vercel Analytics and Speed Insights in production
 
-## 🚀 Tech Stack
+## Setup
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, React 19)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Components**: Radix / Base UI / shadcn primitives
-- **Motion**: [Motion](https://motion.dev/) (formerly Framer Motion)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Validation**: [Zod](https://zod.dev/)
-- **Backend / DB**: [Supabase](https://supabase.com/) (`@supabase/supabase-js`) for lead capture and secure storage
-- **Font**: Geist Sans and Geist Mono
+Use Node.js 20.9 or newer and npm.
 
----
-
-## 📁 Repository Structure
-
-```
-├── app/
-│   ├── layout.tsx              # Root layout with zero-flicker theme script & metadataBase
-│   ├── page.tsx                # Home page (Hero, WhatWeBuild, Philosophy, CTA)
-│   ├── services/               # Services page (8 client services + interactive scoping)
-│   ├── work/                   # Work & concept studies with interactive before/after diffs
-│   ├── lab/                    # Ideas & experiments page
-│   ├── about/                  # About page (who we are, principles, honest studio profile)
-│   ├── not-found.tsx           # 404 page
-│   ├── robots.ts               # Robots.txt generator
-│   └── sitemap.ts              # Sitemap generator
-├── components/
-│   ├── layout/                 # SiteNavbar, TopBar, SiteFooter, MobileAppMenu
-│   ├── leads/                  # Lead dialog, form, and provider (real lead capture)
-│   ├── pages/                  # Page-level client views (work, services, lab)
-│   ├── sections/               # Home sections (what-we-build, philosophy, how-we-work, etc.)
-│   ├── theme/                  # Theme color provider, font provider, color picker dialog
-│   ├── ui/                     # UI components (dialog, button, command-palette, etc.)
-│   └── workbench/              # 3D character hero workbench
-├── lib/
-│   ├── site.ts                 # Centralized studio configuration (owner details, contacts)
-│   ├── nav.ts                  # Shared navigation items
-│   ├── colors.ts               # Theme palettes with WCAG-compliant high-contrast text
-│   ├── fonts.ts                # Curated typography collection
-│   ├── leads/                  # Lead schema (anti-spam, honeypot) & Server Actions
-│   └── data/                   # Projects and experiments data
-└── supabase/
-    └── leads.sql               # Database schema with RLS for lead storage
+```powershell
+npm.cmd ci
+Copy-Item .env.example .env.local
+npm.cmd run dev
 ```
 
----
+On shells without the PowerShell script restriction, npm can be used directly.
+Open http://localhost:3000.
 
-## ⚙️ Getting Started
+Set NEXT_PUBLIC_SITE_URL to the public site origin (http://localhost:3000 for local metadata). The default production origin is https://simpluxe.in.
+The example includes the Cloudinary cloud serving the existing site assets. Change it only when those assets exist in another cloud.
+Set NEXT_PUBLIC_CONTACT_EMAIL and NEXT_PUBLIC_CONTACT_PHONE for direct contact. Optional NEXT_PUBLIC_TWITTER_URL, NEXT_PUBLIC_LINKEDIN_URL, NEXT_PUBLIC_INSTAGRAM_URL, NEXT_PUBLIC_YOUTUBE_URL, and NEXT_PUBLIC_GITHUB_URL configure social profiles; blank values hide their links. NEXT_PUBLIC_WHATSAPP_NUMBER is optional and should include the country code; leave it blank to hide WhatsApp links.
 
-### 1. Prerequisites
+For persisted lead capture, configure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, then run supabase/leads.sql in the Supabase SQL editor. Keep the service role key server-side. RLS has no public access policies.
+Without Supabase credentials, development submissions log to the server console. Production submissions return an error with direct contact options.
 
-- Node.js 20+
-- npm, pnpm, or bun
+## Structure
 
-### 2. Installation
+- app/: routes, root layout, global CSS, metadata, sitemap, and robots
+- components/layout/: navigation, footer, and floating contact actions
+- components/providers/: motion and scroll restoration
+- components/pages/: page views
+- components/sections/: homepage sections and their visuals
+- components/services/, work/, about/, contact/: page-specific components
+- components/leads/: shared lead form, dialog, and provider
+- components/ui/: shared UI primitives
+- lib/content/: site identity, navigation, services, projects, and section copy
+- lib/visuals/: background patterns and floating badge positioning
+- lib/leads/: validation and submission Server Action
+- hooks/: shared hooks
+- types/: shared content types
+- public/: local fonts (website images and technology logos are served by Cloudinary)
+- supabase/leads.sql: lead storage schema
 
-Clone the repository and install dependencies:
+All website copy lives in lib/content/, with one file per area. Edit services.ts for service descriptions, headings, and mockup text; about.ts for About; contact.ts for Contact; projects.ts for project cards and details. The content directory's [editing guide](lib/content/README.md) lists every file.
 
-```bash
-npm install
+Edit common.ts for shared buttons, page names, and technology labels. Page files reference these values, so a shared wording change applies everywhere. Edit site.ts for identity, headline fragments, contact settings, availability, and response time. SEO lives in metadata.ts; legal policies in legal.ts; form options and messages in leads.ts.
+
+Content modules export data and pure text formatters usable by server and client components. Preserve intentional spaces beside highlighted spans and links. Background patterns and badge positioning live in lib/visuals/. Run npm.cmd run check:copy after editing to catch inline presentation strings and repeated shared labels.
+Process scenes share Tailwind utilities in components/sections/how-we-work/visuals/step-visual-classes.ts.
+
+## Verification
+
+```powershell
+npm.cmd run lint
+npm.cmd run check:copy
+npx.cmd tsc --noEmit
+npx.cmd knip --no-progress
+npm.cmd run build
 ```
 
-### 3. Environment Variables
+Pages are statically prerendered; lead capture still requires a server runtime for the Server Action. This is not a static-export deployment.
 
-Copy `.env.example` to `.env.local`:
-
-```bash
-cp .env.example .env.local
-```
-
-Configure the following variables:
-
-```env
-# Public site URL
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-
-# Supabase (Server-side only — used for lead capture)
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-```
-
-> **Note**: In development, if Supabase credentials are not provided, lead submissions will safely log to the server console as a fallback instead of throwing an error.
-
-### 4. Database Setup (Supabase)
-
-To enable lead capture storage:
-
-1. Create a project in [Supabase](https://supabase.com).
-2. Open the **SQL Editor** in your Supabase dashboard.
-3. Run the SQL script located at [`supabase/leads.sql`](supabase/leads.sql).
-4. Row Level Security (RLS) is enabled with no public read/write access. Only the server-side service role key can insert records.
-
-### 5. Running Locally
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the site.
-
----
-
-## 🧪 Verification & Testing
-
-### TypeScript Check
-
-```bash
-npx tsc --noEmit
-```
-
-### ESLint Check
-
-```bash
-npm run lint
-```
-
-### Production Build
-
-```bash
-npm run build
-```
-
-_All routes are fully static (`○`) for maximum performance and instant CDN edge delivery._
-
----
-
-## 🎨 Owner Customization
-
-All studio identity details are centralized in [`lib/site.ts`](lib/site.ts). Update this file to configure:
-
-- Studio email and telephone
-- Physical/virtual location
-- Social profile links
-- Availability status indicator
-- Starting pricing benchmarks
-
----
-
-## 📄 License
-
-Private & proprietary — Simpluxe.
+Private and proprietary - Simpluxe.

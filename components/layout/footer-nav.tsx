@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
-import { NAV_ITEMS } from "@/lib/content/navigation";
-import { FOOTER_DATA } from "@/lib/content/footer";
+import { NAV_ITEMS } from "@/lib/content/layout";
+import { FOOTER_DATA } from "@/lib/content/layout";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

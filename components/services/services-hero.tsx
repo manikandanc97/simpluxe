@@ -1,5 +1,7 @@
 "use client";
 
+import { SERVICES_HERO_COPY } from "@/lib/content/services";
+
 import { CldImage } from "@/components/ui/cld-image";
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion";
@@ -23,11 +25,11 @@ export function ServicesHero() {
     <Container className="relative pt-24 sm:pt-28 lg:pt-36 pb-8 sm:pb-12 lg:pb-16">
       {/* ── Soft Ambient Glows ── */}
       <div
-        className="pointer-events-none absolute -top-12 left-1/4 w-96 h-96 rounded-full bg-gradient-to-tr from-[var(--primary)]/12 via-[var(--primary)]/8 to-transparent blur-3xl -z-10"
+        className="pointer-events-none absolute -top-12 left-1/4 w-96 h-96 rounded-full bg-gradient-to-tr from-primary/12 via-primary/8 to-transparent blur-3xl -z-10"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute top-1/3 right-10 w-[32rem] h-[32rem] rounded-full bg-gradient-to-br from-[var(--chart-2)]/10 via-[#3B82F6]/6 to-transparent blur-3xl -z-10"
+        className="pointer-events-none absolute top-1/3 right-10 w-128 h-128 rounded-full bg-gradient-to-br from-chart-2/10 via-blue-500/6 to-transparent blur-3xl -z-10"
         aria-hidden="true"
       />
 
@@ -38,22 +40,20 @@ export function ServicesHero() {
             <div className="flex flex-col gap-2 sm:gap-2.5">
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
-                <a href="/" className="hover:text-foreground transition-colors">Home</a>
-                <span className="text-[var(--border)]">/</span>
-                <span className="text-primary font-semibold">Services</span>
+                <a href="/" className="hover:text-foreground transition-colors">{SERVICES_HERO_COPY.home}</a>
+                <span className="text-border">{SERVICES_HERO_COPY.symbol}</span>
+                <span className="text-primary font-semibold">{SERVICES_HERO_COPY.services}</span>
               </motion.nav>
 
               {/* Main Title */}
               <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
-                Digital services for <span className="text-primary">your business.</span>
+                {SERVICES_HERO_COPY.digitalServicesFor}<span className="text-primary">{SERVICES_HERO_COPY.yourBusiness}</span>
               </motion.h1>
             </div>
 
             {/* Description */}
             <motion.p variants={fadeUp} className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed font-normal">
-              From websites and mobile products to AI-powered systems, we design
-              and build the exact digital capabilities your business needs.
-            </motion.p>
+              {SERVICES_HERO_COPY.fromWebsitesAndMobileProductsTo}</motion.p>
           </div>
 
           {/* 3 Core Value Props in a Row */}
@@ -65,26 +65,22 @@ export function ServicesHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  9 capabilities
-                </span>
+                  {SERVICES_HERO_COPY.text9Capabilities}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  End-to-end digital services
-                </span>
+                  {SERVICES_HERO_COPY.endToEndDigitalServices}</span>
               </div>
             </div>
 
             {/* Value Prop 2 */}
             <div data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center shrink-0 border border-purple-100/80">
-                <AnimatedIcon icon={ZapIcon} size={18} className="text-[var(--chart-2)]" />
+                <AnimatedIcon icon={ZapIcon} size={18} className="text-chart-2" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  Design + Development
-                </span>
+                  {SERVICES_HERO_COPY.designDevelopment}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Modern and scalable
-                </span>
+                  {SERVICES_HERO_COPY.modernAndScalable}</span>
               </div>
             </div>
 
@@ -95,11 +91,9 @@ export function ServicesHero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
-                  Built for growth
-                </span>
+                  {SERVICES_HERO_COPY.builtForGrowth}</span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Real business outcomes
-                </span>
+                  {SERVICES_HERO_COPY.realBusinessOutcomes}</span>
               </div>
             </div>
           </motion.div>
@@ -113,10 +107,10 @@ export function ServicesHero() {
           <div className="pointer-events-none absolute bottom-4 left-1/3 w-40 h-40 rounded-full bg-sky-200/35 blur-2xl -z-10" />
 
           {/* Outer Showcase Container with Dot LayoutGridIcon Pattern Backdrop */}
-          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-[1.12/1] flex items-center justify-center">
+          <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl aspect-card flex items-center justify-center">
             
             {/* ── Background Subtle Dot Pattern Card (Behind Character) ── */}
-            <div className="absolute inset-1 sm:inset-3 rounded-3xl bg-white/40 border border-surface-elevated/80 [background-image:radial-gradient(#d3ccd8_1.2px,transparent_1.2px)] [background-size:22px_22px] -z-10 shadow-card" />
+            <div className="absolute inset-1 sm:inset-3 rounded-3xl bg-white/40 border border-surface-elevated/80 bg-dots-panel bg-dots-panel-size -z-10 shadow-card" />
 
             {/* ── Floating Element 1 (Top Left): Next.js & React ── */}
             <motion.div
@@ -124,16 +118,14 @@ export function ServicesHero() {
               transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
               className="absolute top-3 sm:top-4 left-2 sm:left-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-surface-elevated shadow-card"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-gradient-to-tr from-[var(--chart-1)] to-[var(--chart-1)] flex items-center justify-center text-white shadow-xs shrink-0">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-gradient-to-tr from-chart-1 to-chart-1 flex items-center justify-center text-white shadow-xs shrink-0">
                 <CodeIcon size={13} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
-                  Next.js &amp; React
-                </div>
-                <div className="text-[8.5px] sm:text-[9px] font-semibold text-[var(--chart-1)] leading-tight">
-                  Clean Architecture
-                </div>
+                  {SERVICES_HERO_COPY.nextJsReact}</div>
+                <div className="text-2xs sm:text-2xs font-semibold text-chart-1 leading-tight">
+                  {SERVICES_HERO_COPY.cleanArchitecture}</div>
               </div>
             </motion.div>
 
@@ -141,23 +133,23 @@ export function ServicesHero() {
             <motion.div
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-              className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-surface-elevated shadow-xs text-[9.5px] sm:text-xs font-bold text-muted-foreground whitespace-nowrap"
+              className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-surface-elevated shadow-xs text-2xs sm:text-xs font-bold text-muted-foreground whitespace-nowrap"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Strategy</span>
-              <span className="text-muted-foreground">•</span>
-              <span>Design</span>
-              <span className="text-muted-foreground">•</span>
-              <span className="text-primary">Launch</span>
+              <span>{SERVICES_HERO_COPY.strategy}</span>
+              <span className="text-muted-foreground">{SERVICES_HERO_COPY.symbol2}</span>
+              <span>{SERVICES_HERO_COPY.design}</span>
+              <span className="text-muted-foreground">{SERVICES_HERO_COPY.symbol2}</span>
+              <span className="text-primary">{SERVICES_HERO_COPY.launch}</span>
             </motion.div>
 
             {/* ── Micro Tech Tag: TypeScript (Lowered cleanly below Next.js) ── */}
             <motion.div
               animate={{ y: [0, 3, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              className="pointer-events-none absolute top-20 sm:top-20 left-10 sm:left-14 text-[var(--chart-1)] text-[9.5px] font-mono z-[15] hidden xs:flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50/80 border border-blue-100/70 shadow-2xs backdrop-blur-xs"
+              className="pointer-events-none absolute top-20 sm:top-20 left-10 sm:left-14 text-chart-1 text-2xs font-mono z-15 hidden xs:flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50/80 border border-blue-100/70 shadow-2xs backdrop-blur-xs"
             >
-              <span>&lt;TypeScript /&gt;</span>
+              <span>{SERVICES_HERO_COPY.typescript}</span>
             </motion.div>
 
             {/* ── Floating Element 3 (Top Right): Ideas to Real Products ── */}
@@ -166,16 +158,14 @@ export function ServicesHero() {
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
               className="absolute top-3 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-white/90 shadow-elevated"
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-[var(--primary)] to-[var(--primary)] flex items-center justify-center text-white shadow-xs shrink-0">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-primary to-primary flex items-center justify-center text-white shadow-xs shrink-0">
                 <SparklesIcon size={15} className="text-white" />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
-                  Ideas to
-                </div>
+                  {SERVICES_HERO_COPY.ideasTo}</div>
                 <div className="text-xs sm:text-xs font-bold text-primary leading-tight">
-                  Real Products
-                </div>
+                  {SERVICES_HERO_COPY.realProducts}</div>
               </div>
             </motion.div>
 
@@ -183,18 +173,16 @@ export function ServicesHero() {
             <motion.div
               animate={{ y: [0, 5, 0], x: [0, -2, 0] }}
               transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-[var(--accent-soft)] shadow-violet"
+              className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-accent-soft shadow-violet"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-purple-50 text-[var(--chart-2)] flex items-center justify-center border border-purple-100 shrink-0">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-purple-50 text-chart-2 flex items-center justify-center border border-purple-100 shrink-0">
                 <LayersIcon size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
-                  Design Systems
-                </div>
-                <div className="text-[8.5px] sm:text-[9px] font-semibold text-[var(--chart-2)] leading-tight">
-                  Figma to Code
-                </div>
+                  {SERVICES_HERO_COPY.designSystems}</div>
+                <div className="text-2xs sm:text-2xs font-semibold text-chart-2 leading-tight">
+                  {SERVICES_HERO_COPY.figmaToCode}</div>
               </div>
             </motion.div>
 
@@ -204,28 +192,25 @@ export function ServicesHero() {
               transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
               className="absolute top-44 sm:top-48 -left-1 sm:left-2 z-20 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-card"
             >
-              <CpuIcon size={11} className="text-[var(--chart-2)]" />
-              <span className="text-[9px] font-bold text-muted-foreground">
-                Scalable Cloud
-              </span>
+              <CpuIcon size={11} className="text-chart-2" />
+              <span className="text-2xs font-bold text-muted-foreground">
+                {SERVICES_HERO_COPY.scalableCloud}</span>
             </motion.div>
 
             {/* ── Floating Element 5 (Mid Right): Mobile & Web Apps ── */}
             <motion.div
               animate={{ y: [0, -5, 0], x: [0, 2, 0] }}
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-[var(--accent-soft)] shadow-violet"
+              className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-accent-soft shadow-violet"
             >
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-indigo-50 text-[var(--chart-2)] flex items-center justify-center border border-indigo-100 shrink-0">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-indigo-50 text-chart-2 flex items-center justify-center border border-indigo-100 shrink-0">
                 <SmartphoneIcon size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
-                  Mobile &amp; Web
-                </div>
-                <div className="text-[8.5px] sm:text-[9px] font-semibold text-[var(--chart-2)] leading-tight">
-                  iOS • Android • React
-                </div>
+                  {SERVICES_HERO_COPY.mobileWeb}</div>
+                <div className="text-2xs sm:text-2xs font-semibold text-chart-2 leading-tight">
+                  {SERVICES_HERO_COPY.iosAndroidReact}</div>
               </div>
             </motion.div>
 
@@ -233,9 +218,9 @@ export function ServicesHero() {
             <motion.div
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="pointer-events-none absolute top-20 sm:top-24 right-16 sm:right-24 text-primary text-[9.5px] font-mono z-[25] hidden sm:flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-50/80 border border-rose-100/70 shadow-2xs backdrop-blur-xs"
+              className="pointer-events-none absolute top-20 sm:top-24 right-16 sm:right-24 text-primary text-2xs font-mono z-25 hidden sm:flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-50/80 border border-rose-100/70 shadow-2xs backdrop-blur-xs"
             >
-              <span>&lt;FastAPI /&gt;</span>
+              <span>{SERVICES_HERO_COPY.fastapi}</span>
             </motion.div>
 
             {/* ── Floating Element 6 (Lower Mid Right): Reports & Growth ── */}
@@ -249,11 +234,9 @@ export function ServicesHero() {
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
-                  Reports
-                </div>
-                <div className="text-[8.5px] sm:text-[9px] font-semibold text-emerald-600 leading-tight flex items-center gap-0.5">
-                  <span>+28.4%</span> Growth
-                </div>
+                  {SERVICES_HERO_COPY.reports}</div>
+                <div className="text-2xs sm:text-2xs font-semibold text-emerald-600 leading-tight flex items-center gap-0.5">
+                  <span>{SERVICES_HERO_COPY.text284}</span> {SERVICES_HERO_COPY.growth}</div>
               </div>
             </motion.div>
 
@@ -264,9 +247,8 @@ export function ServicesHero() {
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-xs"
             >
               <CircleCheckIcon size={12} className="text-emerald-500" />
-              <span className="text-[9.5px] sm:text-xs font-bold text-foreground">
-                Sub-Second Speed
-              </span>
+              <span className="text-2xs sm:text-xs font-bold text-foreground">
+                {SERVICES_HERO_COPY.subSecondSpeed}</span>
             </motion.div>
 
             {/* ── Floating Element 8 (Bottom Right): Secure & Scalable Pill ── */}
@@ -275,27 +257,24 @@ export function ServicesHero() {
               transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-xs"
             >
-              <ShieldCheckIcon size={12} className="text-[var(--chart-3)]" />
-              <span className="text-[9.5px] sm:text-xs font-bold text-foreground">
-                Secure &amp; Scalable
-              </span>
+              <ShieldCheckIcon size={12} className="text-chart-3" />
+              <span className="text-2xs sm:text-xs font-bold text-foreground">
+                {SERVICES_HERO_COPY.secureScalable}</span>
             </motion.div>
 
             {/* ── Micro Decorators Floating in Air ── */}
             <motion.span
               animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className="pointer-events-none absolute top-16 right-20 text-primary text-xs z-[5]"
+              className="pointer-events-none absolute top-16 right-20 text-primary text-xs z-5"
             >
-              ✦
-            </motion.span>
+              {SERVICES_HERO_COPY.symbol3}</motion.span>
             <motion.span
               animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.9, 0.4] }}
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="pointer-events-none absolute top-14 left-24 text-[var(--chart-2)] text-sm z-[5]"
+              className="pointer-events-none absolute top-14 left-24 text-chart-2 text-sm z-5"
             >
-              ✧
-            </motion.span>
+              {SERVICES_HERO_COPY.symbol4}</motion.span>
 
             {/* ── 3D Character Illustration with Smooth Bottom Gradient Fade (Static, Non-animated) ── */}
             <div className="relative w-full h-full flex items-center justify-center z-10">
@@ -311,7 +290,7 @@ export function ServicesHero() {
               >
                 <CldImage
                   src="simpluxe/section-banner/ChatGPT_Image_Sep_28_2026_07_25_40_PM_hjumpi"
-                  alt="Digital services, shaped around your business"
+                  alt={SERVICES_HERO_COPY.digitalServicesShapedAroundYourBusiness}
                   width={768}
                   height={512}
                   priority
@@ -321,10 +300,10 @@ export function ServicesHero() {
               </div>
 
               {/* Diffused ambient soft shadow underneath the table to ground it naturally */}
-              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-8 bg-gradient-to-r from-transparent via-[var(--primary)]/12 to-transparent blur-xl -z-5" />
+              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 w-17/20 h-8 bg-gradient-to-r from-transparent via-primary/12 to-transparent blur-xl -z-5" />
 
               {/* Bottom gradient blend with page background so there is zero abrupt edge */}
-              <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-16 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/85 to-transparent z-15" />
+              <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-16 bg-gradient-to-t from-background via-background/85 to-transparent z-15" />
             </div>
 
           </div>

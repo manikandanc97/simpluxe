@@ -1,3 +1,4 @@
+import { COMMON } from "./common";
 import { BoxIcon } from "@animateicons/react/lucide/box-icon";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { DatabaseIcon } from "@animateicons/react/lucide/database-icon";
@@ -8,7 +9,7 @@ import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 
-// ─── Left Column: Process Steps ─────────────────────────────────────────────
+// philosophy
 export const PROCESS_STEPS = [
   {
     num: "01",
@@ -44,7 +45,6 @@ export const PROCESS_STEPS = [
   },
 ];
 
-// ─── Center Panel: Flow Nodes ───────────────────────────────────────────────
 export const FLOW_NODES = {
   topLeft: {
     id: "direct-access",
@@ -80,7 +80,6 @@ export const FLOW_NODES = {
   },
 };
 
-// ─── Right Panel: Outcomes ──────────────────────────────────────────────────
 export const REAL_OUTCOMES = [
   {
     value: 5,
@@ -115,3 +114,31 @@ export const PHILOSOPHY_SECTION_CONTENT = {
   highlightedText: "sharp.",
   description: "A focused team, a clear process, and production-ready work without unnecessary layers.",
 };
+
+// philosophy
+export const DESKTOP_FLOW_CANVAS_COPY = {
+  simpluxeLogo: COMMON.brand.logoAlt,
+} as const;
+
+export const FLOW_DIAGRAM_COPY = {
+  signal01: "SIGNAL / 01",
+  simpleSystem: "SIMPLE SYSTEM",
+  yourIdea: "YOUR IDEA",
+  realImpact: "REAL IMPACT",
+} as const;
+
+export const MOBILE_FLOW_GRID_COPY = {
+  simpluxeLogo: COMMON.brand.logoAlt,
+} as const;
+
+export const PHILOSOPHY_OUTCOMES_COPY = {
+  from: "From",
+  ideaToImpact: "Idea to Impact",
+  realOutcomes: "REAL OUTCOMES",
+} as const;
+
+export const PHILOSOPHY_PROCESS_STEPS_COPY = {
+  process04: "PROCESS / 04",
+  simpleProcess: "Simple Process",
+  realResults: "Real Results",
+} as const;

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { PROJECTS } from "@/lib/content/projects";
+import { PROJECTS, PROJECT_FILTER_TABS } from "@/lib/content/projects";
 
 export function useSelectedWork() {
-  const [activeFilter, setActiveFilter] = useState<string>("Websites");
+  const [activeFilter, setActiveFilter] = useState<string>(PROJECT_FILTER_TABS[0]);
 
   const filteredProjects = useMemo(
     () => PROJECTS.filter((p) => p.serviceType === activeFilter),

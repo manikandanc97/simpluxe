@@ -25,7 +25,7 @@ export function MockupWrapper({
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none">
       {/* Background ambient glow */}
-      <div className={`absolute inset-0 rounded-3xl blur-[30px] pointer-events-none -z-10 ${gradientClass}`} />
+      <div className={`absolute inset-0 rounded-3xl blur-2xl pointer-events-none -z-10 ${gradientClass}`} />
 
       {/* Floating Mockup Card */}
       <motion.div

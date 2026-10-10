@@ -20,7 +20,7 @@ export function StepNavigation({
   return (
     <div
       ref={navContainerRef}
-      className="relative flex items-center justify-start md:justify-center gap-2 sm:gap-4 md:gap-4.5 overflow-x-auto py-1 sm:py-1.5 w-full scrollbar-none [mask-image:linear-gradient(to_right,black_85%,transparent_100%)] lg:[mask-image:none] pr-12 lg:pr-0"
+      className="relative flex items-center justify-start md:justify-center gap-2 sm:gap-4 md:gap-4.5 overflow-x-auto py-1 sm:py-1.5 w-full scrollbar-none mask-nav-edge lg:mask-none pr-12 lg:pr-0"
     >
       {STEPS.map((step, index) => {
         const isActive = activeStepIndex === index;
@@ -32,7 +32,7 @@ export function StepNavigation({
             {/* Step Button Card */}
             <button
               type="button"
-              role="tab"
+              aria-pressed={isActive}
               data-slot="tab"
               data-step={index}
               onClick={() => onSelectStep(index)}
@@ -50,13 +50,13 @@ export function StepNavigation({
                 className={cn(
                   "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-black transition-colors shrink-0",
                   isActive
-                    ? "bg-[var(--primary-hover)] text-white shadow-xs"
+                    ? "bg-primary-hover text-white shadow-xs"
                     : isCompleted
                     ? "bg-emerald-50 text-emerald-700 font-bold border border-emerald-200/60"
                     : "bg-purple-50 text-purple-700 font-bold group-hover:bg-purple-100"
                 )}
               >
-                {isCompleted ? <AnimatedIcon icon={CheckIcon} size={14} className="w-3.5 h-3.5 stroke-[2.5]" /> : step.number}
+                {isCompleted ? <AnimatedIcon icon={CheckIcon} size={14} className="w-3.5 h-3.5 stroke-bold" /> : step.number}
               </div>
 
               {/* Step Icon */}

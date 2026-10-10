@@ -1,25 +1,32 @@
-import { TechCategory, TechItem, TECH_CATEGORIES } from '@/types/tech';
-import { type AnimatedIconName } from '@/components/ui/animated-icon';
+import { COMMON } from "./common";
+import { TechCategory, TechItem } from "@/types/tech";
+import { type AnimatedIconName } from "@/components/ui/animated-icon";
 
-export const CATEGORIES = TECH_CATEGORIES;
+export const CATEGORIES = [
+  COMMON.categories.frontend,
+  COMMON.categories.mobile,
+  COMMON.categories.backend,
+  COMMON.categories.database,
+  COMMON.categories.design,
+] as const;
+
+// tech-stack
 export type Category = TechCategory;
 
 export const CATEGORY_ICONS: Record<Category, AnimatedIconName> = {
-  "Frontend & Web": "laptop",
-  Mobile: "smartphone",
-  "Backend & APIs": "cpu",
-  "Database & Cloud": "layers",
-  "Design & Tools": "palette",
+  [COMMON.categories.frontend]: "laptop",
+  [COMMON.categories.mobile]: "smartphone",
+  [COMMON.categories.backend]: "cpu",
+  [COMMON.categories.database]: "layers",
+  [COMMON.categories.design]: "palette",
 };
-
-// ─── Curated Tech Stack (Zero Redundancy — Exactly 1 Category Each) ───────────
 
 export const TECH_STACK: TechItem[] = [
   // ── Frontend & Web (6) ───────────────────────────────────────────────────────
   {
-    name: "React",
+    name: COMMON.technology.react,
     slug: "react",
-    category: "Frontend & Web",
+    category: COMMON.categories.frontend,
     description: "Component based UI engine for modern web applications.",
     badge: "UI Library",
     dotColor: "#F43F5E", // pink / rose dot
@@ -27,9 +34,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://react.dev",
   },
   {
-    name: "Next.js",
+    name: COMMON.technology.nextjs,
     slug: "nextjs",
-    category: "Frontend & Web",
+    category: COMMON.categories.frontend,
     description: "Fullstack React framework with enterprise grade performance.",
     badge: "React Framework",
     dotColor: "#10B981", // emerald / mint dot
@@ -40,7 +47,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Vue.js",
     slug: "vuejs",
-    category: "Frontend & Web",
+    category: COMMON.categories.frontend,
     description: "Progressive framework for flexible and scalable interfaces.",
     badge: "Progressive Framework",
     dotColor: "#F59E0B", // amber / yellow dot
@@ -48,9 +55,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://vuejs.org",
   },
   {
-    name: "TypeScript",
+    name: COMMON.technology.typescript,
     slug: "typescript",
-    category: "Frontend & Web",
+    category: COMMON.categories.frontend,
     description: "Type-safe JavaScript for better and scalable code.",
     badge: "Type System",
     dotColor: "#3B82F6", // sky blue dot
@@ -58,9 +65,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.typescriptlang.org",
   },
   {
-    name: "Tailwind CSS",
+    name: COMMON.technology.tailwind,
     slug: "tailwindcss",
-    category: "Frontend & Web",
+    category: COMMON.categories.frontend,
     description: "Utility-first CSS for rapid and consistent designs.",
     badge: "Utility CSS",
     dotColor: "#F59E0B", // amber dot
@@ -70,7 +77,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Vite",
     slug: "vite",
-    category: "Frontend & Web",
+    category: COMMON.categories.frontend,
     description: "Next-generation bundler with lightning fast dev experience.",
     badge: "Bundler",
     dotColor: "#A855F7", // purple dot
@@ -80,19 +87,19 @@ export const TECH_STACK: TechItem[] = [
 
   // ── Mobile (5) ───────────────────────────────────────────────────────────────
   {
-    name: "React Native",
+    name: COMMON.technology.reactNative,
     slug: "reactnative",
-    category: "Mobile",
+    category: COMMON.categories.mobile,
     description: "Cross-platform mobile apps for iOS and Android.",
-    badge: "Cross-Platform",
+    badge: COMMON.labels.crossPlatform,
     dotColor: "#38BDF8",
     accentColor: "#61DAFB",
     learnMoreUrl: "https://reactnative.dev",
   },
   {
-    name: "Flutter",
+    name: COMMON.technology.flutter,
     slug: "flutter",
-    category: "Mobile",
+    category: COMMON.categories.mobile,
     description: "Multi-platform UI toolkit crafted with Dart engine.",
     badge: "UI Toolkit",
     dotColor: "#0284C7",
@@ -100,9 +107,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://flutter.dev",
   },
   {
-    name: "Swift",
+    name: COMMON.technology.swift,
     slug: "swift",
-    category: "Mobile",
+    category: COMMON.categories.mobile,
     description: "High-performance native apps for Apple ecosystem.",
     badge: "Native iOS",
     dotColor: "#F97316",
@@ -110,9 +117,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://developer.apple.com/swift",
   },
   {
-    name: "Kotlin",
+    name: COMMON.technology.kotlin,
     slug: "kotlin",
-    category: "Mobile",
+    category: COMMON.categories.mobile,
     description: "Modern type-safe native development for Android.",
     badge: "Native Android",
     dotColor: "#8B5CF6",
@@ -120,9 +127,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://kotlinlang.org",
   },
   {
-    name: "Expo",
+    name: COMMON.technology.expo,
     slug: "expo",
-    category: "Mobile",
+    category: COMMON.categories.mobile,
     description: "Universal React Native tooling and managed workflow.",
     badge: "Mobile Toolchain",
     dotColor: "#10B981",
@@ -133,9 +140,9 @@ export const TECH_STACK: TechItem[] = [
 
   // ── Backend & APIs (5) ───────────────────────────────────────────────────────
   {
-    name: "Node.js",
+    name: COMMON.technology.nodejs,
     slug: "nodejs",
-    category: "Backend & APIs",
+    category: COMMON.categories.backend,
     description: "Event-driven asynchronous JavaScript backend runtime.",
     badge: "JS Runtime",
     dotColor: "#22C55E",
@@ -145,7 +152,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Nest.js",
     slug: "nestjs",
-    category: "Backend & APIs",
+    category: COMMON.categories.backend,
     description: "Enterprise-grade TypeScript modular backend architecture.",
     badge: "Node.js Framework",
     dotColor: "#E11D48",
@@ -153,9 +160,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://nestjs.com",
   },
   {
-    name: "Python",
+    name: COMMON.technology.python,
     slug: "python",
-    category: "Backend & APIs",
+    category: COMMON.categories.backend,
     description: "Versatile backend powerhouse and AI integration engine.",
     badge: "Language",
     dotColor: "#3B82F6",
@@ -163,9 +170,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.python.org",
   },
   {
-    name: "FastAPI",
+    name: COMMON.technology.fastapi,
     slug: "fastapi",
-    category: "Backend & APIs",
+    category: COMMON.categories.backend,
     description: "High-performance async API microservices with Python.",
     badge: "Python Framework",
     dotColor: "#06B6D4",
@@ -175,7 +182,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "GraphQL",
     slug: "graphql",
-    category: "Backend & APIs",
+    category: COMMON.categories.backend,
     description: "Declarative precision query language for modern APIs.",
     badge: "Query Language",
     dotColor: "#EC4899",
@@ -185,9 +192,9 @@ export const TECH_STACK: TechItem[] = [
 
   // ── Database & Cloud (9) ─────────────────────────────────────────────────────
   {
-    name: "PostgreSQL",
+    name: COMMON.technology.postgres,
     slug: "postgresql",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Rock-solid open-source relational database.",
     badge: "Relational DB",
     dotColor: "#3B82F6",
@@ -195,9 +202,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.postgresql.org",
   },
   {
-    name: "Supabase",
+    name: COMMON.technology.supabase,
     slug: "supabase",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Serverless open-source Postgres, Auth & Realtime.",
     badge: "BaaS",
     dotColor: "#10B981",
@@ -207,7 +214,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "MongoDB",
     slug: "mongodb",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Flexible schema-free document database at scale.",
     badge: "NoSQL DB",
     dotColor: "#22C55E",
@@ -215,9 +222,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.mongodb.com",
   },
   {
-    name: "Redis",
+    name: COMMON.technology.redis,
     slug: "redis",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Ultra-fast in-memory cache and real-time messaging.",
     badge: "In-Memory Store",
     dotColor: "#EF4444",
@@ -225,9 +232,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://redis.io",
   },
   {
-    name: "Prisma",
+    name: COMMON.technology.prisma,
     slug: "prisma",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Next-gen type-safe ORM for database modeling.",
     badge: "ORM",
     dotColor: "#6366F1",
@@ -236,9 +243,9 @@ export const TECH_STACK: TechItem[] = [
     invertInDark: true,
   },
   {
-    name: "AWS",
+    name: COMMON.technology.aws,
     slug: "aws",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "World-class resilient global cloud infrastructure.",
     badge: "Cloud Provider",
     dotColor: "#F59E0B",
@@ -246,9 +253,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://aws.amazon.com",
   },
   {
-    name: "Docker",
+    name: COMMON.technology.docker,
     slug: "docker",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Standardized lightweight containerized deployments.",
     badge: "Containerization",
     dotColor: "#0284C7",
@@ -256,9 +263,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.docker.com",
   },
   {
-    name: "Vercel",
+    name: COMMON.technology.vercel,
     slug: "vercel",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Edge compute platform optimized for frontend scale.",
     badge: "Deployment Platform",
     dotColor: "#111827",
@@ -267,9 +274,9 @@ export const TECH_STACK: TechItem[] = [
     invertInDark: true,
   },
   {
-    name: "Cloudflare",
+    name: COMMON.technology.cloudflare,
     slug: "cloudflare",
-    category: "Database & Cloud",
+    category: COMMON.categories.database,
     description: "Global edge CDN, security shield & edge workers.",
     badge: "Edge Network",
     dotColor: "#F97316",
@@ -280,19 +287,19 @@ export const TECH_STACK: TechItem[] = [
 
   // ── Design & Tools (11) ──────────────────────────────────────────────────────
   {
-    name: "Figma",
+    name: COMMON.technology.figma,
     slug: "figma",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Collaborative interface and system design workspace.",
-    badge: "UI/UX Design",
+    badge: COMMON.labels.uiUxDesign,
     dotColor: "#F43F5E",
     accentColor: "#F24E1E",
     learnMoreUrl: "https://www.figma.com",
   },
   {
-    name: "Photoshop",
+    name: COMMON.technology.photoshop,
     slug: "photoshop",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Industry standard for creative image synthesis.",
     badge: "Raster Graphics",
     dotColor: "#0284C7",
@@ -300,9 +307,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.adobe.com/products/photoshop.html",
   },
   {
-    name: "Illustrator",
+    name: COMMON.technology.illustrator,
     slug: "illustrator",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Precision vector illustration and identity branding.",
     badge: "Vector Graphics",
     dotColor: "#F97316",
@@ -310,9 +317,9 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.adobe.com/products/illustrator.html",
   },
   {
-    name: "Canva",
+    name: COMMON.technology.canva,
     slug: "canva",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Fast asset creation and marketing collateral design.",
     badge: "Graphic Design",
     dotColor: "#06B6D4",
@@ -322,7 +329,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Antigravity",
     slug: "antigravity",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Agentic AI development platform & next-gen IDE.",
     badge: "Agentic IDE",
     dotColor: "#3B82F6",
@@ -332,7 +339,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Git",
     slug: "git",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Distributed source control for agile teams.",
     badge: "Version Control",
     dotColor: "#F43F5E",
@@ -342,7 +349,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "VS Code",
     slug: "vscode",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Extensible code editing environment for engineers.",
     badge: "Code Editor",
     dotColor: "#0284C7",
@@ -352,7 +359,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Postman",
     slug: "postman",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Collaborative API prototyping, testing and mocking.",
     badge: "API Platform",
     dotColor: "#F97316",
@@ -360,21 +367,21 @@ export const TECH_STACK: TechItem[] = [
     learnMoreUrl: "https://www.postman.com",
   },
   {
-    name: "Stripe",
+    name: COMMON.technology.stripe,
     slug: "stripe",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Global payment processing and subscription billing.",
-    badge: "Payment Gateway",
+    badge: COMMON.labels.paymentGateway,
     dotColor: "#6366F1",
     accentColor: "#635BFF",
     learnMoreUrl: "https://stripe.com",
   },
   {
-    name: "Razorpay",
+    name: COMMON.technology.razorpay,
     slug: "razorpay",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Unified payment gateway and digital banking.",
-    badge: "Payment Gateway",
+    badge: COMMON.labels.paymentGateway,
     dotColor: "#0284C7",
     accentColor: "#2B84EA",
     learnMoreUrl: "https://razorpay.com",
@@ -382,7 +389,7 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "GitHub Actions",
     slug: "githubactions",
-    category: "Design & Tools",
+    category: COMMON.categories.design,
     description: "Automated CI/CD pipelines and deployment workflows.",
     badge: "CI/CD",
     dotColor: "#2563EB",
@@ -394,8 +401,116 @@ export const TECH_STACK: TechItem[] = [
 export const TECH_STACK_SECTION_CONTENT = {
   eyebrow: "OUR TECH STACK",
   title: "Modern tools.",
-  highlightedText: "Real results.",
+  highlightedText: COMMON.labels.realResults,
   descriptionLine1: "Battle-tested tools chosen for reliability, performance, and long-term maintainability —",
   descriptionLine2: "not just trends.",
   footerNote: "We choose tools that fit your project — not the other way around.",
 };
+
+// service-technologies
+export const TECH_DETAILS: Record<string, { name: string; category: string; invertDark?: boolean; imageSlug?: string }> = {
+  // Core Frameworks & Languages
+  nextjs: { name: COMMON.technology.nextjs, category: "core", invertDark: true },
+  react: { name: COMMON.technology.react, category: "core" },
+  typescript: { name: COMMON.technology.typescript, category: "core" },
+  tailwindcss: { name: COMMON.technology.tailwind, category: "core" },
+  reactnative: { name: COMMON.technology.reactNative, category: "core" },
+  flutter: { name: COMMON.technology.flutter, category: "core" },
+  expo: { name: COMMON.technology.expo, category: "core", invertDark: true },
+  swift: { name: COMMON.technology.swift, category: "core" },
+  kotlin: { name: COMMON.technology.kotlin, category: "core" },
+  
+  // Backend & APIs
+  nodejs: { name: COMMON.technology.nodejs, category: "backend" },
+  expressjs: { name: "Express.js", category: "backend" },
+  restapi: { name: "REST API", category: "backend" },
+  prisma: { name: COMMON.technology.prismaOrm, category: "backend", invertDark: true },
+
+  // Database
+  postgresql: { name: COMMON.technology.postgres, category: "database" },
+  supabase: { name: COMMON.technology.supabase, category: "database" },
+
+  // Authentication & Security
+  supabaseauth: { name: "Supabase Auth", category: "auth", imageSlug: "supabase" },
+  oauth: { name: "OAuth / Google Sign-In", category: "auth", imageSlug: "oauth_iqrb3x" },
+  jwt: { name: "JWT", category: "auth", imageSlug: "jwt_lp0clz" },
+
+  // Deployment & Infrastructure
+  hostingervps: { name: "Hostinger VPS", category: "deployment", imageSlug: "hostingervps_xdifsu" },
+
+  // Hosting
+  vercel: { name: COMMON.technology.vercel, category: "hosting", invertDark: true },
+
+  // Domain
+  godaddy: { name: "GoDaddy", category: "domain", imageSlug: "godaddy_uege9k" },
+  hostinger: { name: "Hostinger", category: "domain", imageSlug: "hostinger_znba5r" },
+
+  // Backend & Infrastructure
+  cloudflare: { name: COMMON.technology.cloudflare, category: "infrastructure" },
+  docker: { name: COMMON.technology.docker, category: "infrastructure" },
+  stripe: { name: COMMON.technology.stripe, category: "infrastructure" },
+  razorpay: { name: COMMON.technology.razorpay, category: "infrastructure" },
+  redis: { name: COMMON.technology.redis, category: "infrastructure" },
+  firebase: { name: "Firebase", category: "infrastructure" },
+  python: { name: COMMON.technology.python, category: "infrastructure" },
+  fastapi: { name: COMMON.technology.fastapi, category: "infrastructure" },
+  aws: { name: COMMON.technology.aws, category: "infrastructure" },
+  
+  // AI & Machine Learning
+  openai: { name: "OpenAI", category: "ai", invertDark: true },
+  anthropic: { name: "Anthropic", category: "ai" },
+  langchain: { name: "LangChain", category: "ai" },
+
+  // Design & Prototyping
+  figma: { name: COMMON.technology.figma, category: "design" },
+  illustrator: { name: COMMON.technology.illustrator, category: "design" },
+  photoshop: { name: COMMON.technology.photoshop, category: "design" },
+  canva: { name: COMMON.technology.canva, category: "design" },
+};
+
+export const CATEGORY_TITLES: Record<string, string> = {
+  core: "Core Frameworks & Languages",
+  backend: COMMON.categories.backend,
+  database: "Database",
+  auth: "Authentication & Security",
+  hosting: "Hosting",
+  deployment: "Deployment & Infrastructure",
+  domain: "Domain",
+  infrastructure: "Backend & Infrastructure",
+  ai: "AI & Machine Learning",
+  design: "Design & Prototyping",
+};
+
+// tech-categories
+
+// tech-stack
+export const TECH_CATEGORY_TABS_COPY = {
+  tools: "Tools",
+  weLove: "we love",
+  technologyCategories: "Technology categories",
+} as const;
+
+export const TECH_PERFORMANCE_PILL_COPY = {
+  fast: "Fast",
+  performant: COMMON.labels.performant,
+} as const;
+
+export const TECH_VALUE_STRIP_COPY = {
+  reliable: "Reliable",
+  battleTestedInRealProjects: "Battle-tested in real projects",
+  performant: COMMON.labels.performant,
+  optimizedForSpeed: "Optimized for speed",
+  scalable: "Scalable",
+  growsWithYourBusiness: "Grows with your business",
+  futureReady: "Future-ready",
+  alwaysEvolvingWithBestTools: "Always evolving with best tools",
+} as const;
+
+// sections
+export const TECH_STACK_CARD_COPY = {
+  logoAlt: (name: string) => `${name} logo`,
+} as const;
+
+export const TECH_STACK_INTERACTIVE_COPY = {
+  technologiesLabel: (category: string) => `${category} technologies`,
+} as const;

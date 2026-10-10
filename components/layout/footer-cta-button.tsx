@@ -1,5 +1,7 @@
 "use client";
 
+import { FOOTER_CTA_BUTTON_COPY } from "@/lib/content/layout";
+
 import { useLead } from "@/components/leads/lead-provider";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { Button } from "@/components/ui/button";
@@ -18,7 +20,7 @@ export function FooterCtaButton({ onStartProject }: FooterCtaButtonProps) {
 
   return (
     <Button size="lg" onClick={handleStart} className="w-full group">
-      <span>Start a project</span>
+      <span>{FOOTER_CTA_BUTTON_COPY.startAProject}</span>
       <ArrowRightIcon size={16} className="text-primary-foreground group-hover:translate-x-1 transition-transform" />
     </Button>
   );

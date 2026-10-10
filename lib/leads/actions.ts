@@ -1,5 +1,7 @@
 "use server";
 
+import { LEAD_ACTIONS_COPY } from "@/lib/content/leads";
+
 import { SITE } from "@/lib/content/site";
 import { createClient } from "@supabase/supabase-js";
 import { leadSchema, type LeadState } from "./schema";
@@ -36,7 +38,7 @@ export async function submitLead(
     }
     return {
       ok: false,
-      message: "Please correct the highlighted errors.",
+      message: LEAD_ACTIONS_COPY.pleaseCorrectTheHighlightedErrors,
       fieldErrors,
     };
   }
@@ -71,12 +73,12 @@ export async function submitLead(
     }
 
     const contactChannels: string[] = [];
-    if (SITE.email) contactChannels.push(`email (${SITE.email})`);
-    if (SITE.whatsapp) contactChannels.push("WhatsApp");
+    if (SITE.email) contactChannels.push(LEAD_ACTIONS_COPY.emailChannel(SITE.email));
+    if (SITE.whatsapp) contactChannels.push(LEAD_ACTIONS_COPY.whatsappChannel);
 
     const fallbackMessage = contactChannels.length > 0
-      ? `Our submission service is temporarily unavailable. Please reach us directly via ${contactChannels.join(" or ")}.`
-      : "Our submission service is temporarily unavailable. Please try again later.";
+      ? LEAD_ACTIONS_COPY.unavailableWithContacts(contactChannels)
+      : LEAD_ACTIONS_COPY.unavailable;
 
     return {
       ok: false,
@@ -108,7 +110,7 @@ export async function submitLead(
       }
       return {
         ok: false,
-        message: "Failed to save your submission. Please reach out to us directly.",
+        message: LEAD_ACTIONS_COPY.failedToSaveYourSubmissionPlease,
       };
     }
 
@@ -116,7 +118,7 @@ export async function submitLead(
   } catch {
     return {
       ok: false,
-      message: "An unexpected error occurred. Please reach out to us directly.",
+      message: LEAD_ACTIONS_COPY.anUnexpectedErrorOccurredPleaseReach,
     };
   }
 }
