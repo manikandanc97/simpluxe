@@ -41,7 +41,6 @@ export function MobileBottomNav() {
         <AnimatedIcon
           name={tab.iconName}
           solid={isActive}
-          hoverDelay={1000}
           oncePerInteraction={true}
           size={20}
           className={cn(

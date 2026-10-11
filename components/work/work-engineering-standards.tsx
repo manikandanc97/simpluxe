@@ -33,7 +33,7 @@ export function WorkEngineeringStandards() {
         {WORK_ENGINEERING_STANDARDS.map((std, i) => {
           const Icon = iconMap[std.iconName as keyof typeof iconMap] || GaugeIcon;
           return (
-            <div
+            <div data-animated-icon-target
               key={i}
               data-slot="card"
               className="group p-6 rounded-3xl bg-white/90 border border-surface-elevated shadow-card hover:border-primary/30 hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-default"

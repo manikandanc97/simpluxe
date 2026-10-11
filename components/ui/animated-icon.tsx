@@ -102,6 +102,7 @@ export function AnimatedIcon({
   hoverDelay = 0,
   oncePerInteraction = false,
   parentSelector,
+  style,
   ...props
 }: AnimatedIconProps) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -115,7 +116,7 @@ export function AnimatedIcon({
 
   const hasAnimatedRef = useRef<boolean>(false);
   const hoverDelayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const animationRunRef = useRef(0);
 
   const numericSize = typeof size === "number" ? size : parseInt(size, 10) || 16;
 
@@ -127,26 +128,20 @@ export function AnimatedIcon({
     }
     hasAnimatedRef.current = true;
 
-    if (resetTimerRef.current) {
-      clearTimeout(resetTimerRef.current);
-      resetTimerRef.current = null;
-    }
+    const run = ++animationRunRef.current;
+    const animation = SolidComponent
+      ? solidControls.start("animate")
+      : iconRef.current?.startAnimation?.();
 
-    if (SolidComponent) {
-      solidControls.start("animate");
-    } else {
-      iconRef.current?.startAnimation?.();
-    }
-
-    // Auto-return to normal after animation completes (900ms)
-    resetTimerRef.current = setTimeout(() => {
+    // Let each icon finish its own timeline instead of cutting longer icons short.
+    animation?.then(() => {
+      if (animationRunRef.current !== run) return;
       if (SolidComponent) {
         solidControls.start("normal");
       } else {
         iconRef.current?.stopAnimation?.();
       }
-      resetTimerRef.current = null;
-    }, 900);
+    });
   }, [oncePerInteraction, SolidComponent, solidControls]);
 
   const stopAnimation = useCallback(() => {
@@ -154,10 +149,7 @@ export function AnimatedIcon({
       clearTimeout(hoverDelayTimerRef.current);
       hoverDelayTimerRef.current = null;
     }
-    if (resetTimerRef.current) {
-      clearTimeout(resetTimerRef.current);
-      resetTimerRef.current = null;
-    }
+    animationRunRef.current += 1;
     if (SolidComponent) {
       solidControls.start("normal");
     } else {
@@ -167,69 +159,78 @@ export function AnimatedIcon({
     hasAnimatedRef.current = false;
   }, [SolidComponent, solidControls]);
 
-  // Seamless parent interaction: triggers animation after hoverDelay threshold
-  // and respects once-per-interaction across both hover and click.
-  // We defer the DOM query (closest) to avoid forced reflows during React's commit phase.
+  // One interaction surface owns the icon, so moving between its text and glyph
+  // never restarts or cancels the original animation.
   useEffect(() => {
-    let interactiveParent: Element | null = null;
+    const span = containerRef.current;
+    if (!span) return;
 
-    const handleParentEnter = () => {
-      if (!animateOnHover) return;
-      if (oncePerInteraction && hasAnimatedRef.current) return;
+    const controlSelector = "button, a, [role='button'], [role='tab'], [role='menuitem'], [role='option'], [data-slot='button'], [data-slot='tab'], label";
+    const surfaceSelector = "[data-animated-icon-target], [data-slot='card'], [data-card], .card, .group, [class*='group/']";
+    const target = (parentSelector ? span.closest(parentSelector) : null)
+      ?? span.closest(controlSelector)
+      ?? span.parentElement?.closest(surfaceSelector)
+      ?? span;
+    let hovered = false;
+    let focused = false;
 
+    const enter = () => {
+      if (!animateOnHover || (oncePerInteraction && hasAnimatedRef.current)) return;
+      if (hoverDelayTimerRef.current) return;
       if (hoverDelay > 0) {
-        if (hoverDelayTimerRef.current) {
-          clearTimeout(hoverDelayTimerRef.current);
-        }
         hoverDelayTimerRef.current = setTimeout(() => {
-          executeAnimation();
           hoverDelayTimerRef.current = null;
+          executeAnimation();
         }, hoverDelay);
       } else {
         executeAnimation();
       }
     };
-
-    const handleParentLeave = () => {
-      stopAnimation();
+    const leave = () => {
+      if (!hovered && !focused) stopAnimation();
     };
-
-    const handleParentClick = () => {
+    const mouseEnter = () => { hovered = true; enter(); };
+    const mouseLeave = () => { hovered = false; leave(); };
+    const focusIn = (event: Event) => {
+      if (event instanceof FocusEvent && event.relatedTarget instanceof Node && target.contains(event.relatedTarget)) return;
+      focused = true;
+      enter();
+    };
+    const focusOut = (event: Event) => {
+      if (event instanceof FocusEvent && event.relatedTarget instanceof Node && target.contains(event.relatedTarget)) return;
+      focused = false;
+      leave();
+    };
+    const click = () => {
+      if (!animateOnHover) return;
       if (hoverDelayTimerRef.current) {
         clearTimeout(hoverDelayTimerRef.current);
         hoverDelayTimerRef.current = null;
       }
-      if (!hasAnimatedRef.current) {
-        executeAnimation();
-      }
+      if (!hasAnimatedRef.current) executeAnimation();
     };
 
-    const timeoutId = setTimeout(() => {
-      const span = containerRef.current;
-      if (!span) return;
-
-      interactiveParent = parentSelector
-        ? span.closest(parentSelector)
-        : span.closest(
-            "button, a, [role='button'], [role='tab'], .group, [class*='group/'], [data-slot='button'], [data-slot='card'], [data-slot='tab'], [data-card], .card, [class*='shadow-card'], [class*='hover:shadow'], [class*='hover:border']"
-          );
-      
-      if (!interactiveParent) return;
-
-      interactiveParent.addEventListener("mouseenter", handleParentEnter);
-      interactiveParent.addEventListener("mouseleave", handleParentLeave);
-      interactiveParent.addEventListener("click", handleParentClick);
-    }, 150); // Delay slightly to ensure layout is settled and avoid blocking the main thread during hydration
+    target.addEventListener("mouseenter", mouseEnter);
+    target.addEventListener("mouseleave", mouseLeave);
+    target.addEventListener("focusin", focusIn);
+    target.addEventListener("focusout", focusOut);
+    target.addEventListener("click", click);
+    if (target.matches(":hover")) mouseEnter();
+    if (target.contains(document.activeElement) && document.activeElement !== document.body) {
+      focused = true;
+      enter();
+    }
 
     return () => {
-      clearTimeout(timeoutId);
-      if (interactiveParent) {
-        interactiveParent.removeEventListener("mouseenter", handleParentEnter);
-        interactiveParent.removeEventListener("mouseleave", handleParentLeave);
-        interactiveParent.removeEventListener("click", handleParentClick);
-      }
+      target.removeEventListener("mouseenter", mouseEnter);
+      target.removeEventListener("mouseleave", mouseLeave);
+      target.removeEventListener("focusin", focusIn);
+      target.removeEventListener("focusout", focusOut);
+      target.removeEventListener("click", click);
       if (hoverDelayTimerRef.current) clearTimeout(hoverDelayTimerRef.current);
-      if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
+      hoverDelayTimerRef.current = null;
+      animationRunRef.current += 1;
+      hasAnimatedRef.current = false;
     };
   }, [animateOnHover, hoverDelay, oncePerInteraction, executeAnimation, stopAnimation, parentSelector]);
 
@@ -248,33 +249,11 @@ export function AnimatedIcon({
       data-slot="animated-icon"
       data-icon-name={name}
       data-solid={solid ? "true" : undefined}
-      onMouseEnter={() => {
-        if (!animateOnHover) return;
-        if (oncePerInteraction && hasAnimatedRef.current) return;
-        if (hoverDelay > 0) {
-          if (hoverDelayTimerRef.current) clearTimeout(hoverDelayTimerRef.current);
-          hoverDelayTimerRef.current = setTimeout(() => {
-            executeAnimation();
-            hoverDelayTimerRef.current = null;
-          }, hoverDelay);
-        } else {
-          executeAnimation();
-        }
-      }}
-      onMouseLeave={stopAnimation}
-      onClick={() => {
-        if (hoverDelayTimerRef.current) {
-          clearTimeout(hoverDelayTimerRef.current);
-          hoverDelayTimerRef.current = null;
-        }
-        if (!hasAnimatedRef.current) {
-          executeAnimation();
-        }
-      }}
       className={cn(
-        "inline-flex items-center justify-center shrink-0 select-none",
+        "animated-icon-frame inline-flex items-center justify-center shrink-0 select-none",
         className
       )}
+      style={{ "--animated-icon-size": `${numericSize}px`, ...style } as React.CSSProperties}
       {...props}
     >
       {SolidComponent ? (

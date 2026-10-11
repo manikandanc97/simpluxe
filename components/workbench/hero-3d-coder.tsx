@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { HERO_3D_CODER_COPY } from "@/lib/content/hero";
 
 import { cn } from "@/lib/utils";
@@ -133,30 +134,7 @@ export function Hero3DCoder({ className, parallaxCanvasRef, cardsRef }: Hero3DCo
             >
               <span className="font-handwriting text-lg sm:text-xl font-bold text-zinc-800 -rotate-6 leading-none whitespace-nowrap">
                 {HERO_3D_CODER_COPY.fromIdea}<br />{HERO_3D_CODER_COPY.toLaunch}</span>
-              <svg
-                width="24"
-                height="34"
-                viewBox="0 0 40 50"
-                fill="none"
-                className="text-primary -mb-1"
-              >
-                {/* Curved arrow pointing down to workflow card */}
-                <path
-                  d="M5 8 C18 10, 28 22, 24 42"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-                <path
-                  d="M17 36 L24 43 L29 34"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                />
-              </svg>
+              <DecorativeArrow direction="down-right" className="h-8 w-8 text-primary -mb-1" />
             </div>
           </motion.div>
         </motion.div>
@@ -262,30 +240,7 @@ export function Hero3DCoder({ className, parallaxCanvasRef, cardsRef }: Hero3DCo
               className="flex flex-col items-center self-end mr-2 text-primary pointer-events-none mt-0.5"
               style={{ transform: "translateZ(15px)" }}
             >
-              <svg
-                width="30"
-                height="34"
-                viewBox="0 0 50 60"
-                fill="none"
-                className="text-primary -mr-3"
-              >
-                {/* Curved arrow from card down-left to text */}
-                <path
-                  d="M40 5 C38 28, 25 42, 12 50"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-                <path
-                  d="M12 40 L10 52 L22 52"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                />
-              </svg>
+              <DecorativeArrow direction="down-left" className="h-9 w-9 text-primary -mr-3" />
               <span className="font-handwriting text-lg sm:text-xl font-bold text-zinc-800 -rotate-3 leading-none text-center whitespace-nowrap">
                 {HERO_3D_CODER_COPY.ideas}<br />{HERO_3D_CODER_COPY.intoImpact}</span>
             </motion.div>

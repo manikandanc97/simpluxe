@@ -39,8 +39,8 @@ export type AnimatedIconName =
   | "play";
 
 export interface AnimateIconHandle {
-  startAnimation: () => void;
-  stopAnimation: () => void;
+  startAnimation: () => void | Promise<void>;
+  stopAnimation: () => void | Promise<void>;
 }
 
 export interface CustomIconProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CodeIcon } from "@animateicons/react/lucide/code-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
@@ -25,14 +28,14 @@ export function AboutTechStack() {
         {STACK_CATEGORIES.map((cat, i) => {
           const Icon = i === 0 ? CodeIcon : i === 1 ? CpuIcon : i === 2 ? LayersIcon : SmartphoneIcon;
           return (
-            <div
+            <div data-animated-icon-target
               key={i}
               className="p-6 rounded-3xl bg-white/90 border border-surface-elevated shadow-card hover:border-primary/30 hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <div className="w-10 h-10 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-primary">
-                    <Icon size={18} />
+                    <AnimatedIcon icon={Icon} size={18} />
                   </div>
                   <span className="text-xs font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-background text-primary border border-surface-elevated">
                     {cat.badge}

@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { NOT_FOUND_COPY } from "@/lib/content/ui";
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
@@ -12,7 +15,7 @@ export default function NotFound() {
           {NOT_FOUND_COPY.theRequestedPageDoesnTExist}</p>
       </div>
       <Link href="/" className={buttonVariants({ variant: "default", size: "lg", className: "gap-2" })}>
-        <HouseIcon size={16} />
+        <AnimatedIcon icon={HouseIcon} size={16} />
         <span>{NOT_FOUND_COPY.backToHome}</span>
       </Link>
     </div>

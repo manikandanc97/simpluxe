@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { LEAD_FORM_COPY } from "@/lib/content/leads";
 
 import { AnimatedMail, AnimatedMessageSquare, AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
@@ -47,9 +48,9 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
 
   if (state.ok) {
     return (
-      <div className="py-12 flex flex-col items-center text-center gap-4">
+      <div data-animated-icon-target className="py-12 flex flex-col items-center text-center gap-4">
         <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200/80 flex items-center justify-center">
-          <CircleCheckIcon className="w-8 h-8" />
+          <AnimatedIcon icon={CircleCheckIcon} className="w-8 h-8" />
         </div>
         <h3 className="text-2xl font-bold tracking-tight text-foreground font-satoshi">{LEAD_FORM_COPY.successTitle}</h3>
         <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
@@ -190,7 +191,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
           <FormLabel htmlFor={fieldId("project-type")} required>{LEAD_FORM_COPY.projectCategory}</FormLabel>
-          <div className="relative">
+          <div data-animated-icon-target className="relative">
             <select
               id={fieldId("project-type")}
               name="projectType"
@@ -203,7 +204,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
             >
               {PROJECT_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
             </select>
-            <ChevronDownIcon size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <AnimatedIcon icon={ChevronDownIcon} size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
           </div>
           <FormMessage id={fieldId("project-type-error")}>{state.fieldErrors?.projectType?.[0]}</FormMessage>
         </FormField>
@@ -243,7 +244,7 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
       </FormField>
 
       <div className="pt-2 flex flex-col gap-4">
-        <CelebratoryButton
+        <CelebratoryButton data-animated-icon-target
           type="submit"
           isPending={isPending}
           className="w-full"
@@ -269,13 +270,13 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
 
       {/* Enterprise Trust & Security Badges */}
       <div className="pt-4 border-t border-border flex flex-wrap items-center justify-center gap-4 sm:gap-4 text-xs text-muted-foreground font-mono">
-        <div className="flex items-center gap-1.5">
-          <LockIcon size={13} className="text-emerald-600" />
+        <div data-animated-icon-target className="flex items-center gap-1.5">
+          <AnimatedIcon icon={LockIcon} size={13} className="text-emerald-600" />
           <span>{LEAD_FORM_COPY.encryptionBadge}</span>
         </div>
         <span>{LEAD_FORM_COPY.badgeSeparator}</span>
-        <div className="flex items-center gap-1.5">
-          <ShieldCheckIcon size={13} className="text-primary" />
+        <div data-animated-icon-target className="flex items-center gap-1.5">
+          <AnimatedIcon icon={ShieldCheckIcon} size={13} className="text-primary" />
           <span>{LEAD_FORM_COPY.mutualNdaProtected}</span>
         </div>
         <span>{LEAD_FORM_COPY.badgeSeparator}</span>

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CONTACT_CHANNELS_COPY } from "@/lib/content/contact";
 
 import { useEffect, useRef, useState } from "react";
@@ -70,7 +71,7 @@ export function ContactChannels() {
               aria-label={copiedEmail ? CONTACT_CHANNELS_COPY.emailCopied : CONTACT_CHANNELS_COPY.copyEmailToClipboard}
               className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer shrink-0 ml-2"
             >
-              {copiedEmail ? <CheckIcon size={16} className="text-primary" /> : <CopyIcon size={16} />}
+              {copiedEmail ? <AnimatedIcon icon={CheckIcon} size={16} className="text-primary" /> : <AnimatedIcon icon={CopyIcon} size={16} />}
             </button>
           </div>
         )}
@@ -99,7 +100,7 @@ export function ContactChannels() {
                   {CONTACT_CHANNELS_COPY.chatOnWhatsapp}</span>
               </div>
             </div>
-            <ArrowRightIcon size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
+            <AnimatedIcon icon={ArrowRightIcon} size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
           </a>
         )}
       </CardContent>

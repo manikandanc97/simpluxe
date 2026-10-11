@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { PHILOSOPHY_PROCESS_STEPS_COPY } from "@/lib/content/philosophy";
 
 import { PROCESS_STEPS } from "@/lib/content/philosophy";
@@ -25,7 +26,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
         {PROCESS_STEPS.map((step, idx) => {
           const StepIcon = step.icon;
           return (
-            <motion.div
+            <motion.div data-animated-icon-target
               key={step.num}
               data-slot="card"
               initial={{ opacity: 0, x: -24, filter: "blur(8px)" }}
@@ -110,31 +111,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
         <span className="font-handwriting text-sm sm:text-base text-primary-hover block -rotate-3 leading-tight drop-shadow-sm">
           {PHILOSOPHY_PROCESS_STEPS_COPY.simpleProcess}<br />
           {PHILOSOPHY_PROCESS_STEPS_COPY.realResults}</span>
-        <svg
-          className="w-8 h-8 text-primary-hover ml-20 -mt-1 rotate-12"
-          viewBox="0 0 28 28"
-          fill="none"
-        >
-          <motion.path
-            initial={{ pathLength: 0 }}
-            animate={inView ? { pathLength: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.9, ease: "easeInOut" }}
-            d="M 4 22 C 10 16, 16 10, 22 6"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <motion.path
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.3, delay: 1.6, ease: "easeOut" }}
-            d="M 14 6 L 22 6 L 22 14"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <DecorativeArrow direction="up-right" className="h-8 w-8 text-primary-hover ml-20 -mt-1" draw={inView} delay={0.9} />
       </motion.div>
     </div>
   );

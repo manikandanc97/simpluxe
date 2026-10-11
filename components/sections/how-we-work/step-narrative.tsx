@@ -69,7 +69,7 @@ export function StepNarrative({
         {currentStep.features.map((feature, idx) => {
           const FeatIcon = feature.icon;
           return (
-            <motion.div
+            <motion.div data-animated-icon-target
               variants={fadeUp}
               key={idx}
               data-slot="card"
@@ -114,9 +114,9 @@ export function StepNarrative({
         </Button>
 
         {activeStepIndex < totalSteps - 1 && (
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-neutral-400 font-medium">
+          <span data-animated-icon-target className="hidden sm:inline-flex items-center gap-1.5 text-xs text-neutral-400 font-medium">
             <span>{STEP_NARRATIVE_COPY.orScrollDown}</span>
-            <ChevronDownIcon className="w-3.5 h-3.5 text-rose-500 animate-bounce" />
+            <AnimatedIcon icon={ChevronDownIcon} className="w-3.5 h-3.5 text-rose-500 animate-bounce" />
           </span>
         )}
       </motion.div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { FLOATING_CALL_BUTTON_COPY } from "@/lib/content/contact";
 
 import { SITE } from "@/lib/content/site";
@@ -130,7 +131,7 @@ export function FloatingCallButton() {
           )}
         </AnimatePresence>
 
-        <motion.button
+        <motion.button data-animated-icon-target
           type="button"
           aria-label={open ? FLOATING_CALL_BUTTON_COPY.closeContactOptions : FLOATING_CALL_BUTTON_COPY.openContactOptions}
           aria-expanded={open}
@@ -161,9 +162,9 @@ export function FloatingCallButton() {
             className="relative z-10"
           >
             {open ? (
-              <XIcon size={24} className="text-foreground" />
+              <AnimatedIcon icon={XIcon} size={24} className="text-foreground" />
             ) : (
-              <MessageCircleIcon size={24} />
+              <AnimatedIcon icon={MessageCircleIcon} size={24} />
             )}
           </motion.div>
         </motion.button>

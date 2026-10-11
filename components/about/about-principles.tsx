@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { useState } from "react";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { cn } from "@/lib/utils";
@@ -28,7 +29,7 @@ export function AboutPrinciples() {
           const isActive = activePrinciple === index;
 
           return (
-            <div
+            <div data-animated-icon-target
               key={principle.number}
               onClick={() => setActivePrinciple(index)}
               className={cn(
@@ -88,7 +89,7 @@ export function AboutPrinciples() {
 
               {/* Deliverable footnote */}
               <div className="mt-auto pt-6 border-t border-border flex items-center gap-2 type-label text-muted-foreground">
-                <CircleCheckIcon size={15} className="text-primary shrink-0" />
+                <AnimatedIcon icon={CircleCheckIcon} size={15} className="text-primary shrink-0" />
                 <span>{principle.deliverable}</span>
               </div>
             </div>

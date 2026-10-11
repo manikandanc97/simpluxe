@@ -27,7 +27,7 @@ export function WorkProjectDetails({ project, enhancement }: WorkProjectDetailsP
           if (m.iconType === "shield") IconComponent = ShieldCheckIcon;
 
           return (
-            <div
+            <div data-animated-icon-target
               key={idx}
               data-slot="card"
               className="group p-4 sm:p-4.5 rounded-2xl bg-background border border-surface-elevated flex items-center gap-2 cursor-default"

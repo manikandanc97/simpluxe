@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CONTACT_HERO_COPY } from "@/lib/content/contact";
 
 import { m as motion } from "motion/react";
@@ -56,9 +57,9 @@ export function ContactHero() {
           {/* 3 Core Value Props in a Row */}
           <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 pt-4 border-t border-border w-full">
             {/* Value Prop 1 */}
-            <div className="flex items-center gap-4">
+            <div data-animated-icon-target className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                <ClockIcon size={18} className="text-primary" />
+                <AnimatedIcon icon={ClockIcon} size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -70,9 +71,9 @@ export function ContactHero() {
             </div>
 
             {/* Value Prop 2 */}
-            <div className="flex items-center gap-4">
+            <div data-animated-icon-target className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0 border border-border">
-                <ShieldCheckIcon size={18} className="text-foreground/80" />
+                <AnimatedIcon icon={ShieldCheckIcon} size={18} className="text-foreground/80" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -83,9 +84,9 @@ export function ContactHero() {
             </div>
 
             {/* Value Prop 3 */}
-            <div className="flex items-center gap-4">
+            <div data-animated-icon-target className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0 border border-primary/15">
-                <MessageSquareIcon size={18} className="text-primary" />
+                <AnimatedIcon icon={MessageSquareIcon} size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -140,13 +141,13 @@ export function ContactHero() {
             </motion.div>
 
             {/* ── Floating Badge 3 (Top Right): Mutual NDA ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], rotate: [0, -1, 0] }}
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
               className="absolute top-3 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-elevated"
             >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-2xs shrink-0">
-                <LockIcon size={15} className="text-white" />
+                <AnimatedIcon icon={LockIcon} size={15} className="text-white" />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -157,13 +158,13 @@ export function ContactHero() {
             </motion.div>
 
             {/* ── Floating Badge 4 (Mid Left): Technical Review ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], x: [0, -2, 0] }}
               transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
               className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-secondary text-foreground flex items-center justify-center border border-border shrink-0">
-                <SparklesIcon size={14} />
+                <AnimatedIcon icon={SparklesIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -174,25 +175,25 @@ export function ContactHero() {
             </motion.div>
 
             {/* ── Floating Badge 4.5 (Lower Mid Left): SLA Pill ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 4, 0], rotate: [0, -1, 0] }}
               transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
               className="absolute top-44 sm:top-48 -left-1 sm:left-2 z-20 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
-              <ClockIcon size={11} className="text-primary" />
+              <AnimatedIcon icon={ClockIcon} size={11} className="text-primary" />
               <span className="text-2xs font-bold text-muted-foreground font-mono">
                 {SITE.responseTime || CONTACT_HERO_COPY.projectReview}
               </span>
             </motion.div>
 
             {/* ── Floating Badge 5 (Mid Right): Direct Line ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -5, 0], x: [0, 2, 0] }}
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
-                <ShieldCheckIcon size={14} />
+                <AnimatedIcon icon={ShieldCheckIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -203,23 +204,23 @@ export function ContactHero() {
             </motion.div>
 
             {/* ── Floating Badge 6 (Bottom Left): Guaranteed SLA ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
-              <CircleCheckIcon size={12} className="text-emerald-500" />
+              <AnimatedIcon icon={CircleCheckIcon} size={12} className="text-emerald-500" />
               <span className="text-2xs sm:text-xs font-bold text-foreground">
                 {CONTACT_HERO_COPY.guaranteedSla}</span>
             </motion.div>
 
             {/* ── Floating Badge 7 (Bottom Right): Zero Obligation ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 4, 0] }}
               transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
-              <ShieldCheckIcon size={12} className="text-primary" />
+              <AnimatedIcon icon={ShieldCheckIcon} size={12} className="text-primary" />
               <span className="text-2xs sm:text-xs font-bold text-foreground">
                 {CONTACT_HERO_COPY.zeroObligation}</span>
             </motion.div>

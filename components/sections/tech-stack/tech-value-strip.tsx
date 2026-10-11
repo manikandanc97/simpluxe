@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { TECH_VALUE_STRIP_COPY } from "@/lib/content/tech-stack";
 
 import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
@@ -18,9 +19,9 @@ export function TechValueStrip() {
     >
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4.5 sm:gap-6">
         {/* 1. Reliable */}
-        <motion.div variants={fadeUp} className="flex items-center gap-4 min-w-0">
+        <motion.div data-animated-icon-target variants={fadeUp} className="flex items-center gap-4 min-w-0">
           <div className="w-9 h-9 rounded-full bg-rose-50 dark:bg-rose-950/40 border border-rose-100 dark:border-rose-900/40 flex items-center justify-center shrink-0">
-            <ShieldCheckIcon className="w-5 h-5 text-rose-500" />
+            <AnimatedIcon icon={ShieldCheckIcon} className="w-5 h-5 text-rose-500" />
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
@@ -31,9 +32,9 @@ export function TechValueStrip() {
         </motion.div>
 
         {/* 2. Performant */}
-        <motion.div variants={fadeUp} className="flex items-center gap-4 min-w-0">
+        <motion.div data-animated-icon-target variants={fadeUp} className="flex items-center gap-4 min-w-0">
           <div className="w-9 h-9 rounded-full bg-purple-50 dark:bg-purple-950/40 border border-purple-100 dark:border-purple-900/40 flex items-center justify-center shrink-0">
-            <ZapIcon className="w-5 h-5 text-purple-600 fill-purple-600/20" />
+            <AnimatedIcon icon={ZapIcon} className="w-5 h-5 text-purple-600 fill-purple-600/20" />
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
@@ -44,9 +45,9 @@ export function TechValueStrip() {
         </motion.div>
 
         {/* 3. Scalable */}
-        <motion.div variants={fadeUp} className="flex items-center gap-4 min-w-0">
+        <motion.div data-animated-icon-target variants={fadeUp} className="flex items-center gap-4 min-w-0">
           <div className="w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/40 flex items-center justify-center shrink-0">
-            <ChartBarIcon className="w-5 h-5 text-indigo-600" />
+            <AnimatedIcon icon={ChartBarIcon} className="w-5 h-5 text-indigo-600" />
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">
@@ -57,9 +58,9 @@ export function TechValueStrip() {
         </motion.div>
 
         {/* 4. Future-ready */}
-        <motion.div variants={fadeUp} className="flex items-center gap-4 min-w-0">
+        <motion.div data-animated-icon-target variants={fadeUp} className="flex items-center gap-4 min-w-0">
           <div className="w-9 h-9 rounded-full bg-pink-50 dark:bg-pink-950/40 border border-pink-100 dark:border-pink-900/40 flex items-center justify-center shrink-0">
-            <InfinityIcon className="w-5 h-5 text-pink-600" />
+            <AnimatedIcon icon={InfinityIcon} className="w-5 h-5 text-pink-600" />
           </div>
           <div className="flex flex-col text-left min-w-0">
             <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground">

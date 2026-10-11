@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { WHAT_WE_BUILD_NAV_COPY } from "@/lib/content/services";
 
 import { m as motion } from "motion/react";
@@ -25,28 +26,14 @@ export function WhatWeBuildNav({
   onNext,
 }: WhatWeBuildNavProps) {
   return (
-    <div className="wwb-nav flex items-center justify-between max-w-4xl mx-auto px-2 font-satoshi w-full gap-2">
-      <div className="hidden sm:flex items-center gap-2 text-muted-foreground">
+    <div data-animated-icon-target className="wwb-nav flex items-center justify-between max-w-4xl mx-auto px-2 font-satoshi w-full gap-2">
+      <div data-animated-icon-target className="hidden sm:flex items-center gap-2 text-muted-foreground">
         <span className="hidden xs:inline text-xs sm:text-sm font-semibold text-muted-foreground select-none">
           {WHAT_WE_BUILD_NAV_COPY.dragToExplore}</span>
         <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-foreground">
-          <MousePointerIcon size={12} />
+          <AnimatedIcon icon={MousePointerIcon} size={12} />
         </div>
-        <svg width="28" height="18" viewBox="0 0 35 20" fill="none" className="text-primary -ml-0.5 transform -scale-x-100">
-          <path
-            d="M32 16 C20 18, 10 12, 4 4"
-            stroke="currentColor"
-            strokeLinecap="round"
-            fill="none"
-          />
-          <path
-            d="M10 3 L3 4 L6 11"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
+        <DecorativeArrow direction="right" className="h-5 w-8 text-primary -ml-0.5" />
       </div>
 
       {/* Dot indicators */}

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { FLOW_DIAGRAM_COPY } from "@/lib/content/philosophy";
 
 import { ActivityIcon } from "@animateicons/react/lucide/activity-icon";
@@ -9,7 +10,7 @@ import { MobileFlowGrid } from "./mobile-flow-grid";
 
 export function FlowDiagram({ inView }: { inView: boolean }) {
   return (
-    <motion.div
+    <motion.div data-animated-icon-target
       initial={{ opacity: 0, scale: 0.98, filter: "blur(8px)" }}
       animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
@@ -25,7 +26,7 @@ export function FlowDiagram({ inView }: { inView: boolean }) {
         <div className="flex items-center gap-2 text-neutral-400">
           <span className="text-xs sm:text-xs font-mono font-semibold tracking-widest uppercase">
             {FLOW_DIAGRAM_COPY.simpleSystem}</span>
-          <ActivityIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+          <AnimatedIcon icon={ActivityIcon} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
         </div>
       </div>
 

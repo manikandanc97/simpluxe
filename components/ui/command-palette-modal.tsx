@@ -95,10 +95,10 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent showCloseButton={false} className="sm:max-w-lg p-0 overflow-hidden gap-0">
+      <DialogContent data-animated-icon-target showCloseButton={false} className="sm:max-w-lg p-0 overflow-hidden gap-0">
         <DialogTitle className="sr-only">{COMMAND_PALETTE_MODAL_COPY.commandMenu}</DialogTitle>
         <div className="flex items-center border-b border-border px-3">
-          <SearchIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
+          <AnimatedIcon icon={SearchIcon} className="mr-2 h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
           <Input
             id="command-palette-input"
             role="combobox"

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ABOUT_HERO_COPY } from "@/lib/content/about";
 
 import { m as motion } from "motion/react";
@@ -55,9 +56,9 @@ export function AboutHero() {
           {/* 3 Core Value Props in a Row */}
           <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 pt-4 border-t border-border w-full">
             {/* Value Prop 1 */}
-            <div className="flex items-center gap-4">
+            <div data-animated-icon-target className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                <SparklesIcon size={18} className="text-primary" />
+                <AnimatedIcon icon={SparklesIcon} size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -68,9 +69,9 @@ export function AboutHero() {
             </div>
 
             {/* Value Prop 2 */}
-            <div className="flex items-center gap-4">
+            <div data-animated-icon-target className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0 border border-border">
-                <ZapIcon size={18} className="text-foreground/80" />
+                <AnimatedIcon icon={ZapIcon} size={18} className="text-foreground/80" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -81,9 +82,9 @@ export function AboutHero() {
             </div>
 
             {/* Value Prop 3 */}
-            <div className="flex items-center gap-4">
+            <div data-animated-icon-target className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0 border border-primary/15">
-                <ShieldCheckIcon size={18} className="text-primary" />
+                <AnimatedIcon icon={ShieldCheckIcon} size={18} className="text-primary" />
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold text-foreground leading-tight">
@@ -140,13 +141,13 @@ export function AboutHero() {
             </motion.div>
 
             {/* ── Floating Badge 3 (Top Right): 100% Type-Safe ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], rotate: [0, -1, 0] }}
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
               className="absolute top-3 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-elevated"
             >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-2xs shrink-0">
-                <CodeIcon size={16} className="text-white" />
+                <AnimatedIcon icon={CodeIcon} size={16} className="text-white" />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -157,13 +158,13 @@ export function AboutHero() {
             </motion.div>
 
             {/* ── Floating Badge 4 (Mid Left): System Design ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], x: [0, -2, 0] }}
               transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
               className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-secondary text-foreground flex items-center justify-center border border-border shrink-0">
-                <LayersIcon size={14} />
+                <AnimatedIcon icon={LayersIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -174,13 +175,13 @@ export function AboutHero() {
             </motion.div>
 
             {/* ── Floating Badge 5 (Mid Right): Performance ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -5, 0], x: [0, 2, 0] }}
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
-                <ZapIcon size={14} />
+                <AnimatedIcon icon={ZapIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs font-bold text-foreground leading-tight">
@@ -191,23 +192,23 @@ export function AboutHero() {
             </motion.div>
 
             {/* ── Floating Badge 6 (Bottom Left): Uptime ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
-              <CircleCheckIcon size={12} className="text-emerald-500" />
+              <AnimatedIcon icon={CircleCheckIcon} size={12} className="text-emerald-500" />
               <span className="text-2xs sm:text-xs font-bold text-foreground">
                 {ABOUT_HERO_COPY.text999Uptime}</span>
             </motion.div>
 
             {/* ── Floating Badge 7 (Bottom Right): Secure ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 4, 0] }}
               transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-2xs"
             >
-              <ShieldCheckIcon size={12} className="text-primary" />
+              <AnimatedIcon icon={ShieldCheckIcon} size={12} className="text-primary" />
               <span className="text-2xs sm:text-xs font-bold text-foreground">
                 {ABOUT_HERO_COPY.enterpriseSecure}</span>
             </motion.div>

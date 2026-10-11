@@ -373,7 +373,19 @@
 }
 
 @custom-variant icon (& svg);
-@custom-variant icon-default (& svg:not([class*='size-']));
+@custom-variant icon-frame (& [data-slot='animated-icon']);
+@utility animated-icon-frame {
+  width: var(--animated-icon-size);
+  height: var(--animated-icon-size);
+
+  & > div,
+  & > div > div,
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+@custom-variant icon-default (& svg:not([class*='size-']):not(.animated-icon-frame svg));
 @custom-variant path (& path);
 @custom-variant span (& span);
 @custom-variant span-second (& span:nth-child(2));

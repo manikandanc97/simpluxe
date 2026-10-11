@@ -1,10 +1,13 @@
+"use client";
+
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { TECH_PERFORMANCE_PILL_COPY } from "@/lib/content/tech-stack";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 
 export function TechPerformancePill() {
   return (
     <div className="ts-pill-wrapper hidden lg:flex absolute top-10 right-2 xl:right-8 z-20 items-center">
-      <div className="ts-pill relative flex items-center gap-4 bg-white/95 dark:bg-card/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-slate-200/70 dark:border-border/60 shadow-card">
+      <div data-animated-icon-target className="ts-pill relative flex items-center gap-4 bg-white/95 dark:bg-card/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-slate-200/70 dark:border-border/60 shadow-card">
         {/* Radiating Accent Sparks on Top-Left */}
         <div className="absolute -top-3.5 -left-3 pointer-events-none text-rose-400">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -16,7 +19,7 @@ export function TechPerformancePill() {
 
         {/* Lightning Icon */}
         <div className="text-amber-500">
-          <ZapIcon className="w-5 h-5 fill-amber-500 text-amber-500" />
+          <AnimatedIcon icon={ZapIcon} className="w-5 h-5 fill-amber-500 text-amber-500" />
         </div>
 
         {/* Two Lines of Text */}

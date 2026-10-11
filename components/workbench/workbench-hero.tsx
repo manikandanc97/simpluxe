@@ -136,7 +136,7 @@ export function WorkbenchHero() {
                 className="group shadow-elevated w-auto"
               >
                 <span className="text-sm sm:text-base whitespace-nowrap">{HERO_CONTENT.ctaPrimary}</span>
-                <ArrowRightIcon size={16} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
+                <AnimatedIcon icon={ArrowRightIcon} size={16} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Button>
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -207,7 +207,7 @@ export function WorkbenchHero() {
         <div
           className="w-4 h-4 rounded-full border-2 border-slate-300 group-hover:border-primary/50 flex items-center justify-center transition-colors animate-bounce"
         >
-          <ChevronDownIcon size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
+          <AnimatedIcon icon={ChevronDownIcon} size={12} className="h-2.5 w-2.5 text-slate-400 group-hover:text-primary transition-colors" />
         </div>
       </button>
 

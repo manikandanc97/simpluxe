@@ -96,7 +96,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
       {/* ── Top Row of Feature Cards ── */}
       <div className="relative z-10 flex items-start justify-between w-full px-1">
         {/* Top-Left: Direct access */}
-        <motion.div
+        <motion.div data-animated-icon-target
           data-slot="card"
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
@@ -105,7 +105,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-rose-50 text-primary border-rose-200/60 uppercase tracking-widest leading-none">
-              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.topLeft.badge}
+              <AnimatedIcon icon={LayoutGridIcon} className="w-3 h-3" /> {FLOW_NODES.topLeft.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
@@ -124,7 +124,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         </motion.div>
 
         {/* Top-Right: Weekly progress */}
-        <motion.div
+        <motion.div data-animated-icon-target
           data-slot="card"
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
@@ -133,7 +133,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-chart-2 border-purple-200/60 uppercase tracking-widest leading-none">
-              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.topRight.badge}
+              <AnimatedIcon icon={LayoutGridIcon} className="w-3 h-3" /> {FLOW_NODES.topRight.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
@@ -174,7 +174,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
       {/* ── Bottom Row of Feature Cards ── */}
       <div className="relative z-10 flex items-end justify-between w-full px-1 pt-20 sm:pt-24">
         {/* Bottom-Left: Production quality */}
-        <motion.div
+        <motion.div data-animated-icon-target
           data-slot="card"
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
@@ -183,7 +183,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-rose-50 text-primary border-rose-200/60 uppercase tracking-widest leading-none">
-              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.bottomLeft.badge}
+              <AnimatedIcon icon={LayoutGridIcon} className="w-3 h-3" /> {FLOW_NODES.bottomLeft.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">
@@ -202,7 +202,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         </motion.div>
 
         {/* Bottom-Right: Clear ownership */}
-        <motion.div
+        <motion.div data-animated-icon-target
           data-slot="card"
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
@@ -211,7 +211,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-sm bg-purple-50 text-chart-2 border-purple-200/60 uppercase tracking-widest leading-none">
-              <LayoutGridIcon className="w-3 h-3" /> {FLOW_NODES.bottomRight.badge}
+              <AnimatedIcon icon={LayoutGridIcon} className="w-3 h-3" /> {FLOW_NODES.bottomRight.badge}
             </span>
           </div>
           <div className="flex items-start gap-3 pt-1">

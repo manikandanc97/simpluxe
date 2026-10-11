@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { TECH_CATEGORY_TABS_COPY } from "@/lib/content/tech-stack";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
@@ -20,31 +21,15 @@ export function TechCategoryTabs({
   categoryCounts,
 }: TechCategoryTabsProps) {
   return (
-    <div className="relative">
-      {/* Playful Handwritten Annotation: "Tools we love" + Curved Arrow pointing right to the tab */}
-      <div className="absolute -top-12 sm:-top-16 left-1 sm:left-4 md:left-8 lg:left-14 z-20 pointer-events-none select-none flex items-end gap-2 sm:gap-4 scale-90 sm:scale-100 origin-bottom-left">
+    <div className="relative sm:mx-auto sm:w-fit sm:max-w-full">
+      {/* Keep the annotation in the layout so it clears the description at every width. */}
+      <div className="mb-3 ml-1 pointer-events-none select-none flex items-start gap-2 sm:gap-4">
         <span
           className="font-handwriting text-base sm:text-xl font-bold text-slate-800 dark:text-slate-200 -rotate-10 leading-tight tracking-wide"
         >
           {TECH_CATEGORY_TABS_COPY.tools}<br />{TECH_CATEGORY_TABS_COPY.weLove}</span>
         <div className="ml-0.5 sm:ml-1 text-primary-hover dark:text-rose-400">
-          <svg width="34" height="34" viewBox="0 0 38 38" fill="none" className="w-7 h-7 sm:w-9 sm:h-9">
-            <path
-              d="M 4 4 C 15 4, 28 12, 24 28"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path
-              d="M 16 22 L 24 28 L 26 19"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
+          <DecorativeArrow direction="hook-down" className="h-9 w-9 sm:h-10 sm:w-10" />
         </div>
       </div>
 

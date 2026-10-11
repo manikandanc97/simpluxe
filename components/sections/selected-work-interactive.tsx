@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { SELECTED_WORK_INTERACTIVE_COPY } from "@/lib/content/projects";
 
 import { PROJECTS, SELECTED_WORK_CONTENT } from "@/lib/content/projects";
@@ -100,10 +101,7 @@ export function SelectedWorkInteractive() {
               <span className="font-handwriting text-lg text-primary font-bold -rotate-2 tracking-wide drop-shadow-sm">
                 {SELECTED_WORK_CONTENT.liveClientSiteText}
               </span>
-              <svg width="42" height="34" viewBox="0 0 42 34" fill="none" className="text-primary -ml-1 drop-shadow-sm">
-                <path d="M4 4 C 14 10, 24 18, 30 26" stroke="currentColor" strokeLinecap="round" fill="none" />
-                <path d="M22 28 L 30 26 L 32 18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-              </svg>
+              <DecorativeArrow direction="down-right" className="h-8 w-8 text-primary drop-shadow-sm" />
             </div>
           </div>
         </div>

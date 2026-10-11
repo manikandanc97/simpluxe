@@ -1,5 +1,7 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { STEP_VISUAL_DESIGN_COPY } from "@/lib/content/how-we-work";
 
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
@@ -14,9 +16,9 @@ export function StepVisualDesign() {
     <div className={scene.scene}>
       <div className={scene.canvas}>
         {/* Keep the palette and typography in the clear space beside the image. */}
-        <div className={scene.blueprint} aria-hidden="true">
+        <div data-animated-icon-target className={scene.blueprint} aria-hidden="true">
           <div className={scene.blueprintHeader}>
-            <PaletteIcon />
+            <AnimatedIcon icon={PaletteIcon} />
             <span>{STEP_VISUAL_DESIGN_COPY.designSystem}</span>
           </div>
           <div className="absolute top-7/25 left-3/20 flex h-9/50 w-7/10 items-center justify-center gap-scene-1-3 rounded-scene-5 border border-zinc-100 bg-white shadow-card span:size-scene-3-2 span:rounded-full span:bg-primary span-second:bg-chart-2 span-third:bg-blue-500 span-fourth:bg-chart-5">
@@ -31,31 +33,27 @@ export function StepVisualDesign() {
           </div>
         </div>
 
-        <div className={scene.ideas} aria-hidden="true">
+        <div data-animated-icon-target className={scene.ideas} aria-hidden="true">
           <div className={scene.ideasHeader}>
-            <PencilIcon />
+            <AnimatedIcon icon={PencilIcon} />
             <span className="font-handwriting">{STEP_VISUAL_DESIGN_COPY.uiUx}</span>
           </div>
           <div className={`${scene.ideasList} font-handwriting`}>
             <span>{STEP_VISUAL_DESIGN_COPY.pixelPerfect}</span>
             <span>{STEP_VISUAL_DESIGN_COPY.userFirst}</span>
           </div>
-          <svg className={scene.ideasArrow} viewBox="0 0 28 28" fill="none">
-            <path d="M6 4C10 12 14 16 22 22M14 22H22L20 14" />
-          </svg>
+          <DecorativeArrow direction="down-right" className={scene.ideasArrow} />
         </div>
 
         <div className={`${scene.annotation} font-handwriting`} aria-hidden="true">
           <span>{STEP_VISUAL_DESIGN_COPY.beautiful}<br />{STEP_VISUAL_DESIGN_COPY.intuitive}</span>
-          <svg viewBox="0 0 28 28" fill="none">
-            <path d="M4 18C10 10 18 10 24 6M16 6H24L22 14" />
-          </svg>
+          <DecorativeArrow direction="up-right" className="ml-auto size-scene-3-7 text-primary" />
         </div>
 
-        <div className={`${scene.market} ${scene.marketSurface}`} aria-hidden="true">
+        <div data-animated-icon-target className={`${scene.market} ${scene.marketSurface}`} aria-hidden="true">
           <div className={scene.marketHeader}>
             <span>{STEP_VISUAL_DESIGN_COPY.components}</span>
-            <LayoutDashboardIcon className="text-purple-500" />
+            <AnimatedIcon icon={LayoutDashboardIcon} className="text-purple-500" />
           </div>
           <div className="mt-scene-1-7 flex flex-col gap-scene-1-3">
             <div className="flex h-scene-4 items-center justify-center rounded-scene-1 bg-primary span:h-scene-0-7 span:w-scene-5-2 span:rounded-scene-1 span:bg-white/50"><span /></div>
@@ -65,13 +63,11 @@ export function StepVisualDesign() {
               <div className="relative h-scene-2 w-scene-4 rounded-scene-2 bg-purple-500 span:absolute span:top-scene-0-3 span:right-scene-0-3 span:size-scene-1-4 span:rounded-full span:bg-white"><span /></div>
             </div>
           </div>
-          <svg className={scene.marketArrow} viewBox="0 0 32 48" fill="none">
-            <path d="M12 4C12 20 20 30 20 44M12 36L20 44L28 36" />
-          </svg>
+          <DecorativeArrow direction="down" className={scene.marketArrow} />
         </div>
 
-        <div className={`${scene.result} flex items-center gap-scene-0-8 icon:size-scene-icon-1-9cqw icon:shrink-0 icon:text-purple-500 font-handwriting`} aria-hidden="true">
-          <MousePointerIcon />
+        <div data-animated-icon-target className={`${scene.result} flex items-center gap-scene-0-8 icon:size-scene-icon-1-9cqw icon-frame:size-scene-icon-1-9cqw icon:shrink-0 icon:text-purple-500 font-handwriting`} aria-hidden="true">
+          <AnimatedIcon icon={MousePointerIcon} />
           <span>{STEP_VISUAL_DESIGN_COPY.interactive}<br />{STEP_VISUAL_DESIGN_COPY.prototypes}</span>
         </div>
 

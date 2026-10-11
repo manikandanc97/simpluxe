@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { BROWSER_MOCKUP_COPY } from "@/lib/content/projects";
 
 import { useState } from "react";
@@ -44,7 +45,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
 
   return (
     <div className="w-full h-full flex justify-center items-center transition-all duration-500 ease-in-out py-2 sm:py-0">
-      <div
+      <div data-animated-icon-target
         style={{ width: getContainerWidth(), maxWidth: "100%" }}
         className={cn(
           "relative bg-white flex flex-col z-20 shadow-card overflow-hidden transition-all duration-500 ease-in-out h-full",
@@ -71,9 +72,9 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
               className="flex items-center justify-center gap-1.5 bg-white border border-slate-200 shadow-xs rounded-md px-2.5 sm:px-3.5 py-1 text-2xs sm:text-xs font-medium text-slate-600 min-w-0 max-w-40 xs:max-w-52 sm:max-w-sm truncate hover:border-slate-300 hover:text-slate-900 transition-colors cursor-pointer group"
               title={BROWSER_MOCKUP_COPY.visitTitle(activeProject.domain)}
             >
-              <LockIcon size={12} className="text-emerald-500 shrink-0" />
+              <AnimatedIcon icon={LockIcon} size={12} className="text-emerald-500 shrink-0" />
               <span className="truncate">{activeProject.domain}</span>
-              <ExternalLinkIcon size={10} className="text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5 shrink-0" />
+              <AnimatedIcon icon={ExternalLinkIcon} size={10} className="text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5 shrink-0" />
             </a>
           </div>
 
@@ -87,7 +88,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
                 className={cn("p-1 sm:p-1.5 rounded transition-all", viewMode === "mobile" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title={BROWSER_MOCKUP_COPY.mobileView2}
               >
-                <SmartphoneIcon size={12} className="sm:w-3.5 sm:h-3.5" />
+                <AnimatedIcon icon={SmartphoneIcon} size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); setViewMode("tablet"); }}
@@ -96,7 +97,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
                 className={cn("p-1 sm:p-1.5 rounded transition-all hidden xs:block", viewMode === "tablet" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title={BROWSER_MOCKUP_COPY.tabletView2}
               >
-                <TabletIcon size={12} className="sm:w-3.5 sm:h-3.5" />
+                <AnimatedIcon icon={TabletIcon} size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); setViewMode("desktop"); }}
@@ -105,7 +106,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
                 className={cn("p-1 sm:p-1.5 rounded transition-all", viewMode === "desktop" ? "bg-white shadow-sm text-primary" : "text-slate-400 hover:text-slate-700")}
                 title={BROWSER_MOCKUP_COPY.desktopView2}
               >
-                <MonitorIcon size={12} className="sm:w-3.5 sm:h-3.5" />
+                <AnimatedIcon icon={MonitorIcon} size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
             </div>
           </div>
@@ -145,7 +146,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
               ) : (
                 <div className="absolute inset-0 w-full h-full bg-slate-50 flex flex-col items-center justify-center p-6 text-center gap-5">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-slate-100 flex items-center justify-center shadow-sm">
-                    <LockIcon className="w-8 h-8 sm:w-10 sm:h-10 text-slate-300" />
+                    <AnimatedIcon icon={LockIcon} className="w-8 h-8 sm:w-10 sm:h-10 text-slate-300" />
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800 tracking-tight">

@@ -29,7 +29,6 @@ import { FileTextIcon } from "@animateicons/react/lucide/file-text-icon";
 import { LockOpenIcon } from "@animateicons/react/lucide/lock-open-icon";
 import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { m as motion, AnimatePresence } from "motion/react";
 
 const IconMap: Record<string, LucideIcon> = {
   rocket: RocketIcon,
@@ -88,48 +87,39 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
         <div className="lg:col-span-7 flex flex-col items-start text-left justify-center">
           <div className="mb-6 sm:mb-8"><SectionHeader eyebrow={SERVICES_DELIVERABLES_CONTENT.eyebrow} title={SERVICES_DELIVERABLES_CONTENT.title} description={SERVICES_DELIVERABLES_CONTENT.description} /></div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 w-full"
-            >
-              {/* Column 1 */}
-              <div className="flex flex-col gap-4 sm:gap-4.5">
-                {col1.map((item, idx) => (
-                  <div key={idx} className="group flex items-start gap-2 cursor-default">
-                    <AnimatedIcon
-                      icon={CircleCheckIcon}
-                      size={17}
-                      className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
-                    />
-                    <span className="text-xs sm:text-sm font-semibold text-foreground">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 w-full">
+            {/* Column 1 */}
+            <div className="flex flex-col gap-4 sm:gap-4.5">
+              {col1.map((item, idx) => (
+                <div data-animated-icon-target key={idx} className="group flex items-start gap-2 cursor-default">
+                  <AnimatedIcon
+                    icon={CircleCheckIcon}
+                    size={17}
+                    className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
+                  />
+                  <span className="text-xs sm:text-sm font-semibold text-foreground">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
 
-              {/* Column 2 */}
-              <div className="flex flex-col gap-4 sm:gap-4.5">
-                {col2.map((item, idx) => (
-                  <div key={idx} className="group flex items-start gap-2 cursor-default">
-                    <AnimatedIcon
-                      icon={CircleCheckIcon}
-                      size={17}
-                      className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
-                    />
-                    <span className="text-xs sm:text-sm font-semibold text-foreground">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+            {/* Column 2 */}
+            <div className="flex flex-col gap-4 sm:gap-4.5">
+              {col2.map((item, idx) => (
+                <div data-animated-icon-target key={idx} className="group flex items-start gap-2 cursor-default">
+                  <AnimatedIcon
+                    icon={CircleCheckIcon}
+                    size={17}
+                    className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
+                  />
+                  <span className="text-xs sm:text-sm font-semibold text-foreground">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ── Right Column: Perfect For Card (5 cols) ── */}
@@ -137,54 +127,45 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
           <div className="w-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-surface-elevated shadow-card flex flex-col justify-between text-left">
             <div>
               {/* Audience Items List */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -8 }}
-                  transition={{ duration: 0.28 }}
-                  className="flex flex-col gap-4.5"
-                >
-                  {/* Perfect For Header treated as first item */}
-                  <div data-slot="card" className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default">
-                    <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
-                      <AnimatedIcon icon={TargetIcon} size={15} />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
-                        {SERVICES_DELIVERABLES_CONTENT.perfectForTitle}
-                      </span>
-                      <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
-                        {SERVICES_DELIVERABLES_CONTENT.perfectForDesc}
-                      </span>
-                    </div>
+              <div className="flex flex-col gap-4.5">
+                {/* Perfect For Header treated as first item */}
+                <div data-animated-icon-target data-slot="card" className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default">
+                  <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
+                    <AnimatedIcon icon={TargetIcon} size={15} />
                   </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
+                      {SERVICES_DELIVERABLES_CONTENT.perfectForTitle}
+                    </span>
+                    <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
+                      {SERVICES_DELIVERABLES_CONTENT.perfectForDesc}
+                    </span>
+                  </div>
+                </div>
 
-                  {service.perfectFor.map((item, idx) => {
-                    const IconComponent = IconMap[item.icon] || TargetIcon;
-                    return (
-                      <div
-                        key={idx}
-                        data-slot="card"
-                        className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default"
-                      >
-                        <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
-                          <AnimatedIcon icon={IconComponent} size={15} />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
-                            {item.title}
-                          </span>
-                          <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
-                            {item.desc}
-                          </span>
-                        </div>
+                {service.perfectFor.map((item, idx) => {
+                  const IconComponent = IconMap[item.icon] || TargetIcon;
+                  return (
+                    <div data-animated-icon-target
+                      key={idx}
+                      data-slot="card"
+                      className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default"
+                    >
+                      <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
+                        <AnimatedIcon icon={IconComponent} size={15} />
                       </div>
-                    );
-                  })}
-                </motion.div>
-              </AnimatePresence>
+                      <div className="flex flex-col">
+                        <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
+                          {item.title}
+                        </span>
+                        <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
+                          {item.desc}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

@@ -135,7 +135,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
           </div>
 
           {/* Col 3: Capabilities (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col gap-6">
+          <div data-animated-icon-target className="lg:col-span-3 flex flex-col gap-6">
             <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
               {FOOTER_DATA.capabilitiesTitle}
             </h3>

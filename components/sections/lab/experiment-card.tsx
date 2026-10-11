@@ -55,7 +55,7 @@ export function ExperimentCard({ experiment, isFeatured = false }: ExperimentCar
   };
 
   return (
-    <motion.article
+    <motion.article data-animated-icon-target
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
       className={`group flex flex-col text-left relative overflow-hidden bg-card border border-border/80 rounded-2xl shadow-xs hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 ${

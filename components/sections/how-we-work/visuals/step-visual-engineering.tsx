@@ -1,5 +1,7 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { STEP_VISUAL_ENGINEERING_COPY } from "@/lib/content/how-we-work";
 
 import { CodeIcon } from "@animateicons/react/lucide/code-icon";
@@ -14,38 +16,34 @@ export function StepVisualEngineering() {
   return (
     <div className={scene.scene}>
       <div className={scene.canvas}>
-        <div className={scene.blueprint} aria-hidden="true">
+        <div data-animated-icon-target className={scene.blueprint} aria-hidden="true">
           <div className={scene.blueprintHeader}>
-            <DatabaseIcon />
+            <AnimatedIcon icon={DatabaseIcon} />
             <span>{STEP_VISUAL_ENGINEERING_COPY.architecture}</span>
           </div>
           <div className="absolute top-3/10 left-2/25 grid h-27/50 w-21/25 grid-cols-process grid-rows-process">
             <svg className="absolute inset-0 size-full text-zinc-200" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
               <path d="M25 21H75V50H50V79" stroke="currentColor" strokeDasharray="3 3" />
             </svg>
-            <div className="relative flex items-center justify-center gap-scene-0-7 rounded-scene-1-8 border border-zinc-100 bg-white text-scene-4 font-bold text-zinc-500 shadow-card icon:size-scene-icon-3cqw icon:shrink-0 row-start-1 col-start-1 icon:text-blue-500"><DatabaseIcon /><span>{STEP_VISUAL_ENGINEERING_COPY.db}</span></div>
-            <div className="relative flex items-center justify-center gap-scene-0-7 rounded-scene-1-8 border border-zinc-100 bg-white text-scene-4 font-bold text-zinc-500 shadow-card icon:size-scene-icon-3cqw icon:shrink-0 row-start-1 col-start-3 icon:text-purple-500"><ServerIcon /><span>{STEP_VISUAL_ENGINEERING_COPY.api}</span></div>
-            <div className="relative flex items-center justify-center gap-scene-0-7 rounded-scene-1-8 border border-zinc-100 bg-white text-scene-4 font-bold text-zinc-500 shadow-card icon:size-scene-icon-3cqw icon:shrink-0 w-13/20 justify-self-center row-start-3 col-start-1 col-end-4 icon:text-pink-500"><MonitorIcon /><span>{STEP_VISUAL_ENGINEERING_COPY.client}</span></div>
+            <div data-animated-icon-target className="relative flex items-center justify-center gap-scene-0-7 rounded-scene-1-8 border border-zinc-100 bg-white text-scene-4 font-bold text-zinc-500 shadow-card icon:size-scene-icon-3cqw icon-frame:size-scene-icon-3cqw icon:shrink-0 row-start-1 col-start-1 icon:text-blue-500"><AnimatedIcon icon={DatabaseIcon} /><span>{STEP_VISUAL_ENGINEERING_COPY.db}</span></div>
+            <div data-animated-icon-target className="relative flex items-center justify-center gap-scene-0-7 rounded-scene-1-8 border border-zinc-100 bg-white text-scene-4 font-bold text-zinc-500 shadow-card icon:size-scene-icon-3cqw icon-frame:size-scene-icon-3cqw icon:shrink-0 row-start-1 col-start-3 icon:text-purple-500"><AnimatedIcon icon={ServerIcon} /><span>{STEP_VISUAL_ENGINEERING_COPY.api}</span></div>
+            <div data-animated-icon-target className="relative flex items-center justify-center gap-scene-0-7 rounded-scene-1-8 border border-zinc-100 bg-white text-scene-4 font-bold text-zinc-500 shadow-card icon:size-scene-icon-3cqw icon-frame:size-scene-icon-3cqw icon:shrink-0 w-13/20 justify-self-center row-start-3 col-start-1 col-end-4 icon:text-pink-500"><AnimatedIcon icon={MonitorIcon} /><span>{STEP_VISUAL_ENGINEERING_COPY.client}</span></div>
           </div>
         </div>
 
-        <div className={scene.ideas} aria-hidden="true">
+        <div data-animated-icon-target className={scene.ideas} aria-hidden="true">
           <div className={scene.ideasHeader}>
-            <CodeIcon /><span className="font-handwriting">{STEP_VISUAL_ENGINEERING_COPY.techStack}</span>
+            <AnimatedIcon icon={CodeIcon} /><span className="font-handwriting">{STEP_VISUAL_ENGINEERING_COPY.techStack}</span>
           </div>
           <div className={`${scene.ideasList} font-handwriting`}>
             <span>{STEP_VISUAL_ENGINEERING_COPY.nextJs16}</span><span>{STEP_VISUAL_ENGINEERING_COPY.typescript}</span>
           </div>
-          <svg className={scene.ideasArrow} viewBox="0 0 28 28" fill="none">
-            <path d="M6 4C10 12 14 16 22 22M14 22H22L20 14" />
-          </svg>
+          <DecorativeArrow direction="down-right" className={scene.ideasArrow} />
         </div>
 
         <div className={`${scene.annotation} font-handwriting`} aria-hidden="true">
           <span>{STEP_VISUAL_ENGINEERING_COPY.builtTo}<br />{STEP_VISUAL_ENGINEERING_COPY.scale}</span>
-          <svg viewBox="0 0 28 28" fill="none">
-            <path d="M4 18C10 10 18 10 24 6M16 6H24L22 14" />
-          </svg>
+          <DecorativeArrow direction="up-right" className="ml-auto size-scene-3-7 text-primary" />
         </div>
 
         <div className={`${scene.market} border-zinc-800 bg-zinc-900 shadow-elevated`} aria-hidden="true">
@@ -57,13 +55,11 @@ export function StepVisualEngineering() {
             <div>{STEP_VISUAL_ENGINEERING_COPY.compiling}</div>
             <div>{STEP_VISUAL_ENGINEERING_COPY.compiledIn21s}</div>
           </div>
-          <svg className={scene.marketArrow} viewBox="0 0 32 48" fill="none">
-            <path d="M12 4C12 20 20 30 20 44M12 36L20 44L28 36" />
-          </svg>
+          <DecorativeArrow direction="down" className={scene.marketArrow} />
         </div>
 
-        <div className={`${scene.result} flex items-center gap-scene-0-8 icon:size-scene-icon-1-9cqw icon:shrink-0 icon:text-blue-500 font-handwriting`} aria-hidden="true">
-          <ShieldCheckIcon /><span>{STEP_VISUAL_ENGINEERING_COPY.zero}<br />{STEP_VISUAL_ENGINEERING_COPY.downtime}</span>
+        <div data-animated-icon-target className={`${scene.result} flex items-center gap-scene-0-8 icon:size-scene-icon-1-9cqw icon-frame:size-scene-icon-1-9cqw icon:shrink-0 icon:text-blue-500 font-handwriting`} aria-hidden="true">
+          <AnimatedIcon icon={ShieldCheckIcon} /><span>{STEP_VISUAL_ENGINEERING_COPY.zero}<br />{STEP_VISUAL_ENGINEERING_COPY.downtime}</span>
         </div>
 
         <div className={scene.character}>

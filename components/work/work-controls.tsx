@@ -81,7 +81,7 @@ export function WorkControls({
       {/* ── Search & Sort Controls ── */}
       <div className="flex items-center gap-4">
         {/* Search Pill */}
-        <div className="relative flex-1 sm:flex-initial">
+        <div data-animated-icon-target className="relative flex-1 sm:flex-initial">
           <AnimatedIcon
             name="search"
             size={15}

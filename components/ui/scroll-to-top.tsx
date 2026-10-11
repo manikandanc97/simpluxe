@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { SCROLL_TO_TOP_COPY } from "@/lib/content/ui";
 
 import { useEffect, useState } from "react";
@@ -84,7 +85,7 @@ export function ScrollToTop() {
             }}
           />
         </svg>
-        <ArrowUpIcon size={18} className="text-foreground group-hover:text-primary transition-colors" />
+        <AnimatedIcon icon={ArrowUpIcon} size={18} className="text-foreground group-hover:text-primary transition-colors" />
       </motion.button>
     </motion.div>
   );

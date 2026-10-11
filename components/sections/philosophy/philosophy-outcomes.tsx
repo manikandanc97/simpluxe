@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/content/philosophy";
 
 import { AnimatedCounter } from "@/components/ui/animated-counter";
@@ -25,29 +26,7 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
         <span className="font-handwriting text-sm sm:text-base text-primary-hover block rotate-3 leading-tight text-center drop-shadow-sm">
           {PHILOSOPHY_OUTCOMES_COPY.from}<br />
           {PHILOSOPHY_OUTCOMES_COPY.ideaToImpact}</span>
-        <svg
-          className="w-8 h-8 text-primary-hover -ml-2 -mt-0.5 rotate-120"
-          viewBox="0 0 28 28"
-          fill="none"
-        >
-          <motion.path
-            initial={{ pathLength: 0 }}
-            animate={inView ? { pathLength: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.0, ease: "easeInOut" }}
-            d="M 6 4 C 10 12, 16 18, 22 22"
-            stroke="currentColor"
-            strokeLinecap="round"
-          />
-          <motion.path
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.3, delay: 1.7, ease: "easeOut" }}
-            d="M 14 22 L 22 22 L 20 14"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <DecorativeArrow direction="down-left" className="h-8 w-8 text-primary-hover -ml-2 -mt-0.5" draw={inView} delay={1} />
       </motion.div>
 
       {/* Outcomes Card Container */}
@@ -73,7 +52,7 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
           {REAL_OUTCOMES.map((stat, i) => {
             const StatIcon = stat.icon;
             return (
-              <motion.div
+              <motion.div data-animated-icon-target
                 key={stat.label}
                 data-slot="card"
                 initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}

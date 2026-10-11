@@ -115,7 +115,7 @@ export function WhatWeBuildCard({
   const IconComponent = service.icon;
 
   return (
-    <motion.div
+    <motion.div data-animated-icon-target
       key={service.id}
       onClick={onSelect}
       initial={false}

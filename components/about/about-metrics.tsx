@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ABOUT_METRICS_COPY } from "@/lib/content/about";
 import { METRICS } from "@/lib/content/about";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
@@ -13,13 +16,13 @@ export function AboutMetrics() {
       {METRICS.map((metric, i) => {
         const Icon = METRIC_ICONS[i % METRIC_ICONS.length];
         return (
-          <div
+          <div data-animated-icon-target
             key={i}
             className="p-6 rounded-3xl border border-surface-elevated bg-white/80 hover:bg-white shadow-card hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group gap-6"
           >
             <div className="flex items-center justify-between">
               <div className="w-10 h-10 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                <Icon size={18} />
+                <AnimatedIcon icon={Icon} size={18} />
               </div>
               <span className="text-xs font-mono font-bold tracking-wider text-primary uppercase px-2 py-0.5 rounded-full bg-background border border-surface-elevated">
                 {ABOUT_METRICS_COPY.verified}</span>

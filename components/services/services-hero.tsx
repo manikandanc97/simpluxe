@@ -59,7 +59,7 @@ export function ServicesHero() {
           {/* 3 Core Value Props in a Row */}
           <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 pt-2.5 border-t border-surface-elevated/80 w-full">
             {/* Value Prop 1 */}
-            <div data-slot="card" className="group flex items-center gap-4 cursor-default">
+            <div data-animated-icon-target data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-rose-50 flex items-center justify-center shrink-0 border border-rose-100/80">
                 <AnimatedIcon icon={LayoutGridIcon} size={18} className="text-primary" />
               </div>
@@ -72,7 +72,7 @@ export function ServicesHero() {
             </div>
 
             {/* Value Prop 2 */}
-            <div data-slot="card" className="group flex items-center gap-4 cursor-default">
+            <div data-animated-icon-target data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center shrink-0 border border-purple-100/80">
                 <AnimatedIcon icon={ZapIcon} size={18} className="text-chart-2" />
               </div>
@@ -85,7 +85,7 @@ export function ServicesHero() {
             </div>
 
             {/* Value Prop 3 */}
-            <div data-slot="card" className="group flex items-center gap-4 cursor-default">
+            <div data-animated-icon-target data-slot="card" className="group flex items-center gap-4 cursor-default">
               <div className="w-10 h-10 rounded-2xl bg-pink-50 flex items-center justify-center shrink-0 border border-pink-100/80">
                 <AnimatedIcon icon={TrendingUpIcon} size={18} className="text-primary" />
               </div>
@@ -113,13 +113,13 @@ export function ServicesHero() {
             <div className="absolute inset-1 sm:inset-3 rounded-3xl bg-white/40 border border-surface-elevated/80 bg-dots-panel bg-dots-panel-size -z-10 shadow-card" />
 
             {/* ── Floating Element 1 (Top Left): Next.js & React ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -5, 0], x: [0, 2, 0] }}
               transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
               className="absolute top-3 sm:top-4 left-2 sm:left-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-surface-elevated shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-gradient-to-tr from-chart-1 to-chart-1 flex items-center justify-center text-white shadow-xs shrink-0">
-                <CodeIcon size={13} />
+                <AnimatedIcon icon={CodeIcon} size={13} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -153,13 +153,13 @@ export function ServicesHero() {
             </motion.div>
 
             {/* ── Floating Element 3 (Top Right): Ideas to Real Products ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], rotate: [0, -1, 0] }}
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
               className="absolute top-3 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-white/90 shadow-elevated"
             >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-primary to-primary flex items-center justify-center text-white shadow-xs shrink-0">
-                <SparklesIcon size={15} className="text-white" />
+                <AnimatedIcon icon={SparklesIcon} size={15} className="text-white" />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -170,13 +170,13 @@ export function ServicesHero() {
             </motion.div>
 
             {/* ── Floating Element 4 (Mid Left): Design Systems & Figma ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], x: [0, -2, 0] }}
               transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
               className="absolute top-28 sm:top-32 -left-2 sm:-left-3 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-accent-soft shadow-violet"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-purple-50 text-chart-2 flex items-center justify-center border border-purple-100 shrink-0">
-                <LayersIcon size={14} />
+                <AnimatedIcon icon={LayersIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -187,24 +187,24 @@ export function ServicesHero() {
             </motion.div>
 
             {/* ── Floating Element 4.5 (Lower Mid Left): Scalable Cloud Pill ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 4, 0], rotate: [0, -1, 0] }}
               transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
               className="absolute top-44 sm:top-48 -left-1 sm:left-2 z-20 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-card"
             >
-              <CpuIcon size={11} className="text-chart-2" />
+              <AnimatedIcon icon={CpuIcon} size={11} className="text-chart-2" />
               <span className="text-2xs font-bold text-muted-foreground">
                 {SERVICES_HERO_COPY.scalableCloud}</span>
             </motion.div>
 
             {/* ── Floating Element 5 (Mid Right): Mobile & Web Apps ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -5, 0], x: [0, 2, 0] }}
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute top-28 sm:top-32 -right-2 sm:-right-2 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-accent-soft shadow-violet"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-indigo-50 text-chart-2 flex items-center justify-center border border-indigo-100 shrink-0">
-                <SmartphoneIcon size={14} />
+                <AnimatedIcon icon={SmartphoneIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -224,13 +224,13 @@ export function ServicesHero() {
             </motion.div>
 
             {/* ── Floating Element 6 (Lower Mid Right): Reports & Growth ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 5, 0], rotate: [0, 1.2, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
               className="absolute top-44 sm:top-48 -right-2 sm:right-0 z-20 flex items-center gap-2 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-surface-elevated shadow-card"
             >
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 border border-emerald-100 shrink-0">
-                <ChartLineIcon size={14} />
+                <AnimatedIcon icon={ChartLineIcon} size={14} />
               </div>
               <div className="text-left">
                 <div className="text-xs sm:text-xs font-bold text-foreground leading-tight">
@@ -241,23 +241,23 @@ export function ServicesHero() {
             </motion.div>
 
             {/* ── Floating Element 7 (Bottom Left): Performance Badge ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="absolute bottom-3 sm:bottom-4 left-2 sm:left-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-xs"
             >
-              <CircleCheckIcon size={12} className="text-emerald-500" />
+              <AnimatedIcon icon={CircleCheckIcon} size={12} className="text-emerald-500" />
               <span className="text-2xs sm:text-xs font-bold text-foreground">
                 {SERVICES_HERO_COPY.subSecondSpeed}</span>
             </motion.div>
 
             {/* ── Floating Element 8 (Bottom Right): Secure & Scalable Pill ── */}
-            <motion.div
+            <motion.div data-animated-icon-target
               animate={{ y: [0, 4, 0] }}
               transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
               className="absolute bottom-3 sm:bottom-4 right-2 sm:right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-surface-elevated shadow-xs"
             >
-              <ShieldCheckIcon size={12} className="text-chart-3" />
+              <AnimatedIcon icon={ShieldCheckIcon} size={12} className="text-chart-3" />
               <span className="text-2xs sm:text-xs font-bold text-foreground">
                 {SERVICES_HERO_COPY.secureScalable}</span>
             </motion.div>

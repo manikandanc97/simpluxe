@@ -6,7 +6,6 @@ import { TECH_DETAILS, CATEGORY_TITLES } from "@/lib/content/tech-stack";
 
 import { CldImage } from "@/components/ui/cld-image";
 import { type ServiceData } from "@/lib/content/services";
-import { m as motion, AnimatePresence } from "motion/react";
 
 interface ServicesTechStackProps {
   service: ServiceData;
@@ -57,51 +56,42 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={service.id}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.28 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-        >
-          {categoryOrder.map((category) => {
-            const techs = categorizedTech[category];
-            if (!techs || techs.length === 0) return null;
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {categoryOrder.map((category) => {
+          const techs = categorizedTech[category];
+          if (!techs || techs.length === 0) return null;
 
-            return (
-              <div key={category} className="flex flex-col gap-4 p-5 sm:p-6 rounded-2xl bg-white/60 dark:bg-black/20 border border-black/[0.04] dark:border-white/[0.04] backdrop-blur-xl shadow-sm hover:shadow-md transition-all duration-300">
-                <h4 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
-                  <div className={`w-1.5 h-1.5 rounded-full ${colors.bg} shadow-sm transition-colors duration-300`} />
-                  {CATEGORY_TITLES[category]}
-                </h4>
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
-                  {techs.map((tech) => (
-                    <div
-                      key={tech.slug}
-                      className={`group flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-black border border-surface-elevated ${colors.hoverBorder} shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
-                    >
-                      <div className={`relative w-4 h-4 sm:w-4.5 sm:h-4.5 flex items-center justify-center shrink-0 transition-opacity`}>
-                        <CldImage
-                          src={`simpluxe/tech/${tech.imageSlug || tech.slug}`}
-                          alt={tech.name}
-                          width={18}
-                          height={18}
-                          className={`w-full h-full object-contain transition-all duration-300 ${tech.invertDark ? "dark:invert" : ""}`}
-                        />
-                      </div>
-                      <span className={`text-2xs sm:text-xs font-bold text-foreground/90 ${colors.hoverText} transition-colors duration-300`}>
-                        {tech.name}
-                      </span>
+          return (
+            <div key={category} className="flex flex-col gap-4 p-5 sm:p-6 rounded-2xl bg-white/60 dark:bg-black/20 border border-black/5 dark:border-white/5 backdrop-blur-xl shadow-sm hover:shadow-md transition-all duration-300">
+              <h4 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
+                <div className={`w-1.5 h-1.5 rounded-full ${colors.bg} shadow-sm transition-colors duration-300`} />
+                {CATEGORY_TITLES[category]}
+              </h4>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
+                {techs.map((tech) => (
+                  <div
+                    key={tech.slug}
+                    className={`group flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-black border border-surface-elevated ${colors.hoverBorder} shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
+                  >
+                    <div className={`relative w-4 h-4 sm:w-4.5 sm:h-4.5 flex items-center justify-center shrink-0 transition-opacity`}>
+                      <CldImage
+                        src={`simpluxe/tech/${tech.imageSlug || tech.slug}`}
+                        alt={tech.name}
+                        width={18}
+                        height={18}
+                        className={`w-full h-full object-contain transition-all duration-300 ${tech.invertDark ? "dark:invert" : ""}`}
+                      />
                     </div>
-                  ))}
-                </div>
+                    <span className={`text-2xs sm:text-xs font-bold text-foreground/90 ${colors.hoverText} transition-colors duration-300`}>
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
               </div>
-            );
-          })}
-        </motion.div>
-      </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

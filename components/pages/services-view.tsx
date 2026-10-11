@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { m as motion, useReducedMotion } from "motion/react";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { ServicesHero } from "@/components/services/services-hero";
 import { ServicesTabsBar } from "@/components/services/services-tabs-bar";
@@ -14,19 +15,22 @@ import { Container } from "@/components/ui/container";
 export function ServicesView() {
   // Default to "websites" as requested by user
   const [activeServiceId, setActiveServiceId] = useState<string>("websites");
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    let scrollTimer: ReturnType<typeof setTimeout> | undefined;
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
       if (hash && SERVICES_LIST.some((s) => s.id === hash)) {
         setActiveServiceId(hash);
-        
+
         // Scroll to the tabs area smoothly
-        setTimeout(() => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
           const el = document.getElementById("services-tabs-container");
           if (el) {
             const y = el.getBoundingClientRect().top + window.scrollY - 100;
-            window.scrollTo({ top: y, behavior: "smooth" });
+            window.scrollTo({ top: y, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
           }
         }, 100);
       }
@@ -34,7 +38,10 @@ export function ServicesView() {
 
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    return () => {
+      clearTimeout(scrollTimer);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   const activeService = useMemo(() => {
@@ -55,23 +62,35 @@ export function ServicesView() {
 
       {/* ── Main Structured Showcase Area ── */}
       <Container className="relative z-20 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-20">
-        {/* ── 2. The 9 Service Category Tabs Bar ── */}
+        {/* ── 2. Service Category Tabs Bar ── */}
         <ServicesTabsBar
           activeId={activeServiceId}
           onSelect={setActiveServiceId}
         />
 
-        {/* ── 3. Active Service Showcase (Metrics, Description & Interactive Mockup) ── */}
-        <ServicesActiveShowcase service={activeService} />
+        <motion.div
+          key={activeService.id}
+          id="services-panel"
+          role="tabpanel"
+          aria-labelledby={`service-tab-${activeService.id}`}
+          tabIndex={0}
+          initial={reducedMotion ? false : { opacity: 0.65, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.24, ease: "easeOut" }}
+          className="flex flex-col gap-16 sm:gap-20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          {/* ── 3. Active Service Showcase (Metrics, Description & Interactive Mockup) ── */}
+          <ServicesActiveShowcase service={activeService} />
 
-        {/* ── 4. What We Build (4 Capabilities with Prev/Next Controls) ── */}
-        <ServicesWhatWeBuild service={activeService} />
+          {/* ── 4. What We Build (4 Capabilities with Prev/Next Controls) ── */}
+          <ServicesWhatWeBuild service={activeService} />
 
-        {/* ── 5. Everything Included & Perfect For ── */}
-        <ServicesDeliverablesAudience service={activeService} />
+          {/* ── 5. Everything Included & Perfect For ── */}
+          <ServicesDeliverablesAudience service={activeService} />
 
-        {/* ── 6. Technology by Service (Cloudinary Tech Stack Icons) ── */}
-        <ServicesTechStack service={activeService} />
+          {/* ── 6. Technology by Service (Cloudinary Tech Stack Icons) ── */}
+          <ServicesTechStack service={activeService} />
+        </motion.div>
       </Container>
     </div>
   );

@@ -22,7 +22,7 @@ export function PageBannerBreadcrumb({ breadcrumb }: PageBannerBreadcrumbProps) 
   const parentBreadcrumbs = breadcrumb.slice(0, breadcrumb.length - 1);
 
   return (
-    <motion.nav
+    <motion.nav data-animated-icon-target
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}

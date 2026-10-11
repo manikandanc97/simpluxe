@@ -24,7 +24,7 @@ export function FaqAccordionItem({
   const questionId = useId();
 
   return (
-    <motion.div
+    <motion.div data-animated-icon-target
       variants={fadeUp}
       className={`faq-item group rounded-2xl transition-all duration-200 overflow-hidden font-satoshi ${
         isOpen
@@ -111,7 +111,7 @@ export function FaqAccordionItem({
                         key={i}
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary/5 border border-primary/15 text-foreground text-xs font-medium"
                       >
-                        <HlIcon className="w-3.5 h-3.5 text-primary shrink-0" />
+                        <AnimatedIcon icon={HlIcon} className="w-3.5 h-3.5 text-primary shrink-0" />
                         <span>{hl.text}</span>
                       </div>
                     );

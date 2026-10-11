@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { SITE_NAVBAR_COPY } from "@/lib/content/layout";
 
 import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/layout";
@@ -124,7 +125,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               className="group shadow-elevated gap-1.5"
             >
               <span>{NAVBAR_CONTENT.ctaText}</span>
-              <ArrowRightIcon size={14} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
+              <AnimatedIcon icon={ArrowRightIcon} size={14} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Button>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { FAQ_CONTACT_CARD_COPY } from "@/lib/content/faq";
 
 import { useLead } from "@/components/leads/lead-provider";
@@ -17,28 +18,7 @@ export function FaqContactCard() {
       <div className="absolute -top-5 left-1 sm:left-2 z-20 flex items-start gap-1 pointer-events-none select-none">
         <span className="font-handwriting italic text-xl sm:text-2xl text-foreground/90 font-bold -rotate-8 leading-tight block">
           {FAQ_CONTACT_CARD_COPY.stillHaveA}<br />{FAQ_CONTACT_CARD_COPY.question}</span>
-        <svg 
-          width="44" 
-          height="38" 
-          viewBox="0 0 54 46" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg" 
-          className="text-primary -mt-1 -ml-1"
-        >
-          <path 
-            d="M6 14C16 3 32 2 40 14C45 22 44 32 41 40" 
-            stroke="currentColor" 
-            strokeWidth="2.2" 
-            strokeLinecap="round" 
-          />
-          <path 
-            d="M34 33L41 41L48 34" 
-            stroke="currentColor" 
-            strokeWidth="2.2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-          />
-        </svg>
+        <DecorativeArrow direction="down-right" className="h-10 w-10 text-primary -mt-1" />
       </div>
 
       {/* 2. Main Outer Card */}

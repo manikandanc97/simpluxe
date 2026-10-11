@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ABOUT_VIEW_COPY } from "@/lib/content/about";
 import { SITE } from "@/lib/content/site";
 import { ABOUT_SECTION_CONTENT } from "@/lib/content/about";
@@ -44,9 +47,9 @@ export function AboutView() {
 
               {/* Global Studio Base Card */}
               {SITE.location && (
-                <Card variant="default" padding="compact" className="mt-8 flex flex-row items-center gap-4 w-full max-w-md">
+                <Card data-animated-icon-target variant="default" padding="compact" className="mt-8 flex flex-row items-center gap-4 w-full max-w-md">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
-                    <MapPinIcon size={18} />
+                    <AnimatedIcon icon={MapPinIcon} size={18} />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider font-semibold">
@@ -64,9 +67,9 @@ export function AboutView() {
             <div className="lg:col-span-7 flex flex-col gap-4 text-left">
               {/* Pillar 1: Hero Card */}
               <Card variant="default" padding="default" className="relative overflow-hidden">
-                <div className="flex items-center gap-4 mb-4">
+                <div data-animated-icon-target className="flex items-center gap-4 mb-4">
                   <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
-                    <ZapIcon size={18} />
+                    <AnimatedIcon icon={ZapIcon} size={18} />
                   </div>
                   <CardTitle className="text-base sm:text-lg font-bold">
                     {ABOUT_SECTION_CONTENT.pillar1Title}
@@ -81,8 +84,8 @@ export function AboutView() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Card variant="default" padding="compact" className="flex flex-col justify-between">
                   <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2 text-primary">
-                      <CodeIcon size={16} />
+                    <div data-animated-icon-target className="flex items-center gap-2 text-primary">
+                      <AnimatedIcon icon={CodeIcon} size={16} />
                       <span className="text-xs font-mono font-bold uppercase tracking-wider">
                         {ABOUT_SECTION_CONTENT.pillar2Title}
                       </span>
@@ -95,8 +98,8 @@ export function AboutView() {
 
                 <Card variant="default" padding="compact" className="flex flex-col justify-between">
                   <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2 text-primary">
-                      <ShieldCheckIcon size={16} />
+                    <div data-animated-icon-target className="flex items-center gap-2 text-primary">
+                      <AnimatedIcon icon={ShieldCheckIcon} size={16} />
                       <span className="text-xs font-mono font-bold uppercase tracking-wider">
                         {ABOUT_SECTION_CONTENT.pillar3Title}
                       </span>
