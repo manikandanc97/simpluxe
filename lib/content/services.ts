@@ -1305,6 +1305,23 @@ export const SERVICES_WHAT_WE_BUILD_COPY = {
 } as const;
 
 // what-we-build
+export const CUSTOM_SOFTWARE_COPY = {
+  windowTitle: "system-core.ts",
+  engine: "Custom engine",
+  status: "Connected",
+  layers: [
+    { name: "API gateway", detail: "Secure system bridges", symbol: "{}" },
+    { name: "Business logic", detail: "Rules built around your workflow", symbol: "</>" },
+    { name: "Database", detail: "Structured, synchronized data", symbol: "DB" },
+  ],
+  request: "POST /api/workflow",
+  response: "200 OK",
+  run: "Run workflow",
+  processing: "Executing business rules...",
+  completed: "Workflow complete. Data synced.",
+  nodeLabels: ["API", "Engine", "Database"],
+} as const;
+
 export const AUTOMATION_COPY = {
   triggerNewEmail: "Trigger: New Email",
   extractKeyData: "Extract: Key Data",

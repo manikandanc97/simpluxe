@@ -45,6 +45,10 @@ const AutomationMockup = dynamic(
   () => import("./mockups/automation").then((mod) => mod.AutomationMockup),
   { loading: loadingSkeleton }
 );
+const CustomSoftwareMockup = dynamic(
+  () => import("./mockups/custom-software").then((mod) => mod.CustomSoftwareMockup),
+  { loading: loadingSkeleton }
+);
 
 const MOCKUPS: Record<string, React.ElementType> = {
   websites: WebsitesMockup,
@@ -55,6 +59,7 @@ const MOCKUPS: Record<string, React.ElementType> = {
   branding: BrandingMockup,
   "ui-ux": UIUXMockup,
   automation: AutomationMockup,
+  "custom-software": CustomSoftwareMockup,
 };
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
