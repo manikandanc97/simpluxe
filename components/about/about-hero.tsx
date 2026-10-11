@@ -13,6 +13,7 @@ import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { NextJsIcon } from "@/components/work/tech-icons";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 export function AboutHero() {
@@ -35,8 +36,8 @@ export function AboutHero() {
             <div className="flex flex-col gap-2 sm:gap-2.5">
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
-                <a href="/" className="hover:text-foreground transition-colors">
-                  {ABOUT_HERO_COPY.home}</a>
+                <Link href="/" className="hover:text-foreground transition-colors">
+                  {ABOUT_HERO_COPY.home}</Link>
                 <span className="text-muted-foreground/60">{ABOUT_HERO_COPY.symbol}</span>
                 <span className="text-primary font-semibold">{ABOUT_HERO_COPY.about}</span>
               </motion.nav>

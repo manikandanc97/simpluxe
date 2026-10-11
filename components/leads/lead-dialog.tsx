@@ -29,7 +29,7 @@ export function LeadDialog({ open, onOpenChange, prefill }: LeadDialogProps) {
             {LEAD_DIALOG_COPY.tellUsWhatYouWantTo}</DialogDescription>
         </DialogHeader>
 
-        <LeadForm prefill={prefill} />
+        <LeadForm key={prefill?.projectType || "default"} prefill={prefill} />
       </DialogContent>
     </Dialog>
   );

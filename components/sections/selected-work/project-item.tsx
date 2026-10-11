@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { m as motion } from "motion/react";
-import Image from "next/image";
+import { LoadingImage } from "@/components/ui/loading-image";
 import { getProjectBadge } from "./project-badge";
 import { BrowserMockup } from "./browser-mockup";
 
@@ -58,15 +58,12 @@ export function SelectedWorkProjectItem({
 
         {/* Authentic Brand Logo */}
         <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center rounded-xl bg-white border border-slate-200/80 p-1.5 shadow-2xs">
-          <Image
+          <LoadingImage
             src={project.logo || `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${project.url}&size=128`}
             alt={PROJECT_ITEM_COPY.logoAlt(project.name)}
             width={48}
             height={48}
             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).srcset = "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/logo/logo";
-            }}
           />
         </div>
 

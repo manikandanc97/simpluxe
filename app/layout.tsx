@@ -32,22 +32,22 @@ const satoshi = localFont({
 const inter = localFont({
   src: [
     {
-      path: "../public/fonts/Inter-Regular.woff2",
+      path: "../public/fonts/inter-400.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/Inter-Medium.woff2",
+      path: "../public/fonts/inter-500.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../public/fonts/Inter-SemiBold.woff2",
+      path: "../public/fonts/inter-600.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../public/fonts/Inter-Bold.woff2",
+      path: "../public/fonts/inter-700.woff2",
       weight: "700",
       style: "normal",
     },
@@ -59,22 +59,22 @@ const inter = localFont({
 const manrope = localFont({
   src: [
     {
-      path: "../public/fonts/Manrope-Regular.woff2",
+      path: "../public/fonts/manrope-400.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/Manrope-Medium.woff2",
+      path: "../public/fonts/manrope-500.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../public/fonts/Manrope-SemiBold.woff2",
+      path: "../public/fonts/manrope-600.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../public/fonts/Manrope-Bold.woff2",
+      path: "../public/fonts/manrope-700.woff2",
       weight: "700",
       style: "normal",
     },
@@ -86,17 +86,17 @@ const manrope = localFont({
 const caveat = localFont({
   src: [
     {
-      path: "../public/fonts/Caveat-Medium.woff2",
+      path: "../public/fonts/caveat-500.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../public/fonts/Caveat-SemiBold.woff2",
+      path: "../public/fonts/caveat-600.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../public/fonts/Caveat-Bold.woff2",
+      path: "../public/fonts/caveat-700.woff2",
       weight: "700",
       style: "normal",
     },

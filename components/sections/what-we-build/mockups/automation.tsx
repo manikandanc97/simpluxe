@@ -21,7 +21,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
       floatDuration={5}
     >
         {/* Header */}
-        <div className="flex items-center gap-2 pb-1.5 border-b border-black/[0.05]">
+        <div className="flex items-center gap-2 pb-1.5 border-b border-black/5">
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-400" />
             <div className="w-2 h-2 rounded-full bg-amber-400" />
@@ -81,7 +81,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Terminal output — light style */}
-        <div className="bg-slate-50 border border-black/[0.05] rounded-xl px-3 py-2 flex items-center gap-1.5 font-mono text-2xs">
+        <div className="bg-slate-50 border border-black/5 rounded-xl px-3 py-2 flex items-center gap-1.5 font-mono text-2xs">
           <motion.div
             animate={isActive ? { opacity: [1, 0, 1] } : { opacity: 1 }}
             transition={{ duration: 0.8, repeat: isActive ? Infinity : 0 }}

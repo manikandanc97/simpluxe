@@ -31,7 +31,7 @@ const initialState: LeadState = {
 export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
   const [state, formAction, isPending] = useActionState(submitLead, initialState);
   const [selectedProjectType, setSelectedProjectType] = useState<string>(
-    prefill?.projectType || PROJECT_TYPES[0]
+    prefill?.projectType || ""
   );
   const formId = useId();
   const fieldId = (name: string) => `${formId}-lead-${name}`;
@@ -172,12 +172,14 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
         </FormField>
 
         <FormField>
-          <FormLabel htmlFor={fieldId("phone")}>
-            {LEAD_FORM_COPY.whatsappPhoneOptional}</FormLabel>
+          <FormLabel htmlFor={fieldId("phone")} required>
+            {LEAD_FORM_COPY.whatsappPhone}</FormLabel>
           <Input
             id={fieldId("phone")}
             name="phone"
             type="tel"
+            required
+            aria-required="true"
             defaultValue={prefill?.phone || ""}
             placeholder={LEAD_FORM_COPY.whatsappOrPhone}
             aria-invalid={Boolean(state.fieldErrors?.phone)}
@@ -196,12 +198,14 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
               id={fieldId("project-type")}
               name="projectType"
               required
+              aria-required="true"
               value={selectedProjectType}
               onChange={(event) => setSelectedProjectType(event.target.value)}
               aria-invalid={Boolean(state.fieldErrors?.projectType)}
               aria-describedby={state.fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
               className={cn("w-full h-10 sm:h-11 px-4 pr-10 rounded-xl bg-card border border-border text-xs sm:text-sm font-semibold text-foreground appearance-none shadow-2xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring")}
             >
+              <option value="" disabled>{LEAD_FORM_COPY.selectProjectCategory}</option>
               {PROJECT_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
             </select>
             <AnimatedIcon icon={ChevronDownIcon} size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />

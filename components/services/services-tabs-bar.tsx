@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { SERVICES_LIST } from "@/lib/content/services";
+import { SERVICES_LIST, SERVICES_TABS_COPY } from "@/lib/content/services";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 
 interface ServicesTabsBarProps {
@@ -175,7 +175,7 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
             key={copy}
             ref={copy === 1 ? cycleRef : undefined}
             role={copy === 1 ? "tablist" : undefined}
-            aria-label={copy === 1 ? "Service categories" : undefined}
+            aria-label={copy === 1 ? SERVICES_TABS_COPY.serviceCategories : undefined}
             aria-hidden={copy !== 1 ? true : undefined}
             className="flex shrink-0 items-center gap-2 pr-2"
           >

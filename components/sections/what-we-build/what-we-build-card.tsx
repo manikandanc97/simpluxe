@@ -7,12 +7,11 @@ import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
-import { SERVICES_LIST } from "@/lib/content/services";
+import type { SERVICES_LIST } from "@/lib/content/services";
 import dynamic from "next/dynamic";
+import { MockupSkeleton } from "@/components/ui/skeleton";
 
-const loadingSkeleton = () => (
-  <div className="w-full max-w-72 h-62.5 bg-slate-100/40 animate-pulse rounded-3xl border border-black/[0.04]" />
-);
+const loadingSkeleton = () => <MockupSkeleton />;
 
 const WebsitesMockup = dynamic(
   () => import("./mockups/websites").then((mod) => mod.WebsitesMockup),

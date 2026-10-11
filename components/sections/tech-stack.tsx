@@ -6,10 +6,11 @@ import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { FadeUpWrapper } from "@/components/ui/fade-up-wrapper";
 import dynamic from "next/dynamic";
+import { TechStackSkeleton } from "@/components/ui/skeleton";
 
 const TechStackInteractive = dynamic(
   () => import("./tech-stack-interactive").then((mod) => mod.TechStackInteractive),
-  { ssr: true }
+  { ssr: true, loading: () => <TechStackSkeleton /> }
 );
 export function TechStack() {
   return (

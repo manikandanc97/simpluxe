@@ -1,6 +1,6 @@
 import { COMMON } from "./common";
-import { Project, SelectedWorkSectionContent } from "@/types/project";
-import React from "react";
+import type { Project, SelectedWorkSectionContent } from "@/types/project";
+import type React from "react";
 import { NextJsIcon, TailwindIcon, MotionIcon, NodeJsIcon, WhatsAppIcon, PrismaIcon, PostgresIcon, SupabaseIcon, ShopifyIcon, ReactIcon } from "@/components/work/tech-icons";
 
 const CONSTRUCTION_CATEGORY = "ARCHITECTURE & CONSTRUCTION";

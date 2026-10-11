@@ -3,10 +3,11 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import dynamic from "next/dynamic";
+import { ShowcaseSkeleton } from "@/components/ui/skeleton";
 
 const SelectedWorkInteractive = dynamic(
   () => import("./selected-work-interactive").then((mod) => mod.SelectedWorkInteractive),
-  { ssr: true }
+  { ssr: true, loading: () => <ShowcaseSkeleton /> }
 );
 export function SelectedWork() {
   return (

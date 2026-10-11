@@ -4,10 +4,11 @@ import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { AnimatedText } from "@/components/ui/animated-text";
 import dynamic from "next/dynamic";
+import { ProcessSkeleton } from "@/components/ui/skeleton";
 
 const HowWeWorkInteractive = dynamic(
   () => import("./how-we-work-interactive").then((mod) => mod.HowWeWorkInteractive),
-  { ssr: true }
+  { ssr: true, loading: () => <ProcessSkeleton /> }
 );
 export function HowWeWork() {
   return (

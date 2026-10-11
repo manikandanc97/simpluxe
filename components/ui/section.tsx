@@ -2,7 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import React from "react";
-import { m as motion, HTMLMotionProps } from "motion/react";
+import type { HTMLMotionProps } from "motion/react";
+import { m as motion } from "motion/react";
 
 interface SectionProps extends HTMLMotionProps<"section"> {
   children: React.ReactNode;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { PROJECTS, PROJECT_FILTER_TABS } from "@/lib/content/projects";
 
 export function useSelectedWork() {
@@ -16,13 +16,10 @@ export function useSelectedWork() {
     [filteredProjects]
   );
 
-  const [activeId, setActiveId] = useState<string>(displayProjects[0]?.id || "");
-
-  useEffect(() => {
-    if (!displayProjects.find((p) => p.id === activeId) && displayProjects.length > 0) {
-      setActiveId(displayProjects[0].id);
-    }
-  }, [activeFilter, displayProjects, activeId]);
+  const [selectedId, setActiveId] = useState<string>(displayProjects[0]?.id || "");
+  const activeId = displayProjects.some((project) => project.id === selectedId)
+    ? selectedId
+    : displayProjects[0]?.id || "";
 
   const activeProjectIndex = displayProjects.findIndex((p) => p.id === activeId);
   const activeProject = displayProjects[activeProjectIndex] || displayProjects[0];

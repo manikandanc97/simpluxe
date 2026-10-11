@@ -6,9 +6,10 @@ import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { cn } from "@/lib/utils";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { STEPS } from "@/lib/content/how-we-work";
+import type { STEPS } from "@/lib/content/how-we-work";
 import { Button } from "@/components/ui/button";
-import { m as motion, Variants } from "motion/react";
+import type { Variants } from "motion/react";
+import { m as motion } from "motion/react";
 import { fadeUp } from "@/lib/motion";
 
 const containerVariants: Variants = {

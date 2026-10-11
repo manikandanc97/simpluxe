@@ -3,7 +3,8 @@
 import { ANIMATED_TEXT_COPY } from "@/lib/content/ui";
 
 import * as React from "react";
-import { m as motion, useInView, Variants } from "motion/react";
+import type { Variants } from "motion/react";
+import { m as motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 

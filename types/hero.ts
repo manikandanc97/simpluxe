@@ -1,4 +1,4 @@
-import { ElementType as LucideIcon } from "react";
+import type { ElementType as LucideIcon } from "react";
 
 
 interface HeroStat {

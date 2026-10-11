@@ -1,5 +1,5 @@
 import { COMMON } from "./common";
-import { TechCategory, TechItem } from "@/types/tech";
+import type { TechCategory, TechItem } from "@/types/tech";
 import { type AnimatedIconName } from "@/components/ui/animated-icon";
 
 export const CATEGORIES = [
@@ -408,7 +408,14 @@ export const TECH_STACK_SECTION_CONTENT = {
 };
 
 // service-technologies
-export const TECH_DETAILS: Record<string, { name: string; category: string; invertDark?: boolean; imageSlug?: string }> = {
+export interface ServiceTechDetails {
+  name: string;
+  category: string;
+  invertDark?: boolean;
+  imageSlug?: string;
+}
+
+export const TECH_DETAILS = {
   // Core Frameworks & Languages
   nextjs: { name: COMMON.technology.nextjs, category: "core", invertDark: true },
   react: { name: COMMON.technology.react, category: "core" },
@@ -422,6 +429,7 @@ export const TECH_DETAILS: Record<string, { name: string; category: string; inve
   
   // Backend & APIs
   nodejs: { name: COMMON.technology.nodejs, category: "backend" },
+  nestjs: { name: "NestJS", category: "backend" },
   expressjs: { name: "Express.js", category: "backend" },
   restapi: { name: "REST API", category: "backend" },
   prisma: { name: COMMON.technology.prismaOrm, category: "backend", invertDark: true },
@@ -466,22 +474,9 @@ export const TECH_DETAILS: Record<string, { name: string; category: string; inve
   illustrator: { name: COMMON.technology.illustrator, category: "design" },
   photoshop: { name: COMMON.technology.photoshop, category: "design" },
   canva: { name: COMMON.technology.canva, category: "design" },
-};
+} satisfies Record<string, ServiceTechDetails>;
 
-export const CATEGORY_TITLES: Record<string, string> = {
-  core: "Core Frameworks & Languages",
-  backend: COMMON.categories.backend,
-  database: "Database",
-  auth: "Authentication & Security",
-  hosting: "Hosting",
-  deployment: "Deployment & Infrastructure",
-  domain: "Domain",
-  infrastructure: "Backend & Infrastructure",
-  ai: "AI & Machine Learning",
-  design: "Design & Prototyping",
-};
-
-// tech-categories
+export type ServiceTechSlug = keyof typeof TECH_DETAILS;
 
 // tech-stack
 export const TECH_CATEGORY_TABS_COPY = {

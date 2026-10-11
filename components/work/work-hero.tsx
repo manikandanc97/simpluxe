@@ -16,6 +16,7 @@ import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
 import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 import { NextJsIcon } from "./tech-icons";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 export function WorkHero() {
@@ -38,8 +39,8 @@ export function WorkHero() {
             <div className="flex flex-col gap-2 sm:gap-2.5">
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
-                <a href="/" className="hover:text-foreground transition-colors">
-                  {WORK_HERO_COPY.home}</a>
+                <Link href="/" className="hover:text-foreground transition-colors">
+                  {WORK_HERO_COPY.home}</Link>
                 <span className="text-border">{WORK_HERO_COPY.symbol}</span>
                 <span className="text-primary font-semibold">{WORK_HERO_COPY.work}</span>
               </motion.nav>

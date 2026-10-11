@@ -1,4 +1,4 @@
-import { Variants, TargetAndTransition } from "motion/react";
+import type { Variants, TargetAndTransition } from "motion/react";
 
 // ==========================================
 // MOTION TIMING & EASING SYSTEM

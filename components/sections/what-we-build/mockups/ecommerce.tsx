@@ -25,13 +25,14 @@ const PRODUCTS = [
 const SELECTED_PRODUCT = 0; // always animate the first product being selected
 
 export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
+  return <EcommerceSequence key={String(!!isActive)} isActive={isActive} />;
+}
+
+function EcommerceSequence({ isActive }: { isActive?: boolean }) {
   const [stage, setStage] = useState<Stage>("browse");
 
   useEffect(() => {
-    if (!isActive) {
-      setStage("browse");
-      return;
-    }
+    if (!isActive) return;
 
     const CYCLE: Stage[] = ["browse", "selected", "payment", "success"];
     let currentIdx = CYCLE.indexOf(stage);
@@ -77,7 +78,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               className="flex flex-col gap-3"
             >
               {/* Browser bar */}
-              <div className="flex items-center justify-between border-b border-black/[0.04] pb-1">
+              <div className="flex items-center justify-between border-b border-black/4 pb-1">
                 <div className="flex gap-1.5">
                   <div className="w-2 h-2 rounded-full bg-red-400" />
                   <div className="w-2 h-2 rounded-full bg-amber-400" />
@@ -149,7 +150,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
 
               {/* Add to cart row */}
               <div className="flex items-center gap-2">
-                <div className="flex-1 bg-slate-50 border border-black/[0.05] rounded-lg p-1.5 flex items-center gap-1.5">
+                <div className="flex-1 bg-slate-50 border border-black/5 rounded-lg p-1.5 flex items-center gap-1.5">
                   <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-chart-3/25 to-chart-3/50 flex-shrink-0" />
                   <div className="flex flex-col gap-0.5 flex-1">
                     <span className="text-2xs font-semibold text-foreground leading-none">{PRODUCTS[SELECTED_PRODUCT].name}</span>
@@ -198,7 +199,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               className="flex flex-col gap-3"
             >
               {/* Header */}
-              <div className="flex items-center gap-2 border-b border-black/[0.04] pb-1.5">
+              <div className="flex items-center gap-2 border-b border-black/4 pb-1.5">
                 <div className="w-5 h-5 rounded-lg bg-chart-3/10 flex items-center justify-center text-chart-3">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
@@ -223,7 +224,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
 
               {/* Card input (mock) */}
               <div className="flex flex-col gap-1.5">
-                <div className="bg-white border border-black/[0.07] rounded-lg px-2 py-1.5 flex items-center gap-2">
+                <div className="bg-white border border-black/7 rounded-lg px-2 py-1.5 flex items-center gap-2">
                   <svg width="16" height="10" viewBox="0 0 32 20" fill="none">
                     <rect width="32" height="20" rx="3" fill="#1A1A2E"/>
                     <rect x="2" y="7" width="10" height="6" rx="1" fill="#FFD700"/>
@@ -232,10 +233,10 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
                   <span className="text-3xs font-mono text-muted-foreground">{ECOMMERCE_COPY.symbol}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-1.5">
-                  <div className="bg-white border border-black/[0.07] rounded-lg px-2 py-1.5 h-5 flex items-center">
+                  <div className="bg-white border border-black/7 rounded-lg px-2 py-1.5 h-5 flex items-center">
                     <div className="w-full h-1.5 rounded-full bg-slate-200" />
                   </div>
-                  <div className="bg-white border border-black/[0.07] rounded-lg px-2 py-1.5 h-5 flex items-center">
+                  <div className="bg-white border border-black/7 rounded-lg px-2 py-1.5 h-5 flex items-center">
                     <div className="w-8 h-1.5 rounded-full bg-slate-200" />
                   </div>
                 </div>
@@ -328,7 +329,7 @@ export function EcommerceMockup({ isActive }: { isActive?: boolean }) {
               >
                 <div className="flex flex-col gap-0.5">
                   <span className="text-3xs text-muted-foreground">{ECOMMERCE_COPY.orderId}</span>
-                  <span className="text-2xs font-mono font-bold text-foreground">{ECOMMERCE_COPY.st}{Math.floor(8000 + Math.random() * 999)}</span>
+                  <span className="text-2xs font-mono font-bold text-foreground">{ECOMMERCE_COPY.orderNumber}</span>
                 </div>
                 <div className="flex flex-col gap-0.5 items-end">
                   <span className="text-3xs text-muted-foreground">{ECOMMERCE_COPY.deliveryEta}</span>

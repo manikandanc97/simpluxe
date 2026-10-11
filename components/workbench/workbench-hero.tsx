@@ -66,13 +66,13 @@ export function WorkbenchHero() {
               <span className="overflow-hidden pb-4 -mb-4">
                 <span className="block relative hero-line-2 will-change-transform">
                   <span className="inline-block overflow-hidden">
-                    <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: '0.2s' }}>
+                    <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: "0.2s" }}>
                       {HERO_CONTENT.headlineLine2Prefix}
                     </span>
                   </span>
                   <span className="relative inline-block ml-3">
                     <span className="inline-block overflow-hidden">
-                      <span className="inline-block animate-hero-word-reveal brand-gradient-char" style={{ animationDelay: '0.35s' }}>
+                      <span className="inline-block animate-hero-word-reveal brand-gradient-char" style={{ animationDelay: "0.35s" }}>
                         {HERO_CONTENT.headlineHighlight}
                       </span>
                     </span>
@@ -117,7 +117,7 @@ export function WorkbenchHero() {
               className="hero-desc type-lead text-muted-foreground max-w-lg text-sm sm:text-base lg:text-lg leading-relaxed"
             >
               <span className="inline-block overflow-hidden">
-                <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: '0.4s' }}>
+                <span className="inline-block animate-hero-word-reveal" style={{ animationDelay: "0.4s" }}>
                   {HERO_CONTENT.description}
                 </span>
               </span>

@@ -1,5 +1,7 @@
 import { COMMON } from "./common";
-import { ElementType as LucideIcon } from "react";
+import type { PROJECT_TYPES } from "./leads";
+import { type ServiceTechSlug } from "./tech-stack";
+import type { ElementType as LucideIcon } from "react";
 import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
 import { ShoppingBagIcon } from "@animateicons/react/lucide/shopping-bag-icon";
@@ -13,7 +15,7 @@ import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 export interface ServiceData {
   id: string;
   number: string;
-  name: string;
+  name: (typeof PROJECT_TYPES)[number];
   tabLabel: string;
   icon: LucideIcon;
   category: typeof COMMON.categories.clientInterface | typeof COMMON.categories.coreSystems | typeof COMMON.categories.foundation;
@@ -48,7 +50,8 @@ export interface ServiceData {
     desc: string;
     icon: string;
   }[];
-  techStack: string[];
+  techStackSummary: string;
+  techStack: { slug: ServiceTechSlug; purpose: string }[];
   faqs: {
     question: string;
     answer: string;
@@ -170,14 +173,12 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "award"
       }
     ],
+    "techStackSummary": "A focused stack for a fast website that's easy to maintain.",
     "techStack": [
-      "nextjs",
-      "react",
-      "typescript",
-      "tailwindcss",
-      "vercel",
-      "godaddy",
-      "hostinger"
+      { slug: "nextjs", purpose: "Website pages and content" },
+      { slug: "typescript", purpose: "Reliable website code" },
+      { slug: "tailwindcss", purpose: "Responsive layouts and styling" },
+      { slug: "vercel", purpose: "Website hosting and deployment" }
     ],
     "faqs": [
       {
@@ -317,21 +318,13 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "refresh"
       }
     ],
+    "techStackSummary": "The essentials for dashboards, customer portals and everyday business workflows.",
     "techStack": [
-      "nextjs",
-      "react",
-      "typescript",
-      "tailwindcss",
-      "nodejs",
-      "expressjs",
-      "restapi",
-      "prisma",
-      "postgresql",
-      "supabase",
-      "supabaseauth",
-      "oauth",
-      "jwt",
-      "hostingervps"
+      { slug: "nextjs", purpose: "App screens and server logic" },
+      { slug: "typescript", purpose: "Reliable application code" },
+      { slug: "tailwindcss", purpose: "Consistent, responsive interfaces" },
+      { slug: "supabase", purpose: "Database, sign-in and file storage" },
+      { slug: "vercel", purpose: "App hosting and deployment" }
     ],
     "faqs": [
       {
@@ -471,15 +464,14 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "repeat"
       }
     ],
+    "techStackSummary": "A practical custom-store stack. We choose the payment gateway for your business and market.",
     "techStack": [
-      "nextjs",
-      "react",
-      "typescript",
-      "stripe",
-      "razorpay",
-      "postgresql",
-      "redis",
-      "supabase"
+      { slug: "nextjs", purpose: "Storefront and shopping experience" },
+      { slug: "tailwindcss", purpose: "Mobile-friendly store design" },
+      { slug: "supabase", purpose: "Products, customers and order data" },
+      { slug: "razorpay", purpose: "Payment option for Indian stores" },
+      { slug: "stripe", purpose: "Payment option where supported" },
+      { slug: "vercel", purpose: "Store hosting and deployment" }
     ],
     "faqs": [
       {
@@ -619,19 +611,17 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "shield"
       }
     ],
+    "techStackSummary": "One shared codebase for iOS and Android, with tools for app builds and releases.",
     "techStack": [
-      "reactnative",
-      "flutter",
-      "expo",
-      "typescript",
-      "supabase",
-      "swift",
-      "kotlin"
+      { slug: "reactnative", purpose: "Shared iOS and Android app" },
+      { slug: "expo", purpose: "App builds, updates and releases" },
+      { slug: "typescript", purpose: "Reliable mobile app code" },
+      { slug: "supabase", purpose: "App data, sign-in and file storage" }
     ],
     "faqs": [
       {
         "question": "Do you build separate apps for iOS and Android or one codebase?",
-        "answer": "We use modern React Native and Flutter, which allows 90%+ code sharing across iOS and Android while preserving 100% native performance and gestures."
+        "answer": "We usually recommend React Native with Expo to share a codebase across iOS and Android. If your app needs platform-specific features, we plan the native work around those requirements."
       },
       {
         "question": "Can the app work when the user has no internet connection?",
@@ -766,15 +756,14 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "zap"
       }
     ],
+    "techStackSummary": "A manageable starting stack for a subscription product, expanded as the product grows.",
     "techStack": [
-      "nextjs",
-      "react",
-      "typescript",
-      "postgresql",
-      "prisma",
-      "stripe",
-      "redis",
-      "docker"
+      { slug: "nextjs", purpose: "Product screens and server logic" },
+      { slug: "typescript", purpose: "Reliable product code" },
+      { slug: "tailwindcss", purpose: "Consistent product interfaces" },
+      { slug: "supabase", purpose: "Customer data, accounts and storage" },
+      { slug: "stripe", purpose: "Subscription billing where supported" },
+      { slug: "vercel", purpose: "Product hosting and deployment" }
     ],
     "faqs": [
       {
@@ -914,11 +903,12 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "crown"
       }
     ],
+    "techStackSummary": "A small design toolkit for your identity, brand assets and everyday templates.",
     "techStack": [
-      "figma",
-      "illustrator",
-      "photoshop",
-      "canva"
+      { slug: "illustrator", purpose: "Logos and scalable vector artwork" },
+      { slug: "photoshop", purpose: "Image editing and brand mockups" },
+      { slug: "figma", purpose: "Shared brand assets and guidelines" },
+      { slug: "canva", purpose: "Editable templates for your team" }
     ],
     "faqs": [
       {
@@ -1058,11 +1048,9 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "trending-down"
       }
     ],
+    "techStackSummary": "One shared workspace for wireframes, prototypes and developer handoff.",
     "techStack": [
-      "figma",
-      "photoshop",
-      "illustrator",
-      "tailwindcss"
+      { slug: "figma", purpose: "Wireframes, UI design and prototypes" }
     ],
     "faqs": [
       {
@@ -1204,15 +1192,13 @@ export const SERVICES_LIST: ServiceData[] = [
         "icon": "shield"
       }
     ],
+    "techStackSummary": "A focused stack for custom business systems, with integrations chosen for your workflow.",
     "techStack": [
-      "nodejs",
-      "fastapi",
-      "python",
-      "postgresql",
-      "docker",
-      "redis",
-      "aws",
-      "typescript"
+      { slug: "react", purpose: "Custom dashboards and interfaces" },
+      { slug: "typescript", purpose: "Reliable application code" },
+      { slug: "nestjs", purpose: "Business logic and integrations" },
+      { slug: "postgresql", purpose: "Structured business data" },
+      { slug: "hostingervps", purpose: "Server hosting and deployment" }
     ],
     "faqs": [
       {
@@ -1303,10 +1289,14 @@ export const SERVICES_HERO_COPY = {
   digitalServicesShapedAroundYourBusiness: "Digital services, shaped around your business",
 } as const;
 
+export const SERVICES_TABS_COPY = {
+  serviceCategories: "Service categories",
+} as const;
+
 export const SERVICES_TECH_STACK_COPY = {
   techStack: COMMON.labels.techStack,
-  recommendedTechStacks: "Recommended Tech Stacks",
-  theRightToolsForTheRight: "The right tools for the right solution, categorized by necessity.",
+  recommendedTechStacks: "Recommended tools",
+  projectFitNote: "We confirm the final tools after understanding your project, budget and existing systems.",
 } as const;
 
 export const SERVICES_WHAT_WE_BUILD_COPY = {
@@ -1358,7 +1348,7 @@ export const ECOMMERCE_COPY = {
   orderPlaced: "Order Placed! 🎉",
   symbol2: " · ",
   orderId: "Order ID",
-  st: "#ST-",
+  orderNumber: "#ST-8249",
   deliveryEta: "Delivery ETA",
   text23Days: "2–3 days",
 } as const;

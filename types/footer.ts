@@ -1,4 +1,4 @@
-import { AnimatedIconName } from "@/components/ui/animated-icon";
+import type { AnimatedIconName } from "@/components/ui/animated-icon";
 
 interface FooterCapabilityItem {
   label: string;

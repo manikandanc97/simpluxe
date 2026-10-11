@@ -82,8 +82,8 @@ export function AmbientBackground({
             ...(pos.left ? { left: pos.left } : { right: pos.right }),
             backgroundImage: "radial-gradient(circle at 2px 2px, #8b5cf6 1.5px, transparent 0)",
             backgroundSize: "12px 12px",
-            WebkitMaskImage: 'radial-gradient(circle at center, black 15%, transparent 70%)',
-            maskImage: 'radial-gradient(circle at center, black 15%, transparent 70%)'
+            WebkitMaskImage: "radial-gradient(circle at center, black 15%, transparent 70%)",
+            maskImage: "radial-gradient(circle at center, black 15%, transparent 70%)"
           }}
         />
       ))}

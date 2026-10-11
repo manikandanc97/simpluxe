@@ -105,10 +105,8 @@ export function AnimatedIcon({
   style,
   ...props
 }: AnimatedIconProps) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const IconComponent = (icon || (name ? ICON_COMPONENT_MAP[name] : null) || SparklesIcon) as React.ElementType<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const SolidComponent = solid && name ? (SOLID_ICON_MAP[name] as React.ElementType<any>) : null;
+  const IconComponent = (icon || ICON_COMPONENT_MAP[name]) as React.ElementType<IconBaseProps>;
+  const SolidComponent = solid ? SOLID_ICON_MAP[name] : undefined;
 
   const iconRef = useRef<AnimateIconHandle>(null);
   const containerRef = useRef<HTMLSpanElement>(null);

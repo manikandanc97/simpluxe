@@ -1,5 +1,5 @@
 import { COMMON } from "./common";
-import { ElementType as LucideIcon } from "react";
+import type { ElementType as LucideIcon } from "react";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 import { MessageSquareIcon } from "@animateicons/react/lucide/message-square-icon";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";

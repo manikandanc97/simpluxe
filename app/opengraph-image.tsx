@@ -1,7 +1,7 @@
 import { OPENGRAPH_IMAGE_COPY } from "@/lib/content/metadata";
 import { ImageResponse } from "next/og";
 
-// Default violet accent constant from lib/colors.ts: oklch(0.55 0.2 280) ≈ #8b5cf6
+// Violet accent used by the social preview.
 const DEFAULT_VIOLET_HEX = "#8b5cf6";
 
 export const alt = OPENGRAPH_IMAGE_COPY.simpluxeKeepItSimpleMakeIt;

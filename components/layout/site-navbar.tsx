@@ -5,11 +5,11 @@ import { SITE_NAVBAR_COPY } from "@/lib/content/layout";
 
 import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/layout";
 import { cn } from "@/lib/utils";
-import { m as motion, useScroll, useMotionValueEvent } from "motion/react";
+import { m as motion } from "motion/react";
 import { CldImage } from "@/components/ui/cld-image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
@@ -19,21 +19,20 @@ interface SiteNavbarProps {
   onStartProject?: () => void;
 }
 
+const subscribeToScroll = (onChange: () => void) => {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+};
+const getScrolledSnapshot = () => window.scrollY > 20;
+const getServerSnapshot = () => false;
+const subscribeToMount = () => () => {};
+const getMountedSnapshot = () => true;
+
 export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
   const { openLead } = useLead();
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { scrollY } = useScroll();
-
-  useEffect(() => {
-    setMounted(true);
-    setScrolled(window.scrollY > 20);
-  }, []);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 20);
-  });
+  const scrolled = useSyncExternalStore(subscribeToScroll, getScrolledSnapshot, getServerSnapshot);
+  const mounted = useSyncExternalStore(subscribeToMount, getMountedSnapshot, getServerSnapshot);
 
   const handleStart = () => {
     if (onStartProject) onStartProject();

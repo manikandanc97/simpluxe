@@ -20,7 +20,7 @@ const TABS = [
 
 function TabBar({ active }: { active: number }) {
   return (
-    <div className="flex items-center justify-around border-t border-black/[0.05] pt-2 pb-0.5 bg-white">
+    <div className="flex items-center justify-around border-t border-black/5 pt-2 pb-0.5 bg-white">
       {TABS.map((tab, i) => (
         <motion.div
           key={i}
@@ -70,7 +70,7 @@ function HomeScreen() {
           { label: MOBILE_APPS_COPY.points, value: MOBILE_APPS_COPY.text12k, color: "#7C3AED" },
           { label: MOBILE_APPS_COPY.saved, value: MOBILE_APPS_COPY.text480, color: "#059669" },
         ].map((s, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.07 }} className="bg-slate-50 border border-black/[0.04] rounded-xl p-2 flex flex-col gap-0.5 items-center">
+          <motion.div key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.07 }} className="bg-slate-50 border border-black/4 rounded-xl p-2 flex flex-col gap-0.5 items-center">
             <span className="text-xs font-black" style={{ color: s.color }}>{s.value}</span>
             <span className="text-micro text-muted-foreground">{s.label}</span>
           </motion.div>
@@ -90,7 +90,7 @@ function FeedScreen() {
     <motion.div key="feed" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col gap-2 overflow-hidden">
       <div className="text-xs font-extrabold text-foreground tracking-tight">{MOBILE_APPS_COPY.feed}</div>
       {posts.map((post, i) => (
-        <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.12 }} className="bg-slate-50 border border-black/[0.04] rounded-xl p-2.5 flex flex-col gap-1.5">
+        <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.12 }} className="bg-slate-50 border border-black/4 rounded-xl p-2.5 flex flex-col gap-1.5">
           <div className="flex items-center gap-1.5">
             <div className="w-5 h-5 rounded-full flex-shrink-0" style={{ backgroundColor: post.dot }} />
             <div>
@@ -165,7 +165,7 @@ function ActivityScreen() {
     <motion.div key="activity" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col gap-2 overflow-hidden">
       <div className="text-xs font-extrabold text-foreground">{MOBILE_APPS_COPY.activity}</div>
       {activities.map((a, i) => (
-        <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex items-center gap-2 bg-slate-50 border border-black/[0.04] rounded-xl px-2.5 py-2">
+        <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex items-center gap-2 bg-slate-50 border border-black/4 rounded-xl px-2.5 py-2">
           <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs" style={{ backgroundColor: `${a.color}18`, color: a.color }}>{a.icon}</div>
           <span className="text-3xs text-zinc-800 flex-1 leading-snug">{a.label}</span>
           <span className="text-3xs text-muted-foreground flex-shrink-0">{a.time}</span>
@@ -173,7 +173,7 @@ function ActivityScreen() {
       ))}
 
       {/* Progress bar */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="bg-slate-50 border border-black/[0.04] rounded-xl p-2.5 flex flex-col gap-1.5">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="bg-slate-50 border border-black/4 rounded-xl p-2.5 flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <span className="text-3xs font-semibold text-foreground">{MOBILE_APPS_COPY.profileCompletion}</span>
           <span className="text-3xs font-bold text-primary">{MOBILE_APPS_COPY.text82}</span>
@@ -188,10 +188,14 @@ function ActivityScreen() {
 
 // ── Main Mockup ────────────────────────────────────────────
 export function MobileAppsMockup({ isActive }: { isActive?: boolean }) {
+  return <MobileAppsSequence key={String(!!isActive)} isActive={isActive} />;
+}
+
+function MobileAppsSequence({ isActive }: { isActive?: boolean }) {
   const [screen, setScreen] = useState<Screen>("home");
 
   useEffect(() => {
-    if (!isActive) { setScreen("home"); return; }
+    if (!isActive) return;
     let idx = SCREENS.indexOf(screen);
     const timer = setTimeout(() => {
       idx = (idx + 1) % SCREENS.length;

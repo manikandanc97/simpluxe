@@ -44,7 +44,7 @@ export function BrandingMockup({ isActive }: { isActive?: boolean }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 border border-black/[0.04] rounded-xl p-2.5 flex flex-col gap-1">
+        <div className="bg-slate-50 border border-black/4 rounded-xl p-2.5 flex flex-col gap-1">
           <span className="text-lg font-black tracking-tighter text-foreground leading-none">{BRANDING_COPY.aa}</span>
           <div className="flex gap-1.5">
             <div className="w-12 h-1.5 rounded-full bg-slate-300" />

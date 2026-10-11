@@ -32,7 +32,7 @@ Set NEXT_PUBLIC_SITE_URL to the public site origin (http://localhost:3000 for lo
 The example includes the Cloudinary cloud serving the existing site assets. Change it only when those assets exist in another cloud.
 Set NEXT_PUBLIC_CONTACT_EMAIL and NEXT_PUBLIC_CONTACT_PHONE for direct contact. Optional NEXT_PUBLIC_TWITTER_URL, NEXT_PUBLIC_LINKEDIN_URL, NEXT_PUBLIC_INSTAGRAM_URL, NEXT_PUBLIC_YOUTUBE_URL, and NEXT_PUBLIC_GITHUB_URL configure social profiles; blank values hide their links. NEXT_PUBLIC_WHATSAPP_NUMBER is optional and should include the country code; leave it blank to hide WhatsApp links.
 
-For persisted lead capture, configure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, then run supabase/leads.sql in the Supabase SQL editor. Keep the service role key server-side. RLS has no public access policies.
+For persisted lead capture, configure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, then run supabase/leads.sql in the Supabase SQL editor. Both are blank in the example so local development uses the documented fallback until real credentials are configured. Keep the service role key server-side. RLS has no public access policies.
 Without Supabase credentials, development submissions log to the server console. Production submissions return an error with direct contact options.
 
 ## Structure
@@ -63,13 +63,14 @@ Process scenes share Tailwind utilities in components/sections/how-we-work/visua
 ## Verification
 
 ```powershell
-npm.cmd run lint
-npm.cmd run check:copy
-npx.cmd tsc --noEmit
-npx.cmd knip --no-progress
+npm.cmd run check
 npm.cmd run build
 ```
 
 Pages are statically prerendered; lead capture still requires a server runtime for the Server Action. This is not a static-export deployment.
+
+`check` runs Next.js/React/TypeScript lint rules with zero warnings, centralized copy checks, file and asset consistency checks, TypeScript, and Knip's unused file/export/dependency scan. Individual commands are `lint`, `check:copy`, `check:consistency`, `typecheck`, and `check:unused`.
+
+Use lowercase kebab-case for source and asset filenames, PascalCase for React components, and explicit type-only imports. Keep local fonts named by family and weight (for example, `inter-400.woff2`). Use semicolons and double quotes in JavaScript and TypeScript. Keep Tailwind class strings free of bracket syntax; use standard utilities or shared tokens in `app/globals.css`. Every file in `public/` must have a source reference, and duplicate assets fail the consistency check. Private environment files and generated build/cache files stay ignored by Git.
 
 Private and proprietary - Simpluxe.

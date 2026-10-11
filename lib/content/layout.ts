@@ -1,11 +1,11 @@
 import { COMMON } from "./common";
-import { ElementType as LucideIcon } from "react";
+import type { ElementType as LucideIcon } from "react";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { InfoIcon } from "@animateicons/react/lucide/info-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { MailIcon } from "@animateicons/react/lucide/mail-icon";
 import { SITE, TAGLINE } from "./site";
-import { FooterData } from "@/types/footer";
+import type { FooterData } from "@/types/footer";
 
 // navigation
 export interface NavItem {

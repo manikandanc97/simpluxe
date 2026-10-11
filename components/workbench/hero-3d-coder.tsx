@@ -28,7 +28,7 @@ export function Hero3DCoder({ className, parallaxCanvasRef, cardsRef }: Hero3DCo
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
         // Bypass React state to prevent hydration thrashing
-        canvasRef.current?.style.setProperty('--sync-width', `${entry.contentRect.width}px`);
+        canvasRef.current?.style.setProperty("--sync-width", `${entry.contentRect.width}px`);
       }
     });
     

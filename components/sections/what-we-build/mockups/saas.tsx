@@ -13,7 +13,7 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
       innerClassName="max-w-80 sm:max-w-80 p-3.5 sm:p-4 gap-3"
       floatDuration={5}
     >
-        <div className="flex items-center justify-between pb-1 border-b border-black/[0.04]">
+        <div className="flex items-center justify-between pb-1 border-b border-black/4">
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-400" />
             <div className="w-2 h-2 rounded-full bg-amber-400" />
@@ -43,11 +43,11 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         <div className="flex items-center justify-between gap-2 pt-1 relative">
-          <div className="flex-1 bg-slate-50 border border-black/[0.04] rounded-lg p-1.5 flex items-center gap-2">
+          <div className="flex-1 bg-slate-50 border border-black/4 rounded-lg p-1.5 flex items-center gap-2">
             <motion.div animate={isActive ? { scale: [1, 1.5, 1], opacity: [1, 0.5, 1] } : { scale: 1, opacity: 1 }} transition={{ duration: 1.5, repeat: isActive ? Infinity : 0 }} className="w-2 h-2 rounded-full bg-emerald-500" />
             <span className="text-xs font-mono text-foreground">{SAAS_COPY.postgresDb}</span>
           </div>
-          <div className="flex-1 bg-slate-50 border border-black/[0.04] rounded-lg p-1.5 flex items-center gap-2">
+          <div className="flex-1 bg-slate-50 border border-black/4 rounded-lg p-1.5 flex items-center gap-2">
             <motion.div animate={isActive ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 }} transition={{ duration: 2, repeat: isActive ? Infinity : 0 }} className="w-2 h-2 rounded-full bg-violet-700" />
             <span className="text-xs font-mono text-foreground">{SAAS_COPY.edgeApi}</span>
           </div>

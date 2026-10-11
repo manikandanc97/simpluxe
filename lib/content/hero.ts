@@ -3,7 +3,7 @@ import { TAGLINE } from "./site";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { StarIcon } from "@animateicons/react/lucide/star-icon";
-import { HeroContent } from "@/types/hero";
+import type { HeroContent } from "@/types/hero";
 
 // hero
 export const HERO_CONTENT: HeroContent = {

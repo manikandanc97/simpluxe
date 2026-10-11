@@ -17,7 +17,7 @@ import { UserCheckIcon } from "@animateicons/react/lucide/user-check-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { WrenchIcon } from "@animateicons/react/lucide/wrench-icon";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
-import { FAQItem, FAQSectionContent } from "@/types/faq";
+import type { FAQItem, FAQSectionContent } from "@/types/faq";
 
 // faq
 export const FAQS: FAQItem[] = [

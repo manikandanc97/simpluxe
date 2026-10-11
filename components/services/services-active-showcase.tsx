@@ -58,6 +58,7 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                 onClick={() =>
                   openLead({
                     source: "services-configurator",
+                    projectType: service.name,
                     description: SERVICES_ACTIVE_SHOWCASE_COPY.projectInterest(service.name),
                   })
                 }

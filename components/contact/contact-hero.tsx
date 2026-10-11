@@ -13,6 +13,7 @@ import { LockIcon } from "@animateicons/react/lucide/lock-icon";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { WhatsAppIcon } from "@/components/work/tech-icons";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { SITE } from "@/lib/content/site";
 
@@ -36,8 +37,8 @@ export function ContactHero() {
             <div className="flex flex-col gap-2 sm:gap-2.5">
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
-                <a href="/" className="hover:text-foreground transition-colors">
-                  {CONTACT_HERO_COPY.home}</a>
+                <Link href="/" className="hover:text-foreground transition-colors">
+                  {CONTACT_HERO_COPY.home}</Link>
                 <span className="text-muted-foreground/60">{CONTACT_HERO_COPY.symbol}</span>
                 <span className="text-primary font-semibold">{CONTACT_HERO_COPY.contact}</span>
               </motion.nav>

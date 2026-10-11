@@ -52,7 +52,7 @@ function ListLayout() {
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.08, duration: 0.3 }}
-          className="flex items-center gap-2 bg-white/80 rounded-xl px-2.5 py-2 border border-black/[0.05] shadow-xs"
+          className="flex items-center gap-2 bg-white/80 rounded-xl px-2.5 py-2 border border-black/5 shadow-xs"
         >
           <Avatar color={row.accent} />
           <div className="flex-1 flex flex-col gap-1">
@@ -151,7 +151,7 @@ function CardLayout() {
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 + i * 0.07 }}
-            className="rounded-xl bg-white border border-black/[0.04] p-2 flex flex-col gap-1 shadow-xs"
+            className="rounded-xl bg-white border border-black/4 p-2 flex flex-col gap-1 shadow-xs"
           >
             <div className="w-4 h-4 rounded-lg" style={{ backgroundColor: `${c}25` }}>
               <div className="w-2 h-2 rounded-sm m-1" style={{ backgroundColor: `${c}80` }} />
@@ -213,7 +213,7 @@ function SplitLayout() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 + i * 0.07 }}
-              className="bg-white rounded-xl p-2 border border-black/[0.04] shadow-xs"
+              className="bg-white rounded-xl p-2 border border-black/4 shadow-xs"
             >
               <div className="text-micro text-muted-foreground font-medium">{s.label}</div>
               <div className="text-xs font-black" style={{ color: s.color }}>{s.val}</div>
@@ -226,7 +226,7 @@ function SplitLayout() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25 }}
-          className="flex-1 bg-white rounded-xl border border-black/[0.04] shadow-xs p-2 flex flex-col gap-1.5"
+          className="flex-1 bg-white rounded-xl border border-black/4 shadow-xs p-2 flex flex-col gap-1.5"
         >
           <Bar w="w-16" color="bg-slate-300" h="h-1.5" />
           {[...Array(3)].map((_, i) => (
@@ -256,10 +256,14 @@ function SplitLayout() {
 
 // ── Main UIUXMockup ────────────────────────────────────────
 export function UIUXMockup({ isActive }: { isActive?: boolean }) {
+  return <UIUXSequence key={String(!!isActive)} isActive={isActive} />;
+}
+
+function UIUXSequence({ isActive }: { isActive?: boolean }) {
   const [layout, setLayout] = useState<Layout>("list");
 
   useEffect(() => {
-    if (!isActive) { setLayout("list"); return; }
+    if (!isActive) return;
     let idx = LAYOUTS.indexOf(layout);
     const timer = setTimeout(() => {
       idx = (idx + 1) % LAYOUTS.length;
@@ -278,7 +282,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
       floatDuration={4.5}
     >
         {/* Toolbar */}
-        <div className="flex items-center justify-between pb-1.5 border-b border-black/[0.05]">
+        <div className="flex items-center justify-between pb-1.5 border-b border-black/5">
           <div className="flex gap-1.5">
             {["#FF5F56", "#FFBD2E", "#27C93F"].map((c, i) => (
               <div key={i} className="w-2 h-2 rounded-full" style={{ backgroundColor: c }} />
@@ -325,7 +329,7 @@ export function UIUXMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Bottom status bar */}
-        <div className="flex items-center justify-between pt-1 border-t border-black/[0.04]">
+        <div className="flex items-center justify-between pt-1 border-t border-black/4">
           <div className="flex items-center gap-1.5">
             <motion.div
               animate={{ backgroundColor: [meta.color, `${meta.color}aa`, meta.color] }}

@@ -14,7 +14,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
       floatDuration={4}
       floatY={4}
     >
-        <div className="flex items-center justify-between pb-1 border-b border-black/[0.04]">
+        <div className="flex items-center justify-between pb-1 border-b border-black/4">
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-400" />
             <div className="w-2 h-2 rounded-full bg-amber-400" />
@@ -68,7 +68,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         <div className="flex items-center justify-between pt-1 relative z-10">
-          <div className="flex items-center gap-1.5 bg-slate-50/90 border border-black/[0.05] rounded-lg p-1">
+          <div className="flex items-center gap-1.5 bg-slate-50/90 border border-black/5 rounded-lg p-1">
             <motion.div
               animate={isActive ? { backgroundColor: ["#ffffff", "#f8f9fa", "#ffffff"] } : { backgroundColor: "#ffffff" }}
               transition={{ duration: 2, repeat: isActive ? Infinity : 0 }}

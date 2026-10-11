@@ -4,6 +4,7 @@ import { WORK_VIEW_COPY } from "@/lib/content/projects";
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState } from "react";
+import { ShowcaseSkeleton } from "@/components/ui/skeleton";
 import { PROJECTS } from "@/lib/content/projects";
 import { FILTER_SERVICES, PROJECT_ENHANCEMENTS } from "@/lib/content/projects";
 import { WorkHero } from "@/components/work/work-hero";
@@ -173,11 +174,7 @@ export function WorkView() {
       >
         {/* ── 2. Showcase Controls and Split View ── */}
         <Suspense
-          fallback={
-            <div className="w-full min-h-150 flex items-center justify-center">
-              <div className="w-9 h-9 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
-            </div>
-          }
+          fallback={<ShowcaseSkeleton />}
         >
           <WorkInteractiveSectionWithQuery />
         </Suspense>

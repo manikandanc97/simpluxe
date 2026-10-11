@@ -1,12 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { DialogSkeleton } from "./dialog-skeleton";
 
-const CommandPaletteModal = dynamic(
-  () => import("./command-palette-modal").then((mod) => mod.CommandPaletteModal),
-  { ssr: false }
-);
+const CommandPaletteModal = lazy(() => import("./command-palette-modal").then((mod) => ({ default: mod.CommandPaletteModal })));
 
 interface CommandPaletteProps {
   onStartProject?: () => void;
@@ -14,7 +11,6 @@ interface CommandPaletteProps {
 
 export function CommandPalette({ onStartProject }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
   const [hasEverOpened, setHasEverOpened] = useState(false);
 
   // Keyboard shortcut: Cmd/Ctrl + K only
@@ -30,17 +26,15 @@ export function CommandPalette({ onStartProject }: CommandPaletteProps) {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted || !hasEverOpened) return null;
+  if (!hasEverOpened) return null;
 
   return (
+    <Suspense fallback={<DialogSkeleton open={open} onOpenChange={setOpen} />}>
     <CommandPaletteModal
       open={open}
       onOpenChange={setOpen}
       onStartProject={onStartProject}
     />
+    </Suspense>
   );
 }

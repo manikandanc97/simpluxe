@@ -25,6 +25,7 @@
 *.pem
 .edge_temp
 /scratch
+/.tmp/
 
 # debug
 npm-debug.log*

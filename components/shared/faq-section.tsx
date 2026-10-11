@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { type FAQItem } from "@/types/faq";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FaqContactCard } from "@/components/sections/faq/faq-contact-card";
@@ -33,13 +33,6 @@ export function SharedFaqSection({
   withAmbientDecor = false,
 }: SharedFaqSectionProps) {
   const [openId, setOpenId] = useState<string | null>(() => defaultOpenId ?? (faqs.length > 0 ? faqs[0].id : null));
-
-  // If defaultOpenId changes (e.g. dynamic service ID), reset it.
-  useEffect(() => {
-    if (defaultOpenId) {
-      setOpenId(defaultOpenId);
-    }
-  }, [defaultOpenId]);
 
   const toggle = (faqId: string) => {
     setOpenId((curr) => (curr === faqId ? null : faqId));

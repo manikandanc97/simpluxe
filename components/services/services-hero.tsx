@@ -17,6 +17,7 @@ import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 export function ServicesHero() {
@@ -40,7 +41,7 @@ export function ServicesHero() {
             <div className="flex flex-col gap-2 sm:gap-2.5">
               {/* Breadcrumb */}
               <motion.nav variants={fadeUp} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-medium font-satoshi">
-                <a href="/" className="hover:text-foreground transition-colors">{SERVICES_HERO_COPY.home}</a>
+                <Link href="/" className="hover:text-foreground transition-colors">{SERVICES_HERO_COPY.home}</Link>
                 <span className="text-border">{SERVICES_HERO_COPY.symbol}</span>
                 <span className="text-primary font-semibold">{SERVICES_HERO_COPY.services}</span>
               </motion.nav>

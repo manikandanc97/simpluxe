@@ -2,7 +2,7 @@
 
 import { m as motion } from "motion/react";
 import { fadeUp, viewportReveal } from "@/lib/motion";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export function FadeUpWrapper({ children, className }: { children: ReactNode; className?: string }) {
   return (

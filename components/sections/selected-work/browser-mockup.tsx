@@ -11,7 +11,7 @@ import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
 import { TabletIcon } from "@animateicons/react/lucide/tablet-icon";
 import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
 import { AnimatePresence, m as motion } from "motion/react";
-import Image from "next/image";
+import { LoadingImage } from "@/components/ui/loading-image";
 import { cn } from "@/lib/utils";
 
 type ViewMode = "mobile" | "tablet" | "desktop";
@@ -127,7 +127,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
                 <div className="relative w-full h-full bg-foreground flex items-center justify-center overflow-hidden group/thumb">
                   {/* Main Screenshot Image */}
                   <div className="absolute top-0 left-0 w-full h-full z-10">
-                    <Image
+                    <LoadingImage
                       src={(viewMode === "mobile" ? activeProject.mobileImage || activeProject.desktopImage : activeProject.desktopImage || activeProject.mobileImage)!}
                       alt={BROWSER_MOCKUP_COPY.screenshotAlt(activeProject.name)}
                       fill
@@ -152,7 +152,7 @@ export function BrowserMockup({ activeProject }: { activeProject: Project }) {
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800 tracking-tight">
                       {BROWSER_MOCKUP_COPY.buildingInStealth}</h3>
                     <p className="text-sm sm:text-sm text-slate-500 max-w-72 sm:max-w-xs leading-relaxed">
-                      {BROWSER_MOCKUP_COPY.this}{activeProject.serviceType.toLowerCase().replace('s', '')} {BROWSER_MOCKUP_COPY.isCurrentlyUnderActiveDevelopmentIn}</p>
+                      {BROWSER_MOCKUP_COPY.this}{activeProject.serviceType.toLowerCase().replace("s", "")} {BROWSER_MOCKUP_COPY.isCurrentlyUnderActiveDevelopmentIn}</p>
                   </div>
                   <span className="px-4 py-1.5 rounded-full bg-amber-50 text-amber-600 border border-amber-200 text-xs font-bold tracking-wide uppercase shadow-sm">
                     {BROWSER_MOCKUP_COPY.previewComingSoon}</span>

@@ -1,4 +1,11 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+/* Scan application code only; temporary browser profiles can contain locked files. */
+@source "./";
+@source "../components";
+@source "../hooks";
+@source "../lib";
+@source "../types";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -406,7 +413,6 @@
 
 @utility min-h-status { min-height: 60vh; }
 @utility max-h-dialog { max-height: 90vh; }
-@utility stroke-soft { stroke-width: 1.5; }
 @utility stroke-medium { stroke-width: 2.2; }
 @utility stroke-bold { stroke-width: 2.5; }
 @utility my-footer-art { margin-block: -6%; }
@@ -427,12 +433,6 @@
 }
 @utility mask-none {
   mask-image: none;
-}
-@utility stroke-cap-round {
-  stroke-linecap: round;
-}
-@utility stroke-join-round {
-  stroke-linejoin: round;
 }
 @utility scrollbar-legacy-none {
   -ms-overflow-style: none;
@@ -520,4 +520,21 @@
 }
 @utility top-banner-icon-lg {
   top: calc(50% - 1.625rem);
+}
+
+/* Paint placeholders on the image itself so fill images and tiny logos keep their layout. */
+.image-loading {
+  background-color: var(--surface-elevated);
+  background-image: linear-gradient(100deg, transparent 20%, var(--background) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: image-loading-shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes image-loading-shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-loading { animation: none; }
 }

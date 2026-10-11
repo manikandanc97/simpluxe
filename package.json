@@ -6,8 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "check:copy": "node scripts/check-site-copy.cjs"
+    "lint": "eslint --max-warnings=0",
+    "check:copy": "node scripts/check-site-copy.cjs",
+    "check:consistency": "node scripts/check-consistency.cjs",
+    "check:unused": "knip --no-progress",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run check:copy && npm run check:consistency && npm run typecheck && npm run check:unused"
   },
   "dependencies": {
     "@animateicons/react": "^0.11.0",

@@ -36,19 +36,15 @@ export const leadSchema = z.object({
   phone: z
     .string()
     .trim()
-    .max(30, LEAD_SCHEMA_COPY.phoneNumberMustBeAtMost)
-    .optional()
-    .or(z.literal("")),
+    .min(1, LEAD_SCHEMA_COPY.phoneRequired)
+    .max(30, LEAD_SCHEMA_COPY.phoneNumberMustBeAtMost),
   company: z
     .string()
     .trim()
     .max(100, LEAD_SCHEMA_COPY.companyNameMustBeAtMost)
     .optional()
     .or(z.literal("")),
-  projectType: z
-    .enum(PROJECT_TYPES)
-    .optional()
-    .or(z.literal("")),
+  projectType: z.enum(PROJECT_TYPES, { error: LEAD_SCHEMA_COPY.projectCategoryRequired }),
   goal: z
     .string()
     .trim()

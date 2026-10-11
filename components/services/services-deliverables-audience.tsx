@@ -2,7 +2,7 @@
 
 import { type ServiceData, SERVICES_DELIVERABLES_CONTENT } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
-import { ElementType as LucideIcon } from "react";
+import type { ElementType as LucideIcon } from "react";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { TargetIcon } from "@animateicons/react/lucide/target-icon";
 import { RocketIcon } from "@animateicons/react/lucide/rocket-icon";

@@ -29,6 +29,10 @@ export const PAGE_BANNER_BREADCRUMB_COPY = {
   breadcrumb: "Breadcrumb",
 } as const;
 
+export const LOADING_COPY = {
+  loading: "Loading content…",
+} as const;
+
 export const SCROLL_TO_TOP_COPY = {
   scrollToTop: "Scroll to top",
 } as const;
