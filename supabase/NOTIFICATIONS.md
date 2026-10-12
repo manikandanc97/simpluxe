@@ -4,12 +4,12 @@ Each new enquiry queues two independent emails: a complete enquiry for the team 
 
 ## Activate
 
-1. Create a **Free** account at [Resend](https://resend.com/signup). Add your sending domain and configure the DNS records Resend provides. Wait for verification. A sending subdomain, such as `mail.simpluxe.in`, keeps this separate from existing mailbox DNS. Use the sender address from that verified domain. Resend delivers outbound email; it does not create a mailbox for `connect@simpluxe.in`.
+1. Create a **Free** account at [Resend](https://resend.com/signup). Add **simpluxe.in** as the sending domain and configure the DNS records Resend provides. Wait for verification. Use the existing `connect@simpluxe.in` mailbox as the sender and reply address. Preserve the existing mailbox MX records when adding Resend's records; Resend delivers outbound email and does not host your receiving mailbox.
 2. Create a sending API key. Put the following in `.env.local` and Vercel's Production environment; never put the real key in `.env.example`:
 
    ```env
    RESEND_API_KEY=YOUR_RESEND_KEY
-   LEAD_EMAIL_FROM=Simpluxe <enquiries@mail.simpluxe.in>
+   LEAD_EMAIL_FROM=Simpluxe <connect@simpluxe.in>
    LEAD_NOTIFY_EMAIL=connect@simpluxe.in
    LEAD_REPLY_TO_EMAIL=connect@simpluxe.in
    CRON_SECRET=YOUR_RANDOM_SERVER_SECRET
@@ -28,6 +28,25 @@ Resend's [free sending plan](https://resend.com/pricing) currently allows 100 em
 The team alert contains a **Contact customer on WhatsApp** link for numbers supplied with `+` and country code. This opens a conversation for a person to send; it is not an automatic WhatsApp notification. [Official WhatsApp Business outbound messaging](https://whatsappbusiness.com/products/platform-pricing/) can incur charges, so it is deliberately excluded from this zero-cost setup. Customer acknowledgement is email only.
 
 ## Retry and operations
+
+### Sender rejected with HTTP 403
+
+`resend_sender_domain_unverified` (or the older `resend_http_403`) can occur when the sender's exact domain is not verified. For `connect@simpluxe.in`, add and verify **simpluxe.in** in the same Resend account as your sending key. The old `enquiries@mail.simpluxe.in` sender required verification of **mail.simpluxe.in**, which is a different domain. Add the DNS records shown in Resend, wait for **Verified**, and update Vercel/redeploy when changing the sender or key. Sending-only keys are appropriate; they cannot list domains, which does not mean email sending is broken.
+
+After correcting the sender, submit a fresh test enquiry first. Existing `failed` jobs do not retry automatically, and their stored email payload retains the old sender. For jobs with a confirmed 403 rejection and no provider acceptance, you may use the following in the Supabase SQL editor. Replace the UUID with the one enquiry you intend to resend; do not retry all past enquiries. This resets only definitely rejected jobs and assigns new job IDs/idempotency keys so a corrected sender can be used:
+
+```sql
+update public.lead_notifications
+set id = gen_random_uuid(), status = 'pending', attempts = 0,
+    email_payload = null, first_attempt_at = null, last_error = null,
+    lease_token = null, locked_at = null, next_attempt_at = now()
+where lead_id = 'REPLACE_WITH_ENQUIRY_UUID'::uuid
+  and status = 'failed' and provider_id is null and accepted_at is null
+  and last_error in ('resend_http_403', 'resend_sender_domain_unverified',
+                     'resend_testing_recipient_restricted', 'resend_sending_permission_denied');
+```
+
+The scheduler then picks up those jobs. Check their new IDs and Resend's delivery logs. Do not use this reset for timeouts or ambiguous send outcomes; verify provider logs before attempting those again.
 
 Jobs use row locks and lease tokens to coordinate concurrent workers. Failed network requests, rate limits, and server errors retry with backoff; missing credentials defer without consuming attempts. Email bodies/recipients are frozen before sending, and each job uses a stable Resend idempotency key. Up to eight provider attempts are allowed, within a 20-hour window, shorter than [Resend's 24-hour idempotency window](https://resend.com/docs/dashboard/emails/idempotency-keys). Permanent provider failures, exhausted retries, or expired windows require manual review. Interrupted workers become claimable after ten minutes. Credentials and customer details are excluded from application logs.
 

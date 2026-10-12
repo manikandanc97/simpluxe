@@ -139,6 +139,20 @@ async function run() {
   assert.equal(jobs[0].status, "pending");
   assert.equal(jobs[0].last_error, "resend_http_429");
 
+  reset(["team_email"]);
+  responses = [{ status: 403, body: { name: "validation_error",
+    message: "The example.com domain is not verified. Please add and verify your domain." } }];
+  await deliverLeadNotifications();
+  assert.equal(jobs[0].status, "failed");
+  assert.equal(jobs[0].last_error, "resend_sender_domain_unverified");
+  assert.doesNotMatch(jobs[0].last_error, /example.com/);
+  reset(["customer_email"]);
+  responses = [{ status: 403, body: { name: "validation_error",
+    message: "You can only send testing emails to your own email address (private@example.com)." } }];
+  await deliverLeadNotifications();
+  assert.equal(jobs[0].last_error, "resend_testing_recipient_restricted");
+  assert.doesNotMatch(jobs[0].last_error, /private@example.com/);
+
   reset();
   jobs[0].first_attempt_at = new Date(Date.now() - 21 * 3600000).toISOString();
   jobs[1].attempts = 8;

@@ -93,6 +93,21 @@ export async function deliverLeadNotifications(leadId?: string) {
         if (!providerId) failure = "invalid_provider_response";
       } else {
         failure = `resend_http_${response.status}`;
+        if (response.status === 403) {
+          // Keep only known diagnostic codes, never raw provider messages (which
+          // may include addresses). A sending-only API key is valid for this call.
+          const body = await response.json().catch(() => null) as { name?: string; message?: string } | null;
+          const message = typeof body?.message === "string" ? body.message.toLowerCase() : "";
+          if (body?.name === "validation_error" && /domain.*not verified/.test(message)) {
+            failure = "resend_sender_domain_unverified";
+          } else if (body?.name === "validation_error" && message.includes("testing emails")) {
+            failure = "resend_testing_recipient_restricted";
+          } else if (body?.name === "suspended_api_key") {
+            failure = "resend_api_key_suspended";
+          } else if (body?.name === "restricted_api_key" || body?.name === "invalid_permission") {
+            failure = "resend_sending_permission_denied";
+          }
+        }
         retryable = response.status === 429 || response.status >= 500;
         if (response.status === 429) delayMs = 60 * 60000;
       }
