@@ -127,6 +127,9 @@ async function captureLead(formData: FormData): Promise<LeadState> {
     }).select("id").abortSignal(AbortSignal.timeout(10000)).single();
 
     if (error) {
+      if (error.code === "P0001" && error.message === "lead_rate_limit_exceeded") {
+        return { ok: false, message: LEAD_ACTIONS_COPY.tooManyRequests };
+      }
       // Log diagnostic codes in production without credentials or submitted data.
       console.error("[Lead capture] Supabase insert failed:", { code: error.code });
       return {

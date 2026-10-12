@@ -70,6 +70,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
+    serverActions: { bodySizeLimit: "64kb" },
     inlineCss: true,
     optimizePackageImports: ["@animateicons/react", "@animateicons/react/lucide", "motion", "motion/react"],
   },

@@ -1,5 +1,6 @@
 import "server-only";
 import { getTurnstileSiteKey } from "./turnstile";
+import { SITE } from "@/lib/content/site";
 
 /** Configured widgets must always be verified on the server, even for direct POSTs. */
 export async function verifyLeadChallenge(token: FormDataEntryValue | null): Promise<"valid" | "invalid" | "unavailable"> {
@@ -21,12 +22,11 @@ export async function verifyLeadChallenge(token: FormDataEntryValue | null): Pro
     if (!response.ok) return "unavailable";
     const result: { success?: boolean; action?: string; hostname?: string } = await response.json();
     if (result.success !== true || result.action !== "lead") return "invalid";
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-    if (siteUrl && process.env.NODE_ENV === "production") {
-      const hostname = new URL(siteUrl).hostname.replace(/^www\./, "");
-      if (result.hostname !== hostname && result.hostname !== `www.${hostname}`) {
-        return "invalid";
-      }
+    const hostname = new URL(SITE.url).hostname.replace(/^www\./, "");
+    const isLocalDevelopment = process.env.NODE_ENV === "development"
+      && ["localhost", "127.0.0.1", "::1", "[::1]"].includes(result.hostname ?? "");
+    if (!isLocalDevelopment && result.hostname !== hostname && result.hostname !== `www.${hostname}`) {
+      return "invalid";
     }
     return "valid";
   } catch {

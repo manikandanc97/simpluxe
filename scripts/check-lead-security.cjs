@@ -41,6 +41,7 @@ async function check() {
   let inserts = 0;
   let verificationCalls = 0;
   let verificationSecret;
+  let insertError = null;
   const mocks = {
     "server-only": {},
     "next/server": { after: () => {} },
@@ -54,7 +55,7 @@ async function check() {
       select: () => ({ ilike: () => ({ gte: () => ({ abortSignal: async () => ({ count, error: limitError }) }) }) }),
       insert: () => {
         inserts++;
-        return { select: () => ({ abortSignal: () => ({ single: async () => ({ data: { id: "test-id" }, error: null }) }) }) };
+        return { select: () => ({ abortSignal: () => ({ single: async () => ({ data: insertError ? null : { id: "test-id" }, error: insertError }) }) }) };
       },
     }) }) },
   };
@@ -86,6 +87,8 @@ async function check() {
   result = { success: true, action: "lead", hostname: "localhost" };
   assert.equal(await verifyLeadChallenge("token"), "valid");
   assert.equal(verificationSecret, "test-secret");
+  result = { success: true, action: "lead", hostname: "attacker.example" };
+  assert.equal(await verifyLeadChallenge("token"), "invalid");
   env.NODE_ENV = "production";
   env.NEXT_PUBLIC_TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
   env.TURNSTILE_SECRET_KEY = "1x0000000000000000000000000000000AA";
@@ -117,6 +120,12 @@ async function check() {
   result = { success: false };
   assert.equal((await submitLead({ ok: false }, form())).ok, false);
   assert.equal(inserts, 0);
+  // A forged, absent, expired, or replayed token must never reach database insert.
+  for (const token of [null, "forged-token", "expired-token", "reused-token"]) {
+    result = { success: false, "error-codes": ["timeout-or-duplicate"] };
+    assert.equal((await submitLead({ ok: false }, form({ "cf-turnstile-response": token }))).ok, false);
+    assert.equal(inserts, 0);
+  }
   result = { success: true, action: "lead", hostname: "simpluxe.in" };
   count = 3;
   assert.equal((await submitLead({ ok: false }, form())).ok, false);
@@ -128,6 +137,10 @@ async function check() {
   limitError = null;
   assert.equal((await submitLead({ ok: false }, form())).ok, true);
   assert.equal(inserts, 1);
+  insertError = { code: "P0001", message: "lead_rate_limit_exceeded" };
+  const atomicLimit = await submitLead({ ok: false }, form());
+  assert.equal(atomicLimit.ok, false);
+  assert.equal(atomicLimit.message, "Too many enquiries. Please wait 15 minutes before trying again.");
   console.log("Lead security checks passed: consent, input bounds, honeypot, timing, token validation, hostname/action checks, outage handling, and repeated enquiries. No external requests sent.");
 }
 

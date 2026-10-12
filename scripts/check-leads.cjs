@@ -60,6 +60,16 @@ async function checkLeads() {
   }
 
   console.log("Lead database check passed: server key accepted and all required leads columns available. No enquiry rows read or created. Submit the form to verify saving.");
+  if (process.argv.includes("--security")) {
+    const { data: ready, error: securityError } = await client.rpc("lead_security_ready")
+      .abortSignal(AbortSignal.timeout(15000));
+    if (securityError || ready !== true) {
+      console.error("Atomic lead rate limit is not active. Run supabase/lead-security.sql in Supabase SQL Editor, then repeat this check.");
+      process.exitCode = 1;
+    } else {
+      console.log("Lead security migration active: email quota trigger enabled and leads RLS enabled. No enquiry rows read or created.");
+    }
+  }
   if (process.argv.includes("--notifications")) {
     const missing = ["RESEND_API_KEY", "LEAD_EMAIL_FROM", "LEAD_REPLY_TO_EMAIL",
       "ZOHO_SMTP_HOST", "ZOHO_SMTP_PORT", "ZOHO_SMTP_USER", "ZOHO_SMTP_PASSWORD",
