@@ -10,6 +10,7 @@
     "check:copy": "node scripts/check-site-copy.cjs",
     "check:consistency": "node scripts/check-consistency.cjs",
     "check:leads": "node scripts/check-leads.cjs",
+    "check:lead-security": "node scripts/check-lead-security.cjs",
     "check:notifications": "node scripts/check-leads.cjs --notifications",
     "check:unused": "knip --no-progress",
     "typecheck": "tsc --noEmit",

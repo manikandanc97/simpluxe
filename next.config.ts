@@ -3,7 +3,8 @@ import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://challenges.cloudflare.com;
+    frame-src https://challenges.cloudflare.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com https://www.google.com https://t2.gstatic.com;
     media-src 'self' https://res.cloudinary.com;
@@ -88,6 +89,8 @@ export default function config(phase: string) {
         && "SUPABASE_URL or NEXT_PUBLIC_SUPABASE_URL",
       !(process.env.SUPABASE_SECRET_KEY?.trim() || process.env.SUPABASE_SERVICE_ROLE_KEY?.trim())
         && "SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY",
+      !process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim() && "NEXT_PUBLIC_TURNSTILE_SITE_KEY",
+      !process.env.TURNSTILE_SECRET_KEY?.trim() && "TURNSTILE_SECRET_KEY",
     ].filter(Boolean);
 
     if (missing.length) {

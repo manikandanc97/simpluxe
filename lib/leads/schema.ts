@@ -32,12 +32,18 @@ export const leadSchema = z.object({
   email: z
     .string()
     .trim()
+    .max(254)
     .email(LEAD_SCHEMA_COPY.pleaseEnterAValidEmailAddress),
   phone: z
     .string()
     .trim()
     .min(1, LEAD_SCHEMA_COPY.phoneRequired)
-    .max(30, LEAD_SCHEMA_COPY.phoneNumberMustBeAtMost),
+    .max(30, LEAD_SCHEMA_COPY.phoneNumberMustBeAtMost)
+    .regex(/^\+?[\d\s().-]+$/, LEAD_SCHEMA_COPY.invalidPhone)
+    .refine((value) => {
+      const length = value.replace(/\D/g, "").length;
+      return length >= 7 && length <= 15;
+    }, LEAD_SCHEMA_COPY.invalidPhone),
   company: z
     .string()
     .trim()
@@ -84,4 +90,5 @@ export type LeadState = {
   ok: boolean;
   message?: string;
   fieldErrors?: Record<string, string[]>;
+  verificationAttempt?: string;
 };

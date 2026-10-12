@@ -21,9 +21,6 @@ export const DIALOG_COPY = {
   close: "Close",
 } as const;
 
-export const FORM_COPY = {
-  symbol: "*",
-} as const;
 
 export const PAGE_BANNER_BREADCRUMB_COPY = {
   breadcrumb: "Breadcrumb",

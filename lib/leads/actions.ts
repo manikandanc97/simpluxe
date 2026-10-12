@@ -7,11 +7,21 @@ import { createClient } from "@supabase/supabase-js";
 import { after } from "next/server";
 import { deliverLeadNotifications } from "./notifications";
 import { leadSchema, type LeadState } from "./schema";
+import { verifyLeadChallenge } from "./security";
+import { randomUUID } from "node:crypto";
 
 export async function submitLead(
   _prevState: LeadState,
   formData: FormData
 ): Promise<LeadState> {
+  const result = await captureLead(formData);
+  // Turnstile tokens are single-use. Remount the widget after every failed attempt.
+  return result.ok ? result : { ...result, verificationAttempt: randomUUID() };
+}
+
+async function captureLead(formData: FormData): Promise<LeadState> {
+  const website = formData.get("website");
+  if (typeof website === "string" && website.trim()) return { ok: true };
   const rawData: Record<string, unknown> = {
     firstName: formData.get("firstName"),
     lastName: formData.get("lastName"),
@@ -47,11 +57,20 @@ export async function submitLead(
 
   const data = parsed.data;
 
-  // Spam protection: honeypot or submitted under 2000ms
-  const now = Date.now();
-  if (data.website || now - data.t < 2000) {
-    // Silently succeed
-    return { ok: true };
+  // Timing is a supplemental heuristic, not proof that the submitter is human.
+  const elapsed = Date.now() - data.t;
+  if (elapsed < 2000) {
+    return { ok: false, message: LEAD_ACTIONS_COPY.submittedTooQuickly };
+  }
+
+  const verification = await verifyLeadChallenge(formData.get("cf-turnstile-response"));
+  if (verification !== "valid") {
+    return {
+      ok: false,
+      message: verification === "invalid"
+        ? LEAD_ACTIONS_COPY.verificationRequired
+        : LEAD_ACTIONS_COPY.verificationUnavailable,
+    };
   }
 
   const supabaseUrl = process.env.SUPABASE_URL?.trim()
@@ -84,6 +103,16 @@ export async function submitLead(
       auth: { persistSession: false, autoRefreshToken: false },
     });
 
+    // Persisted across server restarts and instances; supplement the bot challenge.
+    // This limits ordinary repeated submissions, not simultaneous request floods.
+    const { count, error: limitError } = await supabase.from("leads")
+      .select("id", { count: "exact", head: true })
+      .ilike("email", data.email.replace(/[%_\\]/g, "\\$&"))
+      .gte("created_at", new Date(Date.now() - 15 * 60 * 1000).toISOString())
+      .abortSignal(AbortSignal.timeout(10000));
+    if (limitError) return { ok: false, message: LEAD_ACTIONS_COPY.unavailable };
+    if ((count ?? 0) >= 3) return { ok: false, message: LEAD_ACTIONS_COPY.tooManyRequests };
+
     const { data: savedLead, error } = await supabase.from("leads").insert({
       name: `${data.firstName} ${data.lastName}`,
       email: data.email,
@@ -95,7 +124,7 @@ export async function submitLead(
       description: data.description,
       source: data.source,
       blueprint_summary: data.blueprintSummary || null,
-    }).select("id").single();
+    }).select("id").abortSignal(AbortSignal.timeout(10000)).single();
 
     if (error) {
       // Log diagnostic codes in production without credentials or submitted data.

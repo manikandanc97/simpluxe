@@ -3,20 +3,20 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { LEAD_FORM_COPY } from "@/lib/content/leads";
 
-import { AnimatedMail, AnimatedMessageSquare, AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
+import { AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
 import { CelebratoryButton } from "@/components/ui/celebratory-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { FormField, FormLabel, FormMessage } from "@/components/ui/form";
+import { FormField, FormMessage } from "@/components/ui/form";
 import { submitLead } from "@/lib/leads/actions";
-import { type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
+import { leadSchema, type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
 import { SITE } from "@/lib/content/site";
 import { LeadSuccess } from "./lead-success";
-import { LockIcon } from "@animateicons/react/lucide/lock-icon";
-import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { useActionState, useState, useEffect, useId, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { LeadVerification } from "./lead-verification";
+import { getTurnstileSiteKey } from "@/lib/leads/turnstile";
 
 interface LeadFormProps {
   prefill?: Partial<LeadInput>;
@@ -36,7 +36,18 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   const formId = useId();
   const fieldId = (name: string) => `${formId}-lead-${name}`;
   const successNotified = useRef(false);
+  const turnstileSiteKey = getTurnstileSiteKey();
+  const [verified, setVerified] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [mountTime] = useState(() => Date.now());
+
+  const validateForm = (form: HTMLFormElement) => {
+    const data = new FormData(form);
+    return leadSchema.safeParse({
+      ...Object.fromEntries(data),
+      consent: data.get("consent") === "true",
+    }).success;
+  };
 
   useEffect(() => {
     if (state.ok && !successNotified.current) {
@@ -49,16 +60,21 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
     return <LeadSuccess onClose={onClose} />;
   }
 
-  const encodedSummary = encodeURIComponent(
-    prefill?.description
-      ? LEAD_FORM_COPY.whatsappProjectMessage(prefill.description.slice(0, 100))
-      : LEAD_FORM_COPY.whatsappMessage
-  );
-
   return (
-    <form action={formAction} className="flex flex-col gap-4 text-left font-satoshi">
+    <form
+      action={formAction}
+      onInput={(event) => setIsFormValid(validateForm(event.currentTarget))}
+      onChange={(event) => setIsFormValid(validateForm(event.currentTarget))}
+      onReset={() => setIsFormValid(false)}
+      onSubmit={(event) => {
+        if (!validateForm(event.currentTarget) || isPending || (turnstileSiteKey && !verified)) {
+          event.preventDefault();
+        }
+      }}
+      className="flex flex-col gap-4 text-left font-satoshi"
+    >
       {/* Hidden honeypot and anti-spam fields */}
-      <div aria-hidden="true" style={{ display: "none" }}>
+      <div aria-hidden="true" className="hidden">
         <input
           type="text"
           name="website"
@@ -68,7 +84,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
         />
         <input type="hidden" name="t" value={mountTime} />
         <input type="hidden" name="source" value={prefill?.source || "contact"} />
-        <input type="hidden" name="consent" value="true" />
         {prefill?.blueprintSummary && (
           <input type="hidden" name="blueprintSummary" value={prefill.blueprintSummary} />
         )}
@@ -83,23 +98,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
           className="p-4 text-xs sm:text-sm rounded-xl bg-destructive/10 text-destructive border border-destructive/20"
         >
           <p className="font-semibold">{state.message}</p>
-          {(SITE.email || SITE.whatsapp) && (
-            <div className="mt-2 flex gap-4 text-xs font-semibold">
-              {SITE.email && (
-                <a href={`mailto:${SITE.email}`} className="underline hover:opacity-80">
-                  {LEAD_FORM_COPY.emailUs}{SITE.email}{LEAD_FORM_COPY.emailSuffix}</a>
-              )}
-              {SITE.whatsapp && (
-                <a
-                  href={`https://wa.me/${SITE.whatsapp}?text=${encodedSummary}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:opacity-80"
-                >
-                  {LEAD_FORM_COPY.whatsapp}</a>
-              )}
-            </div>
-          )}
         </div>
       )}
 
@@ -107,12 +105,14 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* First Name & Last Name (2-col grid) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
-          <FormLabel htmlFor={fieldId("first-name")} required>
-            {LEAD_FORM_COPY.firstName}</FormLabel>
           <Input
             id={fieldId("first-name")}
+            aria-label={LEAD_FORM_COPY.firstName}
+            autoComplete="given-name"
+            maxLength={50}
             name="firstName"
             required
+            minLength={2}
             defaultValue={prefill?.firstName || ""}
             placeholder={LEAD_FORM_COPY.firstNamePlaceholder}
             aria-required="true"
@@ -123,10 +123,11 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
         </FormField>
 
         <FormField>
-          <FormLabel htmlFor={fieldId("last-name")} required>
-            {LEAD_FORM_COPY.lastName}</FormLabel>
           <Input
             id={fieldId("last-name")}
+            aria-label={LEAD_FORM_COPY.lastName}
+            autoComplete="family-name"
+            maxLength={50}
             name="lastName"
             required
             defaultValue={prefill?.lastName || ""}
@@ -142,10 +143,11 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* Email & Phone (2-col grid) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
-          <FormLabel htmlFor={fieldId("email")} required>
-            {LEAD_FORM_COPY.email}</FormLabel>
           <Input
             id={fieldId("email")}
+            aria-label={LEAD_FORM_COPY.email}
+            autoComplete="email"
+            maxLength={254}
             name="email"
             type="email"
             required
@@ -159,10 +161,11 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
         </FormField>
 
         <FormField>
-          <FormLabel htmlFor={fieldId("phone")} required>
-            {LEAD_FORM_COPY.whatsappPhone}</FormLabel>
           <Input
             id={fieldId("phone")}
+            aria-label={LEAD_FORM_COPY.whatsappPhone}
+            autoComplete="tel"
+            maxLength={30}
             name="phone"
             type="tel"
             required
@@ -179,10 +182,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* Project Category & Company (2-col grid) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
-          <FormLabel htmlFor={fieldId("project-type")} required>{LEAD_FORM_COPY.projectCategory}</FormLabel>
           <div data-animated-icon-target className="relative">
             <select
               id={fieldId("project-type")}
+              aria-label={LEAD_FORM_COPY.projectCategory}
               name="projectType"
               required
               aria-required="true"
@@ -190,7 +193,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
               onChange={(event) => setSelectedProjectType(event.target.value)}
               aria-invalid={Boolean(state.fieldErrors?.projectType)}
               aria-describedby={state.fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
-              className={cn("w-full h-10 sm:h-11 px-4 pr-10 rounded-xl bg-card border border-border text-xs sm:text-sm font-semibold text-foreground appearance-none shadow-2xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring")}
+              className={cn(selectedProjectType ? "text-foreground" : "text-muted-foreground/60", "w-full h-10 sm:h-11 px-4 pr-10 rounded-xl bg-card border border-border text-xs sm:text-sm appearance-none shadow-2xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring")}
             >
               <option value="" disabled>{LEAD_FORM_COPY.selectProjectCategory}</option>
               {PROJECT_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
@@ -202,10 +205,11 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
 
         {/* Company */}
         <FormField>
-          <FormLabel htmlFor={fieldId("company")}>
-            {LEAD_FORM_COPY.companyOptional}</FormLabel>
           <Input
             id={fieldId("company")}
+            aria-label={LEAD_FORM_COPY.companyOptional}
+            autoComplete="organization"
+            maxLength={100}
             name="company"
             defaultValue={prefill?.company || ""}
             placeholder={LEAD_FORM_COPY.companyName}
@@ -218,12 +222,13 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
 
       {/* Description */}
       <FormField>
-        <FormLabel htmlFor={fieldId("description")} required>
-          {LEAD_FORM_COPY.projectDescription}</FormLabel>
         <Textarea
           id={fieldId("description")}
+          aria-label={LEAD_FORM_COPY.projectDescription}
+          maxLength={2000}
           name="description"
           required
+          minLength={10}
           rows={4}
           defaultValue={prefill?.description || ""}
           placeholder={LEAD_FORM_COPY.descriptionPlaceholder}
@@ -234,10 +239,42 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
         <FormMessage id={fieldId("description-error")}>{state.fieldErrors?.description?.[0]}</FormMessage>
       </FormField>
 
-      <div className="pt-2 flex flex-col gap-4">
+      <FormField>
+        <div className="flex items-start gap-3 pt-1">
+          <input
+            id={fieldId("consent")}
+            name="consent"
+            type="checkbox"
+            required
+            value="true"
+            aria-invalid={Boolean(state.fieldErrors?.consent)}
+            aria-describedby={state.fieldErrors?.consent ? fieldId("consent-error") : undefined}
+            className="mt-0.5 size-4 shrink-0 cursor-pointer accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          />
+          <label htmlFor={fieldId("consent")} className="cursor-pointer text-xs leading-relaxed text-muted-foreground sm:text-sm">
+            {LEAD_FORM_COPY.consentDescription}{" "}
+            <a href="/privacy" className="font-medium text-foreground underline underline-offset-4 hover:text-primary">
+              {LEAD_FORM_COPY.privacyPolicy}
+            </a>{" "}
+            <span aria-hidden="true" className="text-primary">*</span>
+          </label>
+        </div>
+        <FormMessage id={fieldId("consent-error")}>{state.fieldErrors?.consent?.[0]}</FormMessage>
+      </FormField>
+
+      {turnstileSiteKey && (
+        <LeadVerification
+          key={state.verificationAttempt ?? "initial"}
+          siteKey={turnstileSiteKey}
+          onVerified={setVerified}
+        />
+      )}
+
+      <div className="pt-2 flex flex-col gap-3">
         <CelebratoryButton data-animated-icon-target
           type="submit"
           isPending={isPending}
+          disabled={!isFormValid || (Boolean(turnstileSiteKey) && !verified)}
           className="w-full"
         >
           {isPending ? (
@@ -258,48 +295,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             : LEAD_FORM_COPY.reviewDescription}
         </p>
       </div>
-
-      {/* Enterprise Trust & Security Badges */}
-      <div className="pt-4 border-t border-border flex flex-wrap items-center justify-center gap-4 sm:gap-4 text-xs text-muted-foreground font-mono">
-        <div data-animated-icon-target className="flex items-center gap-1.5">
-          <AnimatedIcon icon={LockIcon} size={13} className="text-emerald-600" />
-          <span>{LEAD_FORM_COPY.encryptionBadge}</span>
-        </div>
-        <span>{LEAD_FORM_COPY.badgeSeparator}</span>
-        <div data-animated-icon-target className="flex items-center gap-1.5">
-          <AnimatedIcon icon={ShieldCheckIcon} size={13} className="text-primary" />
-          <span>{LEAD_FORM_COPY.mutualNdaProtected}</span>
-        </div>
-        <span>{LEAD_FORM_COPY.badgeSeparator}</span>
-        <span>{LEAD_FORM_COPY.zeroSpamGuarantee}</span>
-      </div>
-
-      {/* Alternative direct contacts */}
-      {(SITE.whatsapp || SITE.email) && (
-        <div className="pt-4 border-t border-border flex items-center justify-center gap-4 text-xs text-muted-foreground">
-          <span>{LEAD_FORM_COPY.preferDirectMessaging}</span>
-          {SITE.whatsapp && (
-            <a
-              href={`https://wa.me/${SITE.whatsapp}?text=${encodedSummary}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 text-primary hover:underline font-semibold"
-            >
-              <AnimatedMessageSquare size={13} className="text-primary" />
-              <span>{LEAD_FORM_COPY.whatsapp}</span>
-            </a>
-          )}
-          {SITE.email && (
-            <a
-              href={`mailto:${SITE.email}`}
-              className="group inline-flex items-center gap-1.5 text-primary hover:underline font-semibold"
-            >
-              <AnimatedMail size={13} className="text-primary" />
-              <span>{LEAD_FORM_COPY.directEmail}</span>
-            </a>
-          )}
-        </div>
-      )}
     </form>
   );
 }

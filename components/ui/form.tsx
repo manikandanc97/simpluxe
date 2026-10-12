@@ -1,4 +1,3 @@
-import { FORM_COPY } from "@/lib/content/ui";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -9,29 +8,6 @@ const FormField = React.forwardRef<
   <div ref={ref} className={cn("flex flex-col gap-1.5 text-left", className)} {...props} />
 ));
 FormField.displayName = "FormField";
-
-interface FormLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  required?: boolean;
-}
-
-const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
-  ({ className, required, children, ...props }, ref) => (
-    <label
-      ref={ref}
-      className={cn(
-        "text-xs font-semibold text-foreground/80 flex items-center justify-between font-satoshi",
-        className
-      )}
-      {...props}
-    >
-      <span>
-        {children}
-        {required && <span className="text-primary ml-1 font-bold">{FORM_COPY.symbol}</span>}
-      </span>
-    </label>
-  )
-);
-FormLabel.displayName = "FormLabel";
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
@@ -50,4 +26,4 @@ const FormMessage = React.forwardRef<
 });
 FormMessage.displayName = "FormMessage";
 
-export { FormField, FormLabel, FormMessage };
+export { FormField, FormMessage };
