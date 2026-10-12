@@ -56,4 +56,4 @@ Jobs use row locks and lease tokens to coordinate concurrent workers. Failed net
 
 Watch `pending` jobs that remain pending, any `failed` jobs, Resend bounce/suppression logs, and the Zoho Sent folder. After correcting a failed customer job, check Resend for its idempotency key/provider ID before manually retrying; resending outside the provider's idempotency window can duplicate mail. The free setup does not implement provider delivery webhooks or guarantee exactly-once inbox delivery. Do not backfill old enquiries unless you intend to email those customers.
 
-`npm.cmd run test:notifications` runs mocked regression checks without sending mail. `npm.cmd run check:notifications` checks the real configured database without reading enquiry rows or making notification provider calls.
+`npm.cmd run check:notifications` checks the real configured database without reading enquiry rows or making notification provider calls.
