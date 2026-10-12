@@ -15,6 +15,9 @@ export const SITE = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "connect@simpluxe.in",
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+91 8675748207",
   whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, ""),
+  contactAddress: "H7C2+3HP Kanakkampalayam I, Tamil Nadu",
+  contactMapCoordinates: "10.5702125,77.2514531",
+  contactMapUrl: "https://maps.app.goo.gl/32fMW3cbY1o16SKG9",
   location: "", // TODO(owner): e.g. "Based in Tamil Nadu, India · working worldwide"
   responseTime: "", // TODO(owner): e.g. "within one business day"
   availability: "Taking on new projects", // TODO(owner): confirm this is true

@@ -49,6 +49,7 @@ export const LEAD_FORM_COPY = {
   consentDescription: "I agree to Simpluxe using my personal data to respond to this enquiry, as described in the",
   privacyPolicy: COMMON.pages.privacy,
   verificationFailed: "Verification could not load. Check your connection and try again.",
+  verificationLocalDomainDenied: "Add localhost or 127.0.0.1 to your Cloudflare Turnstile widget's allowed hostnames, then retry.",
   retryVerification: "Retry verification",
   verificationPending: "Verifying your request...",
   reviewDescription: "We will review your requirements and get back to you shortly.",

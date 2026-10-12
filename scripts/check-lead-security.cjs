@@ -78,10 +78,14 @@ async function check() {
   delete env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   assert.equal(await verifyLeadChallenge("token"), "unavailable");
   env.NODE_ENV = "development";
-  assert.equal(await verifyLeadChallenge(null), "invalid");
+  assert.equal(await verifyLeadChallenge(null), "unavailable");
+  env.NEXT_PUBLIC_TURNSTILE_SITE_KEY = "test-site";
+  env.TURNSTILE_SECRET_KEY = "test-secret";
   result = { success: true, hostname: "example.com" };
-  assert.equal(await verifyLeadChallenge("XXXX.DUMMY.TOKEN.XXXX"), "valid");
-  assert.equal(verificationSecret, "1x0000000000000000000000000000000AA");
+  assert.equal(await verifyLeadChallenge("token"), "invalid");
+  result = { success: true, action: "lead", hostname: "localhost" };
+  assert.equal(await verifyLeadChallenge("token"), "valid");
+  assert.equal(verificationSecret, "test-secret");
   env.NODE_ENV = "production";
   env.NEXT_PUBLIC_TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
   env.TURNSTILE_SECRET_KEY = "1x0000000000000000000000000000000AA";

@@ -18,10 +18,22 @@ export function LeadVerification({ siteKey, onVerified }: {
   onVerified: (verified: boolean) => void;
 }) {
   const container = useRef<HTMLDivElement>(null);
+  const wrapper = useRef<HTMLDivElement>(null);
+  const [compact, setCompact] = useState(false);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [domainDenied, setDomainDenied] = useState(false);
   const [retry, setRetry] = useState(0);
   const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (!wrapper.current) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setCompact(entry.contentRect.width < 300);
+    });
+    observer.observe(wrapper.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const api = getTurnstile();
@@ -30,9 +42,9 @@ export function LeadVerification({ siteKey, onVerified }: {
     const id = api.render(container.current, {
       sitekey: siteKey,
       action: "lead",
-      theme: "auto",
-      size: "flexible",
-      appearance: "interaction-only",
+      theme: "light",
+      size: compact ? "compact" : "normal",
+      appearance: "always",
       retry: "never",
       "refresh-timeout": "manual",
       "response-field": false,
@@ -45,9 +57,10 @@ export function LeadVerification({ siteKey, onVerified }: {
         setToken("");
         onVerified(false);
       },
-      "error-callback": () => {
+      "error-callback": (code: string) => {
         setToken("");
         setFailed(true);
+        setDomainDenied(code === "110200");
         onVerified(false);
       },
       "timeout-callback": () => {
@@ -60,10 +73,10 @@ export function LeadVerification({ siteKey, onVerified }: {
       api.remove(id);
       onVerified(false);
     };
-  }, [ready, siteKey, onVerified, retry]);
+  }, [ready, siteKey, onVerified, retry, compact]);
 
   return (
-    <div className="min-w-0">
+    <div ref={wrapper} className="flex min-w-0 flex-col items-start gap-2">
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
         onReady={() => setReady(true)}
@@ -73,7 +86,9 @@ export function LeadVerification({ siteKey, onVerified }: {
       <div ref={container} />
       {failed ? (
         <div role="alert" className="flex flex-wrap items-center gap-2 text-xs text-destructive">
-          <span>{LEAD_FORM_COPY.verificationFailed}</span>
+          <span>{domainDenied && process.env.NODE_ENV === "development"
+            ? LEAD_FORM_COPY.verificationLocalDomainDenied
+            : LEAD_FORM_COPY.verificationFailed}</span>
           <button type="button" className="underline underline-offset-4" onClick={() => {
             if (!getTurnstile()) {
               window.location.reload();
@@ -81,6 +96,7 @@ export function LeadVerification({ siteKey, onVerified }: {
             }
             setToken("");
             setFailed(false);
+            setDomainDenied(false);
             setRetry((value) => value + 1);
           }}>{LEAD_FORM_COPY.retryVerification}</button>
         </div>

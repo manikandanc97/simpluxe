@@ -16,6 +16,7 @@ export const CONTACT_CHANNELS_COPY = {
   copyEmailToClipboard: "Copy email to clipboard",
   instantConsultation: "Instant Consultation",
   chatOnWhatsapp: "Chat on WhatsApp",
+  mapTitle: "Simpluxe office location",
 } as const;
 
 export const CONTACT_HERO_COPY = {

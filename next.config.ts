@@ -4,7 +4,7 @@ import { PHASE_PRODUCTION_BUILD } from "next/constants";
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://challenges.cloudflare.com;
-    frame-src https://challenges.cloudflare.com;
+    frame-src https://challenges.cloudflare.com https://www.google.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com https://www.google.com https://t2.gstatic.com;
     media-src 'self' https://res.cloudinary.com;

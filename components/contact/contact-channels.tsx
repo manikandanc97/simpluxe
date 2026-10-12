@@ -14,6 +14,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge";
 
 export function ContactChannels() {
+  const mapQuery = encodeURIComponent(SITE.contactMapCoordinates);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(copyTimer.current), []);
@@ -102,6 +103,18 @@ export function ContactChannels() {
             </div>
             <AnimatedIcon icon={ArrowRightIcon} size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
           </a>
+        )}
+        {SITE.contactAddress && (
+          <div className="overflow-hidden rounded-xl border border-border bg-card shadow-2xs">
+            <iframe
+              src={`https://www.google.com/maps?q=${mapQuery}&z=17&output=embed`}
+              title={CONTACT_CHANNELS_COPY.mapTitle}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="block h-56 w-full border-0 sm:h-64"
+            />
+          </div>
         )}
       </CardContent>
 
