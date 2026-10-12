@@ -108,6 +108,8 @@ async function run() {
   assert.doesNotMatch(requests[0].payload.html, /<script>/);
   assert.match(requests[0].payload.html, /&lt;script&gt;/);
   assert.match(requests[0].payload.html, /https:\/\/wa.me\/918675748207/);
+  assert.match(requests[0].payload.html, /res\.cloudinary\.com\/drdl4pdnx\/image\/upload\/f_png,c_limit,w_288,q_auto\/simpluxe\/logo\/logo/);
+  assert.match(requests[1].payload.html, /res\.cloudinary\.com\/drdl4pdnx\/image\/upload\/f_png,c_limit,w_288,q_auto\/simpluxe\/logo\/logo/);
   assert.doesNotMatch(requests[1].payload.text, /Build a website/);
 
   reset(["team_email"]);

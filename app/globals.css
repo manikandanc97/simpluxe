@@ -1,5 +1,24 @@
 @import "tailwindcss" source(none);
 
+@utility animate-success-card {
+  animation: success-card-enter 350ms ease-out both;
+}
+
+@utility animate-success-emblem {
+  animation: success-emblem-enter 600ms ease-out both;
+}
+
+@keyframes success-card-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes success-emblem-enter {
+  0% { opacity: 0; transform: scale(0.75) rotate(-8deg); }
+  65% { opacity: 1; transform: scale(1.08) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
 /* Scan application code only; temporary browser profiles can contain locked files. */
 @source "./";
 @source "../components";

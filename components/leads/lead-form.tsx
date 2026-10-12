@@ -11,8 +11,7 @@ import { FormField, FormLabel, FormMessage } from "@/components/ui/form";
 import { submitLead } from "@/lib/leads/actions";
 import { type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
 import { SITE } from "@/lib/content/site";
-import { fireCelebratoryConfetti } from "@/lib/confetti";
-import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
+import { LeadSuccess } from "./lead-success";
 import { LockIcon } from "@animateicons/react/lucide/lock-icon";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
@@ -22,13 +21,14 @@ import { cn } from "@/lib/utils";
 interface LeadFormProps {
   prefill?: Partial<LeadInput>;
   onSuccess?: () => void;
+  onClose?: () => void;
 }
 
 const initialState: LeadState = {
   ok: false,
 };
 
-export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
+export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   const [state, formAction, isPending] = useActionState(submitLead, initialState);
   const [selectedProjectType, setSelectedProjectType] = useState<string>(
     prefill?.projectType || ""
@@ -41,25 +41,12 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
   useEffect(() => {
     if (state.ok && !successNotified.current) {
       successNotified.current = true;
-      fireCelebratoryConfetti();
       onSuccess?.();
     }
   }, [state.ok, onSuccess]);
 
   if (state.ok) {
-    return (
-      <div data-animated-icon-target className="py-12 flex flex-col items-center text-center gap-4">
-        <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200/80 flex items-center justify-center">
-          <AnimatedIcon icon={CircleCheckIcon} className="w-8 h-8" />
-        </div>
-        <h3 className="text-2xl font-bold tracking-tight text-foreground font-satoshi">{LEAD_FORM_COPY.successTitle}</h3>
-        <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
-          {SITE.responseTime
-            ? LEAD_FORM_COPY.successResponse(SITE.responseTime)
-            : LEAD_FORM_COPY.successDescription}
-        </p>
-      </div>
-    );
+    return <LeadSuccess onClose={onClose} />;
   }
 
   const encodedSummary = encodeURIComponent(
