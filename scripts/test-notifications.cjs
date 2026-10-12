@@ -11,6 +11,8 @@ const lead = { id: "lead-1", name: "<script>Customer</script>", email: "customer
 let jobs = [];
 let requests = [];
 let responses = [];
+let smtpRequests = [];
+let smtpResponses = [];
 let queueError = false;
 let afterCallbacks = [];
 let schedulingFails = false;
@@ -56,6 +58,14 @@ function load(file) {
   function localRequire(name) {
     if (name === "server-only") return {};
     if (name === "@supabase/supabase-js") return { createClient: () => client };
+    if (name === "nodemailer") return { createTransport(options) {
+      return { async sendMail(payload) {
+        smtpRequests.push({ options, payload });
+        const response = smtpResponses.shift();
+        if (response instanceof Error) throw response;
+        return response || { messageId: "zoho-message-1" };
+      } };
+    } };
     if (name === "next/server") return { after(callback) {
       if (schedulingFails) throw new Error("Background context unavailable");
       afterCallbacks.push(callback);
@@ -83,6 +93,8 @@ function reset(kinds = ["team_email", "customer_email"]) {
     status: "pending", attempts: 0, first_attempt_at: null, email_payload: null }));
   requests = [];
   responses = [];
+  smtpRequests = [];
+  smtpResponses = [];
   queueError = false;
   afterCallbacks = [];
   schedulingFails = false;
@@ -90,8 +102,12 @@ function reset(kinds = ["team_email", "customer_email"]) {
   process.env.SUPABASE_SECRET_KEY = "sb_secret_test";
   process.env.RESEND_API_KEY = "re_test";
   process.env.LEAD_EMAIL_FROM = "Simpluxe <enquiries@example.com>";
-  process.env.LEAD_NOTIFY_EMAIL = "team@example.com";
   process.env.LEAD_REPLY_TO_EMAIL = "team@example.com";
+  process.env.ZOHO_SMTP_HOST = "smtp.zoho.in";
+  process.env.ZOHO_SMTP_PORT = "465";
+  process.env.ZOHO_SMTP_USER = "team@example.com";
+  process.env.ZOHO_SMTP_PASSWORD = "app-password";
+  process.env.ZOHO_TEAM_EMAIL = "team@example.com";
   process.env.CRON_SECRET = "test-cron-secret";
 }
 
@@ -101,31 +117,35 @@ async function run() {
   let result = await deliverLeadNotifications();
   assert.equal(result.accepted, 2);
   assert.ok(jobs.every((job) => job.status === "accepted"));
-  assert.equal(requests[0].payload.to[0], "team@example.com");
-  assert.equal(requests[0].payload.reply_to, lead.email);
-  assert.equal(requests[1].payload.to[0], lead.email);
-  assert.equal(requests[1].payload.reply_to, "team@example.com");
-  assert.doesNotMatch(requests[0].payload.html, /<script>/);
-  assert.match(requests[0].payload.html, /&lt;script&gt;/);
-  assert.match(requests[0].payload.html, /https:\/\/wa.me\/918675748207/);
+  assert.equal(smtpRequests.length, 1);
+  assert.equal(requests.length, 1);
+  assert.equal(smtpRequests[0].options.host, "smtp.zoho.in");
+  assert.equal(smtpRequests[0].options.secure, true);
+  assert.equal(smtpRequests[0].payload.to[0], "team@example.com");
+  assert.equal(smtpRequests[0].payload.replyTo, lead.email);
+  assert.equal(requests[0].payload.to[0], lead.email);
+  assert.equal(requests[0].payload.reply_to, "team@example.com");
+  assert.doesNotMatch(smtpRequests[0].payload.html, /<script>/);
+  assert.match(smtpRequests[0].payload.html, /&lt;script&gt;/);
+  assert.match(smtpRequests[0].payload.html, /https:\/\/wa.me\/918675748207/);
+  assert.match(smtpRequests[0].payload.html, /res\.cloudinary\.com\/drdl4pdnx\/image\/upload\/f_png,c_limit,w_288,q_auto\/simpluxe\/logo\/logo/);
   assert.match(requests[0].payload.html, /res\.cloudinary\.com\/drdl4pdnx\/image\/upload\/f_png,c_limit,w_288,q_auto\/simpluxe\/logo\/logo/);
-  assert.match(requests[1].payload.html, /res\.cloudinary\.com\/drdl4pdnx\/image\/upload\/f_png,c_limit,w_288,q_auto\/simpluxe\/logo\/logo/);
-  assert.doesNotMatch(requests[1].payload.text, /Build a website/);
+  assert.doesNotMatch(requests[0].payload.text, /Build a website/);
 
   reset(["team_email"]);
-  responses = ["timeout"];
+  smtpResponses = [new Error("Timeout")];
   result = await deliverLeadNotifications();
   assert.equal(result.deferred, 1);
   assert.equal(jobs[0].status, "pending");
   assert.equal(jobs[0].attempts, 1);
-  const original = requests[0];
-  process.env.LEAD_NOTIFY_EMAIL = "changed@example.com";
+  const original = smtpRequests[0].payload;
+  process.env.ZOHO_TEAM_EMAIL = "changed@example.com";
   await deliverLeadNotifications();
-  assert.equal(requests[1].body, original.body);
-  assert.equal(requests[1].headers["Idempotency-Key"], original.headers["Idempotency-Key"]);
+  assert.deepEqual(smtpRequests[1].payload, original);
 
   reset();
   delete process.env.RESEND_API_KEY;
+  delete process.env.ZOHO_SMTP_PASSWORD;
   result = await deliverLeadNotifications();
   assert.equal(result.deferred, 2);
   assert.equal(requests.length, 0);
@@ -141,7 +161,7 @@ async function run() {
   assert.equal(jobs[0].status, "pending");
   assert.equal(jobs[0].last_error, "resend_http_429");
 
-  reset(["team_email"]);
+  reset(["customer_email"]);
   responses = [{ status: 403, body: { name: "validation_error",
     message: "The example.com domain is not verified. Please add and verify your domain." } }];
   await deliverLeadNotifications();
@@ -155,9 +175,18 @@ async function run() {
   assert.equal(jobs[0].last_error, "resend_testing_recipient_restricted");
   assert.doesNotMatch(jobs[0].last_error, /private@example.com/);
 
+  reset(["team_email"]);
+  const authError = new Error("Authentication failed");
+  authError.code = "EAUTH";
+  authError.responseCode = 535;
+  smtpResponses = [authError];
+  await deliverLeadNotifications();
+  assert.equal(jobs[0].status, "failed");
+  assert.equal(jobs[0].last_error, "zoho_smtp_authentication_failed");
+
   reset();
-  jobs[0].first_attempt_at = new Date(Date.now() - 21 * 3600000).toISOString();
-  jobs[1].attempts = 8;
+  jobs[0].attempts = 8;
+  jobs[1].first_attempt_at = new Date(Date.now() - 21 * 3600000).toISOString();
   result = await deliverLeadNotifications();
   assert.equal(result.failed, 2);
   assert.equal(requests.length, 0);

@@ -61,7 +61,9 @@ async function checkLeads() {
 
   console.log("Lead database check passed: server key accepted and all required leads columns available. No enquiry rows read or created. Submit the form to verify saving.");
   if (process.argv.includes("--notifications")) {
-    const missing = ["RESEND_API_KEY", "LEAD_EMAIL_FROM", "LEAD_NOTIFY_EMAIL", "LEAD_REPLY_TO_EMAIL", "CRON_SECRET"]
+    const missing = ["RESEND_API_KEY", "LEAD_EMAIL_FROM", "LEAD_REPLY_TO_EMAIL",
+      "ZOHO_SMTP_HOST", "ZOHO_SMTP_PORT", "ZOHO_SMTP_USER", "ZOHO_SMTP_PASSWORD",
+      "ZOHO_TEAM_EMAIL", "CRON_SECRET"]
       .filter((name) => !process.env[name]?.trim());
     if (missing.length) {
       console.error(`Notifications not ready: missing ${missing.join(", ")}. See supabase/NOTIFICATIONS.md.`);
@@ -85,7 +87,7 @@ async function checkLeads() {
       console.error("Worker claim function is not visible in the API schema. Run supabase/lead-notifications.sql and check API schema exposure if already applied.");
       process.exitCode = 1;
     } else {
-      console.log("Worker claim function available. Confirm the insert trigger and cron job were created by the SQL setup; verify the sender domain in Resend.");
+      console.log("Worker claim function available. Confirm the insert trigger and cron job were created by the SQL setup; verify Resend and Zoho SMTP delivery with a fresh enquiry.");
     }
   }
 }
