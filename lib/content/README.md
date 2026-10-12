@@ -19,6 +19,7 @@ Start with the file for the area you want to change. Each file contains its main
 | Homepage call to action | `cta.ts` |
 | Ideas page and experiments | `lab.ts` |
 | Form options, validation, success and error messages | `leads.ts` |
+| Team enquiry email and customer acknowledgement templates | `lead-emails.ts` |
 | Page SEO and social sharing image text | `metadata.ts` |
 | Privacy and terms policies | `legal.ts` |
 | Command menu, dialog labels, error pages, shared UI | `ui.ts` |

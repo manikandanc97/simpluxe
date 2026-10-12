@@ -38,6 +38,7 @@ export const LEAD_FORM_COPY = {
   enterYourEmailAddress: "Enter your email address",
   whatsappPhone: "WhatsApp / Phone",
   whatsappOrPhone: "WhatsApp or phone",
+  phoneHint: "Include your country code, e.g. +91, for WhatsApp follow-up.",
   projectCategory: "Project Category",
   selectProjectCategory: "Select project category",
   companyOptional: "Company (optional)",

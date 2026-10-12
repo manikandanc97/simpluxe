@@ -41,7 +41,9 @@ Form submissions require Supabase. Cloudinary credentials configure images and c
 3. Copy the project URL and a server secret key (`sb_secret_...`, recommended) from Settings > API Keys in the Supabase dashboard. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in `.env.local`. The existing `NEXT_PUBLIC_SUPABASE_URL` and legacy `SUPABASE_SERVICE_ROLE_KEY` names are also supported. Keep the secret key server-side; do not use an anon/publishable key or a `NEXT_PUBLIC_` prefix for it. Keep real secrets out of `.env.example`. RLS has no public access policies.
 4. In Vercel's project settings, add those same two variables to the **Production** environment. Add them to **Preview** too if preview forms need to work. Local `.env.local` values are not uploaded to Vercel.
 5. Redeploy the production site after saving the variables. Environment changes do not update an existing deployment. The production build now fails with the missing variable names if either required value is absent.
-6. Run `npm.cmd run check:leads` to verify credentials and required table columns without reading or creating enquiry rows. Then submit the form and verify that a new row appears in Supabase's `leads` table. This saves the enquiry to the database; it does not send an email or WhatsApp notification.
+6. Run `npm.cmd run check:leads` to verify credentials and required table columns without reading or creating enquiry rows. Then submit the form and verify that a new row appears in Supabase's `leads` table.
+
+For team email alerts and customer email acknowledgements, follow [notification setup](supabase/NOTIFICATIONS.md). Notifications use Resend's free sending tier and a durable Supabase queue. Team emails include a manual WhatsApp contact link when the customer supplies an international phone number. Automatic WhatsApp alerts are not part of this free setup.
 
 `@supabase/supabase-js` is already a project dependency. This form uses a server-only client without user login or cookie sessions, so `@supabase/ssr` and the authentication tutorial's session/proxy setup are not required. Restart `npm.cmd run dev` after changing local environment variables.
 

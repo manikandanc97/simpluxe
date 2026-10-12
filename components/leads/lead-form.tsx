@@ -183,9 +183,10 @@ export function LeadForm({ prefill, onSuccess }: LeadFormProps) {
             defaultValue={prefill?.phone || ""}
             placeholder={LEAD_FORM_COPY.whatsappOrPhone}
             aria-invalid={Boolean(state.fieldErrors?.phone)}
-            aria-describedby={state.fieldErrors?.phone ? fieldId("phone-error") : undefined}
+            aria-describedby={`${fieldId("phone-hint")}${state.fieldErrors?.phone ? ` ${fieldId("phone-error")}` : ""}`}
           />
           <FormMessage id={fieldId("phone-error")}>{state.fieldErrors?.phone?.[0]}</FormMessage>
+          <p id={fieldId("phone-hint")} className="text-xs text-muted-foreground">{LEAD_FORM_COPY.phoneHint}</p>
         </FormField>
       </div>
 

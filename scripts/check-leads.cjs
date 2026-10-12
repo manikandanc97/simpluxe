@@ -60,6 +60,34 @@ async function checkLeads() {
   }
 
   console.log("Lead database check passed: server key accepted and all required leads columns available. No enquiry rows read or created. Submit the form to verify saving.");
+  if (process.argv.includes("--notifications")) {
+    const missing = ["RESEND_API_KEY", "LEAD_EMAIL_FROM", "LEAD_NOTIFY_EMAIL", "LEAD_REPLY_TO_EMAIL", "CRON_SECRET"]
+      .filter((name) => !process.env[name]?.trim());
+    if (missing.length) {
+      console.error(`Notifications not ready: missing ${missing.join(", ")}. See supabase/NOTIFICATIONS.md.`);
+      process.exitCode = 1;
+    }
+    const { error: queueError } = await client.from("lead_notifications")
+      .select("id,lead_id,kind,status,attempts,lease_token,first_attempt_at,email_payload,provider_id,last_error,next_attempt_at", { head: true })
+      .limit(0).abortSignal(AbortSignal.timeout(15000));
+    if (queueError) {
+      console.error(`Notification queue not ready (code ${queueError.code || "unavailable"}). Run supabase/lead-notifications.sql.`);
+      process.exitCode = 1;
+    } else {
+      console.log("Notification queue columns available.");
+    }
+    const schemaResponse = await fetch(`${url.replace(/\/+$/, "")}/rest/v1/`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}`, Accept: "application/openapi+json" },
+      signal: AbortSignal.timeout(15000),
+    });
+    const schema = schemaResponse.ok ? await schemaResponse.json() : null;
+    if (!schema?.paths?.["/rpc/claim_lead_notifications"]) {
+      console.error("Worker claim function is not visible in the API schema. Run supabase/lead-notifications.sql and check API schema exposure if already applied.");
+      process.exitCode = 1;
+    } else {
+      console.log("Worker claim function available. Confirm the insert trigger and cron job were created by the SQL setup; verify the sender domain in Resend.");
+    }
+  }
 }
 
 checkLeads().catch((error) => {

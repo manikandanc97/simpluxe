@@ -4,6 +4,8 @@ import { LEAD_ACTIONS_COPY } from "@/lib/content/leads";
 
 import { SITE } from "@/lib/content/site";
 import { createClient } from "@supabase/supabase-js";
+import { after } from "next/server";
+import { deliverLeadNotifications } from "./notifications";
 import { leadSchema, type LeadState } from "./schema";
 
 export async function submitLead(
@@ -82,7 +84,7 @@ export async function submitLead(
       auth: { persistSession: false, autoRefreshToken: false },
     });
 
-    const { error } = await supabase.from("leads").insert({
+    const { data: savedLead, error } = await supabase.from("leads").insert({
       name: `${data.firstName} ${data.lastName}`,
       email: data.email,
       phone: data.phone,
@@ -93,7 +95,7 @@ export async function submitLead(
       description: data.description,
       source: data.source,
       blueprint_summary: data.blueprintSummary || null,
-    });
+    }).select("id").single();
 
     if (error) {
       // Log diagnostic codes in production without credentials or submitted data.
@@ -104,6 +106,21 @@ export async function submitLead(
       };
     }
 
+    // The database trigger queues notifications atomically with the saved enquiry.
+    // Delivery failures cannot turn a saved enquiry into a failed submission.
+    if (savedLead) {
+      try {
+        after(async () => {
+          try {
+            await deliverLeadNotifications(savedLead.id);
+          } catch {
+            console.error("[Lead notifications] Initial delivery deferred; check queue migration and scheduler.");
+          }
+        });
+      } catch {
+        console.error("[Lead notifications] Background delivery unavailable; scheduler will retry.");
+      }
+    }
     return { ok: true };
   } catch (error) {
     console.error("[Lead capture] Submission failed:", {
