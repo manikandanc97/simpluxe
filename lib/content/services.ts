@@ -1460,8 +1460,3 @@ export const WHAT_WE_BUILD_NAV_COPY = {
   previousService: "Previous service",
   nextService: "Next service",
 } as const;
-
-// sections
-export const WHAT_WE_BUILD_COPY = {
-  projectInterest: (name: string) => `Interested in: ${name}.`,
-} as const;

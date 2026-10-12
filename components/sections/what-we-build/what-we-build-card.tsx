@@ -9,6 +9,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import type { SERVICES_LIST } from "@/lib/content/services";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { MockupSkeleton } from "@/components/ui/skeleton";
 
 const loadingSkeleton = () => <MockupSkeleton />;
@@ -94,7 +95,6 @@ interface WhatWeBuildCardProps {
   onSelect: () => void;
   onNext: () => void;
   onPrev: () => void;
-  onOpenLead: (serviceName: string) => void;
 }
 
 export function WhatWeBuildCard({
@@ -105,7 +105,6 @@ export function WhatWeBuildCard({
   onSelect,
   onNext,
   onPrev,
-  onOpenLead,
 }: WhatWeBuildCardProps) {
   let offset = index - activeIndex;
   const half = Math.floor(totalCount / 2);
@@ -250,9 +249,10 @@ export function WhatWeBuildCard({
                   <FadeUp delay={0.28}>
                     <Button
                       size="default"
+                      nativeButton={false}
+                      render={<Link href={`/services#${service.id}`} scroll={false} />}
                       onClick={(e) => {
                         e.stopPropagation();
-                        onOpenLead(service.name);
                       }}
                     >
                       <span>{WHAT_WE_BUILD_CARD_COPY.explore}{service.name}</span>

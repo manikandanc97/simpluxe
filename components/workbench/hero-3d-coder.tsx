@@ -161,6 +161,7 @@ export function Hero3DCoder({ className, parallaxCanvasRef, cardsRef }: Hero3DCo
               format="auto"
               quality="auto:eco"
               className="object-contain drop-shadow-xl"
+              showLoadingPlaceholder={false}
               priority
               loading="eager"
               fetchPriority="high"

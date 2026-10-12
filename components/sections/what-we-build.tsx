@@ -1,8 +1,5 @@
 "use client";
 
-import { WHAT_WE_BUILD_COPY } from "@/lib/content/services";
-
-import { useLead } from "@/components/leads/lead-provider";
 import { useRef, useState } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SERVICES_LIST, SERVICES_SECTION_CONTENT } from "@/lib/content/services";
@@ -14,7 +11,6 @@ import { m as motion } from "motion/react";
 import { fadeUp, scaleIn, viewportReveal } from "@/lib/motion";
 
 export function WhatWeBuild() {
-  const { openLead } = useLead();
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const parallaxWrapperRef = useRef<HTMLDivElement>(null);
@@ -28,13 +24,6 @@ export function WhatWeBuild() {
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + displayServices.length) % displayServices.length);
-  };
-
-  const handleOpenLead = (serviceName: string) => {
-    openLead({
-      source: "what-we-build",
-      description: WHAT_WE_BUILD_COPY.projectInterest(serviceName),
-    });
   };
 
   return (
@@ -67,7 +56,6 @@ export function WhatWeBuild() {
                   onSelect={() => setActiveIndex(index)}
                   onNext={handleNext}
                   onPrev={handlePrev}
-                  onOpenLead={handleOpenLead}
                 />
               ))}
             </div>
