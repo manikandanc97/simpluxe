@@ -34,7 +34,7 @@ export function LeadSuccess({ onClose }: { onClose?: () => void }) {
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />{LEAD_FORM_COPY.successEyebrow}
         </p>
         <h3 id={titleId} className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{LEAD_FORM_COPY.successTitle}</h3>
-        <p className="mt-2 text-lg font-medium tracking-tight text-primary sm:text-xl">{LEAD_FORM_COPY.successSubtitle}</p>
+        <p className="mt-2 text-lg font-medium tracking-tight text-primary">{LEAD_FORM_COPY.successSubtitle}</p>
         <p id={descriptionId} className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
           {SITE.responseTime ? LEAD_FORM_COPY.successResponse(SITE.responseTime) : LEAD_FORM_COPY.successDescription}
         </p>
