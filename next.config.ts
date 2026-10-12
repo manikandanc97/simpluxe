@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 const cspHeader = `
     default-src 'self';
@@ -79,4 +80,22 @@ const analyze = withBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-export default analyze(nextConfig);
+export default function config(phase: string) {
+  // Prevent a production deployment whose lead form cannot save submissions.
+  if (phase === PHASE_PRODUCTION_BUILD && process.env.VERCEL_ENV === "production") {
+    const missing = [
+      !(process.env.SUPABASE_URL?.trim() || process.env.NEXT_PUBLIC_SUPABASE_URL?.trim())
+        && "SUPABASE_URL or NEXT_PUBLIC_SUPABASE_URL",
+      !(process.env.SUPABASE_SECRET_KEY?.trim() || process.env.SUPABASE_SERVICE_ROLE_KEY?.trim())
+        && "SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY",
+    ].filter(Boolean);
+
+    if (missing.length) {
+      throw new Error(
+        `Lead capture requires ${missing.join(", ")}. Add these to Vercel's Production environment and redeploy. See README.md for Supabase setup.`
+      );
+    }
+  }
+
+  return analyze(nextConfig);
+}

@@ -9,6 +9,7 @@
     "lint": "eslint --max-warnings=0",
     "check:copy": "node scripts/check-site-copy.cjs",
     "check:consistency": "node scripts/check-consistency.cjs",
+    "check:leads": "node scripts/check-leads.cjs",
     "check:unused": "knip --no-progress",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run check:copy && npm run check:consistency && npm run typecheck && npm run check:unused"

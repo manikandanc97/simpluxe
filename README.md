@@ -32,8 +32,20 @@ Set NEXT_PUBLIC_SITE_URL to the public site origin (http://localhost:3000 for lo
 The example includes the Cloudinary cloud serving the existing site assets. Change it only when those assets exist in another cloud.
 Set NEXT_PUBLIC_CONTACT_EMAIL and NEXT_PUBLIC_CONTACT_PHONE for direct contact. Optional NEXT_PUBLIC_TWITTER_URL, NEXT_PUBLIC_LINKEDIN_URL, NEXT_PUBLIC_INSTAGRAM_URL, NEXT_PUBLIC_YOUTUBE_URL, and NEXT_PUBLIC_GITHUB_URL configure social profiles; blank values hide their links. NEXT_PUBLIC_WHATSAPP_NUMBER is optional and should include the country code; leave it blank to hide WhatsApp links.
 
-For persisted lead capture, configure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, then run supabase/leads.sql in the Supabase SQL editor. Both are blank in the example so local development uses the documented fallback until real credentials are configured. Keep the service role key server-side. RLS has no public access policies.
-Without Supabase credentials, development submissions log to the server console. Production submissions return an error with direct contact options.
+Form submissions require Supabase. Cloudinary credentials configure images and cannot save form submissions. Without Supabase credentials, submissions return an error with direct contact options in both development and production; they are never reported as saved.
+
+### Production form setup
+
+1. Create a Supabase project and wait for it to finish provisioning.
+2. Run [supabase/leads.sql](supabase/leads.sql) in that project's SQL editor to create the `public.leads` table.
+3. Copy the project URL and a server secret key (`sb_secret_...`, recommended) from Settings > API Keys in the Supabase dashboard. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in `.env.local`. The existing `NEXT_PUBLIC_SUPABASE_URL` and legacy `SUPABASE_SERVICE_ROLE_KEY` names are also supported. Keep the secret key server-side; do not use an anon/publishable key or a `NEXT_PUBLIC_` prefix for it. Keep real secrets out of `.env.example`. RLS has no public access policies.
+4. In Vercel's project settings, add those same two variables to the **Production** environment. Add them to **Preview** too if preview forms need to work. Local `.env.local` values are not uploaded to Vercel.
+5. Redeploy the production site after saving the variables. Environment changes do not update an existing deployment. The production build now fails with the missing variable names if either required value is absent.
+6. Run `npm.cmd run check:leads` to verify credentials and required table columns without reading or creating enquiry rows. Then submit the form and verify that a new row appears in Supabase's `leads` table. This saves the enquiry to the database; it does not send an email or WhatsApp notification.
+
+`@supabase/supabase-js` is already a project dependency. This form uses a server-only client without user login or cookie sessions, so `@supabase/ssr` and the authentication tutorial's session/proxy setup are not required. Restart `npm.cmd run dev` after changing local environment variables.
+
+The "submission service is temporarily unavailable" message means at least one required Supabase variable is missing from the running deployment. Server logs name missing variables without printing secrets or enquiry data. If configuration exists but the insert fails, logs include the Supabase error code; check that the table exists and that the service role key belongs to the same project as the URL.
 
 ## Structure
 

@@ -52,25 +52,16 @@ export async function submitLead(
     return { ok: true };
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const supabaseUrl = process.env.SUPABASE_URL?.trim()
+    || process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const supabaseKey = process.env.SUPABASE_SECRET_KEY?.trim()
+    || process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
   if (!supabaseUrl || !supabaseKey) {
-    if (process.env.NODE_ENV !== "production") {
-      console.log("[Dev Lead Capture Received]:", {
-        name: `${data.firstName} ${data.lastName}`,
-        email: data.email,
-        phone: data.phone,
-        company: data.company,
-        projectType: data.projectType,
-        goal: data.goal,
-        stage: data.stage,
-        description: data.description,
-        source: data.source,
-        blueprintSummary: data.blueprintSummary,
-      });
-      return { ok: true };
-    }
+    console.error("[Lead capture] Missing server environment variables:",
+      [!supabaseUrl && "SUPABASE_URL or NEXT_PUBLIC_SUPABASE_URL",
+        !supabaseKey && "SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY"]
+        .filter(Boolean).join(", "));
 
     const contactChannels: string[] = [];
     if (SITE.email) contactChannels.push(LEAD_ACTIONS_COPY.emailChannel(SITE.email));
@@ -88,7 +79,7 @@ export async function submitLead(
 
   try {
     const supabase = createClient(supabaseUrl, supabaseKey, {
-      auth: { persistSession: false },
+      auth: { persistSession: false, autoRefreshToken: false },
     });
 
     const { error } = await supabase.from("leads").insert({
@@ -105,9 +96,8 @@ export async function submitLead(
     });
 
     if (error) {
-      if (process.env.NODE_ENV !== "production") {
-        console.error("Supabase insert error:", error.message);
-      }
+      // Log diagnostic codes in production without credentials or submitted data.
+      console.error("[Lead capture] Supabase insert failed:", { code: error.code });
       return {
         ok: false,
         message: LEAD_ACTIONS_COPY.failedToSaveYourSubmissionPlease,
@@ -115,7 +105,10 @@ export async function submitLead(
     }
 
     return { ok: true };
-  } catch {
+  } catch (error) {
+    console.error("[Lead capture] Submission failed:", {
+      name: error instanceof Error ? error.name : "UnknownError",
+    });
     return {
       ok: false,
       message: LEAD_ACTIONS_COPY.anUnexpectedErrorOccurredPleaseReach,
