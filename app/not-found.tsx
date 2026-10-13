@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center min-h-status gap-6 text-center px-4">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">{NOT_FOUND_COPY.text404PageNot}<span className="text-primary">{NOT_FOUND_COPY.found}</span></h1>
+        <h1 className="type-h1">{NOT_FOUND_COPY.text404PageNot}<span className="text-primary">{NOT_FOUND_COPY.found}</span></h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
           {NOT_FOUND_COPY.theRequestedPageDoesnTExist}</p>
       </div>

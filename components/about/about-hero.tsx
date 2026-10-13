@@ -43,7 +43,7 @@ export function AboutHero() {
               </motion.nav>
 
               {/* Main Title */}
-              <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
+              <motion.h1 variants={fadeUp} className="type-h1 text-foreground max-w-2xl">
                 {ABOUT_HERO_COPY.engineeringExcellenceShapedAround}{" "}
                 <span className="text-primary">{ABOUT_HERO_COPY.yourVision}</span>
               </motion.h1>

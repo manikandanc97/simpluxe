@@ -21,14 +21,6 @@ const MobileBottomNav = dynamic(() => import("@/components/layout/mobile-bottom-
 const CommandPalette = dynamic(() => import("@/components/ui/command-palette").then((mod) => mod.CommandPalette));
 const ScrollToTop = dynamic(() => import("@/components/ui/scroll-to-top").then((mod) => mod.ScrollToTop));
 
-const satoshi = localFont({
-  src: "../public/fonts/satoshi-variable.woff2",
-  variable: "--font-satoshi",
-  display: "swap",
-  weight: "300 900",
-  style: "normal",
-});
-
 const inter = localFont({
   src: [
     {
@@ -58,11 +50,6 @@ const inter = localFont({
 
 const manrope = localFont({
   src: [
-    {
-      path: "../public/fonts/manrope-400.woff2",
-      weight: "400",
-      style: "normal",
-    },
     {
       path: "../public/fonts/manrope-500.woff2",
       weight: "500",
@@ -128,7 +115,7 @@ export const metadata: Metadata = {
       LAYOUT_COPY.socialDescription,
   },
   icons: {
-    icon: "https://res.cloudinary.com/drdl4pdnx/image/upload/v1790596040/simpluxe/favicon/favicon.png",
+    icon: "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png",
   },
 };
 
@@ -136,17 +123,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased", satoshi.variable, inter.variable, manrope.variable, caveat.variable, "font-sans")}
+      className={cn("h-full antialiased", inter.variable, manrope.variable, caveat.variable, "font-sans")}
       suppressHydrationWarning
     >
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="flex flex-col min-h-full">
         {/* Skip to main content for accessibility */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:ring-2 focus:ring-primary focus:rounded-md focus:shadow-md"
+          className="sr-only focus:not-sr-only focus:top-4 focus:left-4 focus:z-50 focus:fixed focus:bg-background focus:shadow-md focus:px-4 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-primary focus:text-foreground"
         >
           {LAYOUT_COPY.skipToContent}</a>
 
@@ -155,11 +142,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <MobileMenuProvider>
               <SiteNavbar />
               <CommandPalette />
-              <main id="main" className="flex-1 flex flex-col w-full min-h-dvh pb-20 md:pb-0">
+              <main id="main" className="flex flex-col flex-1 pb-20 md:pb-0 w-full min-h-dvh">
                 {children}
               </main>
 
-              <div className="fixed bottom-safe-actions md:bottom-8 right-4 sm:right-6 z-50 flex flex-col items-end gap-3">
+              <div className="right-4 sm:right-6 bottom-safe-actions md:bottom-8 z-50 fixed flex flex-col items-end gap-3">
                 <FloatingCallButton />
                 <ScrollToTop />
               </div>

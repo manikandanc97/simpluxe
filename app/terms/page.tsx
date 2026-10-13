@@ -14,7 +14,7 @@ export default function TermsOfServicePage() {
       <AmbientBackground screen="about" />
       <Container size="content" className="relative z-10 flex flex-col gap-8 mt-12 md:mt-20">
         <div className="flex flex-col gap-4 border-b border-border pb-8">
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground">
+          <h1 className="type-h1 text-foreground">
             {TERMS_PAGE_COPY.title}</h1>
           <p className="text-muted-foreground text-sm">
             {TERMS_PAGE_COPY.lastUpdated}</p>

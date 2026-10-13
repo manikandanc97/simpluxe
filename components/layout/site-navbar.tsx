@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
+import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { Button } from "@/components/ui/button";
 
 interface SiteNavbarProps {
@@ -42,40 +42,54 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
   return (
     <motion.header
       role="banner"
-      className="fixed top-3 sm:top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8"
-      initial={{ y: -6, opacity: 0.92 }}
-      animate={{ y: scrolled ? 0 : 6, opacity: 1 }}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 w-full border-b font-satoshi transition-all duration-500",
+        scrolled
+          ? "border-white/40 bg-white/70 shadow-sm backdrop-blur-2xl backdrop-saturate-150"
+          : "border-transparent bg-transparent shadow-none backdrop-blur-none"
+      )}
+      initial={{ y: -8, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={
         mounted
           ? { type: "spring", stiffness: 380, damping: 38, mass: 0.8 }
           : { duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }
       }
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="w-full px-4 sm:px-6 py-2.5 sm:py-4 flex items-center justify-between bg-card/90 backdrop-blur-xl border border-border rounded-full shadow-card font-satoshi">
+      <div className="mx-auto flex h-16 w-full max-w-360 items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
-          <Link
-            href="/"
-            className="group flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-ring rounded-lg outline-none shrink-0"
-            aria-label={SITE_NAVBAR_COPY.simpluxeHome}
-          >
-            <CldImage
-              src="simpluxe/logo/logo"
-              alt={SITE_NAVBAR_COPY.simpluxeLogo}
-              width={192}
-              height={64}
-              sizes="96px"
-              format="auto"
-              quality="auto:eco"
-              className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-102"
-              priority
-            />
-          </Link>
+          <div className="flex items-center min-w-0">
+            <Link
+              href="/"
+              className="group flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
+              aria-label={SITE_NAVBAR_COPY.simpluxeHome}
+            >
+              <CldImage
+                src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
+                alt={SITE_NAVBAR_COPY.simpluxeLogo}
+                width={64}
+                height={64}
+                sizes="32px"
+                format="auto"
+                quality="auto:eco"
+                className="size-8 object-contain transition-transform duration-200 group-hover:scale-105 sm:size-9"
+                priority
+              />
+              <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
+                SIMP<span className="text-primary">LUXE</span>
+              </span>
+            </Link>
+            <div className="hidden md:flex items-center ml-4 pl-4 border-border border-l">
+              <span className="font-semibold text-2xs text-muted-foreground uppercase tracking-widest">
+                Technologies
+              </span>
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <nav
             aria-label={SITE_NAVBAR_COPY.primaryNavigation}
-            className="hidden lg:flex items-center gap-8 xl:gap-10"
+            className="hidden h-full items-center gap-1 lg:flex"
           >
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.route;
@@ -85,17 +99,18 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                   href={item.route}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "relative text-sm font-semibold tracking-tight transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-ring flex flex-col items-center py-1",
+                    "relative flex h-full items-center px-3 outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring xl:px-4 font-medium text-sm tracking-tight",
                     isActive
-                      ? "text-primary"
-                      : "text-foreground/80 hover:text-primary"
+                      ? "text-heading"
+                      : "text-muted-foreground hover:text-heading"
                   )}
                 >
                   <span>{item.label}</span>
                   {isActive && (
-                    <motion.span 
+                    <motion.span
                       layoutId="nav-indicator"
-                      className="w-1.5 h-1.5 rounded-full bg-primary absolute -bottom-1" 
+                      className="absolute inset-x-3 bottom-0 h-0.5 bg-primary xl:inset-x-4"
+                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
                     />
                   )}
                 </Link>
@@ -104,14 +119,14 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-4 sm:gap-4 shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             {/* Availability status badge */}
-            <div className="hidden xl:flex items-center gap-2 border-l border-border pl-4 py-1">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-60" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            <div className="hidden xl:flex items-center gap-2">
+              <span className="relative flex size-1.5">
+                <span className="inline-flex absolute bg-emerald-500 opacity-50 rounded-full w-full h-full animate-ping" />
+                <span className="inline-flex relative bg-emerald-500 rounded-full size-1.5" />
               </span>
-              <span className="text-xs font-medium text-muted-foreground tracking-tight">
+              <span className="font-medium text-muted-foreground text-xs tracking-tight">
                 {NAVBAR_CONTENT.availabilityText}
               </span>
             </div>
@@ -121,13 +136,14 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               size="sm"
               onClick={handleStart}
               id="navbar-start-project"
-              className="group shadow-elevated gap-1.5"
+              disableScrollAnimation
+              className="group gap-1.5 px-3 sm:px-4"
             >
-              <span>{NAVBAR_CONTENT.ctaText}</span>
-              <AnimatedIcon icon={ArrowRightIcon} size={14} className="text-white shrink-0 transition-transform group-hover:translate-x-0.5" />
+              <span className="hidden sm:inline">{NAVBAR_CONTENT.ctaText}</span>
+              <span className="sm:hidden">Let&apos;s talk</span>
+              <AnimatedIcon icon={ArrowUpRightIcon} size={14} className="shrink-0 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </div>
-        </div>
       </div>
     </motion.header>
   );

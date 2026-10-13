@@ -107,7 +107,7 @@ export function FloatingCallButton() {
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                   whileHover={hoverLift}
                   whileTap={tapScale}
-                  className="flex items-center gap-3 p-1.5 pr-4 rounded-full bg-card/95 backdrop-blur-md border border-border shadow-elevated cursor-pointer"
+                  className="flex items-center gap-3 p-1.5 pr-4 rounded-lg bg-card/95 backdrop-blur-md border border-border shadow-elevated cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
                   <div
@@ -139,7 +139,7 @@ export function FloatingCallButton() {
           whileHover={hoverLift}
           whileTap={tapScale}
           className={cn(
-            "relative w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white shadow-elevated transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            "relative w-13 h-13 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center text-white shadow-elevated transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring",
             open ? "bg-foreground/90" : "bg-primary"
           )}
         >

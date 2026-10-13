@@ -36,7 +36,7 @@ export function MobileBottomNav() {
         onClick={closeMenu}
         aria-label={tab.label}
         aria-current={isActive ? "page" : undefined}
-        className="group relative flex flex-col items-center justify-center w-10 h-10 rounded-full transition-all duration-200 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-90"
+        className="group relative flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-200 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-90"
       >
         <AnimatedIcon
           name={tab.iconName}
@@ -107,7 +107,7 @@ export function MobileBottomNav() {
             onClick={() => openLead({ source: "mobile-nav" })}
             aria-label={MOBILE_BOTTOM_NAV_COPY.startAProject}
             className={cn(
-              "relative flex items-center justify-center w-11 h-11 rounded-full shadow-card transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-primary ring-offset-2 ring-offset-background active:scale-90",
+              "relative flex items-center justify-center w-11 h-11 rounded-lg shadow-card transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-primary ring-offset-2 ring-offset-background active:scale-90",
               "bg-primary text-primary-foreground hover:scale-105"
             )}
           >

@@ -46,7 +46,7 @@ export function WorkHero() {
               </motion.nav>
 
               {/* Main Title */}
-              <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
+              <motion.h1 variants={fadeUp} className="type-h1 text-foreground max-w-2xl">
                 {WORK_HERO_COPY.engineeredDigitalProductsFor}{" "}
                 <span className="text-primary">{WORK_HERO_COPY.modernBusinesses}</span>
               </motion.h1>

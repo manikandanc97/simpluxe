@@ -44,7 +44,7 @@ export function ContactHero() {
               </motion.nav>
 
               {/* Main Title */}
-              <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
+              <motion.h1 variants={fadeUp} className="type-h1 text-foreground max-w-2xl">
                 {CONTACT_HERO_COPY.letSBuildYourSystem}{" "}
                 <span className="text-primary">{CONTACT_HERO_COPY.theRightWay}</span>
               </motion.h1>

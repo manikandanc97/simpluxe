@@ -7,15 +7,17 @@ import type { HeroContent } from "@/types/hero";
 
 // hero
 export const HERO_CONTENT: HeroContent = {
+  eyebrow: "Design-led digital studio",
   headlineLine1: TAGLINE.line1,
   headlineLine2Prefix: TAGLINE.line2Prefix,
   headlineHighlight: TAGLINE.highlight,
-  description: "We turn complex ideas into simple, high-quality digital experiences that help businesses grow.",
+  description: "We design and build premium websites, mobile apps, and scalable digital products — from first idea to launch and beyond.",
   ctaPrimary: COMMON.actions.startProject,
   ctaSecondaryTitle: "See our work",
-  ctaSecondarySubtitle: "2 min overview",
+  ctaSecondarySubtitle: "Explore selected projects",
   scrollIndicatorLabel: "Scroll down to explore capabilities",
-  scrollIndicatorText: "scroll",
+  scrollIndicatorText: "Discover more",
+  scrollIndicatorTitle: "Scroll to explore",
   stats: [
     {
       value: "50+",

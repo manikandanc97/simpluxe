@@ -17,7 +17,7 @@ export function FilterTabsList({
   layoutIdPrefix,
 }: FilterTabsListProps) {
   return (
-    <div className="flex items-center gap-1 p-1 bg-slate-100/70 backdrop-blur-xl rounded-full border border-slate-200/60 overflow-x-auto scrollbar:hidden scrollbar-legacy-none scrollbar-width-none w-max max-w-full shadow-inner">
+    <div className="flex items-center gap-1 p-1 bg-slate-100/70 backdrop-blur-xl rounded-xl border border-slate-200/60 overflow-x-auto scrollbar:hidden scrollbar-legacy-none scrollbar-width-none w-max max-w-full shadow-inner">
       {PROJECT_FILTER_TABS.map((tab) => {
         const isActiveTab = activeFilter === tab;
         const count = PROJECTS.filter((p) => p.serviceType === tab).length;
@@ -28,14 +28,14 @@ export function FilterTabsList({
             onClick={() => onSelectFilter(tab)}
             aria-pressed={isActiveTab}
             className={cn(
-              "relative px-4 py-1.5 sm:px-6 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap transition-colors duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary select-none",
+              "relative px-4 py-1.5 sm:px-6 sm:py-2 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap transition-colors duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary select-none",
               isActiveTab ? "text-white" : "text-slate-600 hover:text-primary"
             )}
           >
             {isActiveTab && (
               <motion.div 
                 layoutId={`activeFilterTab-${layoutIdPrefix}`}
-                className="absolute inset-0 bg-primary rounded-full shadow-md z-0"
+                className="absolute inset-0 bg-primary rounded-lg shadow-md z-0"
                 transition={{ type: "spring", stiffness: 350, damping: 28 }}
               />
             )}

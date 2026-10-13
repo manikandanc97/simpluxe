@@ -36,7 +36,7 @@ function Button({
       whileInView={disableScrollAnimation ? undefined : "visible"}
       viewport={disableScrollAnimation ? undefined : viewport}
       variants={disableScrollAnimation ? undefined : fadeUp}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, className }), "rounded-lg")}
       {...props}
     >
       {children}

@@ -45,7 +45,7 @@ export function WhatWeBuildNav({
             onClick={() => onSelectIndex(i)}
             aria-label={WHAT_WE_BUILD_NAV_COPY.showServiceLabel(service.name)}
             aria-pressed={activeIndex === i}
-            className="w-5 h-9 sm:w-6 flex items-center justify-center rounded-full cursor-pointer focus-visible:outline-2 focus-visible:outline-primary"
+            className="w-5 h-9 sm:w-6 flex items-center justify-center rounded-lg cursor-pointer focus-visible:outline-2 focus-visible:outline-primary"
           >
             <motion.span
               aria-hidden="true"
@@ -68,7 +68,7 @@ export function WhatWeBuildNav({
           aria-label={WHAT_WE_BUILD_NAV_COPY.previousService}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-foreground/10 shadow-sm text-foreground flex items-center justify-center cursor-pointer group"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white border border-foreground/10 shadow-sm text-foreground flex items-center justify-center cursor-pointer group"
         >
           <AnimatedIcon icon={ChevronLeftIcon} size={16} />
         </motion.button>
@@ -78,7 +78,7 @@ export function WhatWeBuildNav({
           aria-label={WHAT_WE_BUILD_NAV_COPY.nextService}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-foreground/10 shadow-sm text-foreground flex items-center justify-center cursor-pointer group"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white border border-foreground/10 shadow-sm text-foreground flex items-center justify-center cursor-pointer group"
         >
           <AnimatedIcon icon={ChevronRightIcon} size={16} />
         </motion.button>

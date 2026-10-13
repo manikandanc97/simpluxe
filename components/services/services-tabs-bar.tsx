@@ -203,7 +203,7 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
                   }}
                   onKeyDown={(event) => handleKeyDown(event, index)}
                   className={cn(
-                    "group relative flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-4.5 py-2 text-xs font-semibold transition-colors duration-200 sm:px-4 sm:text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none",
+                    "group relative flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-lg border px-4.5 py-2 text-xs font-semibold transition-colors duration-200 sm:px-4 sm:text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none",
                     isActive
                       ? "border-primary bg-primary text-white shadow-2xs"
                       : "border-surface-elevated bg-white/90 text-muted-foreground shadow-2xs hover:border-primary/30 hover:bg-white hover:text-foreground"

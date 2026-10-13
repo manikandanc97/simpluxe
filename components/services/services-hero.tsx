@@ -47,7 +47,7 @@ export function ServicesHero() {
               </motion.nav>
 
               {/* Main Title */}
-              <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-tight font-satoshi max-w-2xl">
+              <motion.h1 variants={fadeUp} className="type-h1 text-foreground max-w-2xl">
                 {SERVICES_HERO_COPY.digitalServicesFor}<span className="text-primary">{SERVICES_HERO_COPY.yourBusiness}</span>
               </motion.h1>
             </div>

@@ -21,7 +21,7 @@ export default function ErrorPage({
   return (
     <div className="flex flex-col items-center justify-center min-h-status gap-6 text-center">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">{ERROR_COPY.somethingWent}<span className="text-primary">{ERROR_COPY.wrong}</span></h1>
+        <h1 className="type-h1">{ERROR_COPY.somethingWent}<span className="text-primary">{ERROR_COPY.wrong}</span></h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
           {ERROR_COPY.weEncounteredAnUnexpectedError}</p>
       </div>

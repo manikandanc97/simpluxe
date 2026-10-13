@@ -37,7 +37,7 @@ export function StepNavigation({
               data-step={index}
               onClick={() => onSelectStep(index)}
               className={cn(
-                "relative group flex items-center gap-2 sm:gap-4 px-4 sm:px-4.5 py-2 sm:py-2.5 transition-all duration-300 cursor-pointer text-left rounded-2xl select-none overflow-hidden border",
+                "relative group flex items-center gap-2 sm:gap-4 px-4 sm:px-4.5 py-2 sm:py-2.5 transition-all duration-300 cursor-pointer text-left rounded-lg select-none overflow-hidden border",
                 isActive
                   ? "bg-white border-pink-200/90 ring-1 ring-pink-100 shadow-xs"
                   : isCompleted

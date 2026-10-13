@@ -37,7 +37,7 @@ export function CTA({ onStartProject }: CTAProps) {
     <Section
       id="cta"
       ref={ref}
-      className="select-none overflow-hidden"
+      className="select-none overflow-hidden bg-gradient-to-br from-white via-secondary/70 to-white"
     >
       {/* ── Soft Ambient Glows & Dot Patterns Matching Simpluxe Theme ── */}
 

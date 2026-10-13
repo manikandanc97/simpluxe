@@ -15,11 +15,11 @@ interface SiteFooterProps {
 export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
   return (
-    <footer className="w-full bg-background border-t border-border mt-auto relative overflow-hidden pb-safe-nav md:pb-0">
+    <footer className="ocean-footer w-full bg-dark text-white border-t border-white/10 mt-auto relative overflow-hidden pb-safe-nav md:pb-0">
       <div className="w-full h-full relative">
       {/* Soft ambient background glows */}
-      <div className="pointer-events-none absolute -left-28 top-1/2 -translate-y-1/2 w-96 h-96 bg-primary/8 blur-ambient-lg rounded-full" />
-      <div className="pointer-events-none absolute -right-24 -top-16 w-96 h-96 bg-primary/5 blur-ambient-lg rounded-full" />
+      <div className="pointer-events-none absolute -left-28 top-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 blur-ambient-lg rounded-full" />
+      <div className="pointer-events-none absolute -right-24 -top-16 w-96 h-96 bg-primary/15 blur-ambient-lg rounded-full" />
 
       <Container className="pt-16 pb-12 relative z-10">
         {/* Top Grid: Brand, Explore, Capabilities, Connect Card */}
@@ -45,7 +45,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                 />
               </Link>
 
-              <h2 className="text-xl sm:text-2xl font-extrabold text-foreground leading-tight tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white leading-tight tracking-tight">
                 {SITE_FOOTER_COPY.keepItSimple}<br />
                 {SITE_FOOTER_COPY.makeIt}{" "}
                 <span className="brand-gradient-text">
@@ -128,7 +128,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
           {/* Col 2: Navigation / Explore (2 cols) */}
           <div className="lg:col-span-2 flex flex-col gap-6">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white">
               {FOOTER_DATA.exploreTitle}
             </h3>
             <FooterNav />
@@ -136,7 +136,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
           {/* Col 3: Capabilities (3 cols) */}
           <div data-animated-icon-target className="lg:col-span-3 flex flex-col gap-6">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-foreground">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white">
               {FOOTER_DATA.capabilitiesTitle}
             </h3>
             <ul className="flex flex-col gap-4.5 text-sm text-muted-foreground">
@@ -150,7 +150,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                         className="currentColor"
                       />
                     </span>
-                    <span className="font-medium group-hover:text-foreground transition-colors whitespace-nowrap">
+                    <span className="font-medium group-hover:text-white transition-colors whitespace-nowrap">
                       {cap.label}
                     </span>
                   </>
@@ -182,7 +182,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               </svg>
             </div>
 
-            <div className="bg-card rounded-3xl p-8 shadow-sm border border-border relative z-10 flex flex-col justify-between gap-6">
+            <div className="bg-white/5 rounded-3xl p-8 shadow-sm border border-white/10 relative z-10 flex flex-col justify-between gap-6 backdrop-blur-sm">
               <div className="flex justify-between items-start">
                 {/* Send icon */}
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -193,7 +193,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                 </div>
 
                 {/* Live pill */}
-                <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-background border border-border text-xs font-semibold text-foreground shadow-sm">
+                <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   {FOOTER_DATA.ctaPillText}
                 </div>
@@ -201,7 +201,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-bold text-foreground tracking-tight">
+                  <h3 className="text-xl font-bold text-white tracking-tight">
                     {FOOTER_DATA.ctaTitle}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -222,10 +222,10 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">
+            <Link href="/privacy" className="hover:text-white transition-colors">
               {FOOTER_DATA.privacyPolicyText}
             </Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">
+            <Link href="/terms" className="hover:text-white transition-colors">
               {FOOTER_DATA.termsOfServiceText}
             </Link>
 

@@ -112,9 +112,8 @@ export function PageBanner({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
-            "font-black tracking-tight text-white leading-none",
-            "flex flex-wrap items-center justify-center gap-2 sm:gap-4",
-            "text-heading-fluid"
+            "type-h1 text-white",
+            "flex flex-wrap items-center justify-center gap-2 sm:gap-4"
           )}
         >
           {title}

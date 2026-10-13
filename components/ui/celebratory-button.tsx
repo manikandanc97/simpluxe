@@ -90,7 +90,7 @@ export const CelebratoryButton = React.forwardRef<
               : { opacity: 0, scale: 0.8 }
           }
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-none absolute -inset-2 rounded-full bg-gradient-to-r from-rose-500/35 via-primary/30 to-amber-500/35 blur-xl -z-10"
+          className="pointer-events-none absolute -inset-2 -z-10 rounded-xl bg-gradient-to-r from-rose-500/35 via-primary/30 to-amber-500/35 blur-xl"
         />
 
         <motion.button
@@ -111,7 +111,7 @@ export const CelebratoryButton = React.forwardRef<
             damping: 25,
           }}
           className={cn(
-            "group/button font-satoshi inline-flex w-full shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding font-bold tracking-tight whitespace-nowrap transition-colors duration-200 outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:bg-primary cursor-pointer shadow-elevated hover:shadow-elevated bg-primary text-primary-foreground hover:bg-primary-hover h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base gap-2",
+            "group/button inline-flex h-11 w-full shrink-0 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-transparent bg-primary px-6 font-satoshi text-sm font-semibold tracking-tight text-primary-foreground shadow-sm outline-none transition-colors duration-200 hover:bg-primary-hover focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:bg-primary sm:h-12 sm:px-7 sm:text-base",
             className
           )}
           {...props}

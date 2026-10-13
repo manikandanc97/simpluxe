@@ -44,7 +44,7 @@ export function SelectedWorkProjectItem({
         onClick={onSelect}
         aria-pressed={isActive}
         aria-label={PROJECT_ITEM_COPY.previewLabel(project.name)}
-        className="flex items-center gap-3 sm:gap-4 w-full text-left rounded-xl focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4"
+        className="flex items-center gap-3 sm:gap-4 w-full text-left rounded-lg focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4"
       >
         {/* Project Number */}
         <span 

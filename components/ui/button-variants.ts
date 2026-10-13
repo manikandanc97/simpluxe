@@ -1,13 +1,13 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "group/button font-satoshi inline-flex shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding text-sm font-bold tracking-tight whitespace-nowrap outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-haspopup:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 cursor-pointer icon:pointer-events-none icon:shrink-0 icon-default:size-4 icon:transition-transform icon:duration-200 icon:ease-out hover:icon:scale-110 active:icon:scale-90",
+  "group/button font-satoshi inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-semibold tracking-tight whitespace-nowrap outline-none select-none transition-colors duration-200 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 active:not-aria-haspopup:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 cursor-pointer icon:pointer-events-none icon:shrink-0 icon-default:size-4 icon:transition-transform icon:duration-200 icon:ease-out hover:icon:translate-x-0.5 active:icon:scale-95",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover shadow-elevated hover:shadow-elevated",
+        default: "bg-primary text-primary-foreground shadow-sm hover:bg-primary-hover",
         outline:
-          "bg-white text-foreground border border-black/10 hover:border-black/25 hover:bg-neutral-50 shadow-xs",
+          "bg-white text-foreground border border-border shadow-sm hover:border-primary/40 hover:bg-secondary",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary-hover aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:

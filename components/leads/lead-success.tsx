@@ -47,7 +47,7 @@ export function LeadSuccess({ onClose }: { onClose?: () => void }) {
         <div><p className="text-xs font-semibold text-foreground">{LEAD_FORM_COPY.successNextTitle}</p><p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{LEAD_FORM_COPY.successNextDescription}</p></div>
       </div>
 
-      {onClose && <button type="button" onClick={onClose} className="mx-auto mt-6 flex w-full max-w-sm items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">{LEAD_FORM_COPY.successDone}</button>}
+      {onClose && <button type="button" onClick={onClose} className="mx-auto mt-6 flex w-full max-w-sm items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">{LEAD_FORM_COPY.successDone}</button>}
       <p className="mt-5 text-xs text-muted-foreground">{SITE.tagline}</p>
     </div>
   );

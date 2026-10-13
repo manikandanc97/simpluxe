@@ -104,7 +104,7 @@ export function StepNarrative({
           size="default"
           type="button"
           onClick={onNextStep}
-          className="w-full sm:w-auto shadow-elevated"
+          className="w-full sm:w-auto"
         >
           <span>
             {activeStepIndex === totalSteps - 1
