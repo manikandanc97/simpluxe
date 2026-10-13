@@ -7,10 +7,19 @@ import { CldImage } from "@/components/ui/cld-image";
 import { Container } from "@/components/ui/container";
 import { HERO_CONTENT } from "@/lib/content/hero";
 import { PROJECTS } from "@/lib/content/projects";
-import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
+import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
+import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
+import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
-import { AnimatePresence, m as motion } from "motion/react";
-import { useState } from "react";
+import {
+  AnimatePresence,
+  m as motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 const showcasedProjects = PROJECTS.slice(0, 4).map((project) => ({
   name: project.name,
@@ -24,7 +33,53 @@ const showcasedProjects = PROJECTS.slice(0, 4).map((project) => ({
 export function WorkbenchHero() {
   const { openLead } = useLead();
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [isMobileProjectMenuOpen, setIsMobileProjectMenuOpen] = useState(false);
+  const mobileProjectMenuRef = useRef<HTMLDivElement>(null);
   const activeProject = showcasedProjects[activeProjectIndex];
+  const prefersReducedMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 55, damping: 22, mass: 0.8 });
+  const smoothY = useSpring(pointerY, { stiffness: 55, damping: 22, mass: 0.8 });
+  const dotsX = useTransform(smoothX, (value) => value * 10);
+  const dotsY = useTransform(smoothY, (value) => value * 8);
+  const ambientX = useTransform(smoothX, (value) => value * -16);
+  const ambientY = useTransform(smoothY, (value) => value * -12);
+
+  useEffect(() => {
+    if (!isMobileProjectMenuOpen) return;
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!mobileProjectMenuRef.current?.contains(event.target as Node)) {
+        setIsMobileProjectMenuOpen(false);
+      }
+    };
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileProjectMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isMobileProjectMenuOpen]);
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (prefersReducedMotion || event.pointerType !== "mouse") return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
+    pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
+  };
+
+  const resetPointerPosition = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
 
   const handleWorkClick = () => {
     const target = document.getElementById("selected-work-scroll-anchor");
@@ -44,23 +99,35 @@ export function WorkbenchHero() {
   return (
     <section
       id="hero"
-      className="hero-showcase-background relative overflow-hidden pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pt-36"
+      className="relative overflow-hidden pb-14 pt-28 hero-showcase-background sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetPointerPosition}
     >
-      <div className="hero-showcase-dots pointer-events-none absolute left-1/2 top-16 size-72 -translate-x-1/2 opacity-60 sm:size-96" />
-
-      <Container size="wide" className="relative z-10">
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-3/4 opacity-50 hero-showcase-ambient lg:h-screen"
+        style={{ x: ambientX, y: ambientY }}
+      />
+      <div className="top-16 left-1/2 absolute size-72 sm:size-96 -translate-x-1/2 pointer-events-none" aria-hidden="true">
         <motion.div
-          className="mx-auto flex max-w-4xl flex-col items-center text-center"
+          className="opacity-35 size-full hero-showcase-dots"
+          style={{ x: dotsX, y: dotsY }}
+        />
+      </div>
+
+      <Container size="wide" className="z-10 relative">
+        <motion.div
+          className="flex flex-col items-center mx-auto max-w-4xl text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary shadow-sm backdrop-blur-md sm:mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/70 shadow-sm backdrop-blur-md mb-5 sm:mb-6 px-4 py-2 border border-primary/15 rounded-full font-semibold text-primary text-xs uppercase tracking-widest">
             <AnimatedIcon icon={SparklesIcon} size={14} className="text-accent" />
             {HERO_CONTENT.eyebrow}
           </div>
 
-          <h1 className="font-satoshi text-4xl font-bold leading-tight tracking-tighter text-dark xs:text-5xl sm:text-6xl lg:text-7xl">
+          <h1 className="font-satoshi font-bold text-dark text-4xl xs:text-5xl sm:text-5xl lg:text-6xl leading-tight tracking-tighter">
             <span className="block">{HERO_CONTENT.headlineLine1}</span>
             <span className="block">
               {HERO_CONTENT.headlineLine2Prefix}{" "}
@@ -68,78 +135,154 @@ export function WorkbenchHero() {
             </span>
           </h1>
 
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
+          <p className="mt-5 sm:mt-6 max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
             {HERO_CONTENT.description}
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:mt-9">
+          <div className="flex flex-wrap justify-center items-center gap-3 mt-7 sm:mt-9">
             <Button
               id="hero-start-project"
               onClick={() => openLead({ source: "cta" })}
               size="lg"
               disableScrollAnimation
+              className="group"
             >
               {HERO_CONTENT.ctaPrimary}
-              <AnimatedIcon icon={ArrowRightIcon} size={16} className="text-white" />
-            </Button>
-
-            <Button
-              type="button"
-              onClick={handleWorkClick}
-              variant="outline"
-              size="lg"
-              disableScrollAnimation
-            >
-              {HERO_CONTENT.ctaSecondaryTitle}
               <AnimatedIcon
-                icon={ArrowRightIcon}
-                size={15}
+                icon={ArrowUpRightIcon}
+                size={16}
+                className="text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </Button>
+
+            <button
+              type="button"
+              onClick={handleWorkClick}
+              className="group flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="flex flex-col">
+                <span className="text-sm font-bold leading-tight text-heading transition-colors group-hover:text-primary sm:text-base">
+                  {HERO_CONTENT.ctaSecondaryTitle}
+                </span>
+                <span className="mt-0.5 text-xs font-medium text-muted-foreground">
+                  {HERO_CONTENT.ctaSecondarySubtitle}
+                </span>
+              </span>
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-white text-primary shadow-sm transition-all group-hover:border-primary/30 group-hover:bg-secondary group-hover:shadow-md">
+                <AnimatedIcon icon={BriefcaseIcon} size={16} />
+              </span>
+            </button>
           </div>
         </motion.div>
 
         <motion.div
-          className="relative mx-auto mt-14 max-w-6xl sm:mt-16 lg:mt-20"
+          className="relative mx-auto mt-14 sm:mt-16 lg:mt-20 max-w-6xl"
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="hero-workbench-grid relative overflow-hidden rounded-3xl border border-white/80 bg-white/60 p-3 shadow-elevated backdrop-blur-xl sm:p-5 lg:p-7">
-            <div className="mb-3 flex items-center justify-between px-1 sm:mb-5">
+          <div className="relative bg-slate-100/70 shadow-elevated backdrop-blur-xl p-3 sm:p-5 lg:p-7 border border-slate-200/70 rounded-3xl overflow-hidden">
+            <div className="flex justify-between items-center mb-3 sm:mb-5 px-1">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-bold text-primary">S/01</span>
-                <span className="h-px w-8 bg-primary/30 sm:w-14" />
-                <span className="text-2xs font-semibold uppercase tracking-widest text-muted-foreground sm:text-xs">
+                <span className="font-mono font-bold text-primary text-xs">S/01</span>
+                <span className="bg-primary/30 w-8 sm:w-14 h-px" />
+                <span className="font-semibold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
                   Selected digital work
                 </span>
               </div>
-              <span className="hidden text-xs font-semibold text-muted-foreground sm:block">2025 — Tamil Nadu</span>
+              <span className="hidden sm:block font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+                Let’s start first, then we can make it look better.
+              </span>
             </div>
 
-            <div className="mb-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" aria-label="Choose a featured project">
-              {showcasedProjects.map((project, index) => (
-                <button
-                  key={project.name}
-                  type="button"
-                  aria-pressed={activeProjectIndex === index}
-                  onClick={() => setActiveProjectIndex(index)}
-                  className={`shrink-0 rounded-lg border px-3 py-2 text-xs font-bold transition-colors focus-visible:outline-2 focus-visible:outline-primary ${
-                    activeProjectIndex === index
-                      ? "border-primary bg-primary text-white"
-                      : "border-border bg-white/90 text-muted-foreground hover:border-primary/30 hover:text-heading"
+            <div
+              ref={mobileProjectMenuRef}
+              className="relative z-30 mb-3 rounded-xl border border-border/70 bg-slate-50/95 p-3 lg:hidden"
+            >
+              <p className="text-xs font-semibold text-muted-foreground">Choose a project</p>
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={isMobileProjectMenuOpen}
+                aria-controls="mobile-project-options"
+                onClick={() => setIsMobileProjectMenuOpen((isOpen) => !isOpen)}
+                className="mt-2 flex h-12 w-full items-center justify-between rounded-lg border border-primary/20 bg-slate-100 px-2.5 text-left shadow-sm outline-none transition-colors hover:border-primary/40 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-primary/20"
+              >
+                <span className="flex min-w-0 items-center gap-3">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary font-mono text-xs font-bold text-white">
+                    {activeProject.number}
+                  </span>
+                  <span className="truncate text-sm font-bold text-heading">{activeProject.name}</span>
+                </span>
+                <span
+                  className={`ml-3 flex size-8 shrink-0 items-center justify-center rounded-md bg-white text-primary shadow-sm transition-transform ${
+                    isMobileProjectMenuOpen ? "rotate-180" : ""
                   }`}
                 >
-                  <span className="mr-2 font-mono text-2xs opacity-70">{project.number}</span>
-                  {project.name}
-                </button>
-              ))}
+                  <AnimatedIcon icon={ChevronDownIcon} size={16} />
+                </span>
+              </button>
+
+              <AnimatePresence>
+                {isMobileProjectMenuOpen && (
+                  <motion.div
+                    id="mobile-project-options"
+                    role="listbox"
+                    aria-label="Choose a project"
+                    className="absolute inset-x-3 top-full z-40 mt-2 overflow-hidden rounded-xl border border-border bg-slate-50 p-1.5 shadow-elevated"
+                    initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                    transition={{ duration: 0.16 }}
+                  >
+                    {showcasedProjects.map((project, index) => {
+                      const isSelected = activeProjectIndex === index;
+
+                      return (
+                        <button
+                          key={project.name}
+                          type="button"
+                          role="option"
+                          aria-selected={isSelected}
+                          onClick={() => {
+                            setActiveProjectIndex(index);
+                            setIsMobileProjectMenuOpen(false);
+                          }}
+                          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                            isSelected
+                              ? "bg-primary text-white shadow-sm"
+                              : "text-heading hover:bg-slate-100"
+                          }`}
+                        >
+                          <span
+                            className={`font-mono text-xs font-bold ${
+                              isSelected ? "text-sky-100" : "text-primary"
+                            }`}
+                          >
+                            {project.number}
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block truncate text-sm font-bold">{project.name}</span>
+                            <span
+                              className={`mt-0.5 block truncate text-xs ${
+                                isSelected ? "text-sky-100" : "text-muted-foreground"
+                              }`}
+                            >
+                              {project.category}
+                            </span>
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            <div className="grid gap-3 lg:grid-cols-12 lg:gap-5">
-              <div className="hidden flex-col justify-between rounded-2xl border border-border/70 bg-white/85 p-3 lg:col-span-3 lg:flex">
+            <div className="gap-3 lg:gap-5 grid lg:grid-cols-12">
+              <div className="hidden lg:flex flex-col justify-between lg:col-span-3 bg-slate-50/95 p-3 border border-border/70 rounded-2xl">
                 <div>
-                  <p className="px-2 pb-3 text-2xs font-bold uppercase tracking-widest text-muted-foreground">Project index</p>
+                  <p className="px-2 pb-3 font-bold text-2xs text-muted-foreground uppercase tracking-widest">Project index</p>
                   <div className="space-y-1.5">
                     {showcasedProjects.map((project, index) => (
                       <button
@@ -150,25 +293,25 @@ export function WorkbenchHero() {
                         className={`flex w-full items-center gap-3 rounded-lg border px-3 py-3 text-left transition-all focus-visible:outline-2 focus-visible:outline-primary ${
                           activeProjectIndex === index
                             ? "border-primary/20 bg-secondary text-heading shadow-sm"
-                            : "border-transparent text-muted-foreground hover:border-border hover:bg-white hover:text-heading"
+                            : "border-transparent text-muted-foreground hover:border-border hover:bg-slate-100 hover:text-heading"
                         }`}
                       >
-                        <span className="font-mono text-2xs font-bold text-primary">{project.number}</span>
+                        <span className="font-mono font-bold text-2xs text-primary">{project.number}</span>
                         <div className="min-w-0">
-                          <p className="truncate text-xs font-bold">{project.name}</p>
-                          <p className="mt-0.5 truncate text-2xs uppercase tracking-wider">{project.category}</p>
+                          <p className="font-bold text-xs truncate">{project.name}</p>
+                          <p className="mt-0.5 text-2xs truncate uppercase tracking-wider">{project.category}</p>
                         </div>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div className="rounded-xl bg-dark p-4 text-white">
-                  <p className="text-2xs font-bold uppercase tracking-widest text-sky-300">Outcome, not output</p>
+                <div className="bg-dark p-4 rounded-xl text-white">
+                  <p className="font-bold text-2xs text-sky-300 uppercase tracking-widest">Outcome, not output</p>
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.p
                       key={activeProject.result}
-                      className="mt-2 text-2xl font-bold tracking-tight"
+                      className="mt-2 font-bold text-2xl tracking-tight"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
@@ -177,26 +320,26 @@ export function WorkbenchHero() {
                       {activeProject.result}
                     </motion.p>
                   </AnimatePresence>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-300">Strategy, design and engineering working as one.</p>
+                  <p className="mt-1 text-slate-300 text-xs leading-relaxed">Strategy, design and engineering working as one.</p>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-white shadow-xl lg:col-span-9">
-                <div className="flex h-10 items-center justify-between border-b border-border bg-white px-3 sm:h-12 sm:px-5">
+              <div className="relative lg:col-span-9 bg-slate-50 shadow-xl border border-border rounded-2xl overflow-hidden">
+                <div className="flex justify-between items-center bg-slate-50 px-3 sm:px-5 border-border border-b h-10 sm:h-12">
                   <div className="flex items-center gap-1.5" aria-hidden="true">
-                    <span className="size-2 rounded-full bg-slate-200" />
-                    <span className="size-2 rounded-full bg-slate-200" />
-                    <span className="size-2 rounded-full bg-slate-200" />
+                    <span className="bg-slate-200 rounded-full size-2" />
+                    <span className="bg-slate-200 rounded-full size-2" />
+                    <span className="bg-slate-200 rounded-full size-2" />
                   </div>
-                  <span className="text-2xs font-bold uppercase tracking-widest text-muted-foreground sm:text-xs">
+                  <span className="font-bold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
                     Live project canvas
                   </span>
-                  <span className="font-mono text-2xs font-bold text-primary">
+                  <span className="font-mono font-bold text-2xs text-primary">
                     {activeProject.number} / 04
                   </span>
                 </div>
 
-                <div className="relative h-64 overflow-hidden bg-surface-elevated sm:h-96 lg:h-112" aria-live="polite">
+                <div className="relative bg-surface-elevated h-64 sm:h-96 lg:h-112 overflow-hidden" aria-live="polite">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={activeProject.desktopImage}
@@ -219,45 +362,21 @@ export function WorkbenchHero() {
 
                   <motion.div
                     key={activeProject.name}
-                    className="absolute bottom-3 left-3 max-w-56 rounded-xl border border-white/60 bg-white/90 p-3 shadow-elevated backdrop-blur-xl sm:bottom-5 sm:left-5 sm:max-w-xs sm:p-4"
+                    className="bottom-3 sm:bottom-5 left-3 sm:left-5 absolute hidden bg-slate-50/95 shadow-elevated backdrop-blur-xl p-3 sm:block sm:p-4 border border-slate-200/70 rounded-xl max-w-56 sm:max-w-xs"
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="text-2xs font-bold uppercase tracking-widest text-primary">Featured build</p>
-                    <p className="mt-1 text-sm font-bold text-heading sm:text-base">{activeProject.name}</p>
+                    <p className="font-bold text-2xs text-primary uppercase tracking-widest">Featured build</p>
+                    <p className="mt-1 font-bold text-heading text-sm sm:text-base">{activeProject.name}</p>
                     <p className="mt-0.5 text-2xs text-muted-foreground sm:text-xs">Built for clarity, conversion and scale.</p>
                   </motion.div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-3 grid grid-cols-3 gap-2 sm:mt-5 sm:gap-3 lg:grid-cols-12">
-              <div className="col-span-2 flex items-center gap-3 rounded-xl border border-border/70 bg-white/90 p-3 sm:p-4 lg:col-span-5">
-                <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-xs font-bold text-white sm:size-10">01</span>
-                <div>
-                  <p className="text-xs font-bold text-heading sm:text-sm">Discover & define</p>
-                  <p className="hidden text-xs text-muted-foreground sm:block">We find the clearest route to impact.</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 rounded-xl border border-border/70 bg-white/90 p-3 sm:p-4 lg:col-span-4">
-                <span className="flex size-8 items-center justify-center rounded-lg bg-secondary text-xs font-bold text-primary sm:size-10">02</span>
-                <div>
-                  <p className="text-xs font-bold text-heading sm:text-sm">Design & build</p>
-                  <p className="hidden text-xs text-muted-foreground sm:block">One focused product team.</p>
-                </div>
-              </div>
-              <div className="hidden items-center gap-3 rounded-xl bg-primary p-4 text-white sm:flex lg:col-span-3">
-                <span className="flex size-10 items-center justify-center rounded-lg bg-white/15 text-xs font-bold">03</span>
-                <div>
-                  <p className="text-sm font-bold">Launch & grow</p>
-                  <p className="text-xs text-sky-100">Ready for real users.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute right-5 top-20 hidden w-32 overflow-hidden rounded-2xl border-4 border-white bg-dark shadow-2xl sm:block lg:right-10 lg:top-24 lg:w-40">
-              <div className="relative h-64 overflow-hidden lg:h-80">
+            <div className="hidden md:block top-20 lg:top-24 right-5 lg:right-10 absolute bg-dark shadow-2xl border-4 border-white rounded-2xl w-32 lg:w-40 overflow-hidden">
+              <div className="relative h-64 lg:h-80 overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={activeProject.mobileImage}

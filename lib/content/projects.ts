@@ -3,7 +3,7 @@ import type { Project, SelectedWorkSectionContent } from "@/types/project";
 import type React from "react";
 import { NextJsIcon, TailwindIcon, MotionIcon, NodeJsIcon, WhatsAppIcon, PrismaIcon, PostgresIcon, SupabaseIcon, ShopifyIcon, ReactIcon } from "@/components/work/tech-icons";
 
-const CONSTRUCTION_CATEGORY = "ARCHITECTURE & CONSTRUCTION";
+const CONSTRUCTION_CATEGORY = "Architecture & Construction";
 
 // projects
 const IMAGE_BASE_URL = "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects";
@@ -198,7 +198,7 @@ const projectNames = Object.fromEntries(PROJECTS.map((project) => [project.id, p
 
 export const PROJECT_ENHANCEMENTS: Record<string, EnhancedProjectDetails> = {
   "proj-valparai": {
-    kicker: "TRAVEL & TOURISM",
+    kicker: "Travel & Tourism",
     heroHeadline: projectNames["proj-valparai"],
     heroSubheadline:
       "An experiential travel & tour booking platform for Valparai tour packages, misty Western Ghats jungle safaris, and tea estate explorations.",
@@ -248,7 +248,7 @@ export const PROJECT_ENHANCEMENTS: Record<string, EnhancedProjectDetails> = {
     duration: "1.5 min",
   },
   "proj-viha": {
-    kicker: "E-COMMERCE & HERITAGE",
+    kicker: "E-commerce & Heritage",
     heroHeadline: projectNames["proj-viha"],
     heroSubheadline:
       "Authentic generational Chettinad heritage e-commerce storefront with brass idol craftsmanship, Tanjore gold foil art, and sacred wooden artifacts.",
@@ -272,7 +272,7 @@ export const PROJECT_ENHANCEMENTS: Record<string, EnhancedProjectDetails> = {
     duration: "2.5 min",
   },
   "proj-clixprocrm": {
-    kicker: "CUSTOMER RELATIONSHIP MANAGEMENT",
+    kicker: "Customer Relationship Management",
     heroHeadline: projectNames["proj-clixprocrm"],
     heroSubheadline:
       "Universal CRM for Indian SMBs with AI-driven automation, keyboard-first navigation, and real-time sales pipeline tracking.",

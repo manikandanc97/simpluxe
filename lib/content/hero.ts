@@ -7,7 +7,7 @@ import type { HeroContent } from "@/types/hero";
 
 // hero
 export const HERO_CONTENT: HeroContent = {
-  eyebrow: "Design-led digital studio",
+  eyebrow: "Digital, done beautifully.",
   headlineLine1: TAGLINE.line1,
   headlineLine2Prefix: TAGLINE.line2Prefix,
   headlineHighlight: TAGLINE.highlight,

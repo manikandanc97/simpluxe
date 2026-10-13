@@ -76,11 +76,11 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 priority
               />
               <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
-                SIMP<span className="text-primary">LUXE</span>
+                Simp<span className="text-primary">Luxe</span>
               </span>
             </Link>
-            <div className="hidden md:flex items-center ml-4 pl-4 border-border border-l">
-              <span className="font-semibold text-2xs text-muted-foreground uppercase tracking-widest">
+            <div className="hidden md:flex items-center ml-2.5 pl-2.5 border-border border-l">
+              <span className="font-semibold text-xs text-muted-foreground tracking-normal">
                 Technologies
               </span>
             </div>

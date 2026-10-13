@@ -48,7 +48,7 @@ export const PROCESS_STEPS = [
 export const FLOW_NODES = {
   topLeft: {
     id: "direct-access",
-    badge: "IDEA",
+    badge: "Idea",
     badgeColor: "rose",
     title: "Direct access",
     desc: "Work directly with the team building your product.",
@@ -56,7 +56,7 @@ export const FLOW_NODES = {
   },
   topRight: {
     id: "weekly-progress",
-    badge: "PLAN",
+    badge: "Plan",
     badgeColor: "purple",
     title: "Weekly progress",
     desc: "Transparent updates and real milestones every week.",
@@ -64,7 +64,7 @@ export const FLOW_NODES = {
   },
   bottomLeft: {
     id: "production-quality",
-    badge: "BUILD",
+    badge: "Build",
     badgeColor: "rose",
     title: "Production quality",
     desc: "Modern tech, clean designs, and scalable architecture.",
@@ -72,7 +72,7 @@ export const FLOW_NODES = {
   },
   bottomRight: {
     id: "clear-ownership",
-    badge: "DELIVER",
+    badge: "Deliver",
     badgeColor: "purple",
     title: "Clear ownership",
     desc: "No handoff friction. We take responsibility end to end.",
@@ -109,7 +109,7 @@ export const REAL_OUTCOMES = [
 ];
 
 export const PHILOSOPHY_SECTION_CONTENT = {
-  eyebrow: "WHY SIMPLUXE",
+  eyebrow: "Why Simpluxe",
   title: "Built simple. Delivered",
   highlightedText: "sharp.",
   description: "A focused team, a clear process, and production-ready work without unnecessary layers.",
@@ -121,10 +121,10 @@ export const DESKTOP_FLOW_CANVAS_COPY = {
 } as const;
 
 export const FLOW_DIAGRAM_COPY = {
-  signal01: "SIGNAL / 01",
-  simpleSystem: "SIMPLE SYSTEM",
-  yourIdea: "YOUR IDEA",
-  realImpact: "REAL IMPACT",
+  signal01: "Signal / 01",
+  simpleSystem: "Simple system",
+  yourIdea: "Your idea",
+  realImpact: "Real impact",
 } as const;
 
 export const MOBILE_FLOW_GRID_COPY = {
@@ -134,11 +134,11 @@ export const MOBILE_FLOW_GRID_COPY = {
 export const PHILOSOPHY_OUTCOMES_COPY = {
   from: "From",
   ideaToImpact: "Idea to Impact",
-  realOutcomes: "REAL OUTCOMES",
+  realOutcomes: "Real outcomes",
 } as const;
 
 export const PHILOSOPHY_PROCESS_STEPS_COPY = {
-  process04: "PROCESS / 04",
+  process04: "Process / 04",
   simpleProcess: "Simple Process",
   realResults: "Real Results",
 } as const;

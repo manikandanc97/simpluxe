@@ -41,7 +41,7 @@ export const STEPS: StepConfig[] = [
   {
     id: "discover",
     number: "01",
-    stepKicker: "STEP 01 / 04",
+    stepKicker: "Step 01 / 04",
     title: "Discover",
     subtitle: "Understand & Plan",
     icon: LightbulbIcon,
@@ -85,7 +85,7 @@ export const STEPS: StepConfig[] = [
   {
     id: "design",
     number: "02",
-    stepKicker: "STEP 02 / 04",
+    stepKicker: "Step 02 / 04",
     title: COMMON.process.design,
     subtitle: "UI/UX & Prototype",
     icon: PencilIcon,
@@ -129,7 +129,7 @@ export const STEPS: StepConfig[] = [
   {
     id: "develop",
     number: "03",
-    stepKicker: "STEP 03 / 04",
+    stepKicker: "Step 03 / 04",
     title: COMMON.process.develop,
     subtitle: "Build & Integrate",
     icon: CodeIcon,
@@ -173,7 +173,7 @@ export const STEPS: StepConfig[] = [
   {
     id: "launch",
     number: "04",
-    stepKicker: "STEP 04 / 04",
+    stepKicker: "Step 04 / 04",
     title: COMMON.process.launch,
     subtitle: "Deploy & Grow",
     icon: RocketIcon,
@@ -217,7 +217,7 @@ export const STEPS: StepConfig[] = [
 ];
 
 export const HOW_WE_WORK_SECTION_CONTENT = {
-  eyebrow: "OUR PROCESS",
+  eyebrow: "Our process",
   title: "How We",
   highlightedText: COMMON.labels.workHighlight,
   descriptionLine1: "A clear 4-step delivery process to turn your ideas into real, scalable digital products.",
@@ -276,7 +276,7 @@ export const STEP_VISUAL_ENGINEERING_COPY = {
   architecture: COMMON.labels.architecture,
   db: "DB",
   api: "API",
-  client: "CLIENT",
+  client: "Client",
   techStack: COMMON.labels.techStack,
   nextJs16: "• Next.js 16",
   typescript: "• TypeScript",

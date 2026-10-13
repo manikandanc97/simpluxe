@@ -30,7 +30,7 @@ export function WhatWeBuild() {
     <Section
       ref={sectionRef}
       id="capabilities"
-      className="overflow-hidden"
+      className="overflow-hidden bg-white"
     >
       <Container className="relative z-10 flex flex-col gap-6 sm:gap-8">
         <motion.div variants={fadeUp} {...viewportReveal}>

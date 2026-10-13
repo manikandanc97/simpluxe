@@ -399,7 +399,7 @@ export const TECH_STACK: TechItem[] = [
 ];
 
 export const TECH_STACK_SECTION_CONTENT = {
-  eyebrow: "OUR TECH STACK",
+  eyebrow: "Our tech stack",
   title: "Modern tools.",
   highlightedText: COMMON.labels.realResults,
   descriptionLine1: "Battle-tested tools chosen for reliability, performance, and long-term maintainability —",

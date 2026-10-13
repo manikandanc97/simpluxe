@@ -49,7 +49,7 @@ export const METRICS: AboutMetric[] = [
 export const PRINCIPLES: AboutPrinciple[] = [
   {
     number: "01",
-    tag: "CLARITY",
+    tag: "Clarity",
     title: "Clarity over cleverness",
     summary: "Code should be easy to read. Interfaces should be effortless to use.",
     description:
@@ -58,7 +58,7 @@ export const PRINCIPLES: AboutPrinciple[] = [
   },
   {
     number: "02",
-    tag: "PURPOSE",
+    tag: "Purpose",
     title: "Purpose-driven scope",
     summary: "Every single feature must earn its place in the production build.",
     description:
@@ -67,7 +67,7 @@ export const PRINCIPLES: AboutPrinciple[] = [
   },
   {
     number: "03",
-    tag: "DETAIL",
+    tag: "Detail",
     title: "Difference is in the details",
     summary: "Simplicity never means generic, uninspired, or boring.",
     description:
@@ -122,7 +122,7 @@ export const ABOUT_COMPARISON_CONTENT = {
   evaluationMetric: "Evaluation Metric",
   traditionalAgencies: "Traditional Agencies",
   simpluxeModel: "The Simpluxe Studio Model",
-  recommendedBadge: "RECOMMENDED",
+  recommendedBadge: "Recommended",
 };
 
 export const ABOUT_PRINCIPLES_CONTENT = {
@@ -215,7 +215,7 @@ export const ABOUT_HERO_COPY = {
 } as const;
 
 export const ABOUT_METRICS_COPY = {
-  verified: "VERIFIED",
+  verified: "Verified",
 } as const;
 
 // pages

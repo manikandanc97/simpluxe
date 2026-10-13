@@ -1229,7 +1229,7 @@ export const SERVICES_LIST: ServiceData[] = [
 ];
 
 export const SERVICES_SECTION_CONTENT = {
-  eyebrow: "WHAT WE BUILD",
+  eyebrow: "What we build",
   title: "From Ideas to",
   highlightedText: "Impact.",
   description: "We engineer custom software, scalable web applications, and mobile platforms — with enterprise-grade reliability and zero unnecessary overhead.",
@@ -1384,7 +1384,7 @@ export const MOBILE_APPS_COPY = {
   goodMorning: "Good morning 👋",
   hiArjun: "Hi, Arjun!",
   ak: "AK",
-  premiumPlan: "PREMIUM PLAN",
+  premiumPlan: "Premium plan",
   unlockAllProFeatures: "Unlock all Pro Features",
   upgradeNow: "Upgrade Now",
   orders: "Orders",
@@ -1413,7 +1413,7 @@ export const MOBILE_APPS_COPY = {
 } as const;
 
 export const SAAS_COPY = {
-  enterpriseSaas: "ENTERPRISE SAAS",
+  enterpriseSaas: "Enterprise SaaS",
   symbol: "✓",
   multiTenantCloudSync: " Multi-tenant Cloud Sync",
   automatedStripeBilling: " Automated Stripe Billing",

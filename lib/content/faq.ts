@@ -24,7 +24,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-pricing",
     num: "01",
-    category: "PROJECT & SCOPE",
+    category: "Project & scope",
     icon: FolderOpenIcon,
     question: "How do you scope and price a project?",
     answer:
@@ -38,7 +38,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-timeline",
     num: "02",
-    category: "DELIVERY & TIMELINE",
+    category: "Delivery & timeline",
     icon: ClockIcon,
     question: "How long does a typical build take from kickoff to launch?",
     answer:
@@ -52,7 +52,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-ownership",
     num: "03",
-    category: "CODE & IP OWNERSHIP",
+    category: "Code & IP ownership",
     icon: CodeIcon,
     question: "Will we own 100% of the code and intellectual property?",
     answer:
@@ -66,7 +66,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-support",
     num: "04",
-    category: "SUPPORT & MAINTENANCE",
+    category: "Support & maintenance",
     icon: WrenchIcon,
     question: "What happens after launch? Do you provide ongoing maintenance?",
     answer:
@@ -80,7 +80,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-kickoff",
     num: "05",
-    category: "TEAM & COLLABORATION",
+    category: "Team & collaboration",
     icon: UsersIcon,
     question: "How closely can we get started, and what does onboarding look like?",
     answer:

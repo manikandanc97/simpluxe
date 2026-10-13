@@ -280,6 +280,12 @@
   }
 }
 
+/* Keep interface labels readable; capital letters are reserved for true acronyms. */
+.uppercase {
+  text-transform: none !important;
+  letter-spacing: 0.04em !important;
+}
+
 /* ─── Keyframes ─────────────────────────────────────────── */
 
 @keyframes float-slow {
@@ -384,10 +390,24 @@
 }
 
 .hero-showcase-background {
+  --hero-color-stop: 68%;
   background:
-    radial-gradient(circle at 82% 42%, rgba(14, 165, 233, 0.2), transparent 32%),
-    radial-gradient(circle at 15% 10%, rgba(186, 230, 253, 0.75), transparent 34%),
-    linear-gradient(180deg, #f8fcff 0%, #e9f7ff 72%, #ffffff 100%);
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent var(--hero-color-stop),
+      #ffffff var(--hero-color-stop),
+      #ffffff 100%
+    ),
+    radial-gradient(circle at 82% 22%, rgba(14, 165, 233, 0.2), transparent 30%),
+    radial-gradient(circle at 15% 10%, rgba(186, 230, 253, 0.75), transparent 32%),
+    linear-gradient(180deg, #f8fcff 0%, #e9f7ff 100%);
+}
+
+@media (min-width: 1024px) {
+  .hero-showcase-background {
+    --hero-color-stop: 100svh;
+  }
 }
 
 .hero-showcase-dots {
@@ -396,11 +416,10 @@
   mask-image: radial-gradient(circle, black 0%, transparent 68%);
 }
 
-.hero-workbench-grid {
-  background-image:
-    linear-gradient(rgba(14, 165, 233, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 165, 233, 0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+.hero-showcase-ambient {
+  background:
+    radial-gradient(circle at 18% 30%, rgba(125, 211, 252, 0.22), transparent 28%),
+    radial-gradient(circle at 82% 38%, rgba(14, 165, 233, 0.16), transparent 30%);
 }
 
 /* Hide scrollbar for elements with no-scrollbar class */

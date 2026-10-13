@@ -23,7 +23,7 @@ export interface CTAContent {
 }
 
 export const CTA_CONTENT: CTAContent = {
-  eyebrow: "FROM IDEA TO IMPACT",
+  eyebrow: "From idea to impact",
   title: "Let's turn your idea into a",
   highlightedText: "premium digital product.",
   description: "High craft, sub-second performance, and zero bloat. We partner with ambitious founders to build products people actually love using.",
