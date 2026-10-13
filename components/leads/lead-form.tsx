@@ -13,7 +13,7 @@ import { leadSchema, type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib
 import { SITE } from "@/lib/content/site";
 import { LeadSuccess } from "./lead-success";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
-import { useActionState, useState, useEffect, useId, useRef } from "react";
+import { useActionState, useState, useEffect, useId, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { LeadVerification } from "./lead-verification";
 import { getTurnstileSiteKey } from "@/lib/leads/turnstile";
@@ -38,16 +38,32 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   const successNotified = useRef(false);
   const turnstileSiteKey = getTurnstileSiteKey();
   const [verified, setVerified] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [clientErrors, setClientErrors] = useState<Record<string, string[]> | null>(null);
+  const [showVerificationError, setShowVerificationError] = useState(false);
   const [mountTime] = useState(() => Date.now());
 
   const validateForm = (form: HTMLFormElement) => {
     const data = new FormData(form);
-    return leadSchema.safeParse({
+    const result = leadSchema.safeParse({
       ...Object.fromEntries(data),
       consent: data.get("consent") === "true",
-    }).success;
+    });
+
+    if (result.success) return {};
+
+    const errors: Record<string, string[]> = {};
+    for (const [field, messages] of Object.entries(result.error.flatten().fieldErrors)) {
+      if (messages) errors[field] = messages;
+    }
+    return errors;
   };
+
+  const fieldErrors = clientErrors ?? state.fieldErrors;
+
+  const handleVerification = useCallback((isVerified: boolean) => {
+    setVerified(isVerified);
+    if (isVerified) setShowVerificationError(false);
+  }, []);
 
   useEffect(() => {
     if (state.ok && !successNotified.current) {
@@ -63,12 +79,31 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   return (
     <form
       action={formAction}
-      onInput={(event) => setIsFormValid(validateForm(event.currentTarget))}
-      onChange={(event) => setIsFormValid(validateForm(event.currentTarget))}
-      onReset={() => setIsFormValid(false)}
+      noValidate
+      onInput={(event) => {
+        if (clientErrors || state.fieldErrors) {
+          setClientErrors(validateForm(event.currentTarget));
+        }
+      }}
+      onReset={() => {
+        setClientErrors(null);
+        setShowVerificationError(false);
+      }}
       onSubmit={(event) => {
-        if (!validateForm(event.currentTarget) || isPending || (turnstileSiteKey && !verified)) {
+        const errors = validateForm(event.currentTarget);
+        const hasFieldErrors = Object.keys(errors).length > 0;
+        const needsVerification = Boolean(turnstileSiteKey) && !verified;
+
+        setClientErrors(errors);
+        setShowVerificationError(needsVerification);
+
+        if (hasFieldErrors || isPending || needsVerification) {
           event.preventDefault();
+          if (hasFieldErrors) {
+            const firstInvalidField = Object.keys(errors)[0];
+            const field = event.currentTarget.elements.namedItem(firstInvalidField);
+            if (field instanceof HTMLElement) field.focus();
+          }
         }
       }}
       className="flex flex-col gap-4 text-left font-satoshi"
@@ -116,10 +151,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             defaultValue={prefill?.firstName || ""}
             placeholder={LEAD_FORM_COPY.firstNamePlaceholder}
             aria-required="true"
-            aria-invalid={Boolean(state.fieldErrors?.firstName)}
-            aria-describedby={state.fieldErrors?.firstName ? fieldId("first-name-error") : undefined}
+            aria-invalid={Boolean(fieldErrors?.firstName)}
+            aria-describedby={fieldErrors?.firstName ? fieldId("first-name-error") : undefined}
           />
-          <FormMessage id={fieldId("first-name-error")}>{state.fieldErrors?.firstName?.[0]}</FormMessage>
+          <FormMessage id={fieldId("first-name-error")}>{fieldErrors?.firstName?.[0]}</FormMessage>
         </FormField>
 
         <FormField>
@@ -133,10 +168,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             defaultValue={prefill?.lastName || ""}
             placeholder={LEAD_FORM_COPY.lastNamePlaceholder}
             aria-required="true"
-            aria-invalid={Boolean(state.fieldErrors?.lastName)}
-            aria-describedby={state.fieldErrors?.lastName ? fieldId("last-name-error") : undefined}
+            aria-invalid={Boolean(fieldErrors?.lastName)}
+            aria-describedby={fieldErrors?.lastName ? fieldId("last-name-error") : undefined}
           />
-          <FormMessage id={fieldId("last-name-error")}>{state.fieldErrors?.lastName?.[0]}</FormMessage>
+          <FormMessage id={fieldId("last-name-error")}>{fieldErrors?.lastName?.[0]}</FormMessage>
         </FormField>
       </div>
 
@@ -154,10 +189,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             defaultValue={prefill?.email || ""}
             placeholder={LEAD_FORM_COPY.enterYourEmailAddress}
             aria-required="true"
-            aria-invalid={Boolean(state.fieldErrors?.email)}
-            aria-describedby={state.fieldErrors?.email ? fieldId("email-error") : undefined}
+            aria-invalid={Boolean(fieldErrors?.email)}
+            aria-describedby={fieldErrors?.email ? fieldId("email-error") : undefined}
           />
-          <FormMessage id={fieldId("email-error")}>{state.fieldErrors?.email?.[0]}</FormMessage>
+          <FormMessage id={fieldId("email-error")}>{fieldErrors?.email?.[0]}</FormMessage>
         </FormField>
 
         <FormField>
@@ -172,10 +207,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             aria-required="true"
             defaultValue={prefill?.phone || ""}
             placeholder={LEAD_FORM_COPY.whatsappOrPhone}
-            aria-invalid={Boolean(state.fieldErrors?.phone)}
-            aria-describedby={state.fieldErrors?.phone ? fieldId("phone-error") : undefined}
+            aria-invalid={Boolean(fieldErrors?.phone)}
+            aria-describedby={fieldErrors?.phone ? fieldId("phone-error") : undefined}
           />
-          <FormMessage id={fieldId("phone-error")}>{state.fieldErrors?.phone?.[0]}</FormMessage>
+          <FormMessage id={fieldId("phone-error")}>{fieldErrors?.phone?.[0]}</FormMessage>
         </FormField>
       </div>
 
@@ -191,8 +226,8 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
               aria-required="true"
               value={selectedProjectType}
               onChange={(event) => setSelectedProjectType(event.target.value)}
-              aria-invalid={Boolean(state.fieldErrors?.projectType)}
-              aria-describedby={state.fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
+              aria-invalid={Boolean(fieldErrors?.projectType)}
+              aria-describedby={fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
               className={cn(selectedProjectType ? "text-foreground" : "text-muted-foreground/60", "w-full h-10 sm:h-11 px-4 pr-10 rounded-xl bg-card border border-border text-xs sm:text-sm appearance-none shadow-2xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring")}
             >
               <option value="" disabled>{LEAD_FORM_COPY.selectProjectCategory}</option>
@@ -200,7 +235,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             </select>
             <AnimatedIcon icon={ChevronDownIcon} size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
           </div>
-          <FormMessage id={fieldId("project-type-error")}>{state.fieldErrors?.projectType?.[0]}</FormMessage>
+          <FormMessage id={fieldId("project-type-error")}>{fieldErrors?.projectType?.[0]}</FormMessage>
         </FormField>
 
         {/* Company */}
@@ -213,10 +248,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             name="company"
             defaultValue={prefill?.company || ""}
             placeholder={LEAD_FORM_COPY.companyName}
-            aria-invalid={Boolean(state.fieldErrors?.company)}
-            aria-describedby={state.fieldErrors?.company ? fieldId("company-error") : undefined}
+            aria-invalid={Boolean(fieldErrors?.company)}
+            aria-describedby={fieldErrors?.company ? fieldId("company-error") : undefined}
           />
-          <FormMessage id={fieldId("company-error")}>{state.fieldErrors?.company?.[0]}</FormMessage>
+          <FormMessage id={fieldId("company-error")}>{fieldErrors?.company?.[0]}</FormMessage>
         </FormField>
       </div>
 
@@ -233,10 +268,10 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
           defaultValue={prefill?.description || ""}
           placeholder={LEAD_FORM_COPY.descriptionPlaceholder}
           aria-required="true"
-          aria-invalid={Boolean(state.fieldErrors?.description)}
-          aria-describedby={state.fieldErrors?.description ? fieldId("description-error") : undefined}
+          aria-invalid={Boolean(fieldErrors?.description)}
+          aria-describedby={fieldErrors?.description ? fieldId("description-error") : undefined}
         />
-        <FormMessage id={fieldId("description-error")}>{state.fieldErrors?.description?.[0]}</FormMessage>
+        <FormMessage id={fieldId("description-error")}>{fieldErrors?.description?.[0]}</FormMessage>
       </FormField>
 
       <FormField>
@@ -247,8 +282,8 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             type="checkbox"
             required
             value="true"
-            aria-invalid={Boolean(state.fieldErrors?.consent)}
-            aria-describedby={state.fieldErrors?.consent ? fieldId("consent-error") : undefined}
+            aria-invalid={Boolean(fieldErrors?.consent)}
+            aria-describedby={fieldErrors?.consent ? fieldId("consent-error") : undefined}
             className="mt-0.5 size-4 shrink-0 cursor-pointer accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           />
           <label htmlFor={fieldId("consent")} className="cursor-pointer text-xs leading-relaxed text-muted-foreground sm:text-sm">
@@ -259,22 +294,27 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             <span aria-hidden="true" className="text-primary">*</span>
           </label>
         </div>
-        <FormMessage id={fieldId("consent-error")}>{state.fieldErrors?.consent?.[0]}</FormMessage>
+        <FormMessage id={fieldId("consent-error")}>{fieldErrors?.consent?.[0]}</FormMessage>
       </FormField>
 
       {turnstileSiteKey && (
         <LeadVerification
           key={state.verificationAttempt ?? "initial"}
           siteKey={turnstileSiteKey}
-          onVerified={setVerified}
+          onVerified={handleVerification}
         />
+      )}
+      {showVerificationError && (
+        <p role="alert" className="text-xs font-medium text-destructive">
+          {LEAD_FORM_COPY.completeVerification}
+        </p>
       )}
 
       <div className="pt-2 flex flex-col gap-3">
         <CelebratoryButton data-animated-icon-target
           type="submit"
           isPending={isPending}
-          disabled={!isFormValid || (Boolean(turnstileSiteKey) && !verified)}
+          disabled={isPending}
           className="w-full"
         >
           {isPending ? (

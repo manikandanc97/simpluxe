@@ -103,7 +103,7 @@ async function check() {
   function form(overrides = {}) {
     const data = new FormData();
     for (const [key, value] of Object.entries({
-      firstName: "Test", lastName: "User", email: "test@example.com", phone: "+91 9876543210",
+      firstName: "Test", lastName: "User", email: "test@example.com", phone: "9876543210",
       projectType: "Not Sure Yet", description: "A test project enquiry", source: "contact",
       t: String(Date.now() - 5000), consent: "true", "cf-turnstile-response": "token", ...overrides,
     })) if (value !== null) data.set(key, value);
