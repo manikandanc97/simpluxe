@@ -13,3 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Use standard Tailwind utilities for spacing, sizing, typography, and colors.
 - Do not use bracket syntax for arbitrary values, properties, or variants in class strings.
 - Reuse named tokens, utilities, and variants from `app/globals.css` for illustration scaling, safe-area calculations, and other special styles. Add a shared definition there only when a standard utility cannot express the required behavior.
+- Do not use directional margin utilities such as `mt-*`, `mb-*`, `ml-*`, `mr-*`, `mx-*`, or `my-*` in component class strings.
+- Build vertical and horizontal content flow with a section-level flex/grid container and responsive `gap`; do not recreate flow spacing with semantic margin classes. Use parent padding for section edges. Reserve semantic CSS offsets only for genuinely positioned or overlapping artwork.
+- Prefer Flexbox for one-dimensional component and section flow. Use CSS Grid only when the layout genuinely requires simultaneous row-and-column alignment, such as responsive content/sidebar compositions or repeated card matrices.
+- Never introduce arbitrary spacing values. New spacing must come from the shared brand scale so vertical rhythm stays consistent across the site.

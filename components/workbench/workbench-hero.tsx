@@ -115,14 +115,17 @@ export function WorkbenchHero() {
         />
       </div>
 
-      <Container size="wide" className="z-10 relative">
+      <Container
+        size="wide"
+        className="relative z-10 flex flex-col items-center gap-14 sm:gap-16 lg:gap-20"
+      >
         <motion.div
-          className="flex flex-col items-center mx-auto max-w-4xl text-center"
+          className="flex w-full max-w-4xl flex-col items-center gap-5 text-center sm:gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex items-center gap-2 bg-white/70 shadow-sm backdrop-blur-md mb-5 sm:mb-6 px-4 py-2 border border-primary/15 rounded-full font-semibold text-primary text-xs uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary shadow-sm backdrop-blur-md">
             <AnimatedIcon icon={SparklesIcon} size={14} className="text-accent" />
             {HERO_CONTENT.eyebrow}
           </div>
@@ -135,11 +138,11 @@ export function WorkbenchHero() {
             </span>
           </h1>
 
-          <p className="mt-5 sm:mt-6 max-w-2xl text-muted-foreground text-base sm:text-lg leading-relaxed">
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             {HERO_CONTENT.description}
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-3 mt-7 sm:mt-9">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <Button
               id="hero-start-project"
               onClick={() => openLead({ source: "cta" })}
@@ -160,11 +163,11 @@ export function WorkbenchHero() {
               onClick={handleWorkClick}
               className="group flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <span className="flex flex-col">
+              <span className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold leading-tight text-heading transition-colors group-hover:text-primary sm:text-base">
                   {HERO_CONTENT.ctaSecondaryTitle}
                 </span>
-                <span className="mt-0.5 text-xs font-medium text-muted-foreground">
+                <span className="text-xs font-medium text-muted-foreground">
                   {HERO_CONTENT.ctaSecondarySubtitle}
                 </span>
               </span>
@@ -176,28 +179,28 @@ export function WorkbenchHero() {
         </motion.div>
 
         <motion.div
-          className="relative mx-auto mt-14 sm:mt-16 lg:mt-20 max-w-6xl"
+          className="relative w-full max-w-6xl"
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="relative bg-slate-100/70 shadow-elevated backdrop-blur-xl p-3 sm:p-5 lg:p-7 border border-slate-200/70 rounded-3xl overflow-hidden">
-            <div className="flex justify-between items-center mb-3 sm:mb-5 px-1">
-              <div className="flex items-center gap-2">
+          <div className="relative flex flex-col gap-3 overflow-hidden rounded-3xl border border-slate-200/70 bg-slate-100/70 p-3 shadow-elevated backdrop-blur-xl sm:gap-5 sm:p-5 lg:p-7">
+            <div className="flex items-center justify-between gap-4 px-1">
+              <div className="flex min-w-0 items-center gap-2">
                 <span className="font-mono font-bold text-primary text-xs">S/01</span>
                 <span className="bg-primary/30 w-8 sm:w-14 h-px" />
-                <span className="font-semibold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
+                <span className="truncate font-semibold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
                   Selected digital work
                 </span>
               </div>
-              <span className="hidden sm:block font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+              <span className="hidden shrink-0 font-semibold text-muted-foreground text-xs uppercase tracking-wider lg:block">
                 Let’s start first, then we can make it look better.
               </span>
             </div>
 
             <div
               ref={mobileProjectMenuRef}
-              className="relative z-30 mb-3 rounded-xl border border-border/70 bg-slate-50/95 p-3 lg:hidden"
+              className="relative z-30 flex flex-col gap-2 rounded-xl border border-border/70 bg-slate-50/95 p-3 lg:hidden"
             >
               <p className="text-xs font-semibold text-muted-foreground">Choose a project</p>
               <button
@@ -206,7 +209,7 @@ export function WorkbenchHero() {
                 aria-expanded={isMobileProjectMenuOpen}
                 aria-controls="mobile-project-options"
                 onClick={() => setIsMobileProjectMenuOpen((isOpen) => !isOpen)}
-                className="mt-2 flex h-12 w-full items-center justify-between rounded-lg border border-primary/20 bg-slate-100 px-2.5 text-left shadow-sm outline-none transition-colors hover:border-primary/40 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-primary/20"
+                className="flex h-12 w-full items-center justify-between rounded-lg border border-primary/20 bg-slate-100 px-2.5 text-left shadow-sm outline-none transition-colors hover:border-primary/40 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-primary/20"
               >
                 <span className="flex min-w-0 items-center gap-3">
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary font-mono text-xs font-bold text-white">
@@ -215,7 +218,7 @@ export function WorkbenchHero() {
                   <span className="truncate text-sm font-bold text-heading">{activeProject.name}</span>
                 </span>
                 <span
-                  className={`ml-3 flex size-8 shrink-0 items-center justify-center rounded-md bg-white text-primary shadow-sm transition-transform ${
+                  className={`flex size-8 shrink-0 items-center justify-center rounded-md bg-white text-primary shadow-sm transition-transform ${
                     isMobileProjectMenuOpen ? "rotate-180" : ""
                   }`}
                 >
@@ -229,7 +232,7 @@ export function WorkbenchHero() {
                     id="mobile-project-options"
                     role="listbox"
                     aria-label="Choose a project"
-                    className="absolute inset-x-3 top-full z-40 mt-2 overflow-hidden rounded-xl border border-border bg-slate-50 p-1.5 shadow-elevated"
+                    className="absolute inset-x-3 top-full z-40 translate-y-2 overflow-hidden rounded-xl border border-border bg-slate-50 p-1.5 shadow-elevated"
                     initial={{ opacity: 0, y: -6, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -4, scale: 0.98 }}
@@ -261,10 +264,10 @@ export function WorkbenchHero() {
                           >
                             {project.number}
                           </span>
-                          <span className="min-w-0">
+                          <span className="flex min-w-0 flex-col gap-0.5">
                             <span className="block truncate text-sm font-bold">{project.name}</span>
                             <span
-                              className={`mt-0.5 block truncate text-xs ${
+                              className={`block truncate text-xs ${
                                 isSelected ? "text-sky-100" : "text-muted-foreground"
                               }`}
                             >
@@ -279,11 +282,11 @@ export function WorkbenchHero() {
               </AnimatePresence>
             </div>
 
-            <div className="gap-3 lg:gap-5 grid lg:grid-cols-12">
-              <div className="hidden lg:flex flex-col justify-between lg:col-span-3 bg-slate-50/95 p-3 border border-border/70 rounded-2xl">
-                <div>
-                  <p className="px-2 pb-3 font-bold text-2xs text-muted-foreground uppercase tracking-widest">Project index</p>
-                  <div className="space-y-1.5">
+            <div className="grid gap-3 lg:grid-cols-12 lg:gap-5">
+              <div className="hidden rounded-2xl border border-border/70 bg-slate-50/95 p-4 lg:col-span-3 lg:flex lg:flex-col lg:gap-4">
+                <div className="flex flex-1 flex-col gap-3">
+                  <p className="px-2 font-bold text-2xs text-muted-foreground uppercase tracking-widest">Project index</p>
+                  <div className="flex flex-1 flex-col justify-between gap-2">
                     {showcasedProjects.map((project, index) => (
                       <button
                         key={project.name}
@@ -297,21 +300,21 @@ export function WorkbenchHero() {
                         }`}
                       >
                         <span className="font-mono font-bold text-2xs text-primary">{project.number}</span>
-                        <div className="min-w-0">
+                        <div className="flex min-w-0 flex-col gap-0.5">
                           <p className="font-bold text-xs truncate">{project.name}</p>
-                          <p className="mt-0.5 text-2xs truncate uppercase tracking-wider">{project.category}</p>
+                          <p className="truncate text-2xs uppercase tracking-wider">{project.category}</p>
                         </div>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-dark p-4 rounded-xl text-white">
+                <div className="flex flex-col gap-2 rounded-xl bg-dark p-4 text-white">
                   <p className="font-bold text-2xs text-sky-300 uppercase tracking-widest">Outcome, not output</p>
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.p
                       key={activeProject.result}
-                      className="mt-2 font-bold text-2xl tracking-tight"
+                      className="text-2xl font-bold tracking-tight"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
@@ -320,12 +323,12 @@ export function WorkbenchHero() {
                       {activeProject.result}
                     </motion.p>
                   </AnimatePresence>
-                  <p className="mt-1 text-slate-300 text-xs leading-relaxed">Strategy, design and engineering working as one.</p>
+                  <p className="text-xs leading-relaxed text-slate-300">Strategy, design and engineering working as one.</p>
                 </div>
               </div>
 
-              <div className="relative lg:col-span-9 bg-slate-50 shadow-xl border border-border rounded-2xl overflow-hidden">
-                <div className="flex justify-between items-center bg-slate-50 px-3 sm:px-5 border-border border-b h-10 sm:h-12">
+              <div className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-slate-50 shadow-xl lg:col-span-9">
+                <div className="flex h-10 items-center justify-between gap-3 border-b border-border bg-slate-50 px-3 sm:h-12 sm:px-5">
                   <div className="flex items-center gap-1.5" aria-hidden="true">
                     <span className="bg-slate-200 rounded-full size-2" />
                     <span className="bg-slate-200 rounded-full size-2" />
@@ -339,7 +342,7 @@ export function WorkbenchHero() {
                   </span>
                 </div>
 
-                <div className="relative bg-surface-elevated h-64 sm:h-96 lg:h-112 overflow-hidden" aria-live="polite">
+                <div className="relative h-64 overflow-hidden bg-surface-elevated sm:h-96 lg:h-112" aria-live="polite">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={activeProject.desktopImage}
@@ -362,20 +365,20 @@ export function WorkbenchHero() {
 
                   <motion.div
                     key={activeProject.name}
-                    className="bottom-3 sm:bottom-5 left-3 sm:left-5 absolute hidden bg-slate-50/95 shadow-elevated backdrop-blur-xl p-3 sm:block sm:p-4 border border-slate-200/70 rounded-xl max-w-56 sm:max-w-xs"
+                    className="absolute bottom-3 left-3 hidden max-w-56 flex-col gap-0.5 rounded-xl border border-slate-200/70 bg-slate-50/95 p-3 shadow-elevated backdrop-blur-xl sm:bottom-5 sm:left-5 sm:flex sm:max-w-xs sm:p-4"
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
                   >
                     <p className="font-bold text-2xs text-primary uppercase tracking-widest">Featured build</p>
-                    <p className="mt-1 font-bold text-heading text-sm sm:text-base">{activeProject.name}</p>
-                    <p className="mt-0.5 text-2xs text-muted-foreground sm:text-xs">Built for clarity, conversion and scale.</p>
+                    <p className="text-sm font-bold text-heading sm:text-base">{activeProject.name}</p>
+                    <p className="text-2xs text-muted-foreground sm:text-xs">Built for clarity, conversion and scale.</p>
                   </motion.div>
                 </div>
               </div>
             </div>
 
-            <div className="hidden md:block top-20 lg:top-24 right-5 lg:right-10 absolute bg-dark shadow-2xl border-4 border-white rounded-2xl w-32 lg:w-40 overflow-hidden">
+            <div className="absolute right-5 top-20 hidden w-32 overflow-hidden rounded-2xl border-4 border-white bg-dark shadow-2xl lg:right-10 lg:top-24 lg:block lg:w-40">
               <div className="relative h-64 lg:h-80 overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
