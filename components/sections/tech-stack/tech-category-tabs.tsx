@@ -1,6 +1,5 @@
 "use client";
 
-import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { TECH_CATEGORY_TABS_COPY } from "@/lib/content/tech-stack";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
@@ -22,17 +21,6 @@ export function TechCategoryTabs({
 }: TechCategoryTabsProps) {
   return (
     <div className="relative sm:mx-auto sm:w-fit sm:max-w-full">
-      {/* Keep the annotation in the layout so it clears the description at every width. */}
-      <div className="mb-3 ml-1 pointer-events-none select-none flex items-start gap-2 sm:gap-4">
-        <span
-          className="font-handwriting text-base sm:text-xl font-bold text-slate-800 dark:text-slate-200 -rotate-10 leading-tight tracking-wide"
-        >
-          {TECH_CATEGORY_TABS_COPY.tools}<br />{TECH_CATEGORY_TABS_COPY.weLove}</span>
-        <div className="ml-0.5 sm:ml-1 text-primary-hover dark:text-rose-400">
-          <DecorativeArrow direction="hook-down" className="h-9 w-9 sm:h-10 sm:w-10" />
-        </div>
-      </div>
-
       {/* Tabs Bar */}
       <div
         className="ts-tabs grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-1.5 sm:gap-2 w-full max-w-lg sm:max-w-none mx-auto"
@@ -50,17 +38,17 @@ export function TechCategoryTabs({
               aria-pressed={isActive}
               onClick={() => onSelectCategory(cat)}
               id={`tech-tab-${cat.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
-              className={`relative isolate px-3 sm:px-4.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
+              className={`relative isolate px-3 sm:px-4.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
                 isActive
                   ? "text-white shadow-lg shadow-primary-hover/25"
-                  : "border border-slate-200/80 dark:border-border/70 text-slate-600 dark:text-muted-foreground bg-white dark:bg-card/80 hover:text-slate-900 dark:hover:text-foreground hover:border-slate-300 dark:hover:border-border"
+                  : "border border-slate-200/80 dark:border-border/70 text-slate-600 dark:text-muted-foreground bg-slate-50 dark:bg-card/80 hover:text-slate-900 dark:hover:text-foreground hover:bg-slate-100/90 hover:border-slate-300 dark:hover:border-border"
               }`}
             >
-              {/* Active tab pill background */}
+              {/* Active tab background */}
               {isActive && (
                 <motion.span
                   layoutId="tech-active-pill"
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-hover via-primary-hover to-primary-hover"
+                  className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-hover via-primary-hover to-primary-hover"
                   style={{ zIndex: -1 }}
                   transition={SPRING}
                 />
@@ -83,7 +71,7 @@ export function TechCategoryTabs({
                 className={`relative z-10 text-xs font-medium px-2 py-0.5 rounded-full hidden sm:inline-block ${
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-slate-100 dark:bg-muted/60 text-slate-500 dark:text-muted-foreground"
+                    : "bg-white dark:bg-muted/60 text-slate-500 dark:text-muted-foreground border border-slate-200/60"
                 }`}
               >
                 {count}

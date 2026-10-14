@@ -1,6 +1,5 @@
 "use client";
 
-import { DecorativeArrow } from "@/components/ui/decorative-arrow";
 import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/content/philosophy";
 
 import { AnimatedCounter } from "@/components/ui/animated-counter";
@@ -16,19 +15,6 @@ interface PhilosophyOutcomesProps {
 export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
   return (
     <div className="relative">
-      {/* Top-Right Handwritten Annotation with curved arrow pointing to diagram */}
-      <motion.div 
-        initial={{ opacity: 0, y: -10 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-        className="hidden sm:block absolute -top-12 right-2 lg:-top-16 lg:right-10 pointer-events-none select-none z-40"
-      >
-        <span className="font-handwriting text-sm sm:text-base text-primary-hover block rotate-3 leading-tight text-center drop-shadow-sm">
-          {PHILOSOPHY_OUTCOMES_COPY.from}<br />
-          {PHILOSOPHY_OUTCOMES_COPY.ideaToImpact}</span>
-        <DecorativeArrow direction="down-left" className="h-8 w-8 text-primary-hover -ml-2 -mt-0.5" draw={inView} delay={1} />
-      </motion.div>
-
       {/* Outcomes Card Container */}
       <motion.div
         initial={{ opacity: 0, x: 24, filter: "blur(8px)" }}
@@ -38,12 +24,12 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
       >
         {/* Header */}
         <div className="flex items-center gap-2 px-1">
-          <div className="flex items-end gap-0.5 text-primary-hover">
-            <span className="w-1.5 h-2.5 bg-primary-hover rounded-xs" />
-            <span className="w-1.5 h-4 bg-primary-hover rounded-xs" />
-            <span className="w-1.5 h-3 bg-primary-hover rounded-xs" />
+          <div className="flex items-end gap-0.5 text-primary">
+            <span className="w-1.5 h-2.5 bg-primary rounded-xs" />
+            <span className="w-1.5 h-4 bg-primary rounded-xs" />
+            <span className="w-1.5 h-3 bg-primary rounded-xs" />
           </div>
-          <span className="text-xs font-bold tracking-widest text-primary-hover uppercase">
+          <span className="text-xs font-bold tracking-widest text-primary uppercase">
             {PHILOSOPHY_OUTCOMES_COPY.realOutcomes}</span>
         </div>
 
@@ -58,10 +44,10 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
                 initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                 animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.28 + i * 0.08 }}
-                className="bg-white rounded-2xl border border-neutral-100/80 shadow-card p-2.5 flex items-center justify-between gap-2 hover:shadow-md hover:border-rose-100 transition-all duration-300 group cursor-default"
+                className="bg-white rounded-2xl border border-neutral-100/80 shadow-card p-2.5 flex items-center justify-between gap-2 hover:shadow-md hover:border-primary/30 transition-all duration-300 group cursor-default"
               >
                 <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-11 h-11 rounded-full bg-rose-50 border border-rose-100/50 flex items-center justify-center text-primary shrink-0">
+                  <div className="w-11 h-11 rounded-full bg-primary/8 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                     <AnimatedIcon icon={StatIcon} size={18} className="w-4.5 h-4.5" />
                   </div>
                   <div className="flex flex-col gap-1 min-w-0">

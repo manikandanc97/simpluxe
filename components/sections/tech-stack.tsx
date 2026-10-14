@@ -1,6 +1,5 @@
 import { TECH_STACK_SECTION_CONTENT } from "@/lib/content/tech-stack";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TechPerformancePill } from "./tech-stack/tech-performance-pill";
 import { TechValueStrip } from "./tech-stack/tech-value-strip";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
@@ -14,16 +13,10 @@ const TechStackInteractive = dynamic(
 );
 export function TechStack() {
   return (
-    <Section id="tech-stack">
-      {/* Decorative dot matrix in corners */}
-      <div className="pointer-events-none absolute top-8 left-8 w-32 h-32 hero-dots opacity-40 dark:opacity-20" />
-      <div className="pointer-events-none absolute bottom-8 left-8 w-36 h-36 hero-dots opacity-40 dark:opacity-20" />
-      <div className="pointer-events-none absolute bottom-8 right-8 w-36 h-36 hero-dots opacity-40 dark:opacity-20" />
-
+    <Section id="tech-stack" className="overflow-hidden bg-white dark:bg-card/40 font-satoshi">
       <Container className="relative z-10 flex flex-col gap-6 sm:gap-10 lg:gap-12">
-        {/* ── Top Header with Floating Performance Pill ──────────────────────── */}
+        {/* ── Top Header ─────────────────────────────────────────────────────── */}
         <FadeUpWrapper className="relative text-center">
-          <TechPerformancePill />
 
           <SectionHeader
             eyebrow={TECH_STACK_SECTION_CONTENT.eyebrow}

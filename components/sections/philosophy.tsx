@@ -17,7 +17,7 @@ export function WhySimpluxe() {
   return (
     <Section
       id="why-simpluxe"
-      className="overflow-hidden font-satoshi"
+      className="overflow-hidden bg-background font-satoshi"
     >
       <Container ref={containerRef} className="relative z-10 flex flex-col gap-6 sm:gap-10 lg:gap-12">
         <SectionHeader

@@ -18,7 +18,7 @@ export function FlowDiagram({ inView }: { inView: boolean }) {
     >
       {/* Top Bar inside Center Card */}
       <div className="flex items-center justify-between w-full z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-rose-50 border border-rose-100/60 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-primary/8 border border-primary/20 shadow-xs">
           <span className="w-1.5 h-1.5 rounded-full bg-primary" />
           <span className="text-xs sm:text-xs font-bold tracking-widest text-primary uppercase">
             {FLOW_DIAGRAM_COPY.signal01}</span>
@@ -43,11 +43,11 @@ export function FlowDiagram({ inView }: { inView: boolean }) {
           <span className="text-xs sm:text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest sm:tracking-widest">
             {FLOW_DIAGRAM_COPY.yourIdea}</span>
         </div>
-        <div className="flex-1 mx-2 sm:mx-4 border-b-2 border-dashed border-rose-100/60" />
+        <div className="flex-1 mx-2 sm:mx-4 border-b-2 border-dashed border-primary/25" />
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <span className="text-xs sm:text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest sm:tracking-widest">
             {FLOW_DIAGRAM_COPY.realImpact}</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-chart-2" />
+          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
         </div>
       </div>
     </motion.div>

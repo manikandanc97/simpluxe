@@ -39,11 +39,6 @@ export const ORB_CONFIGURATIONS: Record<ScreenType, OrbConfig[]> = {
     { top: "6%", right: "2%", size: "w-14 h-14 sm:w-24 sm:h-24 lg:w-32 lg:h-32", color: "pink" },
     { top: "14%", right: "6%", size: "w-10 h-10 sm:w-16 sm:h-16 lg:w-24 lg:h-24", color: "white" },
     { top: "24%", left: "2%", size: "w-18 h-18 sm:w-32 sm:h-32 lg:w-48 lg:h-48", color: "blue" },
-    { top: "38%", left: "4%", size: "w-12 h-12 sm:w-20 sm:h-20 lg:w-28 lg:h-28", color: "pink" },
-    { top: "46%", right: "1%", size: "w-16 h-16 sm:w-24 sm:h-24 lg:w-36 lg:h-36", color: "purple" },
-    { top: "58%", left: "1%", size: "w-16 h-16 sm:w-30 sm:h-30 lg:w-44 lg:h-44", color: "purple" },
-    { top: "72%", right: "2%", size: "w-20 h-20 sm:w-36 sm:h-36 lg:w-56 lg:h-56", color: "pink" },
-    { top: "84%", left: "2%", size: "w-16 h-16 sm:w-28 sm:h-28 lg:w-40 lg:h-40", color: "blue" },
     { top: "94%", right: "3%", size: "w-14 h-14 sm:w-22 sm:h-22 lg:w-32 lg:h-32", color: "purple" },
   ],
 
@@ -116,9 +111,6 @@ export const TINY_ORB_CONFIGURATIONS: Record<ScreenType, TinyOrbConfig[]> = {
     { top: "8%", left: "15%", color: "#fca5a5", size: "w-2 h-2 sm:w-3 sm:h-3" },
     { top: "12%", right: "25%", color: "#c084fc", size: "w-1.5 h-1.5 sm:w-2 sm:h-2" },
     { top: "22%", left: "22%", color: "#fca5a5", size: "w-2.5 h-2.5 sm:w-4 sm:h-4" },
-    { top: "45%", left: "30%", color: "#a78bfa", size: "w-2 h-2 sm:w-3 sm:h-3" },
-    { top: "65%", left: "18%", color: "#93c5fd", size: "w-1.5 h-1.5 sm:w-2 sm:h-2" },
-    { top: "88%", left: "25%", color: "#c084fc", size: "w-2 h-2 sm:w-3 sm:h-3" },
   ],
   work: [
     { top: "4%", left: "12%", color: "#fca5a5", size: "w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" },
@@ -171,10 +163,6 @@ export const DOT_GRID_CONFIGURATIONS: Record<ScreenType, DotGridConfig[]> = {
     { top: "5%", right: "10%" },
     { top: "15%", left: "5%" },
     { top: "30%", right: "5%" },
-    { top: "45%", left: "8%" },
-    { top: "65%", right: "8%" },
-    { top: "80%", left: "10%" },
-    { top: "90%", right: "12%" },
   ],
   work: [
     { top: "5%", left: "5%" },
@@ -217,8 +205,6 @@ export const WAVE_CURVES: Record<ScreenType, WaveCurveConfig[]> = {
   home: [
     { d: "M-10,18 C 30,8 70,28 110,18", stroke: "#d8b4e2", width: "0.2", dashed: true },
     { d: "M-10,34 C 40,44 60,14 110,24", stroke: "#fbcfe8", width: "0.1" },
-    { d: "M-10,58 C 25,48 75,68 110,58", stroke: "#c4b5fd", width: "0.2", dashed: true },
-    { d: "M-10,82 C 30,92 80,72 110,82", stroke: "#fbcfe8", width: "0.1" },
   ],
   work: [
     { d: "M-10,14 C 25,24 65,4 110,16", stroke: "#d8b4e2", width: "0.22", dashed: true },

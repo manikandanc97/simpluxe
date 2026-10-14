@@ -216,6 +216,12 @@ export const STEPS: StepConfig[] = [
   },
 ];
 
+export const HOW_WE_WORK_TRUST_POINTS = [
+  "Dedicated senior engineers",
+  "Direct communication",
+  "Production warranty",
+] as const;
+
 export const HOW_WE_WORK_SECTION_CONTENT = {
   eyebrow: "Our process",
   title: "How We",

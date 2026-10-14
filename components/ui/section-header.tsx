@@ -14,6 +14,7 @@ export interface SectionHeaderProps {
   className?: string;
   maxWidth?: string;
   centered?: boolean;
+  inverted?: boolean;
 }
 
 const headerVariants: Variants = {
@@ -39,6 +40,7 @@ export function SectionHeader({
   className,
   maxWidth = "max-w-3xl",
   centered = false,
+  inverted = false,
 }: SectionHeaderProps) {
   const uid = useId().replace(/:/g, "-");
 
@@ -59,23 +61,41 @@ export function SectionHeader({
         <motion.div
           variants={itemVariants}
           data-sh-id={`${uid}-eyebrow`}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-border shadow-sm"
+          className={cn(
+            "flex items-center gap-3 text-xs font-semibold tracking-widest uppercase",
+            centered ? "justify-center" : "justify-start",
+            inverted ? "text-sky-300" : "text-primary"
+          )}
         >
-          <span className="w-2 h-2 rounded-full bg-primary inline-block" />
-          <span className="type-label font-extrabold tracking-wide text-foreground/90 uppercase">
-            {typeof eyebrow === "string" ? <AnimatedText text={eyebrow} el="span" /> : eyebrow}
-          </span>
+          <span
+            aria-hidden="true"
+            className={cn("h-px w-8", inverted ? "bg-sky-300/40" : "bg-primary/40")}
+          />
+          {typeof eyebrow === "string" ? <AnimatedText text={eyebrow} el="span" /> : eyebrow}
+          {centered && (
+            <span
+              aria-hidden="true"
+              className={cn("h-px w-8", inverted ? "bg-sky-300/40" : "bg-primary/40")}
+            />
+          )}
         </motion.div>
       )}
 
       <motion.h2
         variants={itemVariants}
         data-sh-id={`${uid}-title`}
-        className={cn("type-h2 text-foreground will-change-transform", centered ? "text-center" : "text-left")}
+        className={cn(
+          "type-h2 will-change-transform",
+          inverted ? "text-white" : "text-foreground",
+          centered ? "text-center" : "text-left"
+        )}
       >
         {title}
         {highlightedText && (
-          <span className="brand-gradient-text"> {highlightedText}</span>
+          <span className={inverted ? "text-gradient-primary-light" : "brand-gradient-text"}>
+            {" "}
+            {highlightedText}
+          </span>
         )}
       </motion.h2>
 
@@ -83,7 +103,10 @@ export function SectionHeader({
         <motion.p
           variants={itemVariants}
           data-sh-id={`${uid}-desc`}
-          className="text-base leading-relaxed text-muted-foreground sm:text-lg"
+          className={cn(
+            "text-sm leading-relaxed sm:text-base",
+            inverted ? "text-sky-100/90" : "text-muted-foreground"
+          )}
         >
           {description}
         </motion.p>

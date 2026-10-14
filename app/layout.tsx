@@ -17,10 +17,8 @@ import { Geist } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const FloatingCallButton = dynamic(() => import("@/components/layout/floating-call-button").then((mod) => mod.FloatingCallButton));
 const MobileBottomNav = dynamic(() => import("@/components/layout/mobile-bottom-nav").then((mod) => mod.MobileBottomNav));
 const CommandPalette = dynamic(() => import("@/components/ui/command-palette").then((mod) => mod.CommandPalette));
-const ScrollToTop = dynamic(() => import("@/components/ui/scroll-to-top").then((mod) => mod.ScrollToTop));
 
 // Primary typeface — Geist variable font, self-hosted by Next.js (no external network request).
 const geist = Geist({
@@ -107,10 +105,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {children}
               </main>
 
-              <div className="right-4 sm:right-6 bottom-safe-actions md:bottom-8 z-50 fixed flex flex-col items-end gap-3">
-                <FloatingCallButton />
-                <ScrollToTop />
-              </div>
               <MobileBottomNav />
               <SiteFooter />
               <ScrollRestorationProvider />

@@ -56,11 +56,11 @@ export function FaqAccordionItem({
           <div className="flex flex-col gap-1 flex-1 min-w-0">
             <div className="flex items-center gap-1.5">
               <AnimatedIcon icon={Icon} size={14} className="w-3.5 h-3.5 text-primary shrink-0" />
-              <span className="text-2xs font-bold uppercase tracking-wider text-primary">
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
                 {faq.category}
               </span>
             </div>
-            <h3 className="text-sm sm:text-base font-bold text-foreground leading-snug">
+            <h3 className="text-sm sm:text-base font-semibold text-heading leading-snug">
               {faq.question}
             </h3>
           </div>

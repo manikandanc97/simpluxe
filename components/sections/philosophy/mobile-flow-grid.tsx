@@ -15,13 +15,13 @@ export function MobileFlowGrid() {
     <div className="flex md:hidden flex-col items-center gap-4 w-full py-2">
       {/* Centered Brand Medallion */}
       <div className="relative flex flex-col items-center justify-center my-1">
-        <div className="w-24 h-24 xs:w-28 xs:h-28 rounded-full bg-white shadow-elevated border border-rose-100 flex flex-col items-center justify-center p-3">
+        <div className="w-24 h-24 xs:w-28 xs:h-28 rounded-full bg-white shadow-elevated border border-primary/20 flex items-center justify-center p-3">
           <CldImage
-            src="simpluxe/logo/logo"
+            src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
             alt={MOBILE_FLOW_GRID_COPY.simpluxeLogo}
-            width={140}
-            height={32}
-            className="w-9/10 h-auto object-contain drop-shadow-sm select-none"
+            width={64}
+            height={64}
+            className="size-14 xs:size-16 object-contain drop-shadow-sm select-none"
             priority
           />
         </div>
@@ -32,10 +32,10 @@ export function MobileFlowGrid() {
         {/* 1. Direct access */}
         <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-primary bg-rose-50/70 rounded-full">
+            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={LightbulbIcon} size={14} className="w-3.5 h-3.5" />
             </div>
-            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border bg-rose-50 text-primary border-rose-200/60 uppercase tracking-widest leading-none">
+            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
               <AnimatedIcon icon={LayoutGridIcon} className="w-2.5 h-2.5" /> {FLOW_NODES.topLeft.badge}
             </span>
           </div>
@@ -52,10 +52,10 @@ export function MobileFlowGrid() {
         {/* 2. Weekly progress */}
         <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-chart-2 bg-purple-50/70 rounded-full">
+            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={TrendingUpIcon} size={14} className="w-3.5 h-3.5" />
             </div>
-            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border bg-purple-50 text-chart-2 border-purple-200/60 uppercase tracking-widest leading-none">
+            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
               <AnimatedIcon icon={LayoutGridIcon} className="w-2.5 h-2.5" /> {FLOW_NODES.topRight.badge}
             </span>
           </div>
@@ -72,10 +72,10 @@ export function MobileFlowGrid() {
         {/* 3. Production quality */}
         <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-primary bg-rose-50/70 rounded-full">
+            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={BoxIcon} size={14} className="w-3.5 h-3.5" />
             </div>
-            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border bg-rose-50 text-primary border-rose-200/60 uppercase tracking-widest leading-none">
+            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
               <AnimatedIcon icon={LayoutGridIcon} className="w-2.5 h-2.5" /> {FLOW_NODES.bottomLeft.badge}
             </span>
           </div>
@@ -92,10 +92,10 @@ export function MobileFlowGrid() {
         {/* 4. Clear ownership */}
         <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-chart-2 bg-purple-50/70 rounded-full">
+            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={UsersIcon} size={14} className="w-3.5 h-3.5" />
             </div>
-            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border bg-purple-50 text-chart-2 border-purple-200/60 uppercase tracking-widest leading-none">
+            <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
               <AnimatedIcon icon={LayoutGridIcon} className="w-2.5 h-2.5" /> {FLOW_NODES.bottomRight.badge}
             </span>
           </div>

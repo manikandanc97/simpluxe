@@ -45,7 +45,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
       className={cn(
         "fixed inset-x-0 top-0 z-50 w-full border-b font-satoshi transition-all duration-500",
         scrolled
-          ? "border-white/40 bg-white/70 shadow-sm backdrop-blur-2xl backdrop-saturate-150"
+          ? "border-slate-200/60 bg-background/80 shadow-sm backdrop-blur-2xl backdrop-saturate-150"
           : "border-transparent bg-transparent shadow-none backdrop-blur-none"
       )}
       initial={{ y: -8, opacity: 0 }}

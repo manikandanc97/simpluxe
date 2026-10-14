@@ -95,9 +95,9 @@ export const FAQS: FAQItem[] = [
 
 export const FAQ_SECTION_CONTENT: FAQSectionContent = {
   eyebrow: "FAQ",
-  titleLine1: "Frequently Asked",
+  titleLine1: "Clear Answers before",
   titleLine2: "",
-  highlightedText: "Questions.",
+  highlightedText: "We Build.",
   description: "Honest answers to common questions founders and teams ask before building with us.",
 };
 
@@ -108,13 +108,18 @@ export const FAQ_CONTACT_CARD_COPY = {
   question: "question?",
   weReHereToHelp: "We're here to help",
   canTFindYourAnswer: "Can't find your answer?",
-  talkToOurTeamAndGet: "Talk to our team and get a clear answer for your requirement.",
+  talkToOurTeamAndGet: "Have a specific project in mind or need custom architecture advice? Talk directly with our engineering team to evaluate technical feasibility.",
+  highlights: [
+    "Technical feasibility & architecture assessment",
+    "Sprint milestones & transparent project quote",
+  ],
+  responseTime: "Response in < 2 hours",
   faqTechnicalConsultation: "FAQ - Technical Consultation",
   talkToOurTeam: "Talk to our team",
   text100: "100%",
   honestAnswers: "Honest Answers",
   direct: COMMON.labels.direct,
-  projectReview: COMMON.labels.projectReview,
+  projectReview: "Engineer Review",
   zero: COMMON.labels.zero,
   salesPressure: "Sales Pressure",
 } as const;

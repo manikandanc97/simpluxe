@@ -74,9 +74,9 @@ export function WhatWeBuild() {
   };
 
   return (
-    <Section id="capabilities" className="overflow-hidden bg-white font-satoshi">
+    <Section id="capabilities" className="overflow-hidden bg-background font-satoshi">
       <div className="relative flex flex-col gap-8 lg:gap-10">
-        <Container size="wide">
+        <Container>
           <motion.div variants={fadeUp} {...viewportReveal}>
             <SectionHeader
               title={SERVICES_SECTION_CONTENT.title}
@@ -91,14 +91,14 @@ export function WhatWeBuild() {
         <div
           ref={sliderRef}
           id="what-we-build-slider"
-          className="wwb-slider-track flex w-full snap-x snap-mandatory gap-5 overflow-x-auto pb-5 no-scrollbar lg:gap-6"
+          className="wwb-slider-track flex w-full snap-x snap-mandatory gap-5 overflow-x-auto no-scrollbar lg:gap-6"
         >
           {displayServices.map((service, index) => (
             <WhatWeBuildCard key={service.id} service={service} isActive={index === activeIndex} />
           ))}
         </div>
 
-        <Container size="wide" className="flex items-center justify-between gap-4">
+        <Container className="flex items-center justify-between gap-4">
           {/* Left: label + live count */}
           <div className="flex items-center gap-3" aria-live="polite" aria-atomic="true">
             <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
