@@ -10,7 +10,6 @@ import { PROJECTS } from "@/lib/content/projects";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
-import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import {
   AnimatePresence,
   m as motion,
@@ -125,11 +124,6 @@ export function WorkbenchHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary shadow-sm backdrop-blur-md">
-            <AnimatedIcon icon={SparklesIcon} size={14} className="text-accent" />
-            {HERO_CONTENT.eyebrow}
-          </div>
-
           <h1 className="font-satoshi font-bold text-dark text-4xl xs:text-5xl sm:text-5xl lg:text-6xl leading-tight tracking-tighter">
             <span className="block">{HERO_CONTENT.headlineLine1}</span>
             <span className="block">

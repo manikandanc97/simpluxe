@@ -1,55 +1,24 @@
 "use client";
 
-import { WHAT_WE_BUILD_CARD_COPY } from "@/lib/content/services";
-
-import { m as motion, AnimatePresence } from "motion/react";
-import { cn } from "@/lib/utils";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { Button } from "@/components/ui/button";
-import type { SERVICES_LIST } from "@/lib/content/services";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useState } from "react";
+import { useReducedMotion } from "motion/react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { MockupSkeleton } from "@/components/ui/skeleton";
+import { WHAT_WE_BUILD_CARD_COPY, type SERVICES_LIST } from "@/lib/content/services";
 
 const loadingSkeleton = () => <MockupSkeleton />;
-
-const WebsitesMockup = dynamic(
-  () => import("./mockups/websites").then((mod) => mod.WebsitesMockup),
-  { loading: loadingSkeleton }
-);
-const WebAppsMockup = dynamic(
-  () => import("./mockups/web-apps").then((mod) => mod.WebAppsMockup),
-  { loading: loadingSkeleton }
-);
-const EcommerceMockup = dynamic(
-  () => import("./mockups/ecommerce").then((mod) => mod.EcommerceMockup),
-  { loading: loadingSkeleton }
-);
-const MobileAppsMockup = dynamic(
-  () => import("./mockups/mobile-apps").then((mod) => mod.MobileAppsMockup),
-  { loading: loadingSkeleton }
-);
-const SaaSProductsMockup = dynamic(
-  () => import("./mockups/saas").then((mod) => mod.SaaSProductsMockup),
-  { loading: loadingSkeleton }
-);
-const BrandingMockup = dynamic(
-  () => import("./mockups/branding").then((mod) => mod.BrandingMockup),
-  { loading: loadingSkeleton }
-);
-const UIUXMockup = dynamic(
-  () => import("./mockups/ui-ux").then((mod) => mod.UIUXMockup),
-  { loading: loadingSkeleton }
-);
-const AutomationMockup = dynamic(
-  () => import("./mockups/automation").then((mod) => mod.AutomationMockup),
-  { loading: loadingSkeleton }
-);
-const CustomSoftwareMockup = dynamic(
-  () => import("./mockups/custom-software").then((mod) => mod.CustomSoftwareMockup),
-  { loading: loadingSkeleton }
-);
+const WebsitesMockup = dynamic(() => import("./mockups/websites").then((mod) => mod.WebsitesMockup), { loading: loadingSkeleton });
+const WebAppsMockup = dynamic(() => import("./mockups/web-apps").then((mod) => mod.WebAppsMockup), { loading: loadingSkeleton });
+const EcommerceMockup = dynamic(() => import("./mockups/ecommerce").then((mod) => mod.EcommerceMockup), { loading: loadingSkeleton });
+const MobileAppsMockup = dynamic(() => import("./mockups/mobile-apps").then((mod) => mod.MobileAppsMockup), { loading: loadingSkeleton });
+const SaaSProductsMockup = dynamic(() => import("./mockups/saas").then((mod) => mod.SaaSProductsMockup), { loading: loadingSkeleton });
+const BrandingMockup = dynamic(() => import("./mockups/branding").then((mod) => mod.BrandingMockup), { loading: loadingSkeleton });
+const UIUXMockup = dynamic(() => import("./mockups/ui-ux").then((mod) => mod.UIUXMockup), { loading: loadingSkeleton });
+const AutomationMockup = dynamic(() => import("./mockups/automation").then((mod) => mod.AutomationMockup), { loading: loadingSkeleton });
+const CustomSoftwareMockup = dynamic(() => import("./mockups/custom-software").then((mod) => mod.CustomSoftwareMockup), { loading: loadingSkeleton });
 
 const MOCKUPS: Record<string, React.ElementType> = {
   websites: WebsitesMockup,
@@ -63,260 +32,59 @@ const MOCKUPS: Record<string, React.ElementType> = {
   "custom-software": CustomSoftwareMockup,
 };
 
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-function FadeUp({
-  delay = 0,
-  children,
-  className,
-}: {
-  delay?: number;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
-      transition={{ delay, duration: 0.6, ease: EASE }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 interface WhatWeBuildCardProps {
   service: (typeof SERVICES_LIST)[number];
-  index: number;
-  activeIndex: number;
-  totalCount: number;
-  onSelect: () => void;
-  onNext: () => void;
-  onPrev: () => void;
+  isActive?: boolean;
 }
 
-export function WhatWeBuildCard({
-  service,
-  index,
-  activeIndex,
-  totalCount,
-  onSelect,
-  onNext,
-  onPrev,
-}: WhatWeBuildCardProps) {
-  let offset = index - activeIndex;
-  const half = Math.floor(totalCount / 2);
-  if (offset > half) offset -= totalCount;
-  if (offset < -half) offset += totalCount;
-
-  const isActive = offset === 0;
-  const isVisible = Math.abs(offset) <= 1;
-
+export function WhatWeBuildCard({ service, isActive = false }: WhatWeBuildCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   const MockupComponent = MOCKUPS[service.id];
   const IconComponent = service.icon;
+  const copy = WHAT_WE_BUILD_CARD_COPY.cards[service.id as keyof typeof WHAT_WE_BUILD_CARD_COPY.cards]
+    ?? { category: service.category, description: service.shortTagline };
+  // On touch/mobile: active card animates; on desktop: hover/focus triggers animation
+  const animateMockup = (isHovered || isFocused || isActive) && !prefersReducedMotion;
 
   return (
-    <motion.div data-animated-icon-target
-      key={service.id}
-      onClick={onSelect}
-      initial={false}
-      animate={{
-        x: `${offset * 70}%`,
-        scale: isActive ? 1 : 0.75,
-        rotateY: offset * -10,
-        z: isActive ? 100 : -100,
-        opacity: isActive ? 1 : isVisible ? 0.4 : 0,
-        filter: isActive
-          ? "blur(0px) brightness(1)"
-          : isVisible
-          ? "blur(1.5px) brightness(0.92)"
-          : "blur(4px) brightness(0.8)",
+    <Link
+      href={`/services#${service.id}`}
+      scroll={false}
+      data-animated-icon-target
+      data-inactive={!isActive}
+      onPointerEnter={(event) => {
+        if (event.pointerType !== "touch") setIsHovered(true);
       }}
-      transition={{
-        type: "spring",
-        stiffness: 380,
-        damping: 36,
-        mass: 0.75,
-        filter: { type: "tween", duration: 0.35, ease: "easeOut" },
-        opacity: { type: "tween", duration: 0.3, ease: "easeOut" },
+      onPointerLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) setIsFocused(false);
       }}
-      data-slot="card"
-      aria-hidden={!isActive}
-      inert={!isActive}
-      className={cn(
-        "group w-full max-w-3xl lg:max-w-4xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 font-satoshi cursor-pointer",
-        isActive ? "relative" : "absolute top-0 h-full",
-        "backdrop-blur-2xl border",
-        isActive
-          ? "bg-card border-primary/20 z-30 pointer-events-auto"
-          : "bg-card/60 border-border z-10 pointer-events-none"
-      )}
-      style={{
-        transformStyle: "preserve-3d",
-      }}
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.06}
-      dragTransition={{ bounceStiffness: 450, bounceDamping: 45, power: 0.15, timeConstant: 160 }}
-      whileDrag={{ cursor: "grabbing", scale: isActive ? 0.98 : 0.73 }}
-      onDragEnd={(_, { offset: dragOffset, velocity }) => {
-        const swipe = dragOffset.x;
-        const velocityX = velocity.x;
-        if (swipe < -40 || velocityX < -500) {
-          onNext();
-        } else if (swipe > 40 || velocityX > 500) {
-          onPrev();
-        }
-      }}
+      className="wwb-slider-card group snap-start flex flex-col overflow-hidden rounded-3xl border border-border/80 bg-white hover:shadow-md hover:border-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
     >
-      <div className="wwb-card-content h-full w-full relative group-hover/wwb:-translate-y-0.5 transition-transform duration-500">
-        {/* Ambient glow — only on active */}
-        {isActive && (
-          <motion.div
-            className="absolute inset-0 rounded-3xl pointer-events-none overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            aria-hidden
-          >
-            <motion.div
-              className="absolute -top-16 -right-16 w-64 h-64 rounded-full"
-              style={{
-                background: `radial-gradient(circle, ${service.brandColor}22 0%, transparent 70%)`,
-              }}
-              animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8 items-center w-full h-full relative z-10">
-          <div className="md:col-span-7 flex flex-col items-start text-left">
-            <AnimatePresence mode="wait">
-              {isActive && (
-                <motion.div
-                  key={`content-${service.id}`}
-                  className="flex flex-col items-start w-full gap-5 md:gap-6"
-                >
-                  {/* Number + Icon */}
-                  <FadeUp delay={0} className="flex items-center gap-4">
-                    <span
-                      className="text-2xl sm:text-3xl font-black tracking-tight leading-none font-mono"
-                      style={{ color: service.brandColor }}
-                    >
-                      {service.number}
-                    </span>
-                    <motion.div
-                      className="w-9 h-9 rounded-xl flex items-center justify-center shadow-xs"
-                      style={{ backgroundColor: `${service.brandColor}1A`, color: service.brandColor }}
-                      whileHover={{ rotate: 8, scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    >
-                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-medium" />
-                    </motion.div>
-                  </FadeUp>
-
-                  <FadeUp delay={0.07}>
-                    <h3 className="type-h3 text-foreground mb-1">
-                      {service.name}
-                    </h3>
-                  </FadeUp>
-
-                  <FadeUp delay={0.14}>
-                    <p className="type-small text-muted-foreground">
-                      {service.shortTagline}
-                    </p>
-                  </FadeUp>
-
-                  {/* Tags */}
-                  <FadeUp delay={0.21} className="flex flex-wrap gap-2 w-full">
-                    {service.shortDeliverables?.slice(0, 2).map((item, i) => (
-                      <motion.span
-                        key={i}
-                        className="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary border border-border text-foreground type-label max-w-full whitespace-normal"
-                        initial={{ opacity: 0, scale: 0.88 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.26 + i * 0.055, duration: 0.3, ease: "easeOut" }}
-                      >
-                        {item}
-                      </motion.span>
-                    ))}
-                  </FadeUp>
-
-                  <FadeUp delay={0.28}>
-                    <Button
-                      size="default"
-                      nativeButton={false}
-                      render={<Link href={`/services#${service.id}`} scroll={false} />}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                    >
-                      <span>{WHAT_WE_BUILD_CARD_COPY.explore}{service.name}</span>
-                      <AnimatedArrowRight size={15} className="text-white" />
-                    </Button>
-                  </FadeUp>
-                </motion.div>
-              )}
-
-              {/* Inactive — show minimal skeleton-like hint */}
-              {!isActive && (
-                <motion.div
-                  key={`inactive-${service.id}`}
-                  className="flex flex-col items-start w-full gap-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <div className="flex items-center gap-4">
-                    <span
-                      className="text-2xl sm:text-3xl font-black tracking-tight leading-none font-mono"
-                      style={{ color: service.brandColor }}
-                    >
-                      {service.number}
-                    </span>
-                    <div
-                      className="w-9 h-9 rounded-xl flex items-center justify-center"
-                      style={{ backgroundColor: `${service.brandColor}1A`, color: service.brandColor }}
-                    >
-                      <AnimatedIcon icon={IconComponent} size={16} className="w-4 h-4 stroke-medium" />
-                    </div>
-                  </div>
-                  <h3 className="type-h3 text-foreground">
-                    {service.name}
-                  </h3>
-                  <p className="type-small text-muted-foreground line-clamp-2">
-                    {service.shortTagline}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <div className="md:col-span-5 flex items-start justify-center relative w-full mt-2 md:mt-0">
-            <motion.div
-              className="w-full"
-              animate={isActive ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.92, opacity: 0.6, y: 4 }}
-              transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            >
-              <div className="w-full max-w-xs mx-auto flex items-start justify-center px-2 sm:px-4">
-                {MockupComponent ? <MockupComponent isActive={isActive} /> : (
-                  <div className="w-full rounded-2xl border border-border bg-secondary/50 p-5 flex flex-col gap-4">
-                    <AnimatedIcon icon={IconComponent} size={28} className="text-primary" />
-                    <p className="font-bold text-foreground">{service.name}</p>
-                    <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
-                      {service.pillars.map((pillar) => <li key={pillar}>{pillar}</li>)}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          </div>
+      <div className="relative flex h-72 items-center justify-center overflow-hidden bg-secondary p-4">
+        <div className="relative flex h-full w-full max-w-64 items-center justify-center">
+          {MockupComponent ? <MockupComponent isActive={animateMockup} /> : (
+            <div className="flex h-40 items-center justify-center rounded-2xl border border-border bg-white">
+              <AnimatedIcon icon={IconComponent} size={32} className="text-primary" />
+            </div>
+          )}
         </div>
       </div>
-    </motion.div>
+
+      <div className="flex flex-1 flex-col justify-between gap-4 p-6 sm:p-7">
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-semibold tracking-wide text-primary">{copy.category}</span>
+          <h3 className="text-xl font-semibold leading-tight text-foreground">{service.name}</h3>
+          <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">{copy.description}</p>
+        </div>
+        <span className="flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+          {WHAT_WE_BUILD_CARD_COPY.explore}
+          <AnimatedArrowRight size={14} />
+        </span>
+      </div>
+    </Link>
   );
 }

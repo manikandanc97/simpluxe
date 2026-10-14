@@ -8,11 +8,8 @@ import { MockupWrapper } from "./mockup-wrapper";
 export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-violet-100/60 via-pink-100/50 to-purple-50/60"
       innerClassName="max-w-80 sm:max-w-80 p-3.5 sm:p-4 gap-3"
-      floatDuration={4}
-      floatY={4}
     >
         <div className="flex items-center justify-between pb-1 border-b border-black/4">
           <div className="flex gap-1.5">
@@ -25,8 +22,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
 
         <div className="relative w-full h-24 overflow-hidden rounded-lg">
           <motion.div
-            animate={isActive ? { y: [0, -90, 0] } : { y: 0 }}
-            transition={{ duration: 8, repeat: isActive ? Infinity : 0, ease: "easeInOut", repeatDelay: 1 }}
+            animate={{ y: 0 }}
             className="flex flex-col gap-6 w-full relative"
           >
             <div className="grid grid-cols-12 gap-3 items-center">
@@ -94,7 +90,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </motion.div>
           <motion.div
-            animate={isActive ? { x: [0, -40, -120, -40, 0], y: [0, 50, 25, 0, 0] } : { x: 0, y: 0 }}
+            animate={isActive ? { x: [0, -40, -120, -40, 0] } : { x: 0 }}
             transition={{ duration: 5, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
             className="absolute -bottom-3 -right-2 transform translate-x-1 translate-y-1 drop-shadow-md z-10"
           >

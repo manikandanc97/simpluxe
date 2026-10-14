@@ -8,11 +8,8 @@ import { MockupWrapper } from "./mockup-wrapper";
 export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-blue-100/60 via-indigo-100/50 to-purple-100/60"
       innerClassName="max-w-80 sm:max-w-80 p-3.5 sm:p-4 gap-3"
-      floatDuration={4.5}
-      floatY={4}
     >
         <div className="flex items-center justify-between pb-1 border-b border-black/4">
           <div className="flex gap-1.5">
@@ -27,10 +24,9 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
           <motion.div
             animate={isActive ? {
               x: [60, -85, -85, 20, 20, -85, -85, 60],
-              y: [40, -10, -10, 30, 30, -35, -35, 40],
               scale: [1, 1, 0.8, 1, 1, 1, 0.8, 1],
               opacity: [0, 1, 1, 1, 1, 1, 1, 0]
-            } : { x: 60, y: 40, scale: 1, opacity: 0 }}
+            } : { x: 60, scale: 1, opacity: 0 }}
             transition={{ duration: 8, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
             className="absolute bottom-0 right-10 z-30 pointer-events-none drop-shadow-md text-foreground"
           >

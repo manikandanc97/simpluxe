@@ -15,10 +15,8 @@ const WORKFLOW_NODES = [
 export function AutomationMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-emerald-50/60 via-green-50/50 to-violet-100/60"
       innerClassName="max-w-80 p-3.5 gap-3"
-      floatDuration={5}
     >
         {/* Header */}
         <div className="flex items-center gap-2 pb-1.5 border-b border-black/5">

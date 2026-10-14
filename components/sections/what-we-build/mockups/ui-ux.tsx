@@ -31,7 +31,7 @@ const Avatar = ({ color }: { color: string }) => (
 );
 
 // ── List Layout ────────────────────────────────────────────
-function ListLayout() {
+function ListLayout({ isActive }: { isActive?: boolean }) {
   const rows = [
     { accent: "#7C3AED", w1: "w-20", w2: "w-14" },
     { accent: "#D23D78", w1: "w-16", w2: "w-12" },
@@ -40,7 +40,7 @@ function ListLayout() {
   return (
     <motion.div
       key="list"
-      initial={{ opacity: 0, x: 20 }}
+      initial={isActive ? { opacity: 0, x: 20 } : false}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -49,7 +49,7 @@ function ListLayout() {
       {rows.map((row, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, x: -12 }}
+          initial={isActive ? { opacity: 0, x: -12 } : false}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.08, duration: 0.3 }}
           className="flex items-center gap-2 bg-white/80 rounded-xl px-2.5 py-2 border border-black/5 shadow-xs"
@@ -107,9 +107,9 @@ function CardLayout() {
   return (
     <motion.div
       key="card"
-      initial={{ opacity: 0, y: 14 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -14 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="flex flex-col gap-2 w-full"
     >
@@ -148,8 +148,8 @@ function CardLayout() {
         {["#7C3AED", "#D23D78", "#0891B2"].map((c, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.15 + i * 0.07 }}
             className="rounded-xl bg-white border border-black/4 p-2 flex flex-col gap-1 shadow-xs"
           >
@@ -276,10 +276,8 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
 
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-violet-100/60 via-violet-50/50 to-pink-50/60"
       innerClassName="max-w-72 p-3.5 gap-3 overflow-hidden"
-      floatDuration={4.5}
     >
         {/* Toolbar */}
         <div className="flex items-center justify-between pb-1.5 border-b border-black/5">
@@ -321,7 +319,7 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
         {/* Canvas — layout transitions here */}
         <div className="relative overflow-hidden w-full h-30">
           <AnimatePresence mode="wait">
-            {layout === "list"  && <ListLayout  key="list"  />}
+            {layout === "list"  && <ListLayout key="list" isActive={isActive} />}
             {layout === "grid"  && <GridLayout  key="grid"  />}
             {layout === "card"  && <CardLayout  key="card"  />}
             {layout === "split" && <SplitLayout key="split" />}
@@ -332,8 +330,8 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
         <div className="flex items-center justify-between pt-1 border-t border-black/4">
           <div className="flex items-center gap-1.5">
             <motion.div
-              animate={{ backgroundColor: [meta.color, `${meta.color}aa`, meta.color] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              animate={isActive ? { backgroundColor: [meta.color, `${meta.color}aa`, meta.color] } : { backgroundColor: meta.color }}
+              transition={{ duration: 1.5, repeat: isActive ? Infinity : 0 }}
               className="w-1.5 h-1.5 rounded-full"
             />
             <span className="text-3xs text-muted-foreground font-medium">{UI_UX_COPY.layoutPreview}</span>

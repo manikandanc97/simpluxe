@@ -1451,12 +1451,51 @@ export const WEBSITES_COPY = {
 } as const;
 
 export const WHAT_WE_BUILD_CARD_COPY = {
-  explore: "Explore ",
+  explore: "Explore service",
+  cards: {
+    websites: {
+      category: "Web Presence",
+      description: "Distinctive websites that earn trust at first glance and turn visitors into customers.",
+    },
+    "web-apps": {
+      category: "Business Platforms",
+      description: "Powerful web tools built to simplify your most demanding and complex daily work.",
+    },
+    ecommerce: {
+      category: "Digital Commerce",
+      description: "Considered storefronts designed to make the buying experience fast and effortless.",
+    },
+    "mobile-apps": {
+      category: "Mobile Experiences",
+      description: "Thoughtful apps crafted for the moments that truly matter to your users.",
+    },
+    saas: {
+      category: "Cloud Products",
+      description: "Scalable subscription products engineered to grow alongside your expanding team.",
+    },
+    branding: {
+      category: "Brand Identity",
+      description: "Clear, memorable identities that people recognise and trust across every touchpoint.",
+    },
+    "ui-ux": {
+      category: "Product Design",
+      description: "Intuitive user journeys carefully shaped around the needs of real people.",
+    },
+    automation: {
+      category: "Smart Workflows",
+      description: "Connected, intelligent workflows that eliminate repetitive tasks and return time to teams.",
+    },
+    "custom-software": {
+      category: "Custom Engineering",
+      description: "Tailored systems and tools built precisely for the way your business operates.",
+    },
+  },
 } as const;
 
 export const WHAT_WE_BUILD_NAV_COPY = {
   showServiceLabel: (name: string) => `Show ${name}`,
   dragToExplore: "Drag to explore",
+  slideToExplore: "Slide to explore",
   previousService: "Previous service",
   nextService: "Next service",
 } as const;

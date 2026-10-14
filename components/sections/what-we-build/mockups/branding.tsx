@@ -10,10 +10,8 @@ const BRAND_COLORS = ["#922F55", "#D23D78", "#6C2BB8", "#F97316", "#0891B2"];
 export function BrandingMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-orange-50/60 via-pink-50/50 to-amber-100/60"
       innerClassName="max-w-80 p-4 gap-3"
-      floatDuration={5}
     >
         <div className="flex items-center gap-3">
           <motion.div

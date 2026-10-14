@@ -39,9 +39,9 @@ function TabBar({ active }: { active: number }) {
 }
 
 // ── Home Screen ────────────────────────────────────────────
-function HomeScreen() {
+function HomeScreen({ isActive }: { isActive?: boolean }) {
   return (
-    <motion.div key="home" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col gap-2.5 overflow-hidden">
+    <motion.div key="home" initial={isActive ? { opacity: 0, x: 16 } : false} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col gap-2.5 overflow-hidden">
       {/* Top greeting */}
       <div className="flex items-center justify-between">
         <div>
@@ -55,7 +55,7 @@ function HomeScreen() {
 
       {/* Hero card */}
       <div className="w-full rounded-2xl p-3 flex flex-col gap-2 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #922F55, #D23D78 60%, #6C2BB8)" }}>
-        <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ duration: 3.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }} className="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12" />
+        {isActive && <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ duration: 3.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }} className="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12" />}
         <span className="text-3xs text-white/70 font-semibold">{MOBILE_APPS_COPY.premiumPlan}</span>
         <span className="text-xs text-white font-black leading-tight">{MOBILE_APPS_COPY.unlockAllProFeatures}</span>
         <div className="flex items-center gap-1.5">
@@ -70,7 +70,7 @@ function HomeScreen() {
           { label: MOBILE_APPS_COPY.points, value: MOBILE_APPS_COPY.text12k, color: "#7C3AED" },
           { label: MOBILE_APPS_COPY.saved, value: MOBILE_APPS_COPY.text480, color: "#059669" },
         ].map((s, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.07 }} className="bg-slate-50 border border-black/4 rounded-xl p-2 flex flex-col gap-0.5 items-center">
+          <motion.div key={i} initial={isActive ? { opacity: 0 } : false} animate={{ opacity: 1 }} transition={{ delay: 0.1 + i * 0.07 }} className="bg-slate-50 border border-black/4 rounded-xl p-2 flex flex-col gap-0.5 items-center">
             <span className="text-xs font-black" style={{ color: s.color }}>{s.value}</span>
             <span className="text-micro text-muted-foreground">{s.label}</span>
           </motion.div>
@@ -90,7 +90,7 @@ function FeedScreen() {
     <motion.div key="feed" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col gap-2 overflow-hidden">
       <div className="text-xs font-extrabold text-foreground tracking-tight">{MOBILE_APPS_COPY.feed}</div>
       {posts.map((post, i) => (
-        <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.12 }} className="bg-slate-50 border border-black/4 rounded-xl p-2.5 flex flex-col gap-1.5">
+        <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.12 }} className="bg-slate-50 border border-black/4 rounded-xl p-2.5 flex flex-col gap-1.5">
           <div className="flex items-center gap-1.5">
             <div className="w-5 h-5 rounded-full flex-shrink-0" style={{ backgroundColor: post.dot }} />
             <div>
@@ -136,7 +136,7 @@ function ProfileScreen() {
       </div>
 
       {/* Edit profile button */}
-      <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="w-full py-1.5 rounded-xl border border-primary flex items-center justify-center">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="w-full py-1.5 rounded-xl border border-primary flex items-center justify-center">
         <span className="text-3xs font-bold text-primary">{MOBILE_APPS_COPY.editProfile}</span>
       </motion.div>
 
@@ -208,7 +208,6 @@ function MobileAppsSequence({ isActive }: { isActive?: boolean }) {
 
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-pink-100/60 via-pink-50/50 to-violet-100/60"
       innerClassName="max-w-64 p-2 overflow-hidden"
     >
@@ -231,7 +230,7 @@ function MobileAppsSequence({ isActive }: { isActive?: boolean }) {
         {/* Screen content — fixed height so card never resizes */}
         <div className="px-3.5 py-2 relative overflow-hidden" style={{ height: 176 }}>
           <AnimatePresence mode="wait">
-            {screen === "home"     && <HomeScreen />}
+            {screen === "home"     && <HomeScreen isActive={isActive} />}
             {screen === "feed"     && <FeedScreen />}
             {screen === "profile"  && <ProfileScreen />}
             {screen === "activity" && <ActivityScreen />}

@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     desktopImage: `${IMAGE_BASE_URL}/website/valparaiwanderertours_pbcgyi.png`,
     mobileImage: `${IMAGE_BASE_URL}/website/valparai-mobile_gjwd7r.jpg`,
     logo: `${LOGO_BASE_URL}/valparai_rwsldt.png`,
-    result: "+ 3600% Month 1 Bookings",
+    result: "Explore More.",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
   {
@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     desktopImage: `${IMAGE_BASE_URL}/website/grn_sddfdk.png`,
     mobileImage: `${IMAGE_BASE_URL}/website/grn-mobile_tmmhdr.jpg`,
     logo: `${LOGO_BASE_URL}/grn_caw9tl.jpg`,
-    result: "#1 Google SEO Ranking",
+    result: "Built on Trust.",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
   {
@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
     desktopImage: `${IMAGE_BASE_URL}/website/vizhastories_vrslce.png`,
     mobileImage: `${IMAGE_BASE_URL}/website/vizha-mobile_vrak8f.jpg`,
     logo: `${LOGO_BASE_URL}/Logo_Vizha_p9xiij.png`,
-    result: "Trusted by 500+ Clients",
+    result: "Made Timeless.",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
 

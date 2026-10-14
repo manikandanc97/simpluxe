@@ -10,9 +10,9 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
   const loop = { duration: 7, repeat: active ? Infinity : 0, ease: "easeInOut" as const };
 
   return (
-    <MockupWrapper isActive={active}
+    <MockupWrapper
       gradientClass="bg-gradient-to-tr from-violet-100/60 via-rose-50/50 to-blue-100/60"
-      innerClassName="max-w-80 p-3.5 sm:p-4 gap-3" floatDuration={5}>
+      innerClassName="max-w-80 p-3.5 sm:p-4 gap-3">
       <div className="flex items-center justify-between gap-2 border-b border-black/5 pb-1">
         <div className="flex gap-1.5" aria-hidden="true">
           <div className="h-2 w-2 rounded-full bg-red-400" />
@@ -31,7 +31,7 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
           animate={active ? { scale: [1, 1, 0.92, 1, 1] } : { scale: 1 }}
           transition={{ ...loop, times: [0, 0.14, 0.18, 0.23, 1] }}>{COPY.run}</motion.div>
         <motion.div className="pointer-events-none absolute right-4 top-4 z-30 text-zinc-900 drop-shadow-md"
-          animate={active ? { x: [-25, 0, 0, 16, 16], y: [35, 0, 0, 25, 25],
+          animate={active ? { x: [-25, 0, 0, 16, 16],
             scale: [1, 1, 0.8, 1, 1], opacity: [0, 1, 1, 0, 0] } : { opacity: 0 }}
           transition={{ ...loop, times: [0, 0.14, 0.18, 0.3, 1] }} aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="white" strokeWidth="1.5">

@@ -47,12 +47,11 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
 
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-cyan-100/60 via-sky-100/50 to-teal-50/60"
       innerClassName="max-w-72 h-62.5 p-3.5 gap-3 overflow-hidden justify-center"
       outerChildren={
         <motion.div
-          animate={isActive ? { y: [0, -6, 0], opacity: [0.85, 1, 0.85] } : { y: 0 }}
+          animate={isActive ? { opacity: [0.85, 1, 0.85] } : { opacity: 1 }}
           transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
           className="absolute top-2 right-2 sm:-top-3 sm:-right-3 z-10 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-lg"
           style={{
@@ -71,9 +70,9 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
           {(stage === "browse" || stage === "selected") && (
             <motion.div
               key="browse"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col gap-3"
             >
@@ -113,10 +112,10 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
                     key={i}
                     animate={
                       stage === "selected" && i === SELECTED_PRODUCT
-                        ? { scale: [1, 1.08, 1.04], y: [0, -4, -2] }
+                        ? { scale: [1, 1.08, 1.04] }
                         : stage === "selected" && i !== SELECTED_PRODUCT
                         ? { opacity: 0.5, scale: 0.95 }
-                        : { scale: 1, opacity: 1, y: 0 }
+                        : { scale: 1, opacity: 1 }
                     }
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex flex-col gap-1 relative"
@@ -311,8 +310,8 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
 
               {/* Text */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
                 className="flex flex-col items-center gap-1 text-center"
               >
@@ -322,8 +321,8 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
 
               {/* Order ID + ETA */}
               <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 0.55 }}
                 className="w-full bg-emerald-50 border border-emerald-100 rounded-xl p-2 flex items-center justify-between"
               >
@@ -341,9 +340,8 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
               {[...Array(6)].map((_, i) => (
                 <motion.div
                   key={i}
-                  initial={{ y: 0, x: 0, opacity: 1, scale: 1 }}
+                  initial={{ x: 0, opacity: 1, scale: 1 }}
                   animate={{
-                    y: [-10, -30 - i * 8],
                     x: [0, (i % 2 === 0 ? 1 : -1) * (10 + i * 6)],
                     opacity: [1, 0],
                     scale: [1, 0.4],

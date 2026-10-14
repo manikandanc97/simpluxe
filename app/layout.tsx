@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
+import { Geist } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -21,55 +22,15 @@ const MobileBottomNav = dynamic(() => import("@/components/layout/mobile-bottom-
 const CommandPalette = dynamic(() => import("@/components/ui/command-palette").then((mod) => mod.CommandPalette));
 const ScrollToTop = dynamic(() => import("@/components/ui/scroll-to-top").then((mod) => mod.ScrollToTop));
 
-const inter = localFont({
-  src: [
-    {
-      path: "../public/fonts/inter-400.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/inter-500.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/inter-600.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/inter-700.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-inter",
+// Primary typeface — Geist variable font, self-hosted by Next.js (no external network request).
+const geist = Geist({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-geist",
   display: "swap",
 });
 
-const manrope = localFont({
-  src: [
-    {
-      path: "../public/fonts/manrope-500.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/manrope-600.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/manrope-700.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-manrope",
-  display: "swap",
-});
-
+// Caveat is kept only for decorative handwriting accents in illustrations.
 const caveat = localFont({
   src: [
     {
@@ -123,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased", inter.variable, manrope.variable, caveat.variable, "font-sans")}
+      className={cn("h-full antialiased", geist.variable, caveat.variable, "font-sans")}
       suppressHydrationWarning
     >
       <head>

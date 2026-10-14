@@ -8,10 +8,8 @@ import { MockupWrapper } from "./mockup-wrapper";
 export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
-      isActive={isActive}
       gradientClass="bg-gradient-to-tr from-violet-100/60 via-purple-100/50 to-pink-100/60"
       innerClassName="max-w-80 sm:max-w-80 p-3.5 sm:p-4 gap-3"
-      floatDuration={5}
     >
         <div className="flex items-center justify-between pb-1 border-b border-black/4">
           <div className="flex gap-1.5">
