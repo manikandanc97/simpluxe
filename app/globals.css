@@ -125,6 +125,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --shadow-card: 0 12px 32px rgba(15, 23, 42, 0.05);
   --shadow-elevated: 0 16px 40px rgba(3, 105, 161, 0.12);
+  --shadow-luxury: 0 24px 48px -12px rgba(15, 23, 42, 0.09), 0 10px 24px -4px rgba(3, 105, 161, 0.07), 0 0 0 1px rgba(3, 105, 161, 0.12);
   --shadow-cta: 0 24px 50px rgba(15, 23, 42, 0.32);
   --shadow-violet: 0 8px 24px rgba(14, 165, 233, 0.12);
 
@@ -673,6 +674,9 @@
     radial-gradient(circle at 50% 50%, rgba(3, 105, 161, 0.95), transparent 75%),
     linear-gradient(160deg, #02507d 0%, #0369A1 50%, #075985 100%);
 }
+@utility bg-luxury-banner {
+  background: linear-gradient(180deg, #0369A1 0%, #025E91 100%);
+}
 @utility hero-dots-light {
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.22) 1.5px,
@@ -697,12 +701,22 @@
 /* Mobile card width: 84vw so next card peeks ~16vw on the right */
 .wwb-slider-card {
   min-width: 84vw;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: none !important;
+  border-color: transparent;
+  transition: opacity 0.3s ease, border-color 0.25s ease;
+}
+
+.wwb-slider-card:hover {
+  border-color: rgba(3, 105, 161, 0.28);
+  box-shadow: none !important;
 }
 
 .wwb-slider-card[data-inactive="true"] {
   opacity: 0.55;
-  transform: scale(0.97);
+}
+
+.wwb-slider-card[data-inactive="true"]:hover {
+  opacity: 0.85;
 }
 
 @media (min-width: 40rem) {
@@ -714,18 +728,27 @@
   }
   .wwb-slider-card[data-inactive="true"] {
     opacity: 1;
-    transform: none;
   }
 }
 
 @media (min-width: 64rem) {
   .wwb-slider-track {
-    --wwb-gutter: max(2rem, calc((100% - 80rem) / 2 + 2rem));
+    --wwb-gutter: max(2rem, calc((100vw - 80rem) / 2 + 2rem));
   }
 
-  /* 3 full cards fit comfortably, and the 4th card is half hidden / peeking */
+  /* Laptop: two full cards and half of the next card. */
   .wwb-slider-card {
-    flex: 0 0 max(20rem, calc((100% - var(--wwb-gutter) - 4.5rem) / 3.5));
+    /* Percentage basis excludes both gutters; add back the visible right gutter.
+       Two gaps + 2.5 cards fill the area from the first card to the viewport edge. */
+    min-width: 0;
+    flex: 0 0 calc((100% + var(--wwb-gutter) - var(--spacing) * 12) / 2.5);
+  }
+}
+
+@media (min-width: 96rem) {
+  .wwb-slider-card {
+    /* Three gaps + 3.5 cards on wide desktops. */
+    flex-basis: calc((100% + var(--wwb-gutter) - var(--spacing) * 18) / 3.5);
   }
 }
 
@@ -761,3 +784,17 @@
   border-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0 16px 32px -6px rgba(255, 255, 255, 0.16), 0 4px 14px -2px rgba(255, 255, 255, 0.08);
 }
+
+/* Template Showcase Hover-Scroll Window */
+.template-scroll-window {
+  position: relative;
+  height: 20rem;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .template-scroll-window {
+    height: 22rem;
+  }
+}
+

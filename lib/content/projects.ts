@@ -27,6 +27,7 @@ export const PROJECTS: Project[] = [
     category: "Travel & Tourism · Tour Booking Platform",
     url: "https://valparaiwanderertours.com",
     desktopImage: `${IMAGE_BASE_URL}/website/valparaiwanderertours_pbcgyi.png`,
+    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/valparaiwanderertours_pdqd4p.png",
     mobileImage: `${IMAGE_BASE_URL}/website/valparai-mobile_gjwd7r.jpg`,
     logo: `${LOGO_BASE_URL}/valparai_rwsldt.png`,
     result: "Explore More.",
@@ -42,6 +43,7 @@ export const PROJECTS: Project[] = [
     category: "Architecture & Construction · Brand Website",
     url: "https://grnconstruction.in",
     desktopImage: `${IMAGE_BASE_URL}/website/grn_sddfdk.png`,
+    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/grnconstruction_pswfwe.png",
     mobileImage: `${IMAGE_BASE_URL}/website/grn-mobile_tmmhdr.jpg`,
     logo: `${LOGO_BASE_URL}/grn_caw9tl.jpg`,
     result: "Built on Trust.",
@@ -57,6 +59,7 @@ export const PROJECTS: Project[] = [
     category: "E-Commerce & Heritage · Artisan Showcase",
     url: "https://vihahandicrafts.com",
     desktopImage: `${IMAGE_BASE_URL}/website/vihahandicrafts_jmxorj.png`,
+    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/vihahandicrafts_ilul4w.png",
     mobileImage: `${IMAGE_BASE_URL}/website/viha-mobile_ubkrpm.jpg`,
     logo: `${LOGO_BASE_URL}/viha_ewc0c7.png`,
     result: "Pan-India Orders",
@@ -72,6 +75,7 @@ export const PROJECTS: Project[] = [
     category: "Event Management · Premium Planners",
     url: "https://vizhastories.in",
     desktopImage: `${IMAGE_BASE_URL}/website/vizhastories_vrslce.png`,
+    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/vizhastories_whmgzr.png",
     mobileImage: `${IMAGE_BASE_URL}/website/vizha-mobile_vrak8f.jpg`,
     logo: `${LOGO_BASE_URL}/Logo_Vizha_p9xiij.png`,
     result: "Made Timeless.",
@@ -89,6 +93,7 @@ export const PROJECTS: Project[] = [
     category: "Customer Relationship Management",
     url: "https://clixprocrm.vercel.app/",
     desktopImage: `${IMAGE_BASE_URL}/clixpro_crm_desktop`,
+    fullPageImage: "/images/projects/clixpro-full.png",
     mobileImage: `${IMAGE_BASE_URL}/clixpro_crm_mobile`,
     logo: `${LOGO_BASE_URL}/clixpro`,
     result: COMMON.status.inProgress,
@@ -410,6 +415,11 @@ export const WORK_PROJECT_DETAILS_COPY = {
 export const WORK_VIEW_COPY = {
   noProjectsFoundMatchingYourCriteria: "No projects found matching your criteria.",
   resetFilters: "Reset Filters",
+  visitSite: "Visit Site",
+  closeDialog: "Close dialog",
+  previewComingSoon: "Preview coming soon",
+  liveDemo: "Live Demo",
+  openInNewTab: (name: string) => `Open ${name} in new tab`,
 } as const;
 
 // sections

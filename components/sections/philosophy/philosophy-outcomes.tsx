@@ -5,7 +5,6 @@ import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/content/philosophy";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { REAL_OUTCOMES } from "@/lib/content/philosophy";
-import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { m as motion } from "motion/react";
 
 interface PhilosophyOutcomesProps {
@@ -44,31 +43,26 @@ export function PhilosophyOutcomes({ inView }: PhilosophyOutcomesProps) {
                 initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                 animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.28 + i * 0.08 }}
-                className="bg-white rounded-2xl border border-neutral-100/80 shadow-card p-2.5 flex items-center justify-between gap-2 hover:shadow-md hover:border-primary/30 transition-all duration-300 group cursor-default"
+                className="group flex cursor-default items-center gap-3 rounded-2xl border border-neutral-100/80 bg-white p-3 shadow-card transition-all duration-300 hover:border-primary/30 hover:shadow-md"
               >
-                <div className="flex items-center gap-4 min-w-0">
+                <div className="flex min-w-0 flex-1 items-center gap-3">
                   <div className="w-11 h-11 rounded-full bg-primary/8 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                     <AnimatedIcon icon={StatIcon} size={18} className="w-4.5 h-4.5" />
                   </div>
-                  <div className="flex flex-col gap-1 min-w-0">
-                    <span className="text-xl font-black text-neutral-900 tracking-tight leading-none font-satoshi flex items-baseline gap-0.25">
-                      {stat.prefix && <span className="text-lg">{stat.prefix}</span>}
+                  <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                    <span className="flex items-baseline gap-0.25 text-sm font-bold leading-tight text-neutral-900">
+                      {stat.prefix && <span>{stat.prefix}</span>}
                       <AnimatedCounter
                         value={stat.value}
                         duration={1.5}
                         delay={i * 0.1}
                       />
-                      {stat.suffix && <span className="text-lg">{stat.suffix}</span>}
+                      {stat.suffix && <span>{stat.suffix}</span>}
                     </span>
-                    <span className="text-xs text-neutral-500 font-medium leading-tight truncate">
+                    <span className="whitespace-normal break-words text-xs leading-snug text-neutral-500">
                       {stat.label}
                     </span>
                   </div>
-                </div>
-
-                {/* Small Circular Arrow Button */}
-                <div className="w-7 h-7 rounded-full bg-white border border-neutral-100/80 shadow-xs flex items-center justify-center text-neutral-400 group-hover:text-neutral-600 group-hover:border-neutral-200 transition-colors shrink-0 ml-1">
-                  <AnimatedIcon icon={ArrowUpRightIcon} size={14} className="w-3.5 h-3.5" />
                 </div>
               </motion.div>
             );

@@ -17,18 +17,17 @@ interface ServicesWhatWeBuildProps {
 
 export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
   return (
-    <div className="w-full relative z-20">
+    <div className="w-full relative z-20 flex flex-col gap-8 sm:gap-10">
       {/* ── Section Header ── */}
-      <div className="mb-6 sm:mb-8">
-        <SectionHeader
-          eyebrow={SERVICES_WHAT_WE_BUILD_COPY.capabilitiesCount(service.whatWeBuild.length)}
-          title={SERVICES_WHAT_WE_BUILD_COPY.whatWeBuild}
-          description={service.whatWeBuildSubtitle}
-        />
-      </div>
+      <SectionHeader
+        eyebrow={SERVICES_WHAT_WE_BUILD_COPY.capabilitiesCount(service.whatWeBuild.length)}
+        title={SERVICES_WHAT_WE_BUILD_COPY.whatWeBuild}
+        description={service.whatWeBuildSubtitle}
+      />
 
       {/* ── 4 Feature Cards ── */}
       <motion.div
+        key={service.id}
         variants={staggerContainer(0.08, 0)}
         initial={false}
         animate="visible"

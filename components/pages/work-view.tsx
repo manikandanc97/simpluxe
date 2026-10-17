@@ -1,21 +1,17 @@
 "use client";
 
-import { WORK_VIEW_COPY } from "@/lib/content/projects";
-
 import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState } from "react";
 import { ShowcaseSkeleton } from "@/components/ui/skeleton";
 import { PROJECTS } from "@/lib/content/projects";
-import { FILTER_SERVICES, PROJECT_ENHANCEMENTS } from "@/lib/content/projects";
+import { FILTER_SERVICES } from "@/lib/content/projects";
 import { WorkHero } from "@/components/work/work-hero";
 import { WorkControls } from "@/components/work/work-controls";
-import { SelectedWorkProjectItem } from "@/components/sections/selected-work/project-item";
-import { BrowserMockup } from "@/components/sections/selected-work/browser-mockup";
-import { WorkProjectDetails } from "@/components/work/work-project-details";
 import { WorkEngineeringStandards } from "@/components/work/work-engineering-standards";
-import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Container } from "@/components/ui/container";
 import { AnimatePresence, m as motion } from "motion/react";
+import { ProjectTemplateCard } from "@/components/work/project-template-card";
+import { WORK_VIEW_COPY } from "@/lib/content/projects";
 
 function WorkInteractiveSectionWithQuery() {
   const searchParams = useSearchParams();
@@ -27,10 +23,8 @@ function WorkInteractiveSectionWithQuery() {
 
 function WorkInteractiveSection({ initialFilter }: { initialFilter: string }) {
   const [activeFilter, setActiveFilter] = useState(initialFilter);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<"latest" | "oldest" | "name">("latest");
-  const [activeProjectId, setActiveProjectId] = useState<string>(PROJECTS[0]?.id || "proj-valparai");
 
   // Filter & Sort logic
   const filteredProjects = useMemo(() => {
@@ -65,14 +59,6 @@ function WorkInteractiveSection({ initialFilter }: { initialFilter: string }) {
     return result;
   }, [activeFilter, searchQuery, sortOption]);
 
-  // Active Project & Enhancement Data
-  const activeProject =
-    filteredProjects.find((p) => p.id === activeProjectId) ||
-    filteredProjects[0];
-
-  const activeEnhancement =
-    activeProject ? PROJECT_ENHANCEMENTS[activeProject.id] : undefined;
-
   return (
     <div className="w-full">
       {/* Top Control Bar: Filters, Search & Sort */}
@@ -86,102 +72,83 @@ function WorkInteractiveSection({ initialFilter }: { initialFilter: string }) {
         allProjects={PROJECTS}
       />
 
-      {/* Split Pane: Left Project List & Right Interactive Canvas */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start pt-6 sm:pt-8">
-        {/* ── LEFT COLUMN: Project Selector List ── */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
-          <AnimatePresence mode="wait">
-            {filteredProjects.length === 0 ? (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-16 px-4 bg-background rounded-2xl border border-dashed border-surface-elevated"
-              >
-                <p className="text-sm text-muted-foreground font-medium">
-                  {WORK_VIEW_COPY.noProjectsFoundMatchingYourCriteria}</p>
-                <button
-                  onClick={() => {
-                    setActiveFilter("websites");
-                    setSearchQuery("");
-                  }}
-                  className="mt-4 text-xs font-bold text-primary hover:underline cursor-pointer"
-                >
-                  {WORK_VIEW_COPY.resetFilters}</button>
-              </motion.div>
-            ) : (
-              <motion.div
-                key={activeFilter + searchQuery + sortOption}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-                  }
+      {/* ── Main Showcase: Responsive Grid of Template Cards with Hover Scroll ── */}
+      <div className="pt-6 sm:pt-8">
+        <AnimatePresence mode="wait">
+          {filteredProjects.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-center py-16 px-4 bg-background rounded-2xl border border-dashed border-surface-elevated flex flex-col items-center gap-4"
+            >
+              <p className="text-sm text-muted-foreground font-medium">
+                {WORK_VIEW_COPY.noProjectsFoundMatchingYourCriteria}
+              </p>
+              <button
+                onClick={() => {
+                  setActiveFilter("websites");
+                  setSearchQuery("");
                 }}
-                className="flex flex-col gap-4"
+                className="text-xs font-bold text-primary hover:underline cursor-pointer"
               >
-                {filteredProjects.map((project) => (
-                  <SelectedWorkProjectItem
-                    key={project.id}
-                    project={project}
-                    isActive={project.id === activeProject?.id}
-                    onSelect={() => setActiveProjectId(project.id)}
-                  />
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* ── RIGHT COLUMN: Active Project Showcase & Details ── */}
-        <div className="lg:col-span-7 flex flex-col gap-6 lg:sticky lg:top-24">
-          {activeProject && (
-            <>
-              <div className="relative group w-full h-112.5 sm:h-137.5 lg:h-150 hidden lg:block">
-                <BrowserMockup activeProject={activeProject} />
-              </div>
-              <WorkProjectDetails
-                project={activeProject}
-                enhancement={activeEnhancement}
-              />
-            </>
+                {WORK_VIEW_COPY.resetFilters}
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={activeFilter + searchQuery + sortOption}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+                },
+              }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+            >
+              {filteredProjects.map((project) => (
+                <ProjectTemplateCard
+                  key={project.id}
+                  project={project}
+                />
+              ))}
+            </motion.div>
           )}
-        </div>
+        </AnimatePresence>
       </div>
+
     </div>
   );
 }
 
 export function WorkView() {
   return (
-    <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
-      {/* ── Background Atmospheric Elements ── */}
-      <AmbientBackground screen="work" />
-      <div className="absolute inset-0 bg-dots-soft opacity-35 pointer-events-none" />
+    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
+      {/* ── Fixed navbar height spacer so full-width banner starts cleanly below the header ── */}
+      <div className="h-16 w-full shrink-0" aria-hidden="true" />
 
-      {/* ── 1. Hero Section (Breadcrumb, Title, CTAs, Highlights & Interactive Mockup) ── */}
+      {/* ── 1. Full-Width Hero Section ── */}
       <WorkHero />
 
       {/* ── Main Structured Showcase Area ── */}
       <Container
         id="work-projects-container"
-        className="relative z-20 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-18"
+        className="pt-10 sm:pt-12 lg:pt-14 pb-20 md:pb-24 lg:pb-32 flex flex-col gap-14 sm:gap-16"
       >
         {/* ── 2. Showcase Controls and Split View ── */}
-        <Suspense
-          fallback={<ShowcaseSkeleton />}
-        >
+        <Suspense fallback={<ShowcaseSkeleton />}>
           <WorkInteractiveSectionWithQuery />
         </Suspense>
 
-        {/* ── 3. Engineering Quality Standards (4 Pillars) ── */}
+        {/* ── 3. Engineering Quality Standards ── */}
         <WorkEngineeringStandards />
       </Container>
     </div>
   );
 }
+

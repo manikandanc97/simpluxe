@@ -1443,6 +1443,8 @@ export const WEB_APPS_COPY = {
   text142k: "14.2k",
   uptime: COMMON.labels.uptime,
   text999: "99.9%",
+  systemOperational: "All systems operational",
+  latency: "42 ms",
 } as const;
 
 export const WEBSITES_COPY = {

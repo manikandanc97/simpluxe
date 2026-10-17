@@ -14,16 +14,23 @@ export function MobileFlowGrid() {
   return (
     <div className="flex md:hidden flex-col items-center gap-4 w-full py-2">
       {/* Centered Brand Medallion */}
-      <div className="relative flex flex-col items-center justify-center my-1">
-        <div className="w-24 h-24 xs:w-28 xs:h-28 rounded-full bg-white shadow-elevated border border-primary/20 flex items-center justify-center p-3">
-          <CldImage
-            src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
-            alt={MOBILE_FLOW_GRID_COPY.simpluxeLogo}
-            width={64}
-            height={64}
-            className="size-14 xs:size-16 object-contain drop-shadow-sm select-none"
-            priority
-          />
+      <div className="relative flex flex-col items-center justify-center py-1">
+        <div aria-hidden="true" className="pointer-events-none absolute size-36 rounded-3xl bg-primary/10 blur-xl" />
+        <div className="relative rounded-3xl border border-primary/20 bg-secondary p-2 shadow-elevated">
+          <span aria-hidden="true" className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-primary/50" />
+          <span aria-hidden="true" className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-primary/50" />
+          <span aria-hidden="true" className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-primary/50" />
+          <span aria-hidden="true" className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-primary/50" />
+          <div className="flex size-20 items-center justify-center rounded-2xl border border-white bg-white p-3 shadow-xs xs:size-24">
+            <CldImage
+              src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
+              alt={MOBILE_FLOW_GRID_COPY.simpluxeLogo}
+              width={64}
+              height={64}
+              className="size-12 select-none object-contain drop-shadow-sm xs:size-14"
+              priority
+            />
+          </div>
         </div>
       </div>
 

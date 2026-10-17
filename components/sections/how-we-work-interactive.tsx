@@ -204,12 +204,19 @@ export function HowWeWorkInteractive() {
 
               <div className="grid grid-cols-1 gap-6 border-t border-border/70 pt-6 sm:grid-cols-2 sm:gap-8 sm:pt-8">
                 {currentStep.features.map((feature) => (
-                  <div key={feature.title} className="flex items-start gap-3">
-                    <span aria-hidden="true" className="flex size-6 shrink-0 items-center justify-center text-primary">
+                  <div
+                    key={feature.title}
+                    data-animated-icon-target
+                    className="group flex items-start gap-3 cursor-default"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="flex size-6 shrink-0 items-center justify-center text-primary transition-transform duration-200 group-hover:scale-110"
+                    >
                       <AnimatedIcon icon={feature.icon} size={19} />
                     </span>
                     <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-heading">
+                      <h4 className="text-sm font-semibold text-heading transition-colors duration-200 group-hover:text-primary">
                         {feature.title}
                       </h4>
                       <p className="text-sm leading-relaxed text-muted-foreground">

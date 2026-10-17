@@ -12,6 +12,7 @@ export default function Home() {
     <div className="flex flex-col flex-1 w-full relative">
       <AmbientBackground screen="home" />
       <div className="relative z-10 w-full flex flex-col">
+        <div className="h-16 w-full shrink-0 bg-background" aria-hidden="true" />
         <WorkbenchHero />
         <WhatWeBuild />
         <HowWeWork />

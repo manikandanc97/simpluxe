@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState } from "react";
+import { memo } from "react";
 import { useReducedMotion } from "motion/react";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
@@ -34,38 +34,44 @@ const MOCKUPS: Record<string, React.ElementType> = {
 
 interface WhatWeBuildCardProps {
   service: (typeof SERVICES_LIST)[number];
-  isActive?: boolean;
+  isCurrentSlide?: boolean;
+  isAnimating?: boolean;
+  onActivate: (serviceId: string) => void;
+  onDeactivate: () => void;
 }
 
-export function WhatWeBuildCard({ service, isActive = false }: WhatWeBuildCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
+export const WhatWeBuildCard = memo(function WhatWeBuildCard({
+  service,
+  isCurrentSlide = false,
+  isAnimating = false,
+  onActivate,
+  onDeactivate,
+}: WhatWeBuildCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const MockupComponent = MOCKUPS[service.id];
   const IconComponent = service.icon;
   const copy = WHAT_WE_BUILD_CARD_COPY.cards[service.id as keyof typeof WHAT_WE_BUILD_CARD_COPY.cards]
     ?? { category: service.category, description: service.shortTagline };
-  // On touch/mobile: active card animates; on desktop: hover/focus triggers animation
-  const animateMockup = (isHovered || isFocused || isActive) && !prefersReducedMotion;
+  const animateMockup = isAnimating && !prefersReducedMotion;
 
   return (
     <Link
       href={`/services#${service.id}`}
       scroll={false}
       data-animated-icon-target
-      data-inactive={!isActive}
-      onPointerEnter={(event) => {
-        if (event.pointerType !== "touch") setIsHovered(true);
+      data-inactive={!isCurrentSlide}
+      onMouseEnter={() => onActivate(service.id)}
+      onMouseLeave={onDeactivate}
+      onFocus={() => onActivate(service.id)}
+      onBlur={onDeactivate}
+      onPointerDown={(event) => {
+        if (event.pointerType === "touch") onActivate(service.id);
       }}
-      onPointerLeave={() => setIsHovered(false)}
-      onFocus={() => setIsFocused(true)}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node)) setIsFocused(false);
-      }}
-      className="wwb-slider-card group snap-start flex flex-col overflow-hidden rounded-3xl border border-border/80 bg-white hover:shadow-md hover:border-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+      className="wwb-slider-card group snap-start flex flex-col overflow-hidden rounded-3xl border border-transparent bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+      draggable={false}
     >
-      <div className="relative flex h-72 items-center justify-center overflow-hidden bg-secondary p-4">
-        <div className="relative flex h-full w-full max-w-64 items-center justify-center">
+      <div aria-hidden="true" className="relative isolate flex h-72 items-center justify-center overflow-hidden bg-secondary p-4 lg:h-80 lg:p-6">
+        <div className="relative flex h-full w-full max-w-64 items-center justify-center lg:max-w-80">
           {MockupComponent ? <MockupComponent isActive={animateMockup} /> : (
             <div className="flex h-40 items-center justify-center rounded-2xl border border-border bg-white">
               <AnimatedIcon icon={IconComponent} size={32} className="text-primary" />
@@ -80,11 +86,11 @@ export function WhatWeBuildCard({ service, isActive = false }: WhatWeBuildCardPr
           <h3 className="text-xl font-semibold leading-tight text-foreground">{service.name}</h3>
           <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">{copy.description}</p>
         </div>
-        <span className="flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+        <span className="flex items-center gap-1.5 text-sm font-semibold text-primary">
           {WHAT_WE_BUILD_CARD_COPY.explore}
           <AnimatedArrowRight size={14} />
         </span>
       </div>
     </Link>
   );
-}
+});

@@ -13,6 +13,7 @@ export interface Project {
   url: string;
   desktopImage?: string;
   mobileImage?: string;
+  fullPageImage?: string;
   logo?: string;
   result: string;
   stack: string[];

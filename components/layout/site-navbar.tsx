@@ -76,12 +76,12 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 priority
               />
               <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
-                Simp<span className="text-primary">Luxe</span>
+                {SITE_NAVBAR_COPY.brandSimp}<span className="text-primary">{SITE_NAVBAR_COPY.brandLuxe}</span>
               </span>
             </Link>
             <div className="hidden md:flex items-center ml-2.5 pl-2.5 border-border border-l">
               <span className="font-semibold text-xs text-muted-foreground tracking-normal">
-                Technologies
+                {SITE_NAVBAR_COPY.technologies}
               </span>
             </div>
           </div>
@@ -99,20 +99,13 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                   href={item.route}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "relative flex h-full items-center px-3 outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring xl:px-4 font-medium text-sm tracking-tight",
+                    "relative flex h-full items-center px-3 outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring xl:px-4 text-sm tracking-tight",
                     isActive
-                      ? "text-heading"
-                      : "text-muted-foreground hover:text-heading"
+                      ? "text-primary font-semibold"
+                      : "text-muted-foreground hover:text-heading font-medium"
                   )}
                 >
                   <span>{item.label}</span>
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-indicator"
-                      className="absolute inset-x-3 bottom-0 h-0.5 bg-primary xl:inset-x-4"
-                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
-                    />
-                  )}
                 </Link>
               );
             })}
@@ -140,7 +133,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               className="group gap-1.5 px-3 sm:px-4"
             >
               <span className="hidden sm:inline">{NAVBAR_CONTENT.ctaText}</span>
-              <span className="sm:hidden">Let&apos;s talk</span>
+              <span className="sm:hidden">{SITE_NAVBAR_COPY.letsTalk}</span>
               <AnimatedIcon icon={ArrowUpRightIcon} size={14} className="shrink-0 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </div>

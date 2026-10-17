@@ -4,14 +4,13 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ABOUT_VIEW_COPY } from "@/lib/content/about";
 import { SITE } from "@/lib/content/site";
 import { ABOUT_SECTION_CONTENT } from "@/lib/content/about";
-import { AmbientBackground } from "@/components/ui/ambient-background";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutMetrics } from "@/components/about/about-metrics";
 import { AboutPrinciples } from "@/components/about/about-principles";
 import { AboutComparison } from "@/components/about/about-comparison";
-import { AboutTechStack } from "@/components/about/about-tech-stack";
 import { Container } from "@/components/ui/container";
+import { Section } from "@/components/ui/section";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 import { MapPinIcon } from "@animateicons/react/lucide/map-pin-icon";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
@@ -20,34 +19,31 @@ import { CodeIcon } from "@animateicons/react/lucide/code-icon";
 
 export function AboutView() {
   return (
-    <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
-      {/* ── Background Atmospheric Elements ── */}
-      <AmbientBackground screen="about" />
-      <div className="absolute inset-0 bg-dots-soft opacity-35 pointer-events-none" />
+    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
+      {/* ── Fixed navbar height spacer so full-width banner starts cleanly below the header ── */}
+      <div className="h-16 w-full shrink-0" aria-hidden="true" />
 
-      {/* ── 1. Hero Section (Breadcrumb, Title, Value Props & 3D Studio Showcase) ── */}
+      {/* ── 1. Full-Width Hero Section ── */}
       <AboutHero />
 
-      {/* ── Main Structured Showcase Area ── */}
-      <Container className="relative z-20 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-20">
-        
-        {/* ── 2. Studio Story & Origin (Executive Bento & 4 Metrics) ── */}
-        <div className="w-full pt-4 flex flex-col gap-12">
+      {/* ── 2. Studio Story & Origin (Executive Bento & 4 Metrics) ── */}
+      <Section className="bg-background">
+        <Container className="flex flex-col gap-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left Column: Authoritative Header & Global Base */}
-            <div className="lg:col-span-5 flex flex-col items-start text-left">
+            <div className="lg:col-span-5 flex flex-col items-start text-left gap-8">
               <SectionHeader
                 eyebrow={ABOUT_SECTION_CONTENT.eyebrow}
                 title={ABOUT_SECTION_CONTENT.title}
                 highlightedText={ABOUT_SECTION_CONTENT.highlightedText}
                 description={ABOUT_SECTION_CONTENT.description}
-                className="items-start text-left mx-0"
+                className="items-start text-left"
                 maxWidth="max-w-lg"
               />
 
               {/* Global Studio Base Card */}
               {SITE.location && (
-                <Card data-animated-icon-target variant="default" padding="compact" className="mt-8 flex flex-row items-center gap-4 w-full max-w-md">
+                <Card data-animated-icon-target variant="default" padding="compact" className="flex flex-row items-center gap-4 w-full max-w-md">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
                     <AnimatedIcon icon={MapPinIcon} size={18} />
                   </div>
@@ -66,8 +62,8 @@ export function AboutView() {
             {/* Right Column: 3 Strategic Pillars Bento */}
             <div className="lg:col-span-7 flex flex-col gap-4 text-left">
               {/* Pillar 1: Hero Card */}
-              <Card variant="default" padding="default" className="relative overflow-hidden">
-                <div data-animated-icon-target className="flex items-center gap-4 mb-4">
+              <Card variant="default" padding="default" className="relative overflow-hidden flex flex-col gap-4">
+                <div data-animated-icon-target className="flex items-center gap-4">
                   <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
                     <AnimatedIcon icon={ZapIcon} size={18} />
                   </div>
@@ -115,17 +111,18 @@ export function AboutView() {
 
           {/* 4 Metric Cards */}
           <AboutMetrics />
-        </div>
+        </Container>
+      </Section>
 
-        {/* ── 3. Guiding Philosophy (Interactive Principle Cards) ── */}
-        <AboutPrinciples />
+      {/* ── 3. Guiding Philosophy (Interactive Principle Cards) with Light Blue Theme Background ── */}
+      <AboutPrinciples />
 
-        {/* ── 4. The Simpluxe Advantage vs Traditional Agencies ── */}
-        <AboutComparison />
-
-        {/* ── 5. Modern Engineering Stack & Tech Philosophy ── */}
-        <AboutTechStack />
-      </Container>
+      {/* ── 4. The Simpluxe Advantage vs Traditional Agencies ── */}
+      <Section className="bg-background">
+        <Container>
+          <AboutComparison />
+        </Container>
+      </Section>
     </div>
   );
 }

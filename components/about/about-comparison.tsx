@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export function AboutComparison() {
   return (
-    <div className="w-full pt-16 sm:pt-20 border-t border-surface-elevated">
+    <div className="w-full flex flex-col gap-12 sm:gap-16">
       {/* ── Section Header ── */}
       <SectionHeader
         eyebrow={ABOUT_COMPARISON_CONTENT.eyebrow}
@@ -17,7 +17,6 @@ export function AboutComparison() {
         description={ABOUT_COMPARISON_CONTENT.description}
         centered
         maxWidth="max-w-2xl"
-        className="mb-12 sm:mb-16 mx-auto"
       />
 
       {/* ── Comparison Table Card ── */}

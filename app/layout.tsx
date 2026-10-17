@@ -2,6 +2,7 @@ import { LAYOUT_COPY } from "@/lib/content/metadata";
 import { MobileMenuProvider } from "@/components/layout/mobile-menu-context";
 import { SiteNavbar } from "@/components/layout/site-navbar";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { FooterBrandText } from "@/components/layout/footer-brand-text";
 import { LeadProvider } from "@/components/leads/lead-provider";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { ScrollRestorationProvider } from "@/components/providers/scroll-restoration-provider";
@@ -107,6 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               <MobileBottomNav />
               <SiteFooter />
+              <FooterBrandText />
               <ScrollRestorationProvider />
             </MobileMenuProvider>
           </LeadProvider>

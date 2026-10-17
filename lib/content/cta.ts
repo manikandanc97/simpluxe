@@ -1,15 +1,6 @@
 import { COMMON } from "./common";
-import type { ElementType as LucideIcon } from "react";
-import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
-import { MessageSquareIcon } from "@animateicons/react/lucide/message-square-icon";
-import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 
 // cta
-interface CTAPillar {
-  label: string;
-  icon: LucideIcon;
-}
-
 export interface CTAContent {
   eyebrow: string;
   title: string;
@@ -19,7 +10,7 @@ export interface CTAContent {
   secondaryButtonText: string;
   responseNote: string;
   floatingPillText: string;
-  pillars: CTAPillar[];
+  pillars?: Array<{ label: string; icon?: unknown }>;
 }
 
 export const CTA_CONTENT: CTAContent = {
@@ -31,11 +22,7 @@ export const CTA_CONTENT: CTAContent = {
   secondaryButtonText: "Schedule a call",
   responseNote: "Response within 2 hours • Free 30-min discovery session",
   floatingPillText: "READY TO BUILD?",
-  pillars: [
-    { label: "Simple process.", icon: ZapIcon },
-    { label: "Clear communication.", icon: MessageSquareIcon },
-    { label: COMMON.labels.realResults, icon: CircleCheckIcon },
-  ],
+  pillars: [],
 };
 
 // sections

@@ -1,4 +1,3 @@
-import { AmbientBackground } from "@/components/ui/ambient-background";
 import { ContactHero } from "@/components/contact/contact-hero";
 import { ContactChannels } from "@/components/contact/contact-channels";
 import { LeadForm } from "@/components/leads/lead-form";
@@ -8,16 +7,15 @@ import { CONTACT_SECTION_CONTENT } from "@/lib/content/contact";
 
 export function ContactView() {
   return (
-    <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
-      {/* ── Background Atmospheric Elements ── */}
-      <AmbientBackground screen="contact" />
-      <div className="absolute inset-0 bg-dots-soft opacity-35 pointer-events-none" />
+    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
+      {/* ── Fixed navbar height spacer so full-width banner starts cleanly below the header ── */}
+      <div className="h-16 w-full shrink-0" aria-hidden="true" />
 
-      {/* ── 1. Hero Section (Breadcrumb, Title, Value Props & 3D Interactive Showcase) ── */}
+      {/* ── 1. Full-Width Hero Section ── */}
       <ContactHero />
 
       {/* ── Main Structured Showcase Area ── */}
-      <Container className="relative z-20 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-20">
+      <Container className="pt-10 sm:pt-12 lg:pt-14 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-20">
         
         {/* ── 2. Split Area: Direct Channels (5) + Form (7) ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">

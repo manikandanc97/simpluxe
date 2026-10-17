@@ -10,10 +10,10 @@ type Layout = "list" | "grid" | "card" | "split";
 
 const LAYOUTS: Layout[] = ["list", "grid", "card", "split"];
 const LAYOUT_DURATION: Record<Layout, number> = {
-  list:  2000,
-  grid:  2000,
-  card:  2200,
-  split: 2200,
+  list:  3000,
+  grid:  3000,
+  card:  3200,
+  split: 3200,
 };
 const LAYOUT_META: Record<Layout, { icon: string; label: string; color: string }> = {
   list:  { icon: "☰", label: UI_UX_COPY.list,  color: "#7C3AED" },
@@ -69,10 +69,10 @@ function ListLayout({ isActive }: { isActive?: boolean }) {
 // ── Grid Layout ────────────────────────────────────────────
 function GridLayout() {
   const cells = [
-    { bg: "from-chart-2/15 to-chart-2/30", accent: "#7C3AED" },
-    { bg: "from-pink-600/15 to-pink-600/30", accent: "#D23D78" },
-    { bg: "from-chart-3/15 to-chart-3/30", accent: "#0891B2" },
-    { bg: "from-chart-5/15 to-chart-5/30", accent: "#059669" },
+    { bg: "bg-indigo-50 border-indigo-100", accent: "#4f46e5" },
+    { bg: "bg-pink-50 border-pink-100", accent: "#db2777" },
+    { bg: "bg-cyan-50 border-cyan-100", accent: "#0891b2" },
+    { bg: "bg-emerald-50 border-emerald-100", accent: "#059669" },
   ];
   return (
     <motion.div
@@ -89,7 +89,7 @@ function GridLayout() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: i * 0.07, type: "spring", stiffness: 400, damping: 24 }}
-          className={`rounded-xl bg-gradient-to-br ${cell.bg} border border-white/60 p-2 flex flex-col gap-1.5 aspect-4/3`}
+          className={`rounded-xl ${cell.bg} border p-2 flex flex-col gap-1.5 aspect-4/3`}
         >
           <div className="w-5 h-5 rounded-lg" style={{ backgroundColor: `${cell.accent}40` }} />
           <Bar w="w-full" color="bg-white/60" />
@@ -118,8 +118,7 @@ function CardLayout() {
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.05, duration: 0.35 }}
-        className="w-full rounded-2xl overflow-hidden border border-white/60 shadow-sm"
-        style={{ background: "linear-gradient(135deg, #7C3AED, #D23D78)" }}
+        className="w-full rounded-2xl overflow-hidden border border-indigo-700 bg-indigo-600 shadow-sm"
       >
         <div className="p-3 flex flex-col gap-2">
           <div className="flex items-center justify-between">
@@ -129,7 +128,7 @@ function CardLayout() {
           <Bar w="w-full" color="bg-white/30" h="h-1.5" />
           <Bar w="w-3/4" color="bg-white/20" h="h-1.5" />
           <div className="flex gap-1.5">
-            <div className="px-2 py-0.5 rounded-md bg-white text-micro font-bold text-chart-2">{UI_UX_COPY.primary}</div>
+            <div className="px-2 py-0.5 rounded-md bg-white text-micro font-bold text-indigo-600">{UI_UX_COPY.primary}</div>
             <div className="px-2 py-0.5 rounded-md bg-white/20 text-micro font-semibold text-white">{UI_UX_COPY.secondary}</div>
           </div>
         </div>
@@ -185,14 +184,14 @@ function SplitLayout() {
         className="flex flex-col gap-1 bg-slate-900 rounded-xl p-2 flex-shrink-0"
         style={{ width: 56 }}
       >
-        <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-chart-2 to-pink-600" />
+        <div className="w-5 h-5 rounded-lg bg-indigo-500" />
         {items.map((item, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, x: -6 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 + i * 0.06 }}
-            className={`rounded-lg px-1.5 py-1 flex items-center gap-1 ${i === 0 ? "bg-chart-2" : "bg-white/5"}`}
+            className={`rounded-lg px-1.5 py-1 flex items-center gap-1 ${i === 0 ? "bg-indigo-600" : "bg-white/5"}`}
           >
             <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: i === 0 ? "white" : "rgba(255,255,255,0.3)" }} />
             <span className="text-micro font-medium" style={{ color: i === 0 ? "white" : "rgba(255,255,255,0.5)" }}>{item}</span>
@@ -231,7 +230,7 @@ function SplitLayout() {
           <Bar w="w-16" color="bg-slate-300" h="h-1.5" />
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-chart-2/40 flex-shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-600/40 flex-shrink-0" />
               <Bar w={["w-full", "w-4/5", "w-5/6"][i]} color="bg-slate-100" h="h-1.5" />
             </div>
           ))}
@@ -244,7 +243,7 @@ function SplitLayout() {
                 animate={{ height: `${h}%` }}
                 transition={{ delay: 0.3 + i * 0.04, duration: 0.4, ease: "easeOut" }}
                 className="flex-1 rounded-t"
-                style={{ background: i === 4 ? "linear-gradient(#7C3AED, #D23D78)" : "#ede9fe" }}
+                style={{ backgroundColor: i === 4 ? "#6366f1" : "#ede9fe" }}
               />
             ))}
           </div>
@@ -256,7 +255,7 @@ function SplitLayout() {
 
 // ── Main UIUXMockup ────────────────────────────────────────
 export function UIUXMockup({ isActive }: { isActive?: boolean }) {
-  return <UIUXSequence key={String(!!isActive)} isActive={isActive} />;
+  return <UIUXSequence isActive={isActive} />;
 }
 
 function UIUXSequence({ isActive }: { isActive?: boolean }) {
@@ -276,11 +275,11 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
 
   return (
     <MockupWrapper
-      gradientClass="bg-gradient-to-tr from-violet-100/60 via-violet-50/50 to-pink-50/60"
-      innerClassName="max-w-72 p-3.5 gap-3 overflow-hidden"
+      gradientClass="bg-indigo-50"
+      innerClassName="gap-3 overflow-hidden p-3.5"
     >
         {/* Toolbar */}
-        <div className="flex items-center justify-between pb-1.5 border-b border-black/5">
+        <div className="flex shrink-0 items-center justify-between border-b border-black/5 pb-1.5">
           <div className="flex gap-1.5">
             {["#FF5F56", "#FFBD2E", "#27C93F"].map((c, i) => (
               <div key={i} className="w-2 h-2 rounded-full" style={{ backgroundColor: c }} />
@@ -317,7 +316,7 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Canvas — layout transitions here */}
-        <div className="relative overflow-hidden w-full h-30">
+        <div className="relative min-h-0 w-full flex-1 overflow-hidden">
           <AnimatePresence mode="wait">
             {layout === "list"  && <ListLayout key="list" isActive={isActive} />}
             {layout === "grid"  && <GridLayout  key="grid"  />}
@@ -327,7 +326,7 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Bottom status bar */}
-        <div className="flex items-center justify-between pt-1 border-t border-black/4">
+        <div className="flex shrink-0 items-center justify-between border-t border-black/4 pt-1">
           <div className="flex items-center gap-1.5">
             <motion.div
               animate={isActive ? { backgroundColor: [meta.color, `${meta.color}aa`, meta.color] } : { backgroundColor: meta.color }}

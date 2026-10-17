@@ -11,8 +11,8 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
 
   return (
     <MockupWrapper
-      gradientClass="bg-gradient-to-tr from-violet-100/60 via-rose-50/50 to-blue-100/60"
-      innerClassName="max-w-80 p-3.5 sm:p-4 gap-3">
+      gradientClass="bg-amber-50"
+      innerClassName="gap-3 p-3.5 sm:p-4">
       <div className="flex items-center justify-between gap-2 border-b border-black/5 pb-1">
         <div className="flex gap-1.5" aria-hidden="true">
           <div className="h-2 w-2 rounded-full bg-red-400" />
@@ -27,7 +27,7 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
           <span className="text-xs font-bold text-foreground">{COPY.engine}</span>
         </div>
-        <motion.div className="rounded-md bg-primary px-2 py-1.5 text-2xs font-semibold text-white shadow-sm"
+        <motion.div className="rounded-md bg-amber-800 px-2 py-1.5 text-2xs font-semibold text-white shadow-sm"
           animate={active ? { scale: [1, 1, 0.92, 1, 1] } : { scale: 1 }}
           transition={{ ...loop, times: [0, 0.14, 0.18, 0.23, 1] }}>{COPY.run}</motion.div>
         <motion.div className="pointer-events-none absolute right-4 top-4 z-30 text-zinc-900 drop-shadow-md"
@@ -40,23 +40,23 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
         </motion.div>
       </div>
 
-      <div className="flex h-24 items-center rounded-xl border border-black/5 bg-gradient-to-br from-slate-50 via-white to-violet-50 px-2">
+      <div className="flex min-h-0 flex-1 items-center rounded-xl border border-black/5 bg-stone-50 px-2">
         {COPY.nodeLabels.map((label, index) => (
           <div key={label} className={index === 0 ? "flex items-center" : "flex flex-1 items-center"}>
             {index > 0 && (
-              <div className="relative mb-5 h-0.5 min-w-2 flex-1 bg-primary/15" aria-hidden="true">
-                <motion.div className="absolute -top-0.5 left-0 h-1.5 w-1.5 rounded-full bg-primary shadow-sm"
+              <div className="relative -translate-y-2.5 h-0.5 min-w-2 flex-1 bg-amber-800/15" aria-hidden="true">
+                <motion.div className="absolute -top-0.5 left-0 h-1.5 w-1.5 rounded-full bg-amber-800 shadow-sm"
                   animate={active ? { left: ["0%", "0%", "85%", "85%", "0%"], opacity: [0, 1, 1, 0, 0] } : { opacity: 0 }}
                   transition={{ ...loop, times: index === 1 ? [0, 0.25, 0.4, 0.43, 1] : [0, 0.5, 0.65, 0.68, 1] }} />
               </div>
             )}
             <div className="flex w-16 shrink-0 flex-col items-center gap-1.5">
               <motion.div className={index === 1
-                ? "flex h-12 w-12 items-center justify-center rounded-xl border bg-gradient-to-br from-primary to-violet-700 text-white shadow-md"
-                : "flex h-10 w-10 items-center justify-center rounded-xl border bg-white font-mono text-xs font-bold text-primary shadow-sm"}
-                animate={active ? { scale: [1, 1, 1.12, 1, 1],
-                  borderColor: ["rgba(146,47,85,0.12)", "rgba(146,47,85,0.12)", "rgba(146,47,85,0.65)", "rgba(146,47,85,0.12)", "rgba(146,47,85,0.12)"]
-                } : { scale: 1, borderColor: "rgba(146,47,85,0.12)" }}
+                ? "flex h-12 w-12 items-center justify-center rounded-xl border bg-amber-800 text-white shadow-md"
+                : "flex h-10 w-10 items-center justify-center rounded-xl border bg-white font-mono text-xs font-bold text-amber-800 shadow-sm"}
+                animate={active ? { scale: [1, 1, 1.06, 1, 1],
+                  borderColor: ["rgba(180,83,9,0.12)", "rgba(180,83,9,0.12)", "rgba(180,83,9,0.65)", "rgba(180,83,9,0.12)", "rgba(180,83,9,0.12)"]
+                } : { scale: 1, borderColor: "rgba(180,83,9,0.12)" }}
                 transition={{ ...loop, times: [0, 0.2 + index * 0.15, 0.3 + index * 0.15, 0.4 + index * 0.15, 1] }}>
                 {index === 1 ? (
                   <motion.svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
@@ -79,15 +79,15 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
         ))}
       </div>
 
-      <div className="overflow-hidden rounded-xl bg-zinc-900 px-2.5 py-2 font-mono text-2xs">
+      <div className="flex flex-col gap-1 overflow-hidden rounded-xl bg-zinc-900 px-2.5 py-2 font-mono text-2xs">
         <div className="flex items-center justify-between gap-2">
           <span className="text-zinc-300">{COPY.request}</span>
           <motion.span className="shrink-0 font-semibold text-emerald-400"
             animate={active ? { opacity: [0, 0, 1, 1, 0] } : { opacity: 1 }}
             transition={{ ...loop, times: [0, 0.65, 0.72, 0.9, 1] }}>{COPY.response}</motion.span>
         </div>
-        <div className="relative mt-1 h-3.5">
-          <motion.span className="absolute inset-0 text-violet-300"
+        <div className="relative h-3.5">
+          <motion.span className="absolute inset-0 text-amber-300"
             animate={active ? { opacity: [1, 1, 0, 0, 1] } : { opacity: 0 }}
             transition={{ ...loop, times: [0, 0.6, 0.65, 0.95, 1] }}>{COPY.processing}</motion.span>
           <motion.span className="absolute inset-0 text-emerald-400"

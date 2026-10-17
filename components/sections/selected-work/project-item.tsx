@@ -32,10 +32,10 @@ export function SelectedWorkProjectItem({
       }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className={cn(
-        "sw-project-item group p-4 sm:p-4.5 rounded-2xl flex flex-col gap-4 sm:gap-4 cursor-pointer transition-colors border relative w-full",
+        "sw-project-item group p-4 sm:p-4.5 rounded-2xl flex flex-col gap-4 sm:gap-4 cursor-pointer transition-all duration-200 border relative w-full",
         isActive
-          ? "bg-card border-primary/20 shadow-elevated ring-1 ring-primary/20 translate-x-0 lg:translate-x-3 z-10"
-          : "bg-transparent border-transparent hover:bg-card/40 hover:border-border hover:translate-x-0 lg:hover:translate-x-1"
+          ? "bg-card border-primary/20 shadow-luxury ring-1 ring-primary/15 translate-x-0 lg:translate-x-2 z-10"
+          : "bg-transparent border-transparent hover:bg-white/60 hover:border-border/60 hover:translate-x-0 lg:hover:translate-x-1"
       )}
     >
       {/* Top Row: Number, Logo, Details, Chevron */}

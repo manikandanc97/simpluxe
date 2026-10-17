@@ -12,6 +12,7 @@ export interface FooterData {
   brandDescription: string;
   exploreTitle: string;
   capabilitiesTitle: string;
+  connectTitle: string;
   ctaPillText: string;
   ctaTitle: string;
   ctaDescription: string;

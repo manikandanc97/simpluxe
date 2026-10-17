@@ -13,10 +13,6 @@ import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import {
   AnimatePresence,
   m as motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-  useTransform,
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,15 +31,6 @@ export function WorkbenchHero() {
   const [isMobileProjectMenuOpen, setIsMobileProjectMenuOpen] = useState(false);
   const mobileProjectMenuRef = useRef<HTMLDivElement>(null);
   const activeProject = showcasedProjects[activeProjectIndex];
-  const prefersReducedMotion = useReducedMotion();
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const smoothX = useSpring(pointerX, { stiffness: 55, damping: 22, mass: 0.8 });
-  const smoothY = useSpring(pointerY, { stiffness: 55, damping: 22, mass: 0.8 });
-  const dotsX = useTransform(smoothX, (value) => value * 10);
-  const dotsY = useTransform(smoothY, (value) => value * 8);
-  const ambientX = useTransform(smoothX, (value) => value * -16);
-  const ambientY = useTransform(smoothY, (value) => value * -12);
 
   useEffect(() => {
     if (!isMobileProjectMenuOpen) return;
@@ -67,19 +54,6 @@ export function WorkbenchHero() {
     };
   }, [isMobileProjectMenuOpen]);
 
-  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
-    if (prefersReducedMotion || event.pointerType !== "mouse") return;
-
-    const bounds = event.currentTarget.getBoundingClientRect();
-    pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
-    pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
-  };
-
-  const resetPointerPosition = () => {
-    pointerX.set(0);
-    pointerY.set(0);
-  };
-
   const handleWorkClick = () => {
     const target = document.getElementById("selected-work-scroll-anchor");
     const header = document.querySelector("header");
@@ -98,21 +72,9 @@ export function WorkbenchHero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pb-14 pt-28 hero-showcase-background sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={resetPointerPosition}
+      className="relative overflow-hidden bg-background pb-14 pt-16 text-white sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24"
     >
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-3/4 opacity-50 hero-showcase-ambient lg:h-screen"
-        style={{ x: ambientX, y: ambientY }}
-      />
-      <div className="top-16 left-1/2 absolute size-72 sm:size-96 -translate-x-1/2 pointer-events-none" aria-hidden="true">
-        <motion.div
-          className="opacity-35 size-full hero-showcase-dots"
-          style={{ x: dotsX, y: dotsY }}
-        />
-      </div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-svh bg-primary" aria-hidden="true" />
 
       <Container
         size="wide"
@@ -124,15 +86,15 @@ export function WorkbenchHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="font-satoshi font-bold text-dark text-4xl xs:text-5xl sm:text-5xl lg:text-6xl leading-tight tracking-tighter">
+          <h1 className="font-satoshi text-4xl font-bold leading-tight tracking-tighter text-white xs:text-5xl sm:text-5xl lg:text-6xl">
             <span className="block">{HERO_CONTENT.headlineLine1}</span>
             <span className="block">
               {HERO_CONTENT.headlineLine2Prefix}{" "}
-              <span className="brand-gradient-text">{HERO_CONTENT.headlineHighlight}</span>
+              <span className="text-sky-100">{HERO_CONTENT.headlineHighlight}</span>
             </span>
           </h1>
 
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
             {HERO_CONTENT.description}
           </p>
 
@@ -142,13 +104,13 @@ export function WorkbenchHero() {
               onClick={() => openLead({ source: "cta" })}
               size="lg"
               disableScrollAnimation
-              className="group"
+              className="group bg-white text-primary hover:bg-slate-100"
             >
               {HERO_CONTENT.ctaPrimary}
               <AnimatedIcon
                 icon={ArrowUpRightIcon}
                 size={16}
-                className="text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </Button>
 
@@ -158,10 +120,10 @@ export function WorkbenchHero() {
               className="group flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="flex flex-col gap-0.5">
-                <span className="text-sm font-bold leading-tight text-heading transition-colors group-hover:text-primary sm:text-base">
+                <span className="text-sm font-bold leading-tight text-white transition-colors group-hover:text-sky-300 sm:text-base">
                   {HERO_CONTENT.ctaSecondaryTitle}
                 </span>
-                <span className="text-xs font-medium text-muted-foreground">
+                <span className="text-xs font-medium text-slate-300">
                   {HERO_CONTENT.ctaSecondarySubtitle}
                 </span>
               </span>

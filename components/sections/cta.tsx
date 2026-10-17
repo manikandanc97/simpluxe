@@ -3,7 +3,7 @@
 import { CTA_COPY } from "@/lib/content/cta";
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
 import { useRef } from "react";
@@ -37,7 +37,7 @@ export function CTA({ onStartProject }: CTAProps) {
     >
       <Container size="default" className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
-          {/* Col 1 (Left): Value proposition & Pillars */}
+          {/* Col 1 (Left): Value proposition */}
           <div className="lg:col-span-7 flex flex-col items-start font-satoshi gap-6 sm:gap-8 w-full text-left">
             <SectionHeader
               eyebrow={CTA_CONTENT.eyebrow}
@@ -48,24 +48,6 @@ export function CTA({ onStartProject }: CTAProps) {
               maxWidth="max-w-xl"
               className="items-start text-left"
             />
-
-            {/* 3 Pillars as sleek luxury pills */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              {CTA_CONTENT.pillars.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={index}
-                    data-animated-icon-target
-                    data-slot="card"
-                    className="group inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-semibold text-white shadow-2xs cursor-default backdrop-blur-xs transition-colors hover:bg-white/15"
-                  >
-                    <AnimatedIcon icon={Icon} size={14} className="text-sky-300 shrink-0" />
-                    <span>{item.label}</span>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
           {/* Col 2 (Right): Action Buttons */}
@@ -74,10 +56,14 @@ export function CTA({ onStartProject }: CTAProps) {
               <Button
                 size="lg"
                 onClick={handleStart}
-                className="w-full bg-white text-primary hover:bg-white/90 shadow-sm justify-center"
+                className="group w-full bg-white text-primary hover:bg-white/90 shadow-sm justify-center"
               >
                 <span>{CTA_CONTENT.primaryButtonText}</span>
-                <AnimatedArrowRight size={15} className="text-primary" />
+                <AnimatedIcon
+                  icon={ArrowUpRightIcon}
+                  size={16}
+                  className="text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Button>
 
               <Button

@@ -4,7 +4,7 @@ import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { InfoIcon } from "@animateicons/react/lucide/info-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { MailIcon } from "@animateicons/react/lucide/mail-icon";
-import { SITE, TAGLINE } from "./site";
+import { SITE } from "./site";
 import type { FooterData } from "@/types/footer";
 
 // navigation
@@ -48,9 +48,10 @@ export const FOOTER_DATA: FooterData = {
     { label: "SaaS Platforms", icon: "layers", id: "saas" },
     { label: "Branding & Identity", icon: "palette", id: "branding" },
   ],
-  brandDescription: "A premier software development company engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions for ambitious businesses and founders.",
+  brandDescription: "Where architectural simplicity meets high-end digital craftsmanship. We distill complex challenges into effortless, ultra-refined experiences engineered to elevate ambitious brands.",
   exploreTitle: "Explore",
   capabilitiesTitle: "Capabilities",
+  connectTitle: "Connect",
   ctaPillText: "Let's Build",
   ctaTitle: "Have a project in mind?",
   ctaDescription: "Let's discuss your idea and turn it into a premium digital product.",
@@ -78,9 +79,17 @@ export const MOBILE_BOTTOM_NAV_COPY = {
 export const SITE_FOOTER_COPY = {
   simpluxeHome: COMMON.brand.homeLabel,
   simpluxe: SITE.name,
-  keepItSimple: TAGLINE.line1,
-  makeIt: TAGLINE.line2Prefix.trimEnd(),
-  luxury: TAGLINE.highlight,
+  brandSimp: "Simp",
+  brandLuxe: "Luxe",
+  technologies: "Technologies",
+  brandSimpUpper: "SIMP",
+  brandLuxeUpper: "LUXE",
+  headlineLine1: "Designed with Precision.",
+  headlineLine2Prefix: "Engineered to ",
+  headlineHighlight: "Scale.",
+  keepItSimple: "Designed with Precision.",
+  makeIt: "Engineered to",
+  luxury: "Scale.",
   xTwitter: "X (Twitter)",
   linkedin: "LinkedIn",
   instagram: "Instagram",
@@ -94,4 +103,8 @@ export const SITE_NAVBAR_COPY = {
   simpluxeHome: COMMON.brand.homeLabel,
   simpluxeLogo: COMMON.brand.logoAlt,
   primaryNavigation: "Primary navigation",
+  brandSimp: "Simp",
+  brandLuxe: "Luxe",
+  technologies: "Technologies",
+  letsTalk: "Let's talk",
 } as const;

@@ -1,69 +1,301 @@
 "use client";
 
 import { BRANDING_COPY } from "@/lib/content/services";
-
-import { m as motion } from "motion/react";
+import { AnimatePresence, m as motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { MockupWrapper } from "./mockup-wrapper";
 
-const BRAND_COLORS = ["#922F55", "#D23D78", "#6C2BB8", "#F97316", "#0891B2"];
+type BrandScreen = "logo" | "palette" | "typography";
+const SCREENS: BrandScreen[] = ["logo", "palette", "typography"];
+const SCREEN_DURATIONS: Record<BrandScreen, number> = {
+  logo: 3000,
+  palette: 2800,
+  typography: 2800,
+};
 
 export function BrandingMockup({ isActive }: { isActive?: boolean }) {
+  const [currentScreen, setCurrentScreen] = useState<BrandScreen>("logo");
+
+  useEffect(() => {
+    if (!isActive) {
+      const resetTimer = setTimeout(() => {
+        setCurrentScreen("logo");
+      }, 0);
+      return () => clearTimeout(resetTimer);
+    }
+
+    const timer = setTimeout(() => {
+      setCurrentScreen((prev) => {
+        const nextIdx = (SCREENS.indexOf(prev) + 1) % SCREENS.length;
+        return SCREENS[nextIdx];
+      });
+    }, SCREEN_DURATIONS[currentScreen]);
+
+    return () => clearTimeout(timer);
+  }, [isActive, currentScreen]);
+
   return (
     <MockupWrapper
-      gradientClass="bg-gradient-to-tr from-orange-50/60 via-pink-50/50 to-amber-100/60"
-      innerClassName="max-w-80 p-4 gap-3"
+      gradientClass="bg-amber-50"
+      innerClassName="gap-2.5 p-3.5 sm:p-4"
     >
-        <div className="flex items-center gap-3">
-          <motion.div
-            animate={isActive ? { rotate: [0, 360] } : { rotate: 0 }}
-            transition={{ duration: 8, repeat: isActive ? Infinity : 0, ease: "linear" }}
-            className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-violet-700 flex items-center justify-center shadow-md flex-shrink-0"
-          >
-            <span className="text-white font-black text-lg tracking-tight">{BRANDING_COPY.st}</span>
-          </motion.div>
-          <div className="flex flex-col gap-1.5">
-            <div className="w-24 h-2.5 rounded-full bg-slate-800" />
-            <div className="w-16 h-1.5 rounded-full bg-slate-200" />
-          </div>
+      {/* Top Application Bar */}
+      <div className="flex items-center justify-between pb-1.5 border-b border-black/5">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2 h-2 rounded-full bg-red-400" />
+          <div className="w-2 h-2 rounded-full bg-amber-400" />
+          <div className="w-2 h-2 rounded-full bg-green-500" />
+          <span className="text-2xs font-mono text-muted-foreground ml-1">brand.simpluxe.design</span>
         </div>
-
-        <div className="flex flex-col gap-1.5">
-          <div className="w-10 h-1.5 rounded-full bg-slate-200" />
-          <div className="flex gap-1.5">
-            {BRAND_COLORS.map((color, i) => (
-              <motion.div
-                key={i}
-                animate={isActive ? { scale: [1, 1.15, 1] } : { scale: 1 }}
-                transition={{ duration: 2, delay: i * 0.25, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
-                className="flex-1 h-8 rounded-xl shadow-sm"
-                style={{ backgroundColor: color }}
-              />
-            ))}
-          </div>
+        <div className="flex items-center gap-1">
+          <span className="text-3xs font-semibold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200/60">
+            System v2.4
+          </span>
         </div>
+      </div>
 
-        <div className="bg-slate-50 border border-black/4 rounded-xl p-2.5 flex flex-col gap-1">
-          <span className="text-lg font-black tracking-tighter text-foreground leading-none">{BRANDING_COPY.aa}</span>
-          <div className="flex gap-1.5">
-            <div className="w-12 h-1.5 rounded-full bg-slate-300" />
-            <div className="w-8 h-1.5 rounded-full bg-slate-200" />
-            <div className="w-10 h-1.5 rounded-full bg-slate-200" />
-          </div>
-          <div className="flex gap-1 mt-1">
-            {[BRANDING_COPY.inter, BRANDING_COPY.satoshi, BRANDING_COPY.mono].map((f, i) => (
-              <span key={i} className="text-3xs px-1.5 py-0.5 rounded-full bg-white border border-slate-200 text-muted-foreground font-medium">{f}</span>
-            ))}
-          </div>
-        </div>
+      {/* Screen Selector Tabs */}
+      <div className="flex items-center gap-1 bg-slate-100/80 p-0.5 rounded-lg border border-slate-200/60">
+        {[
+          { id: "logo", label: "Identity" },
+          { id: "palette", label: "Palette" },
+          { id: "typography", label: "Typography" },
+        ].map((tab) => {
+          const isCurrent = currentScreen === tab.id;
+          return (
+            <button
+              type="button"
+              key={tab.id}
+              onClick={() => setCurrentScreen(tab.id as BrandScreen)}
+              className={`flex-1 text-3xs font-semibold py-1 rounded-md transition-all relative ${
+                isCurrent ? "text-slate-900 font-bold" : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              {isCurrent && (
+                <motion.div
+                  layoutId="brand-tab-pill"
+                  className="absolute inset-0 bg-white rounded-md shadow-2xs border border-black/5"
+                  transition={{ type: "spring", stiffness: 450, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{tab.label}</span>
+            </button>
+          );
+        })}
+      </div>
 
-        <motion.div
-          animate={isActive ? { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] } : { backgroundPosition: "0% 50%" }}
-          transition={{ duration: 5, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
-          className="w-full h-5 rounded-xl"
-          style={{ background: "linear-gradient(90deg, #922F55, #D23D78, #6C2BB8, #0891B2, #922F55)", backgroundSize: "300% 100%" }}
-        />
+      {/* Content Area with Multi-screen Transitions */}
+      <div className="relative min-h-0 w-full flex-1 overflow-hidden">
+        <AnimatePresence mode="wait">
+          {currentScreen === "logo" && <LogoScreen key="logo" isActive={isActive} />}
+          {currentScreen === "palette" && <PaletteScreen key="palette" isActive={isActive} />}
+          {currentScreen === "typography" && <TypographyScreen key="typography" isActive={isActive} />}
+        </AnimatePresence>
+      </div>
     </MockupWrapper>
   );
 }
 
+// ── Screen 1: Brand Mark & Logo Construction ──────────────────────────────────
+function LogoScreen({ isActive }: { isActive?: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 14 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -14 }}
+      transition={{ duration: 0.28, ease: "easeOut" }}
+      className="absolute inset-0 flex flex-col gap-2"
+    >
+      <div className="bg-white rounded-xl border border-slate-200/90 p-3 flex flex-col gap-2.5 shadow-2xs flex-1">
+        {/* Main Emblem + Title */}
+        <div className="flex items-center gap-3">
+          <motion.div
+            animate={isActive ? { rotate: [0, -3, 0], scale: [1, 1.04, 1] } : { rotate: 0, scale: 1 }}
+            transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
+            className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-sm relative shrink-0 border border-slate-800"
+          >
+            {/* Grid crosshair guides */}
+            <div className="absolute inset-1 border border-dashed border-white/20 rounded-xl" />
+            <span className="text-white font-black text-lg tracking-tight relative z-10">
+              {BRANDING_COPY.st}
+            </span>
+          </motion.div>
 
+          <div className="flex flex-col gap-0.5">
+            <span className="text-2xs font-extrabold text-slate-900 tracking-tight">SIMPLUXE STUDIO</span>
+            <span className="text-3xs text-muted-foreground font-medium">Core Brand Identity & Iconography</span>
+            <div className="flex items-center gap-1 pt-1">
+              <span className="text-3xs px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 font-mono font-medium">
+                Vector 1:1
+              </span>
+              <span className="text-3xs px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-700 font-medium">
+                Verified
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Specimen Box */}
+        <div className="bg-slate-50 border border-slate-200/60 rounded-lg p-2 flex items-center justify-between mt-auto">
+          <div className="flex flex-col">
+            <span className="text-3xs font-bold text-slate-700">Primary Optical Mark</span>
+            <span className="text-3xs text-slate-400">48px Master Grid Alignment</span>
+          </div>
+          <span className="text-3xs font-mono font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">
+            SVG · PDF · AI
+          </span>
+        </div>
+      </div>
+
+      {/* Brand Bar */}
+      <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span>Brand Identity Complete</span>
+        </div>
+        <span className="font-mono text-slate-300">100% Scalable</span>
+      </div>
+    </motion.div>
+  );
+}
+
+// ── Screen 2: Curated Color Palette System ────────────────────────────────────
+function PaletteScreen({ isActive }: { isActive?: boolean }) {
+  const swatches = [
+    { name: "Obsidian", hex: "#0F172A", color: "bg-slate-900", role: "Primary Dark" },
+    { name: "Ocean Luxe", hex: "#0369A1", color: "bg-sky-700", role: "Brand Accent" },
+    { name: "Amber Sun", hex: "#D97706", color: "bg-amber-600", role: "Secondary" },
+    { name: "Rose Petal", hex: "#E11D48", color: "bg-rose-600", role: "Highlight" },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 14 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -14 }}
+      transition={{ duration: 0.28, ease: "easeOut" }}
+      className="absolute inset-0 flex flex-col gap-1.5"
+    >
+      <div className="bg-white rounded-xl border border-slate-200/90 p-2.5 flex flex-col gap-2 shadow-2xs flex-1">
+        <div className="flex items-center justify-between pb-1 border-b border-slate-100">
+          <span className="text-2xs font-bold text-slate-800">Chromatic Palette & Tokens</span>
+          <span className="text-3xs font-semibold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-mono">
+            WCAG AAA (7.8:1)
+          </span>
+        </div>
+
+        {/* 4 Swatch Cards */}
+        <div className="grid grid-cols-4 gap-1.5">
+          {swatches.map((swatch, idx) => (
+            <motion.div
+              key={swatch.hex}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.07 }}
+              className="flex flex-col gap-1 rounded-lg border border-slate-200/70 p-1 bg-slate-50"
+            >
+              <motion.div
+                animate={isActive ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+                transition={{ duration: 2, repeat: Infinity, delay: idx * 0.15 }}
+                className={`w-full h-8 rounded-md ${swatch.color} shadow-2xs`}
+              />
+              <span className="text-3xs font-bold text-slate-800 leading-none truncate">{swatch.name}</span>
+              <span className="text-3xs font-mono text-slate-400 leading-none">{swatch.hex}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Proportional Ratio Bar */}
+        <div className="flex flex-col gap-1 mt-auto">
+          <div className="flex items-center justify-between text-3xs text-slate-400 font-medium">
+            <span>Harmonic Distribution</span>
+            <span>60% · 30% · 10%</span>
+          </div>
+          <div className="flex w-full h-2 rounded-full overflow-hidden">
+            <div className="w-7/12 bg-slate-900" />
+            <div className="w-3/12 bg-sky-700" />
+            <div className="w-1/12 bg-amber-600" />
+            <div className="w-1/12 bg-rose-600" />
+          </div>
+        </div>
+      </div>
+
+      {/* Palette Footer */}
+      <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
+        <div className="flex items-center gap-1.5">
+          <span className="text-amber-400">✦</span>
+          <span>Adaptive Contrast Tokens</span>
+        </div>
+        <span className="font-mono text-emerald-400">Light & Dark Ready</span>
+      </div>
+    </motion.div>
+  );
+}
+
+// ── Screen 3: Typography & Font Specimen ──────────────────────────────────────
+function TypographyScreen({ isActive }: { isActive?: boolean }) {
+  const [activeFont, setActiveFont] = useState<string>(BRANDING_COPY.satoshi);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 14 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -14 }}
+      transition={{ duration: 0.28, ease: "easeOut" }}
+      className="absolute inset-0 flex flex-col gap-1.5"
+    >
+      <div className="bg-white rounded-xl border border-slate-200/90 p-2.5 flex flex-col gap-2 shadow-2xs flex-1">
+        {/* Header & Font Switcher */}
+        <div className="flex items-center justify-between pb-1 border-b border-slate-100">
+          <span className="text-2xs font-bold text-slate-800">Typography Hierarchy</span>
+          <div className="flex gap-1">
+            {[BRANDING_COPY.satoshi, BRANDING_COPY.inter, BRANDING_COPY.mono].map((f) => (
+              <button
+                type="button"
+                key={f}
+                onClick={() => setActiveFont(f)}
+                className={`text-3xs px-1.5 py-0.5 rounded font-medium transition-all ${
+                  activeFont === f ? "bg-slate-900 text-white font-bold" : "bg-slate-100 text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Big Glyph Specimen */}
+        <div className="flex items-center justify-between bg-slate-50 rounded-lg p-2 border border-slate-200/60">
+          <motion.span
+            animate={isActive ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-2xl font-black text-slate-900 leading-none tracking-tight font-serif"
+          >
+            {BRANDING_COPY.aa}
+          </motion.span>
+          <div className="flex flex-col text-right">
+            <span className="text-2xs font-bold text-slate-800">{activeFont} Display</span>
+            <span className="text-3xs text-slate-400 font-mono">Weight: 400 · 700 · 900</span>
+          </div>
+        </div>
+
+        {/* Weights Specimen Scale */}
+        <div className="flex items-center justify-between text-3xs font-medium text-slate-600 mt-auto pt-1 border-t border-slate-100">
+          <span className="font-light">Light 300</span>
+          <span className="font-normal">Regular 400</span>
+          <span className="font-semibold">Semibold 600</span>
+          <span className="font-black text-slate-900">Black 900</span>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
+        <div className="flex items-center gap-1.5">
+          <span className="text-sky-400">Aa</span>
+          <span>Precision Micro-Typography</span>
+        </div>
+        <span className="font-mono text-slate-300">Optical Scale</span>
+      </div>
+    </motion.div>
+  );
+}

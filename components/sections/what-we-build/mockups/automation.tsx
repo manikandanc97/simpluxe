@@ -15,11 +15,11 @@ const WORKFLOW_NODES = [
 export function AutomationMockup({ isActive }: { isActive?: boolean }) {
   return (
     <MockupWrapper
-      gradientClass="bg-gradient-to-tr from-emerald-50/60 via-green-50/50 to-violet-100/60"
-      innerClassName="max-w-80 p-3.5 gap-3"
+      gradientClass="bg-emerald-50"
+      innerClassName="p-3.5 gap-3"
     >
         {/* Header */}
-        <div className="flex items-center gap-2 pb-1.5 border-b border-black/5">
+        <div className="flex shrink-0 items-center gap-2 border-b border-black/5 pb-1.5">
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-400" />
             <div className="w-2 h-2 rounded-full bg-amber-400" />
@@ -34,7 +34,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Workflow nodes */}
-        <div className="flex flex-col gap-2">
+        <div className="flex min-h-0 flex-1 flex-col gap-2">
           {WORKFLOW_NODES.map((node, i) => (
             <motion.div
               key={i}
@@ -47,7 +47,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
                 ],
               } : { x: 0 }}
               transition={{ duration: 2.5, delay: node.delay, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
-              className="flex items-center gap-2 rounded-xl px-3 py-2 border"
+              className="flex min-h-0 flex-1 items-center gap-2 rounded-xl border px-3 py-2"
               style={{
                 backgroundColor: `${node.color}08`,
                 borderColor: `${node.color}25`,
@@ -79,7 +79,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Terminal output — light style */}
-        <div className="bg-slate-50 border border-black/5 rounded-xl px-3 py-2 flex items-center gap-1.5 font-mono text-2xs">
+        <div className="flex shrink-0 items-center gap-1.5 rounded-xl border border-black/5 bg-slate-50 px-3 py-2 font-mono text-2xs">
           <motion.div
             animate={isActive ? { opacity: [1, 0, 1] } : { opacity: 1 }}
             transition={{ duration: 0.8, repeat: isActive ? Infinity : 0 }}

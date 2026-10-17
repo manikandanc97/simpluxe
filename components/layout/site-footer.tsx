@@ -17,7 +17,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
   return (
     <footer className="w-full bg-slate-100 text-foreground border-t border-border mt-auto relative overflow-hidden pb-safe-nav md:pb-0">
       <div className="w-full h-full relative">
-      <Container className="pt-16 pb-12 relative z-10">
+      <Container className="pt-16 pb-16 relative z-10">
         {/* Top Grid: Brand, Explore, Capabilities, Connect Card */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-border items-start">
 
@@ -27,25 +27,34 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               {/* Brand Logo */}
               <Link
                 href="/"
-                className="inline-flex items-center focus-visible:ring-2 focus-visible:ring-ring outline-none"
+                className="group inline-flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
                 aria-label={SITE_FOOTER_COPY.simpluxeHome}
               >
                 <CldImage
-                  src="simpluxe/logo/logo"
-                  alt={SITE_FOOTER_COPY.simpluxe}
-                  width={160}
-                  height={36}
-                  sizes="(max-width: 768px) 160px, 160px"
-                  className="h-8 w-auto object-contain"
+                  src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
+                  alt={SITE_FOOTER_COPY.simpluxeLogo}
+                  width={64}
+                  height={64}
+                  sizes="36px"
+                  format="auto"
+                  quality="auto:eco"
+                  className="size-8 sm:size-9 object-contain transition-transform duration-200 group-hover:scale-105"
                   loading="lazy"
                 />
+                <span className="font-heading text-xl font-bold tracking-tight text-heading sm:text-2xl">
+                  {SITE_FOOTER_COPY.brandSimp}<span className="text-primary">{SITE_FOOTER_COPY.brandLuxe}</span>
+                </span>
+                <span className="border-l border-border pl-2.5 text-xs font-semibold tracking-normal text-muted-foreground">
+                  {SITE_FOOTER_COPY.technologies}
+                </span>
               </Link>
 
               <h2 className="text-xl sm:text-2xl font-extrabold text-heading leading-tight tracking-tight">
-                {SITE_FOOTER_COPY.keepItSimple}<br />
-                {SITE_FOOTER_COPY.makeIt}{" "}
+                {SITE_FOOTER_COPY.headlineLine1}<br />
+                {SITE_FOOTER_COPY.headlineLine2Prefix}{" "}
                 <span className="brand-gradient-text">
-                  {SITE_FOOTER_COPY.luxury}</span>
+                  {SITE_FOOTER_COPY.headlineHighlight}
+                </span>
               </h2>
 
               <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
@@ -167,47 +176,58 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
             </ul>
           </div>
 
-          {/* Col 4: Connect & CTA Card (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col relative">
-            {/* Decorative accent */}
-            <div className="absolute -top-3.5 -right-2 text-primary pointer-events-none select-none z-20" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <line x1="8" y1="12" x2="12" y2="4" />
-                <line x1="10" y1="14" x2="18" y2="8" />
-                <line x1="10" y1="16" x2="20" y2="16" />
-              </svg>
+          {/* Col 4: Connect (3 cols) */}
+          <div className="lg:col-span-3 flex flex-col gap-6">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-heading">
+              {FOOTER_DATA.connectTitle}
+            </h3>
+
+            <div className="flex flex-col gap-2">
+              <h4 className="text-lg font-bold text-heading tracking-tight">
+                {FOOTER_DATA.ctaTitle}
+              </h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {FOOTER_DATA.ctaDescription}
+              </p>
             </div>
 
-            <div className="bg-card rounded-3xl p-8 shadow-card border border-border relative z-10 flex flex-col justify-between gap-6">
-              <div className="flex justify-between items-start">
-                {/* Send icon */}
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="m22 2-7 20-4-9-9-4Z" />
-                    <path d="M22 2 11 13" />
-                  </svg>
-                </div>
+            <div className="flex flex-col gap-3.5 text-sm text-muted-foreground">
+              {SITE.email && (
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="group flex items-center gap-3.5 hover:text-primary transition-colors"
+                >
+                  <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
+                    <AnimatedIcon
+                      name="mail"
+                      size={13}
+                      className="currentColor"
+                    />
+                  </span>
+                  <span className="font-medium group-hover:text-primary transition-colors break-all">
+                    {SITE.email}
+                  </span>
+                </a>
+              )}
 
-                {/* Live pill */}
-                <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary shadow-2xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {FOOTER_DATA.ctaPillText}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-6">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-bold text-heading tracking-tight">
-                    {FOOTER_DATA.ctaTitle}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {FOOTER_DATA.ctaDescription}
-                  </p>
-                </div>
-
-                <FooterCtaButton onStartProject={onStartProject} />
-              </div>
+              {SITE.phone && (
+                <a
+                  href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+                  className="group flex items-center gap-3.5 hover:text-primary transition-colors"
+                >
+                  <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </span>
+                  <span className="font-medium group-hover:text-primary transition-colors">
+                    {SITE.phone}
+                  </span>
+                </a>
+              )}
             </div>
+
+            <FooterCtaButton onStartProject={onStartProject} />
           </div>
         </div>
 
@@ -229,26 +249,11 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
-              <span>{FOOTER_DATA.bottomBadgeText}</span>
             </div>
           </div>
         </div>
-      </Container>
 
-      {/* Giant Brand Logo (Adobe Style) */}
-      <div className="w-full flex items-end justify-center pointer-events-none select-none relative z-0 overflow-hidden">
-        <div className="relative w-full flex justify-center items-center my-footer-art md:my-footer-art-md lg:my-footer-art-lg">
-          <CldImage
-            src="simpluxe/logo/logo"
-            alt={SITE_FOOTER_COPY.simpluxeLogo}
-            width={1920}
-            height={400}
-            sizes="100vw"
-            className="w-full max-w-none  h-auto object-contain  opacity-100 dark:opacity-100"
-            loading="lazy"
-          />
-        </div>
-      </div>
+      </Container>
       </div>
     </footer>
   );

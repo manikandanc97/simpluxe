@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { m as motion, useReducedMotion } from "motion/react";
-import { AmbientBackground } from "@/components/ui/ambient-background";
 import { ServicesHero } from "@/components/services/services-hero";
 import { ServicesTabsBar } from "@/components/services/services-tabs-bar";
 import { ServicesActiveShowcase } from "@/components/services/services-active-showcase";
@@ -11,6 +10,7 @@ import { ServicesDeliverablesAudience } from "@/components/services/services-del
 import { ServicesTechStack } from "@/components/services/services-tech-stack";
 import { SERVICES_LIST } from "@/lib/content/services";
 import { Container } from "@/components/ui/container";
+import { Section } from "@/components/ui/section";
 
 export function ServicesView() {
   // Default to "websites" as requested by user
@@ -52,17 +52,18 @@ export function ServicesView() {
   }, [activeServiceId]);
 
   return (
-    <div className="relative min-h-screen w-full bg-background text-foreground overflow-hidden">
-      {/* ── Background Atmospheric Elements ── */}
-      <AmbientBackground screen="services" />
-      <div className="absolute inset-0 bg-dots-soft  opacity-35 pointer-events-none" />
+    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
+      {/* ── Fixed navbar height spacer so full-width banner starts cleanly below the header ── */}
+      <div className="h-16 w-full shrink-0" aria-hidden="true" />
 
-      {/* ── 1. Hero Section (Title, CTAs, Highlights & Cloudinary 3D Section Banner) ── */}
+      {/* ── 1. Full-Width Hero Section ── */}
       <ServicesHero />
 
-      {/* ── Main Structured Showcase Area ── */}
-      <Container className="relative z-20 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-20">
-        {/* ── 2. Service Category Tabs Bar ── */}
+      {/* ── 2. Category Tabs Bar & Active Showcase Area ── */}
+      <Container
+        id="services-tabs-container"
+        className="pt-10 sm:pt-12 lg:pt-14 pb-12 sm:pb-16 flex flex-col gap-12 sm:gap-16"
+      >
         <ServicesTabsBar
           activeId={activeServiceId}
           onSelect={setActiveServiceId}
@@ -77,21 +78,39 @@ export function ServicesView() {
           initial={reducedMotion ? false : { opacity: 0.65, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reducedMotion ? 0 : 0.24, ease: "easeOut" }}
-          className="flex flex-col gap-16 sm:gap-20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+          className="w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
         >
-          {/* ── 3. Active Service Showcase (Metrics, Description & Interactive Mockup) ── */}
+          {/* ── Active Service Showcase (Metrics, Description & Interactive Mockup) ── */}
           <ServicesActiveShowcase service={activeService} />
-
-          {/* ── 4. What We Build (4 Capabilities with Prev/Next Controls) ── */}
-          <ServicesWhatWeBuild service={activeService} />
-
-          {/* ── 5. Everything Included & Perfect For ── */}
-          <ServicesDeliverablesAudience service={activeService} />
-
-          {/* ── 6. Technology by Service (Cloudinary Tech Stack Icons) ── */}
-          <ServicesTechStack service={activeService} />
         </motion.div>
       </Container>
+
+      {/* ── 3. What We Build / Capabilities (Consistent Light Blue Theme Section) ── */}
+      <Section
+        id="capabilities"
+        className="relative z-10 border-y border-primary/25 bg-secondary"
+      >
+        <Container>
+          <ServicesWhatWeBuild service={activeService} />
+        </Container>
+      </Section>
+
+      {/* ── 4. Deliverables & Target Audience ── */}
+      <Section className="bg-background">
+        <Container>
+          <ServicesDeliverablesAudience service={activeService} />
+        </Container>
+      </Section>
+
+      {/* ── 5. Recommended Tools Tech Stack ── */}
+      <Section
+        id="tech-stack"
+        className="relative z-10 overflow-hidden bg-white dark:bg-card/40 font-satoshi border-t border-border select-none"
+      >
+        <Container className="relative z-10">
+          <ServicesTechStack service={activeService} />
+        </Container>
+      </Section>
     </div>
   );
 }

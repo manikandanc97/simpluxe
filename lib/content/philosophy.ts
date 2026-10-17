@@ -121,7 +121,6 @@ export const DESKTOP_FLOW_CANVAS_COPY = {
 } as const;
 
 export const FLOW_DIAGRAM_COPY = {
-  signal01: "Signal / 01",
   simpleSystem: "Simple system",
   yourIdea: "Your idea",
   realImpact: "Real impact",

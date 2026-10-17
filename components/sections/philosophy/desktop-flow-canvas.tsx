@@ -27,70 +27,139 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
+          {/* Brand flow gradient for connector paths */}
           <linearGradient id="flowLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0284C7" />
-            <stop offset="50%" stopColor="#0EA5E9" />
-            <stop offset="100%" stopColor="#38BDF8" />
+            <stop offset="0%" stopColor="#0369A1" stopOpacity="0.4" />
+            <stop offset="50%" stopColor="#0EA5E9" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#0284C7" stopOpacity="0.4" />
           </linearGradient>
 
+          {/* Primary brand ring gradient */}
+          <linearGradient id="brandRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#0369A1" stopOpacity="0.35" />
+            <stop offset="50%" stopColor="#0EA5E9" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#0284C7" stopOpacity="0.35" />
+          </linearGradient>
+
+          {/* Subtle inner orbital ring */}
+          <linearGradient id="innerRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#0EA5E9" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#0369A1" stopOpacity="0.15" />
+          </linearGradient>
+
+          {/* Luxury ambient atmospheric glow matching Ocean Luxe theme */}
           <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.2" />
-            <stop offset="60%" stopColor="#0284C7" stopOpacity="0.06" />
+            <stop offset="0%" stopColor="#0EA5E9" stopOpacity="0.14" />
+            <stop offset="40%" stopColor="#0369A1" stopOpacity="0.07" />
+            <stop offset="70%" stopColor="#BAE6FD" stopOpacity="0.03" />
             <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
           </radialGradient>
+
+          {/* Precision technical dot matrix */}
+          <pattern id="flowDots" width="14" height="14" patternUnits="userSpaceOnUse">
+            <circle cx="7" cy="7" r="1" fill="#0369A1" fillOpacity="0.18" />
+          </pattern>
+          <radialGradient id="dotsMaskGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.7" />
+            <stop offset="60%" stopColor="#FFFFFF" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+          </radialGradient>
+          <mask id="dotsMask">
+            <rect x="170" y="50" width="260" height="260" rx="72" fill="url(#dotsMaskGrad)" />
+          </mask>
         </defs>
 
-        {/* Ambient glow behind center medallion */}
-        <circle cx="300" cy="180" r="160" fill="url(#centerGlow)" />
+        {/* Ambient atmospheric glow behind the system hub */}
+        <rect x="140" y="20" width="320" height="320" rx="96" fill="url(#centerGlow)" />
 
-        {/* Outer concentric dashed ring */}
-        <circle
-          cx="300"
-          cy="180"
-          r="125"
+        {/* Technical dot grid surrounding the hub */}
+        <rect x="170" y="50" width="260" height="260" rx="72" fill="url(#flowDots)" mask="url(#dotsMask)" />
+
+        {/* Outer system boundary */}
+        <rect
+          x="202"
+          y="82"
+          width="196"
+          height="196"
+          rx="52"
           stroke="#E2E8F0"
-          strokeDasharray="4 6"
+          strokeWidth="1"
+          strokeDasharray="3 5"
         />
 
-        {/* Inner concentric ring with subtle primary tone */}
-        <circle
-          cx="300"
-          cy="180"
-          r="95"
-          stroke="#BAE6FD"
-          opacity="0.8"
+        {/* Primary brand boundary aligned with the four connectors */}
+        <rect
+          x="224"
+          y="104"
+          width="152"
+          height="152"
+          rx="42"
+          stroke="url(#brandRingGrad)"
+          strokeWidth="1.5"
         />
 
-        {/* Connectors from the 4 corner cards to center ring nodes */}
+        {/* Inner system boundary */}
+        <rect
+          x="242"
+          y="122"
+          width="116"
+          height="116"
+          rx="34"
+          stroke="url(#innerRingGrad)"
+          strokeWidth="1"
+          strokeDasharray="2 4"
+        />
+
+        {/* Connectors from the feature cards to the hub corners */}
         <path
-          d="M 180 85 C 215 85, 230 115, 240 128"
+          d="M 180 85 C 212 85, 226 100, 242 122"
           stroke="url(#flowLineGrad)"
+          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         <path
-          d="M 420 85 C 385 85, 370 115, 360 128"
+          d="M 420 85 C 388 85, 374 100, 358 122"
           stroke="url(#flowLineGrad)"
+          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         <path
-          d="M 180 275 C 215 275, 230 245, 240 232"
+          d="M 180 275 C 212 275, 226 260, 242 238"
           stroke="url(#flowLineGrad)"
+          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
         <path
-          d="M 420 275 C 385 275, 370 245, 360 232"
+          d="M 420 275 C 388 275, 374 260, 358 238"
           stroke="url(#flowLineGrad)"
+          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
-        {/* Glowing Nodes on the Ring */}
-        <circle cx="240" cy="128" r="4" fill="#FFFFFF" stroke="#0284C7" />
-        <circle cx="360" cy="128" r="4" fill="#FFFFFF" stroke="#0EA5E9" />
-        <circle cx="240" cy="232" r="4" fill="#FFFFFF" stroke="#0284C7" />
-        <circle cx="360" cy="232" r="4" fill="#FFFFFF" stroke="#0EA5E9" />
+        {/* Brand signal nodes at the four system corners */}
+        <g>
+          <circle cx="242" cy="122" r="7" fill="#0EA5E9" fillOpacity="0.18" />
+          <circle cx="242" cy="122" r="3.5" fill="#FFFFFF" stroke="#0369A1" strokeWidth="1.5" />
+          <circle cx="242" cy="122" r="1.5" fill="#0EA5E9" />
+        </g>
+        <g>
+          <circle cx="358" cy="122" r="7" fill="#0EA5E9" fillOpacity="0.18" />
+          <circle cx="358" cy="122" r="3.5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.5" />
+          <circle cx="358" cy="122" r="1.5" fill="#0369A1" />
+        </g>
+        <g>
+          <circle cx="242" cy="238" r="7" fill="#0EA5E9" fillOpacity="0.18" />
+          <circle cx="242" cy="238" r="3.5" fill="#FFFFFF" stroke="#0369A1" strokeWidth="1.5" />
+          <circle cx="242" cy="238" r="1.5" fill="#0EA5E9" />
+        </g>
+        <g>
+          <circle cx="358" cy="238" r="7" fill="#0EA5E9" fillOpacity="0.18" />
+          <circle cx="358" cy="238" r="3.5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.5" />
+          <circle cx="358" cy="238" r="1.5" fill="#0369A1" />
+        </g>
       </svg>
 
       {/* ── Top Row of Feature Cards ── */}
@@ -159,15 +228,21 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.38 }}
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none flex flex-col items-center justify-center"
       >
-        <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white shadow-elevated border border-primary/20 flex items-center justify-center p-4">
-          <CldImage
-            src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
-            alt={DESKTOP_FLOW_CANVAS_COPY.simpluxeLogo}
-            width={80}
-            height={80}
-            className="size-16 sm:size-18 object-contain drop-shadow-sm select-none"
-            priority
-          />
+        <div className="relative rounded-3xl border border-primary/20 bg-secondary p-2 shadow-elevated">
+          <span aria-hidden="true" className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-primary/50" />
+          <span aria-hidden="true" className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-primary/50" />
+          <span aria-hidden="true" className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-primary/50" />
+          <span aria-hidden="true" className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-primary/50" />
+          <div className="flex size-24 items-center justify-center rounded-2xl border border-white bg-white p-4 shadow-xs sm:size-28">
+            <CldImage
+              src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
+              alt={DESKTOP_FLOW_CANVAS_COPY.simpluxeLogo}
+              width={80}
+              height={80}
+              className="size-14 select-none object-contain drop-shadow-sm sm:size-16"
+              priority
+            />
+          </div>
         </div>
       </motion.div>
 
