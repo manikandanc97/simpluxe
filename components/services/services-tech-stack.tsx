@@ -7,7 +7,6 @@ import { TECH_DETAILS, TECH_STACK, type ServiceTechSlug, type ServiceTechDetails
 import { CldImage } from "@/components/ui/cld-image";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FadeUpWrapper } from "@/components/ui/fade-up-wrapper";
-import { TechValueStrip } from "@/components/sections/tech-stack/tech-value-strip";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -151,9 +150,6 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {/* ── Bottom Value Proposition Strip (White Floating Island) ── */}
-      <TechValueStrip />
 
       {/* ── Bottom Divider & Project Fit Note ── */}
       <div className="ts-footer flex items-center justify-center gap-4 max-w-4xl w-full px-2">

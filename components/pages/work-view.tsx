@@ -7,7 +7,6 @@ import { PROJECTS } from "@/lib/content/projects";
 import { FILTER_SERVICES } from "@/lib/content/projects";
 import { WorkHero } from "@/components/work/work-hero";
 import { WorkControls } from "@/components/work/work-controls";
-import { WorkEngineeringStandards } from "@/components/work/work-engineering-standards";
 import { Container } from "@/components/ui/container";
 import { AnimatePresence, m as motion } from "motion/react";
 import { ProjectTemplateCard } from "@/components/work/project-template-card";
@@ -144,9 +143,6 @@ export function WorkView() {
         <Suspense fallback={<ShowcaseSkeleton />}>
           <WorkInteractiveSectionWithQuery />
         </Suspense>
-
-        {/* ── 3. Engineering Quality Standards ── */}
-        <WorkEngineeringStandards />
       </Container>
     </div>
   );
