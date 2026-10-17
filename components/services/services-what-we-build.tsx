@@ -17,12 +17,13 @@ interface ServicesWhatWeBuildProps {
 
 export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
   return (
-    <div className="w-full relative z-20 flex flex-col gap-8 sm:gap-10">
+    <div className="w-full relative z-20 flex flex-col items-center gap-8 sm:gap-10">
       {/* ── Section Header ── */}
       <SectionHeader
         eyebrow={SERVICES_WHAT_WE_BUILD_COPY.capabilitiesCount(service.whatWeBuild.length)}
         title={SERVICES_WHAT_WE_BUILD_COPY.whatWeBuild}
         description={service.whatWeBuildSubtitle}
+        centered
       />
 
       {/* ── 4 Feature Cards ── */}
@@ -31,7 +32,7 @@ export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
         variants={staggerContainer(0.08, 0)}
         initial={false}
         animate="visible"
-        className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
+        className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 w-full"
       >
         {service.whatWeBuild.map((item, idx) => (
           <motion.div data-animated-icon-target
