@@ -45,22 +45,18 @@ export function BrandingMockup({ isActive }: { isActive?: boolean }) {
           <div className="w-2 h-2 rounded-full bg-red-400" />
           <div className="w-2 h-2 rounded-full bg-amber-400" />
           <div className="w-2 h-2 rounded-full bg-green-500" />
-          <span className="text-2xs font-mono text-muted-foreground ml-1">brand.simpluxe.design</span>
+          <span className="text-2xs font-mono text-muted-foreground ml-1">{BRANDING_COPY.appName}</span>
         </div>
         <div className="flex items-center gap-1">
           <span className="text-3xs font-semibold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200/60">
-            System v2.4
+            {BRANDING_COPY.version}
           </span>
         </div>
       </div>
 
       {/* Screen Selector Tabs */}
       <div className="flex items-center gap-1 bg-slate-100/80 p-0.5 rounded-lg border border-slate-200/60">
-        {[
-          { id: "logo", label: "Identity" },
-          { id: "palette", label: "Palette" },
-          { id: "typography", label: "Typography" },
-        ].map((tab) => {
+        {BRANDING_COPY.tabs.map((tab) => {
           const isCurrent = currentScreen === tab.id;
           return (
             <button
@@ -122,14 +118,14 @@ function LogoScreen({ isActive }: { isActive?: boolean }) {
           </motion.div>
 
           <div className="flex flex-col gap-0.5">
-            <span className="text-2xs font-extrabold text-slate-900 tracking-tight">SIMPLUXE STUDIO</span>
-            <span className="text-3xs text-muted-foreground font-medium">Core Brand Identity & Iconography</span>
+            <span className="text-2xs font-extrabold text-slate-900 tracking-tight">{BRANDING_COPY.studio}</span>
+            <span className="text-3xs text-muted-foreground font-medium">{BRANDING_COPY.identityDescription}</span>
             <div className="flex items-center gap-1 pt-1">
               <span className="text-3xs px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 font-mono font-medium">
-                Vector 1:1
+                {BRANDING_COPY.vectorRatio}
               </span>
               <span className="text-3xs px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-700 font-medium">
-                Verified
+                {BRANDING_COPY.verified}
               </span>
             </div>
           </div>
@@ -138,11 +134,11 @@ function LogoScreen({ isActive }: { isActive?: boolean }) {
         {/* Specimen Box */}
         <div className="bg-slate-50 border border-slate-200/60 rounded-lg p-2 flex items-center justify-between mt-auto">
           <div className="flex flex-col">
-            <span className="text-3xs font-bold text-slate-700">Primary Optical Mark</span>
-            <span className="text-3xs text-slate-400">48px Master Grid Alignment</span>
+            <span className="text-3xs font-bold text-slate-700">{BRANDING_COPY.opticalMark}</span>
+            <span className="text-3xs text-slate-400">{BRANDING_COPY.masterGrid}</span>
           </div>
           <span className="text-3xs font-mono font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">
-            SVG · PDF · AI
+            {BRANDING_COPY.fileFormats}
           </span>
         </div>
       </div>
@@ -151,9 +147,9 @@ function LogoScreen({ isActive }: { isActive?: boolean }) {
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-          <span>Brand Identity Complete</span>
+          <span>{BRANDING_COPY.identityComplete}</span>
         </div>
-        <span className="font-mono text-slate-300">100% Scalable</span>
+        <span className="font-mono text-slate-300">{BRANDING_COPY.scalable}</span>
       </div>
     </motion.div>
   );
@@ -178,9 +174,9 @@ function PaletteScreen({ isActive }: { isActive?: boolean }) {
     >
       <div className="bg-white rounded-xl border border-slate-200/90 p-2.5 flex flex-col gap-2 shadow-2xs flex-1">
         <div className="flex items-center justify-between pb-1 border-b border-slate-100">
-          <span className="text-2xs font-bold text-slate-800">Chromatic Palette & Tokens</span>
+          <span className="text-2xs font-bold text-slate-800">{BRANDING_COPY.paletteTitle}</span>
           <span className="text-3xs font-semibold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-mono">
-            WCAG AAA (7.8:1)
+            {BRANDING_COPY.contrast}
           </span>
         </div>
 
@@ -208,8 +204,8 @@ function PaletteScreen({ isActive }: { isActive?: boolean }) {
         {/* Proportional Ratio Bar */}
         <div className="flex flex-col gap-1 mt-auto">
           <div className="flex items-center justify-between text-3xs text-slate-400 font-medium">
-            <span>Harmonic Distribution</span>
-            <span>60% · 30% · 10%</span>
+            <span>{BRANDING_COPY.distribution}</span>
+            <span>{BRANDING_COPY.distributionRatio}</span>
           </div>
           <div className="flex w-full h-2 rounded-full overflow-hidden">
             <div className="w-7/12 bg-slate-900" />
@@ -224,9 +220,9 @@ function PaletteScreen({ isActive }: { isActive?: boolean }) {
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
           <span className="text-amber-400">✦</span>
-          <span>Adaptive Contrast Tokens</span>
+          <span>{BRANDING_COPY.adaptiveTokens}</span>
         </div>
-        <span className="font-mono text-emerald-400">Light & Dark Ready</span>
+        <span className="font-mono text-emerald-400">{BRANDING_COPY.darkReady}</span>
       </div>
     </motion.div>
   );
@@ -247,7 +243,7 @@ function TypographyScreen({ isActive }: { isActive?: boolean }) {
       <div className="bg-white rounded-xl border border-slate-200/90 p-2.5 flex flex-col gap-2 shadow-2xs flex-1">
         {/* Header & Font Switcher */}
         <div className="flex items-center justify-between pb-1 border-b border-slate-100">
-          <span className="text-2xs font-bold text-slate-800">Typography Hierarchy</span>
+          <span className="text-2xs font-bold text-slate-800">{BRANDING_COPY.typographyTitle}</span>
           <div className="flex gap-1">
             {[BRANDING_COPY.satoshi, BRANDING_COPY.inter, BRANDING_COPY.mono].map((f) => (
               <button
@@ -274,27 +270,27 @@ function TypographyScreen({ isActive }: { isActive?: boolean }) {
             {BRANDING_COPY.aa}
           </motion.span>
           <div className="flex flex-col text-right">
-            <span className="text-2xs font-bold text-slate-800">{activeFont} Display</span>
-            <span className="text-3xs text-slate-400 font-mono">Weight: 400 · 700 · 900</span>
+            <span className="text-2xs font-bold text-slate-800">{activeFont} {BRANDING_COPY.display}</span>
+            <span className="text-3xs text-slate-400 font-mono">{BRANDING_COPY.weights}</span>
           </div>
         </div>
 
         {/* Weights Specimen Scale */}
         <div className="flex items-center justify-between text-3xs font-medium text-slate-600 mt-auto pt-1 border-t border-slate-100">
-          <span className="font-light">Light 300</span>
-          <span className="font-normal">Regular 400</span>
-          <span className="font-semibold">Semibold 600</span>
-          <span className="font-black text-slate-900">Black 900</span>
+          <span className="font-light">{BRANDING_COPY.lightWeight}</span>
+          <span className="font-normal">{BRANDING_COPY.regularWeight}</span>
+          <span className="font-semibold">{BRANDING_COPY.semiboldWeight}</span>
+          <span className="font-black text-slate-900">{BRANDING_COPY.blackWeight}</span>
         </div>
       </div>
 
       {/* Footer */}
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
-          <span className="text-sky-400">Aa</span>
-          <span>Precision Micro-Typography</span>
+          <span className="text-sky-400">{BRANDING_COPY.aa}</span>
+          <span>{BRANDING_COPY.microTypography}</span>
         </div>
-        <span className="font-mono text-slate-300">Optical Scale</span>
+        <span className="font-mono text-slate-300">{BRANDING_COPY.opticalScale}</span>
       </div>
     </motion.div>
   );

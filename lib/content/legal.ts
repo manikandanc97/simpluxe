@@ -2,6 +2,11 @@ import { COMMON } from "./common";
 
 const LEGAL_LAST_UPDATED = "Last updated: October 5, 2026";
 
+export const LEGAL_LAYOUT_COPY = {
+  breadcrumb: "Breadcrumb",
+  home: COMMON.pages.home,
+} as const;
+
 // Privacy policy
 export const PRIVACY_PAGE_COPY = {
   title: COMMON.pages.privacy,

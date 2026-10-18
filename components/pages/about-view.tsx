@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ABOUT_VIEW_COPY } from "@/lib/content/about";
 import { SITE } from "@/lib/content/site";

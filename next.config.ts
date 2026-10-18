@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
+const developmentEvalSource = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
+
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://challenges.cloudflare.com;
+    script-src 'self' 'unsafe-inline'${developmentEvalSource} https://va.vercel-scripts.com https://challenges.cloudflare.com;
+    connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com;
     frame-src https://challenges.cloudflare.com https://www.google.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: https://res.cloudinary.com https://images.unsplash.com https://www.google.com https://t2.gstatic.com;
+    img-src 'self' blob: data: https://res.cloudinary.com https://www.google.com https://t2.gstatic.com;
     media-src 'self' https://res.cloudinary.com;
     font-src 'self';
     object-src 'none';

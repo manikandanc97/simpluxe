@@ -66,19 +66,6 @@ export const fadeUp: Variants = {
   },
 };
 
-export const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.95, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    filter: "blur(0px)",
-    transition: {
-      duration: timing.reveal,
-      ease: ease.out,
-    },
-  },
-};
-
 // ==========================================
 // INTERACTION (HOVER & TAP)
 // ==========================================

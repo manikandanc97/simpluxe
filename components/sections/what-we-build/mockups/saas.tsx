@@ -45,7 +45,7 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
           <div className="w-2 h-2 rounded-full bg-red-400" />
           <div className="w-2 h-2 rounded-full bg-amber-400" />
           <div className="w-2 h-2 rounded-full bg-green-500" />
-          <span className="text-2xs font-mono text-muted-foreground ml-1">cloud.simpluxe.io</span>
+          <span className="text-2xs font-mono text-muted-foreground ml-1">{SAAS_COPY.appName}</span>
         </div>
         <div className="flex items-center gap-1">
           <motion.div
@@ -53,17 +53,13 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
             transition={{ duration: 1.8, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
             className="w-1.5 h-1.5 rounded-full bg-emerald-500"
           />
-          <span className="text-3xs font-medium text-emerald-600">99.99% Live</span>
+          <span className="text-3xs font-medium text-emerald-600">{SAAS_COPY.liveStatus}</span>
         </div>
       </div>
 
       {/* Screen Selector Tabs */}
       <div className="flex items-center gap-1 bg-slate-100/80 p-0.5 rounded-lg border border-slate-200/60">
-        {[
-          { id: "overview", label: "Overview" },
-          { id: "tenants", label: "Tenants" },
-          { id: "billing", label: "Billing" },
-        ].map((tab) => {
+        {SAAS_COPY.tabs.map((tab) => {
           const isCurrent = currentScreen === tab.id;
           return (
             <button
@@ -128,20 +124,20 @@ function OverviewScreen({ isActive }: { isActive?: boolean }) {
         {/* Metric Row */}
         <div className="grid grid-cols-2 gap-1.5 bg-slate-800/80 rounded-lg p-1.5 border border-slate-700/60">
           <div>
-            <div className="text-3xs text-slate-400">Monthly Revenue</div>
-            <div className="text-xs font-black text-white">₹4,80,000</div>
+            <div className="text-3xs text-slate-400">{SAAS_COPY.monthlyRevenue}</div>
+            <div className="text-xs font-black text-white">{SAAS_COPY.revenue}</div>
           </div>
           <div className="text-right">
-            <div className="text-3xs text-slate-400">Cloud Latency</div>
-            <div className="text-xs font-mono font-bold text-emerald-400">12ms · Synced</div>
+            <div className="text-3xs text-slate-400">{SAAS_COPY.cloudLatency}</div>
+            <div className="text-xs font-mono font-bold text-emerald-400">{SAAS_COPY.latency}</div>
           </div>
         </div>
 
         {/* Live Data Throughput Waveform */}
         <div className="flex flex-col gap-0.5 mt-auto">
           <div className="flex items-center justify-between text-3xs text-slate-400">
-            <span>Throughput Waveform</span>
-            <span className="font-mono text-indigo-300">4.8k req/s</span>
+            <span>{SAAS_COPY.throughput}</span>
+            <span className="font-mono text-indigo-300">{SAAS_COPY.throughputValue}</span>
           </div>
           <div className="flex items-end gap-1 h-5 pt-0.5">
             {barHeights.map((baseH, idx) => (
@@ -175,14 +171,14 @@ function OverviewScreen({ isActive }: { isActive?: boolean }) {
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span className="text-2xs font-bold text-slate-800">{SAAS_COPY.postgresDb}</span>
           </div>
-          <span className="text-3xs font-mono text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded font-semibold">200 OK</span>
+          <span className="text-3xs font-mono text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded font-semibold">{SAAS_COPY.okStatus}</span>
         </div>
         <div className="bg-white border border-slate-200/90 rounded-lg p-1.5 flex items-center justify-between shadow-2xs">
           <div className="flex items-center gap-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
             <span className="text-2xs font-bold text-slate-800">{SAAS_COPY.edgeApi}</span>
           </div>
-          <span className="text-3xs font-mono text-indigo-600 bg-indigo-50 px-1 py-0.5 rounded font-semibold">Edge</span>
+          <span className="text-3xs font-mono text-indigo-600 bg-indigo-50 px-1 py-0.5 rounded font-semibold">{SAAS_COPY.edge}</span>
         </div>
       </div>
     </motion.div>
@@ -211,7 +207,7 @@ function TenantsScreen({ isActive }: { isActive?: boolean }) {
             <span className="text-xs">🌐</span>
             <span className="text-2xs font-bold text-slate-800">{SAAS_COPY.multiTenantCloudSync.trim()}</span>
           </div>
-          <span className="text-3xs font-mono text-emerald-600 font-bold">3 Clusters Online</span>
+          <span className="text-3xs font-mono text-emerald-600 font-bold">{SAAS_COPY.clustersOnline}</span>
         </div>
 
         {/* Tenant Rows */}
@@ -246,9 +242,9 @@ function TenantsScreen({ isActive }: { isActive?: boolean }) {
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
           <span className="text-emerald-400">{SAAS_COPY.symbol}</span>
-          <span>Zero-Downtime Replication</span>
+          <span>{SAAS_COPY.replication}</span>
         </div>
-        <span className="font-mono text-slate-300">Sync: 100%</span>
+        <span className="font-mono text-slate-300">{SAAS_COPY.syncStatus}</span>
       </div>
     </motion.div>
   );
@@ -270,18 +266,18 @@ function BillingScreen({ isActive }: { isActive?: boolean }) {
             <span className="text-xs">💳</span>
             <span className="text-2xs font-bold text-slate-800">{SAAS_COPY.automatedStripeBilling.trim()}</span>
           </div>
-          <span className="text-3xs font-semibold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">Stripe Live</span>
+          <span className="text-3xs font-semibold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">{SAAS_COPY.stripeLive}</span>
         </div>
 
         {/* Billing Plan Details */}
         <div className="bg-slate-50 border border-slate-200/60 rounded-lg p-2 flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-2xs font-bold text-slate-700">Enterprise Cloud Tier</span>
-            <span className="text-xs font-black text-indigo-700">₹1,24,000<span className="text-3xs font-normal text-slate-400">/mo</span></span>
+            <span className="text-2xs font-bold text-slate-700">{SAAS_COPY.cloudTier}</span>
+            <span className="text-xs font-black text-indigo-700">{SAAS_COPY.price}<span className="text-3xs font-normal text-slate-400">{SAAS_COPY.priceSuffix}</span></span>
           </div>
           <div className="flex items-center justify-between text-3xs text-slate-500">
-            <span>Active Licenses: 1,420</span>
-            <span className="text-emerald-600 font-semibold font-mono">Invoice #894 Paid ✓</span>
+            <span>{SAAS_COPY.activeLicenses}</span>
+            <span className="text-emerald-600 font-semibold font-mono">{SAAS_COPY.invoicePaid}</span>
           </div>
         </div>
 
@@ -293,9 +289,9 @@ function BillingScreen({ isActive }: { isActive?: boolean }) {
               transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
               className="w-1.5 h-1.5 rounded-full bg-emerald-500"
             />
-            <span className="text-3xs font-bold text-emerald-800">Auto-Reconciliation Active</span>
+            <span className="text-3xs font-bold text-emerald-800">{SAAS_COPY.reconciliation}</span>
           </div>
-          <span className="text-3xs font-mono font-bold text-emerald-700">Webhook 200</span>
+          <span className="text-3xs font-mono font-bold text-emerald-700">{SAAS_COPY.webhookStatus}</span>
         </div>
       </div>
 
@@ -303,9 +299,9 @@ function BillingScreen({ isActive }: { isActive?: boolean }) {
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
           <span className="text-indigo-400">⚡</span>
-          <span>Instant Metered Billing</span>
+          <span>{SAAS_COPY.meteredBilling}</span>
         </div>
-        <span className="font-mono text-emerald-400">100% Automated</span>
+        <span className="font-mono text-emerald-400">{SAAS_COPY.automated}</span>
       </div>
     </motion.div>
   );

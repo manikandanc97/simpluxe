@@ -91,7 +91,7 @@ export const TECH_STACK: TechItem[] = [
     slug: "reactnative",
     category: COMMON.categories.mobile,
     description: "Native mobile apps for iOS & Android.",
-    badge: "Cross-Platform",
+    badge: COMMON.labels.crossPlatform,
     dotColor: "#38BDF8",
     accentColor: "#087EA4",
     learnMoreUrl: "https://reactnative.dev",
@@ -291,7 +291,7 @@ export const TECH_STACK: TechItem[] = [
     slug: "figma",
     category: COMMON.categories.design,
     description: "Collaborative UI/UX design system.",
-    badge: "UI/UX Design",
+    badge: COMMON.labels.uiUxDesign,
     dotColor: "#F43F5E",
     accentColor: "#F24E1E",
     learnMoreUrl: "https://www.figma.com",
@@ -483,11 +483,6 @@ export const TECH_CATEGORY_TABS_COPY = {
   tools: "Tools",
   weLove: "we love",
   technologyCategories: "Technology categories",
-} as const;
-
-export const TECH_PERFORMANCE_PILL_COPY = {
-  fast: "Fast",
-  performant: COMMON.labels.performant,
 } as const;
 
 export const TECH_VALUE_STRIP_COPY = {

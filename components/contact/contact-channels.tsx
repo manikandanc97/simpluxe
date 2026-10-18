@@ -6,7 +6,7 @@ import { CONTACT_CHANNELS_COPY } from "@/lib/content/contact";
 import { useEffect, useRef, useState } from "react";
 import { SITE } from "@/lib/content/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
-import { WhatsAppIcon } from "@/components/work/tech-icons";
+import { WhatsAppIcon } from "@/components/contact/whatsapp-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
 import { CheckIcon } from "@animateicons/react/lucide/check-icon";
 import { CopyIcon } from "@animateicons/react/lucide/copy-icon";

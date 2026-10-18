@@ -5,7 +5,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import { CldImage } from "@/components/ui/cld-image";
 import { Container } from "@/components/ui/container";
-import { HERO_CONTENT } from "@/lib/content/hero";
+import { HERO_CONTENT, WORKBENCH_COPY } from "@/lib/content/hero";
 import { PROJECTS } from "@/lib/content/projects";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
@@ -143,14 +143,14 @@ export function WorkbenchHero() {
           <div className="relative flex flex-col gap-3 overflow-hidden rounded-3xl border border-slate-200/70 bg-slate-100/70 p-3 shadow-elevated backdrop-blur-xl sm:gap-5 sm:p-5 lg:p-7">
             <div className="flex items-center justify-between gap-4 px-1">
               <div className="flex min-w-0 items-center gap-2">
-                <span className="font-mono font-bold text-primary text-xs">S/01</span>
+                <span className="font-mono font-bold text-primary text-xs">{WORKBENCH_COPY.sectionNumber}</span>
                 <span className="bg-primary/30 w-8 sm:w-14 h-px" />
                 <span className="truncate font-semibold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
-                  Selected digital work
+                  {WORKBENCH_COPY.selectedWork}
                 </span>
               </div>
               <span className="hidden shrink-0 font-semibold text-muted-foreground text-xs uppercase tracking-wider lg:block">
-                Let’s start first, then we can make it look better.
+                {WORKBENCH_COPY.tagline}
               </span>
             </div>
 
@@ -158,7 +158,7 @@ export function WorkbenchHero() {
               ref={mobileProjectMenuRef}
               className="relative z-30 flex flex-col gap-2 rounded-xl border border-border/70 bg-slate-50/95 p-3 lg:hidden"
             >
-              <p className="text-xs font-semibold text-muted-foreground">Choose a project</p>
+              <p className="text-xs font-semibold text-muted-foreground">{WORKBENCH_COPY.chooseProject}</p>
               <button
                 type="button"
                 aria-haspopup="listbox"
@@ -187,7 +187,7 @@ export function WorkbenchHero() {
                   <motion.div
                     id="mobile-project-options"
                     role="listbox"
-                    aria-label="Choose a project"
+                    aria-label={WORKBENCH_COPY.chooseProject}
                     className="absolute inset-x-3 top-full z-40 translate-y-2 overflow-hidden rounded-xl border border-border bg-slate-50 p-1.5 shadow-elevated"
                     initial={{ opacity: 0, y: -6, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -241,7 +241,7 @@ export function WorkbenchHero() {
             <div className="grid gap-3 lg:grid-cols-12 lg:gap-5">
               <div className="hidden rounded-2xl border border-border/70 bg-slate-50/95 p-4 lg:col-span-3 lg:flex lg:flex-col lg:gap-4">
                 <div className="flex flex-1 flex-col gap-3">
-                  <p className="px-2 font-bold text-2xs text-muted-foreground uppercase tracking-widest">Project index</p>
+                  <p className="px-2 font-bold text-2xs text-muted-foreground uppercase tracking-widest">{WORKBENCH_COPY.projectIndex}</p>
                   <div className="flex flex-1 flex-col justify-between gap-2">
                     {showcasedProjects.map((project, index) => (
                       <button
@@ -266,7 +266,7 @@ export function WorkbenchHero() {
                 </div>
 
                 <div className="flex flex-col gap-2 rounded-xl bg-dark p-4 text-white">
-                  <p className="font-bold text-2xs text-sky-300 uppercase tracking-widest">Outcome, not output</p>
+                  <p className="font-bold text-2xs text-sky-300 uppercase tracking-widest">{WORKBENCH_COPY.outcomeHeading}</p>
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.p
                       key={activeProject.result}
@@ -279,7 +279,7 @@ export function WorkbenchHero() {
                       {activeProject.result}
                     </motion.p>
                   </AnimatePresence>
-                  <p className="text-xs leading-relaxed text-slate-300">Strategy, design and engineering working as one.</p>
+                  <p className="text-xs leading-relaxed text-slate-300">{WORKBENCH_COPY.outcomeDescription}</p>
                 </div>
               </div>
 
@@ -291,10 +291,10 @@ export function WorkbenchHero() {
                     <span className="bg-slate-200 rounded-full size-2" />
                   </div>
                   <span className="font-bold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
-                    Live project canvas
+                    {WORKBENCH_COPY.canvasLabel}
                   </span>
                   <span className="font-mono font-bold text-2xs text-primary">
-                    {activeProject.number} / 04
+                    {activeProject.number}{WORKBENCH_COPY.projectCountSuffix}
                   </span>
                 </div>
 
@@ -310,7 +310,7 @@ export function WorkbenchHero() {
                     >
                       <CldImage
                         src={activeProject.desktopImage}
-                        alt={`${activeProject.name} website designed by Simpluxe`}
+                        alt={WORKBENCH_COPY.websiteAlt(activeProject.name)}
                         fill
                         sizes="(max-width: 1024px) 94vw, 70vw"
                         className="object-cover object-top"
@@ -326,9 +326,9 @@ export function WorkbenchHero() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="font-bold text-2xs text-primary uppercase tracking-widest">Featured build</p>
+                    <p className="font-bold text-2xs text-primary uppercase tracking-widest">{WORKBENCH_COPY.featuredBuild}</p>
                     <p className="text-sm font-bold text-heading sm:text-base">{activeProject.name}</p>
-                    <p className="text-2xs text-muted-foreground sm:text-xs">Built for clarity, conversion and scale.</p>
+                    <p className="text-2xs text-muted-foreground sm:text-xs">{WORKBENCH_COPY.featuredDescription}</p>
                   </motion.div>
                 </div>
               </div>
@@ -347,7 +347,7 @@ export function WorkbenchHero() {
                   >
                     <CldImage
                       src={activeProject.mobileImage}
-                      alt={`${activeProject.name} mobile experience`}
+                      alt={WORKBENCH_COPY.mobileAlt(activeProject.name)}
                       fill
                       sizes="160px"
                       className="object-cover object-top"

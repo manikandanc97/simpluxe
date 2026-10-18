@@ -132,57 +132,6 @@ export const ABOUT_PRINCIPLES_CONTENT = {
   description: "The core tenets that guide every architectural decision, interface, and line of code we ship.",
 };
 
-export const ABOUT_TECH_STACK_CONTENT = {
-  eyebrow: "Engineering Stack",
-  titleLine1: "Modern technologies. ",
-  highlightedText: "Zero legacy baggage.",
-  description: "We intentionally curate our stack to maximize runtime velocity, developer joy, and long-term codebase maintainability.",
-};
-
-export const STACK_CATEGORIES = [
-  {
-    title: "Frontend Engineering",
-    badge: "Sub-Second UX",
-    technologies: [
-      { name: COMMON.technology.nextjs16, desc: "App Router & Server Components" },
-      { name: "React 19", desc: "Concurrent rendering & Actions" },
-      { name: "TypeScript Strict", desc: "Type-safe robust logic" },
-      { name: COMMON.technology.tailwind, desc: "Zero-runtime utility styling" },
-      { name: "Motion React", desc: "Fluid 60fps micro-animations" },
-    ],
-  },
-  {
-    title: "Backend & Cloud Edge",
-    badge: "Low Latency",
-    technologies: [
-      { name: "FastAPI / Python", desc: "High-throughput asynchronous APIs" },
-      { name: "Node.js & Bun", desc: "Modern JavaScript backend runtimes" },
-      { name: "Cloudflare Edge", desc: "Global CDN caching & Workers" },
-      { name: "Serverless Compute", desc: "Elastic autoscaling architecture" },
-    ],
-  },
-  {
-    title: "Data & Security",
-    badge: "Enterprise Grade",
-    technologies: [
-      { name: COMMON.technology.postgres, desc: "Relational database reliability" },
-      { name: COMMON.technology.supabase, desc: "Realtime data, auth & storage" },
-      { name: COMMON.technology.prismaOrm, desc: "Type-safe schema migrations" },
-      { name: COMMON.technology.redis, desc: "Sub-millisecond memory caching" },
-    ],
-  },
-  {
-    title: "Mobile Products",
-    badge: COMMON.labels.iosAndroid,
-    technologies: [
-      { name: COMMON.technology.reactNative, desc: "Cross-platform native performance" },
-      { name: "Expo EAS", desc: "Automated cloud builds & OTA updates" },
-      { name: COMMON.labels.offlineSync, desc: "Local database caching" },
-      { name: "Native Biometrics", desc: "FaceID & fingerprint security" },
-    ],
-  },
-];
-
 // about
 export const ABOUT_HERO_COPY = {
   home: COMMON.pages.home,

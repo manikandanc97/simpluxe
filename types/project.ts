@@ -18,13 +18,3 @@ export interface Project {
   result: string;
   stack: string[];
 }
-
-export interface SelectedWorkSectionContent {
-  eyebrow: string;
-  title: string;
-  highlightedText: string;
-  description: string;
-  archiveLinkText: string;
-  buildsTextSuffix: string;
-  liveClientSiteText: string;
-}

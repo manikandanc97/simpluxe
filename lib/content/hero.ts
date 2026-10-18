@@ -37,17 +37,18 @@ export const HERO_CONTENT: HeroContent = {
   ],
 };
 
-// workbench
-export const HERO_3D_CODER_COPY = {
-  ideas: COMMON.pages.ideas,
-  design: COMMON.process.design,
-  develop: COMMON.process.develop,
-  launch: COMMON.process.launch,
-  fromIdea: "From Idea",
-  toLaunch: "to Launch",
-  simpluxe3dDeveloperCharacter: "Simpluxe 3D Developer Character",
-  modernDesign: "Modern Design",
-  cleanCode: "Clean Code",
-  scalableSolutions: "Scalable Solutions",
-  intoImpact: "into Impact",
+export const WORKBENCH_COPY = {
+  sectionNumber: "S/01",
+  selectedWork: "Selected digital work",
+  tagline: "Let’s start first, then we can make it look better.",
+  chooseProject: "Choose a project",
+  projectIndex: "Project index",
+  outcomeHeading: "Outcome, not output",
+  outcomeDescription: "Strategy, design and engineering working as one.",
+  canvasLabel: "Live project canvas",
+  projectCountSuffix: " / 04",
+  websiteAlt: (name: string) => `${name} website designed by Simpluxe`,
+  featuredBuild: "Featured build",
+  featuredDescription: "Built for clarity, conversion and scale.",
+  mobileAlt: (name: string) => `${name} mobile experience`,
 } as const;

@@ -63,8 +63,8 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
         <SectionHeader
           eyebrow={SERVICES_TECH_STACK_COPY.techStack}
           centered
-          title="Recommended"
-          highlightedText="tools"
+          title={SERVICES_TECH_STACK_COPY.title}
+          highlightedText={SERVICES_TECH_STACK_COPY.highlightedText}
           description={service.techStackSummary}
         />
       </FadeUpWrapper>
@@ -106,7 +106,7 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
                 <div className="relative w-15 h-15 rounded-2xl bg-white dark:bg-muted/40 border border-slate-200/70 dark:border-border/60 flex items-center justify-center p-3.5 sm:p-4 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                   <CldImage
                     src={`simpluxe/tech/${item.imageSlug}`}
-                    alt={`${item.name} logo`}
+                    alt={SERVICES_TECH_STACK_COPY.logoAlt(item.name)}
                     width={38}
                     height={38}
                     className={cn(

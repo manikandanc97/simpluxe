@@ -6,8 +6,8 @@ import { FooterBrandText } from "@/components/layout/footer-brand-text";
 import { LeadProvider } from "@/components/leads/lead-provider";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { ScrollRestorationProvider } from "@/components/providers/scroll-restoration-provider";
-
-import dynamic from "next/dynamic";
+import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
+import { CommandPalette } from "@/components/ui/command-palette";
 
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -17,9 +17,6 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-
-const MobileBottomNav = dynamic(() => import("@/components/layout/mobile-bottom-nav").then((mod) => mod.MobileBottomNav));
-const CommandPalette = dynamic(() => import("@/components/ui/command-palette").then((mod) => mod.CommandPalette));
 
 // Primary typeface — Geist variable font, self-hosted by Next.js (no external network request).
 const geist = Geist({

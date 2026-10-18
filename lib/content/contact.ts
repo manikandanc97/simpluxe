@@ -18,7 +18,6 @@ export const CONTACT_CHANNELS_COPY = {
   chatOnWhatsapp: "Chat on WhatsApp",
   mapTitle: "Simpluxe office location",
 } as const;
-
 export const CONTACT_HERO_COPY = {
   home: COMMON.pages.home,
   symbol: COMMON.symbols.slash,
@@ -43,13 +42,4 @@ export const CONTACT_HERO_COPY = {
   guaranteedSla: COMMON.labels.guaranteedSla,
   zeroObligation: "Zero Obligation",
   letSBuildYourSystemThe: "Let's build your system the right way",
-} as const;
-
-// layout
-export const FLOATING_CALL_BUTTON_COPY = {
-  whatsappMessage: "Hi Simpluxe! I'd like to discuss a project.",
-  whatsapp: COMMON.channels.whatsapp,
-  callUs: "Call Us",
-  closeContactOptions: "Close contact options",
-  openContactOptions: "Open contact options",
 } as const;

@@ -1,16 +1,39 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { m as motion, useReducedMotion } from "motion/react";
 import { ServicesHero } from "@/components/services/services-hero";
 import { ServicesTabsBar } from "@/components/services/services-tabs-bar";
 import { ServicesActiveShowcase } from "@/components/services/services-active-showcase";
-import { ServicesWhatWeBuild } from "@/components/services/services-what-we-build";
-import { ServicesDeliverablesAudience } from "@/components/services/services-deliverables-audience";
-import { ServicesTechStack } from "@/components/services/services-tech-stack";
 import { SERVICES_LIST } from "@/lib/content/services";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { ProcessSkeleton, TechStackSkeleton } from "@/components/ui/skeleton";
+
+const ServicesWhatWeBuild = dynamic(
+  () =>
+    import("@/components/services/services-what-we-build").then(
+      (mod) => mod.ServicesWhatWeBuild
+    ),
+  { loading: () => <ProcessSkeleton /> }
+);
+
+const ServicesDeliverablesAudience = dynamic(
+  () =>
+    import("@/components/services/services-deliverables-audience").then(
+      (mod) => mod.ServicesDeliverablesAudience
+    ),
+  { loading: () => <ProcessSkeleton /> }
+);
+
+const ServicesTechStack = dynamic(
+  () =>
+    import("@/components/services/services-tech-stack").then(
+      (mod) => mod.ServicesTechStack
+    ),
+  { loading: () => <TechStackSkeleton /> }
+);
 
 export function ServicesView() {
   // Default to "websites" as requested by user

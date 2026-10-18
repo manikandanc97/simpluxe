@@ -70,4 +70,9 @@ export const LAB_VIEW_COPY = {
   ideas: COMMON.pages.ideas,
   ideas2: "Ideas & ",
   prototypes: "Prototypes.",
+  valueProps: [
+    { title: "Software R&D", description: "Interactive Prototypes" },
+    { title: "Emerging Tech", description: "AI & Real-Time Engines" },
+    { title: "Design Physics", description: "Production-Tested Concepts" },
+  ],
 } as const;
