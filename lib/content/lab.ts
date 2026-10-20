@@ -64,15 +64,9 @@ export const EXPERIMENT_CARD_COPY = {
 
 // pages
 export const LAB_VIEW_COPY = {
-  badge: "Software R&D & Prototypes",
   description: "Experiments, concepts, and things we're exploring. A space for testing interactive ideas, generative interfaces, and design physics before client builds.",
   home: COMMON.pages.home,
   ideas: COMMON.pages.ideas,
   ideas2: "Ideas & ",
   prototypes: "Prototypes.",
-  valueProps: [
-    { title: "Software R&D", description: "Interactive Prototypes" },
-    { title: "Emerging Tech", description: "AI & Real-Time Engines" },
-    { title: "Design Physics", description: "Production-Tested Concepts" },
-  ],
 } as const;

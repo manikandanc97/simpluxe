@@ -1,25 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { IconBaseProps } from "@/components/ui/animated-icon";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 import { COMMON } from "@/lib/content/common";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Link from "next/link";
 import { m as motion } from "motion/react";
-import { cn } from "@/lib/utils";
-
-interface PageHeroFeature {
-  title: ReactNode;
-  description: ReactNode;
-  icon: React.ComponentType<IconBaseProps> | React.ComponentType<unknown> | React.ElementType;
-}
 
 interface PageHeroProps {
   currentPage: ReactNode;
   description: ReactNode;
-  features: PageHeroFeature[];
   heading: ReactNode;
   homeLabel: ReactNode;
   separator?: ReactNode;
@@ -28,7 +18,6 @@ interface PageHeroProps {
 export function PageHero({
   currentPage,
   description,
-  features,
   heading,
   homeLabel,
   separator = "/",
@@ -72,34 +61,6 @@ export function PageHero({
               {description}
             </motion.p>
           </div>
-
-          <motion.div
-            variants={fadeUp}
-            className="grid w-full max-w-4xl grid-cols-1 gap-4 border-t border-white/15 pt-6 sm:grid-cols-3 sm:gap-0 sm:pt-8"
-          >
-            {features.map((feature, index) => (
-              <div
-                key={`${index}-${String(feature.title)}`}
-                data-animated-icon-target
-                className={cn(
-                  "flex min-w-0 items-center justify-start gap-3 rounded-xl bg-white/5 px-4 py-3 text-left sm:justify-center sm:rounded-none sm:bg-transparent sm:py-0",
-                  index > 0 && "sm:border-l sm:border-white/15"
-                )}
-              >
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white shadow-sm">
-                  <AnimatedIcon icon={feature.icon} size={16} />
-                </span>
-                <span className="flex min-w-0 flex-col gap-1">
-                  <span className="text-sm font-semibold leading-tight text-white">
-                    {feature.title}
-                  </span>
-                  <span className="text-xs leading-snug text-white/70">
-                    {feature.description}
-                  </span>
-                </span>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </Container>
     </section>

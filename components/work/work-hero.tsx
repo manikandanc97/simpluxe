@@ -2,27 +2,6 @@
 
 import { PageHero } from "@/components/ui/page-hero";
 import { WORK_HERO_COPY } from "@/lib/content/projects";
-import { CodeIcon } from "@animateicons/react/lucide/code-icon";
-import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
-import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
-
-const features = [
-  {
-    title: WORK_HERO_COPY.text100Bespoke,
-    description: WORK_HERO_COPY.zeroThemeBloat,
-    icon: SparklesIcon,
-  },
-  {
-    title: WORK_HERO_COPY.subSecondSpeed,
-    description: WORK_HERO_COPY.optimizedEdgeDelivery,
-    icon: ZapIcon,
-  },
-  {
-    title: WORK_HERO_COPY.productionReady,
-    description: WORK_HERO_COPY.realClientOutcomes,
-    icon: CodeIcon,
-  },
-];
 
 export function WorkHero() {
   return (
@@ -37,7 +16,6 @@ export function WorkHero() {
         </>
       }
       description={WORK_HERO_COPY.fromHighConversionWebsitesToComplex}
-      features={features}
     />
   );
 }

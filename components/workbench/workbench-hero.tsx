@@ -313,9 +313,9 @@ export function WorkbenchHero() {
               <div className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-slate-50 shadow-xl lg:col-span-9">
                 <div className="flex h-10 items-center justify-between gap-3 border-b border-border bg-slate-50 px-3 sm:h-12 sm:px-5">
                   <div className="flex items-center gap-1.5" aria-hidden="true">
-                    <span className="bg-slate-200 rounded-full size-2" />
-                    <span className="bg-slate-200 rounded-full size-2" />
-                    <span className="bg-slate-200 rounded-full size-2" />
+                    <span className="size-2.5 rounded-full bg-red-400/90" />
+                    <span className="size-2.5 rounded-full bg-amber-400/90" />
+                    <span className="size-2.5 rounded-full bg-green-500/90" />
                   </div>
                   <span className="font-bold text-2xs text-muted-foreground uppercase tracking-widest sm:text-xs">
                     {WORKBENCH_COPY.canvasLabel}

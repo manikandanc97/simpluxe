@@ -2,15 +2,6 @@
 
 import { PageHero } from "@/components/ui/page-hero";
 import { LAB_VIEW_COPY } from "@/lib/content/lab";
-import { CodeIcon } from "@animateicons/react/lucide/code-icon";
-import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
-import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
-
-const features = [
-  { ...LAB_VIEW_COPY.valueProps[0], icon: SparklesIcon },
-  { ...LAB_VIEW_COPY.valueProps[1], icon: ZapIcon },
-  { ...LAB_VIEW_COPY.valueProps[2], icon: CodeIcon },
-];
 
 export function LabHero() {
   return (
@@ -24,7 +15,6 @@ export function LabHero() {
         </>
       }
       description={LAB_VIEW_COPY.description}
-      features={features}
     />
   );
 }
