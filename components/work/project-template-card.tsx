@@ -69,7 +69,7 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
     <article
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group flex flex-col rounded-xl bg-white border border-surface-elevated overflow-hidden shadow-card hover:shadow-xl hover:border-primary/30 transition-all duration-300"
+      className="flex flex-col rounded-xl bg-white border border-surface-elevated overflow-hidden shadow-card transition-all duration-300 hover:shadow-xl hover:border-primary/30 group"
     >
       {/* ── Mini Browser Chrome Header ── */}
       <div className="flex items-center justify-between px-3.5 py-2 bg-slate-50 border-b border-surface-elevated select-none shrink-0">
@@ -95,7 +95,7 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
       {/* ── Scroll Viewport ── */}
       <div
         ref={containerRef}
-        className="template-scroll-window bg-slate-100 flex items-start justify-center"
+        className="bg-slate-100 flex items-start justify-center template-scroll-window"
       >
         {imageSrc ? (
           <Image
@@ -140,7 +140,7 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
           aria-label={WORK_VIEW_COPY.openInNewTab(project.name)}
-          className="size-7 rounded-full bg-surface-elevated hover:bg-primary hover:text-white text-muted-foreground flex items-center justify-center shrink-0 transition-colors"
+          className="size-7 rounded-full bg-surface-elevated text-muted-foreground flex items-center justify-center shrink-0 transition-colors hover:bg-primary hover:text-white"
         >
           <AnimatedIcon icon={ExternalLinkIcon} size={12} />
         </a>

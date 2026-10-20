@@ -82,22 +82,22 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
 
   return (
     <div className="w-full relative z-20">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+      <div className="grid grid-cols-1 gap-8 items-stretch lg:grid-cols-12 lg:gap-10">
         {/* ── Left Column: Deliverables (7 cols) ── */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left justify-center">
-          <div className="mb-6 sm:mb-8"><SectionHeader eyebrow={SERVICES_DELIVERABLES_CONTENT.eyebrow} title={SERVICES_DELIVERABLES_CONTENT.title} description={SERVICES_DELIVERABLES_CONTENT.description} /></div>
+        <div className="lg:col-span-7 flex flex-col items-start text-left justify-center gap-6 sm:gap-8">
+          <SectionHeader eyebrow={SERVICES_DELIVERABLES_CONTENT.eyebrow} title={SERVICES_DELIVERABLES_CONTENT.title} description={SERVICES_DELIVERABLES_CONTENT.description} />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4 w-full">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-3 w-full sm:grid-cols-2 sm:gap-x-8 sm:gap-y-4">
             {/* Column 1 */}
             <div className="flex flex-col gap-4 sm:gap-4.5">
               {col1.map((item, idx) => (
-                <div data-animated-icon-target key={idx} className="group flex items-start gap-2 cursor-default">
+                <div data-animated-icon-target key={idx} className="flex items-start gap-2 cursor-default group">
                   <AnimatedIcon
                     icon={CircleCheckIcon}
                     size={17}
-                    className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
+                    className={`${colors.primary} ${colors.fill} shrink-0 translate-y-0.5 transition-colors duration-300`}
                   />
-                  <span className="text-xs sm:text-sm font-semibold text-foreground">
+                  <span className="text-xs font-semibold text-foreground sm:text-sm">
                     {item}
                   </span>
                 </div>
@@ -107,13 +107,13 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
             {/* Column 2 */}
             <div className="flex flex-col gap-4 sm:gap-4.5">
               {col2.map((item, idx) => (
-                <div data-animated-icon-target key={idx} className="group flex items-start gap-2 cursor-default">
+                <div data-animated-icon-target key={idx} className="flex items-start gap-2 cursor-default group">
                   <AnimatedIcon
                     icon={CircleCheckIcon}
                     size={17}
-                    className={`${colors.primary} ${colors.fill} shrink-0 mt-0.5 transition-colors duration-300`}
+                    className={`${colors.primary} ${colors.fill} shrink-0 translate-y-0.5 transition-colors duration-300`}
                   />
-                  <span className="text-xs sm:text-sm font-semibold text-foreground">
+                  <span className="text-xs font-semibold text-foreground sm:text-sm">
                     {item}
                   </span>
                 </div>
@@ -124,20 +124,20 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
 
         {/* ── Right Column: Perfect For Card (5 cols) ── */}
         <div className="lg:col-span-5 flex">
-          <div className="w-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-surface-elevated shadow-card flex flex-col justify-between text-left">
+          <div className="w-full p-6 rounded-2xl bg-white border border-surface-elevated shadow-card flex flex-col justify-between text-left sm:p-8 sm:rounded-3xl">
             <div>
               {/* Audience Items List */}
               <div className="flex flex-col gap-4.5">
                 {/* Perfect For Header treated as first item */}
-                <div data-animated-icon-target data-slot="card" className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default">
+                <div data-animated-icon-target data-slot="card" className="flex items-center gap-4 p-2.5 rounded-xl transition-colors cursor-default sm:hover:bg-background group">
                   <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
                     <AnimatedIcon icon={TargetIcon} size={15} />
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-xs font-bold text-foreground leading-tight transition-colors sm:text-sm sm:group-hover:text-black">
                       {SERVICES_DELIVERABLES_CONTENT.perfectForTitle}
                     </span>
-                    <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
+                    <span className="text-xs text-muted-foreground leading-tight sm:text-xs">
                       {SERVICES_DELIVERABLES_CONTENT.perfectForDesc}
                     </span>
                   </div>
@@ -149,16 +149,16 @@ export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAu
                     <div data-animated-icon-target
                       key={idx}
                       data-slot="card"
-                      className="flex items-center gap-4 p-2.5 rounded-xl sm:hover:bg-background transition-colors group cursor-default"
+                      className="flex items-center gap-4 p-2.5 rounded-xl transition-colors cursor-default sm:hover:bg-background group"
                     >
                       <div className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.primary} flex items-center justify-center shrink-0 border ${colors.border}/60 transition-colors duration-300`}>
                         <AnimatedIcon icon={IconComponent} size={15} />
                       </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs sm:text-sm font-bold text-foreground leading-tight sm:group-hover:text-black transition-colors">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-xs font-bold text-foreground leading-tight transition-colors sm:text-sm sm:group-hover:text-black">
                           {item.title}
                         </span>
-                        <span className="text-xs sm:text-xs text-muted-foreground mt-0.5 leading-tight">
+                        <span className="text-xs text-muted-foreground leading-tight sm:text-xs">
                           {item.desc}
                         </span>
                       </div>

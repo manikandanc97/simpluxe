@@ -24,10 +24,10 @@ export function TechCard({ tech }: { tech: TechItem }) {
         "--tech-glow": `${tech.accentColor}40`,
         "--tech-glow-subtle": `${tech.accentColor}20`,
       } as React.CSSProperties}
-      className="tech-stack-card group relative flex flex-col items-center text-center gap-4 p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-border/70 bg-slate-50 dark:bg-card/70 shadow-xs overflow-hidden h-full"
+      className="relative flex flex-col items-center text-center gap-4 p-4 rounded-2xl border border-slate-200/80 bg-slate-50 shadow-xs overflow-hidden h-full sm:p-5 dark:border-border/70 dark:bg-card/70 tech-stack-card group"
     >
       {/* Official Brand Logo Squircle Container */}
-      <div className="relative w-15 h-15 rounded-2xl bg-white dark:bg-muted/40 border border-slate-200/70 dark:border-border/60 flex items-center justify-center p-4 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+      <div className="relative w-15 h-15 rounded-2xl bg-white border border-slate-200/70 flex items-center justify-center p-4 shadow-2xs transition-transform duration-300 dark:bg-muted/40 dark:border-border/60 group-hover:scale-105">
         <CldImage
           src={`simpluxe/tech/${tech.slug}`}
           alt={TECH_STACK_CARD_COPY.logoAlt(tech.name)}
@@ -42,7 +42,7 @@ export function TechCard({ tech }: { tech: TechItem }) {
       <div className="flex flex-col items-center gap-1.5 flex-1 justify-center w-full">
         {/* Brand-Colored Heading */}
         <h3
-          className={`type-h3 !text-base font-bold transition-all group-hover:brightness-110 ${
+          className={`text-base font-bold leading-tight transition-all group-hover:brightness-110 ${
             tech.invertInDark ? "dark:!text-white" : ""
           }`}
           style={{ color: tech.accentColor }}

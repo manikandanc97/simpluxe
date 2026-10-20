@@ -153,7 +153,7 @@ function CardLayout() {
             className="rounded-xl bg-white border border-black/4 p-2 flex flex-col gap-1 shadow-xs"
           >
             <div className="w-4 h-4 rounded-lg" style={{ backgroundColor: `${c}25` }}>
-              <div className="w-2 h-2 rounded-sm m-1" style={{ backgroundColor: `${c}80` }} />
+              <div className="size-2 translate-x-1 translate-y-1 rounded-sm" style={{ backgroundColor: `${c}80` }} />
             </div>
             <Bar w="w-full" color="bg-slate-200" h="h-1" />
             <Bar w="w-2/3" color="bg-slate-100" h="h-1" />

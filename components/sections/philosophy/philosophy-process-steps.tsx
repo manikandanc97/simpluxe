@@ -15,7 +15,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
     <div className="flex flex-col gap-4 relative z-20">
       {/* Header */}
       <div className="flex items-center gap-2 px-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+        <span className="size-1.5 rounded-full bg-primary" />
         <span className="text-xs font-bold tracking-widest text-primary uppercase">
           {PHILOSOPHY_PROCESS_STEPS_COPY.process04}</span>
       </div>
@@ -39,7 +39,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
             >
               {/* Number pill */}
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-black shrink-0 font-mono ${
+                className={`size-10 rounded-full flex items-center justify-center text-sm font-black shrink-0 font-mono ${
                   step.active
                     ? "bg-primary text-white shadow-sm"
                     : "bg-neutral-50/80 text-neutral-800"
@@ -54,7 +54,7 @@ export function PhilosophyProcessSteps({ inView }: PhilosophyProcessStepsProps) 
                   step.active ? "text-primary" : "text-primary/70"
                 }`}
               >
-                <AnimatedIcon icon={StepIcon} size={16} className="w-4 h-4" />
+                <AnimatedIcon icon={StepIcon} size={16} />
               </div>
 
               {/* Content */}

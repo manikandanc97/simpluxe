@@ -55,7 +55,7 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close data-animated-icon-target
             data-slot="dialog-close"
-            className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors"
+            className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground cursor-pointer transition-colors hover:bg-muted hover:text-foreground"
           >
             <AnimatedX size={16} />
             <span className="sr-only">{DIALOG_COPY.close}</span>

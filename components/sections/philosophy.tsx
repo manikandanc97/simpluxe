@@ -29,7 +29,7 @@ export function WhySimpluxe() {
         />
 
         {/* ── Main 3-Column Layout ── */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-work xl:grid-cols-work-wide gap-6 xl:gap-8 items-center">
+        <div className="relative grid grid-cols-1 gap-6 items-center lg:grid-cols-work xl:grid-cols-work-wide xl:gap-8">
           {/* 1. LEFT COLUMN: PROCESS / 04 */}
           <PhilosophyProcessSteps inView={inView} />
 

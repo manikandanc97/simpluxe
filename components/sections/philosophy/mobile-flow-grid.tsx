@@ -12,7 +12,7 @@ import { CldImage } from "@/components/ui/cld-image";
 
 export function MobileFlowGrid() {
   return (
-    <div className="flex md:hidden flex-col items-center gap-4 w-full py-2">
+    <div className="flex flex-col items-center gap-4 w-full py-2 md:hidden">
       {/* Centered Brand Medallion */}
       <div className="relative flex flex-col items-center justify-center py-1">
         <div aria-hidden="true" className="pointer-events-none absolute size-36 rounded-3xl bg-primary/10 blur-xl" />
@@ -35,11 +35,11 @@ export function MobileFlowGrid() {
       </div>
 
       {/* 4 Feature Nodes in a clean responsive grid */}
-      <div className="grid grid-cols-1 xs:grid-cols-2 gap-2.5 w-full">
+      <div className="grid grid-cols-1 gap-2.5 w-full xs:grid-cols-2">
         {/* 1. Direct access */}
-        <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
+        <div data-animated-icon-target data-slot="card" className="bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative group">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
+            <div className="size-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={LightbulbIcon} size={14} className="w-3.5 h-3.5" />
             </div>
             <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -47,7 +47,7 @@ export function MobileFlowGrid() {
             </span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <p className="font-bold text-xs sm:text-sm text-neutral-900 leading-tight">
+            <p className="font-bold text-xs text-neutral-900 leading-tight sm:text-sm">
               {FLOW_NODES.topLeft.title}
             </p>
             <p className="text-xs text-neutral-500 leading-snug">
@@ -57,9 +57,9 @@ export function MobileFlowGrid() {
         </div>
 
         {/* 2. Weekly progress */}
-        <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
+        <div data-animated-icon-target data-slot="card" className="bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative group">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
+            <div className="size-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={TrendingUpIcon} size={14} className="w-3.5 h-3.5" />
             </div>
             <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -67,7 +67,7 @@ export function MobileFlowGrid() {
             </span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <p className="font-bold text-xs sm:text-sm text-neutral-900 leading-tight">
+            <p className="font-bold text-xs text-neutral-900 leading-tight sm:text-sm">
               {FLOW_NODES.topRight.title}
             </p>
             <p className="text-xs text-neutral-500 leading-snug">
@@ -77,9 +77,9 @@ export function MobileFlowGrid() {
         </div>
 
         {/* 3. Production quality */}
-        <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
+        <div data-animated-icon-target data-slot="card" className="bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative group">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
+            <div className="size-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={BoxIcon} size={14} className="w-3.5 h-3.5" />
             </div>
             <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -87,7 +87,7 @@ export function MobileFlowGrid() {
             </span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <p className="font-bold text-xs sm:text-sm text-neutral-900 leading-tight">
+            <p className="font-bold text-xs text-neutral-900 leading-tight sm:text-sm">
               {FLOW_NODES.bottomLeft.title}
             </p>
             <p className="text-xs text-neutral-500 leading-snug">
@@ -97,9 +97,9 @@ export function MobileFlowGrid() {
         </div>
 
         {/* 4. Clear ownership */}
-        <div data-animated-icon-target data-slot="card" className="group bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative">
+        <div data-animated-icon-target data-slot="card" className="bg-white rounded-2xl border border-neutral-100/90 shadow-card p-3 flex flex-col gap-2 relative group">
           <div className="flex items-center justify-between">
-            <div className="w-7 h-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
+            <div className="size-7 flex items-center justify-center text-primary bg-primary/10 rounded-full">
               <AnimatedIcon icon={UsersIcon} size={14} className="w-3.5 h-3.5" />
             </div>
             <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -107,7 +107,7 @@ export function MobileFlowGrid() {
             </span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <p className="font-bold text-xs sm:text-sm text-neutral-900 leading-tight">
+            <p className="font-bold text-xs text-neutral-900 leading-tight sm:text-sm">
               {FLOW_NODES.bottomRight.title}
             </p>
             <p className="text-xs text-neutral-500 leading-snug">

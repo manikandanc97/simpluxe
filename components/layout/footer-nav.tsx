@@ -21,7 +21,7 @@ export function FooterNav() {
               href={item.route}
               className={cn("group text-sm transition-colors inline-flex items-center gap-4", isActive ? "text-primary" : "text-muted-foreground hover:text-foreground")}
             >
-              <span className={cn("w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors", isActive ? "bg-primary text-white shadow-sm" : "bg-primary/10 text-primary group-hover:bg-primary/20")}>
+              <span className={cn("size-7 rounded-full flex items-center justify-center shrink-0 transition-colors", isActive ? "bg-primary text-white shadow-sm" : "bg-primary/10 text-primary group-hover:bg-primary/20")}>
                 <StaticIcon
                   name={iconName}
                   size={13}

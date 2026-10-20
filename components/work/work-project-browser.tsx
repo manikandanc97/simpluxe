@@ -73,7 +73,7 @@ function WorkProjectResults({ initialFilter }: { initialFilter: string }) {
                   setActiveFilter("websites");
                   setSearchQuery("");
                 }}
-                className="text-xs font-bold text-primary hover:underline cursor-pointer"
+                className="text-xs font-bold text-primary cursor-pointer hover:underline"
               >
                 {WORK_VIEW_COPY.resetFilters}
               </button>
@@ -91,7 +91,7 @@ function WorkProjectResults({ initialFilter }: { initialFilter: string }) {
                   transition: { staggerChildren: 0.08, delayChildren: 0.05 },
                 },
               }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+              className="grid grid-cols-1 gap-6 items-stretch md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
             >
               {filteredProjects.map((project) => (
                 <ProjectTemplateCard key={project.id} project={project} />

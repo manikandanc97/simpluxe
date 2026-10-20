@@ -46,12 +46,12 @@ export function ContactChannels() {
 
       <CardContent className="gap-4">
         {SITE.email && (
-          <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-muted/30 hover:bg-card hover:border-primary/40 transition-all duration-200 group shadow-2xs">
+          <div className="flex items-center justify-between gap-2 p-4 rounded-xl border border-border bg-muted/30 transition-all duration-200 shadow-2xs hover:bg-card hover:border-primary/40 group">
             <a
               href={`mailto:${SITE.email}`}
               className="flex items-center gap-4 flex-1 min-w-0"
             >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20 group-hover:scale-105 transition-transform">
+              <div className="size-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20 transition-transform group-hover:scale-105">
                 <AnimatedMail size={20} />
               </div>
               <div className="flex flex-col gap-0.5 truncate">
@@ -60,7 +60,7 @@ export function ContactChannels() {
                     {CONTACT_CHANNELS_COPY.directEmail}</span>
                   {SITE.responseTime && <Badge variant="emerald" size="sm">{SITE.responseTime}</Badge>}
                 </div>
-                <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate">
+                <span className="text-sm font-bold text-foreground transition-colors truncate group-hover:text-primary">
                   {SITE.email}
                 </span>
               </div>
@@ -70,7 +70,7 @@ export function ContactChannels() {
               onClick={handleCopyEmail}
               title={copiedEmail ? CONTACT_CHANNELS_COPY.emailCopied : CONTACT_CHANNELS_COPY.copyEmailToClipboard}
               aria-label={copiedEmail ? CONTACT_CHANNELS_COPY.emailCopied : CONTACT_CHANNELS_COPY.copyEmailToClipboard}
-              className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer shrink-0 ml-2"
+              className="p-2 rounded-lg text-muted-foreground transition-colors cursor-pointer shrink-0 hover:text-primary hover:bg-primary/10"
             >
               {copiedEmail ? <AnimatedIcon icon={CheckIcon} size={16} className="text-primary" /> : <AnimatedIcon icon={CopyIcon} size={16} />}
             </button>
@@ -82,10 +82,10 @@ export function ContactChannels() {
             href={`https://wa.me/${SITE.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between p-4 rounded-xl border border-border bg-muted/30 hover:bg-card hover:border-emerald-500/40 transition-all duration-200 group shadow-2xs"
+            className="flex items-center justify-between p-4 rounded-xl border border-border bg-muted/30 transition-all duration-200 shadow-2xs hover:bg-card hover:border-emerald-500/40 group"
           >
             <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200/60 group-hover:scale-105 transition-transform">
+              <div className="size-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200/60 transition-transform group-hover:scale-105">
                 <WhatsAppIcon className="w-5 h-5 text-emerald-600" />
               </div>
               <div className="flex flex-col gap-0.5">
@@ -97,11 +97,11 @@ export function ContactChannels() {
                     {SITE.availability}
                   </Badge>
                 </div>
-                <span className="text-sm font-bold text-foreground group-hover:text-emerald-700 transition-colors">
+                <span className="text-sm font-bold text-foreground transition-colors group-hover:text-emerald-700">
                   {CONTACT_CHANNELS_COPY.chatOnWhatsapp}</span>
               </div>
             </div>
-            <AnimatedIcon icon={ArrowRightIcon} size={16} className="text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
+            <AnimatedIcon icon={ArrowRightIcon} size={16} className="text-muted-foreground transition-all group-hover:text-emerald-600 group-hover:translate-x-1" />
           </a>
         )}
         {SITE.contactAddress && (

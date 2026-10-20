@@ -25,7 +25,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
             <div className="w-2 h-2 rounded-full bg-amber-400" />
             <div className="w-2 h-2 rounded-full bg-green-500" />
           </div>
-          <span className="text-xs font-semibold text-muted-foreground ml-1">{AUTOMATION_COPY.aiAgentRunning}</span>
+          <span className="ps-1 text-xs font-semibold text-muted-foreground">{AUTOMATION_COPY.aiAgentRunning}</span>
           <motion.div
             animate={isActive ? { opacity: [1, 0, 1] } : { opacity: 1 }}
             transition={{ duration: 1, repeat: isActive ? Infinity : 0 }}

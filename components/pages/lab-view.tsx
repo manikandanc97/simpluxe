@@ -8,7 +8,7 @@ export function LabView() {
       {/* ── 1. Full-Width Hero Section ── */}
       <LabHero />
 
-      <Container className="pt-10 sm:pt-12 lg:pt-14 pb-20 md:pb-24 lg:pb-32 flex flex-col gap-14 sm:gap-16">
+      <Container className="flex flex-col gap-16 py-12 md:py-16 lg:py-24">
         <LabExperiments />
       </Container>
     </>

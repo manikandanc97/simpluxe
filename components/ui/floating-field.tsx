@@ -9,7 +9,7 @@ interface FloatingInputProps extends ComponentProps<typeof Input> {
 
 export function FloatingInput({ id, label, className, ...props }: FloatingInputProps) {
   return (
-    <div className="group relative">
+    <div className="relative group">
       <Input
         id={id}
         placeholder=" "
@@ -35,7 +35,7 @@ interface FloatingTextareaProps extends ComponentProps<typeof Textarea> {
 
 export function FloatingTextarea({ id, label, className, ...props }: FloatingTextareaProps) {
   return (
-    <div className="group relative">
+    <div className="relative group">
       <Textarea
         id={id}
         placeholder=" "

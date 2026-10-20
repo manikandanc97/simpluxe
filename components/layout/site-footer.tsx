@@ -12,14 +12,58 @@ interface SiteFooterProps {
   onStartProject?: () => void;
 }
 
+// ─── Internal reusable sub-components ────────────────────────────────────────
+
+interface SocialIconLinkProps {
+  href: string;
+  label: string;
+  className: string;
+  children: React.ReactNode;
+}
+
+function SocialIconLink({ href, label, className, children }: SocialIconLinkProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className={`size-11 rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xs ${className}`}
+    >
+      {children}
+    </a>
+  );
+}
+
+interface FooterContactRowProps {
+  href: string;
+  label: React.ReactNode;
+  icon: React.ReactNode;
+}
+
+function FooterContactRow({ href, label, icon }: FooterContactRowProps) {
+  return (
+    <a
+      href={href}
+      className="flex items-center gap-3.5 text-sm text-muted-foreground transition-colors hover:text-primary group"
+    >
+      <span className="size-7 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary transition-colors group-hover:bg-primary/20">
+        {icon}
+      </span>
+      <span className="font-medium transition-colors break-all group-hover:text-primary">
+        {label}
+      </span>
+    </a>
+  );
+}
+
 export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
   return (
     <footer className="w-full bg-slate-100 text-foreground border-t border-border relative overflow-hidden">
-      <div className="w-full h-full relative">
-      <Container className="pt-16 pb-16 relative z-10">
+      <Container className="relative z-10 py-16">
         {/* Top Grid: Brand, Explore, Capabilities, Connect Card */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-border items-start">
+        <div className="grid grid-cols-1 gap-10 pb-16 border-b border-border items-start md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
 
           {/* Col 1: Brand & Socials (4 cols) */}
           <div className="lg:col-span-4 flex flex-col justify-between gap-6">
@@ -27,7 +71,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               {/* Brand Logo */}
               <Link
                 href="/"
-                className="group inline-flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
+                className="inline-flex items-center gap-2.5 rounded-lg outline-none shrink-0 focus-visible:ring-2 focus-visible:ring-ring group"
                 aria-label={SITE_FOOTER_COPY.simpluxeHome}
               >
                 <CldImage
@@ -38,7 +82,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                   sizes="36px"
                   format="auto"
                   quality="auto:eco"
-                  className="size-8 sm:size-9 object-contain transition-transform duration-200 group-hover:scale-105"
+                  className="size-8 object-contain transition-transform duration-200 sm:size-9 group-hover:scale-105"
                   loading="lazy"
                 />
                 <span className="font-heading text-xl font-bold tracking-tight text-heading sm:text-2xl">
@@ -49,7 +93,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                 </span>
               </Link>
 
-              <h2 className="text-xl sm:text-2xl font-extrabold text-heading leading-tight tracking-tight">
+              <h2 className="text-xl font-extrabold text-heading leading-tight tracking-tight sm:text-2xl">
                 {SITE_FOOTER_COPY.headlineLine1}<br />
                 {SITE_FOOTER_COPY.headlineLine2Prefix}{" "}
                 <span className="brand-gradient-text">
@@ -63,70 +107,45 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
               {/* Social Icons */}
               <div className="flex items-center gap-3 pt-1">
-                {/* X (Twitter) */}
-                {SITE.twitter && (<a
-                  href={SITE.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={SITE_FOOTER_COPY.xTwitter}
-                  className="w-11 h-11 rounded-full bg-card border border-border text-slate-950 flex items-center justify-center hover:bg-secondary hover:scale-110 active:scale-95 transition-all shadow-2xs"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>)}
+                {SITE.twitter && (
+                  <SocialIconLink href={SITE.twitter} label={SITE_FOOTER_COPY.xTwitter} className="bg-card border border-border text-slate-950 hover:bg-secondary">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </SocialIconLink>
+                )}
 
-                {/* LinkedIn */}
-                {SITE.linkedin && (<a
-                  href={SITE.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={SITE_FOOTER_COPY.linkedin}
-                  className="w-11 h-11 rounded-full bg-sky-50 border border-sky-100 text-linkedin flex items-center justify-center hover:bg-sky-100 hover:scale-110 active:scale-95 transition-all shadow-2xs"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>)}
+                {SITE.linkedin && (
+                  <SocialIconLink href={SITE.linkedin} label={SITE_FOOTER_COPY.linkedin} className="bg-sky-50 border border-sky-100 text-linkedin hover:bg-sky-100">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </SocialIconLink>
+                )}
 
-                {/* Instagram */}
-                {SITE.instagram && (<a
-                  href={SITE.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={SITE_FOOTER_COPY.instagram}
-                  className="w-11 h-11 rounded-full bg-pink-50 border border-pink-100 text-instagram flex items-center justify-center hover:bg-pink-100 hover:scale-110 active:scale-95 transition-all shadow-2xs"
-                >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                  </svg>
-                </a>)}
+                {SITE.instagram && (
+                  <SocialIconLink href={SITE.instagram} label={SITE_FOOTER_COPY.instagram} className="bg-pink-50 border border-pink-100 text-instagram hover:bg-pink-100">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                  </SocialIconLink>
+                )}
 
-                {/* YouTube */}
-                {SITE.youtube && (<a
-                  href={SITE.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={SITE_FOOTER_COPY.youtube}
-                  className="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-hover hover:scale-110 active:scale-95 transition-all shadow-2xs"
-                >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.547 12 3.547 12 3.547s-7.505 0-9.377.503a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.503 9.377.503 9.377.503s7.505 0 9.377-.503a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </a>)}
+                {SITE.youtube && (
+                  <SocialIconLink href={SITE.youtube} label={SITE_FOOTER_COPY.youtube} className="bg-primary text-white hover:bg-primary-hover">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.547 12 3.547 12 3.547s-7.505 0-9.377.503a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.503 9.377.503 9.377.503s7.505 0 9.377-.503a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </SocialIconLink>
+                )}
 
-                {/* GitHub */}
-                {SITE.github && (<a
-                  href={SITE.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={SITE_FOOTER_COPY.github}
-                  className="w-11 h-11 rounded-full bg-card border border-border text-zinc-800 flex items-center justify-center hover:bg-secondary hover:scale-110 active:scale-95 transition-all shadow-2xs"
-                >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                  </svg>
-                </a>)}
+                {SITE.github && (
+                  <SocialIconLink href={SITE.github} label={SITE_FOOTER_COPY.github} className="bg-card border border-border text-zinc-800 hover:bg-secondary">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
+                  </SocialIconLink>
+                )}
               </div>
             </div>
           </div>
@@ -148,21 +167,21 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               {FOOTER_DATA.capabilities.map((cap) => {
                 const content = (
                   <>
-                    <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
+                    <span className="size-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary transition-colors group-hover:bg-primary/20">
                       <StaticIcon
                         name={cap.icon}
                         size={13}
                         className="currentColor"
                       />
                     </span>
-                    <span className="font-medium group-hover:text-primary transition-colors whitespace-nowrap">
+                    <span className="font-medium transition-colors whitespace-nowrap group-hover:text-primary">
                       {cap.label}
                     </span>
                   </>
                 );
 
                 return (
-                  <li key={cap.label} className="group flex items-center gap-4 cursor-pointer">
+                  <li key={cap.label} className="flex items-center gap-4 cursor-pointer group">
                     {cap.id ? (
                       <Link href={`/services#${cap.id}`} className="flex items-center gap-4 w-full">
                         {content}
@@ -191,39 +210,25 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3.5 text-sm text-muted-foreground">
+            <div className="flex flex-col gap-3.5">
               {SITE.email && (
-                <a
+                <FooterContactRow
                   href={`mailto:${SITE.email}`}
-                  className="group flex items-center gap-3.5 hover:text-primary transition-colors"
-                >
-                  <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
-                    <StaticIcon
-                      name="mail"
-                      size={13}
-                      className="currentColor"
-                    />
-                  </span>
-                  <span className="font-medium group-hover:text-primary transition-colors break-all">
-                    {SITE.email}
-                  </span>
-                </a>
+                  label={SITE.email}
+                  icon={<StaticIcon name="mail" size={13} className="currentColor" />}
+                />
               )}
 
               {SITE.phone && (
-                <a
+                <FooterContactRow
                   href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
-                  className="group flex items-center gap-3.5 hover:text-primary transition-colors"
-                >
-                  <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
+                  label={SITE.phone}
+                  icon={
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
-                  </span>
-                  <span className="font-medium group-hover:text-primary transition-colors">
-                    {SITE.phone}
-                  </span>
-                </a>
+                  }
+                />
               )}
             </div>
 
@@ -232,7 +237,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
         </div>
 
         {/* Copyright & Bottom Bar */}
-        <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs text-muted-foreground">
+        <div className="pt-8 flex flex-col items-center justify-between gap-6 text-xs text-muted-foreground lg:flex-row">
           <p>
             {SITE_FOOTER_COPY.symbol}{new Date().getFullYear()} {FOOTER_DATA.copyrightText}
           </p>
@@ -254,7 +259,6 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
         </div>
 
       </Container>
-      </div>
     </footer>
   );
 }

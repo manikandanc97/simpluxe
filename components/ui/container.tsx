@@ -3,7 +3,7 @@ import React from "react";
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  size?: "default" | "content" | "narrow" | "wide";
+  size?: "default" | "content" | "narrow";
 }
 
 export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
@@ -17,7 +17,6 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
             "max-w-7xl": size === "default",
             "max-w-5xl": size === "content",
             "max-w-3xl": size === "narrow",
-            "max-w-360": size === "wide",
           },
           className
         )}

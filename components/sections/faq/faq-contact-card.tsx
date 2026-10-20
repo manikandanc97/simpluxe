@@ -12,7 +12,7 @@ export function FaqContactCard() {
   return (
     <div className="relative w-full">
       {/* Main Outer Card */}
-      <div className="faq-card relative z-10 w-full sm:max-w-md bg-card rounded-2xl p-5 sm:p-6 shadow-card border border-border mx-auto lg:mx-0 flex flex-col gap-5 sm:gap-6">
+      <div className="relative z-10 w-full self-center bg-card rounded-2xl p-5 shadow-card border border-border flex flex-col gap-5 sm:max-w-md sm:p-6 sm:gap-6 lg:self-start faq-card">
         {/* Upper content: CTA text and button */}
         <div className="flex flex-col items-start gap-4">
           <div className="flex flex-col items-start gap-2">
@@ -29,7 +29,7 @@ export function FaqContactCard() {
 
             <div className="flex flex-col gap-1 sm:gap-1.5">
               {/* Heading */}
-              <h3 className="text-base sm:text-lg font-semibold text-heading tracking-tight leading-tight">
+              <h3 className="text-base font-semibold text-heading tracking-tight leading-tight sm:text-lg">
                 {FAQ_CONTACT_CARD_COPY.canTFindYourAnswer}
               </h3>
 
@@ -54,7 +54,7 @@ export function FaqContactCard() {
             </div>
           </div>
 
-          <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-3 w-full pt-0.5">
+          <div className="flex flex-col items-start justify-between gap-3 w-full pt-0.5 xs:flex-row xs:items-center">
             <Button
               size="default"
               type="button"
@@ -64,7 +64,7 @@ export function FaqContactCard() {
               <span>{FAQ_CONTACT_CARD_COPY.talkToOurTeam}</span>
               <AnimatedArrowRight size={14} />
             </Button>
-            <div className="flex items-center gap-1.5 text-2xs sm:text-xs text-muted-foreground font-medium">
+            <div className="flex items-center gap-1.5 text-2xs text-muted-foreground font-medium sm:text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
               <span>{FAQ_CONTACT_CARD_COPY.responseTime}</span>
             </div>
@@ -72,21 +72,21 @@ export function FaqContactCard() {
         </div>
 
         {/* Bottom: Stats Panel (Full-width rounded card with dividers) */}
-        <div className="bg-muted/40 backdrop-blur-sm rounded-xl p-2.5 sm:p-3 border border-border shadow-2xs grid grid-cols-3 divide-x divide-border text-center sm:text-left">
-          <div className="px-1.5 sm:px-2 flex flex-col justify-center">
-            <div className="text-xs sm:text-sm font-bold text-primary leading-none mb-0.5">{FAQ_CONTACT_CARD_COPY.text100}</div>
+        <div className="bg-muted/40 backdrop-blur-sm rounded-xl p-2.5 border border-border shadow-2xs grid grid-cols-3 divide-x divide-border text-center sm:p-3 sm:text-left">
+          <div className="px-1.5 flex flex-col justify-center gap-0.5 sm:px-2">
+            <div className="text-xs font-bold text-primary leading-none sm:text-sm">{FAQ_CONTACT_CARD_COPY.text100}</div>
             <div className="text-xs font-medium text-muted-foreground leading-tight">
               {FAQ_CONTACT_CARD_COPY.honestAnswers}
             </div>
           </div>
-          <div className="px-1.5 sm:px-2 flex flex-col justify-center">
-            <div className="text-xs sm:text-sm font-bold text-primary leading-none mb-0.5">{FAQ_CONTACT_CARD_COPY.direct}</div>
+          <div className="px-1.5 flex flex-col justify-center gap-0.5 sm:px-2">
+            <div className="text-xs font-bold text-primary leading-none sm:text-sm">{FAQ_CONTACT_CARD_COPY.direct}</div>
             <div className="text-xs font-medium text-muted-foreground leading-tight">
               {SITE.responseTime || FAQ_CONTACT_CARD_COPY.projectReview}
             </div>
           </div>
-          <div className="px-1.5 sm:px-2 flex flex-col justify-center">
-            <div className="text-xs sm:text-sm font-bold text-primary leading-none mb-0.5">{FAQ_CONTACT_CARD_COPY.zero}</div>
+          <div className="px-1.5 flex flex-col justify-center gap-0.5 sm:px-2">
+            <div className="text-xs font-bold text-primary leading-none sm:text-sm">{FAQ_CONTACT_CARD_COPY.zero}</div>
             <div className="text-xs font-medium text-muted-foreground leading-tight">
               {FAQ_CONTACT_CARD_COPY.salesPressure}
             </div>

@@ -82,7 +82,7 @@ export function ServicesView() {
       {/* ── 2. Category Tabs Bar & Active Showcase Area ── */}
       <Container
         id="services-tabs-container"
-        className="pt-10 sm:pt-12 lg:pt-14 pb-12 sm:pb-16 flex flex-col gap-12 sm:gap-16"
+        className="flex flex-col gap-12 py-12 md:gap-16 md:py-16"
       >
         <ServicesTabsBar
           activeId={activeServiceId}
@@ -125,7 +125,7 @@ export function ServicesView() {
       {/* ── 5. Recommended Tools Tech Stack ── */}
       <Section
         id="tech-stack"
-        className="relative z-10 overflow-hidden bg-white dark:bg-card/40 font-satoshi border-t border-border select-none"
+        className="relative z-10 overflow-hidden bg-white border-t border-border select-none dark:bg-card/40 font-satoshi"
       >
         <Container className="relative z-10">
           <ServicesTechStack service={activeService} />

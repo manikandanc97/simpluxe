@@ -94,7 +94,7 @@ export const WhatWeBuildCard = memo(function WhatWeBuildCard({
       onPointerDown={(event) => {
         if (event.pointerType === "touch") onActivate(service.id);
       }}
-      className="wwb-slider-card group snap-start flex flex-col overflow-hidden rounded-3xl border border-transparent bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+      className="snap-start flex flex-col overflow-hidden rounded-3xl border border-transparent bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 wwb-slider-card group"
       draggable={false}
     >
       <div aria-hidden="true" className="relative isolate flex h-72 items-center justify-center overflow-hidden bg-secondary p-4 lg:h-80 lg:p-6">

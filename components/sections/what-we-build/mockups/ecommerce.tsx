@@ -53,7 +53,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
         <motion.div
           animate={isActive ? { opacity: [0.85, 1, 0.85] } : { opacity: 1 }}
           transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
-          className="absolute top-2 right-2 sm:-top-3 sm:-right-3 z-10 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-lg"
+          className="absolute top-2 right-2 z-10 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-lg sm:-top-3 sm:-right-3"
           style={{
             backgroundColor: stage === "success" ? "#BE123C" : "#DC2626",
             transition: "background-color 0.4s ease",

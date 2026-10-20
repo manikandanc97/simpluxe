@@ -160,7 +160,7 @@ export function ServicesTabsBar({ activeId, onSelect }: ServicesTabsBarProps) {
     <div id="services-tabs-container" className="relative z-20 w-full border-b border-surface-elevated pb-6">
       <div
         ref={containerRef}
-        className="relative flex w-full cursor-grab select-none items-center overflow-x-auto overscroll-x-contain no-scrollbar py-2"
+        className="relative flex w-full cursor-grab select-none items-center overflow-x-auto overscroll-x-contain py-2 no-scrollbar"
         onScroll={normalizeScroll}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

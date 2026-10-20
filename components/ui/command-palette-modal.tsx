@@ -97,8 +97,8 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent data-animated-icon-target showCloseButton={false} className="sm:max-w-lg p-0 overflow-hidden gap-0">
         <DialogTitle className="sr-only">{COMMAND_PALETTE_MODAL_COPY.commandMenu}</DialogTitle>
-        <div className="flex items-center border-b border-border px-3">
-          <AnimatedIcon icon={SearchIcon} className="mr-2 h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
+        <div className="flex items-center gap-2 border-b border-border px-3">
+          <AnimatedIcon icon={SearchIcon} className="h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
           <Input
             id="command-palette-input"
             role="combobox"
@@ -108,7 +108,7 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
             aria-controls={listboxId}
             aria-activedescendant={activeDescendantId}
             placeholder={COMMAND_PALETTE_MODAL_COPY.typeACommandOrSearch}
-            className="flex h-12 w-full border-0 bg-transparent py-4 text-sm outline-none focus-visible:ring-0 shadow-none focus-visible:border-0"
+            className="flex h-12 w-full border-0 bg-transparent py-4 text-sm outline-none shadow-none focus-visible:ring-0 focus-visible:border-0"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);

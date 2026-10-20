@@ -28,7 +28,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
           >
             <div className="grid grid-cols-12 gap-3 items-center">
               <div className="col-span-6 flex flex-col gap-2">
-                <h4 className="text-sm sm:text-base font-extrabold tracking-tight text-foreground leading-snug">
+                <h4 className="text-sm font-extrabold tracking-tight text-foreground leading-snug sm:text-base">
                   {WEBSITES_COPY.buildYourNextIdea}</h4>
                 <motion.div
                   animate={isActive ? { scale: [1, 1, 0.96, 1] } : { scale: 1 }}

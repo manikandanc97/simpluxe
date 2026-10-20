@@ -301,7 +301,7 @@ export function WhatWeBuild() {
           <div
             ref={sliderRef}
             id="what-we-build-slider"
-            className="wwb-slider-track flex w-full snap-x snap-mandatory gap-5 overflow-x-auto no-scrollbar lg:gap-6 cursor-grab active:cursor-grabbing select-none"
+            className="flex w-full snap-x snap-mandatory gap-5 overflow-x-auto cursor-grab select-none lg:gap-6 active:cursor-grabbing wwb-slider-track no-scrollbar"
             onMouseDown={handleMouseDown}
             onClickCapture={handleSliderClickCapture}
           >
@@ -326,13 +326,13 @@ export function WhatWeBuild() {
           >
             {/* Left: label + live count */}
             <div className="flex items-center gap-3" aria-live="polite" aria-atomic="true">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
+              <span className="size-1.5 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
               <span className="text-xs font-semibold text-muted-foreground tracking-wide">
                 {WHAT_WE_BUILD_NAV_COPY.slideToExplore}
               </span>
               <span className="text-xs font-semibold tabular-nums text-muted-foreground tracking-wide">
                 <span className="text-foreground">{String(activeIndex + 1).padStart(2, "0")}</span>
-                <span className="mx-1 text-border">/</span>
+                <span className="px-1 text-border">/</span>
                 {String(DISPLAY_SERVICES.length).padStart(2, "0")}
               </span>
             </div>

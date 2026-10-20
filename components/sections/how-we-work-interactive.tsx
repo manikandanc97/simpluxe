@@ -175,7 +175,7 @@ export function HowWeWorkInteractive() {
                   return (
                     <span
                       key={step.id}
-                      className="relative h-1 w-6 sm:w-8 overflow-hidden rounded-full bg-border"
+                      className="relative h-1 w-6 overflow-hidden rounded-full bg-border sm:w-8"
                     >
                       <span
                         className={cn(
@@ -212,7 +212,7 @@ export function HowWeWorkInteractive() {
                   <div
                     key={feature.title}
                     data-animated-icon-target
-                    className="group flex items-start gap-3 cursor-default"
+                    className="flex items-start gap-3 cursor-default group"
                   >
                     <span
                       aria-hidden="true"

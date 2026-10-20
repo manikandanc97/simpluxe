@@ -45,7 +45,7 @@ export function BrandingMockup({ isActive }: { isActive?: boolean }) {
           <div className="w-2 h-2 rounded-full bg-red-400" />
           <div className="w-2 h-2 rounded-full bg-amber-400" />
           <div className="w-2 h-2 rounded-full bg-green-500" />
-          <span className="text-2xs font-mono text-muted-foreground ml-1">{BRANDING_COPY.appName}</span>
+          <span className="ps-1 text-2xs font-mono text-muted-foreground">{BRANDING_COPY.appName}</span>
         </div>
         <div className="flex items-center gap-1">
           <span className="text-3xs font-semibold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200/60">
@@ -121,10 +121,10 @@ function LogoScreen({ isActive }: { isActive?: boolean }) {
             <span className="text-2xs font-extrabold text-slate-900 tracking-tight">{BRANDING_COPY.studio}</span>
             <span className="text-3xs text-muted-foreground font-medium">{BRANDING_COPY.identityDescription}</span>
             <div className="flex items-center gap-1 pt-1">
-              <span className="text-3xs px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 font-mono font-medium">
+              <span className="text-3xs px-1.5 py-px rounded bg-slate-100 text-slate-700 font-mono font-medium">
                 {BRANDING_COPY.vectorRatio}
               </span>
-              <span className="text-3xs px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-700 font-medium">
+              <span className="text-3xs px-1.5 py-px rounded bg-emerald-50 text-emerald-700 font-medium">
                 {BRANDING_COPY.verified}
               </span>
             </div>

@@ -129,7 +129,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {state.message && !state.ok && (
         <div
           role="alert"
-          className="p-4 text-xs sm:text-sm rounded-xl bg-destructive/10 text-destructive border border-destructive/20"
+          className="p-4 text-xs rounded-xl bg-destructive/10 text-destructive border border-destructive/20 sm:text-sm"
         >
           <p className="font-semibold">{state.message}</p>
         </div>
@@ -137,7 +137,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
 
 
       {/* First Name & Last Name (2-col grid) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <FormField>
           <FloatingInput
             id={fieldId("first-name")}
@@ -175,7 +175,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       </div>
 
       {/* Email & Phone (2-col grid) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <FormField>
           <FloatingInput
             id={fieldId("email")}
@@ -214,9 +214,9 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       </div>
 
       {/* Project Category & Company (2-col grid) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <FormField>
-          <div data-animated-icon-target className="group relative">
+          <div data-animated-icon-target className="relative group">
             <select
               id={fieldId("project-type")}
               aria-label={LEAD_FORM_COPY.projectCategory}
@@ -297,7 +297,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             value="true"
             aria-invalid={Boolean(fieldErrors?.consent)}
             aria-describedby={fieldErrors?.consent ? fieldId("consent-error") : undefined}
-            className="mt-0.5 size-4 shrink-0 cursor-pointer accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="size-4 shrink-0 translate-y-0.5 cursor-pointer accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           />
           <label htmlFor={fieldId("consent")} className="cursor-pointer text-xs leading-relaxed text-muted-foreground sm:text-sm">
             {LEAD_FORM_COPY.consentDescription}{" "}

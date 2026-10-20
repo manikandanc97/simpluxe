@@ -23,7 +23,7 @@ export function TechCategoryTabs({
     <div className="relative sm:mx-auto sm:w-fit sm:max-w-full">
       {/* Tabs Bar */}
       <div
-        className="ts-tabs grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-1.5 sm:gap-2 w-full max-w-lg sm:max-w-none mx-auto"
+        className="grid grid-cols-2 items-center justify-center gap-1.5 w-full max-w-lg mx-auto sm:flex sm:flex-wrap sm:gap-2 sm:max-w-none ts-tabs"
         role="group"
         aria-label={TECH_CATEGORY_TABS_COPY.technologyCategories}
       >

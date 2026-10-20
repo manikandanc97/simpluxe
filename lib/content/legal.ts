@@ -3,7 +3,7 @@ import { COMMON } from "./common";
 const LEGAL_LAST_UPDATED = "Last updated: October 5, 2026";
 
 export const LEGAL_LAYOUT_COPY = {
-  breadcrumb: "Breadcrumb",
+  breadcrumb: COMMON.labels.breadcrumb,
   home: COMMON.pages.home,
 } as const;
 

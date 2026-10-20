@@ -24,7 +24,7 @@ export function AboutView() {
       {/* ── 2. Studio Story & Origin (Executive Bento & 4 Metrics) ── */}
       <Section className="bg-background">
         <Container className="flex flex-col gap-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 gap-8 items-start lg:grid-cols-12 lg:gap-12">
             {/* Left Column: Authoritative Header & Global Base */}
             <div className="lg:col-span-5 flex flex-col items-start text-left gap-8">
               <SectionHeader
@@ -39,7 +39,7 @@ export function AboutView() {
               {/* Global Studio Base Card */}
               {SITE.location && (
                 <Card data-animated-icon-target variant="default" padding="compact" className="flex flex-row items-center gap-4 w-full max-w-md">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
+                  <div className="size-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
                     <AnimatedIcon icon={MapPinIcon} size={18} />
                   </div>
                   <div className="flex flex-col">
@@ -59,10 +59,10 @@ export function AboutView() {
               {/* Pillar 1: Hero Card */}
               <Card variant="default" padding="default" className="relative overflow-hidden flex flex-col gap-4">
                 <div data-animated-icon-target className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
+                  <div className="size-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
                     <AnimatedIcon icon={ZapIcon} size={18} />
                   </div>
-                  <CardTitle className="text-base sm:text-lg font-bold">
+                  <CardTitle className="text-base font-bold sm:text-lg">
                     {ABOUT_SECTION_CONTENT.pillar1Title}
                   </CardTitle>
                 </div>
@@ -72,7 +72,7 @@ export function AboutView() {
               </Card>
 
               {/* Pillar 2 & 3: Dual Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Card variant="default" padding="compact" className="flex flex-col justify-between">
                   <div className="flex flex-col gap-2">
                     <div data-animated-icon-target className="flex items-center gap-2 text-primary">
@@ -81,7 +81,7 @@ export function AboutView() {
                         {ABOUT_SECTION_CONTENT.pillar2Title}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed sm:text-sm">
                       {ABOUT_SECTION_CONTENT.pillar2Desc}
                     </p>
                   </div>
@@ -95,7 +95,7 @@ export function AboutView() {
                         {ABOUT_SECTION_CONTENT.pillar3Title}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed sm:text-sm">
                       {ABOUT_SECTION_CONTENT.pillar3Desc}
                     </p>
                   </div>

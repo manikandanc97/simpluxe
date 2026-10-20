@@ -30,7 +30,7 @@ export function AboutPrinciples() {
         />
 
         {/* ── 3 Principles Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 sm:gap-8">
           {PRINCIPLES.map((principle, index) => {
             const isActive = activePrinciple === index;
 

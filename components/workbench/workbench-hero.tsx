@@ -87,31 +87,30 @@ export function WorkbenchHero() {
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-svh bg-primary" aria-hidden="true" />
 
-      <Container
-        size="wide"
-        className="relative z-10 flex flex-col items-center gap-14 sm:gap-16 lg:gap-20"
-      >
+      <Container className="relative z-10 flex flex-col items-center gap-12 sm:gap-16 lg:gap-20">
         <motion.div
           className="w-full max-w-4xl"
           style={prefersReducedMotion ? undefined : { y: copyY, opacity: rawCopyOpacity }}
         >
           <motion.div
-            className="flex w-full flex-col items-center gap-5 text-center sm:gap-6"
+            className="flex w-full flex-col items-center gap-6 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-          <h1 className="font-satoshi text-4xl font-bold leading-tight tracking-tighter text-white xs:text-5xl sm:text-5xl lg:text-6xl">
-            <span className="block">{HERO_CONTENT.headlineLine1}</span>
-            <span className="block">
-              {HERO_CONTENT.headlineLine2Prefix}{" "}
-              <span className="text-sky-100">{HERO_CONTENT.headlineHighlight}</span>
-            </span>
-          </h1>
+          <div className="flex flex-col items-center gap-4">
+            <h1 className="text-4xl font-bold leading-tight tracking-tighter text-white xs:text-5xl sm:text-5xl lg:text-6xl font-satoshi">
+              <span className="block">{HERO_CONTENT.headlineLine1}</span>
+              <span className="block">
+                {HERO_CONTENT.headlineLine2Prefix}{" "}
+                <span className="text-sky-100">{HERO_CONTENT.headlineHighlight}</span>
+              </span>
+            </h1>
 
-          <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-            {HERO_CONTENT.description}
-          </p>
+            <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              {HERO_CONTENT.description}
+            </p>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Button
@@ -119,7 +118,7 @@ export function WorkbenchHero() {
               onClick={() => openLead({ source: "cta" })}
               size="lg"
               disableScrollAnimation
-              className="group bg-white text-primary hover:bg-slate-100"
+              className="bg-white text-primary hover:bg-slate-100 group"
             >
               {HERO_CONTENT.ctaPrimary}
               <AnimatedIcon
@@ -131,7 +130,7 @@ export function WorkbenchHero() {
 
             <Link
               href="/work"
-              className="group flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring group"
             >
               <span className="flex flex-col gap-0.5">
                 <span className="text-sm font-bold leading-tight text-white transition-colors group-hover:text-sky-300 sm:text-base">
@@ -172,8 +171,8 @@ export function WorkbenchHero() {
             <div className="flex items-center justify-between gap-4 px-1">
               <div className="flex min-w-0 items-center gap-2">
                 <span className="font-mono font-bold text-primary text-xs">{WORKBENCH_COPY.sectionNumber}</span>
-                <span className="bg-primary/30 w-8 sm:w-14 h-px" />
-                <span className="truncate font-semibold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
+                <span className="bg-primary/30 w-8 h-px sm:w-14" />
+                <span className="truncate font-semibold text-2xs text-muted-foreground uppercase tracking-widest sm:text-xs">
                   {WORKBENCH_COPY.selectedWork}
                 </span>
               </div>
@@ -318,7 +317,7 @@ export function WorkbenchHero() {
                     <span className="bg-slate-200 rounded-full size-2" />
                     <span className="bg-slate-200 rounded-full size-2" />
                   </div>
-                  <span className="font-bold text-2xs text-muted-foreground sm:text-xs uppercase tracking-widest">
+                  <span className="font-bold text-2xs text-muted-foreground uppercase tracking-widest sm:text-xs">
                     {WORKBENCH_COPY.canvasLabel}
                   </span>
                   <span className="font-mono font-bold text-2xs text-primary">
@@ -363,7 +362,7 @@ export function WorkbenchHero() {
             </div>
 
             <div className="absolute right-5 top-20 hidden w-32 overflow-hidden rounded-2xl border-4 border-white bg-dark shadow-2xl lg:right-10 lg:top-24 lg:block lg:w-40">
-              <div className="relative h-64 lg:h-80 overflow-hidden">
+              <div className="relative h-64 overflow-hidden lg:h-80">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={activeProject.mobileImage}

@@ -18,7 +18,7 @@ interface DesktopFlowCanvasProps {
 
 export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
   return (
-    <div className="hidden md:flex relative w-full flex-1 flex-col justify-between py-6">
+    <div className="hidden relative w-full flex-1 flex-col justify-between py-6 md:flex">
       {/* ── Background SVG connector lines & concentric rings ── */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
@@ -170,7 +170,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-          className="group relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 sm:p-5 hover:shadow-lg hover:border-primary/30 transition-all duration-300 w-52 sm:w-60 cursor-default"
+          className="relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 transition-all duration-300 w-52 cursor-default sm:p-5 sm:w-60 hover:shadow-lg hover:border-primary/30 group"
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -198,7 +198,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="group relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 sm:p-5 hover:shadow-lg hover:border-primary/30 transition-all duration-300 w-52 sm:w-60 cursor-default"
+          className="relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 transition-all duration-300 w-52 cursor-default sm:p-5 sm:w-60 hover:shadow-lg hover:border-primary/30 group"
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -254,7 +254,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-          className="group relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 sm:p-5 hover:shadow-lg hover:border-primary/30 transition-all duration-300 w-52 sm:w-60 cursor-default"
+          className="relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 transition-all duration-300 w-52 cursor-default sm:p-5 sm:w-60 hover:shadow-lg hover:border-primary/30 group"
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">
@@ -282,7 +282,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-          className="group relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 sm:p-5 hover:shadow-lg hover:border-primary/30 transition-all duration-300 w-52 sm:w-60 cursor-default"
+          className="relative bg-white rounded-2xl border border-neutral-100 shadow-card p-4 transition-all duration-300 w-52 cursor-default sm:p-5 sm:w-60 hover:shadow-lg hover:border-primary/30 group"
         >
           <div className="absolute -top-3.5 right-6 z-20">
             <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-md border shadow-2xs bg-primary/8 text-primary border-primary/20 uppercase tracking-widest leading-none">

@@ -11,8 +11,7 @@ const cardVariants = cva(
       variant: {
         default: "border border-border bg-card shadow-card",
         elevated: "border border-border/80 bg-card shadow-elevated",
-        interactive:
-          "border border-border bg-card hover:border-primary/40 shadow-card hover:shadow-elevated cursor-pointer group",
+        interactive: "border border-border bg-card hover:border-primary/40 shadow-card hover:shadow-elevated cursor-pointer group",
         subtle: "border border-border/70 bg-muted/40",
         glass: "border border-border/60 bg-white/90 backdrop-blur-xl shadow-card",
       },

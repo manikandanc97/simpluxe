@@ -100,10 +100,10 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
                   "--tech-glow": `${item.accentColor}40`,
                   "--tech-glow-subtle": `${item.accentColor}20`,
                 } as React.CSSProperties}
-                className="tech-stack-card group relative flex flex-col items-center justify-between text-center gap-4 p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-border/70 bg-slate-50 dark:bg-card/70 shadow-xs overflow-hidden h-full"
+                className="relative flex flex-col items-center justify-between text-center gap-4 p-4 rounded-2xl border border-slate-200/80 bg-slate-50 shadow-xs overflow-hidden h-full sm:p-5 dark:border-border/70 dark:bg-card/70 tech-stack-card group"
               >
                 {/* Official Brand Logo Squircle Container */}
-                <div className="relative w-15 h-15 rounded-2xl bg-white dark:bg-muted/40 border border-slate-200/70 dark:border-border/60 flex items-center justify-center p-3.5 sm:p-4 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                <div className="relative w-15 h-15 rounded-2xl bg-white border border-slate-200/70 flex items-center justify-center p-3.5 shadow-2xs transition-transform duration-300 dark:bg-muted/40 dark:border-border/60 sm:p-4 group-hover:scale-105">
                   <CldImage
                     src={`simpluxe/tech/${item.imageSlug}`}
                     alt={SERVICES_TECH_STACK_COPY.logoAlt(item.name)}
@@ -152,12 +152,12 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
       </div>
 
       {/* ── Bottom Divider & Project Fit Note ── */}
-      <div className="ts-footer flex items-center justify-center gap-4 max-w-4xl w-full px-2">
-        <div className="hidden sm:block h-px bg-slate-200/80 dark:bg-border/60 flex-1" />
-        <p className="text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-muted-foreground/60 text-center leading-relaxed">
+      <div className="flex items-center justify-center gap-4 max-w-4xl w-full px-2 ts-footer">
+        <div className="hidden h-px bg-slate-200/80 flex-1 sm:block dark:bg-border/60" />
+        <p className="text-xs font-mono uppercase tracking-widest text-slate-400 text-center leading-relaxed dark:text-muted-foreground/60">
           {SERVICES_TECH_STACK_COPY.projectFitNote}
         </p>
-        <div className="hidden sm:block h-px bg-slate-200/80 dark:bg-border/60 flex-1" />
+        <div className="hidden h-px bg-slate-200/80 flex-1 sm:block dark:bg-border/60" />
       </div>
     </div>
   );

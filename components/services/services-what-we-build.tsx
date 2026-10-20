@@ -32,14 +32,14 @@ export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
         variants={staggerContainer(0.08, 0)}
         initial={false}
         animate="visible"
-        className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 w-full"
+        className="grid grid-cols-2 gap-3 w-full lg:grid-cols-4 sm:gap-6"
       >
         {service.whatWeBuild.map((item, idx) => (
           <motion.div data-animated-icon-target
             key={idx}
             variants={fadeUp}
             whileHover={hoverLift}
-            className="group p-4 sm:p-6 rounded-2xl bg-white border border-surface-elevated hover:border-primary/30 shadow-card hover:shadow-elevated transition-colors duration-300 flex flex-col gap-3 sm:gap-4 items-start text-left"
+            className="p-4 rounded-2xl bg-white border border-surface-elevated shadow-card transition-colors duration-300 flex flex-col gap-3 items-start text-left sm:p-6 sm:gap-4 hover:border-primary/30 hover:shadow-elevated group"
           >
             {/* Icon Container with soft pastel tint */}
             <div
@@ -55,12 +55,12 @@ export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {
 
             <div className="flex flex-col gap-2">
               {/* Title */}
-              <h4 className="text-base sm:text-lg font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
+              <h4 className="text-base font-bold text-foreground tracking-tight transition-colors sm:text-lg group-hover:text-primary">
                 {item.title}
               </h4>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs text-muted-foreground leading-relaxed sm:text-sm">
                 {item.description}
               </p>
             </div>

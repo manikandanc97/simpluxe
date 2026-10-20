@@ -45,7 +45,7 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
           <div className="w-2 h-2 rounded-full bg-red-400" />
           <div className="w-2 h-2 rounded-full bg-amber-400" />
           <div className="w-2 h-2 rounded-full bg-green-500" />
-          <span className="text-2xs font-mono text-muted-foreground ml-1">{SAAS_COPY.appName}</span>
+          <span className="ps-1 text-2xs font-mono text-muted-foreground">{SAAS_COPY.appName}</span>
         </div>
         <div className="flex items-center gap-1">
           <motion.div

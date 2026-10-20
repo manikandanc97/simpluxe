@@ -22,14 +22,14 @@ export function AboutComparison() {
       {/* ── Comparison Table Card ── */}
       <div className="border border-surface-elevated rounded-3xl overflow-hidden bg-white shadow-card text-left">
         {/* Table Header Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-12 border-b border-surface-elevated bg-background p-4 sm:p-6 font-mono text-xs font-bold text-foreground">
+        <div className="grid grid-cols-1 border-b border-surface-elevated bg-background p-4 font-mono text-xs font-bold text-foreground md:grid-cols-12 sm:p-6">
           <div className="md:col-span-3 text-muted-foreground uppercase tracking-wider">
             {ABOUT_COMPARISON_CONTENT.evaluationMetric}
           </div>
-          <div className="md:col-span-4 text-muted-foreground uppercase tracking-wider hidden md:block">
+          <div className="md:col-span-4 md:block text-muted-foreground uppercase tracking-wider hidden">
             {ABOUT_COMPARISON_CONTENT.traditionalAgencies}
           </div>
-          <div className="md:col-span-5 text-primary uppercase tracking-wider hidden md:flex items-center gap-2">
+          <div className="md:col-span-5 md:flex text-primary uppercase tracking-wider hidden items-center gap-2">
             <span>{ABOUT_COMPARISON_CONTENT.simpluxeModel}</span>
             <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-background text-primary border border-surface-elevated">
               {ABOUT_COMPARISON_CONTENT.recommendedBadge}
@@ -42,7 +42,7 @@ export function AboutComparison() {
           {COMPARISONS.map((row, i) => (
             <div data-animated-icon-target
               key={i}
-              className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-6 gap-4 sm:gap-4 items-center hover:bg-background transition-colors"
+              className="grid grid-cols-1 p-4 gap-4 items-center transition-colors md:grid-cols-12 sm:p-6 sm:gap-4 hover:bg-background"
             >
               {/* Metric Title */}
               <div className="md:col-span-3 font-bold text-sm text-foreground font-satoshi">
@@ -50,14 +50,14 @@ export function AboutComparison() {
               </div>
 
               {/* Traditional Agencies */}
-              <div className="md:col-span-4 flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                <AnimatedIcon icon={CircleXIcon} size={16} className="text-red-500 shrink-0 mt-0.5" />
+              <div className="md:col-span-4 flex items-start gap-2 text-xs text-muted-foreground sm:text-sm">
+                <AnimatedIcon icon={CircleXIcon} size={16} className="text-red-500 shrink-0 translate-y-0.5" />
                 <span>{row.traditional}</span>
               </div>
 
               {/* Simpluxe Model */}
-              <div className="md:col-span-5 flex items-start gap-2 text-xs sm:text-sm text-foreground font-semibold bg-background/70 p-4.5 rounded-2xl border border-surface-elevated/80 shadow-2xs">
-                <AnimatedIcon icon={CircleCheckIcon} size={16} className="text-primary shrink-0 mt-0.5" />
+              <div className="md:col-span-5 flex items-start gap-2 text-xs text-foreground font-semibold bg-background/70 p-4.5 rounded-2xl border border-surface-elevated/80 shadow-2xs sm:text-sm">
+                <AnimatedIcon icon={CircleCheckIcon} size={16} className="text-primary shrink-0 translate-y-0.5" />
                 <span>{row.simpluxe}</span>
               </div>
             </div>

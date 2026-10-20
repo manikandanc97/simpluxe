@@ -12,10 +12,10 @@ export function ContactView() {
       <ContactHero />
 
       {/* ── Main Structured Showcase Area ── */}
-      <Container className="pt-10 sm:pt-12 lg:pt-14 pb-16 md:pb-20 lg:pb-24 flex flex-col gap-16 sm:gap-20">
+      <Container className="flex flex-col gap-16 py-12 md:py-16 lg:gap-20 lg:py-24">
         
         {/* ── 2. Split Area: Direct Channels (5) + Form (7) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 gap-8 items-start lg:grid-cols-12 lg:gap-10">
           
           {/* ── LEFT COLUMN: Channels ── */}
           <div className="lg:col-span-5 flex flex-col gap-6">

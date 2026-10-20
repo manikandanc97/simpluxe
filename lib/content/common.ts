@@ -32,6 +32,7 @@ export const COMMON = {
     launch: "Launch",
   },
   labels: {
+    breadcrumb: "Breadcrumb",
     direct: "Direct",
     zero: "Zero",
     workHighlight: "Work.",

@@ -25,7 +25,7 @@ export function LabExperiments() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="grid grid-cols-1 gap-8 md:grid-cols-2"
       >
         {rest.map((experiment) => (
           <ExperimentCard key={experiment.id} experiment={experiment} />

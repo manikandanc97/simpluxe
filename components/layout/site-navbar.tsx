@@ -69,12 +69,12 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
         if (event.key === "Escape") setMobileOpen(false);
       }}
     >
-      <div className="relative z-30 flex h-16 w-full max-w-360 items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="relative z-30 flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <div className="flex items-center gap-2.5 min-w-0">
             <Link
               href="/"
-              className="flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
+              className="flex items-center gap-2.5 rounded-lg outline-none shrink-0 focus-visible:ring-2 focus-visible:ring-ring"
               aria-label={SITE_NAVBAR_COPY.simpluxeHome}
             >
               <CldImage
@@ -92,7 +92,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 {SITE_NAVBAR_COPY.brandSimp}<span className="text-primary">{SITE_NAVBAR_COPY.brandLuxe}</span>
               </span>
             </Link>
-            <div className="hidden md:flex items-center pl-2.5 border-border border-l">
+            <div className="hidden items-center pl-2.5 border-border border-l md:flex">
               <span className="font-semibold text-xs text-muted-foreground tracking-normal">
                 {SITE_NAVBAR_COPY.technologies}
               </span>
@@ -125,9 +125,9 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+          <div className="flex items-center gap-3 shrink-0 sm:gap-4">
             {/* Availability status badge */}
-            <div className="hidden xl:flex items-center gap-2">
+            <div className="hidden items-center gap-2 xl:flex">
               <span className="relative flex size-1.5">
                 <span className="inline-flex absolute bg-emerald-500 opacity-50 rounded-full w-full h-full animate-ping" />
                 <span className="inline-flex relative bg-emerald-500 rounded-full size-1.5" />
@@ -143,7 +143,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               onClick={handleStart}
               id="navbar-start-project"
               disableScrollAnimation
-              className="hidden group gap-1.5 px-4 lg:inline-flex"
+              className="hidden gap-1.5 px-4 lg:inline-flex group"
             >
               <span>{NAVBAR_CONTENT.ctaText}</span>
               <StaticIcon name="arrow-up-right" size={14} className="shrink-0 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -208,7 +208,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 animate={{ y: 0 }}
                 exit={{ y: -8 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="flex w-full max-w-360 flex-col gap-4 px-4 py-4 sm:px-6"
+                className="flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8"
               >
                 <nav aria-label={SITE_NAVBAR_COPY.primaryNavigation} className="flex flex-col gap-1">
                   {[
@@ -260,7 +260,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                     onClick={handleStart}
                     id="mobile-navbar-start-project"
                     disableScrollAnimation
-                    className="group w-full gap-2"
+                    className="w-full gap-2 group"
                   >
                     <span>{NAVBAR_CONTENT.ctaText}</span>
                     <StaticIcon name="arrow-up-right" size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

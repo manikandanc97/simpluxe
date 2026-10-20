@@ -13,7 +13,7 @@ export function WorkView() {
       {/* ── Main Structured Showcase Area ── */}
       <Container
         id="work-projects-container"
-        className="pt-10 sm:pt-12 lg:pt-14 pb-20 md:pb-24 lg:pb-32 flex flex-col gap-14 sm:gap-16"
+        className="flex flex-col gap-16 py-12 md:py-16 lg:py-24"
       >
         {/* ── 2. Showcase Controls and Split View ── */}
         <Suspense fallback={<ShowcaseSkeleton />}>

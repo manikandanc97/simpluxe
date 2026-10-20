@@ -32,9 +32,9 @@ export function WorkControls({
   const [isSortOpen, setIsSortOpen] = useState(false);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-border/60">
+    <div className="flex flex-col justify-between gap-4 pb-6 border-b border-border/60 lg:flex-row lg:items-center sm:pb-8">
       {/* ── Filter Pills ── */}
-      <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 w-full sm:w-auto">
+      <div className="grid grid-cols-2 items-center gap-2 w-full sm:flex sm:flex-wrap sm:w-auto">
         {FILTER_SERVICES.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeFilter === tab.id;
@@ -93,7 +93,7 @@ export function WorkControls({
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder={WORK_CONTROLS_COPY.searchProjects}
             aria-label={WORK_CONTROLS_COPY.searchProjects2}
-            className="w-full sm:w-56 pl-9 pr-4 py-2 bg-background hover:bg-background border border-surface-elevated rounded-xl text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-white transition-all"
+            className="w-full pl-9 pr-4 py-2 bg-background border border-surface-elevated rounded-xl text-xs text-foreground transition-all sm:w-56 sm:text-sm hover:bg-background placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-white"
           />
           {searchQuery && (
             <button
@@ -111,7 +111,7 @@ export function WorkControls({
           <button
             type="button"
             onClick={() => setIsSortOpen((prev) => !prev)}
-            className="bg-white border border-surface-elevated rounded-xl px-3.5 sm:px-4.5 py-2 text-xs sm:text-sm font-medium text-foreground flex items-center gap-2 hover:bg-background cursor-pointer shadow-sm transition-all group"
+            className="bg-white border border-surface-elevated rounded-xl px-3.5 py-2 text-xs font-medium text-foreground flex items-center gap-2 cursor-pointer shadow-sm transition-all sm:px-4.5 sm:text-sm hover:bg-background group"
           >
             <span>
               {sortOption === "latest"
@@ -131,7 +131,7 @@ export function WorkControls({
           </button>
 
           {isSortOpen && (
-            <div className="absolute right-0 top-full mt-2 w-40 bg-white rounded-xl shadow-xl border border-surface-elevated py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
+            <div className="absolute right-0 top-full translate-y-2 w-40 bg-white rounded-xl shadow-xl border border-surface-elevated py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
               <button
                 onClick={() => {
                   onSortChange("latest");

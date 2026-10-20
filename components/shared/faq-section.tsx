@@ -45,7 +45,7 @@ export function SharedFaqSection({
       <Container className="relative z-10">
         <motion.div
           {...staggerRevealProps(0.12)}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start"
+          className="grid grid-cols-1 gap-8 items-start lg:grid-cols-12 lg:gap-16 sm:gap-10"
         >
           {/* Left Column (5 Cols) */}
           <motion.div variants={fadeUpItem} className="lg:col-span-5 flex flex-col gap-6 sm:gap-8">
@@ -55,7 +55,7 @@ export function SharedFaqSection({
               title={title}
               highlightedText={highlightedText}
               description={description}
-              className="items-start text-left mx-0"
+              className="items-start text-left"
               maxWidth="max-w-md"
             />
 
@@ -64,7 +64,7 @@ export function SharedFaqSection({
           </motion.div>
 
           {/* Right Column (7 Cols) - FAQ Accordion List */}
-          <motion.div variants={fadeUpItem} className="lg:col-span-7 flex flex-col gap-4 sm:gap-4 pt-0 lg:pt-1">
+          <motion.div variants={fadeUpItem} className="lg:col-span-7 lg:pt-1 flex flex-col gap-4 pt-0 sm:gap-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={faqs[0]?.id || "empty"}
@@ -72,7 +72,7 @@ export function SharedFaqSection({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="flex flex-col gap-4 sm:gap-4 w-full"
+                className="flex flex-col gap-4 w-full sm:gap-4"
               >
                 {faqs.map((faq) => (
                   <FaqAccordionItem

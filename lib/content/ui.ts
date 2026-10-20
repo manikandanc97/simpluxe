@@ -26,10 +26,6 @@ export const LOADING_COPY = {
   loading: "Loading content…",
 } as const;
 
-export const SCROLL_HUD_COPY = {
-  scrollToTop: "Scroll to top",
-} as const;
-
 // pages
 export const ERROR_COPY = {
   somethingWent: "Something went ",
