@@ -5,8 +5,7 @@ import { LEAD_FORM_COPY } from "@/lib/content/leads";
 
 import { AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
 import { CelebratoryButton } from "@/components/ui/celebratory-button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { FloatingInput, FloatingTextarea } from "@/components/ui/floating-field";
 import { FormField, FormMessage } from "@/components/ui/form";
 import { submitLead } from "@/lib/leads/actions";
 import { leadSchema, type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
@@ -140,8 +139,9 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* First Name & Last Name (2-col grid) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
-          <Input
+          <FloatingInput
             id={fieldId("first-name")}
+            label={LEAD_FORM_COPY.firstNamePlaceholder}
             aria-label={LEAD_FORM_COPY.firstName}
             autoComplete="given-name"
             maxLength={50}
@@ -149,7 +149,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             required
             minLength={2}
             defaultValue={prefill?.firstName || ""}
-            placeholder={LEAD_FORM_COPY.firstNamePlaceholder}
             aria-required="true"
             aria-invalid={Boolean(fieldErrors?.firstName)}
             aria-describedby={fieldErrors?.firstName ? fieldId("first-name-error") : undefined}
@@ -158,15 +157,15 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
         </FormField>
 
         <FormField>
-          <Input
+          <FloatingInput
             id={fieldId("last-name")}
+            label={LEAD_FORM_COPY.lastNamePlaceholder}
             aria-label={LEAD_FORM_COPY.lastName}
             autoComplete="family-name"
             maxLength={50}
             name="lastName"
             required
             defaultValue={prefill?.lastName || ""}
-            placeholder={LEAD_FORM_COPY.lastNamePlaceholder}
             aria-required="true"
             aria-invalid={Boolean(fieldErrors?.lastName)}
             aria-describedby={fieldErrors?.lastName ? fieldId("last-name-error") : undefined}
@@ -178,8 +177,9 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* Email & Phone (2-col grid) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
-          <Input
+          <FloatingInput
             id={fieldId("email")}
+            label={LEAD_FORM_COPY.enterYourEmailAddress}
             aria-label={LEAD_FORM_COPY.email}
             autoComplete="email"
             maxLength={254}
@@ -187,7 +187,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             type="email"
             required
             defaultValue={prefill?.email || ""}
-            placeholder={LEAD_FORM_COPY.enterYourEmailAddress}
             aria-required="true"
             aria-invalid={Boolean(fieldErrors?.email)}
             aria-describedby={fieldErrors?.email ? fieldId("email-error") : undefined}
@@ -196,8 +195,9 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
         </FormField>
 
         <FormField>
-          <Input
+          <FloatingInput
             id={fieldId("phone")}
+            label={LEAD_FORM_COPY.whatsappOrPhone}
             aria-label={LEAD_FORM_COPY.whatsappPhone}
             autoComplete="tel"
             maxLength={30}
@@ -206,7 +206,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             required
             aria-required="true"
             defaultValue={prefill?.phone || ""}
-            placeholder={LEAD_FORM_COPY.whatsappOrPhone}
             aria-invalid={Boolean(fieldErrors?.phone)}
             aria-describedby={fieldErrors?.phone ? fieldId("phone-error") : undefined}
           />
@@ -217,7 +216,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* Project Category & Company (2-col grid) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField>
-          <div data-animated-icon-target className="relative">
+          <div data-animated-icon-target className="group relative">
             <select
               id={fieldId("project-type")}
               aria-label={LEAD_FORM_COPY.projectCategory}
@@ -228,11 +227,25 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
               onChange={(event) => setSelectedProjectType(event.target.value)}
               aria-invalid={Boolean(fieldErrors?.projectType)}
               aria-describedby={fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
-              className={cn(selectedProjectType ? "text-foreground" : "text-muted-foreground/60", "w-full h-10 sm:h-11 px-4 pr-10 rounded-xl bg-card border border-border text-xs sm:text-sm appearance-none shadow-2xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring")}
+              className={cn(
+                "h-14 w-full appearance-none rounded-xl border border-border bg-card px-4 pb-1.5 pt-5 pr-10 text-sm shadow-2xs outline-none transition-all duration-150 hover:border-primary/40 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/15 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20",
+                selectedProjectType ? "text-foreground" : "text-transparent"
+              )}
             >
-              <option value="" disabled>{LEAD_FORM_COPY.selectProjectCategory}</option>
-              {PROJECT_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
+              <option value="" disabled className="text-foreground">{LEAD_FORM_COPY.selectProjectCategory}</option>
+              {PROJECT_TYPES.map((type) => <option key={type} value={type} className="text-foreground">{type}</option>)}
             </select>
+            <label
+              htmlFor={fieldId("project-type")}
+              className={cn(
+                "pointer-events-none absolute left-4 origin-left font-medium transition-all duration-200 ease-out group-focus-within:top-2 group-focus-within:translate-y-0 group-focus-within:text-xs group-focus-within:font-medium group-focus-within:text-primary",
+                selectedProjectType
+                  ? "top-2 text-xs text-muted-foreground"
+                  : "top-1/2 -translate-y-1/2 text-sm font-normal text-muted-foreground/70"
+              )}
+            >
+              {LEAD_FORM_COPY.selectProjectCategory}
+            </label>
             <AnimatedIcon icon={ChevronDownIcon} size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
           </div>
           <FormMessage id={fieldId("project-type-error")}>{fieldErrors?.projectType?.[0]}</FormMessage>
@@ -240,14 +253,14 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
 
         {/* Company */}
         <FormField>
-          <Input
+          <FloatingInput
             id={fieldId("company")}
+            label={LEAD_FORM_COPY.companyName}
             aria-label={LEAD_FORM_COPY.companyOptional}
             autoComplete="organization"
             maxLength={100}
             name="company"
             defaultValue={prefill?.company || ""}
-            placeholder={LEAD_FORM_COPY.companyName}
             aria-invalid={Boolean(fieldErrors?.company)}
             aria-describedby={fieldErrors?.company ? fieldId("company-error") : undefined}
           />
@@ -257,8 +270,9 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
 
       {/* Description */}
       <FormField>
-        <Textarea
+        <FloatingTextarea
           id={fieldId("description")}
+          label={LEAD_FORM_COPY.descriptionPlaceholder}
           aria-label={LEAD_FORM_COPY.projectDescription}
           maxLength={2000}
           name="description"
@@ -266,7 +280,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
           minLength={10}
           rows={4}
           defaultValue={prefill?.description || ""}
-          placeholder={LEAD_FORM_COPY.descriptionPlaceholder}
           aria-required="true"
           aria-invalid={Boolean(fieldErrors?.description)}
           aria-describedby={fieldErrors?.description ? fieldId("description-error") : undefined}
