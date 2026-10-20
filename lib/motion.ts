@@ -54,17 +54,115 @@ export const staggerContainer = (
 });
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: timing.reveal,
       ease: ease.out,
     },
   },
 };
+
+export const blurFadeUp: Variants = {
+  hidden: { opacity: 0, y: 32, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.7,
+      ease: ease.out,
+    },
+  },
+};
+
+/**
+ * Modern slide-in-from-right animations with progressive optical blur.
+ * Designed for horizontal sections, card carousels, and side-reveal components.
+ */
+export const slideFromRight: Variants = {
+  hidden: { opacity: 0, x: 80, filter: "blur(10px)" },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.75,
+      ease: ease.out,
+    },
+  },
+};
+
+export const slideFromRightTrack: Variants = {
+  hidden: { opacity: 0, x: 140, filter: "blur(12px)", scale: 0.98 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    scale: 1,
+    transition: {
+      duration: 0.9,
+      delay: 0.1,
+      ease: ease.out,
+    },
+  },
+};
+
+export const slideFromRightSubtle: Variants = {
+  hidden: { opacity: 0, x: 40, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.65,
+      delay: 0.2,
+      ease: ease.out,
+    },
+  },
+};
+
+/**
+ * Child variant for stagger groups. Use with `staggerRevealProps` on the
+ * parent and spread this on each sibling `motion.*` child.
+ */
+export const fadeUpItem: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: ease.out,
+    },
+  },
+};
+
+/**
+ * Ready-to-spread props for a viewport-triggered stagger container.
+ * Replace `data-scroll-stagger` + GSAP with this on the wrapper element.
+ *
+ * @example
+ * <motion.div {...staggerRevealProps()} className="grid ...">
+ *   <motion.div variants={fadeUpItem}>...</motion.div>
+ *   <motion.div variants={fadeUpItem}>...</motion.div>
+ * </motion.div>
+ */
+export const staggerRevealProps = (
+  staggerChildren = 0.1,
+  delayChildren = 0
+) => ({
+  variants: staggerContainer(staggerChildren, delayChildren),
+  initial: "hidden" as const,
+  whileInView: "visible" as const,
+  viewport: {
+    once: true,
+    amount: 0.12,
+    margin: "0px 0px -60px 0px",
+  },
+});
 
 // ==========================================
 // INTERACTION (HOVER & TAP)

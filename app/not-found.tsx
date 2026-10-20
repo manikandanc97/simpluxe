@@ -1,10 +1,9 @@
 "use client";
 
-import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { StaticIcon } from "@/components/ui/static-icon";
 import { NOT_FOUND_COPY } from "@/lib/content/ui";
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
-import { HouseIcon } from "@animateicons/react/lucide/house-icon";
 
 export default function NotFound() {
   return (
@@ -15,7 +14,7 @@ export default function NotFound() {
           {NOT_FOUND_COPY.theRequestedPageDoesnTExist}</p>
       </div>
       <Link href="/" className={buttonVariants({ variant: "default", size: "lg", className: "gap-2" })}>
-        <AnimatedIcon icon={HouseIcon} size={16} />
+        <StaticIcon name="home" size={16} />
         <span>{NOT_FOUND_COPY.backToHome}</span>
       </Link>
     </div>

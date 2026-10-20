@@ -1,6 +1,6 @@
 "use client";
 
-import { WEBSITES_COPY } from "@/lib/content/services";
+import { WEBSITES_COPY } from "@/lib/content/service-mockups";
 
 import { m as motion } from "motion/react";
 import { MockupWrapper } from "./mockup-wrapper";

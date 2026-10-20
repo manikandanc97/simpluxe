@@ -7,7 +7,7 @@ import { FaqContactCard } from "@/components/sections/faq/faq-contact-card";
 import { FaqAccordionItem } from "@/components/sections/faq/faq-accordion-item";
 import { m as motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { staggerContainer } from "@/lib/motion";
+import { staggerRevealProps, fadeUpItem, staggerContainer } from "@/lib/motion";
 
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
@@ -43,9 +43,12 @@ export function SharedFaqSection({
   return (
     <Section id={id} className={cn("overflow-hidden bg-background font-satoshi", className)}>
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start">
+        <motion.div
+          {...staggerRevealProps(0.12)}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start"
+        >
           {/* Left Column (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-8">
+          <motion.div variants={fadeUpItem} className="lg:col-span-5 flex flex-col gap-6 sm:gap-8">
             {/* Top Info */}
             <SectionHeader
               eyebrow={eyebrow}
@@ -58,17 +61,16 @@ export function SharedFaqSection({
 
             {/* Bottom Composite Card Component */}
             <FaqContactCard />
-          </div>
+          </motion.div>
 
           {/* Right Column (7 Cols) - FAQ Accordion List */}
-          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-4 pt-0 lg:pt-1">
+          <motion.div variants={fadeUpItem} className="lg:col-span-7 flex flex-col gap-4 sm:gap-4 pt-0 lg:pt-1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={faqs[0]?.id || "empty"}
                 variants={staggerContainer(0.08, 0.1)}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                animate="visible"
                 exit="hidden"
                 className="flex flex-col gap-4 sm:gap-4 w-full"
               >
@@ -82,8 +84,8 @@ export function SharedFaqSection({
                 ))}
               </motion.div>
             </AnimatePresence>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Container>
     </Section>
   );

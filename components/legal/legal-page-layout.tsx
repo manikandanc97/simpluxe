@@ -11,9 +11,7 @@ interface LegalPageLayoutProps {
 
 export function LegalPageLayout({ children, lastUpdated, title }: LegalPageLayoutProps) {
   return (
-    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
-      <div className="h-16 w-full shrink-0" aria-hidden="true" />
-
+    <>
       <section className="w-full bg-luxury-banner text-white border-b border-primary-hover/30">
         <Container className="py-12 sm:py-16 lg:py-18">
           <div className="flex flex-col items-center text-center gap-6 sm:gap-7">
@@ -40,6 +38,6 @@ export function LegalPageLayout({ children, lastUpdated, title }: LegalPageLayou
           {children}
         </div>
       </Container>
-    </div>
+    </>
   );
 }

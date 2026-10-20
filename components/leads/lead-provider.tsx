@@ -1,10 +1,16 @@
 "use client";
 
 import { type LeadInput } from "@/lib/leads/schema";
-import { createContext, lazy, Suspense, useContext, useState, type ReactNode } from "react";
-import { DialogSkeleton } from "@/components/ui/dialog-skeleton";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import dynamic from "next/dynamic";
 
-const LeadDialog = lazy(() => import("./lead-dialog").then((mod) => ({ default: mod.LeadDialog })));
+const LeadDialog = dynamic(
+  () => import("./lead-dialog").then((mod) => mod.LeadDialog),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
 interface LeadContextType {
   openLead: (prefill?: Partial<LeadInput>) => void;
@@ -38,9 +44,7 @@ export function LeadProvider({ children }: { children: ReactNode }) {
     <LeadContext.Provider value={{ openLead, closeLead, isOpen: open }}>
       {children}
       {hasOpened && (
-        <Suspense fallback={<DialogSkeleton open={open} onOpenChange={handleOpenChange} />}>
-          <LeadDialog open={open} onOpenChange={handleOpenChange} prefill={prefill} />
-        </Suspense>
+        <LeadDialog open={open} onOpenChange={handleOpenChange} prefill={prefill} />
       )}
     </LeadContext.Provider>
   );

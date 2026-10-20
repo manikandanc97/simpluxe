@@ -1,5 +1,5 @@
 import { SITE_FOOTER_COPY } from "@/lib/content/layout";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { StaticIcon } from "@/components/ui/static-icon";
 import { Container } from "@/components/ui/container";
 import { SITE } from "@/lib/content/site";
 import { CldImage } from "@/components/ui/cld-image";
@@ -149,7 +149,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                 const content = (
                   <>
                     <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
-                      <AnimatedIcon
+                      <StaticIcon
                         name={cap.icon}
                         size={13}
                         className="currentColor"
@@ -198,7 +198,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                   className="group flex items-center gap-3.5 hover:text-primary transition-colors"
                 >
                   <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary group-hover:bg-primary/20 transition-colors">
-                    <AnimatedIcon
+                    <StaticIcon
                       name="mail"
                       size={13}
                       className="currentColor"

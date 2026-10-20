@@ -10,9 +10,14 @@ import { PROJECTS } from "@/lib/content/projects";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
+import Link from "next/link";
 import {
   AnimatePresence,
   m as motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
@@ -30,7 +35,25 @@ export function WorkbenchHero() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [isMobileProjectMenuOpen, setIsMobileProjectMenuOpen] = useState(false);
   const mobileProjectMenuRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
   const activeProject = showcasedProjects[activeProjectIndex];
+  const prefersReducedMotion = useReducedMotion();
+
+  // Scroll-linked parallax (desktop only, disabled for reduced-motion)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const rawCopyY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const rawCopyOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.72]);
+  const rawStageY = useTransform(scrollYProgress, [0, 1], [0, 30]);
+  const rawStageRotateX = useTransform(scrollYProgress, [0, 1], [0, 5]);
+  const rawStageScale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+  const copyY = useSpring(rawCopyY, { stiffness: 80, damping: 20, mass: 0.5 });
+  const stageY = useSpring(rawStageY, { stiffness: 80, damping: 20, mass: 0.5 });
+  const stageRotateX = useSpring(rawStageRotateX, { stiffness: 80, damping: 20, mass: 0.5 });
+  const stageScale = useSpring(rawStageScale, { stiffness: 80, damping: 20, mass: 0.5 });
+  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   useEffect(() => {
     if (!isMobileProjectMenuOpen) return;
@@ -54,24 +77,12 @@ export function WorkbenchHero() {
     };
   }, [isMobileProjectMenuOpen]);
 
-  const handleWorkClick = () => {
-    const target = document.getElementById("selected-work-scroll-anchor");
-    const header = document.querySelector("header");
 
-    if (!target) return;
-
-    const headerBottom = header?.getBoundingClientRect().bottom ?? 0;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY;
-
-    window.scrollTo({
-      top: Math.max(0, targetTop - headerBottom - 16),
-      behavior: "smooth",
-    });
-  };
 
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="relative overflow-hidden bg-background pb-14 pt-16 text-white sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-svh bg-primary" aria-hidden="true" />
@@ -81,11 +92,15 @@ export function WorkbenchHero() {
         className="relative z-10 flex flex-col items-center gap-14 sm:gap-16 lg:gap-20"
       >
         <motion.div
-          className="flex w-full max-w-4xl flex-col items-center gap-5 text-center sm:gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-4xl"
+          style={prefersReducedMotion ? undefined : { y: copyY, opacity: rawCopyOpacity }}
         >
+          <motion.div
+            className="flex w-full flex-col items-center gap-5 text-center sm:gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
           <h1 className="font-satoshi text-4xl font-bold leading-tight tracking-tighter text-white xs:text-5xl sm:text-5xl lg:text-6xl">
             <span className="block">{HERO_CONTENT.headlineLine1}</span>
             <span className="block">
@@ -114,9 +129,8 @@ export function WorkbenchHero() {
               />
             </Button>
 
-            <button
-              type="button"
-              onClick={handleWorkClick}
+            <Link
+              href="/work"
               className="group flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="flex flex-col gap-0.5">
@@ -130,16 +144,30 @@ export function WorkbenchHero() {
               <span className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-white text-primary shadow-sm transition-all group-hover:border-primary/30 group-hover:bg-secondary group-hover:shadow-md">
                 <AnimatedIcon icon={BriefcaseIcon} size={16} />
               </span>
-            </button>
+            </Link>
           </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          className="relative w-full max-w-6xl"
-          initial={{ opacity: 0, y: 36, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-6xl"
+          style={
+            prefersReducedMotion
+              ? undefined
+              : {
+                  y: stageY,
+                  rotateX: stageRotateX,
+                  scale: stageScale,
+                  transformPerspective: 1200,
+                }
+          }
         >
+          <motion.div
+            className="relative w-full"
+            initial={{ opacity: 0, y: 36, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
           <div className="relative flex flex-col gap-3 overflow-hidden rounded-3xl border border-slate-200/70 bg-slate-100/70 p-3 shadow-elevated backdrop-blur-xl sm:gap-5 sm:p-5 lg:p-7">
             <div className="flex items-center justify-between gap-4 px-1">
               <div className="flex min-w-0 items-center gap-2">
@@ -357,6 +385,24 @@ export function WorkbenchHero() {
               </div>
             </div>
           </div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          style={prefersReducedMotion ? undefined : { opacity: scrollCueOpacity }}
+          className="flex flex-col items-center gap-2 pt-2 text-slate-300"
+          aria-hidden="true"
+        >
+          <span className="font-mono text-2xs uppercase tracking-widest text-slate-400">
+            {HERO_CONTENT.scrollIndicatorTitle}
+          </span>
+          <motion.div
+            animate={prefersReducedMotion ? undefined : { y: [0, 5, 0] }}
+            transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            className="flex size-7 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm"
+          >
+            <AnimatedIcon icon={ChevronDownIcon} size={14} className="text-white" />
+          </motion.div>
         </motion.div>
       </Container>
     </section>

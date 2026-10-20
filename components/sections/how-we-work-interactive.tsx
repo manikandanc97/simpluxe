@@ -12,6 +12,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { cn } from "@/lib/utils";
 import { m as motion, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { staggerRevealProps, fadeUpItem } from "@/lib/motion";
 
 const STEP_DURATION = 8000;
 const TICK_INTERVAL = 40;
@@ -70,8 +71,11 @@ export function HowWeWorkInteractive() {
       ref={containerRef}
       className="flex w-full flex-col gap-8 lg:gap-12"
     >
-      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-16">
-        <div className="flex min-w-0 flex-col gap-6 lg:col-span-5 lg:gap-8">
+      <motion.div
+        {...staggerRevealProps(0.14)}
+        className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-16"
+      >
+        <motion.div variants={fadeUpItem} className="flex min-w-0 flex-col gap-6 lg:col-span-5 lg:gap-8">
           <div className="flex flex-col gap-4">
             <span className="flex items-center gap-3 text-xs font-semibold tracking-widest text-primary">
               <span aria-hidden="true" className="h-px w-8 bg-primary/40" />
@@ -143,9 +147,10 @@ export function HowWeWorkInteractive() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          variants={fadeUpItem}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           className="flex min-w-0 flex-col gap-8 rounded-3xl border border-border/80 bg-card p-5 shadow-card sm:p-8 lg:col-span-7 lg:p-10"
@@ -247,8 +252,8 @@ export function HowWeWorkInteractive() {
               <AnimatedIcon name="arrow-right" size={16} />
             </Button>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       <div className="flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6">
         {HOW_WE_WORK_TRUST_POINTS.map((point) => (

@@ -3,16 +3,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon } from "@animateicons/react/lucide/chevron-left-icon";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
-import { m as motion } from "motion/react";
+import { m as motion, useReducedMotion } from "motion/react";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SERVICES_LIST, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/content/services";
-import { fadeUp, viewportReveal } from "@/lib/motion";
+import { HOME_SERVICES, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/content/home-services";
+import { slideFromRight, slideFromRightTrack, slideFromRightSubtle, viewportReveal } from "@/lib/motion";
 import { WhatWeBuildCard } from "./what-we-build/what-we-build-card";
 
-const DISPLAY_SERVICES = SERVICES_LIST.slice(0, 8);
+const DISPLAY_SERVICES = HOME_SERVICES;
 const HOVER_DELAY_MS = 0;
 
 export function WhatWeBuild() {
@@ -22,6 +22,7 @@ export function WhatWeBuild() {
   const [animatingCard, setAnimatingCard] = useState<string>(DISPLAY_SERVICES[0]?.id ?? "");
   const [canScrollPrevious, setCanScrollPrevious] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
+  const prefersReduced = useReducedMotion();
 
   // Hover delay refs
   const hoverCardRef = useRef<string | null>(null);
@@ -278,7 +279,10 @@ export function WhatWeBuild() {
     <Section id="capabilities" className="overflow-hidden bg-background font-satoshi">
       <div className="relative flex flex-col gap-8 lg:gap-10">
         <Container>
-          <motion.div variants={fadeUp} {...viewportReveal}>
+          <motion.div
+            variants={prefersReduced ? undefined : slideFromRight}
+            {...viewportReveal}
+          >
             <SectionHeader
               eyebrow={SERVICES_SECTION_CONTENT.eyebrow}
               title={SERVICES_SECTION_CONTENT.title}
@@ -290,62 +294,73 @@ export function WhatWeBuild() {
           </motion.div>
         </Container>
 
-        <div
-          ref={sliderRef}
-          id="what-we-build-slider"
-          className="wwb-slider-track flex w-full snap-x snap-mandatory gap-5 overflow-x-auto no-scrollbar lg:gap-6 cursor-grab active:cursor-grabbing select-none"
-          onMouseDown={handleMouseDown}
-          onClickCapture={handleSliderClickCapture}
+        <motion.div
+          variants={prefersReduced ? undefined : slideFromRightTrack}
+          {...viewportReveal}
         >
-          {DISPLAY_SERVICES.map((service, index) => (
-            <WhatWeBuildCard
-              key={service.id}
-              service={service}
-              isCurrentSlide={index === activeIndex}
-              isAnimating={service.id === animatingCard}
-              onActivate={handleCardHoverEnter}
-              onDeactivate={handleCardHoverLeave}
-            />
-          ))}
-        </div>
-
-        <Container className="flex items-center justify-between gap-4">
-          {/* Left: label + live count */}
-          <div className="flex items-center gap-3" aria-live="polite" aria-atomic="true">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
-            <span className="text-xs font-semibold text-muted-foreground tracking-wide">
-              {WHAT_WE_BUILD_NAV_COPY.slideToExplore}
-            </span>
-            <span className="text-xs font-semibold tabular-nums text-muted-foreground tracking-wide">
-              <span className="text-foreground">{String(activeIndex + 1).padStart(2, "0")}</span>
-              <span className="mx-1 text-border">/</span>
-              {String(DISPLAY_SERVICES.length).padStart(2, "0")}
-            </span>
+          <div
+            ref={sliderRef}
+            id="what-we-build-slider"
+            className="wwb-slider-track flex w-full snap-x snap-mandatory gap-5 overflow-x-auto no-scrollbar lg:gap-6 cursor-grab active:cursor-grabbing select-none"
+            onMouseDown={handleMouseDown}
+            onClickCapture={handleSliderClickCapture}
+          >
+            {DISPLAY_SERVICES.map((service, index) => (
+              <WhatWeBuildCard
+                key={service.id}
+                service={service}
+                isCurrentSlide={index === activeIndex}
+                isAnimating={service.id === animatingCard}
+                onActivate={handleCardHoverEnter}
+                onDeactivate={handleCardHoverLeave}
+              />
+            ))}
           </div>
+        </motion.div>
 
-          {/* Right: arrows grouped */}
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => scrollSlider("previous")}
-              disabled={!canScrollPrevious}
-              aria-label={WHAT_WE_BUILD_NAV_COPY.previousService}
-              aria-controls="what-we-build-slider"
-              className="flex size-11 items-center justify-center rounded-2xl border border-border bg-white text-primary shadow-sm transition-colors hover:border-primary/40 hover:bg-secondary disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300 disabled:shadow-none"
-            >
-              <AnimatedIcon icon={ChevronLeftIcon} size={17} />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollSlider("next")}
-              disabled={!canScrollNext}
-              aria-label={WHAT_WE_BUILD_NAV_COPY.nextService}
-              aria-controls="what-we-build-slider"
-              className="flex size-11 items-center justify-center rounded-2xl border border-border bg-white text-primary shadow-sm transition-colors hover:border-primary/40 hover:bg-secondary disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300 disabled:shadow-none"
-            >
-              <AnimatedIcon icon={ChevronRightIcon} size={17} />
-            </button>
-          </div>
+        <Container>
+          <motion.div
+            variants={prefersReduced ? undefined : slideFromRightSubtle}
+            {...viewportReveal}
+            className="flex items-center justify-between gap-4"
+          >
+            {/* Left: label + live count */}
+            <div className="flex items-center gap-3" aria-live="polite" aria-atomic="true">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
+              <span className="text-xs font-semibold text-muted-foreground tracking-wide">
+                {WHAT_WE_BUILD_NAV_COPY.slideToExplore}
+              </span>
+              <span className="text-xs font-semibold tabular-nums text-muted-foreground tracking-wide">
+                <span className="text-foreground">{String(activeIndex + 1).padStart(2, "0")}</span>
+                <span className="mx-1 text-border">/</span>
+                {String(DISPLAY_SERVICES.length).padStart(2, "0")}
+              </span>
+            </div>
+
+            {/* Right: arrows grouped */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scrollSlider("previous")}
+                disabled={!canScrollPrevious}
+                aria-label={WHAT_WE_BUILD_NAV_COPY.previousService}
+                aria-controls="what-we-build-slider"
+                className="flex size-11 items-center justify-center rounded-2xl border border-border bg-white text-primary shadow-sm transition-colors hover:border-primary/40 hover:bg-secondary disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300 disabled:shadow-none"
+              >
+                <AnimatedIcon icon={ChevronLeftIcon} size={17} />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollSlider("next")}
+                disabled={!canScrollNext}
+                aria-label={WHAT_WE_BUILD_NAV_COPY.nextService}
+                aria-controls="what-we-build-slider"
+                className="flex size-11 items-center justify-center rounded-2xl border border-border bg-white text-primary shadow-sm transition-colors hover:border-primary/40 hover:bg-secondary disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300 disabled:shadow-none"
+              >
+                <AnimatedIcon icon={ChevronRightIcon} size={17} />
+              </button>
+            </div>
+          </motion.div>
         </Container>
       </div>
     </Section>

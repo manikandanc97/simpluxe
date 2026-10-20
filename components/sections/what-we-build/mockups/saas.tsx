@@ -1,6 +1,6 @@
 "use client";
 
-import { SAAS_COPY } from "@/lib/content/services";
+import { SAAS_COPY } from "@/lib/content/service-mockups";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { MockupWrapper } from "./mockup-wrapper";

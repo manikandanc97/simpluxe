@@ -1,9 +1,4 @@
 import { COMMON } from "./common";
-import type { ElementType as LucideIcon } from "react";
-import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
-import { InfoIcon } from "@animateicons/react/lucide/info-icon";
-import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
-import { MailIcon } from "@animateicons/react/lucide/mail-icon";
 import { SITE } from "./site";
 import type { FooterData } from "@/types/footer";
 
@@ -11,15 +6,14 @@ import type { FooterData } from "@/types/footer";
 export interface NavItem {
   label: string;
   route: string;
-  icon: LucideIcon;
   commandName: string;
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: COMMON.pages.work, route: "/work", icon: BriefcaseIcon, commandName: COMMON.actions.goTo(COMMON.pages.work) },
-  { label: COMMON.pages.services, route: "/services", icon: LayersIcon, commandName: COMMON.actions.goTo(COMMON.pages.services) },
-  { label: COMMON.pages.about, route: "/about", icon: InfoIcon, commandName: COMMON.actions.goTo(COMMON.pages.about) },
-  { label: COMMON.pages.contact, route: "/contact", icon: MailIcon, commandName: COMMON.actions.goTo(COMMON.pages.contact) },
+  { label: COMMON.pages.work, route: "/work", commandName: COMMON.actions.goTo(COMMON.pages.work) },
+  { label: COMMON.pages.services, route: "/services", commandName: COMMON.actions.goTo(COMMON.pages.services) },
+  { label: COMMON.pages.about, route: "/about", commandName: COMMON.actions.goTo(COMMON.pages.about) },
+  { label: COMMON.pages.contact, route: "/contact", commandName: COMMON.actions.goTo(COMMON.pages.contact) },
 ];
 
 export interface NavbarContent {

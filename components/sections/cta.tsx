@@ -6,11 +6,13 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
-import { useRef } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { CTA_CONTENT } from "@/lib/content/cta";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
+import { useRef } from "react";
+import { m as motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { staggerRevealProps, fadeUpItem } from "@/lib/motion";
 
 interface CTAProps {
   onStartProject?: () => void;
@@ -18,7 +20,18 @@ interface CTAProps {
 
 export function CTA({ onStartProject }: CTAProps) {
   const { openLead } = useLead();
-  const ref = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const prefersReduced = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const rawScale = useTransform(scrollYProgress, [0, 1], [0.96, 1]);
+  const rawGlowOpacity = useTransform(scrollYProgress, [0, 1], [0.2, 0.7]);
+  const scale = useSpring(rawScale, { stiffness: 100, damping: 24, mass: 0.4 });
+  const glowOpacity = useSpring(rawGlowOpacity, { stiffness: 100, damping: 24, mass: 0.4 });
 
   const handleStart = () => {
     if (onStartProject) onStartProject();
@@ -31,14 +44,25 @@ export function CTA({ onStartProject }: CTAProps) {
 
   return (
     <Section
+      ref={sectionRef}
       id="cta"
-      ref={ref}
-      className="select-none overflow-hidden bg-primary text-primary-foreground"
+      className="relative select-none overflow-hidden bg-primary text-primary-foreground"
     >
+      <motion.div
+        aria-hidden="true"
+        style={prefersReduced ? undefined : { opacity: glowOpacity }}
+        className="pointer-events-none absolute -right-20 -top-20 size-96 rounded-full bg-cyan-300/20 blur-3xl"
+      />
       <Container size="default" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
+        <motion.div
+          style={prefersReduced ? undefined : { scale }}
+        >
+          <motion.div
+            {...staggerRevealProps(0.14)}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center"
+          >
           {/* Col 1 (Left): Value proposition */}
-          <div className="lg:col-span-7 flex flex-col items-start font-satoshi gap-6 sm:gap-8 w-full text-left">
+          <motion.div variants={fadeUpItem} className="lg:col-span-7 flex flex-col items-start font-satoshi gap-6 sm:gap-8 w-full text-left">
             <SectionHeader
               eyebrow={CTA_CONTENT.eyebrow}
               title={CTA_CONTENT.title}
@@ -48,10 +72,10 @@ export function CTA({ onStartProject }: CTAProps) {
               maxWidth="max-w-xl"
               className="items-start text-left"
             />
-          </div>
+          </motion.div>
 
           {/* Col 2 (Right): Action Buttons */}
-          <div className="lg:col-span-5 flex flex-col items-start lg:items-end justify-center w-full gap-4">
+          <motion.div variants={fadeUpItem} className="lg:col-span-5 flex flex-col items-start lg:items-end justify-center w-full gap-4">
             <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-stretch gap-3 w-full sm:w-auto lg:w-72">
               <Button
                 size="lg"
@@ -82,8 +106,9 @@ export function CTA({ onStartProject }: CTAProps) {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <span>{CTA_CONTENT.responseNote}</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
       </Container>
     </Section>
   );

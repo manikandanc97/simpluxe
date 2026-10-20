@@ -1,10 +1,9 @@
 "use client";
 
-import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { StaticIcon } from "@/components/ui/static-icon";
 import { ERROR_COPY } from "@/lib/content/ui";
 
 import { Button } from "@/components/ui/button";
-import { RefreshCwIcon } from "@animateicons/react/lucide/refresh-cw-icon";
 import { useEffect } from "react";
 
 export default function ErrorPage({
@@ -26,7 +25,7 @@ export default function ErrorPage({
           {ERROR_COPY.weEncounteredAnUnexpectedError}</p>
       </div>
       <Button onClick={() => reset()} className="gap-2">
-        <AnimatedIcon icon={RefreshCwIcon} size={16} />
+        <StaticIcon name="refresh" size={16} />
         <span>{ERROR_COPY.tryAgain}</span>
       </Button>
     </div>

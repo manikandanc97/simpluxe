@@ -8,6 +8,8 @@ import { MotionProvider } from "@/components/providers/motion-provider";
 import { ScrollRestorationProvider } from "@/components/providers/scroll-restoration-provider";
 import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { CommandPalette } from "@/components/ui/command-palette";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { ScrollHud } from "@/components/ui/scroll-hud";
 
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -21,7 +23,6 @@ import "./globals.css";
 // Primary typeface — Geist variable font, self-hosted by Next.js (no external network request).
 const geist = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-geist",
   display: "swap",
 });
@@ -95,15 +96,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {LAYOUT_COPY.skipToContent}</a>
 
         <MotionProvider>
+          <ScrollProgress />
           <LeadProvider>
             <MobileMenuProvider>
               <SiteNavbar />
               <CommandPalette />
-              <main id="main" className="flex flex-col flex-1 pb-20 md:pb-0 w-full min-h-dvh">
+              <main id="main" className="flex flex-col flex-1 pt-16 pb-20 md:pb-0 w-full min-h-dvh">
                 {children}
               </main>
 
               <MobileBottomNav />
+              <ScrollHud />
               <SiteFooter />
               <FooterBrandText />
               <ScrollRestorationProvider />

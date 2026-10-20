@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { StaticIcon } from "@/components/ui/static-icon";
 import { SITE_NAVBAR_COPY } from "@/lib/content/layout";
 
 import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/layout";
@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { Button } from "@/components/ui/button";
 
 interface SiteNavbarProps {
@@ -46,7 +45,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
         "fixed inset-x-0 top-0 z-50 w-full border-b font-satoshi transition-all duration-500",
         scrolled
           ? "border-slate-200/60 bg-background/80 shadow-sm backdrop-blur-2xl backdrop-saturate-150"
-          : "border-transparent bg-transparent shadow-none backdrop-blur-none"
+          : "border-slate-200/40 bg-background/80 shadow-none backdrop-blur-2xl backdrop-saturate-150"
       )}
       initial={{ y: -8, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -61,7 +60,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
           <div className="flex items-center min-w-0">
             <Link
               href="/"
-              className="group flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
+              className="flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
               aria-label={SITE_NAVBAR_COPY.simpluxeHome}
             >
               <CldImage
@@ -72,7 +71,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 sizes="32px"
                 format="auto"
                 quality="auto:eco"
-                className="size-8 object-contain transition-transform duration-200 group-hover:scale-105 sm:size-9"
+                className="size-8 object-contain sm:size-9"
                 priority
               />
               <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
@@ -134,7 +133,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
             >
               <span className="hidden sm:inline">{NAVBAR_CONTENT.ctaText}</span>
               <span className="sm:hidden">{SITE_NAVBAR_COPY.letsTalk}</span>
-              <AnimatedIcon icon={ArrowUpRightIcon} size={14} className="shrink-0 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <StaticIcon name="arrow-up-right" size={14} className="shrink-0 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </div>
       </div>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { LOADING_COPY } from "@/lib/content/ui";
 import type { HTMLAttributes, ReactNode } from "react";
 
-export function Skeleton({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+function Skeleton({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return <div aria-hidden="true" {...props} className={cn("rounded-xl bg-surface-elevated motion-safe:animate-pulse", className)} />;
 }
 

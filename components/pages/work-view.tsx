@@ -6,10 +6,7 @@ import { Container } from "@/components/ui/container";
 
 export function WorkView() {
   return (
-    <div className="min-h-screen w-full bg-background text-foreground flex flex-col">
-      {/* ── Fixed navbar height spacer so full-width banner starts cleanly below the header ── */}
-      <div className="h-16 w-full shrink-0" aria-hidden="true" />
-
+    <>
       {/* ── 1. Full-Width Hero Section ── */}
       <WorkHero />
 
@@ -23,7 +20,7 @@ export function WorkView() {
           <WorkProjectBrowser />
         </Suspense>
       </Container>
-    </div>
+    </>
   );
 }
 

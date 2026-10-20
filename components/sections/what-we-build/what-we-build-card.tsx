@@ -2,12 +2,12 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { memo } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { MockupSkeleton } from "@/components/ui/skeleton";
-import { WHAT_WE_BUILD_CARD_COPY, type SERVICES_LIST } from "@/lib/content/services";
+import { WHAT_WE_BUILD_CARD_COPY, type HomeService } from "@/lib/content/home-services";
 
 const loadingSkeleton = () => <MockupSkeleton />;
 const WebsitesMockup = dynamic(() => import("./mockups/websites").then((mod) => mod.WebsitesMockup), { loading: loadingSkeleton });
@@ -33,7 +33,7 @@ const MOCKUPS: Record<string, React.ElementType> = {
 };
 
 interface WhatWeBuildCardProps {
-  service: (typeof SERVICES_LIST)[number];
+  service: HomeService;
   isCurrentSlide?: boolean;
   isAnimating?: boolean;
   onActivate: (serviceId: string) => void;
@@ -48,14 +48,41 @@ export const WhatWeBuildCard = memo(function WhatWeBuildCard({
   onDeactivate,
 }: WhatWeBuildCardProps) {
   const prefersReducedMotion = useReducedMotion();
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const [shouldLoadMockup, setShouldLoadMockup] = useState(isCurrentSlide);
   const MockupComponent = MOCKUPS[service.id];
   const IconComponent = service.icon;
-  const copy = WHAT_WE_BUILD_CARD_COPY.cards[service.id as keyof typeof WHAT_WE_BUILD_CARD_COPY.cards]
-    ?? { category: service.category, description: service.shortTagline };
+  const copy = WHAT_WE_BUILD_CARD_COPY.cards[service.id as keyof typeof WHAT_WE_BUILD_CARD_COPY.cards];
   const animateMockup = isAnimating && !prefersReducedMotion;
+
+  useEffect(() => {
+    if (shouldLoadMockup || isCurrentSlide) {
+      if (isCurrentSlide) setShouldLoadMockup(true);
+      return;
+    }
+
+    const card = cardRef.current;
+    if (!card || !("IntersectionObserver" in window)) {
+      setShouldLoadMockup(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoadMockup(true);
+        observer.disconnect();
+      },
+      { rootMargin: "320px" }
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [isCurrentSlide, shouldLoadMockup]);
 
   return (
     <Link
+      ref={cardRef}
       href={`/services#${service.id}`}
       scroll={false}
       data-animated-icon-target
@@ -72,7 +99,7 @@ export const WhatWeBuildCard = memo(function WhatWeBuildCard({
     >
       <div aria-hidden="true" className="relative isolate flex h-72 items-center justify-center overflow-hidden bg-secondary p-4 lg:h-80 lg:p-6">
         <div className="relative flex h-full w-full max-w-64 items-center justify-center lg:max-w-80">
-          {MockupComponent ? <MockupComponent isActive={animateMockup} /> : (
+          {MockupComponent && shouldLoadMockup ? <MockupComponent isActive={animateMockup} /> : (
             <div className="flex h-40 items-center justify-center rounded-2xl border border-border bg-white">
               <AnimatedIcon icon={IconComponent} size={32} className="text-primary" />
             </div>

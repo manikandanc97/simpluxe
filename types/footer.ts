@@ -1,13 +1,13 @@
-import type { AnimatedIconName } from "@/components/ui/animated-icon";
+import type { StaticIconName } from "@/components/ui/static-icon";
 
 interface FooterCapabilityItem {
   label: string;
-  icon: AnimatedIconName;
+  icon: StaticIconName;
   id?: string;
 }
 
 export interface FooterData {
-  navIcons: Record<string, AnimatedIconName>;
+  navIcons: Record<string, StaticIconName>;
   capabilities: FooterCapabilityItem[];
   brandDescription: string;
   exploreTitle: string;

@@ -1,6 +1,6 @@
 "use client";
 
-import { MOBILE_APPS_COPY } from "@/lib/content/services";
+import { MOBILE_APPS_COPY } from "@/lib/content/service-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";

@@ -1,9 +1,15 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useState } from "react";
-import { DialogSkeleton } from "./dialog-skeleton";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
-const CommandPaletteModal = lazy(() => import("./command-palette-modal").then((mod) => ({ default: mod.CommandPaletteModal })));
+const CommandPaletteModal = dynamic(
+  () => import("./command-palette-modal").then((mod) => mod.CommandPaletteModal),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
 interface CommandPaletteProps {
   onStartProject?: () => void;
@@ -29,12 +35,10 @@ export function CommandPalette({ onStartProject }: CommandPaletteProps) {
   if (!hasEverOpened) return null;
 
   return (
-    <Suspense fallback={<DialogSkeleton open={open} onOpenChange={setOpen} />}>
     <CommandPaletteModal
       open={open}
       onOpenChange={setOpen}
       onStartProject={onStartProject}
     />
-    </Suspense>
   );
 }

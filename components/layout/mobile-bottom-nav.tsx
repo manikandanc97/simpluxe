@@ -9,14 +9,14 @@ import { m as motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
+import { StaticIcon, type StaticIconName } from "@/components/ui/static-icon";
 
-const LEFT_TABS: { label: string; route: string; iconName: AnimatedIconName }[] = [
+const LEFT_TABS: { label: string; route: string; iconName: StaticIconName }[] = [
   { label: MOBILE_BOTTOM_NAV_COPY.home, route: "/", iconName: "home" },
   { label: MOBILE_BOTTOM_NAV_COPY.work, route: "/work", iconName: "briefcase" },
 ];
 
-const RIGHT_TABS: { label: string; route: string; iconName: AnimatedIconName }[] = [
+const RIGHT_TABS: { label: string; route: string; iconName: StaticIconName }[] = [
   { label: MOBILE_BOTTOM_NAV_COPY.services, route: "/services", iconName: "layers" },
   { label: MOBILE_BOTTOM_NAV_COPY.contact, route: "/contact", iconName: "mail" },
 ];
@@ -26,7 +26,7 @@ export function MobileBottomNav() {
   const { closeMenu } = useMobileMenu(); // Kept closeMenu to close any open menus on navigation
   const { openLead } = useLead();
 
-  const renderTab = (tab: { label: string; route: string; iconName: AnimatedIconName }) => {
+  const renderTab = (tab: { label: string; route: string; iconName: StaticIconName }) => {
     const isActive = pathname === tab.route;
 
     return (
@@ -38,10 +38,8 @@ export function MobileBottomNav() {
         aria-current={isActive ? "page" : undefined}
         className="group relative flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-200 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-90"
       >
-        <AnimatedIcon
+        <StaticIcon
           name={tab.iconName}
-          solid={isActive}
-          oncePerInteraction={true}
           size={20}
           className={cn(
             "transition-colors duration-200",
@@ -111,7 +109,7 @@ export function MobileBottomNav() {
               "bg-primary text-primary-foreground hover:scale-105"
             )}
           >
-            <AnimatedIcon name="pencil" size={20} className="text-primary-foreground" />
+            <StaticIcon name="pencil" size={20} className="text-primary-foreground" />
           </button>
         </div>
       </div>
