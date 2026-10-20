@@ -61,15 +61,6 @@ export const FOOTER_CTA_BUTTON_COPY = {
   startAProject: COMMON.actions.startProject,
 } as const;
 
-export const MOBILE_BOTTOM_NAV_COPY = {
-  home: COMMON.pages.home,
-  work: COMMON.pages.work,
-  services: COMMON.pages.services,
-  contact: COMMON.pages.contact,
-  mobileBottomAppNavigation: "Mobile Bottom App Navigation",
-  startAProject: COMMON.actions.startProject,
-} as const;
-
 export const SITE_FOOTER_COPY = {
   simpluxeHome: COMMON.brand.homeLabel,
   simpluxe: SITE.name,
@@ -94,6 +85,7 @@ export const SITE_FOOTER_COPY = {
 } as const;
 
 export const SITE_NAVBAR_COPY = {
+  home: COMMON.pages.home,
   simpluxeHome: COMMON.brand.homeLabel,
   simpluxeLogo: COMMON.brand.logoAlt,
   primaryNavigation: "Primary navigation",
@@ -101,4 +93,7 @@ export const SITE_NAVBAR_COPY = {
   brandLuxe: "Luxe",
   technologies: "Technologies",
   letsTalk: "Let's talk",
+  callUs: "Call Simpluxe",
+  openMenu: "Open navigation menu",
+  closeMenu: "Close navigation menu",
 } as const;

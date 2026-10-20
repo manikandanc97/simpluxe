@@ -15,7 +15,7 @@ interface SiteFooterProps {
 export function SiteFooter({ onStartProject }: SiteFooterProps) {
 
   return (
-    <footer className="w-full bg-slate-100 text-foreground border-t border-border mt-auto relative overflow-hidden pb-safe-nav md:pb-0">
+    <footer className="w-full bg-slate-100 text-foreground border-t border-border relative overflow-hidden">
       <div className="w-full h-full relative">
       <Container className="pt-16 pb-16 relative z-10">
         {/* Top Grid: Brand, Explore, Capabilities, Connect Card */}

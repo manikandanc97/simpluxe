@@ -5,6 +5,7 @@ const crypto = require("node:crypto");
 const ts = require("typescript");
 
 function files(directory) {
+  if (!fs.existsSync(directory)) return [];
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const file = path.join(directory, entry.name);
     return entry.isDirectory() ? files(file) : [file];

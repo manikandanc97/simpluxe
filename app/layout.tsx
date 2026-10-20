@@ -1,15 +1,12 @@
 import { LAYOUT_COPY } from "@/lib/content/metadata";
-import { MobileMenuProvider } from "@/components/layout/mobile-menu-context";
 import { SiteNavbar } from "@/components/layout/site-navbar";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FooterBrandText } from "@/components/layout/footer-brand-text";
 import { LeadProvider } from "@/components/leads/lead-provider";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { ScrollRestorationProvider } from "@/components/providers/scroll-restoration-provider";
-import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { ScrollHud } from "@/components/ui/scroll-hud";
 
 import { SITE } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -98,19 +95,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MotionProvider>
           <ScrollProgress />
           <LeadProvider>
-            <MobileMenuProvider>
-              <SiteNavbar />
-              <CommandPalette />
-              <main id="main" className="flex flex-col flex-1 pt-16 pb-20 md:pb-0 w-full min-h-dvh">
-                {children}
-              </main>
+            <SiteNavbar />
+            <CommandPalette />
+            <main id="main" className="flex flex-col flex-1 pt-16 w-full min-h-dvh">
+              {children}
+            </main>
 
-              <MobileBottomNav />
-              <ScrollHud />
-              <SiteFooter />
-              <FooterBrandText />
-              <ScrollRestorationProvider />
-            </MobileMenuProvider>
+            <SiteFooter />
+            <FooterBrandText />
+            <ScrollRestorationProvider />
           </LeadProvider>
         </MotionProvider>
         

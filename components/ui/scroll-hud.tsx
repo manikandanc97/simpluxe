@@ -54,7 +54,7 @@ export function ScrollHud() {
             duration: prefersReduced ? 0.15 : 0.35,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="fixed bottom-20 right-4 z-40 md:bottom-8 md:right-8"
+          className="fixed bottom-4 right-4 z-40 md:bottom-8 md:right-8"
         >
           <button
             type="button"
