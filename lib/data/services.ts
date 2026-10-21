@@ -61,6 +61,13 @@ export interface ServiceData {
     title: string;
     badge: string;
     subtitle: string;
+    image: {
+      publicId: string;
+      version: string;
+      width: number;
+      height: number;
+      alt: string;
+    };
   };
 }
 
@@ -203,7 +210,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "websites",
       "title": "Simpluxe Digital Flagship",
       "badge": "Lighthouse 100",
-      "subtitle": "Sub-second Next.js edge experience"
+      "subtitle": "Sub-second Next.js edge experience",
+      "image": {
+        "publicId": "simpluxe/services/website_cbr8jm",
+        "version": "1791111610",
+        "width": 1705,
+        "height": 922,
+        "alt": "A polished interior design business website displayed across a wide desktop canvas"
+      }
     },
     "shortDeliverables": [
       "Custom Design Systems",
@@ -348,7 +362,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "dashboard",
       "title": "SIMPLUXE Cloud Workspace",
       "badge": "Live Dashboard",
-      "subtitle": "Enterprise RBAC & KPI analytics"
+      "subtitle": "Enterprise RBAC & KPI analytics",
+      "image": {
+        "publicId": "simpluxe/services/web-application_v8iwnt",
+        "version": "1791111610",
+        "width": 1672,
+        "height": 941,
+        "alt": "A responsive CRM web application dashboard with analytics, projects and customer data"
+      }
     },
     "shortDeliverables": [
       "Next.js & React Fullstack",
@@ -494,7 +515,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "ecommerce",
       "title": "Simpluxe Storefront Engine",
       "badge": "Instant Checkout",
-      "subtitle": "Omnichannel checkout & inventory hub"
+      "subtitle": "Omnichannel checkout & inventory hub",
+      "image": {
+        "publicId": "simpluxe/services/e-commerce_qpfzex",
+        "version": "1791111609",
+        "width": 1536,
+        "height": 1024,
+        "alt": "A premium natural skincare ecommerce storefront with product discovery and shopping tools"
+      }
     },
     "shortDeliverables": [
       "Custom Storefront Design",
@@ -638,7 +666,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "mobile",
       "title": "Simpluxe Mobile Native Hub",
       "badge": COMMON.labels.iosAndroid,
-      "subtitle": "60 FPS offline-first mobile app"
+      "subtitle": "60 FPS offline-first mobile app",
+      "image": {
+        "publicId": "simpluxe/services/Mobile-App_tviiaz",
+        "version": "1791116453",
+        "width": 1536,
+        "height": 1024,
+        "alt": "A collection of polished mobile app screens for fitness, grocery and travel experiences"
+      }
     },
     "shortDeliverables": [
       "React Native Cross-Platform",
@@ -784,7 +819,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "saas",
       "title": "Simpluxe Multi-Tenant Core",
       "badge": "SaaS Scale",
-      "subtitle": "Stripe Billing & Workspace RBAC"
+      "subtitle": "Stripe Billing & Workspace RBAC",
+      "image": {
+        "publicId": "simpluxe/services/SaaS_bllypd",
+        "version": "1791116452",
+        "width": 1536,
+        "height": 1024,
+        "alt": "A SaaS administration dashboard showing revenue, customers, plans and upcoming tasks"
+      }
     },
     "shortDeliverables": [
       "Stripe Billing & Subscriptions",
@@ -928,7 +970,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "branding",
       "title": "Simpluxe Brand Identity Guide",
       "badge": COMMON.labels.designTokens,
-      "subtitle": "Bespoke typography & vector marks"
+      "subtitle": "Bespoke typography & vector marks",
+      "image": {
+        "publicId": "simpluxe/services/branding_ekl60d",
+        "version": "1791116462",
+        "width": 1536,
+        "height": 1024,
+        "alt": "A complete visual branding system with logo, typography, colors and application mockups"
+      }
     },
     "shortDeliverables": [
       "Logo System & Guidelines",
@@ -1069,7 +1118,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "design",
       "title": "Simpluxe Design Token Kit",
       "badge": "Figma Library",
-      "subtitle": "8pt Grid & WCAG AA Accessible"
+      "subtitle": "8pt Grid & WCAG AA Accessible",
+      "image": {
+        "publicId": "simpluxe/services/UI-UX_nwimrf",
+        "version": "1791118195",
+        "width": 1672,
+        "height": 941,
+        "alt": "A high-fidelity CRM interface design with navigation, analytics and reusable dashboard components"
+      }
     },
     "shortDeliverables": [
       "Figma Prototypes",
@@ -1216,7 +1272,14 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "custom",
       "title": "Simpluxe Enterprise System Core",
       "badge": "Custom Engine",
-      "subtitle": "High-throughput API & database mesh"
+      "subtitle": "High-throughput API & database mesh",
+      "image": {
+        "publicId": "simpluxe/services/custom_sofware_k29sx9",
+        "version": "1791118195",
+        "width": 1536,
+        "height": 1024,
+        "alt": "A custom enterprise operations dashboard with business metrics, workflows and system controls"
+      }
     }
   }
 ];

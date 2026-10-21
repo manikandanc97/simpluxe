@@ -1,19 +1,16 @@
 "use client";
 
-import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { LEAD_FORM_COPY } from "@/lib/data/leads";
 
 import { AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
 import { CelebratoryButton } from "@/components/ui/celebratory-button";
-import { FloatingInput, FloatingTextarea } from "@/components/ui/floating-field";
+import { FloatingInput, FloatingTextarea, FloatingSelect } from "@/components/ui/floating-field";
 import { FormField, FormMessage } from "@/components/ui/form";
 import { submitLead } from "@/lib/leads/actions";
 import { leadSchema, type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
 import { SITE } from "@/lib/data/site";
 import { LeadSuccess } from "./lead-success";
-import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { useActionState, useState, useEffect, useId, useRef, useCallback } from "react";
-import { cn } from "@/lib/utils";
 import { LeadVerification } from "./lead-verification";
 import { getTurnstileSiteKey } from "@/lib/leads/turnstile";
 
@@ -216,38 +213,18 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       {/* Project Category & Company (2-col grid) */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <FormField>
-          <div data-animated-icon-target className="relative group">
-            <select
-              id={fieldId("project-type")}
-              aria-label={LEAD_FORM_COPY.projectCategory}
-              name="projectType"
-              required
-              aria-required="true"
-              value={selectedProjectType}
-              onChange={(event) => setSelectedProjectType(event.target.value)}
-              aria-invalid={Boolean(fieldErrors?.projectType)}
-              aria-describedby={fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
-              className={cn(
-                "h-14 w-full appearance-none rounded-xl border border-border bg-card px-4 pb-1.5 pt-5 pr-10 text-sm shadow-2xs outline-none transition-all duration-150 hover:border-primary/40 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/15 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20",
-                selectedProjectType ? "text-foreground" : "text-transparent"
-              )}
-            >
-              <option value="" disabled className="text-foreground">{LEAD_FORM_COPY.selectProjectCategory}</option>
-              {PROJECT_TYPES.map((type) => <option key={type} value={type} className="text-foreground">{type}</option>)}
-            </select>
-            <label
-              htmlFor={fieldId("project-type")}
-              className={cn(
-                "pointer-events-none absolute left-4 origin-left font-medium transition-all duration-200 ease-out group-focus-within:top-2 group-focus-within:translate-y-0 group-focus-within:text-xs group-focus-within:font-medium group-focus-within:text-primary",
-                selectedProjectType
-                  ? "top-2 text-xs text-muted-foreground"
-                  : "top-1/2 -translate-y-1/2 text-sm font-normal text-muted-foreground/70"
-              )}
-            >
-              {LEAD_FORM_COPY.selectProjectCategory}
-            </label>
-            <AnimatedIcon icon={ChevronDownIcon} size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          </div>
+          <FloatingSelect
+            id={fieldId("project-type")}
+            name="projectType"
+            label={LEAD_FORM_COPY.selectProjectCategory}
+            aria-label={LEAD_FORM_COPY.projectCategory}
+            value={selectedProjectType}
+            onValueChange={setSelectedProjectType}
+            options={PROJECT_TYPES}
+            required
+            aria-invalid={Boolean(fieldErrors?.projectType)}
+            aria-describedby={fieldErrors?.projectType ? fieldId("project-type-error") : undefined}
+          />
           <FormMessage id={fieldId("project-type-error")}>{fieldErrors?.projectType?.[0]}</FormMessage>
         </FormField>
 

@@ -14,7 +14,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import Image from "next/image";
+import { ThemeImage } from "@/components/ui/theme-image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const showcasedProjects = PROJECTS.flatMap((project) =>
@@ -275,11 +275,12 @@ export function WorkbenchHeroClient({
                       exit={{ opacity: 0, scale: 0.99 }}
                       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <Image
+                      <ThemeImage
                         src={cloudinaryImageUrl(activeProject.images.desktop)}
                         alt={WORKBENCH_COPY.websiteAlt(activeProject.name)}
                         fill
                         sizes="(max-width: 1023px) 100vw, 72vw"
+                        variant="showcase"
                         className="object-cover object-top"
                         preload={activeProjectIndex === 0}
                       />
@@ -312,11 +313,12 @@ export function WorkbenchHeroClient({
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Image
+                    <ThemeImage
                       src={cloudinaryImageUrl(activeProject.images.mobile)}
                       alt={WORKBENCH_COPY.mobileAlt(activeProject.name)}
                       fill
                       sizes="160px"
+                      variant="mobile"
                       className="object-cover object-top"
                     />
                   </motion.div>

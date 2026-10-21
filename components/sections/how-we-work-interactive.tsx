@@ -251,14 +251,18 @@ export function HowWeWorkInteractive() {
               type="button"
               onClick={handleNextStep}
               disableScrollAnimation
-              className="rounded-lg"
+              className="rounded-lg group"
             >
               <span>
                 {activeStepIndex === STEPS.length - 1
                   ? STEP_NARRATIVE_COPY.startYourProject
                   : STEP_NARRATIVE_COPY.nextStep(currentStep.nextStepName)}
               </span>
-              <AnimatedIcon name="arrow-right" size={16} />
+              <AnimatedIcon
+                name={activeStepIndex === STEPS.length - 1 ? "arrow-up-right" : "arrow-right"}
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Button>
           </div>
         </motion.div>

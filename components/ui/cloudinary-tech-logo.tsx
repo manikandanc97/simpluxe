@@ -1,6 +1,6 @@
 import { cloudinaryTechLogoUrl } from "@/lib/cloudinary";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { ThemeImage } from "@/components/ui/theme-image";
 
 interface CloudinaryTechLogoProps {
   slug: string;
@@ -16,12 +16,14 @@ export function CloudinaryTechLogo({ slug, className }: CloudinaryTechLogoProps)
         className
       )}
     >
-      <Image
+      <ThemeImage
         src={cloudinaryTechLogoUrl(slug)}
         alt=""
         width={128}
         height={128}
         sizes="40px"
+        variant="icon"
+        containerClassName="size-full"
         className="size-full object-contain"
       />
     </span>

@@ -54,3 +54,5 @@ export function FloatingTextarea({ id, label, className, ...props }: FloatingTex
     </div>
   );
 }
+
+export { FloatingSelect } from "./select";

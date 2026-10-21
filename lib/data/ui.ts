@@ -19,6 +19,7 @@ export const DIALOG_COPY = {
 
 export const LOADING_COPY = {
   loading: "Loading content…",
+  imagePreview: "Loading preview…",
 } as const;
 
 // pages

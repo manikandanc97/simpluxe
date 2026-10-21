@@ -4,12 +4,12 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/data/services";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { type ServiceViewData } from "@/lib/data/services";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ServicesMockupWindow } from "./showcase/services-mockup-window";
 import { EyeIcon } from "@animateicons/react/lucide/eye-icon";
+import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 
 interface ServicesActiveShowcaseProps {
   service: ServiceViewData;
@@ -62,9 +62,14 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                     description: SERVICES_ACTIVE_SHOWCASE_COPY.projectInterest(service.name),
                   })
                 }
+                className="group"
               >
                 <span>{SERVICES_ACTIVE_SHOWCASE_COPY.startAProject}</span>
-                <AnimatedArrowRight size={14} />
+                <AnimatedIcon
+                  icon={ArrowUpRightIcon}
+                  size={14}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Button>
 
               <Link
@@ -76,14 +81,14 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
               </Link>
             </div>
 
-            {/* 3 Large Key Metrics */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-surface-elevated sm:gap-4">
+            {/* 3 Key Metrics */}
+            <div className="grid grid-cols-3 gap-3 pt-6 border-t border-surface-elevated sm:gap-5">
               {service.stats.map((st, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="text-xl font-black text-foreground tracking-tight sm:text-2xl lg:text-3xl font-satoshi">
+                <div key={i} className="flex flex-col gap-0.5 min-w-0">
+                  <span className="text-base font-bold text-heading tracking-tight sm:text-lg">
                     {st.value}
                   </span>
-                  <span className="text-xs text-muted-foreground font-medium leading-tight sm:text-xs">
+                  <span className="text-2xs font-normal text-muted-foreground leading-snug sm:text-xs">
                     {st.label}
                   </span>
                 </div>

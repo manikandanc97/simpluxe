@@ -2,7 +2,7 @@ import { type Project } from "@/types/project";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ProjectPreview } from "@/components/work/project-preview";
 import { cloudinaryImageUrl } from "@/lib/cloudinary";
-import Image from "next/image";
+import { ThemeImage } from "@/components/ui/theme-image";
 import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
 import { LockIcon } from "@animateicons/react/lucide/lock-icon";
 import { WORK_VIEW_COPY } from "@/lib/data/projects";
@@ -38,14 +38,17 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
       </div>
 
       {/* ── Scroll Viewport ── */}
-      <div className="project-screenshot-window bg-slate-100">
+      <div className="project-screenshot-window relative bg-slate-100">
         {project.previewImage ? (
-          <Image
+          <ThemeImage
             src={cloudinaryImageUrl(project.previewImage)}
             alt={WORK_VIEW_COPY.previewAlt(project.name)}
             width={project.previewImage.width}
             height={project.previewImage.height}
             sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+            variant="window"
+            containerClassName="w-full relative"
+            skeletonClassName="h-80 sm:h-88 top-0"
             className="project-screenshot block h-auto w-full select-none"
           />
         ) : (
