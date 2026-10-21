@@ -1,6 +1,4 @@
-"use client";
-
-import { type ServiceData, SERVICES_DELIVERABLES_CONTENT } from "@/lib/content/services";
+import { type ServiceViewData, SERVICES_DELIVERABLES_CONTENT } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import type { ElementType as LucideIcon } from "react";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
@@ -69,7 +67,7 @@ const ColorMap: Record<string, { primary: string; fill: string; bg: string; bord
 };
 
 interface ServicesDeliverablesAudienceProps {
-  service: ServiceData;
+  service: ServiceViewData;
 }
 
 export function ServicesDeliverablesAudience({ service }: ServicesDeliverablesAudienceProps) {

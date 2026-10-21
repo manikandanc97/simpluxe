@@ -2,22 +2,23 @@
 
 import { ProjectTemplateCard } from "@/components/work/project-template-card";
 import { WorkControls } from "@/components/work/work-controls";
-import { FILTER_SERVICES, PROJECTS, WORK_VIEW_COPY } from "@/lib/content/projects";
+import { FILTER_SERVICES, WORK_VIEW_COPY } from "@/lib/content/projects";
+import { type Project } from "@/types/project";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 type SortOption = "latest" | "oldest" | "name";
 
-export function WorkProjectBrowser() {
+export function WorkProjectBrowser({ projects }: { projects: Project[] }) {
   const searchParams = useSearchParams();
   const requestedService = searchParams.get("service")?.toLowerCase();
   const initialFilter = FILTER_SERVICES.find((item) => item.id === requestedService)?.id ?? "websites";
 
-  return <WorkProjectResults key={initialFilter} initialFilter={initialFilter} />;
+  return <WorkProjectResults key={initialFilter} initialFilter={initialFilter} projects={projects} />;
 }
 
-function WorkProjectResults({ initialFilter }: { initialFilter: string }) {
+function WorkProjectResults({ initialFilter, projects }: { initialFilter: string; projects: Project[] }) {
   const [activeFilter, setActiveFilter] = useState(initialFilter);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("latest");
@@ -25,7 +26,7 @@ function WorkProjectResults({ initialFilter }: { initialFilter: string }) {
   const filteredProjects = useMemo(() => {
     const serviceType = FILTER_SERVICES.find((filter) => filter.id === activeFilter)?.serviceType;
     const query = searchQuery.trim().toLowerCase();
-    const projects = PROJECTS.filter((project) => {
+    const matchingProjects = projects.filter((project) => {
       const matchesService = !serviceType || project.serviceType === serviceType;
       const matchesQuery = !query
         || project.name.toLowerCase().includes(query)
@@ -35,12 +36,12 @@ function WorkProjectResults({ initialFilter }: { initialFilter: string }) {
       return matchesService && matchesQuery;
     });
 
-    return projects.sort((a, b) => {
+    return matchingProjects.sort((a, b) => {
       if (sortOption === "name") return a.name.localeCompare(b.name);
       const direction = sortOption === "oldest" ? 1 : -1;
       return direction * (Number(a.year) - Number(b.year) || Number(a.number) - Number(b.number));
     });
-  }, [activeFilter, searchQuery, sortOption]);
+  }, [activeFilter, projects, searchQuery, sortOption]);
 
   return (
     <div className="w-full">
@@ -51,7 +52,7 @@ function WorkProjectResults({ initialFilter }: { initialFilter: string }) {
         onSearchChange={setSearchQuery}
         sortOption={sortOption}
         onSortChange={setSortOption}
-        allProjects={PROJECTS}
+        allProjects={projects}
       />
 
       <div className="pt-6 sm:pt-8">

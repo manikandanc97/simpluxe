@@ -1,8 +1,6 @@
-"use client";
-
 import { ExperimentCard } from "@/components/sections/lab/experiment-card";
 import { EXPERIMENTS } from "@/lib/content/lab";
-import { m as motion } from "motion/react";
+import * as motion from "motion/react-m";
 
 export function LabExperiments() {
   const featured = EXPERIMENTS[0];

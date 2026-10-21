@@ -1,6 +1,4 @@
-"use client";
-
-import { m as motion } from "motion/react";
+import * as motion from "motion/react-m";
 import { fadeUp, blurFadeUp, viewportReveal } from "@/lib/motion";
 import type { ReactNode } from "react";
 

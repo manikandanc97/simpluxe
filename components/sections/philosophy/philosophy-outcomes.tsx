@@ -1,5 +1,3 @@
-"use client";
-
 import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/content/philosophy";
 
 import { AnimatedCounter } from "@/components/ui/animated-counter";

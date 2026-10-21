@@ -1,5 +1,3 @@
-"use client";
-
 import { WEBSITES_COPY } from "@/lib/content/service-mockups";
 
 import { m as motion } from "motion/react";

@@ -1,5 +1,3 @@
-"use client";
-
 import { DESKTOP_FLOW_CANVAS_COPY } from "@/lib/content/philosophy";
 
 import { FLOW_NODES } from "@/lib/content/philosophy";

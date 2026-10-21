@@ -5,14 +5,14 @@ import { SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/content/services";
 
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import { type ServiceData } from "@/lib/content/services";
+import { type ServiceViewData } from "@/lib/content/services";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ServicesMockupWindow } from "./showcase/services-mockup-window";
 import { EyeIcon } from "@animateicons/react/lucide/eye-icon";
 
 interface ServicesActiveShowcaseProps {
-  service: ServiceData;
+  service: ServiceViewData;
 }
 
 export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps) {

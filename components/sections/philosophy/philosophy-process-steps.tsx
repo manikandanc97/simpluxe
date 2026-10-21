@@ -1,5 +1,3 @@
-"use client";
-
 import { PHILOSOPHY_PROCESS_STEPS_COPY } from "@/lib/content/philosophy";
 
 import { PROCESS_STEPS } from "@/lib/content/philosophy";

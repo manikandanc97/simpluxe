@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { TECH_VALUE_STRIP_COPY } from "@/lib/content/tech-stack";
 
@@ -7,7 +5,7 @@ import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
 import { InfinityIcon } from "@animateicons/react/lucide/infinity-icon";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
-import { m as motion } from "motion/react";
+import * as motion from "motion/react-m";
 import { fadeUp, staggerContainer, viewportReveal } from "@/lib/motion";
 
 export function TechValueStrip() {

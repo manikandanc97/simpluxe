@@ -65,6 +65,8 @@ export interface ServiceData {
   };
 }
 
+export type ServiceViewData = Omit<ServiceData, "icon">;
+
 export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "websites",

@@ -1,5 +1,3 @@
-"use client";
-
 import { MOBILE_FLOW_GRID_COPY } from "@/lib/content/philosophy";
 import { FLOW_NODES } from "@/lib/content/philosophy";
 import { BoxIcon } from "@animateicons/react/lucide/box-icon";

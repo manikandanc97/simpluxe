@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { type FAQItem } from "@/types/faq";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";

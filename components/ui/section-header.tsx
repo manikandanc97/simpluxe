@@ -1,9 +1,7 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { useId } from "react";
 import type { Variants } from "motion/react";
-import { m as motion } from "motion/react";
+import * as motion from "motion/react-m";
 import { AnimatedText } from "./animated-text";
 
 export interface SectionHeaderProps {

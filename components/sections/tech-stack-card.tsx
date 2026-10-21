@@ -1,5 +1,3 @@
-"use client";
-
 import { TECH_STACK_CARD_COPY } from "@/lib/content/tech-stack";
 
 

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { m as motion, AnimatePresence } from "motion/react";
-import { SERVICES_TECH_STACK_COPY, type ServiceData } from "@/lib/content/services";
+import { SERVICES_TECH_STACK_COPY, type ServiceViewData } from "@/lib/content/services";
 import { TECH_DETAILS, TECH_STACK, type ServiceTechSlug, type ServiceTechDetails } from "@/lib/content/tech-stack";
 import { CldImage } from "@/components/ui/cld-image";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -11,7 +11,7 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 interface ServicesTechStackProps {
-  service: ServiceData;
+  service: ServiceViewData;
 }
 
 interface ServiceToolItem {

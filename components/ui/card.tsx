@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -11,7 +9,7 @@ const cardVariants = cva(
       variant: {
         default: "border border-border bg-card shadow-card",
         elevated: "border border-border/80 bg-card shadow-elevated",
-        interactive: "border border-border bg-card hover:border-primary/40 shadow-card hover:shadow-elevated cursor-pointer group",
+        interactive: "border border-border bg-card hover:border-primary/40 shadow-card hover:shadow-elevated hover:brightness-105 cursor-pointer group",
         subtle: "border border-border/70 bg-muted/40",
         glass: "border border-border/60 bg-white/90 backdrop-blur-xl shadow-card",
       },
@@ -32,18 +30,14 @@ interface CardProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof cardVariants> {}
 
-import { m as motion } from "motion/react";
-import { hoverLift } from "@/lib/motion";
-
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant, padding, ...props }, ref) => {
     return (
-      <motion.div
+      <div
         ref={ref}
         data-slot="card"
-        whileHover={variant === "interactive" ? hoverLift : undefined}
         className={cn(cardVariants({ variant, padding }), className)}
-        {...(props as unknown as React.ComponentProps<typeof motion.div>)}
+        {...props}
       />
     );
   }

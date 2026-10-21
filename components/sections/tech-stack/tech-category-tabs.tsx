@@ -1,5 +1,3 @@
-"use client";
-
 import { TECH_CATEGORY_TABS_COPY } from "@/lib/content/tech-stack";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";

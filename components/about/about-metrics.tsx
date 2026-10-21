@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ABOUT_METRICS_COPY } from "@/lib/content/about";
 import { METRICS } from "@/lib/content/about";

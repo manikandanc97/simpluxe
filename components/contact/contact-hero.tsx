@@ -1,5 +1,3 @@
-"use client";
-
 import { PageHero } from "@/components/ui/page-hero";
 import { CONTACT_HERO_COPY } from "@/lib/content/contact";
 

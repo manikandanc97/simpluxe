@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CircleXIcon } from "@animateicons/react/lucide/circle-x-icon";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";

@@ -1,9 +1,7 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { SERVICES_WHAT_WE_BUILD_COPY } from "@/lib/content/services";
 
-import { type ServiceData } from "@/lib/content/services";
+import { type ServiceViewData } from "@/lib/content/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
@@ -12,7 +10,7 @@ import { DatabaseIcon } from "@animateicons/react/lucide/database-icon";
 import { m as motion } from "motion/react";
 import { staggerContainer, fadeUp, hoverLift } from "@/lib/motion";
 interface ServicesWhatWeBuildProps {
-  service: ServiceData;
+  service: ServiceViewData;
 }
 
 export function ServicesWhatWeBuild({ service }: ServicesWhatWeBuildProps) {

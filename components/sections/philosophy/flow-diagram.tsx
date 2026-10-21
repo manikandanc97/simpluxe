@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { FLOW_DIAGRAM_COPY } from "@/lib/content/philosophy";
 

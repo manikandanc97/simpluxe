@@ -1,5 +1,3 @@
-"use client";
-
 import { FAQS, FAQ_SECTION_CONTENT } from "@/lib/content/faq";
 
 import { SharedFaqSection } from "@/components/shared/faq-section";

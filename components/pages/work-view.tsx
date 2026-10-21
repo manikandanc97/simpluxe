@@ -3,6 +3,7 @@ import { ShowcaseSkeleton } from "@/components/ui/skeleton";
 import { WorkHero } from "@/components/work/work-hero";
 import { WorkProjectBrowser } from "@/components/work/work-project-browser";
 import { Container } from "@/components/ui/container";
+import { PROJECTS } from "@/lib/content/projects";
 
 export function WorkView() {
   return (
@@ -17,7 +18,7 @@ export function WorkView() {
       >
         {/* ── 2. Showcase Controls and Split View ── */}
         <Suspense fallback={<ShowcaseSkeleton />}>
-          <WorkProjectBrowser />
+          <WorkProjectBrowser projects={PROJECTS} />
         </Suspense>
       </Container>
     </>

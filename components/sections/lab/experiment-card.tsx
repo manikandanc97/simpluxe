@@ -1,10 +1,8 @@
-"use client";
-
 import { EXPERIMENT_CARD_COPY } from "@/lib/content/lab";
 
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import type { Experiment } from "@/lib/content/lab";
-import { m as motion } from "motion/react";
+import * as motion from "motion/react-m";
 
 interface ExperimentCardProps {
   experiment: Experiment;
