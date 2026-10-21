@@ -1,7 +1,7 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { ABOUT_VIEW_COPY } from "@/lib/content/about";
-import { SITE } from "@/lib/content/site";
-import { ABOUT_SECTION_CONTENT } from "@/lib/content/about";
+import { ABOUT_VIEW_COPY } from "@/lib/data/about";
+import { SITE } from "@/lib/data/site";
+import { ABOUT_SECTION_CONTENT } from "@/lib/data/about";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutMetrics } from "@/components/about/about-metrics";

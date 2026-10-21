@@ -1,4 +1,4 @@
-import { HERO_CONTENT } from "@/lib/content/hero";
+import { HERO_CONTENT } from "@/lib/data/hero";
 import { WorkbenchHeroActions } from "./workbench-hero-actions";
 import { WorkbenchHeroClient } from "./workbench-hero-client";
 

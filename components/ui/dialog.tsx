@@ -1,6 +1,6 @@
 "use client";
 
-import { DIALOG_COPY } from "@/lib/content/ui";
+import { DIALOG_COPY } from "@/lib/data/ui";
 
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { cn } from "@/lib/utils";

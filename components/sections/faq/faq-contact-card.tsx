@@ -1,10 +1,10 @@
 "use client";
 
-import { FAQ_CONTACT_CARD_COPY } from "@/lib/content/faq";
+import { FAQ_CONTACT_CARD_COPY } from "@/lib/data/faq";
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { Button } from "@/components/ui/button";
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 
 export function FaqContactCard() {
   const { openLead } = useLead();

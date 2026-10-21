@@ -1,5 +1,5 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { TECH_VALUE_STRIP_COPY } from "@/lib/content/tech-stack";
+import { TECH_VALUE_STRIP_COPY } from "@/lib/data/tech-stack";
 
 import { ChartBarIcon } from "@animateicons/react/lucide/chart-bar-icon";
 import { InfinityIcon } from "@animateicons/react/lucide/infinity-icon";

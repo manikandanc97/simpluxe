@@ -2,7 +2,7 @@
 
 import { ProjectTemplateCard } from "@/components/work/project-template-card";
 import { WorkControls } from "@/components/work/work-controls";
-import { FILTER_SERVICES, WORK_VIEW_COPY } from "@/lib/content/projects";
+import { FILTER_SERVICES, WORK_VIEW_COPY } from "@/lib/data/projects";
 import { type Project } from "@/types/project";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useSearchParams } from "next/navigation";

@@ -1,6 +1,6 @@
 "use client";
 
-import { COMMAND_PALETTE_MODAL_COPY } from "@/lib/content/ui";
+import { COMMAND_PALETTE_MODAL_COPY } from "@/lib/data/ui";
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 
 import { useLead } from "@/components/leads/lead-provider";
-import { NAV_ITEMS } from "@/lib/content/layout";
+import { NAV_ITEMS } from "@/lib/data/layout";
 import { cn } from "@/lib/utils";
 
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";

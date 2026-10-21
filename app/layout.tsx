@@ -1,4 +1,4 @@
-import { LAYOUT_COPY } from "@/lib/content/metadata";
+import { LAYOUT_COPY } from "@/lib/data/metadata";
 import { SiteNavbar } from "@/components/layout/site-navbar";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FooterBrandText } from "@/components/layout/footer-brand-text";
@@ -8,7 +8,7 @@ import { ScrollRestorationProvider } from "@/components/providers/scroll-restora
 import { CommandPalette } from "@/components/ui/command-palette";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";

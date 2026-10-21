@@ -1,8 +1,8 @@
-import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/content/philosophy";
+import { PHILOSOPHY_OUTCOMES_COPY } from "@/lib/data/philosophy";
 
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { REAL_OUTCOMES } from "@/lib/content/philosophy";
+import { REAL_OUTCOMES } from "@/lib/data/philosophy";
 import { m as motion } from "motion/react";
 
 interface PhilosophyOutcomesProps {

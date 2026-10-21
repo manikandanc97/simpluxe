@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { useId } from "react";
 import type { Variants } from "motion/react";
 import * as motion from "motion/react-m";
-import { AnimatedText } from "./animated-text";
 
 export interface SectionHeaderProps {
   eyebrow?: string;
@@ -13,6 +12,7 @@ export interface SectionHeaderProps {
   maxWidth?: string;
   centered?: boolean;
   inverted?: boolean;
+  headingId?: string;
 }
 
 const headerVariants: Variants = {
@@ -39,6 +39,7 @@ export function SectionHeader({
   maxWidth = "max-w-3xl",
   centered = false,
   inverted = false,
+  headingId,
 }: SectionHeaderProps) {
   const uid = useId().replace(/:/g, "-");
 
@@ -60,26 +61,16 @@ export function SectionHeader({
           variants={itemVariants}
           data-sh-id={`${uid}-eyebrow`}
           className={cn(
-            "flex items-center gap-3 text-xs font-semibold tracking-widest uppercase",
-            centered ? "justify-center" : "justify-start",
+            "text-xs font-semibold tracking-widest uppercase",
             inverted ? "text-sky-300" : "text-primary"
           )}
         >
-          <span
-            aria-hidden="true"
-            className={cn("h-px w-8", inverted ? "bg-sky-300/40" : "bg-primary/40")}
-          />
-          {typeof eyebrow === "string" ? <AnimatedText text={eyebrow} el="span" /> : eyebrow}
-          {centered && (
-            <span
-              aria-hidden="true"
-              className={cn("h-px w-8", inverted ? "bg-sky-300/40" : "bg-primary/40")}
-            />
-          )}
+          {eyebrow}
         </motion.div>
       )}
 
       <motion.h2
+        id={headingId}
         variants={itemVariants}
         data-sh-id={`${uid}-title`}
         className={cn(
@@ -90,7 +81,7 @@ export function SectionHeader({
       >
         {title}
         {highlightedText && (
-          <span className={inverted ? "text-gradient-primary-light" : "brand-gradient-text"}>
+          <span className={inverted ? "text-primary-foreground" : "text-primary"}>
             {" "}
             {highlightedText}
           </span>

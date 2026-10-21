@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/ui/page-hero";
-import { SERVICES_HERO_COPY } from "@/lib/content/services";
+import { SERVICES_HERO_COPY } from "@/lib/data/services";
 
 export function ServicesHero() {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import { LEAD_FORM_COPY } from "@/lib/content/leads";
-import { SITE } from "@/lib/content/site";
+import { LEAD_FORM_COPY } from "@/lib/data/leads";
+import { SITE } from "@/lib/data/site";
 import { startSparklerCelebration } from "@/lib/celebration";
 
 export function LeadSuccess({ onClose }: { onClose?: () => void }) {

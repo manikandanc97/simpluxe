@@ -1,11 +1,11 @@
 "use client";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/content/services";
+import { SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/data/services";
 
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import { type ServiceViewData } from "@/lib/content/services";
+import { type ServiceViewData } from "@/lib/data/services";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ServicesMockupWindow } from "./showcase/services-mockup-window";

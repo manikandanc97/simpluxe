@@ -1,5 +1,5 @@
 import { ExperimentCard } from "@/components/sections/lab/experiment-card";
-import { EXPERIMENTS } from "@/lib/content/lab";
+import { EXPERIMENTS } from "@/lib/data/lab";
 import * as motion from "motion/react-m";
 
 export function LabExperiments() {

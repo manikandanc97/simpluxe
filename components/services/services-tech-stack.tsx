@@ -2,8 +2,8 @@
 
 import { useMemo } from "react";
 import { m as motion, AnimatePresence } from "motion/react";
-import { SERVICES_TECH_STACK_COPY, type ServiceViewData } from "@/lib/content/services";
-import { TECH_DETAILS, TECH_STACK, type ServiceTechSlug, type ServiceTechDetails } from "@/lib/content/tech-stack";
+import { SERVICES_TECH_STACK_COPY, type ServiceViewData } from "@/lib/data/services";
+import { TECH_DETAILS, TECH_STACK, type ServiceTechSlug, type ServiceTechDetails } from "@/lib/data/tech-stack";
 import { CldImage } from "@/components/ui/cld-image";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FadeUpWrapper } from "@/components/ui/fade-up-wrapper";

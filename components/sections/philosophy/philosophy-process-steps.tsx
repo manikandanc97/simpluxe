@@ -1,6 +1,6 @@
-import { PHILOSOPHY_PROCESS_STEPS_COPY } from "@/lib/content/philosophy";
+import { PHILOSOPHY_PROCESS_STEPS_COPY } from "@/lib/data/philosophy";
 
-import { PROCESS_STEPS } from "@/lib/content/philosophy";
+import { PROCESS_STEPS } from "@/lib/data/philosophy";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { m as motion } from "motion/react";
 

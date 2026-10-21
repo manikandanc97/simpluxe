@@ -1,10 +1,10 @@
 "use client";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { CONTACT_CHANNELS_COPY } from "@/lib/content/contact";
+import { CONTACT_CHANNELS_COPY } from "@/lib/data/contact";
 
 import { useEffect, useRef, useState } from "react";
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
 import { WhatsAppIcon } from "@/components/contact/whatsapp-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";

@@ -2,26 +2,33 @@
 
 import { useLead } from "@/components/leads/lead-provider";
 import { Button } from "@/components/ui/button";
+import { SectionHeader } from "@/components/ui/section-header";
 import {
   HOW_WE_WORK_SECTION_CONTENT,
   HOW_WE_WORK_TRUST_POINTS,
   STEP_NARRATIVE_COPY,
   STEPS,
-} from "@/lib/content/how-we-work";
+} from "@/lib/data/how-we-work";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { cn } from "@/lib/utils";
-import { m as motion, useInView, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  animate,
+  m as motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { staggerRevealProps, fadeUpItem } from "@/lib/motion";
 
 const STEP_DURATION = 8000;
-const TICK_INTERVAL = 40;
 
 export function HowWeWorkInteractive() {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
-  const progressRef = useRef(0);
+  const progress = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { amount: 0.25 });
   const { openLead } = useLead();
@@ -31,36 +38,33 @@ export function HowWeWorkInteractive() {
   useEffect(() => {
     if (!isInView || isPaused || reduceMotion) return;
 
-    const startTime = Date.now() - (progressRef.current / 100) * STEP_DURATION;
+    const remainingDuration = (1 - progress.get()) * STEP_DURATION;
+    const playback = animate(progress, 1, {
+      duration: remainingDuration / 1000,
+      ease: "linear",
+      onComplete: () => {
+        progress.set(0);
+        setDirection(1);
+        setActiveStepIndex((previous) => (previous + 1) % STEPS.length);
+      },
+    });
 
-    const timer = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const currentProgress = (elapsed / STEP_DURATION) * 100;
-
-      if (currentProgress >= 100) {
-        progressRef.current = 0;
-        setProgress(0);
-        setActiveStepIndex((prev) => (prev + 1) % STEPS.length);
-      } else {
-        progressRef.current = currentProgress;
-        setProgress(currentProgress);
-      }
-    }, TICK_INTERVAL);
-
-    return () => clearInterval(timer);
-  }, [activeStepIndex, isInView, isPaused, reduceMotion]);
+    return () => playback.stop();
+  }, [activeStepIndex, isInView, isPaused, progress, reduceMotion]);
 
   const handleSelectStep = (index: number) => {
+    if (index === activeStepIndex) return;
+
+    setDirection(index > activeStepIndex ? 1 : -1);
     setActiveStepIndex(index);
-    progressRef.current = 0;
-    setProgress(0);
+    progress.set(0);
   };
 
   const handleNextStep = () => {
     if (activeStepIndex < STEPS.length - 1) {
+      setDirection(1);
       setActiveStepIndex(activeStepIndex + 1);
-      progressRef.current = 0;
-      setProgress(0);
+      progress.set(0);
     } else {
       openLead({ source: "how-we-work" });
     }
@@ -76,21 +80,14 @@ export function HowWeWorkInteractive() {
         className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-16"
       >
         <motion.div variants={fadeUpItem} className="flex min-w-0 flex-col gap-6 lg:col-span-5 lg:gap-8">
-          <div className="flex flex-col gap-4">
-            <span className="flex items-center gap-3 text-xs font-semibold tracking-widest text-primary">
-              <span aria-hidden="true" className="h-px w-8 bg-primary/40" />
-              {HOW_WE_WORK_SECTION_CONTENT.eyebrow}
-            </span>
-            <h2 id="how-we-work-heading" className="type-h2 text-heading">
-              {HOW_WE_WORK_SECTION_CONTENT.title}{" "}
-              <span className="text-primary">
-                {HOW_WE_WORK_SECTION_CONTENT.highlightedText}
-              </span>
-            </h2>
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {HOW_WE_WORK_SECTION_CONTENT.descriptionLine1}
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow={HOW_WE_WORK_SECTION_CONTENT.eyebrow}
+            title={HOW_WE_WORK_SECTION_CONTENT.title}
+            highlightedText={HOW_WE_WORK_SECTION_CONTENT.highlightedText}
+            description={HOW_WE_WORK_SECTION_CONTENT.descriptionLine1}
+            headingId="how-we-work-heading"
+            maxWidth="max-w-sm"
+          />
 
           <div
             role="group"
@@ -108,16 +105,24 @@ export function HowWeWorkInteractive() {
                   aria-controls="how-we-work-detail"
                   onClick={() => handleSelectStep(index)}
                   className={cn(
-                    "group relative flex min-w-0 flex-1 flex-col items-center gap-2 overflow-hidden rounded-xl px-2.5 py-3.5 text-left transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:flex-row lg:gap-5 lg:px-4 lg:py-4",
+                    "group relative flex min-w-0 flex-1 flex-col items-center gap-2 overflow-hidden rounded-xl border border-transparent px-2.5 py-3.5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:flex-row lg:gap-5 lg:px-4 lg:py-4",
                     isActive
-                      ? "border border-primary/25 bg-primary/8 text-primary shadow-2xs"
-                      : "border border-transparent text-muted-foreground hover:border-border hover:bg-primary/5 hover:text-heading"
+                      ? "text-primary"
+                      : "text-muted-foreground hover:border-border hover:bg-primary/5 hover:text-heading"
                   )}
                 >
-                  <span className="text-xs font-medium tabular-nums lg:text-sm">
+                  {isActive && (
+                    <motion.span
+                      layoutId="how-we-work-active-step"
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-xl border border-primary/25 bg-primary/10 shadow-2xs"
+                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                    />
+                  )}
+                  <span className="relative z-10 text-xs font-medium tabular-nums lg:text-sm">
                     {step.number}
                   </span>
-                  <span className="flex min-w-0 flex-1 flex-col gap-1">
+                  <span className="relative z-10 flex min-w-0 flex-1 flex-col gap-1">
                     <span className="text-xs font-semibold sm:text-sm lg:text-base">
                       {step.title}
                     </span>
@@ -128,7 +133,7 @@ export function HowWeWorkInteractive() {
                   <span
                     aria-hidden="true"
                     className={cn(
-                      "hidden size-8 items-center justify-center rounded-lg transition-colors lg:flex",
+                      "relative z-10 hidden size-8 items-center justify-center rounded-lg transition-colors lg:flex",
                       isActive ? "bg-primary text-white" : "text-muted-foreground/60"
                     )}
                   >
@@ -137,10 +142,10 @@ export function HowWeWorkInteractive() {
 
                   {/* Active step dynamic progress line */}
                   {isActive && (
-                    <span
+                    <motion.span
                       aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-0.5 bg-primary transition-all duration-75 ease-linear pointer-events-none"
-                      style={{ width: `${progress}%` }}
+                      className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-0.5 origin-left bg-primary"
+                      style={{ scaleX: progress }}
                     />
                   )}
                 </button>
@@ -177,12 +182,9 @@ export function HowWeWorkInteractive() {
                       key={step.id}
                       className="relative h-1 w-6 overflow-hidden rounded-full bg-border sm:w-8"
                     >
-                      <span
-                        className={cn(
-                          "absolute inset-y-0 left-0 bg-primary rounded-full transition-all duration-75 ease-linear",
-                          isCompleted ? "w-full" : isCurrent ? "" : "w-0"
-                        )}
-                        style={isCurrent ? { width: `${progress}%` } : undefined}
+                      <motion.span
+                        className="absolute inset-0 origin-left rounded-full bg-primary"
+                        style={{ scaleX: isCompleted ? 1 : isCurrent ? progress : 0 }}
                       />
                     </span>
                   );
@@ -190,48 +192,55 @@ export function HowWeWorkInteractive() {
               </span>
             </div>
 
-            <motion.div
-              key={currentStep.id}
-              initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reduceMotion ? 0 : 0.2 }}
-              className="flex flex-col gap-6 sm:gap-8"
-            >
-              <div className="flex flex-col gap-4">
-                <h3 id="how-we-work-step-heading" className="type-h3 max-w-md text-heading">
-                  {currentStep.headlineFirst}{" "}
-                  <span className="text-primary">{currentStep.headlineAccent}</span>
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {currentStep.summary}
-                </p>
-              </div>
+            <AnimatePresence mode="wait" initial={false} custom={direction}>
+              <motion.div
+                key={currentStep.id}
+                custom={direction}
+                initial={reduceMotion ? false : { opacity: 0, x: direction * 18, filter: "blur(4px)" }}
+                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                exit={reduceMotion ? { opacity: 1 } : { opacity: 0, x: direction * -12, filter: "blur(3px)" }}
+                transition={{ duration: reduceMotion ? 0 : 0.38, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col gap-6 sm:gap-8"
+              >
+                <div className="flex flex-col gap-4">
+                  <h3 id="how-we-work-step-heading" className="type-h3 max-w-md text-heading">
+                    {currentStep.headlineFirst}{" "}
+                    <span className="text-primary">{currentStep.headlineAccent}</span>
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {currentStep.summary}
+                  </p>
+                </div>
 
-              <div className="grid grid-cols-1 gap-6 border-t border-border/70 pt-6 sm:grid-cols-2 sm:gap-8 sm:pt-8">
-                {currentStep.features.map((feature) => (
-                  <div
-                    key={feature.title}
-                    data-animated-icon-target
-                    className="flex items-start gap-3 cursor-default group"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="flex size-6 shrink-0 items-center justify-center text-primary transition-transform duration-200 group-hover:scale-110"
+                <div className="grid grid-cols-1 gap-6 border-t border-border/70 pt-6 sm:grid-cols-2 sm:gap-8 sm:pt-8">
+                  {currentStep.features.map((feature, index) => (
+                    <motion.div
+                      key={feature.title}
+                      data-animated-icon-target
+                      initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: reduceMotion ? 0 : 0.32, delay: reduceMotion ? 0 : 0.08 + index * 0.06 }}
+                      className="group flex cursor-default items-start gap-3"
                     >
-                      <AnimatedIcon icon={feature.icon} size={19} />
-                    </span>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-heading transition-colors duration-200 group-hover:text-primary">
-                        {feature.title}
-                      </h4>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {feature.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                      <span
+                        aria-hidden="true"
+                        className="flex size-6 shrink-0 items-center justify-center text-primary transition-transform duration-200 group-hover:scale-110"
+                      >
+                        <AnimatedIcon icon={feature.icon} size={19} />
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <h4 className="text-sm font-semibold text-heading transition-colors duration-200 group-hover:text-primary">
+                          {feature.title}
+                        </h4>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          {feature.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border/70 pt-6">

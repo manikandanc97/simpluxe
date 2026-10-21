@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import type { MetadataRoute } from "next";
 
 const LAST_MODIFIED = new Date("2026-09-01T00:00:00.000Z");

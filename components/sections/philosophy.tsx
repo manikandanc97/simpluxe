@@ -8,7 +8,7 @@ import { PhilosophyProcessSteps } from "./philosophy/philosophy-process-steps";
 import { PhilosophyOutcomes } from "./philosophy/philosophy-outcomes";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
-import { PHILOSOPHY_SECTION_CONTENT } from "@/lib/content/philosophy";
+import { PHILOSOPHY_SECTION_CONTENT } from "@/lib/data/philosophy";
 
 export function WhySimpluxe() {
   const containerRef = useRef<HTMLDivElement>(null);

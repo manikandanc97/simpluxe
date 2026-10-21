@@ -1,6 +1,6 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { ABOUT_METRICS_COPY } from "@/lib/content/about";
-import { METRICS } from "@/lib/content/about";
+import { ABOUT_METRICS_COPY } from "@/lib/data/about";
+import { METRICS } from "@/lib/data/about";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { ZapIcon } from "@animateicons/react/lucide/zap-icon";
 import { ShieldCheckIcon } from "@animateicons/react/lucide/shield-check-icon";

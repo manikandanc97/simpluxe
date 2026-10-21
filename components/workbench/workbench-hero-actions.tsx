@@ -3,7 +3,7 @@
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
-import { HERO_CONTENT } from "@/lib/content/hero";
+import { HERO_CONTENT } from "@/lib/data/hero";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import Link from "next/link";

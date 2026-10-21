@@ -1,6 +1,6 @@
 "use client";
 
-import { UI_UX_COPY } from "@/lib/content/service-mockups";
+import { UI_UX_COPY } from "@/lib/data/service-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";

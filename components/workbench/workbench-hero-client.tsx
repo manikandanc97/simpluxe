@@ -3,8 +3,8 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CldImage } from "@/components/ui/cld-image";
 import { Container } from "@/components/ui/container";
-import { WORKBENCH_COPY } from "@/lib/content/hero";
-import { PROJECTS } from "@/lib/content/projects";
+import { WORKBENCH_COPY } from "@/lib/data/hero";
+import { PROJECTS } from "@/lib/data/projects";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import {
   AnimatePresence,

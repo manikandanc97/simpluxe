@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/ui/page-hero";
-import { CONTACT_HERO_COPY } from "@/lib/content/contact";
+import { CONTACT_HERO_COPY } from "@/lib/data/contact";
 
 export function ContactHero() {
   return (

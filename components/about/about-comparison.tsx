@@ -1,7 +1,7 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CircleXIcon } from "@animateicons/react/lucide/circle-x-icon";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
-import { COMPARISONS, ABOUT_COMPARISON_CONTENT } from "@/lib/content/about";
+import { COMPARISONS, ABOUT_COMPARISON_CONTENT } from "@/lib/data/about";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export function AboutComparison() {

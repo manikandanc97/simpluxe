@@ -1,5 +1,5 @@
 import { CldImage } from "@/components/ui/cld-image";
-import { type ServiceViewData } from "@/lib/content/services";
+import { type ServiceViewData } from "@/lib/data/services";
 
 interface ServicesMockupWindowProps {
   service: ServiceViewData;

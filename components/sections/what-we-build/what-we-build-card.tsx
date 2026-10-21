@@ -7,7 +7,7 @@ import { useReducedMotion } from "motion/react";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
 import { MockupSkeleton } from "@/components/ui/skeleton";
-import { WHAT_WE_BUILD_CARD_COPY, type HomeService } from "@/lib/content/home-services";
+import { WHAT_WE_BUILD_CARD_COPY, type HomeService } from "@/lib/data/home-services";
 
 const loadingSkeleton = () => <MockupSkeleton />;
 const WebsitesMockup = dynamic(() => import("./mockups/websites").then((mod) => mod.WebsitesMockup), { loading: loadingSkeleton });

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { LOADING_COPY } from "@/lib/content/ui";
+import { LOADING_COPY } from "@/lib/data/ui";
 import type { HTMLAttributes, ReactNode } from "react";
 
 function Skeleton({ className, ...props }: HTMLAttributes<HTMLDivElement>) {

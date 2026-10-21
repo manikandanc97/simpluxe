@@ -1,7 +1,7 @@
-import { EXPERIMENT_CARD_COPY } from "@/lib/content/lab";
+import { EXPERIMENT_CARD_COPY } from "@/lib/data/lab";
 
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
-import type { Experiment } from "@/lib/content/lab";
+import type { Experiment } from "@/lib/data/lab";
 import * as motion from "motion/react-m";
 
 interface ExperimentCardProps {

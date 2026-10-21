@@ -8,7 +8,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { HOME_SERVICES, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/content/home-services";
+import { HOME_SERVICES, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/data/home-services";
 import { slideFromRight, slideFromRightTrack, slideFromRightSubtle, viewportReveal } from "@/lib/motion";
 import { WhatWeBuildCard } from "./what-we-build/what-we-build-card";
 

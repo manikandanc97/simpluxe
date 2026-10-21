@@ -6,7 +6,7 @@ import { type Project } from "@/types/project";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ExternalLinkIcon } from "@animateicons/react/lucide/external-link-icon";
 import { LockIcon } from "@animateicons/react/lucide/lock-icon";
-import { WORK_VIEW_COPY } from "@/lib/content/projects";
+import { WORK_VIEW_COPY } from "@/lib/data/projects";
 
 interface ProjectTemplateCardProps {
   project: Project;
@@ -104,7 +104,6 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
             alt={project.name}
             width={1440}
             height={5000}
-            unoptimized
             style={{
               transform: `translate3d(0, ${translateY}px, 0)`,
               transition: isHovered

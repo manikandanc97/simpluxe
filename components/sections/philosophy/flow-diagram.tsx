@@ -1,5 +1,5 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { FLOW_DIAGRAM_COPY } from "@/lib/content/philosophy";
+import { FLOW_DIAGRAM_COPY } from "@/lib/data/philosophy";
 
 import { ActivityIcon } from "@animateicons/react/huge/activity-icon";
 import { m as motion } from "motion/react";

@@ -1,10 +1,10 @@
 "use client";
 
 import { StaticIcon, type StaticIconName } from "@/components/ui/static-icon";
-import { SITE_NAVBAR_COPY } from "@/lib/content/layout";
+import { SITE_NAVBAR_COPY } from "@/lib/data/layout";
 
-import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/content/layout";
-import { SITE } from "@/lib/content/site";
+import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/data/layout";
+import { SITE } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, m as motion } from "motion/react";
 import { CldImage } from "@/components/ui/cld-image";
@@ -86,7 +86,6 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                 format="auto"
                 quality="auto:eco"
                 className="size-8 object-contain sm:size-9"
-                priority
               />
               <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
                 {SITE_NAVBAR_COPY.brandSimp}<span className="text-primary">{SITE_NAVBAR_COPY.brandLuxe}</span>

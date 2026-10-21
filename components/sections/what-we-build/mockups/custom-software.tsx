@@ -1,7 +1,7 @@
 "use client";
 
 import { m as motion, useReducedMotion } from "motion/react";
-import { CUSTOM_SOFTWARE_COPY as COPY } from "@/lib/content/service-mockups";
+import { CUSTOM_SOFTWARE_COPY as COPY } from "@/lib/data/service-mockups";
 import { MockupWrapper } from "./mockup-wrapper";
 
 export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {

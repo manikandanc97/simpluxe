@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/container";
-import { LEGAL_LAYOUT_COPY } from "@/lib/content/legal";
+import { LEGAL_LAYOUT_COPY } from "@/lib/data/legal";
 import Link from "next/link";
 import type { ReactNode } from "react";
 

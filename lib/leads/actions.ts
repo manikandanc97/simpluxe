@@ -1,8 +1,8 @@
 "use server";
 
-import { LEAD_ACTIONS_COPY } from "@/lib/content/leads";
+import { LEAD_ACTIONS_COPY } from "@/lib/data/leads";
 
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import { createClient } from "@supabase/supabase-js";
 import { after } from "next/server";
 import { deliverLeadNotifications } from "./notifications";

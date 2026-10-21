@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
-import { LEAD_FORM_COPY } from "@/lib/content/leads";
+import { LEAD_FORM_COPY } from "@/lib/data/leads";
 
 type Turnstile = {
   render: (container: HTMLElement, options: Record<string, unknown>) => string;

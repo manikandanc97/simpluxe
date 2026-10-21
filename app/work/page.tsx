@@ -1,4 +1,4 @@
-import { WORK_PAGE_COPY } from "@/lib/content/metadata";
+import { WORK_PAGE_COPY } from "@/lib/data/metadata";
 import { WorkView } from "@/components/pages/work-view";
 import type { Metadata } from "next";
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { StaticIcon, type StaticIconName } from "@/components/ui/static-icon";
-import { NAV_ITEMS } from "@/lib/content/layout";
-import { FOOTER_DATA } from "@/lib/content/layout";
+import { NAV_ITEMS } from "@/lib/data/layout";
+import { FOOTER_DATA } from "@/lib/data/layout";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

@@ -1,4 +1,4 @@
-import { SERVICES_PAGE_COPY } from "@/lib/content/metadata";
+import { SERVICES_PAGE_COPY } from "@/lib/data/metadata";
 import { ServicesView } from "@/components/pages/services-view";
 import type { Metadata } from "next";
 

@@ -1,4 +1,4 @@
-// Catch presentation copy added outside lib/content without importing the app.
+// Catch presentation copy added outside lib/data without importing the app.
 const fs = require("node:fs");
 const path = require("node:path");
 const ts = require("typescript");
@@ -66,7 +66,7 @@ for (const file of ["app", "components", "hooks", "lib/leads"].flatMap(sourceFil
 }
 
 // Shared labels must be referenced through COMMON rather than copied into pages.
-const commonFile = "lib/content/common.ts";
+const commonFile = "lib/data/common.ts";
 const commonAst = ts.createSourceFile(commonFile, fs.readFileSync(commonFile, "utf8"), ts.ScriptTarget.Latest, true);
 const sharedLabels = new Set();
 function collectSharedLabels(node) {
@@ -76,7 +76,7 @@ function collectSharedLabels(node) {
   ts.forEachChild(node, collectSharedLabels);
 }
 collectSharedLabels(commonAst);
-for (const file of sourceFiles("lib/content")) {
+for (const file of sourceFiles("lib/data")) {
   if (file.replaceAll("\\", "/") === commonFile) continue;
   const ast = ts.createSourceFile(file, fs.readFileSync(file, "utf8"), ts.ScriptTarget.Latest, true);
   function checkSharedLabel(node) {
@@ -92,7 +92,7 @@ for (const file of sourceFiles("lib/content")) {
 }
 
 if (failures.length) {
-  console.error("Keep presentation strings in lib/content and reuse shared labels:\n" + failures.join("\n"));
+  console.error("Keep presentation strings in lib/data and reuse shared labels:\n" + failures.join("\n"));
   process.exitCode = 1;
 } else {
   console.log("Site copy check passed: no inline presentation strings or repeated shared labels found.");

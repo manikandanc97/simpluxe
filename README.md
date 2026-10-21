@@ -63,7 +63,7 @@ The "submission service is temporarily unavailable" message means at least one r
 - components/services/, work/, about/, contact/: page-specific components
 - components/leads/: shared lead form, dialog, and provider
 - components/ui/: shared UI primitives
-- lib/content/: site identity, navigation, services, projects, and section copy
+- lib/data/: site identity, navigation, services, projects, and section copy
 - lib/visuals/: background patterns and floating badge positioning
 - lib/leads/: validation and submission Server Action
 - hooks/: shared hooks
@@ -71,7 +71,7 @@ The "submission service is temporarily unavailable" message means at least one r
 - public/: local fonts (website images and technology logos are served by Cloudinary)
 - supabase/leads.sql: lead storage schema
 
-All website copy lives in lib/content/, with one file per area. Edit services.ts for service descriptions, headings, and mockup text; about.ts for About; contact.ts for Contact; projects.ts for project cards and details. The content directory's [editing guide](lib/content/README.md) lists every file.
+All website copy lives in lib/data/, with one file per area. Edit services.ts for service descriptions, headings, and mockup text; about.ts for About; contact.ts for Contact; projects.ts for project cards and details. The content directory's [editing guide](lib/data/README.md) lists every file.
 
 Edit common.ts for shared buttons, page names, and technology labels. Page files reference these values, so a shared wording change applies everywhere. Edit site.ts for identity, headline fragments, contact settings, availability, and response time. SEO lives in metadata.ts; legal policies in legal.ts; form options and messages in leads.ts.
 

@@ -5,10 +5,6 @@ export const ANIMATED_COUNTER_COPY = {
   text0: "0",
 } as const;
 
-export const ANIMATED_TEXT_COPY = {
-  symbol: " ",
-} as const;
-
 export const COMMAND_PALETTE_MODAL_COPY = {
   startAProject: COMMON.actions.startProject,
   commandMenu: "Command menu",
@@ -20,7 +16,6 @@ export const COMMAND_PALETTE_MODAL_COPY = {
 export const DIALOG_COPY = {
   close: "Close",
 } as const;
-
 
 export const LOADING_COPY = {
   loading: "Loading content…",

@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/ui/page-hero";
-import { ABOUT_HERO_COPY } from "@/lib/content/about";
+import { ABOUT_HERO_COPY } from "@/lib/data/about";
 
 export function AboutHero() {
   return (

@@ -1,4 +1,4 @@
-import { TECH_STACK_SECTION_CONTENT } from "@/lib/content/tech-stack";
+import { TECH_STACK_SECTION_CONTENT } from "@/lib/data/tech-stack";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TechValueStrip } from "./tech-stack/tech-value-strip";
 import { Section } from "@/components/ui/section";

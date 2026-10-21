@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { SERVICES_LIST, SERVICES_TABS_COPY } from "@/lib/content/services";
+import { SERVICES_LIST, SERVICES_TABS_COPY } from "@/lib/data/services";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 
 interface ServicesTabsBarProps {

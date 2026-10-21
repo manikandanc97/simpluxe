@@ -1,4 +1,4 @@
-import { LAB_PAGE_COPY } from "@/lib/content/metadata";
+import { LAB_PAGE_COPY } from "@/lib/data/metadata";
 import { LabView } from "@/components/pages/lab-view";
 import type { Metadata } from "next";
 

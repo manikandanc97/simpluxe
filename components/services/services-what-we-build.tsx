@@ -1,7 +1,7 @@
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { SERVICES_WHAT_WE_BUILD_COPY } from "@/lib/content/services";
+import { SERVICES_WHAT_WE_BUILD_COPY } from "@/lib/data/services";
 
-import { type ServiceViewData } from "@/lib/content/services";
+import { type ServiceViewData } from "@/lib/data/services";
 import { SectionHeader } from "@/components/ui/section-header";
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";

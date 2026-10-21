@@ -1,4 +1,4 @@
-import { TECH_STACK_CARD_COPY } from "@/lib/content/tech-stack";
+import { TECH_STACK_CARD_COPY } from "@/lib/data/tech-stack";
 
 
 import { type TechItem } from "@/types/tech";

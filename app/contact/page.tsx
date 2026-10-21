@@ -1,4 +1,4 @@
-import { CONTACT_PAGE_COPY } from "@/lib/content/metadata";
+import { CONTACT_PAGE_COPY } from "@/lib/data/metadata";
 import { ContactView } from "@/components/pages/contact-view";
 import type { Metadata } from "next";
 

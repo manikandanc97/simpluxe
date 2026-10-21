@@ -3,7 +3,7 @@ import { ContactChannels } from "@/components/contact/contact-channels";
 import { LeadForm } from "@/components/leads/lead-form";
 import { Container } from "@/components/ui/container";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { CONTACT_SECTION_CONTENT } from "@/lib/content/contact";
+import { CONTACT_SECTION_CONTENT } from "@/lib/data/contact";
 
 export function ContactView() {
   return (
@@ -31,7 +31,7 @@ export function ContactView() {
               <CardHeader>
                 <CardTitle className="text-2xl sm:text-3xl">
                   {CONTACT_SECTION_CONTENT.titleLine1}{" "}
-                  <span className="brand-gradient-text">
+                  <span className="text-primary">
                     {CONTACT_SECTION_CONTENT.titleLine2}
                   </span>
                 </CardTitle>

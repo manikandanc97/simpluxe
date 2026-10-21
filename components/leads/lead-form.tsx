@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { LEAD_FORM_COPY } from "@/lib/content/leads";
+import { LEAD_FORM_COPY } from "@/lib/data/leads";
 
 import { AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
 import { CelebratoryButton } from "@/components/ui/celebratory-button";
@@ -9,7 +9,7 @@ import { FloatingInput, FloatingTextarea } from "@/components/ui/floating-field"
 import { FormField, FormMessage } from "@/components/ui/form";
 import { submitLead } from "@/lib/leads/actions";
 import { leadSchema, type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import { LeadSuccess } from "./lead-success";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { useActionState, useState, useEffect, useId, useRef, useCallback } from "react";

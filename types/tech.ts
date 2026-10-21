@@ -1,4 +1,4 @@
-import type { CATEGORIES } from "@/lib/content/tech-stack";
+import type { CATEGORIES } from "@/lib/data/tech-stack";
 
 export type TechCategory = (typeof CATEGORIES)[number];
 

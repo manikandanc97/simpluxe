@@ -1,7 +1,7 @@
-import { LEAD_SCHEMA_COPY } from "@/lib/content/leads";
+import { LEAD_SCHEMA_COPY } from "@/lib/data/leads";
 import { z } from "zod";
 
-import { PROJECT_TYPES } from "@/lib/content/leads";
+import { PROJECT_TYPES } from "@/lib/data/leads";
 
 export { PROJECT_TYPES };
 

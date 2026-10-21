@@ -58,7 +58,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "/**",
+        pathname: "/drdl4pdnx/image/upload/**",
       },
       {
         protocol: "https",

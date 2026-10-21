@@ -26,10 +26,11 @@ export interface CldImageProps extends Omit<LoadingImageProps, "src" | "quality"
 export function CldImage({ alt, format, quality, ...props }: CldImageProps) {
   const nextQuality = typeof quality === "number" ? quality : undefined;
   const loaderStrQuality = typeof quality === "string" ? quality : undefined;
+  const usesCloudinary = !props.src.startsWith("http") || props.src.startsWith("https://res.cloudinary.com/");
 
   return (
     <LoadingImage
-      loader={(p) => cloudinaryLoader({ ...p, format, quality: loaderStrQuality || p.quality })}
+      {...(usesCloudinary ? { loader: (p: Parameters<typeof cloudinaryLoader>[0]) => cloudinaryLoader({ ...p, format, quality: loaderStrQuality || p.quality }) } : {})}
       {...props}
       alt={alt}
       quality={nextQuality}

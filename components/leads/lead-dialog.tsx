@@ -1,6 +1,6 @@
 "use client";
 
-import { LEAD_DIALOG_COPY } from "@/lib/content/leads";
+import { LEAD_DIALOG_COPY } from "@/lib/data/leads";
 
 import {
   Dialog,

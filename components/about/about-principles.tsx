@@ -4,7 +4,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { useState } from "react";
 import { CircleCheckIcon } from "@animateicons/react/lucide/circle-check-icon";
 import { cn } from "@/lib/utils";
-import { PRINCIPLES, ABOUT_PRINCIPLES_CONTENT } from "@/lib/content/about";
+import { PRINCIPLES, ABOUT_PRINCIPLES_CONTENT } from "@/lib/data/about";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";

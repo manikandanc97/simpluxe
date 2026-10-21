@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/container";
-import { COMMON } from "@/lib/content/common";
+import { COMMON } from "@/lib/data/common";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Link from "next/link";
 import * as motion from "motion/react-m";

@@ -1,4 +1,4 @@
-import { OPENGRAPH_IMAGE_COPY } from "@/lib/content/metadata";
+import { OPENGRAPH_IMAGE_COPY } from "@/lib/data/metadata";
 import { ImageResponse } from "next/og";
 
 // Violet accent used by the social preview.

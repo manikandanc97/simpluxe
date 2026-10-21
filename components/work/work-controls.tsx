@@ -1,13 +1,13 @@
 "use client";
 
-import { WORK_CONTROLS_COPY } from "@/lib/content/projects";
+import { WORK_CONTROLS_COPY } from "@/lib/data/projects";
 
 import { useState } from "react";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
 import { AnimatedX } from "@/components/ui/animated-icons/convenience-icons";
 import { cn } from "@/lib/utils";
-import { FILTER_SERVICES } from "@/lib/content/projects";
+import { FILTER_SERVICES } from "@/lib/data/projects";
 import { type Project } from "@/types/project";
 
 interface WorkControlsProps {

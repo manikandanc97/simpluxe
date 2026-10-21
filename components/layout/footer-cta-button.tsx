@@ -1,7 +1,7 @@
 "use client";
 
 import { StaticIcon } from "@/components/ui/static-icon";
-import { FOOTER_CTA_BUTTON_COPY } from "@/lib/content/layout";
+import { FOOTER_CTA_BUTTON_COPY } from "@/lib/data/layout";
 
 import { useLead } from "@/components/leads/lead-provider";
 import { Button } from "@/components/ui/button";

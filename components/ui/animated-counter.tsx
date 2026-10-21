@@ -1,6 +1,6 @@
 "use client";
 
-import { ANIMATED_COUNTER_COPY } from "@/lib/content/ui";
+import { ANIMATED_COUNTER_COPY } from "@/lib/data/ui";
 
 import { animate, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";

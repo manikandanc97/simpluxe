@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { m as motion, useReducedMotion } from "motion/react";
 import { ServicesTabsBar } from "@/components/services/services-tabs-bar";
 import { ServicesActiveShowcase } from "@/components/services/services-active-showcase";
-import { type ServiceViewData } from "@/lib/content/services";
+import { type ServiceViewData } from "@/lib/data/services";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { ProcessSkeleton, TechStackSkeleton } from "@/components/ui/skeleton";

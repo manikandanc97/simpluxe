@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/ui/page-hero";
-import { LAB_VIEW_COPY } from "@/lib/content/lab";
+import { LAB_VIEW_COPY } from "@/lib/data/lab";
 
 export function LabHero() {
   return (

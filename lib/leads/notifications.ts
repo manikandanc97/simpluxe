@@ -2,7 +2,7 @@ import "server-only";
 
 import { createClient } from "@supabase/supabase-js";
 import nodemailer from "nodemailer";
-import { createLeadEmail } from "@/lib/content/lead-emails";
+import { createLeadEmail } from "@/lib/data/lead-emails";
 
 type Job = {
   id: string;

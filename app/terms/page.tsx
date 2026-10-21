@@ -1,4 +1,4 @@
-import { TERMS_PAGE_COPY } from "@/lib/content/legal";
+import { TERMS_PAGE_COPY } from "@/lib/data/legal";
 import { LegalPageLayout } from "@/components/legal/legal-page-layout";
 import type { Metadata } from "next";
 

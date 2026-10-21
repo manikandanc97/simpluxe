@@ -1,7 +1,7 @@
 "use client";
 
 import { StaticIcon } from "@/components/ui/static-icon";
-import { ERROR_COPY } from "@/lib/content/ui";
+import { ERROR_COPY } from "@/lib/data/ui";
 
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";

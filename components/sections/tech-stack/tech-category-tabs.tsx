@@ -1,7 +1,7 @@
-import { TECH_CATEGORY_TABS_COPY } from "@/lib/content/tech-stack";
+import { TECH_CATEGORY_TABS_COPY } from "@/lib/data/tech-stack";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { CATEGORIES, CATEGORY_ICONS, type Category } from "@/lib/content/tech-stack";
+import { CATEGORIES, CATEGORY_ICONS, type Category } from "@/lib/data/tech-stack";
 import { m as motion } from "motion/react";
 
 const SPRING = { type: "spring" as const, stiffness: 340, damping: 28 };

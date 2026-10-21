@@ -1,10 +1,10 @@
-import { SITE_FOOTER_COPY } from "@/lib/content/layout";
+import { SITE_FOOTER_COPY } from "@/lib/data/layout";
 import { StaticIcon } from "@/components/ui/static-icon";
 import { Container } from "@/components/ui/container";
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import { CldImage } from "@/components/ui/cld-image";
 import Link from "next/link";
-import { FOOTER_DATA } from "@/lib/content/layout";
+import { FOOTER_DATA } from "@/lib/data/layout";
 import { FooterNav } from "./footer-nav";
 import { FooterCtaButton } from "./footer-cta-button";
 
@@ -96,7 +96,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               <h2 className="text-xl font-extrabold text-heading leading-tight tracking-tight sm:text-2xl">
                 {SITE_FOOTER_COPY.headlineLine1}<br />
                 {SITE_FOOTER_COPY.headlineLine2Prefix}{" "}
-                <span className="brand-gradient-text">
+                <span className="text-primary">
                   {SITE_FOOTER_COPY.headlineHighlight}
                 </span>
               </h2>

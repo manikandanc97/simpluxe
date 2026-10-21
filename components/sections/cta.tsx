@@ -1,13 +1,13 @@
 "use client";
 
-import { CTA_COPY } from "@/lib/content/cta";
+import { CTA_COPY } from "@/lib/data/cta";
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "@animateicons/react/lucide/calendar-icon";
 import { SectionHeader } from "@/components/ui/section-header";
-import { CTA_CONTENT } from "@/lib/content/cta";
+import { CTA_CONTENT } from "@/lib/data/cta";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { useRef } from "react";

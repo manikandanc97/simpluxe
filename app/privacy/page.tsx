@@ -1,7 +1,7 @@
-import { PRIVACY_PAGE_COPY } from "@/lib/content/legal";
+import { PRIVACY_PAGE_COPY } from "@/lib/data/legal";
 import { LegalPageLayout } from "@/components/legal/legal-page-layout";
 import type { Metadata } from "next";
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {

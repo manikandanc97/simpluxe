@@ -1,6 +1,6 @@
 "use client";
 
-import { ECOMMERCE_COPY } from "@/lib/content/service-mockups";
+import { ECOMMERCE_COPY } from "@/lib/data/service-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";

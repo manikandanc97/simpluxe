@@ -1,5 +1,5 @@
 import { StaticIcon } from "@/components/ui/static-icon";
-import { NOT_FOUND_COPY } from "@/lib/content/ui";
+import { NOT_FOUND_COPY } from "@/lib/data/ui";
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
 

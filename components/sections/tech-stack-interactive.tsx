@@ -1,11 +1,11 @@
 "use client";
 
-import { TECH_STACK_INTERACTIVE_COPY } from "@/lib/content/tech-stack";
+import { TECH_STACK_INTERACTIVE_COPY } from "@/lib/data/tech-stack";
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, m as motion } from "motion/react";
 import { staggerContainer } from "@/lib/motion";
-import { CATEGORIES, TECH_STACK, type Category } from "@/lib/content/tech-stack";
+import { CATEGORIES, TECH_STACK, type Category } from "@/lib/data/tech-stack";
 import { TechCard } from "./tech-stack-card";
 import { TechCategoryTabs } from "./tech-stack/tech-category-tabs";
 import { fadeUp, viewportReveal } from "@/lib/motion";

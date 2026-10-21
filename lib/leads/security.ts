@@ -1,6 +1,6 @@
 import "server-only";
 import { getTurnstileSiteKey } from "./turnstile";
-import { SITE } from "@/lib/content/site";
+import { SITE } from "@/lib/data/site";
 
 /** Configured widgets must always be verified on the server, even for direct POSTs. */
 export async function verifyLeadChallenge(token: FormDataEntryValue | null): Promise<"valid" | "invalid" | "unavailable"> {

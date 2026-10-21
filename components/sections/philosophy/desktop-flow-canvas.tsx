@@ -1,6 +1,6 @@
-import { DESKTOP_FLOW_CANVAS_COPY } from "@/lib/content/philosophy";
+import { DESKTOP_FLOW_CANVAS_COPY } from "@/lib/data/philosophy";
 
-import { FLOW_NODES } from "@/lib/content/philosophy";
+import { FLOW_NODES } from "@/lib/data/philosophy";
 import { BoxIcon } from "@animateicons/react/lucide/box-icon";
 import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
 import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
@@ -238,7 +238,6 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
               width={80}
               height={80}
               className="size-14 select-none object-contain drop-shadow-sm sm:size-16"
-              priority
             />
           </div>
         </div>

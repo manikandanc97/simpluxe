@@ -1,4 +1,4 @@
-import { SITE_FOOTER_COPY } from "@/lib/content/layout";
+import { SITE_FOOTER_COPY } from "@/lib/data/layout";
 import { Container } from "@/components/ui/container";
 
 export function FooterBrandText() {

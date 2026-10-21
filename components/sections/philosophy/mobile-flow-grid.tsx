@@ -1,5 +1,5 @@
-import { MOBILE_FLOW_GRID_COPY } from "@/lib/content/philosophy";
-import { FLOW_NODES } from "@/lib/content/philosophy";
+import { MOBILE_FLOW_GRID_COPY } from "@/lib/data/philosophy";
+import { FLOW_NODES } from "@/lib/data/philosophy";
 import { BoxIcon } from "@animateicons/react/lucide/box-icon";
 import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
 import { LightbulbIcon } from "@animateicons/react/lucide/lightbulb-icon";
@@ -26,7 +26,6 @@ export function MobileFlowGrid() {
               width={64}
               height={64}
               className="size-12 select-none object-contain drop-shadow-sm xs:size-14"
-              priority
             />
           </div>
         </div>

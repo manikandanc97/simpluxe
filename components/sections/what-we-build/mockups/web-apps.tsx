@@ -1,4 +1,4 @@
-import { WEB_APPS_COPY } from "@/lib/content/service-mockups";
+import { WEB_APPS_COPY } from "@/lib/data/service-mockups";
 
 import { m as motion } from "motion/react";
 import { MockupWrapper } from "./mockup-wrapper";
