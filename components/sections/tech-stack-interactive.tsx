@@ -42,7 +42,7 @@ export function TechStackInteractive() {
       <div
         role="region"
         aria-label={TECH_STACK_INTERACTIVE_COPY.technologiesLabel(activeCategory)}
-        className="relative min-h-65"
+        className="relative min-h-36"
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -52,7 +52,7 @@ export function TechStackInteractive() {
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -50px 0px" }}
             exit="hidden"
-            className={`grid grid-cols-2 md:grid-cols-3 ${filtered.length <= 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"} gap-4.5 sm:gap-4`}
+            className={`grid grid-cols-2 md:grid-cols-3 ${filtered.length <= 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"} gap-4`}
           >
             {filtered.map((tech) => (
               <TechCard key={tech.slug} tech={tech} />

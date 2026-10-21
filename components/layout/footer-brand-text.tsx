@@ -1,4 +1,4 @@
-import { SITE_FOOTER_COPY } from "@/lib/data/layout";
+﻿import { SITE_FOOTER_COPY } from "@/lib/data/layout";
 import { Container } from "@/components/ui/container";
 
 export function FooterBrandText() {
@@ -26,7 +26,7 @@ export function FooterBrandText() {
             fontSize="160"
             fontWeight="900"
           >
-            <tspan className="fill-slate-900 dark:fill-slate-100">
+            <tspan className="fill-slate-900">
               {SITE_FOOTER_COPY.brandSimpUpper}
             </tspan>
             <tspan fill="url(#footer-brand-gradient)">

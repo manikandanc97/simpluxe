@@ -1,4 +1,4 @@
-import { TECH_STACK_SECTION_CONTENT } from "@/lib/data/tech-stack";
+﻿import { TECH_STACK_SECTION_CONTENT } from "@/lib/data/tech-stack";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TechValueStrip } from "./tech-stack/tech-value-strip";
 import { Section } from "@/components/ui/section";
@@ -13,7 +13,7 @@ const TechStackInteractive = dynamic(
 );
 export function TechStack() {
   return (
-    <Section id="tech-stack" className="overflow-hidden bg-white dark:bg-card/40 font-satoshi">
+    <Section id="tech-stack" className="overflow-hidden bg-white font-satoshi">
       <Container className="relative z-10 flex flex-col gap-6 sm:gap-10 lg:gap-12">
         {/* ── Top Header ─────────────────────────────────────────────────────── */}
         <FadeUpWrapper className="relative text-center">
@@ -43,11 +43,11 @@ export function TechStack() {
 
         {/* ── Bottom Divider & Editorial Note ─────────────────────────────────── */}
         <div className="flex items-center justify-center gap-4 max-w-4xl mx-auto w-full px-2">
-          <div className="hidden h-px bg-slate-200/80 flex-1 sm:block dark:bg-border/60" />
-          <p className="text-xs font-mono uppercase tracking-widest text-slate-400 text-center leading-relaxed dark:text-muted-foreground/60">
+          <div className="hidden h-px bg-slate-200/80 flex-1 sm:block" />
+          <p className="text-xs font-mono uppercase tracking-widest text-slate-400 text-center leading-relaxed">
             {TECH_STACK_SECTION_CONTENT.footerNote}
           </p>
-          <div className="hidden h-px bg-slate-200/80 flex-1 sm:block dark:bg-border/60" />
+          <div className="hidden h-px bg-slate-200/80 flex-1 sm:block" />
         </div>
       </Container>
     </Section>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
@@ -113,7 +113,7 @@ export function ServicesExplorer({ services }: { services: ServiceViewData[] }) 
 
       <Section
         id="tech-stack"
-        className="relative z-10 overflow-hidden bg-white border-t border-border select-none dark:bg-card/40 font-satoshi"
+        className="relative z-10 overflow-hidden bg-white border-t border-border select-none font-satoshi"
       >
         <Container className="relative z-10">
           <ServicesTechStack service={activeService} />

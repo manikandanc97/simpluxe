@@ -1,4 +1,4 @@
-import { TECH_CATEGORY_TABS_COPY } from "@/lib/data/tech-stack";
+﻿import { TECH_CATEGORY_TABS_COPY } from "@/lib/data/tech-stack";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CATEGORIES, CATEGORY_ICONS, type Category } from "@/lib/data/tech-stack";
@@ -39,7 +39,7 @@ export function TechCategoryTabs({
               className={`relative isolate px-3 sm:px-4.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/50 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 w-full sm:w-auto ${
                 isActive
                   ? "text-white shadow-lg shadow-primary-hover/25"
-                  : "border border-slate-200/80 dark:border-border/70 text-slate-600 dark:text-muted-foreground bg-slate-50 dark:bg-card/80 hover:text-slate-900 dark:hover:text-foreground hover:bg-slate-100/90 hover:border-slate-300 dark:hover:border-border"
+                  : "border border-slate-200/80 text-slate-600 bg-slate-50 hover:text-slate-900 hover:bg-slate-100/90 hover:border-slate-300"
               }`}
             >
               {/* Active tab background */}
@@ -57,7 +57,7 @@ export function TechCategoryTabs({
                 name={Icon}
                 size={15}
                 className={`relative z-10 ${
-                  isActive ? "text-white" : "text-slate-500 dark:text-muted-foreground"
+                  isActive ? "text-white" : "text-slate-500"
                 }`}
               />
 
@@ -69,7 +69,7 @@ export function TechCategoryTabs({
                 className={`relative z-10 text-xs font-medium px-2 py-0.5 rounded-full hidden sm:inline-block ${
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-white dark:bg-muted/60 text-slate-500 dark:text-muted-foreground border border-slate-200/60"
+                    : "bg-white text-slate-500 border border-slate-200/60"
                 }`}
               >
                 {count}

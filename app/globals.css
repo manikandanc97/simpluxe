@@ -22,11 +22,8 @@
 /* Scan application code only; temporary browser profiles can contain locked files. */
 @source "./";
 @source "../components";
-@source "../hooks";
 @source "../lib";
 @source "../types";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --breakpoint-xs: 30rem;
@@ -232,36 +229,10 @@
   letter-spacing: 0.04em !important;
 }
 
-/* ─── Keyframes ─────────────────────────────────────────── */
-
-@keyframes hero-word-reveal {
-  0% {
-    transform: translateY(40%);
-    filter: blur(8px);
-  }
-  100% {
-    transform: translateY(0);
-    filter: blur(0px);
-  }
-}
-
-/* ─── Utility classes ────────────────────────────────────── */
-
-.animate-hero-word-reveal {
-  animation: hero-word-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  will-change: transform, opacity, filter;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .animate-bounce,
   .animate-pulse {
     animation: none !important;
-  }
-  .animate-hero-word-reveal {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
   }
 }
 
@@ -417,11 +388,6 @@
 .tech-stack-card:hover {
   border-color: var(--tech-accent);
   box-shadow: 0 16px 32px -6px var(--tech-glow), 0 4px 14px -2px var(--tech-glow-subtle);
-}
-
-:is(.dark) .tech-stack-card[data-invert="true"]:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 16px 32px -6px rgba(255, 255, 255, 0.16), 0 4px 14px -2px rgba(255, 255, 255, 0.08);
 }
 
 /* Template Showcase Hover-Scroll Window */

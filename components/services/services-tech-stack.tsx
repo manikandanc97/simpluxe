@@ -19,21 +19,18 @@ interface ServiceToolItem {
   slug: string;
   imageSlug: string;
   accentColor: string;
-  badge: string;
-  purpose: string;
   invertInDark: boolean;
 }
 
 export function ServicesTechStack({ service }: ServicesTechStackProps) {
   const stackItems = useMemo(() => {
-    return service.techStack.map(({ slug, purpose }): ServiceToolItem => {
+    return service.techStack.map(({ slug }): ServiceToolItem => {
       const fromStack = TECH_STACK.find((t) => t.slug === slug);
       const fromDetails: ServiceTechDetails | undefined = TECH_DETAILS[slug as ServiceTechSlug];
 
       const name = fromStack?.name || fromDetails?.name || slug;
       const imageSlug = fromDetails?.imageSlug || fromStack?.slug || slug;
       const accentColor = fromStack?.accentColor || (slug === "hostingervps" ? "#673DE6" : "#2563EB");
-      const badge = fromStack?.badge || (slug === "hostingervps" ? "VPS Hosting" : "Technology");
       const invertInDark = Boolean(fromStack?.invertInDark || fromDetails?.invertDark);
 
       return {
@@ -41,8 +38,6 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
         slug,
         imageSlug,
         accentColor,
-        badge,
-        purpose,
         invertInDark,
       };
     });
@@ -94,57 +89,31 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
                   y: -4,
                   transition: { duration: 0.25, ease: "easeOut" },
                 }}
-                data-invert={item.invertInDark ? "true" : undefined}
                 style={{
                   "--tech-accent": item.accentColor,
                   "--tech-glow": `${item.accentColor}40`,
                   "--tech-glow-subtle": `${item.accentColor}20`,
                 } as React.CSSProperties}
-                className="relative flex flex-col items-center justify-between text-center gap-4 p-4 rounded-2xl border border-slate-200/80 bg-slate-50 shadow-xs overflow-hidden h-full sm:p-5 dark:border-border/70 dark:bg-card/70 tech-stack-card group"
+                className="relative flex flex-col items-center justify-center text-center gap-3 p-4 rounded-2xl border border-slate-200/80 bg-slate-50 shadow-xs overflow-hidden sm:p-5 tech-stack-card group"
               >
                 {/* Official Brand Logo Squircle Container */}
-                <div className="relative w-15 h-15 rounded-2xl bg-white border border-slate-200/70 flex items-center justify-center p-3.5 shadow-2xs transition-transform duration-300 dark:bg-muted/40 dark:border-border/60 sm:p-4 group-hover:scale-105">
+                <div className="relative w-14 h-14 rounded-2xl bg-white border border-slate-200/70 flex items-center justify-center p-3.5 shadow-2xs transition-transform duration-300 sm:w-15 sm:h-15 sm:p-4 group-hover:scale-105">
                   <CldImage
                     src={`simpluxe/tech/${item.imageSlug}`}
                     alt={SERVICES_TECH_STACK_COPY.logoAlt(item.name)}
                     width={38}
                     height={38}
-                    className={cn(
-                      "w-full h-full object-contain transition-transform duration-300 group-hover:scale-110",
-                      item.invertInDark && "dark:invert dark:brightness-125"
-                    )}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
 
-                <div className="flex flex-col items-center gap-1.5 flex-1 justify-center w-full">
-                  {/* Brand-Colored Heading */}
-                  <h3
-                    className={cn(
-                      "type-h3 !text-base font-bold transition-all group-hover:brightness-110",
-                      item.invertInDark && "dark:!text-white"
-                    )}
-                    style={{ color: item.accentColor }}
-                  >
-                    {item.name}
-                  </h3>
-
-                  {/* Purpose Description */}
-                  <p className="text-xs leading-5 text-muted-foreground text-center line-clamp-2 min-h-10 flex items-center justify-center w-full px-1">
-                    {item.purpose}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-center w-full pt-1">
-                  <span
-                    className={cn(
-                      "text-xs font-semibold whitespace-nowrap text-center tracking-wide",
-                      item.invertInDark && "dark:!text-white"
-                    )}
-                    style={{ color: item.accentColor }}
-                  >
-                    {item.badge}
-                  </span>
-                </div>
+                {/* Brand-Colored Heading */}
+                <h3
+                  className="text-xs font-medium leading-tight transition-all group-hover:brightness-110 sm:text-sm"
+                  style={{ color: item.accentColor }}
+                >
+                  {item.name}
+                </h3>
               </motion.div>
             ))}
           </motion.div>
@@ -153,11 +122,11 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
 
       {/* ── Bottom Divider & Project Fit Note ── */}
       <div className="flex items-center justify-center gap-4 max-w-4xl w-full px-2 ts-footer">
-        <div className="hidden h-px bg-slate-200/80 flex-1 sm:block dark:bg-border/60" />
-        <p className="text-xs font-mono uppercase tracking-widest text-slate-400 text-center leading-relaxed dark:text-muted-foreground/60">
+        <div className="hidden h-px bg-slate-200/80 flex-1 sm:block" />
+        <p className="text-xs font-mono uppercase tracking-widest text-slate-400 text-center leading-relaxed">
           {SERVICES_TECH_STACK_COPY.projectFitNote}
         </p>
-        <div className="hidden h-px bg-slate-200/80 flex-1 sm:block dark:bg-border/60" />
+        <div className="hidden h-px bg-slate-200/80 flex-1 sm:block" />
       </div>
     </div>
   );

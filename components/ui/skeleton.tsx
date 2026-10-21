@@ -33,7 +33,7 @@ export function ProcessSkeleton() {
 }
 
 export function TechStackSkeleton() {
-  return <LoadingRegion className="w-full"><div className="flex flex-col gap-8"><Skeleton className="h-12 w-full max-w-2xl self-center rounded-full" /><div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{Array.from({ length: 8 }, (_, i) => <Skeleton key={i} className="h-44" />)}</div></div></LoadingRegion>;
+  return <LoadingRegion className="w-full"><div className="flex flex-col gap-8"><Skeleton className="h-12 w-full max-w-2xl self-center rounded-full" /><div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{Array.from({ length: 8 }, (_, i) => <Skeleton key={i} className="h-36" />)}</div></div></LoadingRegion>;
 }
 
 export function PageSkeleton() {

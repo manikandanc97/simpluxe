@@ -15,7 +15,6 @@ interface SharedFaqSectionProps {
   highlightedText?: string;
   description?: string;
   className?: string;
-  withAmbientDecor?: boolean;
 }
 
 export function SharedFaqSection({

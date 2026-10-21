@@ -1,4 +1,4 @@
-import { COMMON } from "./common";
+﻿import { COMMON } from "./common";
 import type { PROJECT_TYPES } from "./leads";
 import { type ServiceTechSlug } from "./tech-stack";
 import type { ElementType as LucideIcon } from "react";
@@ -128,29 +128,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Marketing Websites",
         "description": "Bespoke digital flagships that communicate value clearly and convert visitors.",
         "iconType": "globe",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       },
       {
         "title": "Landing Pages",
         "description": "High-impact, conversion-focused campaign pages built for ad traffic and launches.",
         "iconType": "rocket",
-        "bgColor": "bg-pink-50 dark:bg-pink-950/40",
-        "iconColor": "text-pink-600 dark:text-pink-400"
+        "bgColor": "bg-pink-50",
+        "iconColor": "text-pink-600"
       },
       {
         "title": "Interactive Portfolios",
         "description": "Immersive narrative showcases for studios, architects, and premium creators.",
         "iconType": "layout",
-        "bgColor": "bg-amber-50 dark:bg-amber-950/40",
-        "iconColor": "text-amber-600 dark:text-amber-400"
+        "bgColor": "bg-amber-50",
+        "iconColor": "text-amber-600"
       },
       {
         "title": "CMS & Editorial Hubs",
         "description": "Effortless content publishing systems powered by modern headless architectures.",
         "iconType": "file-text",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
+        "bgColor": "bg-emerald-50",
+        "iconColor": "text-emerald-600"
       }
     ],
     "perfectFor": [
@@ -273,29 +273,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Business Platforms",
         "description": "Custom platforms for complex operations.",
         "iconType": "platform",
-        "bgColor": "bg-accent-soft dark:bg-purple-950/40",
-        "iconColor": "text-chart-2 dark:text-purple-400"
+        "bgColor": "bg-accent-soft",
+        "iconColor": "text-chart-2"
       },
       {
         "title": "Customer Portals",
         "description": "Secure and intuitive user experiences.",
         "iconType": "portal",
-        "bgColor": "bg-accent-soft dark:bg-pink-950/40",
-        "iconColor": "text-primary dark:text-pink-400"
+        "bgColor": "bg-accent-soft",
+        "iconColor": "text-primary"
       },
       {
         "title": "Internal Tools",
         "description": "Streamline your team's daily operations.",
         "iconType": "tool",
-        "bgColor": "bg-chart-4/10 dark:bg-orange-950/40",
-        "iconColor": "text-chart-4 dark:text-orange-400"
+        "bgColor": "bg-chart-4/10",
+        "iconColor": "text-chart-4"
       },
       {
         "title": "CRM Systems",
         "description": "Manage customers, sales and workflows.",
         "iconType": "crm",
-        "bgColor": "bg-chart-3/10 dark:bg-sky-950/40",
-        "iconColor": "text-chart-3 dark:text-sky-400"
+        "bgColor": "bg-chart-3/10",
+        "iconColor": "text-chart-3"
       }
     ],
     "perfectFor": [
@@ -419,29 +419,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Custom DTC Storefronts",
         "description": "Bespoke digital brand experiences with fluid micro-interactions and instant cart drawers.",
         "iconType": "shopping-bag",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
+        "bgColor": "bg-emerald-50",
+        "iconColor": "text-emerald-600"
       },
       {
         "title": "Multi-Vendor Marketplaces",
         "description": "Scalable seller onboarding, automated commission splits, and vendor dashboards.",
         "iconType": "store",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       },
       {
         "title": "B2B Wholesale Portals",
         "description": "Tiered wholesale pricing, custom quotation pipelines, and bulk invoice ordering.",
         "iconType": "briefcase",
-        "bgColor": "bg-purple-50 dark:bg-purple-950/40",
-        "iconColor": "text-purple-600 dark:text-purple-400"
+        "bgColor": "bg-purple-50",
+        "iconColor": "text-purple-600"
       },
       {
         "title": "Subscription Commerce",
         "description": "Automated recurring deliveries, membership perks, and self-serve customer management.",
         "iconType": "refresh",
-        "bgColor": "bg-pink-50 dark:bg-pink-950/40",
-        "iconColor": "text-pink-600 dark:text-pink-400"
+        "bgColor": "bg-pink-50",
+        "iconColor": "text-pink-600"
       }
     ],
     "perfectFor": [
@@ -566,29 +566,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "iOS & Android Consumer Apps",
         "description": "Feature-packed mobile apps with polished navigation, haptics, and social feeds.",
         "iconType": "smartphone",
-        "bgColor": "bg-rose-50 dark:bg-rose-950/40",
-        "iconColor": "text-rose-600 dark:text-rose-400"
+        "bgColor": "bg-rose-50",
+        "iconColor": "text-rose-600"
       },
       {
         "title": "Enterprise Field Tools",
         "description": "Offline-first inspection, logistics, and data collection apps for field teams.",
         "iconType": "clipboard",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       },
       {
         "title": "On-Demand & Geolocation",
         "description": "Live GPS tracking, real-time driver/customer coordination, and push alerts.",
         "iconType": "map-pin",
-        "bgColor": "bg-amber-50 dark:bg-amber-950/40",
-        "iconColor": "text-amber-600 dark:text-amber-400"
+        "bgColor": "bg-amber-50",
+        "iconColor": "text-amber-600"
       },
       {
         "title": "Health & Habit Trackers",
         "description": "Sensory feedback, device biometric security (Face ID), and localized notifications.",
         "iconType": "activity",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
+        "bgColor": "bg-emerald-50",
+        "iconColor": "text-emerald-600"
       }
     ],
     "perfectFor": [
@@ -711,29 +711,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Multi-Tenant Workspaces",
         "description": "Organization-level data isolation, custom domains, and granular role permissions.",
         "iconType": "layers",
-        "bgColor": "bg-purple-50 dark:bg-purple-950/40",
-        "iconColor": "text-purple-600 dark:text-purple-400"
+        "bgColor": "bg-purple-50",
+        "iconColor": "text-purple-600"
       },
       {
         "title": "Subscription & Metered Billing",
         "description": "Stripe billing with seat pricing, usage thresholds, coupons, and tax automation.",
         "iconType": "credit-card",
-        "bgColor": "bg-indigo-50 dark:bg-indigo-950/40",
-        "iconColor": "text-indigo-600 dark:text-indigo-400"
+        "bgColor": "bg-indigo-50",
+        "iconColor": "text-indigo-600"
       },
       {
         "title": "API-First Micro-SaaS",
         "description": "Developer API keys, rate-limiting, documentation, and webhook delivery engines.",
         "iconType": "code",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       },
       {
         "title": "Product Analytics & Audit Logs",
         "description": "Track user events, feature usage, retention funnels, and enterprise compliance logs.",
         "iconType": "bar-chart",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
+        "bgColor": "bg-emerald-50",
+        "iconColor": "text-emerald-600"
       }
     ],
     "perfectFor": [
@@ -858,29 +858,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Logo Systems & Marks",
         "description": "Primary, secondary, and responsive icon marks for all scales.",
         "iconType": "palette",
-        "bgColor": "bg-amber-50 dark:bg-amber-950/40",
-        "iconColor": "text-amber-600 dark:text-amber-400"
+        "bgColor": "bg-amber-50",
+        "iconColor": "text-amber-600"
       },
       {
         "title": "Color & Typography Scales",
         "description": "Curated harmonious palettes, WCAG contrast pairing, and editorial typographic hierarchy.",
         "iconType": "type",
-        "bgColor": "bg-pink-50 dark:bg-pink-950/40",
-        "iconColor": "text-pink-600 dark:text-pink-400"
+        "bgColor": "bg-pink-50",
+        "iconColor": "text-pink-600"
       },
       {
         "title": "Brand Guidelines Manual",
         "description": "Exhaustive documentation on clearspace, do's and don'ts, and consistent asset usage.",
         "iconType": "book-open",
-        "bgColor": "bg-purple-50 dark:bg-purple-950/40",
-        "iconColor": "text-purple-600 dark:text-purple-400"
+        "bgColor": "bg-purple-50",
+        "iconColor": "text-purple-600"
       },
       {
         "title": "Marketing & Social Collateral",
         "description": "Stationery kits, pitch deck templates, social media assets, and vector icon libraries.",
         "iconType": "image",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       }
     ],
     "perfectFor": [
@@ -1003,29 +1003,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "User Journey & Flow Mapping",
         "description": "Eliminate dead-ends and confusion with step-by-step psychological workflow maps.",
         "iconType": "compass",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       },
       {
         "title": "Comprehensive Design Systems",
         "description": "Standardized color, typography, input, modal, and button component tokens.",
         "iconType": "layers",
-        "bgColor": "bg-purple-50 dark:bg-purple-950/40",
-        "iconColor": "text-purple-600 dark:text-purple-400"
+        "bgColor": "bg-purple-50",
+        "iconColor": "text-purple-600"
       },
       {
         "title": "High-Fidelity Interactive Prototypes",
         "description": "Clickable Figma prototypes with realistic animations for user testing and pitching.",
         "iconType": "mouse-pointer",
-        "bgColor": "bg-pink-50 dark:bg-pink-950/40",
-        "iconColor": "text-pink-600 dark:text-pink-400"
+        "bgColor": "bg-pink-50",
+        "iconColor": "text-pink-600"
       },
       {
         "title": "Usability Testing & UX Audits",
         "description": "Heuristic evaluation, accessibility checks (WCAG AA), and task completion analysis.",
         "iconType": "check-circle",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
+        "bgColor": "bg-emerald-50",
+        "iconColor": "text-emerald-600"
       }
     ],
     "perfectFor": [
@@ -1134,29 +1134,29 @@ export const SERVICES_LIST: ServiceData[] = [
         "title": "Enterprise Backoffices & ERPs",
         "description": "Unified command centers integrating inventory, procurement, and team operations.",
         "iconType": "cpu",
-        "bgColor": "bg-blue-50 dark:bg-blue-950/40",
-        "iconColor": "text-blue-600 dark:text-blue-400"
+        "bgColor": "bg-blue-50",
+        "iconColor": "text-blue-600"
       },
       {
         "title": "High-Throughput API Bridges",
         "description": "Low-latency REST & GraphQL microservices bridging disparate legacy systems.",
         "iconType": "network",
-        "bgColor": "bg-purple-50 dark:bg-purple-950/40",
-        "iconColor": "text-purple-600 dark:text-purple-400"
+        "bgColor": "bg-purple-50",
+        "iconColor": "text-purple-600"
       },
       {
         "title": COMMON.labels.legacyModernization,
         "description": "Gradual zero-downtime refactoring of monolithic legacy code into modern stacks.",
         "iconType": "refresh",
-        "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
-        "iconColor": "text-emerald-600 dark:text-emerald-400"
+        "bgColor": "bg-emerald-50",
+        "iconColor": "text-emerald-600"
       },
       {
         "title": "Data Pipelines & ETL",
         "description": "Automated aggregation, transformation, and warehousing of large datasets.",
         "iconType": "database",
-        "bgColor": "bg-amber-50 dark:bg-amber-950/40",
-        "iconColor": "text-amber-600 dark:text-amber-400"
+        "bgColor": "bg-amber-50",
+        "iconColor": "text-amber-600"
       }
     ],
     "deliverables": [
