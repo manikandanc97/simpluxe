@@ -29,7 +29,7 @@ On shells without the PowerShell script restriction, npm can be used directly.
 Open http://localhost:3000.
 
 Set NEXT_PUBLIC_SITE_URL to the public site origin (http://localhost:3000 for local metadata). The default production origin is https://simpluxe.in.
-The example includes the Cloudinary cloud serving the existing site assets. Change it only when those assets exist in another cloud.
+The example includes the Cloudinary cloud serving the brand mark, favicon, technology logos, and work-page screenshots. Change `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` only when the matching public IDs exist in another cloud. The shared `lib/cloudinary.ts` module builds asset URLs, while `lib/cloudinary-loader.ts` applies responsive width, `f_auto`, and `q_auto` delivery transformations to every `next/image`. Public image delivery does not require `CLOUDINARY_API_KEY` or `CLOUDINARY_API_SECRET`; keep those server-only credentials unset unless an upload feature is added.
 Set NEXT_PUBLIC_CONTACT_EMAIL and NEXT_PUBLIC_CONTACT_PHONE for direct contact. Optional NEXT_PUBLIC_TWITTER_URL, NEXT_PUBLIC_LINKEDIN_URL, NEXT_PUBLIC_INSTAGRAM_URL, NEXT_PUBLIC_YOUTUBE_URL, and NEXT_PUBLIC_GITHUB_URL configure social profiles; blank values hide their links. NEXT_PUBLIC_WHATSAPP_NUMBER is optional and should include the country code; leave it blank to hide WhatsApp links.
 
 Form submissions require Supabase. Cloudinary credentials configure images and cannot save form submissions. Without Supabase credentials, submissions return an error with direct contact options in both development and production; they are never reported as saved.
@@ -68,7 +68,7 @@ The "submission service is temporarily unavailable" message means at least one r
 - lib/leads/: validation and submission Server Action
 - hooks/: shared hooks
 - types/: shared content types
-- public/: local fonts (website images and technology logos are served by Cloudinary)
+- lib/cloudinary.ts and lib/cloudinary-loader.ts: Cloudinary asset mapping and responsive delivery transformations
 - supabase/leads.sql: lead storage schema
 
 All website copy lives in lib/data/, with one file per area. Edit services.ts for service descriptions, headings, and mockup text; about.ts for About; contact.ts for Contact; projects.ts for project cards and details. The content directory's [editing guide](lib/data/README.md) lists every file.

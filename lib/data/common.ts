@@ -5,7 +5,6 @@ export const COMMON = {
   brand: {
     title: `${SITE.name} — ${SITE.tagline}`,
     homeLabel: `${SITE.name} Home`,
-    logoAlt: `${SITE.name} Logo`,
   },
   actions: {
     startProject: "Start a project",

@@ -7,7 +7,7 @@ import { NAV_ITEMS, NAVBAR_CONTENT } from "@/lib/data/layout";
 import { SITE } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, m as motion } from "motion/react";
-import { CldImage } from "@/components/ui/cld-image";
+import { BrandMark } from "@/components/ui/brand-mark";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
@@ -77,16 +77,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               className="flex items-center gap-2.5 rounded-lg outline-none shrink-0 focus-visible:ring-2 focus-visible:ring-ring"
               aria-label={SITE_NAVBAR_COPY.simpluxeHome}
             >
-              <CldImage
-                src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
-                alt={SITE_NAVBAR_COPY.simpluxeLogo}
-                width={64}
-                height={64}
-                sizes="32px"
-                format="auto"
-                quality="auto:eco"
-                className="size-8 object-contain sm:size-9"
-              />
+              <BrandMark className="size-8 sm:size-9" />
               <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
                 {SITE_NAVBAR_COPY.brandSimp}<span className="text-primary">{SITE_NAVBAR_COPY.brandLuxe}</span>
               </span>

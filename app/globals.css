@@ -363,23 +363,6 @@
 }
 
 
-/* Paint placeholders on the image itself so fill images and tiny logos keep their layout. */
-.image-loading {
-  background-color: var(--surface-elevated);
-  background-image: linear-gradient(100deg, transparent 20%, var(--background) 50%, transparent 80%);
-  background-size: 200% 100%;
-  animation: image-loading-shimmer 1.8s ease-in-out infinite;
-}
-
-@keyframes image-loading-shimmer {
-  from { background-position: 100% 0; }
-  to { background-position: -100% 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .image-loading { animation: none; }
-}
-
 /* Tech Stack Card Brand Border & Shadow on Hover */
 .tech-stack-card {
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -390,16 +373,35 @@
   box-shadow: 0 16px 32px -6px var(--tech-glow), 0 4px 14px -2px var(--tech-glow-subtle);
 }
 
-/* Template Showcase Hover-Scroll Window */
-.template-scroll-window {
-  position: relative;
-  height: 20rem;
+/* Full-page work screenshots scroll inside a fixed browser viewport without React state. */
+.project-screenshot-window {
+  --project-preview-height: calc(var(--spacing) * 80);
+  height: var(--project-preview-height);
   overflow: hidden;
 }
 
-@media (min-width: 640px) {
-  .template-scroll-window {
-    height: 22rem;
+.project-screenshot {
+  transition: transform 18s linear;
+}
+
+.project-card:hover .project-screenshot {
+  transform: translateY(calc(-100% + var(--project-preview-height)));
+  will-change: transform;
+}
+
+@media (min-width: 40rem) {
+  .project-screenshot-window {
+    --project-preview-height: calc(var(--spacing) * 88);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-screenshot {
+    transition: none;
+  }
+
+  .project-card:hover .project-screenshot {
+    transform: none;
   }
 }
 

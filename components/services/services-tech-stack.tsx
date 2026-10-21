@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { m as motion, AnimatePresence } from "motion/react";
 import { SERVICES_TECH_STACK_COPY, type ServiceViewData } from "@/lib/data/services";
 import { TECH_DETAILS, TECH_STACK, type ServiceTechSlug, type ServiceTechDetails } from "@/lib/data/tech-stack";
-import { CldImage } from "@/components/ui/cld-image";
+import { CloudinaryTechLogo } from "@/components/ui/cloudinary-tech-logo";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FadeUpWrapper } from "@/components/ui/fade-up-wrapper";
 import { fadeUp, staggerContainer } from "@/lib/motion";
@@ -17,9 +17,7 @@ interface ServicesTechStackProps {
 interface ServiceToolItem {
   name: string;
   slug: string;
-  imageSlug: string;
   accentColor: string;
-  invertInDark: boolean;
 }
 
 export function ServicesTechStack({ service }: ServicesTechStackProps) {
@@ -29,16 +27,12 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
       const fromDetails: ServiceTechDetails | undefined = TECH_DETAILS[slug as ServiceTechSlug];
 
       const name = fromStack?.name || fromDetails?.name || slug;
-      const imageSlug = fromDetails?.imageSlug || fromStack?.slug || slug;
       const accentColor = fromStack?.accentColor || (slug === "hostingervps" ? "#673DE6" : "#2563EB");
-      const invertInDark = Boolean(fromStack?.invertInDark || fromDetails?.invertDark);
 
       return {
         name,
         slug,
-        imageSlug,
         accentColor,
-        invertInDark,
       };
     });
   }, [service.techStack]);
@@ -96,16 +90,7 @@ export function ServicesTechStack({ service }: ServicesTechStackProps) {
                 } as React.CSSProperties}
                 className="relative flex flex-col items-center justify-center text-center gap-3 p-4 rounded-2xl border border-slate-200/80 bg-slate-50 shadow-xs overflow-hidden sm:p-5 tech-stack-card group"
               >
-                {/* Official Brand Logo Squircle Container */}
-                <div className="relative w-14 h-14 rounded-2xl bg-white border border-slate-200/70 flex items-center justify-center p-3.5 shadow-2xs transition-transform duration-300 sm:w-15 sm:h-15 sm:p-4 group-hover:scale-105">
-                  <CldImage
-                    src={`simpluxe/tech/${item.imageSlug}`}
-                    alt={SERVICES_TECH_STACK_COPY.logoAlt(item.name)}
-                    width={38}
-                    height={38}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
+                <CloudinaryTechLogo slug={item.slug} className="sm:size-15" />
 
                 {/* Brand-Colored Heading */}
                 <h3

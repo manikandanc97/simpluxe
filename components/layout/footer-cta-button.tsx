@@ -1,6 +1,6 @@
 "use client";
 
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { FOOTER_CTA_BUTTON_COPY } from "@/lib/data/layout";
 
 import { useLead } from "@/components/leads/lead-provider";
@@ -21,7 +21,7 @@ export function FooterCtaButton({ onStartProject }: FooterCtaButtonProps) {
   return (
     <Button size="lg" onClick={handleStart} className="w-full group">
       <span>{FOOTER_CTA_BUTTON_COPY.startAProject}</span>
-      <StaticIcon name="arrow-up-right" size={16} className="text-primary-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <AnimatedIcon name="arrow-up-right" size={16} className="text-primary-foreground" />
     </Button>
   );
 }

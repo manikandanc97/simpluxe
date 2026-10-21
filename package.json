@@ -56,5 +56,8 @@
     "not IE 11",
     "not safari < 15.4",
     "not ios_saf < 15.4"
-  ]
+  ],
+  "knip": {
+    "entry": ["lib/cloudinary-loader.ts"]
+  }
 }

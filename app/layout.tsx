@@ -9,41 +9,18 @@ import { CommandPalette } from "@/components/ui/command-palette";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 import { SITE } from "@/lib/data/site";
+import { CLOUDINARY_BRAND_MARK, cloudinaryImageUrl } from "@/lib/cloudinary";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 
 // Primary typeface — Geist variable font, self-hosted by Next.js (no external network request).
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
-  display: "swap",
-});
-
-// Caveat is kept only for decorative handwriting accents in illustrations.
-const caveat = localFont({
-  src: [
-    {
-      path: "../public/fonts/caveat-500.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/caveat-600.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/caveat-700.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -64,13 +41,17 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: LAYOUT_COPY.title,
     description:
       LAYOUT_COPY.socialDescription,
   },
   icons: {
-    icon: "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png",
+    icon: {
+      url: cloudinaryImageUrl(CLOUDINARY_BRAND_MARK, { width: 64, format: "png" }),
+      type: "image/png",
+      sizes: "64x64",
+    },
   },
 };
 
@@ -78,12 +59,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased", geist.variable, caveat.variable, "font-sans")}
+      className={cn("h-full antialiased", geist.variable, "font-sans")}
       suppressHydrationWarning
     >
-      <head>
-        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
-      </head>
       <body className="flex flex-col min-h-full">
         {/* Skip to main content for accessibility */}
         <a

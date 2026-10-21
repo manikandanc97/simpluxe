@@ -2,6 +2,18 @@ import type { COMMON } from "@/lib/data/common";
 
 type ServiceType = typeof COMMON.serviceNames.websites | typeof COMMON.serviceNames.webAppsFilter | typeof COMMON.serviceNames.mobileAppsFilter;
 
+interface ProjectImage {
+  publicId: string;
+  version: string;
+  width: number;
+  height: number;
+}
+
+interface ProjectShowcaseImages {
+  desktop: ProjectImage;
+  mobile: ProjectImage;
+}
+
 export interface Project {
   id: string;
   number: string;
@@ -11,10 +23,8 @@ export interface Project {
   category: string;
   year: string;
   url: string;
-  desktopImage?: string;
-  mobileImage?: string;
-  fullPageImage?: string;
-  logo?: string;
+  previewImage?: ProjectImage;
+  showcaseImages?: ProjectShowcaseImages;
   result: string;
   stack: string[];
 }

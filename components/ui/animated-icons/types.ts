@@ -36,7 +36,9 @@ export type AnimatedIconName =
   | "sliders"
   | "search"
   | "code"
-  | "play";
+  | "play"
+  | "phone"
+  | "arrow-up-right";
 
 export interface AnimateIconHandle {
   startAnimation: () => void | Promise<void>;

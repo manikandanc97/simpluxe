@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { CldImage } from "@/components/ui/cld-image";
 import { Container } from "@/components/ui/container";
+import { cloudinaryImageUrl } from "@/lib/cloudinary";
 import { WORKBENCH_COPY } from "@/lib/data/hero";
 import { PROJECTS } from "@/lib/data/projects";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
@@ -14,16 +14,20 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-const showcasedProjects = PROJECTS.slice(0, 4).map((project) => ({
-  name: project.name,
-  desktopImage: project.desktopImage ?? project.mobileImage ?? "",
-  mobileImage: project.mobileImage ?? project.desktopImage ?? "",
-  category: project.category.split("·")[0].trim(),
-  result: project.result,
-  number: project.number,
-}));
+const showcasedProjects = PROJECTS.flatMap((project) =>
+  project.showcaseImages
+    ? [{
+        name: project.name,
+        category: project.category.split("·")[0].trim(),
+        result: project.result,
+        number: project.number,
+        images: project.showcaseImages,
+      }]
+    : []
+).slice(0, 4);
 
 export function WorkbenchHeroClient({
   intro,
@@ -264,20 +268,20 @@ export function WorkbenchHeroClient({
                 <div className="relative h-64 overflow-hidden bg-surface-elevated sm:h-96 lg:h-112" aria-live="polite">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
-                      key={activeProject.desktopImage}
+                      key={activeProject.name}
                       className="absolute inset-0"
                       initial={{ opacity: 0, scale: 1.02 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.99 }}
                       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <CldImage
-                        src={activeProject.desktopImage}
+                      <Image
+                        src={cloudinaryImageUrl(activeProject.images.desktop)}
                         alt={WORKBENCH_COPY.websiteAlt(activeProject.name)}
                         fill
-                        sizes="(max-width: 1024px) 94vw, 70vw"
+                        sizes="(max-width: 1023px) 100vw, 72vw"
                         className="object-cover object-top"
-                        fetchPriority={activeProjectIndex === 0 ? "high" : "auto"}
+                        preload={activeProjectIndex === 0}
                       />
                     </motion.div>
                   </AnimatePresence>
@@ -301,15 +305,15 @@ export function WorkbenchHeroClient({
               <div className="relative h-64 overflow-hidden lg:h-80">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
-                    key={activeProject.mobileImage}
+                    key={activeProject.name}
                     className="absolute inset-0"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <CldImage
-                      src={activeProject.mobileImage}
+                    <Image
+                      src={cloudinaryImageUrl(activeProject.images.mobile)}
                       alt={WORKBENCH_COPY.mobileAlt(activeProject.name)}
                       fill
                       sizes="160px"

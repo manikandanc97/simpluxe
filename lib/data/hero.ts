@@ -47,8 +47,8 @@ export const WORKBENCH_COPY = {
   outcomeDescription: "Strategy, design and engineering working as one.",
   canvasLabel: "Live project canvas",
   projectCountSuffix: " / 04",
-  websiteAlt: (name: string) => `${name} website designed by Simpluxe`,
   featuredBuild: "Featured build",
   featuredDescription: "Built for clarity, conversion and scale.",
-  mobileAlt: (name: string) => `${name} mobile experience`,
+  websiteAlt: (name: string) => `${name} website preview`,
+  mobileAlt: (name: string) => `${name} mobile preview`,
 } as const;

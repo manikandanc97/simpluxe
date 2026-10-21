@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 
 import { ArrowLeftIcon } from "@animateicons/react/lucide/arrow-left-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
+import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
 import { CheckIcon } from "@animateicons/react/lucide/check-icon";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { CodeIcon } from "@animateicons/react/lucide/code-icon";
@@ -26,6 +27,7 @@ import { MenuIcon } from "@animateicons/react/lucide/menu-icon";
 import { MessageSquareIcon } from "@animateicons/react/lucide/message-square-icon";
 import { MoonIcon } from "@animateicons/react/lucide/moon-icon";
 import { PencilIcon } from "@animateicons/react/lucide/pencil-icon";
+import { PhoneIcon } from "@animateicons/react/lucide/phone-icon";
 import { RefreshCwIcon } from "@animateicons/react/lucide/refresh-cw-icon";
 import { SearchIcon } from "@animateicons/react/lucide/search-icon";
 import { SendIcon } from "@animateicons/react/lucide/send-icon";
@@ -55,6 +57,7 @@ export * from "./animated-icons/solid-icons";
 const ICON_COMPONENT_MAP: Record<AnimatedIconName, React.ComponentType<IconBaseProps>> = {
   "arrow-right": ArrowRightIcon as unknown as React.ComponentType<IconBaseProps>,
   "arrow-left": ArrowLeftIcon as unknown as React.ComponentType<IconBaseProps>,
+  "arrow-up-right": ArrowUpRightIcon as unknown as React.ComponentType<IconBaseProps>,
   sparkles: SparklesIcon as unknown as React.ComponentType<IconBaseProps>,
   home: HouseIcon as unknown as React.ComponentType<IconBaseProps>,
   briefcase: BriefcaseIcon as unknown as React.ComponentType<IconBaseProps>,
@@ -69,6 +72,7 @@ const ICON_COMPONENT_MAP: Record<AnimatedIconName, React.ComponentType<IconBaseP
   check: CheckIcon as unknown as React.ComponentType<IconBaseProps>,
   "rotate-ccw": RefreshCwIcon as unknown as React.ComponentType<IconBaseProps>,
   mail: MailIcon as unknown as React.ComponentType<IconBaseProps>,
+  phone: PhoneIcon as unknown as React.ComponentType<IconBaseProps>,
   "message-square": MessageSquareIcon as unknown as React.ComponentType<IconBaseProps>,
   x: XIcon as unknown as React.ComponentType<IconBaseProps>,
   menu: MenuIcon as unknown as React.ComponentType<IconBaseProps>,
@@ -264,14 +268,12 @@ export function AnimatedIcon({
           <SolidComponent size={numericSize} className="shrink-0" />
         </motion.div>
       ) : (
-        
-          <IconComponent
-            ref={iconRef}
-            size={numericSize}
-            isAnimated={animateOnHover}
-            className="shrink-0"
-          />
-        
+        <IconComponent
+          ref={iconRef}
+          size={numericSize}
+          isAnimated={animateOnHover}
+          className="shrink-0"
+        />
       )}
     </span>
   );

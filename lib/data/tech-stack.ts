@@ -42,7 +42,6 @@ export const TECH_STACK: TechItem[] = [
     dotColor: "#10B981", // emerald / mint dot
     accentColor: "#000000",
     learnMoreUrl: "https://nextjs.org",
-    invertInDark: true,
   },
   {
     name: "Vue.js",
@@ -135,7 +134,6 @@ export const TECH_STACK: TechItem[] = [
     dotColor: "#10B981",
     accentColor: "#000020",
     learnMoreUrl: "https://expo.dev",
-    invertInDark: true,
   },
 
   // ── Backend & APIs (5) ───────────────────────────────────────────────────────
@@ -240,7 +238,6 @@ export const TECH_STACK: TechItem[] = [
     dotColor: "#6366F1",
     accentColor: "#2D3748",
     learnMoreUrl: "https://www.prisma.io",
-    invertInDark: true,
   },
   {
     name: COMMON.technology.aws,
@@ -271,7 +268,6 @@ export const TECH_STACK: TechItem[] = [
     dotColor: "#111827",
     accentColor: "#000000",
     learnMoreUrl: "https://vercel.com",
-    invertInDark: true,
   },
   {
     name: COMMON.technology.cloudflare,
@@ -411,19 +407,17 @@ export const TECH_STACK_SECTION_CONTENT = {
 export interface ServiceTechDetails {
   name: string;
   category: string;
-  invertDark?: boolean;
-  imageSlug?: string;
 }
 
 export const TECH_DETAILS = {
   // Core Frameworks & Languages
-  nextjs: { name: COMMON.technology.nextjs, category: "core", invertDark: true },
+  nextjs: { name: COMMON.technology.nextjs, category: "core" },
   react: { name: COMMON.technology.react, category: "core" },
   typescript: { name: COMMON.technology.typescript, category: "core" },
   tailwindcss: { name: COMMON.technology.tailwind, category: "core" },
   reactnative: { name: COMMON.technology.reactNative, category: "core" },
   flutter: { name: COMMON.technology.flutter, category: "core" },
-  expo: { name: COMMON.technology.expo, category: "core", invertDark: true },
+  expo: { name: COMMON.technology.expo, category: "core" },
   swift: { name: COMMON.technology.swift, category: "core" },
   kotlin: { name: COMMON.technology.kotlin, category: "core" },
   
@@ -432,26 +426,26 @@ export const TECH_DETAILS = {
   nestjs: { name: "NestJS", category: "backend" },
   expressjs: { name: "Express.js", category: "backend" },
   restapi: { name: "REST API", category: "backend" },
-  prisma: { name: COMMON.technology.prismaOrm, category: "backend", invertDark: true },
+  prisma: { name: COMMON.technology.prismaOrm, category: "backend" },
 
   // Database
   postgresql: { name: COMMON.technology.postgres, category: "database" },
   supabase: { name: COMMON.technology.supabase, category: "database" },
 
   // Authentication & Security
-  supabaseauth: { name: "Supabase Auth", category: "auth", imageSlug: "supabase" },
-  oauth: { name: "OAuth / Google Sign-In", category: "auth", imageSlug: "oauth_iqrb3x" },
-  jwt: { name: "JWT", category: "auth", imageSlug: "jwt_lp0clz" },
+  supabaseauth: { name: "Supabase Auth", category: "auth" },
+  oauth: { name: "OAuth / Google Sign-In", category: "auth" },
+  jwt: { name: "JWT", category: "auth" },
 
   // Deployment & Infrastructure
-  hostingervps: { name: "Hostinger VPS", category: "deployment", imageSlug: "hostingervps_xdifsu" },
+  hostingervps: { name: "Hostinger VPS", category: "deployment" },
 
   // Hosting
-  vercel: { name: COMMON.technology.vercel, category: "hosting", invertDark: true },
+  vercel: { name: COMMON.technology.vercel, category: "hosting" },
 
   // Domain
-  godaddy: { name: "GoDaddy", category: "domain", imageSlug: "godaddy_uege9k" },
-  hostinger: { name: "Hostinger", category: "domain", imageSlug: "hostinger_znba5r" },
+  godaddy: { name: "GoDaddy", category: "domain" },
+  hostinger: { name: "Hostinger", category: "domain" },
 
   // Backend & Infrastructure
   cloudflare: { name: COMMON.technology.cloudflare, category: "infrastructure" },
@@ -465,7 +459,7 @@ export const TECH_DETAILS = {
   aws: { name: COMMON.technology.aws, category: "infrastructure" },
   
   // AI & Machine Learning
-  openai: { name: "OpenAI", category: "ai", invertDark: true },
+  openai: { name: "OpenAI", category: "ai" },
   anthropic: { name: "Anthropic", category: "ai" },
   langchain: { name: "LangChain", category: "ai" },
 
@@ -494,11 +488,6 @@ export const TECH_VALUE_STRIP_COPY = {
   growsWithYourBusiness: "Grows with your business",
   futureReady: "Future-ready",
   alwaysEvolvingWithBestTools: "Always evolving with best tools",
-} as const;
-
-// sections
-export const TECH_STACK_CARD_COPY = {
-  logoAlt: (name: string) => `${name} logo`,
 } as const;
 
 export const TECH_STACK_INTERACTIVE_COPY = {

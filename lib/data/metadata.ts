@@ -6,7 +6,6 @@ export const ABOUT_PAGE_COPY = {
   title: COMMON.pages.about,
   description: "About Simpluxe — A premier software development company built on the belief that custom software and digital systems should be simple, focused, and high-performance.",
 } as const;
-
 export const CONTACT_PAGE_COPY = {
   title: COMMON.pages.contact,
   description: "Get in touch with Simpluxe. Discuss your web application, mobile app, software architecture, or schedule a direct engineering consultation.",
@@ -35,11 +34,4 @@ export const LAYOUT_COPY = {
   socialDescription: "Premium software company engineering custom software, scalable web applications, mobile apps, SaaS platforms, and enterprise solutions.",
   siteName: SITE.name,
   skipToContent: "Skip to content",
-} as const;
-
-export const OPENGRAPH_IMAGE_COPY = {
-  simpluxeKeepItSimpleMakeIt: COMMON.brand.title,
-  simp: "Simp",
-  luxe: "luxe",
-  keepItSimpleMakeItLuxury: SITE.tagline,
 } as const;

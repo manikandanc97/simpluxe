@@ -2,10 +2,6 @@ import { COMMON } from "./common";
 import type { Project } from "@/types/project";
 
 // projects
-const IMAGE_BASE_URL = "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects";
-
-const LOGO_BASE_URL = "https://res.cloudinary.com/drdl4pdnx/image/upload/w_128,c_limit,f_auto,q_auto/simpluxe/projects/logo";
-
 const baseProject = {
   year: "2025",
 };
@@ -22,10 +18,26 @@ export const PROJECTS: Project[] = [
     serviceType: COMMON.serviceNames.websites,
     category: "Travel & Tourism · Tour Booking Platform",
     url: "https://valparaiwanderertours.com",
-    desktopImage: `${IMAGE_BASE_URL}/website/valparaiwanderertours_pbcgyi.png`,
-    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/valparaiwanderertours_pdqd4p.png",
-    mobileImage: `${IMAGE_BASE_URL}/website/valparai-mobile_gjwd7r.jpg`,
-    logo: `${LOGO_BASE_URL}/valparai_rwsldt.png`,
+    previewImage: {
+      publicId: "simpluxe/projects/website/valparaiwanderertours_pdqd4p.png",
+      version: "1792149016",
+      width: 1903,
+      height: 8539,
+    },
+    showcaseImages: {
+      desktop: {
+        publicId: "simpluxe/projects/website/valparaiwanderertours_pbcgyi.png",
+        version: "1791037414",
+        width: 2560,
+        height: 1230,
+      },
+      mobile: {
+        publicId: "simpluxe/projects/website/valparai-mobile_gjwd7r.jpg",
+        version: "1791038711",
+        width: 1115,
+        height: 2215,
+      },
+    },
     result: "Explore More.",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
@@ -38,10 +50,26 @@ export const PROJECTS: Project[] = [
     serviceType: COMMON.serviceNames.websites,
     category: "Architecture & Construction · Brand Website",
     url: "https://grnconstruction.in",
-    desktopImage: `${IMAGE_BASE_URL}/website/grn_sddfdk.png`,
-    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/grnconstruction_pswfwe.png",
-    mobileImage: `${IMAGE_BASE_URL}/website/grn-mobile_tmmhdr.jpg`,
-    logo: `${LOGO_BASE_URL}/grn_caw9tl.jpg`,
+    previewImage: {
+      publicId: "simpluxe/projects/website/grnconstruction_pswfwe.png",
+      version: "1792149018",
+      width: 1903,
+      height: 11144,
+    },
+    showcaseImages: {
+      desktop: {
+        publicId: "simpluxe/projects/website/grn_sddfdk.png",
+        version: "1791037413",
+        width: 2560,
+        height: 1231,
+      },
+      mobile: {
+        publicId: "simpluxe/projects/website/grn-mobile_tmmhdr.jpg",
+        version: "1791039401",
+        width: 1014,
+        height: 2012,
+      },
+    },
     result: "Built on Trust.",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
@@ -54,10 +82,26 @@ export const PROJECTS: Project[] = [
     serviceType: COMMON.serviceNames.websites,
     category: "E-Commerce & Heritage · Artisan Showcase",
     url: "https://vihahandicrafts.com",
-    desktopImage: `${IMAGE_BASE_URL}/website/vihahandicrafts_jmxorj.png`,
-    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/vihahandicrafts_ilul4w.png",
-    mobileImage: `${IMAGE_BASE_URL}/website/viha-mobile_ubkrpm.jpg`,
-    logo: `${LOGO_BASE_URL}/viha_ewc0c7.png`,
+    previewImage: {
+      publicId: "simpluxe/projects/website/vihahandicrafts_ilul4w.png",
+      version: "1792149010",
+      width: 1903,
+      height: 9433,
+    },
+    showcaseImages: {
+      desktop: {
+        publicId: "simpluxe/projects/website/vihahandicrafts_jmxorj.png",
+        version: "1791037414",
+        width: 2560,
+        height: 1230,
+      },
+      mobile: {
+        publicId: "simpluxe/projects/website/viha-mobile_ubkrpm.jpg",
+        version: "1791039401",
+        width: 1085,
+        height: 2154,
+      },
+    },
     result: "Pan-India Orders",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
@@ -70,10 +114,26 @@ export const PROJECTS: Project[] = [
     serviceType: COMMON.serviceNames.websites,
     category: "Event Management · Premium Planners",
     url: "https://vizhastories.in",
-    desktopImage: `${IMAGE_BASE_URL}/website/vizhastories_vrslce.png`,
-    fullPageImage: "https://res.cloudinary.com/drdl4pdnx/image/upload/f_auto,q_auto/simpluxe/projects/website/vizhastories_whmgzr.png",
-    mobileImage: `${IMAGE_BASE_URL}/website/vizha-mobile_vrak8f.jpg`,
-    logo: `${LOGO_BASE_URL}/Logo_Vizha_p9xiij.png`,
+    previewImage: {
+      publicId: "simpluxe/projects/website/vizhastories_whmgzr.png",
+      version: "1792149005",
+      width: 1903,
+      height: 8831,
+    },
+    showcaseImages: {
+      desktop: {
+        publicId: "simpluxe/projects/website/vizhastories_vrslce.png",
+        version: "1791037410",
+        width: 2560,
+        height: 1230,
+      },
+      mobile: {
+        publicId: "simpluxe/projects/website/vizha-mobile_vrak8f.jpg",
+        version: "1791039399",
+        width: 1240,
+        height: 2460,
+      },
+    },
     result: "Made Timeless.",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
@@ -88,10 +148,6 @@ export const PROJECTS: Project[] = [
     serviceType: COMMON.serviceNames.webAppsFilter,
     category: "Customer Relationship Management",
     url: "https://clixprocrm.vercel.app/",
-    desktopImage: `${IMAGE_BASE_URL}/clixpro_crm_desktop`,
-    fullPageImage: "/images/projects/clixpro-full.png",
-    mobileImage: `${IMAGE_BASE_URL}/clixpro_crm_mobile`,
-    logo: `${LOGO_BASE_URL}/clixpro`,
     result: COMMON.status.inProgress,
     stack: [COMMON.technology.nextjs, COMMON.technology.prisma, COMMON.technology.postgres],
   },
@@ -106,9 +162,6 @@ export const PROJECTS: Project[] = [
     serviceType: COMMON.serviceNames.mobileAppsFilter,
     category: "Architecture & Construction Mobile App",
     url: "https://grnconstruction.in",
-    desktopImage: `${IMAGE_BASE_URL}/grn_app_desktop`,
-    mobileImage: `${IMAGE_BASE_URL}/grn_app_mobile`,
-    logo: `${LOGO_BASE_URL}/grn`,
     result: COMMON.status.comingSoon,
     stack: [COMMON.technology.reactNative, COMMON.technology.supabase, COMMON.labels.offlineSync],
   },
@@ -147,6 +200,7 @@ export const WORK_VIEW_COPY = {
   visitSite: "Visit Site",
   closeDialog: "Close dialog",
   previewComingSoon: "Preview coming soon",
+  previewAlt: (name: string) => `${name} website preview`,
   liveDemo: "Live Demo",
   openInNewTab: (name: string) => `Open ${name} in new tab`,
 } as const;

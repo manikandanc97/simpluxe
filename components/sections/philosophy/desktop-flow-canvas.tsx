@@ -1,5 +1,3 @@
-import { DESKTOP_FLOW_CANVAS_COPY } from "@/lib/data/philosophy";
-
 import { FLOW_NODES } from "@/lib/data/philosophy";
 import { BoxIcon } from "@animateicons/react/lucide/box-icon";
 import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
@@ -8,7 +6,7 @@ import { TrendingUpIcon } from "@animateicons/react/lucide/trending-up-icon";
 import { UsersIcon } from "@animateicons/react/lucide/users-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { m as motion } from "motion/react";
-import { CldImage } from "@/components/ui/cld-image";
+import { BrandMark } from "@/components/ui/brand-mark";
 
 interface DesktopFlowCanvasProps {
   inView: boolean;
@@ -232,13 +230,7 @@ export function DesktopFlowCanvas({ inView }: DesktopFlowCanvasProps) {
           <span aria-hidden="true" className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-primary/50" />
           <span aria-hidden="true" className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-primary/50" />
           <div className="flex size-24 items-center justify-center rounded-2xl border border-white bg-white p-4 shadow-xs sm:size-28">
-            <CldImage
-              src="https://res.cloudinary.com/drdl4pdnx/image/upload/v1791901666/simpluxe/favicon/Bright_Blue_S_Monogram_Logo_spudvz.png"
-              alt={DESKTOP_FLOW_CANVAS_COPY.simpluxeLogo}
-              width={80}
-              height={80}
-              className="size-14 select-none object-contain drop-shadow-sm sm:size-16"
-            />
+            <BrandMark className="size-14 select-none text-2xl sm:size-16" />
           </div>
         </div>
       </motion.div>

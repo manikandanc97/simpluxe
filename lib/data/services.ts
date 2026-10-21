@@ -24,7 +24,6 @@ export interface ServiceData {
   includes: string[];
   shortTagline: string;
   brandColor: string;
-  image: string;
   shortDeliverables: string[];
   
   headline: {
@@ -101,7 +100,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Analytics & user telemetry integration"
     ],
     "brandColor": "#922F55",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111610/simpluxe/services/website_cbr8jm.png",
     "tabLabel": COMMON.serviceNames.websites,
     "headline": {
       "normal": "High-converting ",
@@ -246,7 +244,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Deployment & DevOps"
     ],
     "brandColor": "#6C2BB8",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111610/simpluxe/services/web-application_v8iwnt.png",
     "tabLabel": COMMON.serviceNames.webApplicationsTitle,
     "headline": {
       "normal": "Software built around how ",
@@ -392,7 +389,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "High-concurrency flash sale caching"
     ],
     "brandColor": "#0891B2",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791111609/simpluxe/services/e-commerce_qpfzex.png",
     "tabLabel": COMMON.serviceNames.ecommerce,
     "headline": {
       "normal": "High-converting storefronts built to ",
@@ -539,7 +535,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Over-The-Air (OTA) continuous updates"
     ],
     "brandColor": "#D23D78",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116453/simpluxe/services/Mobile-App_tviiaz.png",
     "tabLabel": COMMON.serviceNames.mobileAppsFilter,
     "headline": {
       "normal": "Native-grade mobile applications built for ",
@@ -684,7 +679,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Health check monitoring & telemetry alerts"
     ],
     "brandColor": "#5B21B6",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116452/simpluxe/services/SaaS_bllypd.png",
     "tabLabel": "SaaS Products",
     "headline": {
       "normal": "Multi-tenant software platforms engineered from ",
@@ -831,7 +825,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Full source files (AI, SVG, PNG, Figma)"
     ],
     "brandColor": "#F97316",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791116462/simpluxe/services/branding_ekl60d.png",
     "tabLabel": "Branding",
     "headline": {
       "normal": "Distinct visual identity systems that make ",
@@ -976,7 +969,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Live Figma library link with continuous sync"
     ],
     "brandColor": "#7C3AED",
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791118195/simpluxe/services/UI-UX_nwimrf.png",
     "tabLabel": COMMON.labels.uiUxDesign,
     "headline": {
       "normal": "Human-centric digital interfaces engineered with ",
@@ -1103,7 +1095,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Custom REST/GraphQL APIs & third-party system bridges",
       "Robust relational database design & performance tuning"
     ],
-    "image": "https://res.cloudinary.com/drdl4pdnx/image/upload/v1791118195/simpluxe/services/custom_sofware_k29sx9.png",
     "shortTagline": "Bespoke software architecture engineered for complex enterprise logic.",
     "brandColor": "#000000",
     "shortDeliverables": ["Custom APIs", "Business Systems", COMMON.labels.fullCodeOwnership],
@@ -1264,7 +1255,6 @@ export const SERVICES_TECH_STACK_COPY = {
   recommendedTechStacks: "Recommended tools",
   title: "Recommended",
   highlightedText: "tools",
-  logoAlt: (name: string) => `${name} logo`,
   projectFitNote: "We confirm the final tools after understanding your project, budget and existing systems.",
 } as const;
 

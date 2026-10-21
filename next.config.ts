@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 const developmentEvalSource = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
+const cloudinaryCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME?.trim() || "drdl4pdnx";
 
 const cspHeader = `
     default-src 'self';
@@ -9,8 +10,8 @@ const cspHeader = `
     connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com;
     frame-src https://challenges.cloudflare.com https://www.google.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: https://res.cloudinary.com https://www.google.com https://t2.gstatic.com;
-    media-src 'self' https://res.cloudinary.com;
+    img-src 'self' blob: data: https://res.cloudinary.com;
+    media-src 'self';
     font-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -20,6 +21,17 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
+  images: {
+    loader: "custom",
+    loaderFile: "./lib/cloudinary-loader.ts",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: `/${cloudinaryCloudName}/image/upload/**`,
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -52,25 +64,6 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        pathname: "/drdl4pdnx/image/upload/**",
-      },
-      {
-        protocol: "https",
-        hostname: "www.google.com",
-        pathname: "/s2/favicons/**",
-      },
-      {
-        protocol: "https",
-        hostname: "t2.gstatic.com",
-        pathname: "/**",
-      },
-    ],
   },
   experimental: {
     serverActions: { bodySizeLimit: "64kb" },

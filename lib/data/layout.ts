@@ -81,13 +81,11 @@ export const SITE_FOOTER_COPY = {
   youtube: "YouTube",
   github: "GitHub",
   symbol: "© ",
-  simpluxeLogo: COMMON.brand.logoAlt,
 } as const;
 
 export const SITE_NAVBAR_COPY = {
   home: COMMON.pages.home,
   simpluxeHome: COMMON.brand.homeLabel,
-  simpluxeLogo: COMMON.brand.logoAlt,
   primaryNavigation: "Primary navigation",
   brandSimp: "Simp",
   brandLuxe: "luxe",
