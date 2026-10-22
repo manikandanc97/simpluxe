@@ -32,10 +32,10 @@ export const HOME_SERVICES: HomeService[] = [
 ];
 
 export const SERVICES_SECTION_CONTENT = {
-  eyebrow: "What we build",
-  title: "From Ideas to",
+  eyebrow: "Capabilities",
+  title: "From Ideas to ",
   highlightedText: "Impact.",
-  description: "We engineer custom software, scalable web applications, and mobile platforms — with enterprise-grade reliability and zero unnecessary overhead.",
+  description: "We engineer custom software, scalable web applications, and mobile platforms — with reliable architecture and zero unnecessary overhead.",
 } as const;
 
 export const WHAT_WE_BUILD_CARD_COPY = {

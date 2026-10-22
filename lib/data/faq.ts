@@ -52,13 +52,13 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-ownership",
     num: "03",
-    category: "Code & IP ownership",
+    category: "Code & project delivery",
     icon: CodeIcon,
-    question: "Will we own 100% of the code and intellectual property?",
+    question: "Will our team receive the code and project deliverables?",
     answer:
-      "Absolutely. Every line of clean code, architecture diagram, design system token, cloud infrastructure script, and asset belongs entirely to your company upon milestone completion. We retain zero rights, zero royalties, and zero proprietary lock-in.",
+      "Yes. Every line of clean code, architecture diagram, design system token, cloud infrastructure script, and asset is transferred to your company upon milestone completion. You receive complete project handover with no proprietary lock-in.",
     highlights: [
-      { text: "100% Ownership", icon: ShieldCheckIcon },
+      { text: "Complete Handover", icon: ShieldCheckIcon },
       { text: "Full Source Code", icon: CodeIcon },
       { text: "No Vendor Lock-in", icon: LockOpenIcon },
     ],
@@ -70,9 +70,9 @@ export const FAQS: FAQItem[] = [
     icon: WrenchIcon,
     question: "What happens after launch? Do you provide ongoing maintenance?",
     answer:
-      "Every project includes a 30-day post-launch warranty with dedicated bug fixing and telemetry monitoring at zero extra cost. Following that, we offer flexible retainers for continuous feature iterations, DevOps scaling, and guaranteed SLA response times.",
+      "We provide dedicated post-launch support with bug fixing and telemetry monitoring after release. Following that, flexible retainers are available for continuous feature iterations, cloud maintenance, and ongoing technical support.",
     highlights: [
-      { text: "30-Day Warranty", icon: MedalIcon },
+      { text: "Post-Launch Support", icon: MedalIcon },
       { text: "Proactive Monitoring", icon: ActivityIcon },
       { text: COMMON.labels.guaranteedSla, icon: ThumbsUpIcon },
     ],
@@ -95,10 +95,10 @@ export const FAQS: FAQItem[] = [
 
 export const FAQ_SECTION_CONTENT: FAQSectionContent = {
   eyebrow: "FAQ",
-  titleLine1: "Clear Answers before",
+  titleLine1: "Clear Answers before ",
   titleLine2: "",
   highlightedText: "We Build.",
-  description: "Honest answers to common questions founders and teams ask before building with us.",
+  description: "Honest answers to common questions founders and teams ask about our software engineering process, pricing, project handover, and timelines.",
 };
 
 // faq

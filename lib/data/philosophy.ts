@@ -109,7 +109,7 @@ export const REAL_OUTCOMES = [
 
 export const PHILOSOPHY_SECTION_CONTENT = {
   eyebrow: "Why Simpluxe",
-  title: "Built simple. Delivered",
+  title: "Built simple. Delivered ",
   highlightedText: "sharp.",
   description: "A focused team, a clear process, and production-ready work without unnecessary layers.",
 };

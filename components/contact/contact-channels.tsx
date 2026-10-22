@@ -39,7 +39,7 @@ export function ContactChannels() {
             <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
             {CONTACT_CHANNELS_COPY.directEngineeringChannels}</Badge>
         </div>
-        <CardTitle className="text-xl sm:text-2xl">{CONTACT_CHANNELS_COPY.directExecutiveLine}</CardTitle>
+        <CardTitle as="h2" className="text-xl sm:text-2xl">{CONTACT_CHANNELS_COPY.directExecutiveLine}</CardTitle>
         <CardDescription>
           {CONTACT_CHANNELS_COPY.skipAccountManagersConnectDirectlyWith}</CardDescription>
       </CardHeader>

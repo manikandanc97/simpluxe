@@ -396,10 +396,10 @@ export const TECH_STACK: TechItem[] = [
 
 export const TECH_STACK_SECTION_CONTENT = {
   eyebrow: "Our tech stack",
-  title: "Modern tools.",
+  title: "Modern tools. ",
   highlightedText: COMMON.labels.realResults,
-  descriptionLine1: "Battle-tested tools chosen for reliability, performance, and long-term maintainability —",
-  descriptionLine2: "not just trends.",
+  descriptionLine1: "Battle-tested technologies — Next.js, TypeScript, React Native, Supabase, and cloud-native architectures —",
+  descriptionLine2: "selected for reliability, performance, and long-term maintainability.",
   footerNote: "We choose tools that fit your project — not the other way around.",
 };
 

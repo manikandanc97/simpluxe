@@ -10,7 +10,7 @@ export const CONTACT_SECTION_CONTENT = {
 export const CONTACT_CHANNELS_COPY = {
   directEngineeringChannels: "Direct Engineering Channels",
   directExecutiveLine: "Direct Executive Line",
-  skipAccountManagersConnectDirectlyWith: "Skip account managers. Connect directly with principal software engineers.",
+  skipAccountManagersConnectDirectlyWith: "Skip agency layers. Connect directly with our software engineering team.",
   directEmail: COMMON.channels.directEmail,
   emailCopied: "Email copied",
   copyEmailToClipboard: "Copy email to clipboard",
@@ -22,7 +22,7 @@ export const CONTACT_HERO_COPY = {
   home: COMMON.pages.home,
   symbol: COMMON.symbols.slash,
   contact: COMMON.pages.contact,
-  letSBuildYourSystem: "Let's build your system",
+  letSBuildYourSystem: "Let's build your system ",
   theRightWay: "the right way.",
-  directCollaborationWithSeniorSoftwareArchitects: "Direct collaboration with senior software architects. Tell us about your product goals, desired timeline, or architectural requirements to receive a structured technical assessment.",
+  directCollaborationWithSeniorSoftwareArchitects: "Direct collaboration with our engineering team. Discuss your custom software, web application, or mobile product to receive a structured technical scoping assessment.",
 } as const;

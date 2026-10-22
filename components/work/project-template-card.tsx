@@ -64,9 +64,9 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
 
       {/* ── Bottom Bar: Name + Link only ── */}
       <div className="flex items-center justify-between gap-3 px-4 py-3 bg-white border-t border-surface-elevated">
-        <h3 className="text-sm font-semibold text-foreground tracking-tight truncate">
+        <h2 className="text-sm font-semibold text-foreground tracking-tight truncate">
           {project.name}
-        </h3>
+        </h2>
         <a
           href={project.url}
           target="_blank"

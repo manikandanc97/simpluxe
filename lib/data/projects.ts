@@ -188,9 +188,9 @@ export const WORK_HERO_COPY = {
   home: COMMON.pages.home,
   symbol: COMMON.symbols.slash,
   work: COMMON.pages.work,
-  engineeredDigitalProductsFor: "Engineered digital products for",
-  modernBusinesses: "modern businesses.",
-  fromHighConversionWebsitesToComplex: "From high-conversion websites to complex cloud platforms and mobile applications, explore our portfolio of bespoke software built for speed, scale, and longevity.",
+  engineeredDigitalProductsFor: "Software Engineering & ",
+  modernBusinesses: "Digital Products Portfolio.",
+  fromHighConversionWebsitesToComplex: "Explore selected case studies: bespoke web applications, mobile platforms, and high-performance digital systems engineered by Simpluxe.",
 } as const;
 
 // pages

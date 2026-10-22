@@ -1,4 +1,4 @@
-﻿import { COMMON } from "./common";
+import { COMMON } from "./common";
 import type { PROJECT_TYPES } from "./leads";
 import { type ServiceTechSlug } from "./tech-stack";
 import type { ElementType as LucideIcon } from "react";
@@ -112,15 +112,15 @@ export const SERVICES_LIST: ServiceData[] = [
       "normal": "High-converting ",
       "highlight": "digital experiences."
     },
-    "description": "We design and engineer bespoke, high-converting websites optimized for speed, visual authority, and seamless conversions. Built with zero bloat and sub-second performance.",
+    "description": "We design and engineer bespoke websites optimized for speed, visual authority, and seamless conversions. Built with clean architecture and fast load times.",
     "stats": [
       {
         "value": "80+",
         "label": "Websites delivered"
       },
       {
-        "value": "<0.8s",
-        "label": "Average page load speed"
+        "value": "Fast",
+        "label": "Optimized load performance"
       },
       {
         "value": "99.9%",
@@ -210,7 +210,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "type": "websites",
       "title": "Simpluxe Digital Flagship",
       "badge": "Lighthouse 100",
-      "subtitle": "Sub-second Next.js edge experience",
+      "subtitle": "Fast Next.js edge experience",
       "image": {
         "publicId": "simpluxe/services/website_cbr8jm",
         "version": "1791111610",
@@ -222,7 +222,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "shortDeliverables": [
       "Custom Design Systems",
       "High Conversion UX",
-      "SEO & Sub-second Speed"
+      "SEO & Fast Load Speeds"
     ]
   },
   {
@@ -274,7 +274,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "label": "Average client partnership"
       },
       {
-        "value": "100%",
+        "value": "Modular",
         "label": "Scalable architecture"
       }
     ],
@@ -354,7 +354,7 @@ export const SERVICES_LIST: ServiceData[] = [
       },
       {
         "question": "What happens after launch? Maintenance & support?",
-        "answer": "We provide a 30-day post-launch warranty, followed by flexible ongoing SLA maintenance packages including zero-downtime deployments, security patches, and performance monitoring."
+        "answer": "We provide dedicated post-launch support after deployment, followed by flexible ongoing maintenance arrangements covering updates, security patches, and performance monitoring."
       }
     ],
     "relatedWorkUrl": "/work?service=web-apps",
@@ -426,8 +426,8 @@ export const SERVICES_LIST: ServiceData[] = [
         "label": "Client transactions handled"
       },
       {
-        "value": "0.4s",
-        "label": "Lightning checkout latency"
+        "value": "Streamlined",
+        "label": "Frictionless checkout UX"
       }
     ],
     "whatWeBuildSubtitle": "End-to-end commerce architectures designed for high volume sales.",
@@ -722,8 +722,8 @@ export const SERVICES_LIST: ServiceData[] = [
     "description": "We build robust, subscription-driven software platforms featuring frictionless self-serve onboarding, tiered billing, workspace permissions, and audit-ready security.",
     "stats": [
       {
-        "value": "99.99%",
-        "label": "Platform uptime SLA"
+        "value": "Cloud-native",
+        "label": "High-availability deployment"
       },
       {
         "value": "10x",
@@ -798,7 +798,7 @@ export const SERVICES_LIST: ServiceData[] = [
     ],
     "faqs": [
       {
-        "question": "How do you guarantee tenant data isolation in multi-tenant SaaS?",
+        "question": "How do you handle tenant data isolation in multi-tenant SaaS?",
         "answer": "We implement PostgreSQL Row-Level Security (RLS) combined with organization schema namespaces, ensuring zero accidental cross-tenant data leaks at the database engine level."
       },
       {
@@ -875,16 +875,16 @@ export const SERVICES_LIST: ServiceData[] = [
     "description": "We craft cohesive brand identities that communicate authority, evoke emotional resonance, and establish enduring market distinction across every physical and digital touchpoint.",
     "stats": [
       {
-        "value": "100%",
-        "label": "Bespoke vector identity"
+        "value": "Bespoke",
+        "label": "Vector identity systems"
       },
       {
         "value": "30+",
         "label": "Brand systems crafted"
       },
       {
-        "value": "Full IP",
-        "label": "Complete asset ownership"
+        "value": "Delivered",
+        "label": "Source vector assets"
       }
     ],
     "whatWeBuildSubtitle": "Comprehensive visual systems designed to stand the test of time.",
@@ -954,7 +954,7 @@ export const SERVICES_LIST: ServiceData[] = [
       },
       {
         "question": "Do I get full copyright and ownership of the logos?",
-        "answer": "Yes. Upon project completion, 100% of the intellectual property, copyrights, and vector source assets transfer entirely to your business."
+        "answer": "Yes. Upon project completion, custom design deliverables and vector source assets are transferred directly to your business."
       },
       {
         "question": "Will the brand assets be ready for our web developers to use?",
@@ -1167,7 +1167,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "label": "Vendor lock-in or bloat"
       },
       {
-        "value": "100%",
+        "value": "Robust",
         "label": "Custom API & data pipelines"
       },
       {
@@ -1217,7 +1217,7 @@ export const SERVICES_LIST: ServiceData[] = [
       "Asynchronous background worker queues (Redis/BullMQ)",
       "Cloud infrastructure provisioning (AWS / Cloudflare)",
       "Comprehensive Swagger / OpenAPI documentation",
-      "Complete source code repository ownership"
+      "Complete source code repository handover"
     ],
     "perfectFor": [
       {
@@ -1252,7 +1252,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "faqs": [
       {
         "question": "Who owns the code and intellectual property of custom software?",
-        "answer": "You own 100% of the intellectual property, code repository, database schemas, and documentation upon final delivery with zero licensing lock-in."
+        "answer": "You receive complete code repositories, database schemas, and documentation upon final delivery with no ongoing licensing lock-in."
       },
       {
         "question": "Can you modernize our existing old software without stopping business?",
@@ -1304,9 +1304,9 @@ export const SERVICES_HERO_COPY = {
   home: COMMON.pages.home,
   symbol: COMMON.symbols.slash,
   services: COMMON.pages.services,
-  digitalServicesFor: "Digital services for ",
+  digitalServicesFor: "Software and digital services for ",
   yourBusiness: "your business.",
-  fromWebsitesAndMobileProductsTo: "From websites and mobile products to AI-powered systems, we design and build the exact digital capabilities your business needs.",
+  fromWebsitesAndMobileProductsTo: "From custom web applications and SaaS platforms to mobile apps and bespoke business systems, we engineer software built for speed, clarity, and scale.",
 } as const;
 
 export const SERVICES_TABS_COPY = {

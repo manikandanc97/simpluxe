@@ -10,7 +10,7 @@ export const LEGAL_LAYOUT_COPY = {
 // Privacy policy
 export const PRIVACY_PAGE_COPY = {
   title: COMMON.pages.privacy,
-  metadataDescription: "Privacy Policy for Simpluxe.",
+  metadataDescription: "Read the Simpluxe Privacy Policy regarding client data protection, confidentiality, and technical information security standards.",
   lastUpdated: LEGAL_LAST_UPDATED,
   introductionHeading: "1. Introduction",
   introduction: "At Simpluxe, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
@@ -30,7 +30,7 @@ export const PRIVACY_PAGE_COPY = {
 
 export const TERMS_PAGE_COPY = {
   title: COMMON.pages.terms,
-  metadataDescription: "Terms of Service for Simpluxe.",
+  metadataDescription: "Review the Simpluxe Terms of Service covering technical development agreements, milestone delivery, and project terms.",
   lastUpdated: LEGAL_LAST_UPDATED,
   agreementHeading: "1. Agreement to Terms",
   agreementDescription: "These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (\"you\") and Simpluxe (\"we,\" \"us\" or \"our\"), concerning your access to and use of our website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto.",

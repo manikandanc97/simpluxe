@@ -64,9 +64,9 @@ export const EXPERIMENT_CARD_COPY = {
 
 // pages
 export const LAB_VIEW_COPY = {
-  description: "Experiments, concepts, and things we're exploring. A space for testing interactive ideas, generative interfaces, and design physics before client builds.",
+  description: "An engineering sandbox for testing experimental UI physics, generative interfaces, and design systems before deploying to client production systems.",
   home: COMMON.pages.home,
   ideas: COMMON.pages.ideas,
-  ideas2: "Ideas & ",
-  prototypes: "Prototypes.",
+  ideas2: "Software Prototypes & ",
+  prototypes: "Interaction Concepts.",
 } as const;

@@ -25,19 +25,19 @@ export interface AboutComparison {
 
 export const METRICS: AboutMetric[] = [
   {
-    value: "100%",
-    label: "Senior Engineering",
-    sub: "Direct collaboration with builders, zero junior outsourcing",
+    value: COMMON.labels.direct,
+    label: "Engineering Access",
+    sub: "Direct collaboration with engineers, zero junior outsourcing layers",
   },
   {
-    value: "< 1.2s",
-    label: "Fast Load Speeds",
-    sub: "Lighthouse 95+ performance on production networks",
+    value: "Fast",
+    label: "Load Speeds",
+    sub: "Performance-focused architecture on modern production networks",
   },
   {
-    value: "0",
-    label: "Vendor Lock-in",
-    sub: "You own 100% of all code, assets, and infrastructure",
+    value: "Clean",
+    label: "Code Handover",
+    sub: "Structured repository, schema, and production asset handover",
   },
   {
     value: SITE.responseTime || COMMON.labels.direct,
@@ -54,7 +54,7 @@ export const PRINCIPLES: AboutPrinciple[] = [
     summary: "Code should be easy to read. Interfaces should be effortless to use.",
     description:
       "We don't build things to show off technical trivia; we build them to solve real customer and business problems efficiently. If a concept cannot be explained plainly, it is too complex. Simplicity creates resilience.",
-    deliverable: "Readable, well-documented architecture that any senior engineer can step into.",
+    deliverable: "Readable, well-documented architecture that any engineering team can step into.",
   },
   {
     number: "02",
@@ -71,7 +71,7 @@ export const PRINCIPLES: AboutPrinciple[] = [
     title: "Difference is in the details",
     summary: "Simplicity never means generic, uninspired, or boring.",
     description:
-      "By stripping away visual clutter and extraneous controls, we create space for refined typography, fluid motion physics, sub-second performance, and a distinctive brand presence that commands respect.",
+      "By stripping away visual clutter and extraneous controls, we create space for refined typography, fluid motion physics, responsive performance, and a distinctive brand presence that commands respect.",
     deliverable: "Bespoke digital experiences that stand out clearly from generic templates.",
   },
 ];
@@ -80,7 +80,7 @@ export const COMPARISONS: AboutComparison[] = [
   {
     aspect: "Engineering Team",
     traditional: "Layers of account managers, junior temps, and outsourced developers.",
-    simpluxe: "Direct daily collaboration with the senior software engineers crafting your system.",
+    simpluxe: "Direct collaboration with dedicated software engineers crafting your system.",
   },
   {
     aspect: "Technology Foundation",
@@ -93,9 +93,9 @@ export const COMPARISONS: AboutComparison[] = [
     simpluxe: "Rapid 1-2 week release sprints with live staging previews and continuous feedback.",
   },
   {
-    aspect: "Code Ownership & IP",
+    aspect: "Code Delivery & Handover",
     traditional: "Proprietary lock-in, licensing dependencies, and captive hosting fees.",
-    simpluxe: "100% intellectual property ownership transferred to your GitHub repository.",
+    simpluxe: "Complete code repositories, assets, and documentation delivered directly to your team.",
   },
 ];
 
@@ -103,22 +103,22 @@ export const ABOUT_SECTION_CONTENT = {
   eyebrow: "Our Ethos & Origin",
   title: "Engineered for",
   highlightedText: "High-Stakes Scale.",
-  description: "We are a senior-only software development studio partnering directly with founders, CEOs, and engineering leaders who demand architectural rigor over agency overhead.",
+  description: "We are a focused software development studio partnering directly with founders, CEOs, and engineering leaders who demand architectural rigor over agency overhead.",
   globalBase: "Global Delivery Base",
   remoteEngineering: "Remote Engineering Worldwide",
-  pillar1Title: "Direct partnership with principal engineers — zero junior delegation",
-  pillar1Desc: "When you collaborate with Simpluxe, you don't get passed through account managers, junior coordinators, or fragmented offshore tiers. Every architecture decision, database schema, and interface interaction is authored and reviewed by battle-tested engineers.",
+  pillar1Title: "Direct partnership with experienced engineers — zero junior delegation",
+  pillar1Desc: "When you collaborate with Simpluxe, you don't get passed through account managers or fragmented tiers. Every architecture decision, database schema, and interface interaction is authored and reviewed by experienced engineers.",
   pillar2Title: "Architectural Longevity",
   pillar2Desc: "Zero framework bloat. We build maintainable Next.js 16 and React systems with strict TypeScript typing that your internal team can inherit effortlessly.",
-  pillar3Title: "100% IP & Code Ownership",
-  pillar3Desc: "You own every line of code, design file, and deployment credential from Day 1. Full Git repository transfer with zero recurring vendor lock-in.",
+  pillar3Title: "Complete Code & Deliverable Handover",
+  pillar3Desc: "You receive clean code repositories, design files, and deployment configurations upon milestone completion, with no proprietary vendor lock-in.",
 };
 
 export const ABOUT_COMPARISON_CONTENT = {
   eyebrow: "Comparative Standards",
   title: "Why Founders Choose",
   highlightedText: "Simpluxe.",
-  description: "A stark, transparent comparison between old-school agency bureaucracy and our streamlined senior software model.",
+  description: "A clear, transparent comparison between agency layers and our focused software studio model.",
   evaluationMetric: "Evaluation Metric",
   traditionalAgencies: "Traditional Agencies",
   simpluxeModel: "The Simpluxe Studio Model",
@@ -137,9 +137,9 @@ export const ABOUT_HERO_COPY = {
   home: COMMON.pages.home,
   symbol: COMMON.symbols.slash,
   about: COMMON.pages.about,
-  engineeringExcellenceShapedAround: "Engineering excellence shaped around",
+  engineeringExcellenceShapedAround: "Engineering excellence shaped around ",
   yourVision: "your vision.",
-  weAreADedicatedSoftwareStudio: "We are a dedicated software studio built on the conviction that digital products should be clear, lightning-fast, and engineered to solve real business challenges without bureaucratic overhead.",
+  weAreADedicatedSoftwareStudio: "We are a dedicated software studio engineering custom software, scalable web applications, and robust digital systems with thoughtful craft and zero unnecessary overhead.",
 } as const;
 
 export const ABOUT_METRICS_COPY = {

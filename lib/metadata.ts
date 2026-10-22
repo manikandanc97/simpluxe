@@ -20,7 +20,7 @@ export function createPageMetadata({
   description: string;
   path: string;
 }): Metadata {
-  const fullTitle = `${title} · ${SITE.name}`;
+  const fullTitle = title.includes(SITE.name) ? title : `${title} · ${SITE.name}`;
 
   return {
     title,

@@ -15,9 +15,9 @@ export interface CTAContent {
 
 export const CTA_CONTENT: CTAContent = {
   eyebrow: "From idea to impact",
-  title: "Let's turn your idea into a",
+  title: "Let's turn your idea into a ",
   highlightedText: "premium digital product.",
-  description: "High craft, sub-second performance, and zero bloat. We partner with ambitious founders to build products people actually love using.",
+  description: "Thoughtful engineering, responsive performance, and clean architecture. Partner with a focused development studio to build software your business and customers rely on.",
   primaryButtonText: COMMON.actions.startProject,
   secondaryButtonText: "Schedule a call",
   responseNote: "Response within 2 hours • Free 30-min discovery session",

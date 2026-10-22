@@ -11,7 +11,7 @@ export const HERO_CONTENT: HeroContent = {
   headlineLine1: TAGLINE.line1,
   headlineLine2Prefix: TAGLINE.line2Prefix,
   headlineHighlight: TAGLINE.highlight,
-  description: "We design and build premium websites, mobile apps, and scalable digital products — from first idea to launch and beyond.",
+  description: "We engineer custom software, scalable web applications, and mobile platforms — built for clarity, performance, and real business impact.",
   ctaPrimary: COMMON.actions.startProject,
   ctaSecondaryTitle: "See our work",
   ctaSecondarySubtitle: "Explore selected projects",

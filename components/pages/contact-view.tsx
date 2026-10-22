@@ -29,7 +29,7 @@ export function ContactView() {
               <div className="pointer-events-none absolute -top-12 -right-12 w-64 h-64 rounded-full bg-rose-100/40 blur-3xl -z-10" />
 
               <CardHeader>
-                <CardTitle className="text-2xl sm:text-3xl">
+                <CardTitle as="h2" className="text-2xl sm:text-3xl">
                   {CONTACT_SECTION_CONTENT.titleLine1}{" "}
                   <span className="text-primary">
                     {CONTACT_SECTION_CONTENT.titleLine2}

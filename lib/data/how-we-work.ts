@@ -156,12 +156,12 @@ export const STEPS: StepConfig[] = [
       {
         icon: ShieldCheckIcon,
         title: "Performance Audits",
-        desc: "Sub-second load times and 95+ Core Web Vitals.",
+        desc: "Fast load speeds and modern Web Vitals optimization.",
       },
       {
         icon: UsersIcon,
-        title: "Post-Launch Warranty",
-        desc: "30 days dedicated support and ongoing maintenance.",
+        title: "Post-Launch Support",
+        desc: "Initial deployment monitoring and ongoing maintenance options.",
       },
     ],
     nextStepName: "Start Project",
@@ -169,16 +169,16 @@ export const STEPS: StepConfig[] = [
 ];
 
 export const HOW_WE_WORK_TRUST_POINTS = [
-  "Dedicated senior engineers",
+  "Direct engineering focus",
   "Direct communication",
-  "Production warranty",
+  "Post-launch support",
 ] as const;
 
 export const HOW_WE_WORK_SECTION_CONTENT = {
   eyebrow: "Our process",
-  title: "How We",
+  title: "How We ",
   highlightedText: COMMON.labels.workHighlight,
-  descriptionLine1: "A clear 4-step delivery process to turn your ideas into real, scalable digital products.",
+  descriptionLine1: "A clear 4-step delivery process to turn your ideas into reliable, scalable digital products.",
 };
 
 // how-we-work
