@@ -77,7 +77,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               className="flex items-center gap-2.5 rounded-lg outline-none shrink-0 focus-visible:ring-2 focus-visible:ring-ring"
               aria-label={SITE_NAVBAR_COPY.simpluxeHome}
             >
-              <BrandMark className="size-8 sm:size-9" />
+              <BrandMark loading="eager" className="size-8 sm:size-9" />
               <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
                 {SITE_NAVBAR_COPY.brandSimp}<span className="text-primary">{SITE_NAVBAR_COPY.brandLuxe}</span>
               </span>

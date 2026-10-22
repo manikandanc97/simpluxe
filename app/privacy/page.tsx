@@ -1,17 +1,29 @@
 import { PRIVACY_PAGE_COPY } from "@/lib/data/legal";
+import { createPageMetadata } from "@/lib/metadata";
+import { COMMON } from "@/lib/data/common";
+import { JsonLd } from "@/components/shared/json-ld";
+import { getBreadcrumbSchema } from "@/lib/schema";
 import { LegalPageLayout } from "@/components/legal/legal-page-layout";
 import type { Metadata } from "next";
 import { SITE } from "@/lib/data/site";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: PRIVACY_PAGE_COPY.title,
   description: PRIVACY_PAGE_COPY.metadataDescription,
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPageLayout title={PRIVACY_PAGE_COPY.title} lastUpdated={PRIVACY_PAGE_COPY.lastUpdated}>
+    <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: COMMON.pages.home, path: "/" },
+          { name: COMMON.pages.privacy, path: "/privacy" },
+        ])}
+      />
+      <LegalPageLayout title={PRIVACY_PAGE_COPY.title} lastUpdated={PRIVACY_PAGE_COPY.lastUpdated}>
           <section className="flex flex-col gap-3">
             <h2 className="text-xl font-bold text-foreground">{PRIVACY_PAGE_COPY.introductionHeading}</h2>
             <p>{PRIVACY_PAGE_COPY.introduction}</p>
@@ -52,5 +64,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
     </LegalPageLayout>
+    </>
   );
 }

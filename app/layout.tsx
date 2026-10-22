@@ -15,6 +15,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { DEFAULT_OG_IMAGE } from "@/lib/metadata";
 import "./globals.css";
 
 // Primary typeface — Geist variable font, self-hosted by Next.js (no external network request).
@@ -26,6 +27,9 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: LAYOUT_COPY.title,
     template: LAYOUT_COPY.titleTemplate,
@@ -38,13 +42,16 @@ export const metadata: Metadata = {
       LAYOUT_COPY.socialDescription,
     url: SITE.url,
     siteName: LAYOUT_COPY.siteName,
+    locale: "en_US",
     type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary",
     title: LAYOUT_COPY.title,
     description:
       LAYOUT_COPY.socialDescription,
+    images: [DEFAULT_OG_IMAGE.url],
   },
   icons: {
     icon: {

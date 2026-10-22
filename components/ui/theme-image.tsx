@@ -28,17 +28,19 @@ export function ThemeImage({
   onLoad,
   ...rest
 }: ThemeImageProps) {
+  const isPriority = Boolean(rest.priority);
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const currentSrcKey = typeof src === "string" ? src : JSON.stringify(src);
-  const isLoaded = loadedSrc === currentSrcKey;
+  const isLoaded = isPriority || loadedSrc === currentSrcKey;
 
   useEffect(() => {
+    if (isPriority) return;
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth > 0) {
       setLoadedSrc(currentSrcKey);
     }
-  }, [currentSrcKey]);
+  }, [currentSrcKey, isPriority]);
 
   return (
     <div
@@ -49,7 +51,7 @@ export function ThemeImage({
       )}
     >
       {/* ── Genuine Theme Skeleton (No spinners/loading screen) ── */}
-      {variant !== "none" && (
+      {variant !== "none" && !isPriority && (
         <div
           role="status"
           aria-hidden={isLoaded}
@@ -78,8 +80,8 @@ export function ThemeImage({
         width={width}
         height={height}
         className={cn(
-          "transition-opacity duration-500 ease-out",
-          isLoaded ? "opacity-100" : "opacity-0",
+          isPriority ? "opacity-100" : "transition-opacity duration-500 ease-out",
+          !isPriority && (isLoaded ? "opacity-100" : "opacity-0"),
           className
         )}
         onLoad={(event) => {

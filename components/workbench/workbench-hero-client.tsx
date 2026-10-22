@@ -15,7 +15,21 @@ import {
   useTransform,
 } from "motion/react";
 import { ThemeImage } from "@/components/ui/theme-image";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+
+function subscribeDesktopMedia(callback: () => void) {
+  const media = window.matchMedia("(min-width: 1024px)");
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+}
+
+function getDesktopSnapshot() {
+  return window.matchMedia("(min-width: 1024px)").matches;
+}
+
+function getDesktopServerSnapshot() {
+  return false;
+}
 
 const showcasedProjects = PROJECTS.flatMap((project) =>
   project.showcaseImages
@@ -42,6 +56,11 @@ export function WorkbenchHeroClient({
   const heroRef = useRef<HTMLElement>(null);
   const activeProject = showcasedProjects[activeProjectIndex];
   const prefersReducedMotion = useReducedMotion();
+  const isDesktop = useSyncExternalStore(
+    subscribeDesktopMedia,
+    getDesktopSnapshot,
+    getDesktopServerSnapshot
+  );
 
   // Scroll-linked parallax (desktop only, disabled for reduced-motion)
   const { scrollYProgress } = useScroll({
@@ -96,7 +115,7 @@ export function WorkbenchHeroClient({
         <motion.div
           className="w-full max-w-6xl"
           style={
-            prefersReducedMotion
+            prefersReducedMotion || !isDesktop
               ? undefined
               : {
                   y: stageY,
@@ -282,7 +301,7 @@ export function WorkbenchHeroClient({
                         sizes="(max-width: 1023px) 100vw, 72vw"
                         variant="showcase"
                         className="object-cover object-top"
-                        preload={activeProjectIndex === 0}
+                        priority={activeProjectIndex === 0}
                       />
                     </motion.div>
                   </AnimatePresence>
