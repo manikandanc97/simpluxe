@@ -26,6 +26,11 @@ export const SERVICES_PAGE_COPY = {
   description: "Explore our software engineering services: custom web applications, SaaS platforms, mobile apps, e-commerce, and product design built to scale.",
 } as const;
 
+export const CUSTOM_SOFTWARE_PAGE_COPY = {
+  title: "Custom Software Development Services",
+  description: "Bespoke software development services engineered for modern businesses. We build scalable business applications, workflow platforms, and custom APIs.",
+} as const;
+
 export const WORK_PAGE_COPY = {
   title: "Selected Work & Software Case Studies",
   description: "Explore custom web applications, mobile platforms, and high-performance digital products engineered by Simpluxe for modern businesses.",

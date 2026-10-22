@@ -79,6 +79,20 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                 <AnimatedIcon icon={EyeIcon} size={14} />
                 <span>{SERVICES_ACTIVE_SHOWCASE_COPY.viewRelatedWork}</span>
               </Link>
+
+              {service.detailPageUrl && (
+                <Link
+                  href={service.detailPageUrl}
+                  className="group inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline sm:text-sm font-satoshi py-2 px-1"
+                >
+                  <span>{service.detailPageLabel ?? service.name}</span>
+                  <AnimatedIcon
+                    icon={ArrowUpRightIcon}
+                    size={13}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+              )}
             </div>
 
             {/* 3 Key Metrics */}

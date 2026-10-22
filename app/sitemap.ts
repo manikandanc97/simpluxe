@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE.url}/services/custom-software-development`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
       url: `${SITE.url}/about`,
       lastModified: LAST_MODIFIED,
       changeFrequency: "yearly",

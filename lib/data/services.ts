@@ -56,6 +56,8 @@ export interface ServiceData {
     answer: string;
   }[];
   relatedWorkUrl: string;
+  detailPageUrl?: string;
+  detailPageLabel?: string;
   mockup: {
     type: "dashboard" | "websites" | "ecommerce" | "mobile" | "saas" | "branding" | "design" | "ai" | "custom";
     title: string;
@@ -1268,6 +1270,8 @@ export const SERVICES_LIST: ServiceData[] = [
       }
     ],
     "relatedWorkUrl": "/work",
+    "detailPageUrl": "/services/custom-software-development",
+    "detailPageLabel": "Explore custom software overview",
     "mockup": {
       "type": "custom",
       "title": "Simpluxe Enterprise System Core",
