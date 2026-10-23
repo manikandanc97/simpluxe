@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
           <section className="flex flex-col gap-3">
             <h2 className="text-xl font-bold text-foreground">{PRIVACY_PAGE_COPY.collectionHeading}</h2>
             <p>{PRIVACY_PAGE_COPY.collectionDescription}</p>
-            <ul className="list-disc pl-6 space-y-2">
+            <ul className="flex list-disc flex-col gap-2 pl-6">
               <li>{PRIVACY_PAGE_COPY.personalAndContactData}</li>
               <li>{PRIVACY_PAGE_COPY.credentialsAndAuthenticationData}</li>
               <li>{PRIVACY_PAGE_COPY.paymentData}</li>

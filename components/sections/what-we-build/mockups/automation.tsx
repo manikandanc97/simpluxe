@@ -27,7 +27,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
           <motion.div
             animate={isActive ? { opacity: [1, 0, 1] } : { opacity: 1 }}
             transition={{ duration: 1, repeat: isActive ? Infinity : 0 }}
-            className="w-1.5 h-1.5 rounded-full bg-chart-5 ml-auto"
+            className="push-inline-end h-1.5 w-1.5 rounded-full bg-chart-5"
           />
         </div>
 

@@ -38,6 +38,134 @@
   }
 }
 
+/* Hero showcase stage */
+@utility hero-showcase-stage {
+  /* Keep every card reveal and vertical step mathematically even. */
+  --hero-card-inline-edge: 0rem;
+  --hero-card-inline-step: 1.25rem;
+  --hero-card-block-step: 1.25rem;
+  height: 25rem;
+  @variant sm {
+    --hero-card-inline-edge: 0.5rem;
+    --hero-card-inline-step: 1.5rem;
+    height: 31rem;
+  }
+  @variant lg {
+    --hero-card-inline-edge: 0.5rem;
+    --hero-card-inline-step: 2.5rem;
+    height: 35rem;
+  }
+  @variant xl {
+    --hero-card-inline-edge: 0rem;
+    --hero-card-inline-step: 4rem;
+    height: 37rem;
+  }
+}
+
+@utility hero-card-inner-left {
+  left: calc(var(--hero-card-inline-edge) + var(--hero-card-inline-step) + var(--hero-card-inline-step));
+  top: var(--hero-card-block-step);
+  bottom: var(--hero-card-block-step);
+  width: 8rem;
+  @variant sm {
+    width: 16rem;
+  }
+  @variant lg {
+    width: 18rem;
+  }
+  @variant xl {
+    width: 18rem;
+  }
+}
+
+@utility hero-card-mid-left {
+  left: calc(var(--hero-card-inline-edge) + var(--hero-card-inline-step));
+  top: calc(var(--hero-card-block-step) + var(--hero-card-block-step));
+  bottom: calc(var(--hero-card-block-step) + var(--hero-card-block-step));
+  width: 7rem;
+  @variant sm {
+    width: 15rem;
+  }
+  @variant lg {
+    width: 17rem;
+  }
+  @variant xl {
+    width: 17rem;
+  }
+}
+
+@utility hero-card-outer-left {
+  left: var(--hero-card-inline-edge);
+  top: calc(var(--hero-card-block-step) + var(--hero-card-block-step) + var(--hero-card-block-step));
+  bottom: calc(var(--hero-card-block-step) + var(--hero-card-block-step) + var(--hero-card-block-step));
+  width: 6rem;
+  @variant sm {
+    width: 14rem;
+  }
+  @variant lg {
+    width: 15rem;
+  }
+  @variant xl {
+    width: 15.5rem;
+  }
+}
+
+@utility hero-card-inner-right {
+  right: calc(var(--hero-card-inline-edge) + var(--hero-card-inline-step) + var(--hero-card-inline-step));
+  top: var(--hero-card-block-step);
+  bottom: var(--hero-card-block-step);
+  width: 8rem;
+  @variant sm {
+    width: 16rem;
+  }
+  @variant lg {
+    width: 18rem;
+  }
+  @variant xl {
+    width: 18rem;
+  }
+}
+
+@utility hero-card-mid-right {
+  right: calc(var(--hero-card-inline-edge) + var(--hero-card-inline-step));
+  top: calc(var(--hero-card-block-step) + var(--hero-card-block-step));
+  bottom: calc(var(--hero-card-block-step) + var(--hero-card-block-step));
+  width: 7rem;
+  @variant sm {
+    width: 15rem;
+  }
+  @variant lg {
+    width: 17rem;
+  }
+  @variant xl {
+    width: 17rem;
+  }
+}
+
+@utility hero-card-outer-right {
+  right: var(--hero-card-inline-edge);
+  top: calc(var(--hero-card-block-step) + var(--hero-card-block-step) + var(--hero-card-block-step));
+  bottom: calc(var(--hero-card-block-step) + var(--hero-card-block-step) + var(--hero-card-block-step));
+  width: 6rem;
+  @variant sm {
+    width: 14rem;
+  }
+  @variant lg {
+    width: 15rem;
+  }
+  @variant xl {
+    width: 15.5rem;
+  }
+}
+
+@utility hero-card-center {
+  left: calc(var(--hero-card-inline-edge) + var(--hero-card-inline-step) + var(--hero-card-inline-step) + var(--hero-card-inline-step));
+  right: calc(var(--hero-card-inline-edge) + var(--hero-card-inline-step) + var(--hero-card-inline-step) + var(--hero-card-inline-step));
+  top: 0;
+  bottom: 0;
+}
+
+
 /* Scan application code only; temporary browser profiles can contain locked files. */
 @source "./";
 @source "../components";
@@ -131,6 +259,14 @@
   font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(2.25rem, 5vw, 4rem);
   line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.type-page-title {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.025em;
 }
@@ -298,6 +434,10 @@
 
 @utility min-h-status { min-height: 60vh; }
 @utility max-h-dialog { max-height: 90vh; }
+@utility site-container-center { margin-inline: auto; }
+@utility push-block-end { margin-block-start: auto; }
+@utility push-inline-end { margin-inline-start: auto; }
+@utility center-positioned-artwork { margin: auto; }
 @utility stroke-bold { stroke-width: 2.5; }
 @utility bg-dots-size {
   background-size: 1.25rem 1.25rem;

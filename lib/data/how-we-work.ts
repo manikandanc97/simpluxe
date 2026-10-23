@@ -127,7 +127,7 @@ export const STEPS: StepConfig[] = [
       {
         icon: RocketIcon,
         title: "CI/CD Pipelines",
-        desc: "Automated test suites and zero-downtime deployments.",
+        desc: "Automated test suites and continuous deployment pipelines.",
       },
     ],
     nextStepName: COMMON.process.launch,
@@ -176,8 +176,8 @@ export const HOW_WE_WORK_TRUST_POINTS = [
 
 export const HOW_WE_WORK_SECTION_CONTENT = {
   eyebrow: "Our process",
-  title: "How We ",
-  highlightedText: COMMON.labels.workHighlight,
+  title: "A clear path from idea to",
+  highlightedText: "launch.",
   descriptionLine1: "A clear 4-step delivery process to turn your ideas into reliable, scalable digital products.",
 };
 

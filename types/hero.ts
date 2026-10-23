@@ -8,7 +8,6 @@ interface HeroStat {
 }
 
 export interface HeroContent {
-  eyebrow: string;
   headlineLine1: string;
   headlineLine2Prefix: string;
   headlineHighlight: string;

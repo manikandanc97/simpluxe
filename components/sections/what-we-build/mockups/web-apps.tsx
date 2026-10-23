@@ -49,7 +49,7 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
               className="w-4/5 h-2 rounded"
             />
             <div className="w-2/3 h-1.5 rounded bg-white/10" />
-            <motion.div initial={false} animate={isActive ? { opacity: [1, 0.5, 1] } : { opacity: 1 }} transition={{ duration: 2, repeat: isActive ? Infinity : 0, delay: 1 }} className="w-3/4 h-1.5 rounded bg-white/10 mt-auto" />
+            <motion.div initial={false} animate={isActive ? { opacity: [1, 0.5, 1] } : { opacity: 1 }} transition={{ duration: 2, repeat: isActive ? Infinity : 0, delay: 1 }} className="push-block-end h-1.5 w-3/4 rounded bg-white/10" />
           </div>
 
           <div className="relative col-span-8 flex h-full min-h-0 flex-col gap-2 overflow-hidden rounded-lg">

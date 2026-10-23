@@ -94,7 +94,7 @@ function GridLayout() {
           <div className="w-5 h-5 rounded-lg" style={{ backgroundColor: `${cell.accent}40` }} />
           <Bar w="w-full" color="bg-white/60" />
           <Bar w="w-3/4" color="bg-white/40" />
-          <div className="mt-auto self-start px-1.5 py-0.5 rounded-md text-micro font-bold text-white" style={{ backgroundColor: cell.accent }}>
+          <div className="push-block-end self-start rounded-md px-1.5 py-0.5 text-micro font-bold text-white" style={{ backgroundColor: cell.accent }}>
             {UI_UX_COPY.view}</div>
         </motion.div>
       ))}
@@ -235,7 +235,7 @@ function SplitLayout() {
             </div>
           ))}
           {/* Mini chart */}
-          <div className="flex items-end gap-0.5 h-8 mt-auto">
+          <div className="push-block-end flex h-8 items-end gap-0.5">
             {[30, 50, 40, 70, 90, 60, 80, 55, 75].map((h, i) => (
               <motion.div
                 key={i}

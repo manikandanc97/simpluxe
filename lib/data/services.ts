@@ -20,11 +20,7 @@ export interface ServiceData {
   icon: LucideIcon;
   category: typeof COMMON.categories.clientInterface | typeof COMMON.categories.coreSystems | typeof COMMON.categories.foundation;
   outcome: string;
-  pillars: string[];
-  includes: string[];
   shortTagline: string;
-  brandColor: string;
-  shortDeliverables: string[];
   
   headline: {
     normal: string;
@@ -39,7 +35,6 @@ export interface ServiceData {
   whatWeBuild: {
     title: string;
     description: string;
-    iconType: string;
     bgColor: string;
     iconColor: string;
   }[];
@@ -56,7 +51,6 @@ export interface ServiceData {
     answer: string;
   }[];
   relatedWorkUrl: string;
-  detailPageUrl?: string;
   detailPageLabel?: string;
   mockup: {
     type: "dashboard" | "websites" | "ecommerce" | "mobile" | "saas" | "branding" | "design" | "ai" | "custom";
@@ -75,6 +69,25 @@ export interface ServiceData {
 
 export type ServiceViewData = Omit<ServiceData, "icon">;
 
+const SERVICE_DETAIL_ROUTES: Record<string, string> = {
+  websites: "/services/web-development",
+  "web-apps": "/services/web-application-development",
+  ecommerce: "/services/ecommerce-development",
+  "mobile-apps": "/services/mobile-app-development",
+  saas: "/services/saas-development",
+  branding: "/services/brand-identity",
+  "ui-ux": "/services/ui-ux-design",
+  "custom-software": "/services/custom-software-development",
+};
+
+export function getServicePath(serviceId: string) {
+  return SERVICE_DETAIL_ROUTES[serviceId] ?? "/services";
+}
+
+export function getServiceSlug(serviceId: string) {
+  return getServicePath(serviceId).split(COMMON.symbols.slash).at(-1) ?? "";
+}
+
 export const SERVICES_LIST: ServiceData[] = [
   {
     "id": "websites",
@@ -83,17 +96,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "icon": GlobeIcon,
     "category": COMMON.categories.clientInterface,
     "outcome": "Clear digital experiences built to turn visitors into customers.",
-    "pillars": [
-      COMMON.process.strategy,
-      COMMON.process.design,
-      "Development",
-      COMMON.labels.performance
-    ],
-    "includes": [
-      "Custom responsive design & design systems",
-      "Conversion-optimized content architecture",
-      "SEO, Core Web Vitals & accessibility tuning"
-    ],
     "shortTagline": "Digital experiences that make your business clear, credible and memorable.",
     "deliverables": [
       "Requirements & narrative architecture",
@@ -101,14 +103,13 @@ export const SERVICES_LIST: ServiceData[] = [
       "Full responsive mobile-first engineering",
       "Headless CMS integration (Sanity / Supabase)",
       "Next.js Static & Server-side rendering",
-      "Core Web Vitals & 100/100 Lighthouse score",
+      "Core Web Vitals & performance tuning",
       "SEO schema metadata & social cards",
       "Interactive micro-animations (Motion)",
       "Global edge CDN deployment & caching",
       "Form capture & CRM lead routing",
       "Analytics & user telemetry integration"
     ],
-    "brandColor": "#922F55",
     "tabLabel": COMMON.serviceNames.websites,
     "headline": {
       "normal": "High-converting ",
@@ -117,16 +118,16 @@ export const SERVICES_LIST: ServiceData[] = [
     "description": "We design and engineer bespoke websites optimized for speed, visual authority, and seamless conversions. Built with clean architecture and fast load times.",
     "stats": [
       {
-        "value": "80+",
-        "label": "Websites delivered"
+        "value": "Modern",
+        "label": "Responsive architecture"
       },
       {
         "value": "Fast",
         "label": "Optimized load performance"
       },
       {
-        "value": "99.9%",
-        "label": "Uptime & reliability"
+        "value": "Stable",
+        "label": "Reliable edge deployment"
       }
     ],
     "whatWeBuildSubtitle": "High-performance digital storefronts and marketing platforms for modern brands.",
@@ -134,28 +135,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "Marketing Websites",
         "description": "Bespoke digital flagships that communicate value clearly and convert visitors.",
-        "iconType": "globe",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       },
       {
         "title": "Landing Pages",
         "description": "High-impact, conversion-focused campaign pages built for ad traffic and launches.",
-        "iconType": "rocket",
         "bgColor": "bg-pink-50",
         "iconColor": "text-pink-600"
       },
       {
         "title": "Interactive Portfolios",
         "description": "Immersive narrative showcases for studios, architects, and premium creators.",
-        "iconType": "layout",
         "bgColor": "bg-amber-50",
         "iconColor": "text-amber-600"
       },
       {
         "title": "CMS & Editorial Hubs",
         "description": "Effortless content publishing systems powered by modern headless architectures.",
-        "iconType": "file-text",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       }
@@ -200,7 +197,7 @@ export const SERVICES_LIST: ServiceData[] = [
       },
       {
         "question": "Will the website be fast and rank well on Google?",
-        "answer": "All our websites are engineered with Next.js edge caching and asset optimization, consistently achieving 95-100 on Google Lighthouse Core Web Vitals."
+        "answer": "All our websites are engineered with Next.js edge caching and asset optimization designed to pass Google Lighthouse Core Web Vitals benchmarks."
       },
       {
         "question": "Do you help with domain setup and SSL certificates?",
@@ -211,7 +208,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "mockup": {
       "type": "websites",
       "title": "Simpluxe Digital Flagship",
-      "badge": "Lighthouse 100",
+      "badge": "Core Web Vitals",
       "subtitle": "Fast Next.js edge experience",
       "image": {
         "publicId": "simpluxe/services/website_cbr8jm",
@@ -221,11 +218,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A polished interior design business website displayed across a wide desktop canvas"
       }
     },
-    "shortDeliverables": [
-      "Custom Design Systems",
-      "High Conversion UX",
-      "SEO & Fast Load Speeds"
-    ]
   },
   {
     "id": "web-apps",
@@ -234,17 +226,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "category": COMMON.categories.clientInterface,
     "icon": LayoutDashboardIcon,
     "outcome": "Focused software built around how your business actually works.",
-    "pillars": [
-      COMMON.labels.architecture,
-      "Product UX",
-      "Fullstack",
-      "Real-time"
-    ],
-    "includes": [
-      "Modern React & Next.js application architecture",
-      "Secure authentication & database integration",
-      "Interactive dashboards & business automations"
-    ],
     "shortTagline": "Scalable, secure and high-performance web apps tailored to your business needs.",
     "deliverables": [
       "Requirements analysis",
@@ -259,7 +240,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Testing & QA",
       "Deployment & DevOps"
     ],
-    "brandColor": "#6C2BB8",
     "tabLabel": COMMON.serviceNames.webApplicationsTitle,
     "headline": {
       "normal": "Software built around how ",
@@ -268,12 +248,12 @@ export const SERVICES_LIST: ServiceData[] = [
     "description": "We build modern, scalable web applications tailored to your unique workflows — from internal tools to customer-facing platforms. Designed for performance, security and growth.",
     "stats": [
       {
-        "value": "50+",
-        "label": "Projects delivered"
+        "value": "Fullstack",
+        "label": "Next.js & TypeScript"
       },
       {
-        "value": "3+ years",
-        "label": "Average client partnership"
+        "value": "Custom",
+        "label": "Dedicated workflows"
       },
       {
         "value": "Modular",
@@ -285,28 +265,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "Business Platforms",
         "description": "Custom platforms for complex operations.",
-        "iconType": "platform",
         "bgColor": "bg-accent-soft",
         "iconColor": "text-chart-2"
       },
       {
         "title": "Customer Portals",
         "description": "Secure and intuitive user experiences.",
-        "iconType": "portal",
         "bgColor": "bg-accent-soft",
         "iconColor": "text-primary"
       },
       {
         "title": "Internal Tools",
         "description": "Streamline your team's daily operations.",
-        "iconType": "tool",
         "bgColor": "bg-chart-4/10",
         "iconColor": "text-chart-4"
       },
       {
         "title": "CRM Systems",
         "description": "Manage customers, sales and workflows.",
-        "iconType": "crm",
         "bgColor": "bg-chart-3/10",
         "iconColor": "text-chart-3"
       }
@@ -373,11 +349,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A responsive CRM web application dashboard with analytics, projects and customer data"
       }
     },
-    "shortDeliverables": [
-      "Next.js & React Fullstack",
-      "Real-time Workflows",
-      "Secure Role-based Auth"
-    ]
   },
   {
     "id": "ecommerce",
@@ -386,17 +357,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "icon": ShoppingBagIcon,
     "category": COMMON.categories.clientInterface,
     "outcome": "High-converting online stores that turn browsers into loyal buyers.",
-    "pillars": [
-      "Catalog",
-      "Payments",
-      COMMON.labels.performance,
-      "Conversions"
-    ],
-    "includes": [
-      "Custom storefront design with mobile-first UX & checkout optimization",
-      "Stripe, Razorpay & multi-gateway payment integration",
-      "Inventory management, order tracking & analytics dashboard"
-    ],
     "shortTagline": "High-converting online stores built for speed, growth and seamless buying experiences.",
     "deliverables": [
       "Catalog modeling & inventory architecture",
@@ -411,7 +371,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "PCI-DSS security compliance standards",
       "High-concurrency flash sale caching"
     ],
-    "brandColor": "#0891B2",
     "tabLabel": COMMON.serviceNames.ecommerce,
     "headline": {
       "normal": "High-converting storefronts built to ",
@@ -420,12 +379,12 @@ export const SERVICES_LIST: ServiceData[] = [
     "description": "Engineered online shopping experiences that eliminate checkout friction, load instantly on mobile, and turn first-time visitors into repeat brand advocates.",
     "stats": [
       {
-        "value": "3.5x",
-        "label": "Average conversion increase"
+        "value": "Optimized",
+        "label": "Checkout conversion UX"
       },
       {
-        "value": "₹10Cr+",
-        "label": "Client transactions handled"
+        "value": "Multi-rail",
+        "label": "Stripe & UPI gateways"
       },
       {
         "value": "Streamlined",
@@ -437,28 +396,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "Custom DTC Storefronts",
         "description": "Bespoke digital brand experiences with fluid micro-interactions and instant cart drawers.",
-        "iconType": "shopping-bag",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       },
       {
         "title": "Multi-Vendor Marketplaces",
         "description": "Scalable seller onboarding, automated commission splits, and vendor dashboards.",
-        "iconType": "store",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       },
       {
         "title": "B2B Wholesale Portals",
         "description": "Tiered wholesale pricing, custom quotation pipelines, and bulk invoice ordering.",
-        "iconType": "briefcase",
         "bgColor": "bg-purple-50",
         "iconColor": "text-purple-600"
       },
       {
         "title": "Subscription Commerce",
         "description": "Automated recurring deliveries, membership perks, and self-serve customer management.",
-        "iconType": "refresh",
         "bgColor": "bg-pink-50",
         "iconColor": "text-pink-600"
       }
@@ -526,11 +481,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A premium natural skincare ecommerce storefront with product discovery and shopping tools"
       }
     },
-    "shortDeliverables": [
-      "Custom Storefront Design",
-      "Payment Gateway Integration",
-      "Inventory & Order System"
-    ]
   },
   {
     "id": "mobile-apps",
@@ -539,17 +489,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "category": COMMON.categories.clientInterface,
     "icon": SmartphoneIcon,
     "outcome": "Useful mobile experiences built for real-world customers.",
-    "pillars": [
-      COMMON.labels.crossPlatform,
-      "Native Feel",
-      "Offline First",
-      "App Store"
-    ],
-    "includes": [
-      "Cross-platform iOS & Android development (React Native)",
-      "Offline-ready data synchronization & push notifications",
-      "App Store & Google Play submission and launch"
-    ],
     "shortTagline": "Native-like mobile experiences that engage users and drive growth.",
     "deliverables": [
       "Cross-platform architecture (React Native / Flutter)",
@@ -564,25 +503,24 @@ export const SERVICES_LIST: ServiceData[] = [
       "Apple App Store & Google Play publishing",
       "Over-The-Air (OTA) continuous updates"
     ],
-    "brandColor": "#D23D78",
     "tabLabel": COMMON.serviceNames.mobileAppsFilter,
     "headline": {
       "normal": "Native-grade mobile applications built for ",
       "highlight": "daily user engagement."
     },
-    "description": "Crafted for iOS and Android with smooth 60 FPS transitions, offline-first reliability, and delightful tactile gestures that users love opening every day.",
+    "description": "Crafted for iOS and Android with fluid transitions, offline-first reliability, and responsive tactile gestures that users love opening every day.",
     "stats": [
       {
-        "value": "4.9★",
-        "label": "Average App Store rating"
+        "value": "Cross-platform",
+        "label": COMMON.labels.iosAndroid
       },
       {
-        "value": "500k+",
-        "label": "Active mobile users"
+        "value": "Offline-first",
+        "label": "Local SQLite sync"
       },
       {
-        "value": "60 FPS",
-        "label": "Fluid native performance"
+        "value": "Fluid",
+        "label": "Native transitions"
       }
     ],
     "whatWeBuildSubtitle": "Cross-platform and native mobile apps engineered for production scale.",
@@ -590,28 +528,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "iOS & Android Consumer Apps",
         "description": "Feature-packed mobile apps with polished navigation, haptics, and social feeds.",
-        "iconType": "smartphone",
         "bgColor": "bg-rose-50",
         "iconColor": "text-rose-600"
       },
       {
         "title": "Enterprise Field Tools",
         "description": "Offline-first inspection, logistics, and data collection apps for field teams.",
-        "iconType": "clipboard",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       },
       {
         "title": "On-Demand & Geolocation",
         "description": "Live GPS tracking, real-time driver/customer coordination, and push alerts.",
-        "iconType": "map-pin",
         "bgColor": "bg-amber-50",
         "iconColor": "text-amber-600"
       },
       {
         "title": "Health & Habit Trackers",
         "description": "Sensory feedback, device biometric security (Face ID), and localized notifications.",
-        "iconType": "activity",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       }
@@ -677,11 +611,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A collection of polished mobile app screens for fitness, grocery and travel experiences"
       }
     },
-    "shortDeliverables": [
-      "React Native Cross-Platform",
-      "Offline Functionality",
-      "App Store & Play Store"
-    ]
   },
   {
     "id": "saas",
@@ -690,17 +619,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "category": COMMON.categories.coreSystems,
     "icon": PackageIcon,
     "outcome": "From first release to scalable product systems.",
-    "pillars": [
-      "Monetization",
-      "Multi-Tenancy",
-      "Onboarding",
-      "Scalability"
-    ],
-    "includes": [
-      "Frictionless self-serve customer onboarding",
-      "Stripe subscriptions, metered billing & customer portals",
-      "Workspaces, role-based access control & audits"
-    ],
     "shortTagline": "End-to-end SaaS platforms with modern architecture and business-ready features.",
     "deliverables": [
       "Multi-tenant database schema architecture",
@@ -712,10 +630,9 @@ export const SERVICES_LIST: ServiceData[] = [
       "Audit logging & enterprise compliance readiness",
       "Real-time team collaboration / websockets",
       "Automated transactional emails (Resend)",
-      "Zero-downtime database migration tooling",
+      "Backward-compatible database migration tooling",
       "Health check monitoring & telemetry alerts"
     ],
-    "brandColor": "#5B21B6",
     "tabLabel": "SaaS Products",
     "headline": {
       "normal": "Multi-tenant software platforms engineered from ",
@@ -728,8 +645,8 @@ export const SERVICES_LIST: ServiceData[] = [
         "label": "High-availability deployment"
       },
       {
-        "value": "10x",
-        "label": "Faster user onboarding"
+        "value": "Self-serve",
+        "label": "Streamlined user onboarding"
       },
       {
         "value": "Multi-tenant",
@@ -741,28 +658,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "Multi-Tenant Workspaces",
         "description": "Organization-level data isolation, custom domains, and granular role permissions.",
-        "iconType": "layers",
         "bgColor": "bg-purple-50",
         "iconColor": "text-purple-600"
       },
       {
         "title": "Subscription & Metered Billing",
         "description": "Stripe billing with seat pricing, usage thresholds, coupons, and tax automation.",
-        "iconType": "credit-card",
         "bgColor": "bg-indigo-50",
         "iconColor": "text-indigo-600"
       },
       {
         "title": "API-First Micro-SaaS",
         "description": "Developer API keys, rate-limiting, documentation, and webhook delivery engines.",
-        "iconType": "code",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       },
       {
         "title": "Product Analytics & Audit Logs",
         "description": "Track user events, feature usage, retention funnels, and enterprise compliance logs.",
-        "iconType": "bar-chart",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       }
@@ -801,7 +714,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "faqs": [
       {
         "question": "How do you handle tenant data isolation in multi-tenant SaaS?",
-        "answer": "We implement PostgreSQL Row-Level Security (RLS) combined with organization schema namespaces, ensuring zero accidental cross-tenant data leaks at the database engine level."
+        "answer": "We implement PostgreSQL Row-Level Security (RLS) combined with organization schema namespaces, establishing strict tenant data isolation at the database engine level."
       },
       {
         "question": "Can we charge per seat, per usage, or a flat monthly fee?",
@@ -830,11 +743,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A SaaS administration dashboard showing revenue, customers, plans and upcoming tasks"
       }
     },
-    "shortDeliverables": [
-      "Stripe Billing & Subscriptions",
-      "Multi-tenant Architecture",
-      "Product Telemetry & Analytics"
-    ]
   },
   {
     "id": "branding",
@@ -843,17 +751,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "category": COMMON.categories.foundation,
     "icon": PaletteIcon,
     "outcome": "A visual identity that makes the business recognizable.",
-    "pillars": [
-      "Brand Voice",
-      "Typography",
-      "Color Systems",
-      "Guidelines"
-    ],
-    "includes": [
-      "Primary, secondary & responsive logo systems",
-      "Curated color palettes & typography standards",
-      "Comprehensive digital asset kit & brand guidelines"
-    ],
     "shortTagline": "A distinct visual identity that makes your brand instantly recognizable and memorable.",
     "deliverables": [
       "Brand positioning & competitor visual audit",
@@ -868,7 +765,6 @@ export const SERVICES_LIST: ServiceData[] = [
       "Complete Brand Book & guideline PDF",
       "Full source files (AI, SVG, PNG, Figma)"
     ],
-    "brandColor": "#F97316",
     "tabLabel": "Branding",
     "headline": {
       "normal": "Distinct visual identity systems that make ",
@@ -881,8 +777,8 @@ export const SERVICES_LIST: ServiceData[] = [
         "label": "Vector identity systems"
       },
       {
-        "value": "30+",
-        "label": "Brand systems crafted"
+        "value": "Vector",
+        "label": "Scalable logo systems"
       },
       {
         "value": "Delivered",
@@ -894,28 +790,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "Logo Systems & Marks",
         "description": "Primary, secondary, and responsive icon marks for all scales.",
-        "iconType": "palette",
         "bgColor": "bg-amber-50",
         "iconColor": "text-amber-600"
       },
       {
         "title": "Color & Typography Scales",
         "description": "Curated harmonious palettes, WCAG contrast pairing, and editorial typographic hierarchy.",
-        "iconType": "type",
         "bgColor": "bg-pink-50",
         "iconColor": "text-pink-600"
       },
       {
         "title": "Brand Guidelines Manual",
         "description": "Exhaustive documentation on clearspace, do's and don'ts, and consistent asset usage.",
-        "iconType": "book-open",
         "bgColor": "bg-purple-50",
         "iconColor": "text-purple-600"
       },
       {
         "title": "Marketing & Social Collateral",
         "description": "Stationery kits, pitch deck templates, social media assets, and vector icon libraries.",
-        "iconType": "image",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       }
@@ -981,11 +873,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A complete visual branding system with logo, typography, colors and application mockups"
       }
     },
-    "shortDeliverables": [
-      "Logo System & Guidelines",
-      "Color & Typography",
-      "Digital Asset Kit"
-    ]
   },
   {
     "id": "ui-ux",
@@ -994,17 +881,6 @@ export const SERVICES_LIST: ServiceData[] = [
     "category": COMMON.categories.foundation,
     "icon": LayersIcon,
     "outcome": "Intuitive product design that eliminates user friction and confusion.",
-    "pillars": [
-      "User Journeys",
-      "Wireframes",
-      COMMON.labels.prototypes,
-      COMMON.labels.designTokens
-    ],
-    "includes": [
-      "User research, mental models & journey mapping",
-      "High-fidelity interactive prototypes in Figma",
-      "Production-ready design component tokens"
-    ],
     "shortTagline": "Intuitive, research-led product design that eliminates friction and converts users.",
     "deliverables": [
       "User persona & competitive UX benchmarking",
@@ -1019,21 +895,20 @@ export const SERVICES_LIST: ServiceData[] = [
       "WCAG 2.1 AA accessibility compliance check",
       "Live Figma library link with continuous sync"
     ],
-    "brandColor": "#7C3AED",
     "tabLabel": COMMON.labels.uiUxDesign,
     "headline": {
       "normal": "Human-centric digital interfaces engineered with ",
-      "highlight": "zero cognitive friction."
+      "highlight": "intuitive clarity and flow."
     },
     "description": "We design intuitive, research-driven user journeys and high-craft design systems that transform complex product workflows into clear, frictionless digital experiences.",
     "stats": [
       {
-        "value": "0",
-        "label": "Cognitive user friction"
+        "value": "Frictionless",
+        "label": "User-tested journeys"
       },
       {
-        "value": "100+",
-        "label": "User journeys mapped"
+        "value": "Interactive",
+        "label": "Clickable prototypes"
       },
       {
         "value": COMMON.technology.figma,
@@ -1045,28 +920,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "User Journey & Flow Mapping",
         "description": "Eliminate dead-ends and confusion with step-by-step psychological workflow maps.",
-        "iconType": "compass",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       },
       {
         "title": "Comprehensive Design Systems",
         "description": "Standardized color, typography, input, modal, and button component tokens.",
-        "iconType": "layers",
         "bgColor": "bg-purple-50",
         "iconColor": "text-purple-600"
       },
       {
         "title": "High-Fidelity Interactive Prototypes",
         "description": "Clickable Figma prototypes with realistic animations for user testing and pitching.",
-        "iconType": "mouse-pointer",
         "bgColor": "bg-pink-50",
         "iconColor": "text-pink-600"
       },
       {
         "title": "Usability Testing & UX Audits",
         "description": "Heuristic evaluation, accessibility checks (WCAG AA), and task completion analysis.",
-        "iconType": "check-circle",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       }
@@ -1129,11 +1000,6 @@ export const SERVICES_LIST: ServiceData[] = [
         "alt": "A high-fidelity CRM interface design with navigation, analytics and reusable dashboard components"
       }
     },
-    "shortDeliverables": [
-      "Figma Prototypes",
-      "User Journey Maps",
-      "Design Token Systems"
-    ]
   },
   {
     "id": "custom-software",
@@ -1142,20 +1008,7 @@ export const SERVICES_LIST: ServiceData[] = [
     "category": COMMON.categories.coreSystems,
     "icon": CpuIcon,
     "outcome": "Tailored software solutions engineered for specific business operations.",
-    "pillars": [
-      "Discovery",
-      "API Bridges",
-      "Databases",
-      COMMON.labels.legacyModernization
-    ],
-    "includes": [
-      "Internal operational tools & admin management portals",
-      "Custom REST/GraphQL APIs & third-party system bridges",
-      "Robust relational database design & performance tuning"
-    ],
     "shortTagline": "Bespoke software architecture engineered for complex enterprise logic.",
-    "brandColor": "#000000",
-    "shortDeliverables": ["Custom APIs", "Business Systems", COMMON.labels.fullCodeOwnership],
 
     "tabLabel": "Custom Software",
     "headline": {
@@ -1182,28 +1035,24 @@ export const SERVICES_LIST: ServiceData[] = [
       {
         "title": "Enterprise Backoffices & ERPs",
         "description": "Unified command centers integrating inventory, procurement, and team operations.",
-        "iconType": "cpu",
         "bgColor": "bg-blue-50",
         "iconColor": "text-blue-600"
       },
       {
         "title": "High-Throughput API Bridges",
         "description": "Low-latency REST & GraphQL microservices bridging disparate legacy systems.",
-        "iconType": "network",
         "bgColor": "bg-purple-50",
         "iconColor": "text-purple-600"
       },
       {
         "title": COMMON.labels.legacyModernization,
-        "description": "Gradual zero-downtime refactoring of monolithic legacy code into modern stacks.",
-        "iconType": "refresh",
+        "description": "Gradual refactoring of monolithic legacy code into modern stacks.",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       },
       {
         "title": "Data Pipelines & ETL",
         "description": "Automated aggregation, transformation, and warehousing of large datasets.",
-        "iconType": "database",
         "bgColor": "bg-amber-50",
         "iconColor": "text-amber-600"
       }
@@ -1258,7 +1107,7 @@ export const SERVICES_LIST: ServiceData[] = [
       },
       {
         "question": "Can you modernize our existing old software without stopping business?",
-        "answer": "Yes. We use the Strangler Fig pattern to build modern micro-modules around your existing system, migrating traffic gradually with zero downtime."
+        "answer": "Yes. We use the Strangler Fig pattern to build modern micro-modules around your existing system, migrating traffic gradually to minimize operational disruption."
       },
       {
         "question": "Can this software be hosted on our own private cloud or on-prem servers?",
@@ -1270,7 +1119,6 @@ export const SERVICES_LIST: ServiceData[] = [
       }
     ],
     "relatedWorkUrl": "/work",
-    "detailPageUrl": "/services/custom-software-development",
     "detailPageLabel": "Explore custom software overview",
     "mockup": {
       "type": "custom",
@@ -1288,6 +1136,12 @@ export const SERVICES_LIST: ServiceData[] = [
   }
 ];
 
+export function getServiceBySlug(slug: string) {
+  return SERVICES_LIST.find(
+    (service) => getServiceSlug(service.id) === slug
+  );
+}
+
 export const SERVICES_DELIVERABLES_CONTENT = {
   eyebrow: "Deliverables",
   title: "Everything included",
@@ -1302,6 +1156,12 @@ export const SERVICES_ACTIVE_SHOWCASE_COPY = {
   symbol: COMMON.symbols.bullet,
   startAProject: COMMON.actions.startProject,
   viewRelatedWork: "View related work",
+  exploreService: (name: string) => `Explore ${name}`,
+} as const;
+
+export const SERVICE_DETAIL_PAGE_COPY = {
+  metadataTitle: (name: string) => `${name} Services`,
+  craftsmanship: "Built with precision.",
 } as const;
 
 export const SERVICES_HERO_COPY = {
@@ -1311,10 +1171,7 @@ export const SERVICES_HERO_COPY = {
   digitalServicesFor: "Software and digital services for ",
   yourBusiness: "your business.",
   fromWebsitesAndMobileProductsTo: "From custom web applications and SaaS platforms to mobile apps and bespoke business systems, we engineer software built for speed, clarity, and scale.",
-} as const;
-
-export const SERVICES_TABS_COPY = {
-  serviceCategories: "Service categories",
+  customSoftwareDeepDive: "Explore Custom Software Development Overview",
 } as const;
 
 export const SERVICES_TECH_STACK_COPY = {

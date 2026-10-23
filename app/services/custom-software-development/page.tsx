@@ -1,10 +1,10 @@
 import { CUSTOM_SOFTWARE_PAGE_COPY } from "@/lib/data/metadata";
-import { CUSTOM_SOFTWARE_HERO_COPY } from "@/lib/data/custom-software";
 import { createPageMetadata } from "@/lib/metadata";
 import { COMMON } from "@/lib/data/common";
 import { JsonLd } from "@/components/shared/json-ld";
-import { getBreadcrumbSchema, getCustomSoftwareServiceSchema } from "@/lib/schema";
-import { CustomSoftwareView } from "@/components/pages/custom-software-view";
+import { getBreadcrumbSchema, getServiceSchema } from "@/lib/schema";
+import { ServiceDetailView } from "@/components/pages/service-detail-view";
+import { SERVICES_LIST } from "@/lib/data/services";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = createPageMetadata({
@@ -14,6 +14,14 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function CustomSoftwarePage() {
+  const customSoftwareService = SERVICES_LIST.find(
+    (service) => service.id === "custom-software"
+  );
+
+  if (!customSoftwareService) {
+    throw new Error("Custom software service data is missing.");
+  }
+
   return (
     <>
       <JsonLd
@@ -22,14 +30,14 @@ export default function CustomSoftwarePage() {
             { name: COMMON.pages.home, path: "/" },
             { name: COMMON.pages.services, path: "/services" },
             {
-              name: CUSTOM_SOFTWARE_HERO_COPY.currentPage,
+              name: customSoftwareService.name,
               path: "/services/custom-software-development",
             },
           ]),
-          getCustomSoftwareServiceSchema(),
+          getServiceSchema(customSoftwareService),
         ]}
       />
-      <CustomSoftwareView />
+      <ServiceDetailView service={customSoftwareService} />
     </>
   );
 }

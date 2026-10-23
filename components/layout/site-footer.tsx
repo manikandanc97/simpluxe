@@ -4,6 +4,7 @@ import { SITE } from "@/lib/data/site";
 import { BrandMark } from "@/components/ui/brand-mark";
 import Link from "next/link";
 import { FOOTER_DATA } from "@/lib/data/layout";
+import { getServicePath } from "@/lib/data/services";
 import { FooterNav } from "./footer-nav";
 import { FooterCtaButton } from "./footer-cta-button";
 import {
@@ -150,7 +151,7 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
                 return (
                   <li key={cap.label} className="flex items-center gap-4 cursor-pointer group">
                     {cap.id ? (
-                      <Link href={`/services#${cap.id}`} className="flex items-center gap-4 w-full">
+                      <Link href={getServicePath(cap.id)} className="flex items-center gap-4 w-full">
                         {content}
                       </Link>
                     ) : (

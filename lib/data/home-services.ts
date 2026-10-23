@@ -33,8 +33,8 @@ export const HOME_SERVICES: HomeService[] = [
 
 export const SERVICES_SECTION_CONTENT = {
   eyebrow: "Capabilities",
-  title: "From Ideas to ",
-  highlightedText: "Impact.",
+  title: "From ambitious ideas to",
+  highlightedText: "lasting impact.",
   description: "We engineer custom software, scalable web applications, and mobile platforms — with reliable architecture and zero unnecessary overhead.",
 } as const;
 

@@ -19,9 +19,9 @@ export default function ErrorPage({
 
   return (
     <div className="flex flex-col items-center justify-center min-h-status gap-6 text-center">
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         <h1 className="type-h1">{ERROR_COPY.somethingWent}<span className="text-primary">{ERROR_COPY.wrong}</span></h1>
-        <p className="text-muted-foreground text-lg max-w-md mx-auto">
+        <p className="max-w-md self-center text-lg text-muted-foreground">
           {ERROR_COPY.weEncounteredAnUnexpectedError}</p>
       </div>
       <Button onClick={() => reset()} className="gap-2">

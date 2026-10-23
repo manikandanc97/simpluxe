@@ -15,6 +15,7 @@ export type StaticIconName =
   | "palette"
   | "pencil"
   | "refresh"
+  | "chevron-down"
   | "x"
   | "arrow-up"
   | "arrow-up-right";
@@ -39,6 +40,7 @@ const paths: Record<StaticIconName, React.ReactNode> = {
   palette: <><path d="M12 3a9 9 0 1 0 0 18 2 2 0 0 0 1.4-3.4 2 2 0 0 1 1.4-3.4H17A4 4 0 0 0 21 10c0-4-4-7-9-7Z" /><path d="M7.5 10h.01M10 6.5h.01M15 7h.01" /></>,
   pencil: <><path d="m4 20 4.5-1 10-10a2 2 0 0 0-3-3l-10 10L4 20Z" /><path d="m14 7 3 3" /></>,
   refresh: <><path d="M20 7v5h-5" /><path d="M4 17v-5h5" /><path d="M6.1 9a7 7 0 0 1 11.6-2L20 9M4 15l2.3 2a7 7 0 0 0 11.6-2" /></>,
+  "chevron-down": <path d="m6 9 6 6 6-6" />,
   x: <path d="M6 6l12 12M18 6 6 18" />,
   "arrow-up": <><path d="m6 10 6-6 6 6M12 4v16" /></>,
   "arrow-up-right": <><path d="M7 17 17 7M7 7h10v10" /></>,

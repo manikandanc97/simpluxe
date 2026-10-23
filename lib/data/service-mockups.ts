@@ -147,7 +147,7 @@ export const SAAS_COPY = {
   postgresDb: "Postgres DB",
   edgeApi: "Edge API",
   appName: "cloud.simpluxe.io",
-  liveStatus: "99.99% Live",
+  liveStatus: "Operational Live",
   tabs: [
     { id: "overview", label: "Overview" },
     { id: "tenants", label: "Tenants" },
@@ -162,7 +162,7 @@ export const SAAS_COPY = {
   okStatus: "200 OK",
   edge: "Edge",
   clustersOnline: "3 Clusters Online",
-  replication: "Zero-Downtime Replication",
+  replication: "Multi-Region Replication",
   syncStatus: "Sync: 100%",
   stripeLive: "Stripe Live",
   cloudTier: "Enterprise Cloud Tier",
@@ -173,7 +173,7 @@ export const SAAS_COPY = {
   reconciliation: "Auto-Reconciliation Active",
   webhookStatus: "Webhook 200",
   meteredBilling: "Instant Metered Billing",
-  automated: "100% Automated",
+  automated: "Automated Flow",
 } as const;
 
 export const UI_UX_COPY = {
@@ -197,7 +197,7 @@ export const WEB_APPS_COPY = {
   users: COMMON.labels.users,
   text142k: "14.2k",
   uptime: COMMON.labels.uptime,
-  text999: "99.9%",
+  text999: "Optimal",
   systemOperational: "All systems operational",
   latency: "42 ms",
 } as const;

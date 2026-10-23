@@ -52,7 +52,7 @@ export function SectionHeader({
       className={cn(
         maxWidth,
         "flex flex-col gap-4 font-satoshi",
-        centered ? "mx-auto text-center items-center" : "items-start",
+        centered ? "self-center text-center items-center" : "items-start",
         className
       )}
     >

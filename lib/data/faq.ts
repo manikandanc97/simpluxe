@@ -95,9 +95,9 @@ export const FAQS: FAQItem[] = [
 
 export const FAQ_SECTION_CONTENT: FAQSectionContent = {
   eyebrow: "FAQ",
-  titleLine1: "Clear Answers before ",
+  titleLine1: "Clear answers.",
   titleLine2: "",
-  highlightedText: "We Build.",
+  highlightedText: "Confident next steps.",
   description: "Honest answers to common questions founders and teams ask about our software engineering process, pricing, project handover, and timelines.",
 };
 
@@ -113,7 +113,7 @@ export const FAQ_CONTACT_CARD_COPY = {
     "Technical feasibility & architecture assessment",
     "Sprint milestones & transparent project quote",
   ],
-  responseTime: "Response in < 2 hours",
+  responseTime: "Direct engineering response",
   faqTechnicalConsultation: "FAQ - Technical Consultation",
   talkToOurTeam: "Talk to our team",
   text100: "100%",

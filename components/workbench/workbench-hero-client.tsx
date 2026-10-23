@@ -45,10 +45,8 @@ const showcasedProjects = PROJECTS.flatMap((project) =>
 
 export function WorkbenchHeroClient({
   intro,
-  scrollIndicatorTitle,
 }: {
   intro: ReactNode;
-  scrollIndicatorTitle: string;
 }) {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [isMobileProjectMenuOpen, setIsMobileProjectMenuOpen] = useState(false);
@@ -73,7 +71,6 @@ export function WorkbenchHeroClient({
   const stageY = useSpring(rawStageY, { stiffness: 80, damping: 20, mass: 0.5 });
   const stageRotateX = useSpring(rawStageRotateX, { stiffness: 80, damping: 20, mass: 0.5 });
   const stageScale = useSpring(rawStageScale, { stiffness: 80, damping: 20, mass: 0.5 });
-  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   useEffect(() => {
     if (!isMobileProjectMenuOpen) return;
@@ -101,13 +98,12 @@ export function WorkbenchHeroClient({
 
   return (
     <section
-      id="hero"
+      id="selected-work"
+      aria-labelledby="selected-work-heading"
       ref={heroRef}
-      className="relative overflow-hidden bg-background pb-14 pt-16 text-white sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24"
+      className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-svh bg-primary" aria-hidden="true" />
-
-      <Container className="relative z-10 flex flex-col items-center gap-12 sm:gap-16 lg:gap-20">
+      <Container className="relative flex flex-col items-center gap-12 sm:gap-16 lg:gap-20">
         <div className="w-full max-w-4xl">
           {intro}
         </div>
@@ -348,22 +344,6 @@ export function WorkbenchHeroClient({
           </div>
         </motion.div>
 
-        <motion.div
-          style={prefersReducedMotion ? undefined : { opacity: scrollCueOpacity }}
-          className="flex flex-col items-center gap-2 pt-2 text-slate-300"
-          aria-hidden="true"
-        >
-          <span className="font-mono text-2xs uppercase tracking-widest text-slate-400">
-            {scrollIndicatorTitle}
-          </span>
-          <motion.div
-            animate={prefersReducedMotion ? undefined : { y: [0, 5, 0] }}
-            transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="flex size-7 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm"
-          >
-            <AnimatedIcon icon={ChevronDownIcon} size={14} className="text-white" />
-          </motion.div>
-        </motion.div>
       </Container>
     </section>
   );

@@ -15,12 +15,12 @@ export interface CTAContent {
 
 export const CTA_CONTENT: CTAContent = {
   eyebrow: "From idea to impact",
-  title: "Let's turn your idea into a ",
-  highlightedText: "premium digital product.",
+  title: "Ready to build something",
+  highlightedText: "that lasts?",
   description: "Thoughtful engineering, responsive performance, and clean architecture. Partner with a focused development studio to build software your business and customers rely on.",
   primaryButtonText: COMMON.actions.startProject,
   secondaryButtonText: "Schedule a call",
-  responseNote: "Response within 2 hours • Free 30-min discovery session",
+  responseNote: "Direct consultation with engineers • 30-min discovery session",
   floatingPillText: "READY TO BUILD?",
   pillars: [],
 };

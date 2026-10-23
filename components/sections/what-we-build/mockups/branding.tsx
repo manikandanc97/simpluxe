@@ -132,7 +132,7 @@ function LogoScreen({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Specimen Box */}
-        <div className="bg-slate-50 border border-slate-200/60 rounded-lg p-2 flex items-center justify-between mt-auto">
+        <div className="push-block-end flex items-center justify-between rounded-lg border border-slate-200/60 bg-slate-50 p-2">
           <div className="flex flex-col">
             <span className="text-3xs font-bold text-slate-700">{BRANDING_COPY.opticalMark}</span>
             <span className="text-3xs text-slate-400">{BRANDING_COPY.masterGrid}</span>
@@ -202,7 +202,7 @@ function PaletteScreen({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Proportional Ratio Bar */}
-        <div className="flex flex-col gap-1 mt-auto">
+        <div className="push-block-end flex flex-col gap-1">
           <div className="flex items-center justify-between text-3xs text-slate-400 font-medium">
             <span>{BRANDING_COPY.distribution}</span>
             <span>{BRANDING_COPY.distributionRatio}</span>
@@ -276,7 +276,7 @@ function TypographyScreen({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Weights Specimen Scale */}
-        <div className="flex items-center justify-between text-3xs font-medium text-slate-600 mt-auto pt-1 border-t border-slate-100">
+        <div className="push-block-end flex items-center justify-between border-t border-slate-100 pt-1 text-3xs font-medium text-slate-600">
           <span className="font-light">{BRANDING_COPY.lightWeight}</span>
           <span className="font-normal">{BRANDING_COPY.regularWeight}</span>
           <span className="font-semibold">{BRANDING_COPY.semiboldWeight}</span>

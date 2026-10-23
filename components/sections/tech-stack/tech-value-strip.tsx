@@ -13,7 +13,7 @@ export function TechValueStrip() {
     <motion.div 
       variants={staggerContainer(0.1, 0.2)}
       {...viewportReveal}
-      className="max-w-5xl mx-auto bg-slate-50 backdrop-blur-md border border-slate-200/80 rounded-2xl py-4 px-4 shadow-xs w-full sm:px-8 lg:px-12 ts-value-strip"
+      className="ts-value-strip w-full max-w-5xl self-center rounded-2xl border border-slate-200/80 bg-slate-50 px-4 py-4 shadow-xs backdrop-blur-md sm:px-8 lg:px-12"
     >
       <div className="grid grid-cols-1 gap-4.5 xs:grid-cols-2 md:grid-cols-4 sm:gap-6">
         {/* 1. Reliable */}

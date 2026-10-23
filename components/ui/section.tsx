@@ -20,8 +20,8 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
         className={cn(
           "relative w-full",
           {
-            "py-8 md:py-12 lg:py-16": padding === "standard",
-            "py-4 md:py-8 lg:py-12": padding === "tight",
+            "py-12 md:py-16 lg:py-24": padding === "standard",
+            "py-8 md:py-12 lg:py-16": padding === "tight",
             "py-0": padding === "none",
           },
           className

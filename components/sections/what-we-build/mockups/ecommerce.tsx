@@ -140,7 +140,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
                         initial={{ scale: 0.3, opacity: 0.8 }}
                         animate={{ scale: 2.5, opacity: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="absolute inset-0 m-auto w-8 h-8 rounded-full bg-orange-700/30 pointer-events-none"
+                        className="center-positioned-artwork pointer-events-none absolute inset-0 h-8 w-8 rounded-full bg-orange-700/30"
                       />
                     )}
                   </motion.div>
@@ -205,7 +205,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
                   </svg>
                 </div>
                 <span className="text-xs font-bold text-foreground">{ECOMMERCE_COPY.secureCheckout}</span>
-                <div className="ml-auto flex items-center gap-1">
+                <div className="push-inline-end flex items-center gap-1">
                   <div className="w-3 h-3 rounded-full bg-rose-400" />
                   <span className="text-3xs text-rose-600 font-semibold">{ECOMMERCE_COPY.ssl}</span>
                 </div>

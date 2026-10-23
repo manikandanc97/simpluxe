@@ -7,7 +7,6 @@ import type { HeroContent } from "@/types/hero";
 
 // hero
 export const HERO_CONTENT: HeroContent = {
-  eyebrow: "Digital, done beautifully.",
   headlineLine1: TAGLINE.line1,
   headlineLine2Prefix: TAGLINE.line2Prefix,
   headlineHighlight: TAGLINE.highlight,
@@ -20,18 +19,18 @@ export const HERO_CONTENT: HeroContent = {
   scrollIndicatorTitle: "Scroll to explore",
   stats: [
     {
-      value: "50+",
-      label: "Happy Clients",
+      value: COMMON.labels.direct,
+      label: "Engineer Partnership",
       icon: UsersIcon,
     },
     {
-      value: "100+",
+      value: "Bespoke",
       label: COMMON.labels.projectsDelivered,
       icon: BriefcaseIcon,
     },
     {
-      value: "5 ★",
-      label: "Client Satisfaction",
+      value: "Complete",
+      label: COMMON.labels.fullCodeOwnership,
       icon: StarIcon,
     },
   ],
@@ -51,4 +50,31 @@ export const WORKBENCH_COPY = {
   featuredDescription: "Built for clarity, conversion and scale.",
   websiteAlt: (name: string) => `${name} website preview`,
   mobileAlt: (name: string) => `${name} mobile preview`,
+} as const;
+export const HERO_COLLAGE_COPY = {
+  selectedWorkEyebrow: "Selected work",
+  selectedWorkTitle: "Built with purpose.",
+  selectedWorkHighlightedText: "Proven in practice.",
+  selectedWorkDescription: "Explore the thinking, craft, and measurable outcomes behind a selection of our digital products.",
+  featuredDescription: "Strategy, design and engineering in one focused build.",
+  featuredLabel: "Featured",
+  websiteAlt: (name: string) => `${name} website preview`,
+} as const;
+
+export const HERO_SHOWCASE_COPY = {
+  centerHeadline: "Bring Your Ideas Online",
+  centerSubtitle: "Create stunning, high-performance websites with ease and bring your brand, business, and ideas to life.",
+  contactAction: "Contact Us",
+  aboutAction: "About Us",
+  startAction: "Get Started",
+  brandName: "Simpluxe",
+  cardTitles: {
+    storefront: "Digital commerce & retail storefronts",
+    cyberMatrix: "High-performance software & cloud engineering",
+    pagoda: "Artisan brand identity & creative design",
+    studio: "End-to-end strategy, UI/UX, and development",
+    gradient: "Design systems & 3D visual experiences",
+    creator: "Collaborative partnership with senior builders",
+    storyboard: "Interactive user journeys & agile delivery",
+  },
 } as const;

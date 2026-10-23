@@ -134,7 +134,7 @@ function OverviewScreen({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Live Data Throughput Waveform */}
-        <div className="flex flex-col gap-0.5 mt-auto">
+        <div className="push-block-end flex flex-col gap-0.5">
           <div className="flex items-center justify-between text-3xs text-slate-400">
             <span>{SAAS_COPY.throughput}</span>
             <span className="font-mono text-indigo-300">{SAAS_COPY.throughputValue}</span>
@@ -282,7 +282,7 @@ function BillingScreen({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Live Reconcile Status */}
-        <div className="flex items-center justify-between p-1.5 rounded-lg bg-emerald-50/70 border border-emerald-200/60 mt-auto">
+        <div className="push-block-end flex items-center justify-between rounded-lg border border-emerald-200/60 bg-emerald-50/70 p-1.5">
           <div className="flex items-center gap-1.5">
             <motion.div
               animate={isActive ? { scale: [1, 1.4, 1] } : { scale: 1 }}

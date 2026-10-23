@@ -1,6 +1,10 @@
 import { SITE } from "@/lib/data/site";
 import { LAYOUT_COPY, ABOUT_PAGE_COPY, CONTACT_PAGE_COPY, CUSTOM_SOFTWARE_PAGE_COPY } from "@/lib/data/metadata";
-import { SERVICES_LIST } from "@/lib/data/services";
+import {
+  getServicePath,
+  SERVICES_LIST,
+  type ServiceData,
+} from "@/lib/data/services";
 import { DEFAULT_OG_IMAGE } from "@/lib/metadata";
 
 export interface BreadcrumbEntry {
@@ -82,38 +86,31 @@ export function getBreadcrumbSchema(items: BreadcrumbEntry[]) {
 }
 
 export function getServicesSchema() {
-  return SERVICES_LIST.map((service) => {
-    const isCustomSoftware = service.id === "custom-software";
-    const serviceUrl = isCustomSoftware
-      ? `${SITE.url}/services/custom-software-development`
-      : `${SITE.url}/services#${service.id}`;
-    const serviceId = isCustomSoftware
-      ? `${SITE.url}/services/custom-software-development#service`
-      : `${SITE.url}/services#${service.id}`;
-    const serviceName = isCustomSoftware
-      ? CUSTOM_SOFTWARE_PAGE_COPY.title
-      : service.name;
-    const serviceDescription = isCustomSoftware
-      ? CUSTOM_SOFTWARE_PAGE_COPY.description
-      : service.description;
+  return SERVICES_LIST.map(getServiceSchema);
+}
 
-    return {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "@id": serviceId,
-      name: serviceName,
-      description: serviceDescription,
-      url: serviceUrl,
-      provider: {
-        "@id": `${SITE.url}/#organization`,
-      },
-      serviceType: isCustomSoftware ? "Custom Software Development" : service.name,
-      areaServed: {
-        "@type": "Country",
-        name: "India",
-      },
-    };
-  });
+export function getServiceSchema(service: ServiceData) {
+  const isCustomSoftware = service.id === "custom-software";
+  const path = getServicePath(service.id);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE.url}${path}#service`,
+    name: isCustomSoftware ? CUSTOM_SOFTWARE_PAGE_COPY.title : service.name,
+    description: isCustomSoftware
+      ? CUSTOM_SOFTWARE_PAGE_COPY.description
+      : service.description,
+    url: `${SITE.url}${path}`,
+    provider: {
+      "@id": `${SITE.url}/#organization`,
+    },
+    serviceType: isCustomSoftware ? "Custom Software Development" : service.name,
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+  };
 }
 
 export function getAboutPageSchema() {
@@ -146,25 +143,6 @@ export function getContactPageSchema() {
     },
     mainEntity: {
       "@id": `${SITE.url}/#organization`,
-    },
-  };
-}
-
-export function getCustomSoftwareServiceSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${SITE.url}/services/custom-software-development#service`,
-    name: CUSTOM_SOFTWARE_PAGE_COPY.title,
-    description: CUSTOM_SOFTWARE_PAGE_COPY.description,
-    url: `${SITE.url}/services/custom-software-development`,
-    provider: {
-      "@id": `${SITE.url}/#organization`,
-    },
-    serviceType: "Custom Software Development",
-    areaServed: {
-      "@type": "Country",
-      name: "India",
     },
   };
 }

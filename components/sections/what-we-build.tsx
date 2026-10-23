@@ -276,7 +276,7 @@ export function WhatWeBuild() {
   };
 
   return (
-    <Section id="capabilities" className="overflow-hidden bg-background font-satoshi">
+    <Section id="capabilities" className="overflow-hidden bg-white font-satoshi">
       <div className="relative flex flex-col gap-8 lg:gap-10">
         <Container>
           <motion.div

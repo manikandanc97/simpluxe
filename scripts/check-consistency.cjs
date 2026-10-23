@@ -29,11 +29,27 @@ for (const file of sources) {
   function visit(node) {
     if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)
       || ts.isTemplateHead(node) || ts.isTemplateMiddle(node) || ts.isTemplateTail(node)) {
-      for (const token of node.text.split(/\s+/)) {
+      const tokens = node.text.split(/\s+/);
+      const responsiveTextSizes = new Map();
+      for (const token of tokens) {
         // CSS selectors such as [role='button'] are not Tailwind class strings.
         if (/^[\w:/.-]+\[.+\][\w:/.-]*$/.test(token)) {
           const line = ast.getLineAndCharacterOfPosition(node.getStart()).line + 1;
           failures.push(`${file}:${line}: replace arbitrary Tailwind class ${token}`);
+        }
+        if (/^(?:[a-z-]+:)*(?:m[trblxy]?|space-[xy])-/.test(token)) {
+          const line = ast.getLineAndCharacterOfPosition(node.getStart()).line + 1;
+          failures.push(`${file}:${line}: replace directional spacing utility ${token} with flex/grid gap, parent padding, or a named layout utility`);
+        }
+        const textSize = token.match(/^((?:[a-z-]+:)*)text-(?:xs|sm|base|lg|xl|[2-9]xl)$/);
+        if (textSize) {
+          const breakpoint = textSize[1] || "base";
+          const previous = responsiveTextSizes.get(breakpoint);
+          if (previous && previous !== token) {
+            const line = ast.getLineAndCharacterOfPosition(node.getStart()).line + 1;
+            failures.push(`${file}:${line}: conflicting typography utilities ${previous} and ${token}`);
+          }
+          responsiveTextSizes.set(breakpoint, token);
         }
       }
       // Template fragments can be suffixes of remote URLs, not public paths.

@@ -6,7 +6,7 @@ export function FAQ() {
   return (
     <SharedFaqSection
       id="faq"
-      className="py-8 sm:py-8 lg:py-16"
+      className="border-t border-border/60"
       faqs={FAQS.slice(0, 4)}
       defaultOpenId="faq-pricing"
       eyebrow={FAQ_SECTION_CONTENT.eyebrow}

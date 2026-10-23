@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/data/site";
+import { getServicePath, SERVICES_LIST } from "@/lib/data/services";
 import type { MetadataRoute } from "next";
 
 const LAST_MODIFIED = new Date("2026-09-01T00:00:00.000Z");
@@ -23,12 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
-    {
-      url: `${SITE.url}/services/custom-software-development`,
+    ...SERVICES_LIST.map((service) => ({
+      url: `${SITE.url}${getServicePath(service.id)}`,
       lastModified: LAST_MODIFIED,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.85,
-    },
+    })),
     {
       url: `${SITE.url}/about`,
       lastModified: LAST_MODIFIED,

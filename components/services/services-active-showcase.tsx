@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
-import { SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/data/services";
+import { getServicePath, SERVICES_ACTIVE_SHOWCASE_COPY } from "@/lib/data/services";
 
 import { useLead } from "@/components/leads/lead-provider";
 import { type ServiceViewData } from "@/lib/data/services";
@@ -13,9 +13,13 @@ import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon
 
 interface ServicesActiveShowcaseProps {
   service: ServiceViewData;
+  showDetailLink?: boolean;
 }
 
-export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps) {
+export function ServicesActiveShowcase({
+  service,
+  showDetailLink = false,
+}: ServicesActiveShowcaseProps) {
   const { openLead } = useLead();
 
   return (
@@ -38,7 +42,7 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                 </div>
 
                 {/* Dynamic Headline */}
-                <h2 className="text-3xl font-black text-foreground tracking-tight leading-none sm:text-4xl sm:text-5xl lg:text-4xl font-satoshi">
+                <h2 className="type-h2 text-foreground">
                   {service.headline.normal}
                   <span className="text-primary">
                     {service.headline.highlight}
@@ -80,12 +84,15 @@ export function ServicesActiveShowcase({ service }: ServicesActiveShowcaseProps)
                 <span>{SERVICES_ACTIVE_SHOWCASE_COPY.viewRelatedWork}</span>
               </Link>
 
-              {service.detailPageUrl && (
+              {showDetailLink && (
                 <Link
-                  href={service.detailPageUrl}
+                  href={getServicePath(service.id)}
                   className="group inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline sm:text-sm font-satoshi py-2 px-1"
                 >
-                  <span>{service.detailPageLabel ?? service.name}</span>
+                  <span>
+                    {service.detailPageLabel ??
+                      SERVICES_ACTIVE_SHOWCASE_COPY.exploreService(service.tabLabel)}
+                  </span>
                   <AnimatedIcon
                     icon={ArrowUpRightIcon}
                     size={13}

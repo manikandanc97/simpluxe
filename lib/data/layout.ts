@@ -26,6 +26,18 @@ export const NAVBAR_CONTENT: NavbarContent = {
   ctaText: COMMON.actions.startProject,
 };
 
+export const NAVBAR_SERVICES_MENU_COPY = {
+  range: "01—08",
+  title: "Digital services, shaped around your business.",
+  description: "Strategy, design and engineering under one focused team.",
+  processEyebrow: "The build loop",
+  processSteps: [
+    { number: "01", title: "Think" },
+    { number: "02", title: "Code" },
+    { number: "03", title: COMMON.process.launch },
+  ],
+} as const;
+
 // footer
 export const FOOTER_DATA: FooterData = {
   navIcons: {
@@ -87,6 +99,7 @@ export const SITE_NAVBAR_COPY = {
   home: COMMON.pages.home,
   simpluxeHome: COMMON.brand.homeLabel,
   primaryNavigation: "Primary navigation",
+  services: COMMON.pages.services,
   brandSimp: "Simp",
   brandLuxe: "luxe",
   technologies: "Technologies",

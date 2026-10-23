@@ -146,6 +146,35 @@ export const ABOUT_METRICS_COPY = {
   verified: "Verified",
 } as const;
 
+export const HOME_ABOUT_CONTENT = {
+  eyebrow: "About Simpluxe",
+  title: "Small, focused team.",
+  highlightedText: "Serious product outcomes.",
+  description: "We work directly with founders and leadership teams to turn complex requirements into clear, scalable digital systems. Strategy, interface design, and production engineering stay aligned from the first decision to final handover.",
+  cta: "Discover our approach",
+  panelEyebrow: "Operating standard",
+  panelTitle: "Enterprise discipline. Studio agility.",
+  panelDescription: "A senior-led delivery model designed for decisive collaboration, maintainable systems, and long-term product ownership.",
+  status: "Direct engineering partnership",
+  standards: [
+    {
+      number: "01",
+      title: "Senior-led delivery",
+      description: "Work directly with engineers who understand the architecture, product context, and business priorities.",
+    },
+    {
+      number: "02",
+      title: "Built for longevity",
+      description: "Clear system boundaries, strict typing, and maintainable foundations that internal teams can confidently extend.",
+    },
+    {
+      number: "03",
+      title: "Complete ownership",
+      description: "Receive the production codebase, assets, documentation, and deployment configuration without vendor lock-in.",
+    },
+  ],
+} as const;
+
 // pages
 export const ABOUT_VIEW_COPY = {
   symbol: " • ",
