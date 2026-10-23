@@ -23,18 +23,10 @@ export function PageHero({
   description,
   eyebrow,
   heading,
-  variant = "default",
 }: PageHeroProps) {
-  const isArticle = variant === "article";
-
   return (
-    <section
-      className={cn(
-        "w-full border-b border-primary-hover/30 text-white",
-        isArticle ? "bg-primary" : "bg-luxury-banner"
-      )}
-    >
-      <Container className={cn("py-12 sm:py-16 lg:py-20", isArticle && "sm:py-20 lg:py-24")}>
+    <section className="w-full border-b border-primary-hover/30 text-white bg-luxury-banner">
+      <Container className="py-12 sm:py-16 lg:py-20">
         <motion.div
           variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
@@ -64,19 +56,14 @@ export function PageHero({
             ))}
             <span
               aria-current="page"
-              className="max-w-xs truncate font-semibold text-white sm:max-w-md md:max-w-lg lg:max-w-xl"
+              className="max-w-xs truncate font-semibold text-white sm:max-w-md md:max-w-xl lg:max-w-3xl"
               title={typeof currentPage === "string" ? currentPage : undefined}
             >
               {currentPage}
             </span>
           </motion.nav>
 
-          <div
-            className={cn(
-              "flex w-full flex-col items-center gap-4",
-              isArticle ? "max-w-4xl sm:gap-5" : "max-w-3xl"
-            )}
-          >
+          <div className="flex w-full max-w-3xl flex-col items-center gap-4 text-center sm:gap-5">
             {eyebrow ? (
               <motion.div
                 variants={fadeUp}
@@ -87,7 +74,7 @@ export function PageHero({
             ) : null}
             <motion.h1
               variants={fadeUp}
-              className={cn("text-white", isArticle ? "type-h1 max-w-3xl" : "type-page-title")}
+              className="type-page-title text-white"
             >
               {heading}
             </motion.h1>

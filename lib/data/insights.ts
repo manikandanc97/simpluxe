@@ -32,7 +32,7 @@ export const INSIGHTS_PAGE_COPY = {
   coverCode: (index: number) => `S/${String(index + 1).padStart(2, "0")}`,
   articlePath: (slug: string) => `/insights/${slug}`,
   allTopics: "All perspectives",
-  searchPlaceholder: "Search insights by keyword, topic, or takeaway...",
+  searchPlaceholder: "Search insights...",
   searchAriaLabel: "Search insights",
   clearSearch: "Clear search",
   showingCount: (shown: number, total: number) => `Showing ${shown} of ${total} perspectives`,
@@ -47,6 +47,9 @@ export const INSIGHTS_PAGE_COPY = {
   lastPage: "Last",
   pageIndicator: (current: number, total: number) => `Page ${current} of ${total}`,
   paginationAriaLabel: "Insights pagination",
+  latestFirst: "Latest First",
+  oldestFirst: "Oldest First",
+  alphabetical: "Alphabetical",
 } as const;
 
 export const INSIGHTS: readonly InsightPost[] = [

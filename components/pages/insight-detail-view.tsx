@@ -21,7 +21,6 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
         currentPage={post.title}
         heading={post.title}
         description={post.excerpt}
-        variant="article"
       >
         <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-white/75">
           <span>{post.publishedLabel}</span>
@@ -37,24 +36,25 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
           <InsightCover
             index={postIndex}
             post={post}
+            variant="hero"
             className="min-h-72 sm:min-h-96 lg:min-h-112"
           />
 
           <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
             <aside className="order-2 flex flex-col gap-8 lg:order-1 lg:col-span-5 lg:sticky lg:top-24">
-              <div className="flex flex-col gap-6 rounded-3xl border border-primary/15 bg-secondary p-6 sm:p-8">
+              <div className="flex flex-col gap-6 rounded-3xl border border-primary-hover/50 bg-primary p-6 text-white shadow-luxury sm:p-8">
                 <div className="flex items-center gap-4">
-                  <span className="flex size-12 items-center justify-center rounded-2xl bg-primary text-white">
+                  <span className="flex size-12 items-center justify-center rounded-2xl border border-white/20 bg-white/15 text-white backdrop-blur-sm shadow-xs">
                     <StaticIcon name="lightbulb" size={20} />
                   </span>
-                  <h2 className="text-xl font-bold text-heading">
+                  <h2 className="text-xl font-bold text-white sm:text-2xl">
                     {INSIGHTS_PAGE_COPY.keyTakeaways}
                   </h2>
                 </div>
                 <ul className="flex flex-col gap-5">
                   {post.takeaways.map((takeaway) => (
-                    <li key={takeaway} className="flex items-start gap-4 text-base leading-relaxed text-muted-foreground">
-                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-white font-mono text-xs font-bold text-primary shadow-2xs">
+                    <li key={takeaway} className="flex items-start gap-4 text-sm leading-relaxed text-white/90 sm:text-base">
+                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/20 font-mono text-xs font-bold text-white shadow-2xs">
                         ✓
                       </span>
                       <span>{takeaway}</span>
