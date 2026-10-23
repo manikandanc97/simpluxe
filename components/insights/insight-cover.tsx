@@ -41,7 +41,7 @@ export function InsightCover({
               src={post.image}
               alt={post.title}
               fill
-              sizes="(max-width: 640px) 100vw, 100vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 100vw, 1280px"
               className="object-cover"
               priority={priority ?? true}
             />
@@ -87,7 +87,7 @@ export function InsightCover({
             src={post.image}
             alt={post.title}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 384px"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             priority={priority ?? index === 0}
           />

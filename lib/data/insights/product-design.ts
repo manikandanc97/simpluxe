@@ -12,7 +12,7 @@ export const DESIGNING_CALM_BUSINESS_SOFTWARE_INSIGHT: InsightPost = {
   author: "Simpluxe Design",
   icon: "palette",
   tone: "sky",
-  image: "/images/insights/designing-calm-business-software.jpg",
+  image: "/images/insights/designing-calm-business-software.webp",
   takeaways: [
     "Complexity should be organized, not hidden.",
     "Every screen needs one dominant decision or task.",
@@ -60,7 +60,7 @@ export const DESIGN_TOKENS_AT_SCALE_INSIGHT: InsightPost = {
   author: "Simpluxe Design",
   icon: "palette",
   tone: "sky",
-  image: "/images/insights/design-tokens-at-scale.jpg",
+  image: "/images/insights/design-tokens-at-scale.webp",
   takeaways: [
     "Name tokens by semantic intent, not literal color value.",
     "Keep spacing scales strictly mathematical to eliminate visual noise.",

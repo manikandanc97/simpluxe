@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { HOME_SERVICES, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/data/home-services";
 import { slideFromRight, slideFromRightTrack, slideFromRightSubtle, viewportReveal } from "@/lib/motion";
 import { WhatWeBuildCard } from "./what-we-build/what-we-build-card";
+import { useSliderDrag } from "./what-we-build/use-slider-drag";
 
 const DISPLAY_SERVICES = HOME_SERVICES;
 const HOVER_DELAY_MS = 0;
@@ -27,19 +28,6 @@ export function WhatWeBuild() {
   // Hover delay refs
   const hoverCardRef = useRef<string | null>(null);
   const hoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Drag refs
-  const isDraggingRef = useRef(false);
-  const dragStartXRef = useRef(0);
-  const dragScrollLeftRef = useRef(0);
-  const hasDraggedRef = useRef(false);
-  const lastClientXRef = useRef(0);
-  const lastTimeRef = useRef(0);
-  const velocityRef = useRef(0);
-  const rafIdRef = useRef<number | null>(null);
-  const targetScrollLeftRef = useRef(0);
-  const snapRestoreTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const dragCleanupRef = useRef<(() => void) | null>(null);
 
   const activeSlideId = DISPLAY_SERVICES[activeIndex]?.id ?? "";
 
@@ -81,6 +69,23 @@ export function WhatWeBuild() {
 
     slider.scrollTo({ left: Math.max(0, Math.min(targetLeft, maxScroll)), behavior: "smooth" });
   }, []);
+
+  // Called by the drag hook when momentum resolves to a best-fit card index
+  const handleSnap = useCallback((bestIndex: number) => {
+    setActiveIndex(bestIndex);
+    setAnimatingCard(DISPLAY_SERVICES[bestIndex]?.id ?? "");
+  }, []);
+
+  // Drag and momentum handlers from the dedicated hook
+  const { onMouseDown: handleMouseDown, onClickCapture: handleSliderClickCapture } = useSliderDrag(
+    sliderRef,
+    {
+      activeIndex,
+      scrollToIndex,
+      onSnap: handleSnap,
+      totalItems: DISPLAY_SERVICES.length,
+    },
+  );
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -128,170 +133,11 @@ export function WhatWeBuild() {
     setAnimatingCard(activeSlideId);
   }, [activeSlideId]);
 
-  // Cleanup timers and active listeners on unmount
+  // Cleanup hover timer on unmount
   useEffect(() => {
-    const slider = sliderRef.current;
     return () => {
       if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
-      if (snapRestoreTimerRef.current) clearTimeout(snapRestoreTimerRef.current);
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-      if (dragCleanupRef.current) {
-        dragCleanupRef.current();
-        dragCleanupRef.current = null;
-      }
-      if (slider) {
-        slider.style.cursor = "";
-        slider.style.userSelect = "";
-      }
     };
-  }, []);
-
-  // --- Smooth Drag Handlers ---
-  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return;
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    if (snapRestoreTimerRef.current) {
-      clearTimeout(snapRestoreTimerRef.current);
-      snapRestoreTimerRef.current = null;
-    }
-    if (rafIdRef.current) {
-      cancelAnimationFrame(rafIdRef.current);
-      rafIdRef.current = null;
-    }
-    if (dragCleanupRef.current) {
-      dragCleanupRef.current();
-      dragCleanupRef.current = null;
-    }
-
-    isDraggingRef.current = true;
-    hasDraggedRef.current = false;
-    dragStartXRef.current = e.clientX;
-    dragScrollLeftRef.current = slider.scrollLeft;
-    targetScrollLeftRef.current = slider.scrollLeft;
-    lastClientXRef.current = e.clientX;
-    lastTimeRef.current = performance.now();
-    velocityRef.current = 0;
-
-    // Temporarily disable CSS scroll-snapping so dragging is completely smooth without jitter
-    slider.style.scrollSnapType = "none";
-    slider.style.scrollBehavior = "auto";
-    slider.style.cursor = "grabbing";
-    slider.style.userSelect = "none";
-
-    const handleWindowMouseMove = (ev: MouseEvent) => {
-      if (!isDraggingRef.current) return;
-      const currentSlider = sliderRef.current;
-      if (!currentSlider) return;
-
-      const dx = ev.clientX - dragStartXRef.current;
-      if (Math.abs(dx) > 4) {
-        hasDraggedRef.current = true;
-      }
-
-      const now = performance.now();
-      const dt = now - lastTimeRef.current;
-      if (dt > 8) {
-        const currentV = (ev.clientX - lastClientXRef.current) / dt;
-        velocityRef.current = 0.6 * currentV + 0.4 * velocityRef.current;
-        lastClientXRef.current = ev.clientX;
-        lastTimeRef.current = now;
-      }
-
-      const newScrollLeft = dragScrollLeftRef.current - dx;
-      targetScrollLeftRef.current = newScrollLeft;
-
-      if (!rafIdRef.current) {
-        rafIdRef.current = requestAnimationFrame(() => {
-          if (sliderRef.current) {
-            sliderRef.current.scrollLeft = targetScrollLeftRef.current;
-          }
-          rafIdRef.current = null;
-        });
-      }
-    };
-
-    const cleanupDragListeners = () => {
-      window.removeEventListener("mousemove", handleWindowMouseMove);
-      window.removeEventListener("mouseup", handleWindowMouseUp);
-      if (dragCleanupRef.current === cleanupDragListeners) {
-        dragCleanupRef.current = null;
-      }
-    };
-
-    const handleWindowMouseUp = () => {
-      cleanupDragListeners();
-
-      if (rafIdRef.current) {
-        cancelAnimationFrame(rafIdRef.current);
-        rafIdRef.current = null;
-      }
-
-      const currentSlider = sliderRef.current;
-      if (!currentSlider) return;
-
-      isDraggingRef.current = false;
-      currentSlider.style.cursor = "";
-      currentSlider.style.userSelect = "";
-
-      if (hasDraggedRef.current) {
-        // Project position based on drag velocity
-        const momentumDistance = velocityRef.current * 180;
-        const projectedScrollLeft = currentSlider.scrollLeft - momentumDistance;
-
-        // Find best matching card index for the projected landing position
-        const sliderLeft = currentSlider.getBoundingClientRect().left;
-        const firstCard = currentSlider.firstElementChild as HTMLElement | null;
-        let bestIndex = activeIndex;
-
-        if (firstCard) {
-          const gutter = firstCard.getBoundingClientRect().left - sliderLeft + currentSlider.scrollLeft;
-          const children = Array.from(currentSlider.children) as HTMLElement[];
-          let minDistance = Number.POSITIVE_INFINITY;
-
-          children.forEach((child, idx) => {
-            const cardLeft = child.getBoundingClientRect().left - sliderLeft + currentSlider.scrollLeft - gutter;
-            const dist = Math.abs(cardLeft - projectedScrollLeft);
-            if (dist < minDistance) {
-              minDistance = dist;
-              bestIndex = idx;
-            }
-          });
-        }
-
-        bestIndex = Math.max(0, Math.min(bestIndex, DISPLAY_SERVICES.length - 1));
-
-        // Smoothly glide to the target card
-        scrollToIndex(bestIndex);
-        setActiveIndex(bestIndex);
-        setAnimatingCard(DISPLAY_SERVICES[bestIndex]?.id ?? "");
-
-        // Re-enable scroll snap after glide settles
-        snapRestoreTimerRef.current = setTimeout(() => {
-          if (sliderRef.current) {
-            sliderRef.current.style.scrollSnapType = "";
-            sliderRef.current.style.scrollBehavior = "";
-          }
-        }, 400);
-      } else {
-        currentSlider.style.scrollSnapType = "";
-        currentSlider.style.scrollBehavior = "";
-      }
-    };
-
-    dragCleanupRef.current = cleanupDragListeners;
-    window.addEventListener("mousemove", handleWindowMouseMove, { passive: true });
-    window.addEventListener("mouseup", handleWindowMouseUp);
-  }, [activeIndex, scrollToIndex]);
-
-  // Intercept click if the user was dragging
-  const handleSliderClickCapture = useCallback((e: React.MouseEvent) => {
-    if (hasDraggedRef.current) {
-      e.preventDefault();
-      e.stopPropagation();
-      hasDraggedRef.current = false;
-    }
   }, []);
 
   const scrollSlider = (direction: "previous" | "next") => {

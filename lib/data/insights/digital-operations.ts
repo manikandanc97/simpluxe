@@ -12,7 +12,7 @@ export const WHEN_TO_MODERNIZE_INTERNAL_TOOLS_INSIGHT: InsightPost = {
   author: "Simpluxe Engineering",
   icon: "refresh",
   tone: "slate",
-  image: "/images/insights/when-to-modernize-internal-tools.jpg",
+  image: "/images/insights/when-to-modernize-internal-tools.webp",
   takeaways: [
     "Repeated reconciliation is a system problem.",
     "Manual handoffs hide both delay and risk.",
@@ -60,7 +60,7 @@ export const MOBILE_OFFLINE_FIRST_ARCHITECTURE_INSIGHT: InsightPost = {
   author: "Simpluxe Engineering",
   icon: "smartphone",
   tone: "slate",
-  image: "/images/insights/mobile-offline-first-architecture.jpg",
+  image: "/images/insights/mobile-offline-first-architecture.webp",
   takeaways: [
     "Optimistic UI updates give immediate feedback even in poor networks.",
     "Store delta changes locally before syncing with central servers.",
@@ -108,7 +108,7 @@ export const OBSERVABILITY_BEYOND_MONITORING_INSIGHT: InsightPost = {
   author: "Simpluxe Architecture",
   icon: "globe",
   tone: "sky",
-  image: "/images/insights/observability-beyond-monitoring.jpg",
+  image: "/images/insights/observability-beyond-monitoring.webp",
   takeaways: [
     "Monitor completion rates of key user journeys, not just HTTP 200s.",
     "Correlate frontend sessions with backend trace IDs for fast triage.",

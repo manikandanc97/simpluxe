@@ -12,7 +12,7 @@ export const MVP_WITHOUT_THROWAWAY_CODE_INSIGHT: InsightPost = {
   author: "Simpluxe Product",
   icon: "lightbulb",
   tone: "cyan",
-  image: "/images/insights/mvp-without-throwaway-code.jpg",
+  image: "/images/insights/mvp-without-throwaway-code.webp",
   takeaways: [
     "Reduce scope, not engineering discipline.",
     "Validate one complete customer journey.",
@@ -60,7 +60,7 @@ export const TECHNICAL_DEBT_REPAYMENT_STRATEGY_INSIGHT: InsightPost = {
   author: "Simpluxe Product",
   icon: "lightbulb",
   tone: "ocean",
-  image: "/images/insights/technical-debt-repayment-strategy.jpg",
+  image: "/images/insights/technical-debt-repayment-strategy.webp",
   takeaways: [
     "Treat refactoring as routine maintenance, not a quarterly emergency.",
     "Carve out small, self-contained modules behind feature flags.",

@@ -13,7 +13,7 @@ export const ARCHITECTURE_BEFORE_FEATURES_INSIGHT: InsightPost = {
   featured: true,
   icon: "layers",
   tone: "ocean",
-  image: "/images/insights/architecture-before-features.jpg",
+  image: "/images/insights/architecture-before-features.webp",
   takeaways: [
     "Start with business boundaries, not frameworks.",
     "Make data ownership explicit before integrations multiply.",
@@ -62,7 +62,7 @@ export const API_FIRST_PRODUCT_FOUNDATIONS_INSIGHT: InsightPost = {
   author: "Simpluxe Architecture",
   icon: "laptop",
   tone: "ocean",
-  image: "/images/insights/api-first-product-foundations.jpg",
+  image: "/images/insights/api-first-product-foundations.webp",
   takeaways: [
     "Design interfaces around workflows, not database rows.",
     "Idempotency tokens make payment and checkout retries safe.",
@@ -110,7 +110,7 @@ export const SCALING_SAAS_DATA_LAYERS_INSIGHT: InsightPost = {
   author: "Simpluxe Engineering",
   icon: "layers",
   tone: "cyan",
-  image: "/images/insights/scaling-saas-data-layers.jpg",
+  image: "/images/insights/scaling-saas-data-layers.webp",
   takeaways: [
     "Row-level security provides enterprise isolation without database sprawl.",
     "Tenant-aware caching prevents cross-account cache poisoning.",

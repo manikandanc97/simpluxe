@@ -10,6 +10,7 @@ import {
   SERVICE_DETAIL_PAGE_COPY,
   SERVICES_LIST,
 } from "@/lib/data/services";
+import { CUSTOM_SOFTWARE_PAGE_COPY } from "@/lib/data/metadata";
 import { createPageMetadata } from "@/lib/metadata";
 import { getBreadcrumbSchema, getServiceSchema } from "@/lib/schema";
 
@@ -20,19 +21,22 @@ type ExpertisePageProps = {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SERVICES_LIST.filter((service) => service.id !== "custom-software").map(
-    (service) => ({ slug: getServiceSlug(service.id) })
-  );
+  return SERVICES_LIST.map((service) => ({ slug: getServiceSlug(service.id) }));
 }
 
 export async function generateMetadata({ params }: ExpertisePageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
-  if (!service || service.id === "custom-software") return {};
+  if (!service) return {};
 
+  const isCustomSoftware = service.id === "custom-software";
   return createPageMetadata({
-    title: SERVICE_DETAIL_PAGE_COPY.metadataTitle(service.name),
-    description: service.description,
+    title: isCustomSoftware
+      ? CUSTOM_SOFTWARE_PAGE_COPY.title
+      : SERVICE_DETAIL_PAGE_COPY.metadataTitle(service.name),
+    description: isCustomSoftware
+      ? CUSTOM_SOFTWARE_PAGE_COPY.description
+      : service.description,
     path: getServicePath(service.id),
   });
 }
@@ -41,7 +45,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 
-  if (!service || service.id === "custom-software") notFound();
+  if (!service) notFound();
 
   const { icon, ...viewService } = service;
   void icon;

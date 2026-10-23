@@ -32,6 +32,35 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/inside",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/connect",
+        permanent: true,
+      },
+      {
+        source: "/work",
+        destination: "/creations",
+        permanent: true,
+      },
+      {
+        source: "/services/:slug",
+        destination: "/expertise/:slug",
+        permanent: true,
+      },
+      {
+        source: "/services",
+        destination: "/expertise",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
