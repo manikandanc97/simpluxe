@@ -1,0 +1,55 @@
+import { COMMON } from "@/lib/data/common";
+import type { TechItem } from "@/types/tech";
+
+export const BACKEND_TECH: TechItem[] = [
+  {
+    name: COMMON.technology.nodejs,
+    slug: "nodejs",
+    category: COMMON.categories.backend,
+    description: "High-speed async JavaScript runtime.",
+    badge: "JS Runtime",
+    dotColor: "#22C55E",
+    accentColor: "#339933",
+    learnMoreUrl: "https://nodejs.org",
+  },
+  {
+    name: "Nest.js",
+    slug: "nestjs",
+    category: COMMON.categories.backend,
+    description: "Enterprise modular backend engine.",
+    badge: "Framework",
+    dotColor: "#E11D48",
+    accentColor: "#E0234E",
+    learnMoreUrl: "https://nestjs.com",
+  },
+  {
+    name: COMMON.technology.python,
+    slug: "python",
+    category: COMMON.categories.backend,
+    description: "Powerful backend for APIs & AI.",
+    badge: "Language",
+    dotColor: "#3B82F6",
+    accentColor: "#3776AB",
+    learnMoreUrl: "https://www.python.org",
+  },
+  {
+    name: COMMON.technology.fastapi,
+    slug: "fastapi",
+    category: COMMON.categories.backend,
+    description: "Blazing-fast async Python APIs.",
+    badge: "API Framework",
+    dotColor: "#06B6D4",
+    accentColor: "#05998B",
+    learnMoreUrl: "https://fastapi.tiangolo.com",
+  },
+  {
+    name: "GraphQL",
+    slug: "graphql",
+    category: COMMON.categories.backend,
+    description: "Precise data query layer for APIs.",
+    badge: "Query API",
+    dotColor: "#EC4899",
+    accentColor: "#E10098",
+    learnMoreUrl: "https://graphql.org",
+  },
+];

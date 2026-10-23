@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { StaticIcon } from "@/components/ui/static-icon";
-import { INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import { cn } from "@/lib/utils";
 import type { InsightPost } from "@/types/insight";
 

@@ -141,12 +141,8 @@ function ProfileScreen() {
 
       {/* Mini grid */}
       <div className="grid grid-cols-3 gap-1 w-full">
-        {[
-          "from-purple-800/20 to-purple-500/30",
-          "from-purple-600/20 to-purple-400/30",
-          "from-purple-700/20 to-purple-500/30",
-        ].map((g, i) => (
-          <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.35 + i * 0.06 }} className={`aspect-square rounded-lg bg-purple-200`} />
+        {[0, 1, 2].map((i) => (
+          <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.35 + i * 0.06 }} className="aspect-square rounded-lg bg-purple-200" />
         ))}
       </div>
     </motion.div>

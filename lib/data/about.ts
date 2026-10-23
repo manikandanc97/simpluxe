@@ -147,27 +147,43 @@ export const HOME_ABOUT_CONTENT = {
   eyebrow: "About Simpluxe",
   title: "Small, focused team.",
   highlightedText: "Serious product outcomes.",
-  description: "We work directly with founders and leadership teams to turn complex requirements into clear, scalable digital systems. Strategy, interface design, and production engineering stay aligned from the first decision to final handover.",
+  description:
+    "We partner directly with founders and product leaders to translate complex product visions into clear, scalable digital systems. Strategy, interface craft, and production engineering stay aligned from day one to final handover.",
   cta: "Discover our approach",
   panelEyebrow: "Operating standard",
   panelTitle: "Enterprise discipline. Studio agility.",
-  panelDescription: "A senior-led delivery model designed for decisive collaboration, maintainable systems, and long-term product ownership.",
+  panelDescription:
+    "A senior-led delivery model engineered for decisive collaboration, architectural longevity, and permanent product ownership.",
   status: "Direct engineering partnership",
+  panelPillars: [
+    "Direct senior engineers, zero account managers",
+    "Rapid sprint cadence with live staging previews",
+    "Full IP & clean source handover without lock-in",
+  ],
   standards: [
     {
       number: "01",
+      tag: "Execution",
       title: "Senior-led delivery",
-      description: "Work directly with engineers who understand the architecture, product context, and business priorities.",
+      description:
+        "Collaborate directly with principal engineers who master system architecture, UX polish, and commercial objectives. Zero junior proxies or communication friction.",
+      deliverable: "Direct Slack & code review access",
     },
     {
       number: "02",
+      tag: COMMON.labels.architecture,
       title: "Built for longevity",
-      description: "Clear system boundaries, strict typing, and maintainable foundations that internal teams can confidently extend.",
+      description:
+        "Clear domain boundaries, strict TypeScript typing, and modular Next.js foundations that your internal team can confidently inherit and scale.",
+      deliverable: "Type-safe, production-ready stack",
     },
     {
       number: "03",
+      tag: "Independence",
       title: "Complete ownership",
-      description: "Receive the production codebase, assets, documentation, and deployment configuration without vendor lock-in.",
+      description:
+        "Receive pristine Git repositories, comprehensive documentation, design assets, and production deployment configs. Absolute ownership with zero vendor lock-in.",
+      deliverable: "100% IP rights & deployment configs",
     },
   ],
 } as const;

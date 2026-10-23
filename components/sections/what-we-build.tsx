@@ -39,6 +39,7 @@ export function WhatWeBuild() {
   const rafIdRef = useRef<number | null>(null);
   const targetScrollLeftRef = useRef(0);
   const snapRestoreTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dragCleanupRef = useRef<(() => void) | null>(null);
 
   const activeSlideId = DISPLAY_SERVICES[activeIndex]?.id ?? "";
 
@@ -127,12 +128,21 @@ export function WhatWeBuild() {
     setAnimatingCard(activeSlideId);
   }, [activeSlideId]);
 
-  // Cleanup timers on unmount
+  // Cleanup timers and active listeners on unmount
   useEffect(() => {
+    const slider = sliderRef.current;
     return () => {
       if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
       if (snapRestoreTimerRef.current) clearTimeout(snapRestoreTimerRef.current);
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      if (dragCleanupRef.current) {
+        dragCleanupRef.current();
+        dragCleanupRef.current = null;
+      }
+      if (slider) {
+        slider.style.cursor = "";
+        slider.style.userSelect = "";
+      }
     };
   }, []);
 
@@ -145,6 +155,14 @@ export function WhatWeBuild() {
     if (snapRestoreTimerRef.current) {
       clearTimeout(snapRestoreTimerRef.current);
       snapRestoreTimerRef.current = null;
+    }
+    if (rafIdRef.current) {
+      cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = null;
+    }
+    if (dragCleanupRef.current) {
+      dragCleanupRef.current();
+      dragCleanupRef.current = null;
     }
 
     isDraggingRef.current = true;
@@ -194,9 +212,16 @@ export function WhatWeBuild() {
       }
     };
 
-    const handleWindowMouseUp = () => {
+    const cleanupDragListeners = () => {
       window.removeEventListener("mousemove", handleWindowMouseMove);
       window.removeEventListener("mouseup", handleWindowMouseUp);
+      if (dragCleanupRef.current === cleanupDragListeners) {
+        dragCleanupRef.current = null;
+      }
+    };
+
+    const handleWindowMouseUp = () => {
+      cleanupDragListeners();
 
       if (rafIdRef.current) {
         cancelAnimationFrame(rafIdRef.current);
@@ -255,6 +280,7 @@ export function WhatWeBuild() {
       }
     };
 
+    dragCleanupRef.current = cleanupDragListeners;
     window.addEventListener("mousemove", handleWindowMouseMove, { passive: true });
     window.addEventListener("mouseup", handleWindowMouseUp);
   }, [activeIndex, scrollToIndex]);

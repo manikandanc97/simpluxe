@@ -1,18 +1,33 @@
 "use client";
 
-import { LEAD_FORM_COPY } from "@/lib/data/leads";
-
+import {
+  useActionState,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
 import { AnimatedSend } from "@/components/ui/animated-icons/convenience-icons";
 import { CelebratoryButton } from "@/components/ui/celebratory-button";
-import { FloatingInput, FloatingTextarea, FloatingSelect } from "@/components/ui/floating-field";
+import {
+  FloatingInput,
+  FloatingSelect,
+  FloatingTextarea,
+} from "@/components/ui/floating-field";
 import { FormField, FormMessage } from "@/components/ui/form";
-import { submitLead } from "@/lib/leads/actions";
-import { leadSchema, type LeadInput, type LeadState, PROJECT_TYPES } from "@/lib/leads/schema";
+import { LEAD_FORM_COPY } from "@/lib/data/leads";
 import { SITE } from "@/lib/data/site";
-import { LeadSuccess } from "./lead-success";
-import { useActionState, useState, useEffect, useId, useRef, useCallback } from "react";
-import { LeadVerification } from "./lead-verification";
+import { submitLead } from "@/lib/leads/actions";
+import {
+  leadSchema,
+  PROJECT_TYPES,
+  type LeadInput,
+  type LeadState,
+} from "@/lib/leads/schema";
 import { getTurnstileSiteKey } from "@/lib/leads/turnstile";
+import { LeadSuccess } from "./lead-success";
+import { LeadVerification } from "./lead-verification";
 
 interface LeadFormProps {
   prefill?: Partial<LeadInput>;
@@ -24,13 +39,35 @@ const initialState: LeadState = {
   ok: false,
 };
 
+/**
+ * Validates the form data against the shared lead schema.
+ * Extracts field-level validation errors for immediate inline feedback.
+ */
+function validateLeadForm(form: HTMLFormElement): Record<string, string[]> {
+  const data = new FormData(form);
+  const result = leadSchema.safeParse({
+    ...Object.fromEntries(data),
+    consent: data.get("consent") === "true" || data.get("consent") === "on",
+  });
+
+  if (result.success) return {};
+
+  const errors: Record<string, string[]> = {};
+  for (const [field, messages] of Object.entries(result.error.flatten().fieldErrors)) {
+    if (messages && messages.length > 0) {
+      errors[field] = messages;
+    }
+  }
+  return errors;
+}
+
 export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   const [state, formAction, isPending] = useActionState(submitLead, initialState);
   const [selectedProjectType, setSelectedProjectType] = useState<string>(
     prefill?.projectType || ""
   );
   const formId = useId();
-  const fieldId = (name: string) => `${formId}-lead-${name}`;
+  const fieldId = useCallback((name: string) => `${formId}-lead-${name}`, [formId]);
   const successNotified = useRef(false);
   const turnstileSiteKey = getTurnstileSiteKey();
   const [verified, setVerified] = useState(false);
@@ -38,28 +75,30 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   const [showVerificationError, setShowVerificationError] = useState(false);
   const [mountTime] = useState(() => Date.now());
 
-  const validateForm = (form: HTMLFormElement) => {
-    const data = new FormData(form);
-    const result = leadSchema.safeParse({
-      ...Object.fromEntries(data),
-      consent: data.get("consent") === "true",
-    });
-
-    if (result.success) return {};
-
-    const errors: Record<string, string[]> = {};
-    for (const [field, messages] of Object.entries(result.error.flatten().fieldErrors)) {
-      if (messages) errors[field] = messages;
-    }
-    return errors;
-  };
-
+  // Use client validation errors when present; fall back to server-provided field errors.
   const fieldErrors = clientErrors ?? state.fieldErrors;
 
   const handleVerification = useCallback((isVerified: boolean) => {
     setVerified(isVerified);
     if (isVerified) setShowVerificationError(false);
   }, []);
+
+  const handleValidationFeedback = (form: HTMLFormElement) => {
+    if (clientErrors || state.fieldErrors) {
+      setClientErrors(validateLeadForm(form));
+    }
+  };
+
+  const handleProjectTypeChange = (value: string) => {
+    setSelectedProjectType(value);
+    if (clientErrors?.projectType || state.fieldErrors?.projectType) {
+      setClientErrors((prev) => {
+        const next = { ...(prev ?? state.fieldErrors) };
+        delete next.projectType;
+        return next;
+      });
+    }
+  };
 
   useEffect(() => {
     if (state.ok && !successNotified.current) {
@@ -76,21 +115,19 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
     <form
       action={formAction}
       noValidate
-      onInput={(event) => {
-        if (clientErrors || state.fieldErrors) {
-          setClientErrors(validateForm(event.currentTarget));
-        }
-      }}
+      onInput={(event) => handleValidationFeedback(event.currentTarget)}
+      onChange={(event) => handleValidationFeedback(event.currentTarget)}
       onReset={() => {
         setClientErrors(null);
         setShowVerificationError(false);
+        setSelectedProjectType(prefill?.projectType || "");
       }}
       onSubmit={(event) => {
-        const errors = validateForm(event.currentTarget);
+        const errors = validateLeadForm(event.currentTarget);
         const hasFieldErrors = Object.keys(errors).length > 0;
         const needsVerification = Boolean(turnstileSiteKey) && !verified;
 
-        setClientErrors(errors);
+        setClientErrors(hasFieldErrors ? errors : null);
         setShowVerificationError(needsVerification);
 
         if (hasFieldErrors || isPending || needsVerification) {
@@ -98,7 +135,18 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
           if (hasFieldErrors) {
             const firstInvalidField = Object.keys(errors)[0];
             const field = event.currentTarget.elements.namedItem(firstInvalidField);
-            if (field instanceof HTMLElement) field.focus();
+            if (
+              field instanceof HTMLElement &&
+              field.tabIndex !== -1 &&
+              !(field instanceof HTMLInputElement && field.type === "hidden")
+            ) {
+              field.focus();
+            } else {
+              const fallbackTrigger = event.currentTarget.querySelector<HTMLElement>(
+                `#${CSS.escape(fieldId("project-type"))} button, [aria-invalid="true"]`
+              );
+              fallbackTrigger?.focus();
+            }
           }
         }
       }}
@@ -113,7 +161,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
           autoComplete="off"
           defaultValue=""
         />
-        <input type="hidden" name="t" value={mountTime} />
+        <input type="hidden" name="t" value={mountTime} suppressHydrationWarning />
         <input type="hidden" name="source" value={prefill?.source || "contact"} />
         {prefill?.blueprintSummary && (
           <input type="hidden" name="blueprintSummary" value={prefill.blueprintSummary} />
@@ -131,7 +179,6 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
           <p className="font-semibold">{state.message}</p>
         </div>
       )}
-
 
       {/* First Name & Last Name (2-col grid) */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -219,7 +266,7 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
             label={LEAD_FORM_COPY.selectProjectCategory}
             aria-label={LEAD_FORM_COPY.projectCategory}
             value={selectedProjectType}
-            onValueChange={setSelectedProjectType}
+            onValueChange={handleProjectTypeChange}
             options={PROJECT_TYPES}
             required
             aria-invalid={Boolean(fieldErrors?.projectType)}
@@ -301,7 +348,8 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
       )}
 
       <div className="pt-2 flex flex-col gap-3">
-        <CelebratoryButton data-animated-icon-target
+        <CelebratoryButton
+          data-animated-icon-target
           type="submit"
           isPending={isPending}
           disabled={isPending}

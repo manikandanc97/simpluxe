@@ -41,11 +41,12 @@ export function HomeAbout() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-card">
+        <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-luxury">
           <div className="grid lg:grid-cols-12">
-            <div className="flex flex-col justify-between gap-10 bg-dark p-7 text-white sm:p-9 lg:col-span-4 lg:p-10">
+            {/* Left Column: Operating Standard (Dark Luxury Anchor) */}
+            <div className="relative flex flex-col justify-between gap-6 overflow-hidden bg-dark p-6 sm:p-8 lg:col-span-4 lg:p-8 text-white">
               <div className="flex flex-col gap-4">
-                <span className="w-fit rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-sky-200">
+                <span className="w-fit rounded-full border border-sky-400/20 bg-sky-500/10 px-3 py-1 text-xs font-semibold tracking-wide text-sky-200">
                   {HOME_ABOUT_CONTENT.panelEyebrow}
                 </span>
                 <h3 className="text-2xl font-bold leading-tight text-white sm:text-3xl">
@@ -56,38 +57,47 @@ export function HomeAbout() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 border-t border-white/10 pt-5">
-                <span className="relative flex size-2" aria-hidden="true">
+              <div className="flex items-center gap-3 border-t border-white/10 pt-4">
+                <span className="relative flex size-2.5" aria-hidden="true">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-50" />
-                  <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+                  <span className="relative inline-flex size-2.5 rounded-full bg-emerald-400" />
                 </span>
-                <span className="text-xs font-semibold text-slate-300">
+                <span className="text-xs font-semibold tracking-wide text-slate-300">
                   {HOME_ABOUT_CONTENT.status}
                 </span>
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-3 lg:col-span-8">
-              {HOME_ABOUT_CONTENT.standards.map((standard, index) => (
+            {/* Right Columns: The 3 Core Standards */}
+            <div className="grid divide-y divide-slate-200/80 bg-slate-50/40 sm:grid-cols-3 sm:divide-y-0 sm:divide-x lg:col-span-8">
+              {HOME_ABOUT_CONTENT.standards.map((standard) => (
                 <article
                   key={standard.number}
-                  className="flex flex-col justify-between gap-10 border-b border-slate-200 p-7 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:p-8 lg:p-10"
+                  className="group flex flex-col justify-between gap-6 p-6 transition-colors duration-200 hover:bg-white sm:p-7 lg:p-8"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="font-mono text-xs font-bold text-primary">
-                      {standard.number}
-                    </span>
-                    <span className="text-xs font-semibold text-slate-400">
-                      {String(index + 1).padStart(2, "0")}/{String(HOME_ABOUT_CONTENT.standards.length).padStart(2, "0")}
-                    </span>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="font-mono text-xs font-bold text-primary">
+                        {standard.number}
+                      </span>
+                      <span className="text-xs font-semibold text-slate-400">
+                        {standard.tag}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col gap-2.5">
+                      <h3 className="text-xl font-bold leading-tight text-heading transition-colors group-hover:text-primary">
+                        {standard.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {standard.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <h3 className="text-xl font-bold leading-tight text-heading">
-                      {standard.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {standard.description}
-                    </p>
+
+                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+                    <span className="size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                    <span className="leading-tight text-slate-600">{standard.deliverable}</span>
                   </div>
                 </article>
               ))}

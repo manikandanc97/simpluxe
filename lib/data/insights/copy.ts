@@ -1,0 +1,41 @@
+import { COMMON } from "@/lib/data/common";
+
+export const INSIGHTS_PAGE_COPY = {
+  metadataTitle: "Insights on Software, Product Design & Architecture",
+  metadataDescription:
+    "Practical notes from Simpluxe on software architecture, product design, engineering decisions, and building digital products that stay clear as they scale.",
+  currentPage: COMMON.pages.insights,
+  heroTitle: "Thinking behind",
+  heroHighlight: "the build.",
+  heroDescription:
+    "Practical field notes on product decisions, software architecture, and the details that make digital products easier to use and maintain.",
+  readArticle: "Read insight",
+  minReadSuffix: "read",
+  writtenBy: "Written by",
+  keyTakeaways: "Key takeaways",
+  articleContents: "In this insight",
+  relatedEyebrow: "Continue exploring",
+  relatedTitle: "Related insights",
+  backToInsights: "Back to insights",
+  contactTitle: "Have a product decision to work through?",
+  contactDescription:
+    "Bring us the context. We will help turn the moving parts into a clear, buildable direction.",
+  contactAction: "Start a conversation",
+  sectionLabel: (index: number) => String(index + 1).padStart(2, "0"),
+  articlePath: (slug: string) => `/insights/${slug}`,
+  topicLabel: "Topic:",
+  allTopics: "All perspectives",
+  searchPlaceholder: "Search insights...",
+  searchAriaLabel: "Search insights",
+  clearSearch: "Clear search",
+  noMatchesTitle: "No matching insights found",
+  noMatchesDescription: "Try adjusting your search query or selecting another topic.",
+  resetFilters: "Reset filters",
+  firstPage: "First",
+  lastPage: "Last",
+  pageIndicator: (current: number, total: number) => `Page ${current} of ${total}`,
+  paginationAriaLabel: "Insights pagination",
+  latestFirst: "Latest First",
+  oldestFirst: "Oldest First",
+  alphabetical: "Alphabetical",
+} as const;

@@ -2,6 +2,7 @@
 
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
+import { ThemeImage } from "@/components/ui/theme-image";
 import { cloudinaryImageUrl } from "@/lib/cloudinary";
 import { WORKBENCH_COPY } from "@/lib/data/hero";
 import { PROJECTS } from "@/lib/data/projects";
@@ -14,17 +15,28 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { ThemeImage } from "@/components/ui/theme-image";
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 
+const DESKTOP_MEDIA_QUERY = "(min-width: 1024px)";
+let cachedDesktopMedia: MediaQueryList | null = null;
+
+function getDesktopMediaQuery(): MediaQueryList | null {
+  if (typeof window === "undefined") return null;
+  if (!cachedDesktopMedia) {
+    cachedDesktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
+  }
+  return cachedDesktopMedia;
+}
+
 function subscribeDesktopMedia(callback: () => void) {
-  const media = window.matchMedia("(min-width: 1024px)");
+  const media = getDesktopMediaQuery();
+  if (!media) return () => {};
   media.addEventListener("change", callback);
   return () => media.removeEventListener("change", callback);
 }
 
 function getDesktopSnapshot() {
-  return window.matchMedia("(min-width: 1024px)").matches;
+  return getDesktopMediaQuery()?.matches ?? false;
 }
 
 function getDesktopServerSnapshot() {
@@ -35,7 +47,7 @@ const showcasedProjects = PROJECTS.flatMap((project) =>
   project.showcaseImages
     ? [{
         name: project.name,
-        category: project.category.split("·")[0].trim(),
+        category: project.category.split("·")[0]?.trim() ?? project.category,
         result: project.result,
         number: project.number,
         images: project.showcaseImages,
@@ -52,7 +64,7 @@ export function WorkbenchHeroClient({
   const [isMobileProjectMenuOpen, setIsMobileProjectMenuOpen] = useState(false);
   const mobileProjectMenuRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const activeProject = showcasedProjects[activeProjectIndex];
+  const activeProject = showcasedProjects[activeProjectIndex] ?? showcasedProjects[0];
   const prefersReducedMotion = useReducedMotion();
   const isDesktop = useSyncExternalStore(
     subscribeDesktopMedia,
@@ -72,8 +84,10 @@ export function WorkbenchHeroClient({
   const stageRotateX = useSpring(rawStageRotateX, { stiffness: 80, damping: 20, mass: 0.5 });
   const stageScale = useSpring(rawStageScale, { stiffness: 80, damping: 20, mass: 0.5 });
 
+  const isMobileMenuOpen = !isDesktop && isMobileProjectMenuOpen;
+
   useEffect(() => {
-    if (!isMobileProjectMenuOpen) return;
+    if (!isMobileMenuOpen) return;
 
     const closeOnOutsideClick = (event: PointerEvent) => {
       if (!mobileProjectMenuRef.current?.contains(event.target as Node)) {
@@ -92,9 +106,21 @@ export function WorkbenchHeroClient({
       document.removeEventListener("pointerdown", closeOnOutsideClick);
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, [isMobileProjectMenuOpen]);
+  }, [isMobileMenuOpen]);
 
+  if (!activeProject) {
+    return null;
+  }
 
+  const stageMotionStyle =
+    prefersReducedMotion || !isDesktop
+      ? undefined
+      : {
+          y: stageY,
+          rotateX: stageRotateX,
+          scale: stageScale,
+          transformPerspective: 1200,
+        };
 
   return (
     <section
@@ -110,18 +136,8 @@ export function WorkbenchHeroClient({
 
         <motion.div
           className="w-full max-w-6xl"
-          style={
-            prefersReducedMotion || !isDesktop
-              ? undefined
-              : {
-                  y: stageY,
-                  rotateX: stageRotateX,
-                  scale: stageScale,
-                  transformPerspective: 1200,
-                }
-          }
+          style={stageMotionStyle}
         >
-          <div className="relative w-full">
           <div className="relative flex flex-col gap-3 overflow-hidden rounded-3xl border border-slate-200/70 bg-slate-100/70 p-3 shadow-elevated backdrop-blur-xl sm:gap-5 sm:p-5 lg:p-7">
             <div className="flex items-center justify-between gap-4 px-1">
               <div className="flex min-w-0 items-center gap-2">
@@ -144,7 +160,7 @@ export function WorkbenchHeroClient({
               <button
                 type="button"
                 aria-haspopup="listbox"
-                aria-expanded={isMobileProjectMenuOpen}
+                aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-project-options"
                 onClick={() => setIsMobileProjectMenuOpen((isOpen) => !isOpen)}
                 className="flex h-12 w-full items-center justify-between rounded-lg border border-primary/20 bg-slate-100 px-2.5 text-left shadow-sm outline-none transition-colors hover:border-primary/40 hover:bg-secondary focus-visible:ring-2 focus-visible:ring-primary/20"
@@ -157,7 +173,7 @@ export function WorkbenchHeroClient({
                 </span>
                 <span
                   className={`flex size-8 shrink-0 items-center justify-center rounded-md bg-white text-primary shadow-sm transition-transform ${
-                    isMobileProjectMenuOpen ? "rotate-180" : ""
+                    isMobileMenuOpen ? "rotate-180" : ""
                   }`}
                 >
                   <AnimatedIcon icon={ChevronDownIcon} size={16} />
@@ -165,7 +181,7 @@ export function WorkbenchHeroClient({
               </button>
 
               <AnimatePresence>
-                {isMobileProjectMenuOpen && (
+                {isMobileMenuOpen && (
                   <motion.div
                     id="mobile-project-options"
                     role="listbox"
@@ -251,7 +267,7 @@ export function WorkbenchHeroClient({
                   <p className="font-bold text-2xs text-sky-300 uppercase tracking-widest">{WORKBENCH_COPY.outcomeHeading}</p>
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.p
-                      key={activeProject.result}
+                      key={activeProject.name}
                       className="text-2xl font-bold tracking-tight"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -341,10 +357,9 @@ export function WorkbenchHeroClient({
               </div>
             </div>
           </div>
-          </div>
         </motion.div>
-
       </Container>
     </section>
   );
 }
+

@@ -1,0 +1,55 @@
+import { COMMON } from "@/lib/data/common";
+import type { TechItem } from "@/types/tech";
+
+export const MOBILE_TECH: TechItem[] = [
+  {
+    name: COMMON.technology.reactNative,
+    slug: "reactnative",
+    category: COMMON.categories.mobile,
+    description: "Native mobile apps for iOS & Android.",
+    badge: COMMON.labels.crossPlatform,
+    dotColor: "#38BDF8",
+    accentColor: "#087EA4",
+    learnMoreUrl: "https://reactnative.dev",
+  },
+  {
+    name: COMMON.technology.flutter,
+    slug: "flutter",
+    category: COMMON.categories.mobile,
+    description: "Cross-platform UI with Dart engine.",
+    badge: "UI Toolkit",
+    dotColor: "#0284C7",
+    accentColor: "#02569B",
+    learnMoreUrl: "https://flutter.dev",
+  },
+  {
+    name: COMMON.technology.swift,
+    slug: "swift",
+    category: COMMON.categories.mobile,
+    description: "Native iOS apps for Apple devices.",
+    badge: "Native iOS",
+    dotColor: "#F97316",
+    accentColor: "#F05138",
+    learnMoreUrl: "https://developer.apple.com/swift",
+  },
+  {
+    name: COMMON.technology.kotlin,
+    slug: "kotlin",
+    category: COMMON.categories.mobile,
+    description: "Modern native code for Android.",
+    badge: "Android",
+    dotColor: "#8B5CF6",
+    accentColor: "#7F52FF",
+    learnMoreUrl: "https://kotlinlang.org",
+  },
+  {
+    name: COMMON.technology.expo,
+    slug: "expo",
+    category: COMMON.categories.mobile,
+    description: "Universal tooling for React Native.",
+    badge: "Toolchain",
+    dotColor: "#10B981",
+    accentColor: "#000020",
+    learnMoreUrl: "https://expo.dev",
+  },
+];

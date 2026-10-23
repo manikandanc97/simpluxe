@@ -57,7 +57,7 @@ export function InsightCard({ index, post }: InsightCardProps) {
           {primaryTakeaway ? (
             <div className="border-l-2 border-primary/35 pl-3 py-0.5">
               <p className="text-xs italic leading-relaxed text-foreground/75">
-                &ldquo;{primaryTakeaway}&rdquo;
+                “{primaryTakeaway}”
               </p>
             </div>
           ) : null}

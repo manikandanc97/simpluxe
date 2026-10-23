@@ -15,6 +15,7 @@ import {
   AnimatePresence,
   animate,
   m as motion,
+  type MotionValue,
   useInView,
   useMotionValue,
   useReducedMotion,
@@ -23,6 +24,84 @@ import { useEffect, useRef, useState } from "react";
 import { staggerRevealProps, fadeUpItem } from "@/lib/motion";
 
 const STEP_DURATION = 8000;
+
+interface StepSelectorProps {
+  activeStepIndex: number;
+  progress: MotionValue<number>;
+  onSelectStep: (index: number) => void;
+}
+
+function StepSelector({
+  activeStepIndex,
+  progress,
+  onSelectStep,
+}: StepSelectorProps) {
+  return (
+    <div
+      role="group"
+      aria-label={HOW_WE_WORK_SECTION_CONTENT.eyebrow}
+      className="flex w-full gap-2 sm:gap-2.5 lg:flex-col lg:gap-2"
+    >
+      {STEPS.map((step, index) => {
+        const isActive = activeStepIndex === index;
+
+        return (
+          <button
+            key={step.id}
+            type="button"
+            aria-pressed={isActive}
+            aria-controls="how-we-work-detail"
+            onClick={() => onSelectStep(index)}
+            className={cn(
+              "group relative flex min-w-0 flex-1 flex-col items-center gap-2 overflow-hidden rounded-xl border border-transparent px-2.5 py-3.5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:flex-row lg:gap-5 lg:px-4 lg:py-4",
+              isActive
+                ? "text-primary"
+                : "text-muted-foreground hover:border-border hover:bg-primary/5 hover:text-heading"
+            )}
+          >
+            {isActive && (
+              <motion.span
+                layoutId="how-we-work-active-step"
+                aria-hidden="true"
+                className="absolute inset-0 rounded-xl border border-primary/25 bg-primary/10 shadow-2xs"
+                transition={{ type: "spring", stiffness: 420, damping: 36 }}
+              />
+            )}
+            <span className="relative z-10 text-xs font-medium tabular-nums lg:text-sm">
+              {step.number}
+            </span>
+            <span className="relative z-10 flex min-w-0 flex-1 flex-col gap-1">
+              <span className="text-xs font-semibold sm:text-sm lg:text-base">
+                {step.title}
+              </span>
+              <span className="hidden text-xs font-normal text-muted-foreground lg:block">
+                {step.subtitle}
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              className={cn(
+                "relative z-10 hidden size-8 items-center justify-center rounded-lg transition-colors lg:flex",
+                isActive ? "bg-primary text-white" : "text-muted-foreground/60"
+              )}
+            >
+              <AnimatedIcon name="arrow-right" size={15} />
+            </span>
+
+            {/* Active step dynamic progress line */}
+            {isActive && (
+              <motion.span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-0.5 origin-left bg-primary"
+                style={{ scaleX: progress }}
+              />
+            )}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function HowWeWorkInteractive() {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
@@ -89,69 +168,11 @@ export function HowWeWorkInteractive() {
             maxWidth="max-w-sm"
           />
 
-          <div
-            role="group"
-            aria-label={HOW_WE_WORK_SECTION_CONTENT.eyebrow}
-            className="flex w-full gap-2 sm:gap-2.5 lg:flex-col lg:gap-2"
-          >
-            {STEPS.map((step, index) => {
-              const isActive = activeStepIndex === index;
-
-              return (
-                <button
-                  key={step.id}
-                  type="button"
-                  aria-pressed={isActive}
-                  aria-controls="how-we-work-detail"
-                  onClick={() => handleSelectStep(index)}
-                  className={cn(
-                    "group relative flex min-w-0 flex-1 flex-col items-center gap-2 overflow-hidden rounded-xl border border-transparent px-2.5 py-3.5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:flex-row lg:gap-5 lg:px-4 lg:py-4",
-                    isActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:border-border hover:bg-primary/5 hover:text-heading"
-                  )}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="how-we-work-active-step"
-                      aria-hidden="true"
-                      className="absolute inset-0 rounded-xl border border-primary/25 bg-primary/10 shadow-2xs"
-                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
-                    />
-                  )}
-                  <span className="relative z-10 text-xs font-medium tabular-nums lg:text-sm">
-                    {step.number}
-                  </span>
-                  <span className="relative z-10 flex min-w-0 flex-1 flex-col gap-1">
-                    <span className="text-xs font-semibold sm:text-sm lg:text-base">
-                      {step.title}
-                    </span>
-                    <span className="hidden text-xs font-normal text-muted-foreground lg:block">
-                      {step.subtitle}
-                    </span>
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "relative z-10 hidden size-8 items-center justify-center rounded-lg transition-colors lg:flex",
-                      isActive ? "bg-primary text-white" : "text-muted-foreground/60"
-                    )}
-                  >
-                    <AnimatedIcon name="arrow-right" size={15} />
-                  </span>
-
-                  {/* Active step dynamic progress line */}
-                  {isActive && (
-                    <motion.span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-0.5 origin-left bg-primary"
-                      style={{ scaleX: progress }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
+          <StepSelector
+            activeStepIndex={activeStepIndex}
+            progress={progress}
+            onSelectStep={handleSelectStep}
+          />
         </motion.div>
 
         <motion.div

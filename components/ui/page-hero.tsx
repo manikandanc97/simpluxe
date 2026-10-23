@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Container } from "@/components/ui/container";
 import { COMMON } from "@/lib/data/common";
 import { fadeUp, staggerContainer } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import * as motion from "motion/react-m";
 
@@ -13,7 +12,6 @@ interface PageHeroProps {
   description: ReactNode;
   eyebrow?: ReactNode;
   heading: ReactNode;
-  variant?: "default" | "article";
 }
 
 export function PageHero({
