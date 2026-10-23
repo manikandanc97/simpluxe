@@ -5,6 +5,9 @@ export const COMMON = {
   brand: {
     title: `${SITE.name} — ${SITE.tagline}`,
     homeLabel: `${SITE.name} Home`,
+    wordmarkLead: "Simp",
+    wordmarkTrail: "luxe",
+    subtitle: "Technologies",
   },
   actions: {
     startProject: "Start a project",
@@ -12,10 +15,11 @@ export const COMMON = {
   },
   pages: {
     home: "Home",
-    about: "About",
-    contact: "Contact",
-    work: "Work",
-    services: "Services",
+    creations: "Creations",
+    inside: "Inside",
+    connect: "Connect",
+    expertise: "Expertise",
+    insights: "Insights",
     ideas: "Ideas",
     privacy: "Privacy Policy",
     terms: "Terms of Service",

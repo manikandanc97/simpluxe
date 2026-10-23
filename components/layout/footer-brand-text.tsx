@@ -1,12 +1,13 @@
 ﻿import { SITE_FOOTER_COPY } from "@/lib/data/layout";
 import { Container } from "@/components/ui/container";
+import { COMMON } from "@/lib/data/common";
 
 export function FooterBrandText() {
   return (
     <div className="w-full bg-slate-100 select-none pointer-events-none overflow-hidden">
       <Container>
         <svg
-          viewBox="0 20 1000 120"
+          viewBox="0 20 1000 155"
           className="w-full h-auto block select-none"
           aria-hidden="true"
         >
@@ -32,6 +33,16 @@ export function FooterBrandText() {
             <tspan fill="url(#footer-brand-gradient)">
               {SITE_FOOTER_COPY.brandLuxeUpper}
             </tspan>
+          </text>
+          <text
+            x="500"
+            y="160"
+            textAnchor="middle"
+            className="fill-slate-500 font-heading font-semibold"
+            fontSize="18"
+            letterSpacing="8"
+          >
+            {COMMON.brand.subtitle.toUpperCase()}
           </text>
         </svg>
       </Container>

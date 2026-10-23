@@ -83,7 +83,7 @@ export const WhatWeBuildCard = memo(function WhatWeBuildCard({
   return (
     <Link
       ref={cardRef}
-      href={`/services#${service.id}`}
+      href={`/expertise#${service.id}`}
       scroll={false}
       data-animated-icon-target
       data-inactive={!isCurrentSlide}

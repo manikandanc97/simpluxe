@@ -21,9 +21,9 @@ export const LAB_PAGE_COPY = {
   description: "Explore experimental software prototypes, generative UI concepts, and interaction physics developed by the Simpluxe engineering team.",
 } as const;
 
-export const SERVICES_PAGE_COPY = {
-  title: "Software Development Services & Capabilities",
-  description: "Explore our software engineering services: custom web applications, SaaS platforms, mobile apps, e-commerce, and product design built to scale.",
+export const EXPERTISE_PAGE_COPY = {
+  title: "Software Development Expertise & Capabilities",
+  description: "Explore our software engineering expertise: custom web applications, SaaS platforms, mobile apps, e-commerce, and product design built to scale.",
 } as const;
 
 export const CUSTOM_SOFTWARE_PAGE_COPY = {

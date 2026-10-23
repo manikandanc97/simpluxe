@@ -70,18 +70,18 @@ export interface ServiceData {
 export type ServiceViewData = Omit<ServiceData, "icon">;
 
 const SERVICE_DETAIL_ROUTES: Record<string, string> = {
-  websites: "/services/web-development",
-  "web-apps": "/services/web-application-development",
-  ecommerce: "/services/ecommerce-development",
-  "mobile-apps": "/services/mobile-app-development",
-  saas: "/services/saas-development",
-  branding: "/services/brand-identity",
-  "ui-ux": "/services/ui-ux-design",
-  "custom-software": "/services/custom-software-development",
+  websites: "/expertise/web-development",
+  "web-apps": "/expertise/web-application-development",
+  ecommerce: "/expertise/ecommerce-development",
+  "mobile-apps": "/expertise/mobile-app-development",
+  saas: "/expertise/saas-development",
+  branding: "/expertise/brand-identity",
+  "ui-ux": "/expertise/ui-ux-design",
+  "custom-software": "/expertise/custom-software-development",
 };
 
 export function getServicePath(serviceId: string) {
-  return SERVICE_DETAIL_ROUTES[serviceId] ?? "/services";
+  return SERVICE_DETAIL_ROUTES[serviceId] ?? "/expertise";
 }
 
 export function getServiceSlug(serviceId: string) {
@@ -204,7 +204,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes, we manage full production deployment, automatic HTTPS certificate provisioning, DNS routing, and global CDN caching."
       }
     ],
-    "relatedWorkUrl": "/work?service=websites",
+    "relatedWorkUrl": "/creations?service=websites",
     "mockup": {
       "type": "websites",
       "title": "Simpluxe Digital Flagship",
@@ -335,7 +335,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "We provide dedicated post-launch support after deployment, followed by flexible ongoing maintenance arrangements covering updates, security patches, and performance monitoring."
       }
     ],
-    "relatedWorkUrl": "/work?service=web-apps",
+    "relatedWorkUrl": "/creations?service=web-apps",
     "mockup": {
       "type": "dashboard",
       "title": "SIMPLUXE Cloud Workspace",
@@ -467,7 +467,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes. We support custom weekly, monthly, and quarterly recurring billing with automated invoice generation and customer self-serve pause/skip controls."
       }
     ],
-    "relatedWorkUrl": "/work",
+    "relatedWorkUrl": "/creations",
     "mockup": {
       "type": "ecommerce",
       "title": "Simpluxe Storefront Engine",
@@ -597,7 +597,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "With Expo and EAS Over-The-Air (OTA) updates, critical bug fixes and UI updates can be deployed directly to user devices instantly without waiting for app store re-review."
       }
     ],
-    "relatedWorkUrl": "/work?service=mobile-apps",
+    "relatedWorkUrl": "/creations?service=mobile-apps",
     "mockup": {
       "type": "mobile",
       "title": "Simpluxe Mobile Native Hub",
@@ -729,7 +729,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes. We can architect enterprise SSO integration (SAML 2.0, Okta, Google Workspace, Azure AD) for frictionless corporate IT compliance."
       }
     ],
-    "relatedWorkUrl": "/work",
+    "relatedWorkUrl": "/creations",
     "mockup": {
       "type": "saas",
       "title": "Simpluxe Multi-Tenant Core",
@@ -859,7 +859,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "You receive organized Figma libraries, vector AI/EPS files for print, SVG vectors for the web, high-res transparent PNGs, and a complete Brand Guidelines PDF."
       }
     ],
-    "relatedWorkUrl": "/work",
+    "relatedWorkUrl": "/creations",
     "mockup": {
       "type": "branding",
       "title": "Simpluxe Brand Identity Guide",
@@ -986,7 +986,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "Yes. We meticulously detail loading skeletons, error tooltips, empty states, and spring animations so developers don't have to guess."
       }
     ],
-    "relatedWorkUrl": "/work",
+    "relatedWorkUrl": "/creations",
     "mockup": {
       "type": "design",
       "title": "Simpluxe Design Token Kit",
@@ -1118,7 +1118,7 @@ export const SERVICES_LIST: ServiceData[] = [
         "answer": "We implement atomic database transactions, rigorous automated regression testing, database connection pooling, and automated error tracking."
       }
     ],
-    "relatedWorkUrl": "/work",
+    "relatedWorkUrl": "/creations",
     "detailPageLabel": "Explore custom software overview",
     "mockup": {
       "type": "custom",
@@ -1165,9 +1165,6 @@ export const SERVICE_DETAIL_PAGE_COPY = {
 } as const;
 
 export const SERVICES_HERO_COPY = {
-  home: COMMON.pages.home,
-  symbol: COMMON.symbols.slash,
-  services: COMMON.pages.services,
   digitalServicesFor: "Software and digital services for ",
   yourBusiness: "your business.",
   fromWebsitesAndMobileProductsTo: "From custom web applications and SaaS platforms to mobile apps and bespoke business systems, we engineer software built for speed, clarity, and scale.",

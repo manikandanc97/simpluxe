@@ -185,9 +185,6 @@ export const WORK_CONTROLS_COPY = {
 } as const;
 
 export const WORK_HERO_COPY = {
-  home: COMMON.pages.home,
-  symbol: COMMON.symbols.slash,
-  work: COMMON.pages.work,
   engineeredDigitalProductsFor: "Software Engineering & ",
   modernBusinesses: "Digital Products Portfolio.",
   fromHighConversionWebsitesToComplex: "Explore selected case studies: bespoke web applications, mobile platforms, and high-performance digital systems engineered by Simpluxe.",

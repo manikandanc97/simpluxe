@@ -2,10 +2,10 @@
 
 import { WORK_CONTROLS_COPY } from "@/lib/data/projects";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
-import { AnimatedX } from "@/components/ui/animated-icons/convenience-icons";
+import { SearchInput } from "@/components/ui/search-input";
 import { cn } from "@/lib/utils";
 import { FILTER_SERVICES } from "@/lib/data/projects";
 import { type Project } from "@/types/project";
@@ -30,6 +30,31 @@ export function WorkControls({
   allProjects,
 }: WorkControlsProps) {
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const sortMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isSortOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!sortMenuRef.current?.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsSortOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isSortOpen]);
 
   return (
     <div className="flex flex-col justify-between gap-4 pb-6 border-b border-border/60 lg:flex-row lg:items-center sm:pb-8">
@@ -80,37 +105,22 @@ export function WorkControls({
 
       {/* ── Search & Sort Controls ── */}
       <div className="flex items-center gap-4">
-        {/* Search Pill */}
-        <div data-animated-icon-target className="relative flex-1 sm:flex-initial">
-          <AnimatedIcon
-            name="search"
-            size={15}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-          />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder={WORK_CONTROLS_COPY.searchProjects}
-            aria-label={WORK_CONTROLS_COPY.searchProjects2}
-            className="w-full pl-9 pr-4 py-2 bg-background border border-surface-elevated rounded-xl text-xs text-foreground transition-all sm:w-56 sm:text-sm hover:bg-background placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-white"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => onSearchChange("")}
-              aria-label={WORK_CONTROLS_COPY.clearSearch}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-            >
-              <AnimatedX size={14} />
-            </button>
-          )}
-        </div>
+        <SearchInput
+          value={searchQuery}
+          onValueChange={onSearchChange}
+          placeholder={WORK_CONTROLS_COPY.searchProjects}
+          ariaLabel={WORK_CONTROLS_COPY.searchProjects2}
+          clearLabel={WORK_CONTROLS_COPY.clearSearch}
+          className="flex-1 sm:w-56 sm:flex-none"
+        />
 
         {/* Sort Pill Dropdown */}
-        <div className="relative">
+        <div ref={sortMenuRef} className="relative">
           <button
             type="button"
             onClick={() => setIsSortOpen((prev) => !prev)}
+            aria-expanded={isSortOpen}
+            aria-haspopup="menu"
             className="bg-white border border-surface-elevated rounded-xl px-3.5 py-2 text-xs font-medium text-foreground flex items-center gap-2 cursor-pointer shadow-sm transition-all sm:px-4.5 sm:text-sm hover:bg-background group"
           >
             <span>
@@ -131,8 +141,10 @@ export function WorkControls({
           </button>
 
           {isSortOpen && (
-            <div className="absolute right-0 top-full translate-y-2 w-40 bg-white rounded-xl shadow-xl border border-surface-elevated py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
+            <div role="menu" className="absolute right-0 top-full translate-y-2 w-40 bg-white rounded-xl shadow-xl border border-surface-elevated py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
               <button
+                type="button"
+                role="menuitem"
                 onClick={() => {
                   onSortChange("latest");
                   setIsSortOpen(false);
@@ -144,6 +156,8 @@ export function WorkControls({
               >
                 {WORK_CONTROLS_COPY.latestFirst}</button>
               <button
+                type="button"
+                role="menuitem"
                 onClick={() => {
                   onSortChange("oldest");
                   setIsSortOpen(false);
@@ -155,6 +169,8 @@ export function WorkControls({
               >
                 {WORK_CONTROLS_COPY.oldestFirst}</button>
               <button
+                type="button"
+                role="menuitem"
                 onClick={() => {
                   onSortChange("name");
                   setIsSortOpen(false);

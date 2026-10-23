@@ -9,17 +9,17 @@ import type { Metadata } from "next";
 export const metadata: Metadata = createPageMetadata({
   title: ABOUT_PAGE_COPY.title,
   description: ABOUT_PAGE_COPY.description,
-  path: "/about",
+  path: "/inside",
 });
 
-export default function AboutPage() {
+export default function InsidePage() {
   return (
     <>
       <JsonLd
         data={[
           getBreadcrumbSchema([
             { name: COMMON.pages.home, path: "/" },
-            { name: COMMON.pages.about, path: "/about" },
+            { name: COMMON.pages.inside, path: "/inside" },
           ]),
           getAboutPageSchema(),
         ]}

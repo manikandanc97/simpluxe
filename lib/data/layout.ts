@@ -10,10 +10,31 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: COMMON.pages.work, route: "/work", commandName: COMMON.actions.goTo(COMMON.pages.work) },
-  { label: COMMON.pages.services, route: "/services", commandName: COMMON.actions.goTo(COMMON.pages.services) },
-  { label: COMMON.pages.about, route: "/about", commandName: COMMON.actions.goTo(COMMON.pages.about) },
-  { label: COMMON.pages.contact, route: "/contact", commandName: COMMON.actions.goTo(COMMON.pages.contact) },
+  {
+    label: COMMON.pages.creations,
+    route: "/creations",
+    commandName: COMMON.actions.goTo(COMMON.pages.creations),
+  },
+  {
+    label: COMMON.pages.expertise,
+    route: "/expertise",
+    commandName: COMMON.actions.goTo(COMMON.pages.expertise),
+  },
+  {
+    label: COMMON.pages.inside,
+    route: "/inside",
+    commandName: COMMON.actions.goTo(COMMON.pages.inside),
+  },
+  {
+    label: COMMON.pages.insights,
+    route: "/insights",
+    commandName: COMMON.actions.goTo(COMMON.pages.insights),
+  },
+  {
+    label: COMMON.pages.connect,
+    route: "/connect",
+    commandName: COMMON.actions.goTo(COMMON.pages.connect),
+  },
 ];
 
 export interface NavbarContent {
@@ -42,10 +63,11 @@ export const NAVBAR_SERVICES_MENU_COPY = {
 export const FOOTER_DATA: FooterData = {
   navIcons: {
     "/": "home",
-    "/work": "briefcase",
-    "/services": "layers",
-    "/about": "info",
-    "/contact": "mail",
+    "/creations": "briefcase",
+    "/expertise": "layers",
+    "/inside": "info",
+    "/insights": "pencil",
+    "/connect": "mail",
   },
   capabilities: [
     { label: "Websites & Landing Pages", icon: "globe", id: "websites" },
@@ -57,7 +79,7 @@ export const FOOTER_DATA: FooterData = {
   brandDescription: "Where architectural simplicity meets high-end digital craftsmanship. We distill complex challenges into effortless, ultra-refined experiences engineered to elevate ambitious brands.",
   exploreTitle: "Explore",
   capabilitiesTitle: "Capabilities",
-  connectTitle: "Connect",
+  connectTitle: COMMON.pages.connect,
   ctaPillText: "Let's Build",
   ctaTitle: "Have a project in mind?",
   ctaDescription: "Let's discuss your idea and turn it into a premium digital product.",
@@ -75,10 +97,6 @@ export const FOOTER_CTA_BUTTON_COPY = {
 
 export const SITE_FOOTER_COPY = {
   simpluxeHome: COMMON.brand.homeLabel,
-  simpluxe: SITE.name,
-  brandSimp: "Simp",
-  brandLuxe: "luxe",
-  technologies: "Technologies",
   brandSimpUpper: "SIMP",
   brandLuxeUpper: "LUXE",
   headlineLine1: "Designed with Precision.",
@@ -99,10 +117,6 @@ export const SITE_NAVBAR_COPY = {
   home: COMMON.pages.home,
   simpluxeHome: COMMON.brand.homeLabel,
   primaryNavigation: "Primary navigation",
-  services: COMMON.pages.services,
-  brandSimp: "Simp",
-  brandLuxe: "luxe",
-  technologies: "Technologies",
   letsTalk: "Let's talk",
   callUs: "Call Simpluxe",
   openMenu: "Open navigation menu",

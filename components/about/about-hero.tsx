@@ -1,12 +1,11 @@
 import { PageHero } from "@/components/ui/page-hero";
 import { ABOUT_HERO_COPY } from "@/lib/data/about";
+import { COMMON } from "@/lib/data/common";
 
 export function AboutHero() {
   return (
     <PageHero
-      homeLabel={ABOUT_HERO_COPY.home}
-      currentPage={ABOUT_HERO_COPY.about}
-      separator={ABOUT_HERO_COPY.symbol}
+      currentPage={COMMON.pages.inside}
       heading={
         <>
           {ABOUT_HERO_COPY.engineeringExcellenceShapedAround}{" "}

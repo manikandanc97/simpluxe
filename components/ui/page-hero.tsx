@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Container } from "@/components/ui/container";
 import { COMMON } from "@/lib/data/common";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import * as motion from "motion/react-m";
 
@@ -12,8 +13,7 @@ interface PageHeroProps {
   description: ReactNode;
   eyebrow?: ReactNode;
   heading: ReactNode;
-  homeLabel: ReactNode;
-  separator?: ReactNode;
+  variant?: "default" | "article";
 }
 
 export function PageHero({
@@ -23,12 +23,18 @@ export function PageHero({
   description,
   eyebrow,
   heading,
-  homeLabel,
-  separator = "/",
+  variant = "default",
 }: PageHeroProps) {
+  const isArticle = variant === "article";
+
   return (
-    <section className="w-full border-b border-primary-hover/30 bg-luxury-banner text-white">
-      <Container className="py-12 sm:py-16 lg:py-20">
+    <section
+      className={cn(
+        "w-full border-b border-primary-hover/30 text-white",
+        isArticle ? "bg-primary" : "bg-luxury-banner"
+      )}
+    >
+      <Container className={cn("py-12 sm:py-16 lg:py-20", isArticle && "sm:py-20 lg:py-24")}>
         <motion.div
           variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
@@ -41,10 +47,10 @@ export function PageHero({
             className="flex flex-wrap items-center justify-center gap-2 text-xs font-medium text-white/75"
           >
             <Link href="/" className="transition-colors hover:text-white">
-              {homeLabel}
+              {COMMON.pages.home}
             </Link>
             <span aria-hidden="true" className="text-white/40">
-              {separator}
+              {COMMON.symbols.slash}
             </span>
             {breadcrumbs.map((item) => (
               <span key={item.href} className="contents">
@@ -52,16 +58,25 @@ export function PageHero({
                   {item.label}
                 </Link>
                 <span aria-hidden="true" className="text-white/40">
-                  {separator}
+                  {COMMON.symbols.slash}
                 </span>
               </span>
             ))}
-            <span aria-current="page" className="font-semibold text-white">
+            <span
+              aria-current="page"
+              className="max-w-xs truncate font-semibold text-white sm:max-w-md md:max-w-lg lg:max-w-xl"
+              title={typeof currentPage === "string" ? currentPage : undefined}
+            >
               {currentPage}
             </span>
           </motion.nav>
 
-          <div className="flex w-full max-w-3xl flex-col items-center gap-4">
+          <div
+            className={cn(
+              "flex w-full flex-col items-center gap-4",
+              isArticle ? "max-w-4xl sm:gap-5" : "max-w-3xl"
+            )}
+          >
             {eyebrow ? (
               <motion.div
                 variants={fadeUp}
@@ -70,7 +85,10 @@ export function PageHero({
                 {eyebrow}
               </motion.div>
             ) : null}
-            <motion.h1 variants={fadeUp} className="type-page-title text-white">
+            <motion.h1
+              variants={fadeUp}
+              className={cn("text-white", isArticle ? "type-h1 max-w-3xl" : "type-page-title")}
+            >
               {heading}
             </motion.h1>
             <motion.p

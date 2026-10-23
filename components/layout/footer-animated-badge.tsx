@@ -14,6 +14,7 @@ import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { MailIcon } from "@animateicons/react/lucide/mail-icon";
 import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
 import { PhoneIcon } from "@animateicons/react/lucide/phone-icon";
+import { PencilIcon } from "@animateicons/react/lucide/pencil-icon";
 import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
 import { GithubIcon } from "@animateicons/react/huge/github-icon";
 import { InstagramIcon } from "@animateicons/react/huge/instagram-icon";
@@ -35,6 +36,7 @@ export type FooterIconName =
   | "mail"
   | "palette"
   | "phone"
+  | "pencil"
   | "smartphone"
   | "twitter"
   | "youtube";
@@ -53,6 +55,7 @@ const FOOTER_ICONS: Record<FooterIconName, React.ComponentType<IconBaseProps>> =
   mail: MailIcon,
   palette: PaletteIcon,
   phone: PhoneIcon,
+  pencil: PencilIcon,
   smartphone: SmartphoneIcon,
   twitter: NewTwitterIcon,
   youtube: YoutubeIcon,

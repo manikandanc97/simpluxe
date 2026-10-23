@@ -13,7 +13,7 @@ import {
 import { createPageMetadata } from "@/lib/metadata";
 import { getBreadcrumbSchema, getServiceSchema } from "@/lib/schema";
 
-type ServicePageProps = {
+type ExpertisePageProps = {
   params: Promise<{ slug: string }>;
 };
 
@@ -25,7 +25,7 @@ export function generateStaticParams() {
   );
 }
 
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ExpertisePageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service || service.id === "custom-software") return {};
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   });
 }
 
-export default async function ServicePage({ params }: ServicePageProps) {
+export default async function ExpertiseDetailPage({ params }: ExpertisePageProps) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 
@@ -53,7 +53,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         data={[
           getBreadcrumbSchema([
             { name: COMMON.pages.home, path: "/" },
-            { name: COMMON.pages.services, path: "/services" },
+            { name: COMMON.pages.expertise, path: "/expertise" },
             { name: service.name, path },
           ]),
           getServiceSchema(service),

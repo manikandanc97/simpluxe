@@ -9,16 +9,16 @@ import type { Metadata } from "next";
 export const metadata: Metadata = createPageMetadata({
   title: WORK_PAGE_COPY.title,
   description: WORK_PAGE_COPY.description,
-  path: "/work",
+  path: "/creations",
 });
 
-export default function WorkPage() {
+export default function CreationsPage() {
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
           { name: COMMON.pages.home, path: "/" },
-          { name: COMMON.pages.work, path: "/work" },
+          { name: COMMON.pages.creations, path: "/creations" },
         ])}
       />
       <WorkView />

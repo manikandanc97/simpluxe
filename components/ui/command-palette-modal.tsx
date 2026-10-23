@@ -16,11 +16,12 @@ import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-ic
 
 const CMD_NAV_ICONS: Record<string, AnimatedIconName> = {
   "/": "home",
-  "/work": "briefcase",
-  "/services": "layers",
+  "/creations": "briefcase",
+  "/expertise": "layers",
   "/lab": "lightbulb",
-  "/about": "info",
-  "/contact": "mail",
+  "/inside": "info",
+  "/insights": "pencil",
+  "/connect": "mail",
 };
 
 interface CommandPaletteModalProps {

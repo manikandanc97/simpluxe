@@ -31,8 +31,9 @@ export const ERROR_COPY = {
 } as const;
 
 export const NOT_FOUND_COPY = {
-  text404PageNot: "404 — Page Not ",
-  found: "Found",
+  errorCode: "404",
+  pageNot: "Page not",
+  found: "found",
   theRequestedPageDoesnTExist: "The requested page doesn't exist. Let's get you back home.",
   backToHome: "Back to Home",
 } as const;

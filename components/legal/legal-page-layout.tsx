@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/container";
 import { PageHero } from "@/components/ui/page-hero";
-import { LEGAL_LAYOUT_COPY } from "@/lib/data/legal";
 import type { ReactNode } from "react";
 
 interface LegalPageLayoutProps {
@@ -13,7 +12,6 @@ export function LegalPageLayout({ children, lastUpdated, title }: LegalPageLayou
   return (
     <>
       <PageHero
-        homeLabel={LEGAL_LAYOUT_COPY.home}
         currentPage={title}
         heading={title}
         description={lastUpdated}

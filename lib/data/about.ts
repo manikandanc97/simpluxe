@@ -134,9 +134,6 @@ export const ABOUT_PRINCIPLES_CONTENT = {
 
 // about
 export const ABOUT_HERO_COPY = {
-  home: COMMON.pages.home,
-  symbol: COMMON.symbols.slash,
-  about: COMMON.pages.about,
   engineeringExcellenceShapedAround: "Engineering excellence shaped around ",
   yourVision: "your vision.",
   weAreADedicatedSoftwareStudio: "We are a dedicated software studio engineering custom software, scalable web applications, and robust digital systems with thoughtful craft and zero unnecessary overhead.",

@@ -1,12 +1,11 @@
 import { PageHero } from "@/components/ui/page-hero";
+import { COMMON } from "@/lib/data/common";
 import { WORK_HERO_COPY } from "@/lib/data/projects";
 
 export function WorkHero() {
   return (
     <PageHero
-      homeLabel={WORK_HERO_COPY.home}
-      currentPage={WORK_HERO_COPY.work}
-      separator={WORK_HERO_COPY.symbol}
+      currentPage={COMMON.pages.creations}
       heading={
         <>
           {WORK_HERO_COPY.engineeredDigitalProductsFor}{" "}

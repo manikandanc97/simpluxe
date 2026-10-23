@@ -1,11 +1,11 @@
 import { PageHero } from "@/components/ui/page-hero";
+import { COMMON } from "@/lib/data/common";
 import { LAB_VIEW_COPY } from "@/lib/data/lab";
 
 export function LabHero() {
   return (
     <PageHero
-      homeLabel={LAB_VIEW_COPY.home}
-      currentPage={LAB_VIEW_COPY.ideas}
+      currentPage={COMMON.pages.ideas}
       heading={
         <>
           {LAB_VIEW_COPY.ideas2}{" "}

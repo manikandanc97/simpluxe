@@ -8,11 +8,12 @@ import {
   NAV_ITEMS,
   NAVBAR_CONTENT,
   NAVBAR_SERVICES_MENU_COPY,
+  type NavItem,
 } from "@/lib/data/layout";
 import { SITE } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, m as motion } from "motion/react";
-import { BrandMark } from "@/components/ui/brand-mark";
+import { BrandLockup } from "@/components/ui/brand-lockup";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useSyncExternalStore } from "react";
@@ -36,16 +37,17 @@ const getMountedSnapshot = () => true;
 
 const MOBILE_NAV_ICONS: Record<string, StaticIconName> = {
   "/": "home",
-  "/work": "briefcase",
-  "/services": "layers",
-  "/about": "info",
-  "/contact": "mail",
+  "/creations": "briefcase",
+  "/expertise": "layers",
+  "/inside": "info",
+  "/insights": "pencil",
+  "/connect": "mail",
 };
 
-function ServicesMegaMenu({ pathname }: { pathname: string }) {
+function ServicesMegaMenu({ item, pathname }: { item: NavItem; pathname: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dismissedUntilPointerLeaves, setDismissedUntilPointerLeaves] = useState(false);
-  const isActive = pathname === "/services" || pathname.startsWith("/services/");
+  const isActive = pathname === "/expertise" || pathname.startsWith("/expertise/");
 
   const closeAfterNavigation = () => {
     setMenuOpen(false);
@@ -88,7 +90,7 @@ function ServicesMegaMenu({ pathname }: { pathname: string }) {
             : "font-medium text-muted-foreground hover:text-heading"
         )}
       >
-        <span>{SITE_NAVBAR_COPY.services}</span>
+        <span>{item.label}</span>
         <StaticIcon
           name="chevron-down"
           size={13}
@@ -228,22 +230,14 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
     >
       <div className="relative z-30 flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
-          <div className="flex items-center gap-2.5 min-w-0">
+          <div className="flex min-w-0 items-center">
             <Link
               href="/"
-              className="flex items-center gap-2.5 rounded-lg outline-none shrink-0 focus-visible:ring-2 focus-visible:ring-ring"
+              className="group flex shrink-0 items-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label={SITE_NAVBAR_COPY.simpluxeHome}
             >
-              <BrandMark loading="eager" className="size-8 sm:size-9" />
-              <span className="font-heading text-lg font-bold tracking-tight text-dark sm:text-xl">
-                {SITE_NAVBAR_COPY.brandSimp}<span className="text-primary">{SITE_NAVBAR_COPY.brandLuxe}</span>
-              </span>
+              <BrandLockup loading="eager" size="compact" />
             </Link>
-            <div className="hidden items-center pl-2.5 border-border border-l md:flex">
-              <span className="font-semibold text-xs text-muted-foreground tracking-normal">
-                {SITE_NAVBAR_COPY.technologies}
-              </span>
-            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -251,26 +245,33 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
             aria-label={SITE_NAVBAR_COPY.primaryNavigation}
             className="hidden h-full items-center gap-1 lg:flex"
           >
-            {NAV_ITEMS.map((item) => {
-              if (item.route === "/services") {
-                return <ServicesMegaMenu key={item.route} pathname={pathname} />;
+            {NAV_ITEMS.map((item, index) => {
+              if (item.route === "/expertise") {
+                return (
+                  <div key={item.route} className="flex h-full items-center">
+                    {index > 0 ? <span className="text-border">·</span> : null}
+                    <ServicesMegaMenu item={item} pathname={pathname} />
+                  </div>
+                );
               }
 
               const isActive = pathname === item.route;
               return (
-                <Link
-                  key={item.route}
-                  href={item.route}
-                  aria-current={isActive ? "page" : undefined}
-                  className={cn(
-                    "relative flex h-full items-center px-3 outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring xl:px-4 text-sm tracking-tight",
-                    isActive
-                      ? "text-primary font-semibold"
-                      : "text-muted-foreground hover:text-heading font-medium"
-                  )}
-                >
-                  <span>{item.label}</span>
-                </Link>
+                <div key={item.route} className="flex h-full items-center">
+                  {index > 0 ? <span className="text-border">·</span> : null}
+                  <Link
+                    href={item.route}
+                    aria-current={isActive ? "page" : undefined}
+                    className={cn(
+                      "relative flex h-full items-center px-3 text-sm tracking-tight outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring xl:px-4",
+                      isActive
+                        ? "font-semibold text-primary"
+                        : "font-medium text-muted-foreground hover:text-heading"
+                    )}
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                </div>
               );
             })}
           </nav>
@@ -367,7 +368,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                     ...NAV_ITEMS,
                   ].map((item, index) => {
                     const isActive = pathname === item.route ||
-                      (item.route === "/services" && pathname.startsWith("/services/"));
+                      (item.route === "/expertise" && pathname.startsWith("/expertise/"));
                     return (
                       <motion.div
                         key={item.route}
@@ -376,7 +377,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                         exit={{ opacity: 0, y: -4 }}
                         transition={{ duration: 0.2, delay: index * 0.035 }}
                       >
-                        {item.route === "/services" ? (
+                        {item.route === "/expertise" ? (
                           <button
                             type="button"
                             aria-expanded={mobileServicesOpen}
@@ -428,7 +429,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
                             <span>{item.label}</span>
                           </Link>
                         )}
-                        {item.route === "/services" && mobileServicesOpen && (
+                        {item.route === "/expertise" && mobileServicesOpen && (
                           <div id="mobile-services-menu" className="grid grid-cols-2 gap-2 px-3 py-2">
                             {SERVICES_LIST.map((service) => {
                               const href = getServicePath(service.id);

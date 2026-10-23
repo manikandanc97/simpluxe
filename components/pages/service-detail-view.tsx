@@ -10,8 +10,8 @@ export function ServiceDetailView({ service }: { service: ServiceViewData }) {
   return (
     <>
       <PageHero
-        homeLabel={COMMON.pages.home}
-        currentPage={`${COMMON.pages.services} / ${service.tabLabel}`}
+        breadcrumbs={[{ href: "/expertise", label: COMMON.pages.expertise }]}
+        currentPage={service.name}
         heading={
           <>
             {service.name}.{" "}

@@ -82,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <LeadProvider>
             <SiteNavbar />
             <CommandPalette />
-            <main id="main" className="flex flex-col flex-1 pt-16 w-full min-h-dvh">
+            <main id="main" className="flex w-full flex-1 flex-col pt-16">
               {children}
             </main>
 

@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
                   </a>
                 </>
               ) : (
-                <Link href="/contact" className="text-primary hover:underline">
+                <Link href="/connect" className="text-primary hover:underline">
                   {PRIVACY_PAGE_COPY.contactUs}
                 </Link>
               )}

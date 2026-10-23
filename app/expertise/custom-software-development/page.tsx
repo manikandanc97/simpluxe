@@ -7,10 +7,12 @@ import { ServiceDetailView } from "@/components/pages/service-detail-view";
 import { SERVICES_LIST } from "@/lib/data/services";
 import type { Metadata } from "next";
 
+const CUSTOM_SOFTWARE_PATH = "/expertise/custom-software-development";
+
 export const metadata: Metadata = createPageMetadata({
   title: CUSTOM_SOFTWARE_PAGE_COPY.title,
   description: CUSTOM_SOFTWARE_PAGE_COPY.description,
-  path: "/services/custom-software-development",
+  path: CUSTOM_SOFTWARE_PATH,
 });
 
 export default function CustomSoftwarePage() {
@@ -28,11 +30,8 @@ export default function CustomSoftwarePage() {
         data={[
           getBreadcrumbSchema([
             { name: COMMON.pages.home, path: "/" },
-            { name: COMMON.pages.services, path: "/services" },
-            {
-              name: customSoftwareService.name,
-              path: "/services/custom-software-development",
-            },
+            { name: COMMON.pages.expertise, path: "/expertise" },
+            { name: customSoftwareService.name, path: CUSTOM_SOFTWARE_PATH },
           ]),
           getServiceSchema(customSoftwareService),
         ]}

@@ -29,7 +29,7 @@ export function WorkbenchHeroActions() {
       </Button>
 
       <Link
-        href="/work"
+        href="/creations"
         className="flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring group"
       >
         <span className="flex flex-col gap-0.5">

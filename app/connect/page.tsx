@@ -9,17 +9,17 @@ import type { Metadata } from "next";
 export const metadata: Metadata = createPageMetadata({
   title: CONTACT_PAGE_COPY.title,
   description: CONTACT_PAGE_COPY.description,
-  path: "/contact",
+  path: "/connect",
 });
 
-export default function ContactPage() {
+export default function ConnectPage() {
   return (
     <>
       <JsonLd
         data={[
           getBreadcrumbSchema([
             { name: COMMON.pages.home, path: "/" },
-            { name: COMMON.pages.contact, path: "/contact" },
+            { name: COMMON.pages.connect, path: "/connect" },
           ]),
           getContactPageSchema(),
         ]}

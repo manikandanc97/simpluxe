@@ -117,8 +117,8 @@ export function getAboutPageSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "@id": `${SITE.url}/about#webpage`,
-    url: `${SITE.url}/about`,
+    "@id": `${SITE.url}/inside#webpage`,
+    url: `${SITE.url}/inside`,
     name: `${ABOUT_PAGE_COPY.title} · ${SITE.name}`,
     description: ABOUT_PAGE_COPY.description,
     isPartOf: {
@@ -134,8 +134,8 @@ export function getContactPageSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "@id": `${SITE.url}/contact#webpage`,
-    url: `${SITE.url}/contact`,
+    "@id": `${SITE.url}/connect#webpage`,
+    url: `${SITE.url}/connect`,
     name: `${CONTACT_PAGE_COPY.title} · ${SITE.name}`,
     description: CONTACT_PAGE_COPY.description,
     isPartOf: {

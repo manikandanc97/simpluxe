@@ -28,7 +28,7 @@ export function HomeAbout() {
 
           <div className="flex justify-center">
             <Link
-              href="/about"
+              href="/inside"
               className={cn(buttonVariants({ variant: "outline", size: "lg" }), "group")}
             >
               {HOME_ABOUT_CONTENT.cta}

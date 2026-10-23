@@ -1,7 +1,7 @@
 import { SITE_FOOTER_COPY } from "@/lib/data/layout";
 import { Container } from "@/components/ui/container";
 import { SITE } from "@/lib/data/site";
-import { BrandMark } from "@/components/ui/brand-mark";
+import { BrandLockup } from "@/components/ui/brand-lockup";
 import Link from "next/link";
 import { FOOTER_DATA } from "@/lib/data/layout";
 import { getServicePath } from "@/lib/data/services";
@@ -75,16 +75,10 @@ export function SiteFooter({ onStartProject }: SiteFooterProps) {
               {/* Brand Logo */}
               <Link
                 href="/"
-                className="inline-flex items-center gap-2.5 rounded-lg outline-none shrink-0 focus-visible:ring-2 focus-visible:ring-ring group"
+                className="group inline-flex shrink-0 items-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label={SITE_FOOTER_COPY.simpluxeHome}
               >
-                <BrandMark className="size-8 transition-transform duration-200 group-hover:scale-105 sm:size-9" />
-                <span className="font-heading text-xl font-bold tracking-tight text-heading sm:text-2xl">
-                  {SITE_FOOTER_COPY.brandSimp}<span className="text-primary">{SITE_FOOTER_COPY.brandLuxe}</span>
-                </span>
-                <span className="border-l border-border pl-2.5 text-xs font-semibold tracking-normal text-muted-foreground">
-                  {SITE_FOOTER_COPY.technologies}
-                </span>
+                <BrandLockup />
               </Link>
 
               <h2 className="text-xl font-extrabold text-heading leading-tight tracking-tight sm:text-2xl">

@@ -19,9 +19,6 @@ export const CONTACT_CHANNELS_COPY = {
   mapTitle: "Simpluxe office location",
 } as const;
 export const CONTACT_HERO_COPY = {
-  home: COMMON.pages.home,
-  symbol: COMMON.symbols.slash,
-  contact: COMMON.pages.contact,
   letSBuildYourSystem: "Let's build your system ",
   theRightWay: "the right way.",
   directCollaborationWithSeniorSoftwareArchitects: "Direct collaboration with our engineering team. Discuss your custom software, web application, or mobile product to receive a structured technical scoping assessment.",

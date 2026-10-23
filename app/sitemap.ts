@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/data/site";
 import { getServicePath, SERVICES_LIST } from "@/lib/data/services";
+import { INSIGHTS, INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import type { MetadataRoute } from "next";
 
 const LAST_MODIFIED = new Date("2026-09-01T00:00:00.000Z");
@@ -13,13 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${SITE.url}/work`,
+      url: `${SITE.url}/creations`,
       lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${SITE.url}/services`,
+      url: `${SITE.url}/expertise`,
       lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.9,
@@ -31,17 +32,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     })),
     {
-      url: `${SITE.url}/about`,
+      url: `${SITE.url}/inside`,
       lastModified: LAST_MODIFIED,
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
-      url: `${SITE.url}/contact`,
+      url: `${SITE.url}/connect`,
       lastModified: LAST_MODIFIED,
       changeFrequency: "yearly",
       priority: 0.8,
     },
+    {
+      url: `${SITE.url}/insights`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...INSIGHTS.map((post) => ({
+      url: `${SITE.url}${INSIGHTS_PAGE_COPY.articlePath(post.slug)}`,
+      lastModified: new Date(`${post.publishedAt}T00:00:00.000Z`),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     {
       url: `${SITE.url}/lab`,
       lastModified: LAST_MODIFIED,

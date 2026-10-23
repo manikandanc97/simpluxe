@@ -1,5 +1,3 @@
-import { COMMON } from "./common";
-
 // experiments
 export interface Experiment {
   id: string;
@@ -65,8 +63,6 @@ export const EXPERIMENT_CARD_COPY = {
 // pages
 export const LAB_VIEW_COPY = {
   description: "An engineering sandbox for testing experimental UI physics, generative interfaces, and design systems before deploying to client production systems.",
-  home: COMMON.pages.home,
-  ideas: COMMON.pages.ideas,
   ideas2: "Software Prototypes & ",
   prototypes: "Interaction Concepts.",
 } as const;

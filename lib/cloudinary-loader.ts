@@ -5,6 +5,10 @@ import type { ImageLoaderProps } from "next/image";
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME?.trim() || "drdl4pdnx";
 
 export default function cloudinaryLoader({ src, width, quality }: ImageLoaderProps) {
+  if (src.startsWith("/")) {
+    return src;
+  }
+
   const url = new URL(src);
   const uploadPath = `/${cloudName}/image/upload/`;
 
