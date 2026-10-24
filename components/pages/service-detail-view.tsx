@@ -1,4 +1,4 @@
-import { ServicesExplorer } from "@/components/services/services-explorer";
+import { Explorer } from "@/components/services/explorer";
 import { PageHero } from "@/components/ui/page-hero";
 import { COMMON } from "@/lib/data/common";
 import {
@@ -22,7 +22,7 @@ export function ServiceDetailView({ service }: { service: ServiceViewData }) {
         }
         description={service.shortTagline}
       />
-      <ServicesExplorer service={service} />
+      <Explorer service={service} />
     </>
   );
 }

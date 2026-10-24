@@ -1,10 +1,10 @@
 "use client";
 
-import { ECOMMERCE_COPY } from "@/lib/data/service-mockups";
+import { ECOMMERCE_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 // Animation stages
 type Stage = "browse" | "selected" | "payment" | "success";
@@ -46,7 +46,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
   }, [stage, isActive]);
 
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-rose-50"
       innerClassName="gap-3 overflow-hidden p-3.5"
       outerChildren={
@@ -358,7 +358,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
             </motion.div>
           )}
         </AnimatePresence>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

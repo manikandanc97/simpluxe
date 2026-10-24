@@ -1,5 +1,5 @@
-import { ContactHero } from "@/components/contact/contact-hero";
-import { ContactChannels } from "@/components/contact/contact-channels";
+import { Hero } from "@/components/contact/hero";
+import { Channels } from "@/components/contact/channels";
 import { LeadForm } from "@/components/leads/lead-form";
 import { Container } from "@/components/ui/container";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +9,7 @@ export function ContactView() {
   return (
     <>
       {/* ── 1. Full-Width Hero Section ── */}
-      <ContactHero />
+      <Hero />
 
       {/* ── Main Structured Showcase Area ── */}
       <Container className="flex flex-col gap-16 py-12 md:py-16 lg:gap-20 lg:py-24">
@@ -19,7 +19,7 @@ export function ContactView() {
           
           {/* ── LEFT COLUMN: Channels ── */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <ContactChannels />
+            <Channels />
           </div>
 
           {/* ── RIGHT COLUMN: Interactive Lead Form Card ── */}

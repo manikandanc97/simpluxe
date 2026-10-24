@@ -13,9 +13,9 @@ import {
   UI_UX_SERVICE,
 } from "./services/foundation";
 import { getServiceSlug } from "./services/routes";
-import type { ServiceData } from "./services/types";
+import type { ServiceData } from "@/types/service";
 
-export type { ServiceData, ServiceViewData } from "./services/types";
+export type { ServiceData, ServiceViewData } from "@/types/service";
 export { getServicePath, getServiceSlug } from "./services/routes";
 export {
   SERVICE_DETAIL_PAGE_COPY,

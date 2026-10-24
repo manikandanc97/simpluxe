@@ -3,10 +3,10 @@ import { ABOUT_VIEW_COPY } from "@/lib/data/about";
 import { SITE } from "@/lib/data/site";
 import { ABOUT_SECTION_CONTENT } from "@/lib/data/about";
 import { SectionHeader } from "@/components/ui/section-header";
-import { AboutHero } from "@/components/about/about-hero";
-import { AboutMetrics } from "@/components/about/about-metrics";
-import { AboutPrinciples } from "@/components/about/about-principles";
-import { AboutComparison } from "@/components/about/about-comparison";
+import { Hero } from "@/components/about/hero";
+import { Metrics } from "@/components/about/metrics";
+import { Principles } from "@/components/about/principles";
+import { Comparison } from "@/components/about/comparison";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
@@ -19,7 +19,7 @@ export function AboutView() {
   return (
     <>
       {/* ── 1. Full-Width Hero Section ── */}
-      <AboutHero />
+      <Hero />
 
       {/* ── 2. Studio Story & Origin (Executive Bento & 4 Metrics) ── */}
       <Section className="bg-background">
@@ -105,17 +105,17 @@ export function AboutView() {
           </div>
 
           {/* 4 Metric Cards */}
-          <AboutMetrics />
+          <Metrics />
         </Container>
       </Section>
 
       {/* ── 3. Guiding Philosophy (Interactive Principle Cards) with Light Blue Theme Background ── */}
-      <AboutPrinciples />
+      <Principles />
 
       {/* ── 4. The Simpluxe Advantage vs Traditional Agencies ── */}
       <Section className="bg-background">
         <Container>
-          <AboutComparison />
+          <Comparison />
         </Container>
       </Section>
     </>

@@ -36,7 +36,7 @@ export const HERO_CONTENT: HeroContent = {
   ],
 };
 
-export const WORKBENCH_COPY = {
+export const SELECTED_WORK_COPY = {
   sectionNumber: "S/01",
   selectedWork: "Selected digital work",
   tagline: "Let’s start first, then we can make it look better.",

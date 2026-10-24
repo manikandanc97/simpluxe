@@ -1,9 +1,9 @@
 "use client";
 
-import { SAAS_COPY } from "@/lib/data/service-mockups";
+import { SAAS_COPY } from "@/lib/data/what-we-build-mockups";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 type SaasScreen = "overview" | "tenants" | "billing";
 const SCREENS: SaasScreen[] = ["overview", "tenants", "billing"];
@@ -35,7 +35,7 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
   }, [isActive, currentScreen]);
 
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-indigo-50"
       innerClassName="gap-2.5 p-3.5 sm:p-4"
     >
@@ -91,7 +91,7 @@ export function SaaSProductsMockup({ isActive }: { isActive?: boolean }) {
           {currentScreen === "billing" && <BillingScreen key="billing" isActive={isActive} />}
         </AnimatePresence>
       </div>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

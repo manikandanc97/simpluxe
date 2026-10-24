@@ -1,13 +1,13 @@
-﻿import { TECH_STACK_SECTION_CONTENT } from "@/lib/data/tech-stack";
+import { TECH_STACK_SECTION_CONTENT } from "@/lib/data/tech-stack";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TechValueStrip } from "./tech-stack/tech-value-strip";
+import { ValueStrip } from "./tech-stack/value-strip";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import dynamic from "next/dynamic";
 import { TechStackSkeleton } from "@/components/ui/skeleton";
 
-const TechStackInteractive = dynamic(
-  () => import("./tech-stack-interactive").then((mod) => mod.TechStackInteractive),
+const CategoryMatrix = dynamic(
+  () => import("./tech-stack/category-matrix").then((mod) => mod.CategoryMatrix),
   { ssr: true, loading: () => <TechStackSkeleton /> }
 );
 export function TechStack() {
@@ -31,11 +31,11 @@ export function TechStack() {
         {/* ── Categories + Cards wrapper ────────────────────────────────────── */}
         <div className="flex flex-col gap-8 sm:gap-12">
           {/* INTERACTIVE CLIENT BOUNDARY */}
-          <TechStackInteractive />
+          <CategoryMatrix />
         </div>
 
         {/* ── Bottom Value Proposition Strip (White Floating Island) ──────────── */}
-        <TechValueStrip />
+        <ValueStrip />
 
         {/* ── Bottom Divider & Editorial Note ─────────────────────────────────── */}
         <div className="flex w-full max-w-4xl self-center items-center justify-center gap-4 px-2">

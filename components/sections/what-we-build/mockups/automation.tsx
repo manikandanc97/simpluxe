@@ -1,7 +1,7 @@
-import { AUTOMATION_COPY } from "@/lib/data/service-mockups";
+import { AUTOMATION_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { m as motion } from "motion/react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 const WORKFLOW_NODES = [
   { label: AUTOMATION_COPY.triggerNewEmail,  color: "#0891B2", icon: "→", delay: 0 },
@@ -12,7 +12,7 @@ const WORKFLOW_NODES = [
 
 export function AutomationMockup({ isActive }: { isActive?: boolean }) {
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-emerald-50"
       innerClassName="p-3.5 gap-3"
     >
@@ -88,7 +88,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
           <span className="text-chart-3 font-semibold">{AUTOMATION_COPY.text98Faster}</span>
         </div>
 
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

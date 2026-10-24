@@ -1,11 +1,11 @@
-import { WEB_APPS_COPY } from "@/lib/data/service-mockups";
+import { WEB_APPS_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { m as motion } from "motion/react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-emerald-50"
       innerClassName="gap-3 p-3.5 sm:p-4"
     >
@@ -111,7 +111,7 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
             </motion.div>
           </div>
         </div>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

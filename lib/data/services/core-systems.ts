@@ -1,7 +1,7 @@
 import { PackageIcon } from "@animateicons/react/lucide/package-icon";
 import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 import { COMMON } from "../common";
-import type { ServiceData } from "./types";
+import type { ServiceData } from "@/types/service";
 
 export const SAAS_SERVICE: ServiceData = {
     "id": "saas",

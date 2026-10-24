@@ -1,7 +1,7 @@
 import type { ElementType as LucideIcon } from "react";
 
 
-interface FAQHighlight {
+export interface FAQHighlight {
   text: string;
   icon: LucideIcon;
 }

@@ -1,10 +1,10 @@
 "use client";
 
-import { UI_UX_COPY } from "@/lib/data/service-mockups";
+import { UI_UX_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 type Layout = "list" | "grid" | "card" | "split";
 
@@ -274,7 +274,7 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
   const meta = LAYOUT_META[layout];
 
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-indigo-50"
       innerClassName="gap-3 overflow-hidden p-3.5"
     >
@@ -349,7 +349,7 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
             ))}
           </div>
         </div>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

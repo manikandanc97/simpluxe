@@ -4,8 +4,8 @@ import { useRef } from "react";
 import { useInView } from "motion/react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { FlowDiagram } from "./philosophy/flow-diagram";
-import { PhilosophyProcessSteps } from "./philosophy/philosophy-process-steps";
-import { PhilosophyOutcomes } from "./philosophy/philosophy-outcomes";
+import { ProcessSteps } from "./philosophy/process-steps";
+import { Outcomes } from "./philosophy/outcomes";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { PHILOSOPHY_SECTION_CONTENT } from "@/lib/data/philosophy";
@@ -31,13 +31,13 @@ export function WhySimpluxe() {
         {/* ── Main 3-Column Layout ── */}
         <div className="relative grid grid-cols-1 gap-6 items-center lg:grid-cols-work xl:grid-cols-work-wide xl:gap-8">
           {/* 1. LEFT COLUMN: PROCESS / 04 */}
-          <PhilosophyProcessSteps inView={inView} />
+          <ProcessSteps inView={inView} />
 
           {/* 2. CENTER PANEL: SIGNAL / 01 & INTERACTIVE FLOW DIAGRAM */}
           <FlowDiagram inView={inView} />
 
           {/* 3. RIGHT COLUMN: REAL OUTCOMES */}
-          <PhilosophyOutcomes inView={inView} />
+          <Outcomes inView={inView} />
         </div>
       </Container>
     </Section>

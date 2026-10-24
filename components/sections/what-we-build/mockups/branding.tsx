@@ -1,9 +1,9 @@
 "use client";
 
-import { BRANDING_COPY } from "@/lib/data/service-mockups";
+import { BRANDING_COPY } from "@/lib/data/what-we-build-mockups";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 type BrandScreen = "logo" | "palette" | "typography";
 const SCREENS: BrandScreen[] = ["logo", "palette", "typography"];
@@ -35,7 +35,7 @@ export function BrandingMockup({ isActive }: { isActive?: boolean }) {
   }, [isActive, currentScreen]);
 
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-amber-50"
       innerClassName="gap-2.5 p-3.5 sm:p-4"
     >
@@ -88,7 +88,7 @@ export function BrandingMockup({ isActive }: { isActive?: boolean }) {
           {currentScreen === "typography" && <TypographyScreen key="typography" isActive={isActive} />}
         </AnimatePresence>
       </div>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

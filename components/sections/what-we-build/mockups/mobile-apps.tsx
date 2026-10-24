@@ -1,10 +1,10 @@
 "use client";
 
-import { MOBILE_APPS_COPY } from "@/lib/data/service-mockups";
+import { MOBILE_APPS_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 type Screen = "home" | "feed" | "profile" | "activity";
 const SCREENS: Screen[] = ["home", "feed", "profile", "activity"];
@@ -202,7 +202,7 @@ function MobileAppsSequence({ isActive }: { isActive?: boolean }) {
   const tabIndex = SCREENS.indexOf(screen);
 
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-purple-50"
       variant="phone"
       innerClassName="overflow-hidden p-2"
@@ -235,7 +235,7 @@ function MobileAppsSequence({ isActive }: { isActive?: boolean }) {
 
         {/* Bottom tab bar */}
         <TabBar active={tabIndex} />
-      </MockupWrapper>
+      </MockupFrame>
   );
 }
 

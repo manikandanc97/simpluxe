@@ -1,8 +1,8 @@
 "use client";
 
 import { m as motion, useReducedMotion } from "motion/react";
-import { CUSTOM_SOFTWARE_COPY as COPY } from "@/lib/data/service-mockups";
-import { MockupWrapper } from "./mockup-wrapper";
+import { CUSTOM_SOFTWARE_COPY as COPY } from "@/lib/data/what-we-build-mockups";
+import { MockupFrame } from "./mockup-frame";
 
 export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
   const reducedMotion = useReducedMotion();
@@ -10,7 +10,7 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
   const loop = { duration: 7, repeat: active ? Infinity : 0, ease: "easeInOut" as const };
 
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-amber-50"
       innerClassName="gap-3 p-3.5 sm:p-4">
       <div className="flex items-center justify-between gap-2 border-b border-black/5 pb-1">
@@ -95,6 +95,6 @@ export function CustomSoftwareMockup({ isActive }: { isActive?: boolean }) {
             transition={{ ...loop, times: [0, 0.65, 0.72, 0.9, 1] }}>{COPY.completed}</motion.span>
         </div>
       </div>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }

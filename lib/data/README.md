@@ -23,6 +23,9 @@ Start with the file for the area you want to change. Each file contains its main
 | Page SEO and social sharing image text | `metadata.ts` |
 | Privacy and terms policies | `legal.ts` |
 | Command menu, dialog labels, error pages, shared UI | `ui.ts` |
+| Insights articles, categories, and author details | `insights.ts` |
+| What we build section services and descriptions | `what-we-build.ts` |
+| What we build interactive mockups and configurations | `what-we-build-mockups.ts` |
 
 ## Shared text
 
@@ -31,8 +34,6 @@ For example, `COMMON.actions.startProject` supplies the same button label to the
 Page-specific wording stays in the page's file. A reference to `COMMON` means that wording is shared; a plain string belongs to that page. Project detail headings inherit their project name from `PROJECTS`.
 
 Keep deliberate spaces in headline fragments. The hero and footer use `TAGLINE` in `site.ts`, and SEO uses the same brand name and tagline. Form options are shared with the validation schema, so changing an option changes the accepted value too.
-
-Background geometry and animation positioning live in `lib/visuals/`.
 
 ## Check changes
 

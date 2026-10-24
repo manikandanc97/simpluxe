@@ -1,11 +1,11 @@
-import { WEBSITES_COPY } from "@/lib/data/service-mockups";
+import { WEBSITES_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { m as motion } from "motion/react";
-import { MockupWrapper } from "./mockup-wrapper";
+import { MockupFrame } from "./mockup-frame";
 
 export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
   return (
-    <MockupWrapper
+    <MockupFrame
       gradientClass="bg-orange-50"
       innerClassName="gap-3 p-3.5 sm:p-4"
     >
@@ -99,7 +99,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
             </svg>
           </motion.div>
         </div>
-    </MockupWrapper>
+    </MockupFrame>
   );
 }
 

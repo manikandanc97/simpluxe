@@ -9,7 +9,6 @@ import { CommandPalette } from "@/components/ui/command-palette";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 import { SITE } from "@/lib/data/site";
-import { CLOUDINARY_BRAND_MARK, cloudinaryImageUrl } from "@/lib/cloudinary";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -55,9 +54,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: {
-      url: cloudinaryImageUrl(CLOUDINARY_BRAND_MARK, { width: 64, format: "png" }),
+      url: "/favicon.png",
       type: "image/png",
-      sizes: "64x64",
+      sizes: "96x96",
     },
   },
 };

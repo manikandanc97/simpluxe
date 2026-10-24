@@ -1,7 +1,7 @@
 import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { COMMON } from "../common";
-import type { ServiceData } from "./types";
+import type { ServiceData } from "@/types/service";
 
 export const BRANDING_SERVICE: ServiceData = {
     "id": "branding",

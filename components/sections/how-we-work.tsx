@@ -3,8 +3,8 @@ import { Container } from "@/components/ui/container";
 import dynamic from "next/dynamic";
 import { ProcessSkeleton } from "@/components/ui/skeleton";
 
-const HowWeWorkInteractive = dynamic(
-  () => import("./how-we-work-interactive").then((mod) => mod.HowWeWorkInteractive),
+const InteractiveStepper = dynamic(
+  () => import("./how-we-work/interactive-stepper").then((mod) => mod.InteractiveStepper),
   { ssr: true, loading: () => <ProcessSkeleton /> }
 );
 
@@ -16,7 +16,7 @@ export function HowWeWork() {
       className="relative z-10 border-y border-primary/25 bg-secondary"
     >
       <Container>
-        <HowWeWorkInteractive />
+        <InteractiveStepper />
       </Container>
     </Section>
   );

@@ -8,9 +8,9 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { HOME_SERVICES, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/data/home-services";
+import { HOME_SERVICES, SERVICES_SECTION_CONTENT, WHAT_WE_BUILD_NAV_COPY } from "@/lib/data/what-we-build";
 import { slideFromRight, slideFromRightTrack, slideFromRightSubtle, viewportReveal } from "@/lib/motion";
-import { WhatWeBuildCard } from "./what-we-build/what-we-build-card";
+import { ServiceCard } from "./what-we-build/service-card";
 import { useSliderDrag } from "./what-we-build/use-slider-drag";
 
 const DISPLAY_SERVICES = HOME_SERVICES;
@@ -178,7 +178,7 @@ export function WhatWeBuild() {
             onClickCapture={handleSliderClickCapture}
           >
             {DISPLAY_SERVICES.map((service, index) => (
-              <WhatWeBuildCard
+              <ServiceCard
                 key={service.id}
                 service={service}
                 isCurrentSlide={index === activeIndex}

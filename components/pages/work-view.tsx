@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { ShowcaseSkeleton } from "@/components/ui/skeleton";
-import { WorkHero } from "@/components/work/work-hero";
-import { WorkProjectBrowser } from "@/components/work/work-project-browser";
+import { Hero } from "@/components/work/hero";
+import { ProjectBrowser } from "@/components/work/project-browser";
 import { Container } from "@/components/ui/container";
 import { PROJECTS } from "@/lib/data/projects";
 
@@ -9,7 +9,7 @@ export function WorkView() {
   return (
     <>
       {/* ── 1. Full-Width Hero Section ── */}
-      <WorkHero />
+      <Hero />
 
       {/* ── Main Structured Showcase Area ── */}
       <Container
@@ -18,7 +18,7 @@ export function WorkView() {
       >
         {/* ── 2. Showcase Controls and Split View ── */}
         <Suspense fallback={<ShowcaseSkeleton />}>
-          <WorkProjectBrowser projects={PROJECTS} />
+          <ProjectBrowser projects={PROJECTS} />
         </Suspense>
       </Container>
     </>

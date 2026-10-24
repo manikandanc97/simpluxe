@@ -3,8 +3,8 @@
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { InsightCard } from "@/components/insights/insight-card";
-import { InsightsControls, type SortOption } from "@/components/insights/insights-controls";
-import { InsightsPagination } from "@/components/insights/insights-pagination";
+import { Controls, type SortOption } from "@/components/insights/controls";
+import { Pagination } from "@/components/insights/pagination";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { Container } from "@/components/ui/container";
 import { PageHero } from "@/components/ui/page-hero";
@@ -99,7 +99,7 @@ export function InsightsView() {
 
       <Section className="overflow-hidden bg-background">
         <Container className="flex flex-col gap-12 lg:gap-16">
-          <InsightsControls
+          <Controls
             activeCategory={activeCategory}
             onCategoryChange={handleCategoryChange}
             searchQuery={searchQuery}
@@ -121,7 +121,7 @@ export function InsightsView() {
                   })}
                 </div>
 
-                <InsightsPagination
+                <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages}
                   onPageChange={handlePageChange}
