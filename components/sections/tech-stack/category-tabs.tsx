@@ -18,10 +18,10 @@ export function CategoryTabs({
   categoryCounts,
 }: CategoryTabsProps) {
   return (
-    <div className="relative sm:self-center sm:w-fit sm:max-w-full">
+    <div className="relative flex w-full justify-center">
       {/* Tabs Bar */}
       <div
-        className="ts-tabs grid w-full max-w-lg grid-cols-2 items-center justify-center gap-1.5 self-center sm:flex sm:max-w-none sm:flex-wrap sm:gap-2"
+        className="ts-tabs grid w-full max-w-lg grid-cols-2 items-center justify-center gap-1.5 sm:flex sm:max-w-none sm:flex-wrap sm:gap-2"
         role="group"
         aria-label={TECH_CATEGORY_TABS_COPY.technologyCategories}
       >
