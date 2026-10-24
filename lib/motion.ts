@@ -20,19 +20,12 @@ const timing = {
   reveal: 0.6, // 0.45s - 0.7s
 };
 
-// ==========================================
-// VIEWPORT SETTINGS
-// ==========================================
-export const viewport = {
-  once: true,
-  amount: 0.15, // trigger when 15% in view
-  margin: "0px 0px -50px 0px", // slight buffer
-};
-
+// Keep content visible in the server-rendered HTML and after hydration.
+// This avoids mobile browsers waiting for a scroll event before resolving
+// IntersectionObserver-based reveal animations.
 export const viewportReveal = {
-  initial: "hidden",
-  whileInView: "visible",
-  viewport,
+  initial: false as const,
+  animate: "visible" as const,
 };
 
 // ==========================================
@@ -141,8 +134,8 @@ export const fadeUpItem: Variants = {
 };
 
 /**
- * Ready-to-spread props for a viewport-triggered stagger container.
- * Replace `data-scroll-stagger` + GSAP with this on the wrapper element.
+ * Ready-to-spread props for a stagger container whose content is visible
+ * immediately instead of waiting for a viewport observer.
  *
  * @example
  * <motion.div {...staggerRevealProps()} className="grid ...">
@@ -155,13 +148,8 @@ export const staggerRevealProps = (
   delayChildren = 0
 ) => ({
   variants: staggerContainer(staggerChildren, delayChildren),
-  initial: "hidden" as const,
-  whileInView: "visible" as const,
-  viewport: {
-    once: true,
-    amount: 0.12,
-    margin: "0px 0px -60px 0px",
-  },
+  initial: false as const,
+  animate: "visible" as const,
 });
 
 // ==========================================

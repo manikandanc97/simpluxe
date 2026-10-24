@@ -48,9 +48,8 @@ export function CategoryMatrix() {
           <motion.div
             key={activeCategory}
             variants={staggerContainer(0.08, 0)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+            initial={false}
+            animate="visible"
             exit="hidden"
             className={`grid grid-cols-2 md:grid-cols-3 ${filtered.length <= 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"} gap-4`}
           >

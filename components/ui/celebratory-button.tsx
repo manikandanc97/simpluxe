@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import { m as motion, useAnimationControls, type HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
-import { prefersReducedMotion, hoverLift, tapScale, fadeUp, viewport } from "@/lib/motion";
+import { prefersReducedMotion, hoverLift, tapScale, fadeUp } from "@/lib/motion";
 
 export interface CelebratoryButtonProps
   extends Omit<HTMLMotionProps<"button">, "children"> {
@@ -99,9 +99,7 @@ export const CelebratoryButton = React.forwardRef<
           disabled={disabled || isPending}
           onClick={handleClick}
           animate={controls}
-          initial={disableScrollAnimation ? undefined : "hidden"}
-          whileInView={disableScrollAnimation ? undefined : "visible"}
-          viewport={disableScrollAnimation ? undefined : viewport}
+          initial={false}
           variants={disableScrollAnimation ? undefined : fadeUp}
           whileHover={disabled || isPending ? undefined : hoverLift}
           whileTap={disabled || isPending ? undefined : tapScale}

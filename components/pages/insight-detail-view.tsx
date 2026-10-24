@@ -90,7 +90,7 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                     <h2 className="type-h3 text-heading">{section.heading}</h2>
                   </div>
 
-                  <div className="flex flex-col gap-5 text-base leading-loose text-muted-foreground">
+                  <div className="flex flex-col gap-5 text-sm leading-loose text-muted-foreground sm:text-base">
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
@@ -108,7 +108,7 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                   ) : null}
 
                   {section.callout ? (
-                    <blockquote className="flex gap-5 rounded-3xl bg-dark p-6 text-lg font-semibold leading-relaxed text-white sm:p-8 sm:text-xl">
+                    <blockquote className="flex gap-5 rounded-3xl bg-dark p-6 text-base font-semibold leading-relaxed text-white sm:p-8 sm:text-xl">
                       <span aria-hidden="true" className="text-3xl leading-none text-sky-300">“</span>
                       <p>{section.callout}</p>
                     </blockquote>

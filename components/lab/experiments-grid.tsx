@@ -19,9 +19,8 @@ export function ExperimentsGrid() {
       )}
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className="grid grid-cols-1 gap-8 md:grid-cols-2"
       >

@@ -18,6 +18,7 @@ export function TechStack() {
         <SectionHeader
           eyebrow={TECH_STACK_SECTION_CONTENT.eyebrow}
           centered
+          maxWidth="max-w-5xl"
           title={TECH_STACK_SECTION_CONTENT.title}
           highlightedText={TECH_STACK_SECTION_CONTENT.highlightedText}
           description={

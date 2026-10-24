@@ -46,9 +46,8 @@ export function SectionHeader({
   return (
     <motion.div
       variants={headerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportReveal.viewport}
+      initial={viewportReveal.initial}
+      animate={viewportReveal.animate}
       className={cn(
         maxWidth,
         "flex flex-col gap-4 font-satoshi",

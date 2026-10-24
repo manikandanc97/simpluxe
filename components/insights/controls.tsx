@@ -15,6 +15,9 @@ const SORT_OPTIONS: readonly { id: SortOption; label: string }[] = [
   { id: "name", label: INSIGHTS_PAGE_COPY.alphabetical },
 ] as const;
 
+const CONTROL_TRIGGER_CLASS =
+  "h-10 rounded-xl border border-border bg-white px-3.5 text-xs font-medium text-foreground shadow-2xs transition-all hover:border-primary/40 hover:bg-background focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/15 sm:h-10.5 sm:px-4 sm:text-sm";
+
 interface ControlsProps {
   activeCategory: string;
   onCategoryChange: (category: string) => void;
@@ -107,11 +110,14 @@ export function Controls({
           }}
           aria-expanded={isCategoryOpen}
           aria-haspopup="menu"
-          className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-surface-elevated bg-white px-3.5 py-2 text-xs font-medium text-foreground shadow-sm transition-all sm:w-auto sm:px-4 sm:text-sm hover:bg-background group"
+          className={cn(
+            CONTROL_TRIGGER_CLASS,
+            "group flex w-full cursor-pointer items-center justify-between gap-3 sm:w-auto"
+          )}
         >
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground">{INSIGHTS_PAGE_COPY.topicLabel}</span>
-            <span className="font-semibold text-foreground">
+          <div className="flex min-w-0 items-center gap-2">
+            <span className="shrink-0 text-muted-foreground">{INSIGHTS_PAGE_COPY.topicLabel}</span>
+            <span className="truncate font-semibold text-foreground">
               {currentCategory.label}
             </span>
           </div>
@@ -140,7 +146,7 @@ export function Controls({
         {isCategoryOpen && (
           <div
             role="menu"
-            className="absolute left-0 top-full translate-y-2 z-30 w-64 max-w-xs rounded-xl border border-surface-elevated bg-white py-1.5 shadow-xl animate-in fade-in zoom-in-95 duration-150"
+            className="absolute left-0 top-full z-30 w-full translate-y-2 animate-in rounded-xl border border-border bg-white py-1.5 shadow-xl fade-in zoom-in-95 duration-150 sm:w-64"
           >
             {categoryOptions.map((option) => {
               const isActive = activeCategory === option.id;
@@ -180,7 +186,7 @@ export function Controls({
           placeholder={INSIGHTS_PAGE_COPY.searchPlaceholder}
           ariaLabel={INSIGHTS_PAGE_COPY.searchAriaLabel}
           clearLabel={INSIGHTS_PAGE_COPY.clearSearch}
-          className="flex-1 sm:w-56 sm:flex-none"
+          className="min-w-0 flex-1 sm:w-56 sm:flex-none"
         />
 
         {/* Sort Pill Dropdown */}
@@ -193,7 +199,10 @@ export function Controls({
             }}
             aria-expanded={isSortOpen}
             aria-haspopup="menu"
-            className="bg-white border border-surface-elevated rounded-xl px-3.5 py-2 text-xs font-medium text-foreground flex items-center gap-2 cursor-pointer shadow-sm transition-all sm:px-4 sm:text-sm hover:bg-background group"
+            className={cn(
+              CONTROL_TRIGGER_CLASS,
+              "group flex shrink-0 cursor-pointer items-center justify-between gap-2"
+            )}
           >
             <span>{currentSort.label}</span>
             <AnimatedIcon

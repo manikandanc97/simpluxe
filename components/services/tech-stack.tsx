@@ -68,9 +68,8 @@ export function TechStack({ service }: TechStackProps) {
           <motion.div
             key={service.id}
             variants={staggerContainer(0.08, 0)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+            initial={false}
+            animate="visible"
             exit="hidden"
             className={cn("grid gap-4 sm:gap-5 w-full", gridClass)}
           >

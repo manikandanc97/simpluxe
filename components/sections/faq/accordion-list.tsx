@@ -19,9 +19,8 @@ export function AccordionList({ faqs, defaultOpenId }: AccordionListProps) {
   return (
     <motion.div
       variants={fadeUpItem}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.12, margin: "0px 0px -60px 0px" }}
+      initial={false}
+      animate="visible"
       className="lg:col-span-7 lg:pt-1 flex flex-col gap-4 pt-0 sm:gap-4"
     >
       <AnimatePresence mode="wait">

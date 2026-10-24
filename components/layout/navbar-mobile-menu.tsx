@@ -108,14 +108,13 @@ export function NavbarMobileMenu({
                             </span>
                             <span>{item.label}</span>
                           </span>
-                          <StaticIcon
-                            name="chevron-down"
-                            size={15}
-                            className={cn(
-                              "transition-transform",
-                              mobileServicesOpen && "rotate-180"
-                            )}
-                          />
+                          <motion.span
+                            animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
+                            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                            className="inline-flex shrink-0"
+                          >
+                            <StaticIcon name="chevron-down" size={15} />
+                          </motion.span>
                         </button>
                       ) : (
                         <Link
@@ -140,36 +139,58 @@ export function NavbarMobileMenu({
                           <span>{item.label}</span>
                         </Link>
                       )}
-                      {item.route === "/expertise" && mobileServicesOpen && (
-                        <div id="mobile-services-menu" className="grid grid-cols-2 gap-2 px-3 py-2">
-                          {SERVICES_LIST.map((service) => {
-                            const href = getServicePath(service.id);
-                            const serviceActive = pathname === href;
-                            const Icon = service.icon;
-
-                            return (
-                              <Link
-                                key={service.id}
-                                href={href}
-                                aria-current={serviceActive ? "page" : undefined}
-                                onClick={() => {
-                                  onClose();
-                                  setMobileServicesOpen(false);
-                                }}
-                                className={cn(
-                                  "flex min-h-11 items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-primary",
-                                  serviceActive
-                                    ? "border-primary bg-primary text-white"
-                                    : "border-border bg-white text-muted-foreground hover:border-primary/30 hover:text-primary"
-                                )}
+                      {item.route === "/expertise" ? (
+                        <AnimatePresence initial={false}>
+                          {mobileServicesOpen ? (
+                            <motion.div
+                              id="mobile-services-menu"
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{
+                                height: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+                                opacity: { duration: 0.22, ease: "easeOut" },
+                              }}
+                              className="overflow-hidden"
+                            >
+                              <motion.div
+                                initial={{ y: -8, scale: 0.98 }}
+                                animate={{ y: 0, scale: 1 }}
+                                exit={{ y: -6, scale: 0.98 }}
+                                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                                className="grid grid-cols-2 gap-2 px-3 py-2"
                               >
-                                <AnimatedIcon icon={Icon} size={14} className="shrink-0" />
-                                <span>{service.tabLabel}</span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      )}
+                                {SERVICES_LIST.map((service) => {
+                                  const href = getServicePath(service.id);
+                                  const serviceActive = pathname === href;
+                                  const Icon = service.icon;
+
+                                  return (
+                                    <Link
+                                      key={service.id}
+                                      href={href}
+                                      aria-current={serviceActive ? "page" : undefined}
+                                      onClick={() => {
+                                        onClose();
+                                        setMobileServicesOpen(false);
+                                      }}
+                                      className={cn(
+                                        "flex min-h-11 items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-primary",
+                                        serviceActive
+                                          ? "border-primary bg-primary text-white"
+                                          : "border-border bg-white text-muted-foreground hover:border-primary/30 hover:text-primary"
+                                      )}
+                                    >
+                                      <AnimatedIcon icon={Icon} size={14} className="shrink-0" />
+                                      <span>{service.tabLabel}</span>
+                                    </Link>
+                                  );
+                                })}
+                              </motion.div>
+                            </motion.div>
+                          ) : null}
+                        </AnimatePresence>
+                      ) : null}
                     </motion.div>
                   );
                 })}

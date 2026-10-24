@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "./button-variants";
 import React from "react";
 import { m as motion } from "motion/react";
-import { hoverLift, tapScale, fadeUp, viewport } from "@/lib/motion";
+import { hoverLift, tapScale, fadeUp } from "@/lib/motion";
 
 const MotionButton = motion.create(ButtonPrimitive);
 
@@ -32,9 +32,8 @@ function Button({
       data-slot="button"
       whileHover={hoverLift}
       whileTap={tapScale}
-      initial={disableScrollAnimation ? undefined : "hidden"}
-      whileInView={disableScrollAnimation ? undefined : "visible"}
-      viewport={disableScrollAnimation ? undefined : viewport}
+      initial={false}
+      animate={disableScrollAnimation ? undefined : "visible"}
       variants={disableScrollAnimation ? undefined : fadeUp}
       className={cn(buttonVariants({ variant, size, className }), "rounded-lg")}
       {...props}
