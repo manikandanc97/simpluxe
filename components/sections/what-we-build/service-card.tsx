@@ -87,13 +87,16 @@ export const ServiceCard = memo(function ServiceCard({
       scroll={false}
       data-animated-icon-target
       data-inactive={!isCurrentSlide}
-      onMouseEnter={() => onActivate(service.id)}
-      onMouseLeave={onDeactivate}
-      onFocus={() => onActivate(service.id)}
-      onBlur={onDeactivate}
-      onPointerDown={(event) => {
-        if (event.pointerType === "touch") onActivate(service.id);
+      onPointerEnter={(event) => {
+        if (event.pointerType === "mouse") onActivate(service.id);
       }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") onDeactivate();
+      }}
+      onFocus={(event) => {
+        if (event.currentTarget.matches(":focus-visible")) onActivate(service.id);
+      }}
+      onBlur={onDeactivate}
       className="snap-start flex flex-col overflow-hidden rounded-3xl border border-transparent bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 wwb-slider-card group"
       draggable={false}
     >
