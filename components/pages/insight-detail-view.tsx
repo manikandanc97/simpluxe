@@ -116,14 +116,14 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                 </section>
               ))}
 
-              <div className="flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex flex-col gap-1 text-sm">
+              <div className="flex flex-wrap items-end justify-between gap-4 border-t border-border pt-8">
+                <div className="flex shrink-0 flex-col gap-1 text-sm">
                   <span className="font-semibold text-heading">{INSIGHTS_PAGE_COPY.writtenBy}</span>
                   <span className="text-muted-foreground">{post.author}</span>
                 </div>
                 <Link
                   href="/insights"
-                  className={cn(buttonVariants({ variant: "outline" }), "self-start")}
+                  className={cn(buttonVariants({ variant: "outline" }), "shrink-0")}
                 >
                   <StaticIcon name="arrow-up" size={15} className="-rotate-90" />
                   {INSIGHTS_PAGE_COPY.backToInsights}
