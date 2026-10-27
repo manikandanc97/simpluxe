@@ -1,13 +1,18 @@
 import { AUTOMATION_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { m as motion } from "motion/react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
+import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
+import { BoxIcon } from "@animateicons/react/lucide/box-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { MockupFrame } from "./mockup-frame";
 
 const WORKFLOW_NODES = [
-  { label: AUTOMATION_COPY.triggerNewEmail,  color: "#0891B2", icon: "→", delay: 0 },
-  { label: AUTOMATION_COPY.extractKeyData,   color: "#7C3AED", icon: "⬡", delay: 0.4 },
-  { label: AUTOMATION_COPY.aiClassifyIntent, color: "#059669", icon: "✦", delay: 0.8 },
-  { label: AUTOMATION_COPY.actionAutoReply,  color: "#F97316", icon: "↗", delay: 1.2 },
+  { label: AUTOMATION_COPY.triggerNewEmail,  color: "#0891B2", icon: ArrowRightIcon, delay: 0 },
+  { label: AUTOMATION_COPY.extractKeyData,   color: "#7C3AED", icon: BoxIcon, delay: 0.4 },
+  { label: AUTOMATION_COPY.aiClassifyIntent, color: "#059669", icon: SparklesIcon, delay: 0.8 },
+  { label: AUTOMATION_COPY.actionAutoReply,  color: "#F97316", icon: ArrowUpRightIcon, delay: 1.2 },
 ] as const;
 
 export function AutomationMockup({ isActive }: { isActive?: boolean }) {
@@ -58,7 +63,7 @@ export function AutomationMockup({ isActive }: { isActive?: boolean }) {
                 className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 text-xs font-bold"
                 style={{ backgroundColor: `${node.color}18`, color: node.color }}
               >
-                {node.icon}
+                <AnimatedIcon icon={node.icon} size={12} />
               </motion.div>
 
               <span className="text-xs font-semibold text-zinc-800 flex-1">{node.label}</span>

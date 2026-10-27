@@ -1,6 +1,8 @@
 import { WEB_APPS_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { m as motion } from "motion/react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { MousePointerIcon } from "@animateicons/react/lucide/mouse-pointer-icon";
 import { MockupFrame } from "./mockup-frame";
 
 export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
@@ -29,9 +31,7 @@ export function WebAppsMockup({ isActive }: { isActive?: boolean }) {
             transition={{ duration: 8, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
             className="absolute bottom-0 right-10 z-30 pointer-events-none drop-shadow-md text-foreground"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="white" strokeWidth="1.5">
-              <path d="M3 3l7 18 3-7 7-3L3 3z" />
-            </svg>
+            <AnimatedIcon icon={MousePointerIcon} size={20} animateOnHover={false} />
           </motion.div>
 
           <div className="relative z-10 col-span-4 flex h-full flex-col gap-1.5 rounded-xl bg-zinc-900 p-2 shadow-inner">

@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, m as motion } from "motion/react";
-import { StaticIcon, type StaticIconName } from "@/components/ui/static-icon";
-import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { AnimatedIcon, type AnimatedIconName } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import {
   NAV_ITEMS,
@@ -21,7 +20,7 @@ interface NavbarMobileMenuProps {
   onStartProject: () => void;
 }
 
-const MOBILE_NAV_ICONS: Record<string, StaticIconName> = {
+const MOBILE_NAV_ICONS: Record<string, AnimatedIconName> = {
   "/": "home",
   "/creations": "briefcase",
   "/expertise": "layers",
@@ -104,7 +103,7 @@ export function NavbarMobileMenu({
                                 isActive ? "bg-primary text-white" : "bg-primary/10 text-primary"
                               )}
                             >
-                              <StaticIcon name="layers" size={16} />
+                              <AnimatedIcon name="layers" size={16} />
                             </span>
                             <span>{item.label}</span>
                           </span>
@@ -113,7 +112,7 @@ export function NavbarMobileMenu({
                             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                             className="inline-flex shrink-0"
                           >
-                            <StaticIcon name="chevron-down" size={15} />
+                            <AnimatedIcon name="chevron-down" size={15} />
                           </motion.span>
                         </button>
                       ) : (
@@ -134,7 +133,7 @@ export function NavbarMobileMenu({
                               isActive ? "bg-primary text-white" : "bg-primary/10 text-primary"
                             )}
                           >
-                            <StaticIcon name={MOBILE_NAV_ICONS[item.route] ?? "home"} size={16} />
+                            <AnimatedIcon name={MOBILE_NAV_ICONS[item.route] ?? "home"} size={16} />
                           </span>
                           <span>{item.label}</span>
                         </Link>
@@ -211,7 +210,7 @@ export function NavbarMobileMenu({
                   className="w-full gap-2 group"
                 >
                   <span>{NAVBAR_CONTENT.ctaText}</span>
-                  <StaticIcon
+                  <AnimatedIcon
                     name="arrow-up-right"
                     size={15}
                     className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

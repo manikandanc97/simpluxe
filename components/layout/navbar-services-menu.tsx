@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { StaticIcon } from "@/components/ui/static-icon";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import {
   NAVBAR_SERVICES_MENU_COPY,
@@ -63,7 +62,7 @@ export function NavbarServicesMenu({ item, pathname }: NavbarServicesMenuProps) 
         )}
       >
         <span>{item.label}</span>
-        <StaticIcon
+        <AnimatedIcon
           name="chevron-down"
           size={13}
           className={cn("transition-transform", menuOpen && "rotate-180")}
@@ -73,7 +72,7 @@ export function NavbarServicesMenu({ item, pathname }: NavbarServicesMenuProps) 
       <div
         id="services-mega-menu"
         className={cn(
-          "absolute left-1/2 top-full w-screen max-w-4xl -translate-x-1/2 transition-all duration-200",
+          "fixed left-1/2 top-16 w-screen max-w-4xl -translate-x-1/2 transition-all duration-200",
           menuOpen
             ? "visible opacity-100"
             : "pointer-events-none invisible opacity-0"

@@ -1,13 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { m as motion, useAnimation } from "motion/react";
 import React, { useCallback, useEffect, useRef } from "react";
 
 import { ArrowLeftIcon } from "@animateicons/react/lucide/arrow-left-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
+import { ArrowUpIcon } from "@animateicons/react/lucide/arrow-up-icon";
 import { ArrowUpRightIcon } from "@animateicons/react/lucide/arrow-up-right-icon";
+import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
 import { CheckIcon } from "@animateicons/react/lucide/check-icon";
+import { ChevronDownIcon } from "@animateicons/react/lucide/chevron-down-icon";
 import { ChevronRightIcon } from "@animateicons/react/lucide/chevron-right-icon";
 import { CodeIcon } from "@animateicons/react/lucide/code-icon";
 import { ContactIcon } from "@animateicons/react/lucide/contact-icon";
@@ -26,6 +28,7 @@ import { MailIcon } from "@animateicons/react/lucide/mail-icon";
 import { MenuIcon } from "@animateicons/react/lucide/menu-icon";
 import { MessageSquareIcon } from "@animateicons/react/lucide/message-square-icon";
 import { MoonIcon } from "@animateicons/react/lucide/moon-icon";
+import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
 import { PencilIcon } from "@animateicons/react/lucide/pencil-icon";
 import { PhoneIcon } from "@animateicons/react/lucide/phone-icon";
 import { RefreshCwIcon } from "@animateicons/react/lucide/refresh-cw-icon";
@@ -46,17 +49,14 @@ import {
   type IconBaseProps,
   type AnimatedIconProps,
 } from "./animated-icons/types";
-import { BriefcaseIcon, PaletteIcon } from "./animated-icons/custom-motion-icons";
-import { SOLID_ICON_MAP, solidVariants } from "./animated-icons/solid-icons";
 
 // Re-export types & icons for complete backwards compatibility
 export * from "./animated-icons/types";
-export * from "./animated-icons/custom-motion-icons";
-export * from "./animated-icons/solid-icons";
 
 const ICON_COMPONENT_MAP: Record<AnimatedIconName, React.ComponentType<IconBaseProps>> = {
   "arrow-right": ArrowRightIcon as unknown as React.ComponentType<IconBaseProps>,
   "arrow-left": ArrowLeftIcon as unknown as React.ComponentType<IconBaseProps>,
+  "arrow-up": ArrowUpIcon as unknown as React.ComponentType<IconBaseProps>,
   "arrow-up-right": ArrowUpRightIcon as unknown as React.ComponentType<IconBaseProps>,
   sparkles: SparklesIcon as unknown as React.ComponentType<IconBaseProps>,
   home: HouseIcon as unknown as React.ComponentType<IconBaseProps>,
@@ -77,6 +77,7 @@ const ICON_COMPONENT_MAP: Record<AnimatedIconName, React.ComponentType<IconBaseP
   x: XIcon as unknown as React.ComponentType<IconBaseProps>,
   menu: MenuIcon as unknown as React.ComponentType<IconBaseProps>,
   grid: LayoutGridIcon as unknown as React.ComponentType<IconBaseProps>,
+  "chevron-down": ChevronDownIcon as unknown as React.ComponentType<IconBaseProps>,
   "chevron-right": ChevronRightIcon as unknown as React.ComponentType<IconBaseProps>,
   "external-link": ExternalLinkIcon as unknown as React.ComponentType<IconBaseProps>,
   zap: ZapIcon as unknown as React.ComponentType<IconBaseProps>,
@@ -93,6 +94,7 @@ const ICON_COMPONENT_MAP: Record<AnimatedIconName, React.ComponentType<IconBaseP
   code: CodeIcon as unknown as React.ComponentType<IconBaseProps>,
   contact: ContactIcon as unknown as React.ComponentType<IconBaseProps>,
   play: PlayIcon as unknown as React.ComponentType<IconBaseProps>,
+  refresh: RefreshCwIcon as unknown as React.ComponentType<IconBaseProps>,
 };
 
 export function AnimatedIcon({
@@ -102,7 +104,6 @@ export function AnimatedIcon({
   className,
   animateOnHover = true,
   loop = false,
-  solid = false,
   hoverDelay = 0,
   oncePerInteraction = false,
   parentSelector,
@@ -110,11 +111,8 @@ export function AnimatedIcon({
   ...props
 }: AnimatedIconProps) {
   const IconComponent = (icon || ICON_COMPONENT_MAP[name]) as React.ElementType<IconBaseProps>;
-  const SolidComponent = solid ? SOLID_ICON_MAP[name] : undefined;
-
   const iconRef = useRef<AnimateIconHandle>(null);
   const containerRef = useRef<HTMLSpanElement>(null);
-  const solidControls = useAnimation();
 
   const hasAnimatedRef = useRef<boolean>(false);
   const hoverDelayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -131,20 +129,14 @@ export function AnimatedIcon({
     hasAnimatedRef.current = true;
 
     const run = ++animationRunRef.current;
-    const animation = SolidComponent
-      ? solidControls.start("animate")
-      : iconRef.current?.startAnimation?.();
+    const animation = iconRef.current?.startAnimation?.();
 
     // Let each icon finish its own timeline instead of cutting longer icons short.
     animation?.then(() => {
       if (animationRunRef.current !== run) return;
-      if (SolidComponent) {
-        solidControls.start("normal");
-      } else {
-        iconRef.current?.stopAnimation?.();
-      }
+      iconRef.current?.stopAnimation?.();
     });
-  }, [oncePerInteraction, SolidComponent, solidControls]);
+  }, [oncePerInteraction]);
 
   const stopAnimation = useCallback(() => {
     if (hoverDelayTimerRef.current) {
@@ -152,14 +144,10 @@ export function AnimatedIcon({
       hoverDelayTimerRef.current = null;
     }
     animationRunRef.current += 1;
-    if (SolidComponent) {
-      solidControls.start("normal");
-    } else {
-      iconRef.current?.stopAnimation?.();
-    }
+    iconRef.current?.stopAnimation?.();
     // Interaction session ended on mouseleave, so reset hasAnimated
     hasAnimatedRef.current = false;
-  }, [SolidComponent, solidControls]);
+  }, []);
 
   // One interaction surface owns the icon, so moving between its text and glyph
   // never restarts or cancels the original animation.
@@ -250,7 +238,6 @@ export function AnimatedIcon({
       ref={containerRef}
       data-slot="animated-icon"
       data-icon-name={name}
-      data-solid={solid ? "true" : undefined}
       className={cn(
         "animated-icon-frame inline-flex items-center justify-center shrink-0 select-none",
         className
@@ -258,23 +245,12 @@ export function AnimatedIcon({
       style={{ "--animated-icon-size": `${numericSize}px`, ...style } as React.CSSProperties}
       {...props}
     >
-      {SolidComponent ? (
-        <motion.div
-          animate={solidControls}
-          initial="normal"
-          variants={solidVariants}
-          className="inline-flex items-center justify-center shrink-0"
-        >
-          <SolidComponent size={numericSize} className="shrink-0" />
-        </motion.div>
-      ) : (
-        <IconComponent
-          ref={iconRef}
-          size={numericSize}
-          isAnimated={animateOnHover}
-          className="shrink-0"
-        />
-      )}
+      <IconComponent
+        ref={iconRef}
+        size={numericSize}
+        isAnimated={animateOnHover}
+        className="shrink-0"
+      />
     </span>
   );
 }

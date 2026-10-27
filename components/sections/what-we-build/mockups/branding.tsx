@@ -3,6 +3,8 @@
 import { BRANDING_COPY } from "@/lib/data/what-we-build-mockups";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
 import { MockupFrame } from "./mockup-frame";
 
 type BrandScreen = "logo" | "palette" | "typography";
@@ -219,7 +221,7 @@ function PaletteScreen({ isActive }: { isActive?: boolean }) {
       {/* Palette Footer */}
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
-          <span className="text-amber-400">✦</span>
+          <AnimatedIcon icon={SparklesIcon} size={12} className="text-amber-400" />
           <span>{BRANDING_COPY.adaptiveTokens}</span>
         </div>
         <span className="font-mono text-emerald-400">{BRANDING_COPY.darkReady}</span>

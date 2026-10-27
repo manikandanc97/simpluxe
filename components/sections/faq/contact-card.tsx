@@ -3,8 +3,11 @@
 import { FAQ_CONTACT_CARD_COPY } from "@/lib/data/faq";
 import { useLead } from "@/components/leads/lead-provider";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons/convenience-icons";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/data/site";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
+import { MessageCircleIcon } from "@animateicons/react/lucide/message-circle-icon";
 
 export function ContactCard() {
   const { openLead } = useLead();
@@ -18,12 +21,7 @@ export function ContactCard() {
           <div className="flex flex-col items-start gap-2">
             {/* Badge */}
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                <circle cx="9" cy="12" r="1" fill="currentColor"/>
-                <circle cx="12" cy="12" r="1" fill="currentColor"/>
-                <circle cx="15" cy="12" r="1" fill="currentColor"/>
-              </svg>
+              <AnimatedIcon icon={MessageCircleIcon} size={10} className="text-primary" />
               <span className="text-xs font-semibold text-primary whitespace-nowrap">{FAQ_CONTACT_CARD_COPY.weReHereToHelp}</span>
             </div>
 
@@ -44,9 +42,7 @@ export function ContactCard() {
               {FAQ_CONTACT_CARD_COPY.highlights.map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="flex size-4 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
+                    <AnimatedIcon icon={CheckIcon} size={10} />
                   </span>
                   <span className="leading-snug">{item}</span>
                 </div>

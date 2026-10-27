@@ -3,6 +3,9 @@
 import { SAAS_COPY } from "@/lib/data/what-we-build-mockups";
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
+import { CreditCardIcon } from "@animateicons/react/lucide/credit-card-icon";
 import { MockupFrame } from "./mockup-frame";
 
 type SaasScreen = "overview" | "tenants" | "billing";
@@ -241,7 +244,7 @@ function TenantsScreen({ isActive }: { isActive?: boolean }) {
       {/* Cluster Footer */}
       <div className="bg-slate-900 rounded-lg p-1.5 flex items-center justify-between text-white text-3xs font-medium">
         <div className="flex items-center gap-1.5">
-          <span className="text-emerald-400">{SAAS_COPY.symbol}</span>
+          <AnimatedIcon icon={CheckIcon} size={11} className="text-emerald-400" />
           <span>{SAAS_COPY.replication}</span>
         </div>
         <span className="font-mono text-slate-300">{SAAS_COPY.syncStatus}</span>
@@ -263,7 +266,7 @@ function BillingScreen({ isActive }: { isActive?: boolean }) {
       <div className="bg-white rounded-xl border border-slate-200/90 p-2.5 flex flex-col gap-2 shadow-2xs flex-1">
         <div className="flex items-center justify-between pb-1 border-b border-slate-100">
           <div className="flex items-center gap-1.5">
-            <span className="text-xs">💳</span>
+            <AnimatedIcon icon={CreditCardIcon} size={13} className="text-indigo-600" />
             <span className="text-2xs font-bold text-slate-800">{SAAS_COPY.automatedStripeBilling.trim()}</span>
           </div>
           <span className="text-3xs font-semibold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">{SAAS_COPY.stripeLive}</span>
@@ -277,7 +280,10 @@ function BillingScreen({ isActive }: { isActive?: boolean }) {
           </div>
           <div className="flex items-center justify-between text-3xs text-slate-500">
             <span>{SAAS_COPY.activeLicenses}</span>
-            <span className="text-emerald-600 font-semibold font-mono">{SAAS_COPY.invoicePaid}</span>
+            <span className="inline-flex items-center gap-1 text-emerald-600 font-semibold font-mono">
+              {SAAS_COPY.invoicePaid}
+              <AnimatedIcon icon={CheckIcon} size={10} />
+            </span>
           </div>
         </div>
 

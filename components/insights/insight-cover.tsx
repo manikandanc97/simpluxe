@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { cn } from "@/lib/utils";
 import type { InsightPost } from "@/types/insight";
 
@@ -58,7 +58,7 @@ export function InsightCover({
         <div className="relative flex w-full flex-col justify-between gap-12">
           <div className="flex items-center justify-end">
             <span className="flex size-10 items-center justify-center rounded-2xl border border-white/20 bg-dark/60 text-white backdrop-blur-md">
-              <StaticIcon name={post.icon} size={18} />
+              <AnimatedIcon name={post.icon} size={18} />
             </span>
           </div>
 
@@ -102,7 +102,7 @@ export function InsightCover({
 
       {/* Floating interactive action indicator */}
       <div className="absolute bottom-3 right-3 flex size-8 items-center justify-center rounded-full border border-white/30 bg-white/90 text-foreground shadow-md backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:bg-white">
-        <StaticIcon
+        <AnimatedIcon
           name="arrow-up-right"
           size={14}
           className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

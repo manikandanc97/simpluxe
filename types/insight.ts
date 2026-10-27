@@ -1,4 +1,4 @@
-import type { StaticIconName } from "@/components/ui/static-icon";
+import type { AnimatedIconName } from "@/components/ui/animated-icon";
 
 interface InsightSection {
   heading: string;
@@ -17,7 +17,7 @@ export interface InsightPost {
   readingTime: string;
   author: string;
   featured?: boolean;
-  icon: StaticIconName;
+  icon: AnimatedIconName;
   tone: "ocean" | "sky" | "slate" | "cyan";
   takeaways: string[];
   sections: InsightSection[];

@@ -3,7 +3,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { HOME_ABOUT_CONTENT } from "@/lib/data/about";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +32,7 @@ export function AboutPreview() {
               className={cn(buttonVariants({ variant: "outline", size: "lg" }), "group")}
             >
               {HOME_ABOUT_CONTENT.cta}
-              <StaticIcon
+              <AnimatedIcon
                 name="arrow-up-right"
                 size={16}
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

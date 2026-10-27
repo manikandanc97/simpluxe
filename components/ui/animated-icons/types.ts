@@ -3,6 +3,7 @@ import type React from "react";
 export type AnimatedIconName =
   | "arrow-right"
   | "arrow-left"
+  | "arrow-up"
   | "sparkles"
   | "home"
   | "briefcase"
@@ -22,6 +23,7 @@ export type AnimatedIconName =
   | "x"
   | "menu"
   | "grid"
+  | "chevron-down"
   | "chevron-right"
   | "external-link"
   | "zap"
@@ -38,18 +40,12 @@ export type AnimatedIconName =
   | "code"
   | "play"
   | "phone"
+  | "refresh"
   | "arrow-up-right";
 
 export interface AnimateIconHandle {
   startAnimation: () => void | Promise<void>;
   stopAnimation: () => void | Promise<void>;
-}
-
-export interface CustomIconProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: number;
-  duration?: number;
-  isAnimated?: boolean;
-  color?: string;
 }
 
 export interface IconBaseProps {
@@ -67,7 +63,6 @@ export interface AnimatedIconProps extends React.HTMLAttributes<HTMLSpanElement>
   className?: string;
   animateOnHover?: boolean;
   loop?: boolean;
-  solid?: boolean;
   hoverDelay?: number; // Milliseconds to wait before animating on hover (e.g. 1000 for menu items)
   oncePerInteraction?: boolean; // When true, hover and click combined only animates once per hover session
   parentSelector?: string; // Optional custom selector for the interactive parent element

@@ -4,6 +4,11 @@ import { ECOMMERCE_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
+import { CreditCardIcon } from "@animateicons/react/lucide/credit-card-icon";
+import { PlusIcon } from "@animateicons/react/lucide/plus-icon";
+import { ShoppingBagIcon } from "@animateicons/react/lucide/shopping-bag-icon";
 import { MockupFrame } from "./mockup-frame";
 
 // Animation stages
@@ -53,12 +58,13 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
         <motion.div
           animate={isActive ? { opacity: [0.85, 1, 0.85] } : { opacity: 1 }}
           transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
-          className="absolute top-2 right-2 z-10 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-lg sm:-top-3 sm:-right-3"
+          className="absolute top-2 right-2 z-10 flex items-center gap-1 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-lg sm:-top-3 sm:-right-3"
           style={{
             backgroundColor: stage === "success" ? "#BE123C" : "#DC2626",
             transition: "background-color 0.4s ease",
           }}
         >
+          {stage === "success" ? <AnimatedIcon icon={CheckIcon} size={10} /> : null}
           {stage === "success" ? ECOMMERCE_COPY.orderDone : ECOMMERCE_COPY.text42Conv}
         </motion.div>
       }
@@ -86,9 +92,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
                 {/* Cart badge */}
                 <div className="relative">
                   <div className="w-6 h-6 rounded-lg bg-orange-700/10 flex items-center justify-center text-orange-700">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-                    </svg>
+                    <AnimatedIcon icon={ShoppingBagIcon} size={12} />
                   </div>
                   <motion.div
                     animate={stage === "selected" ? { scale: [1, 1.5, 1], backgroundColor: ["#DC2626", "#BE123C", "#DC2626"] } : { scale: 1 }}
@@ -166,20 +170,17 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
                 >
                   {stage === "selected" ? (
                     <>
-                      <motion.svg
+                      <motion.span
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.7, type: "spring", stiffness: 400 }}
-                        width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"
                       >
-                        <polyline points="20 6 9 17 4 12" />
-                      </motion.svg>
+                        <AnimatedIcon icon={CheckIcon} size={10} animateOnHover={false} />
+                      </motion.span>
                       {ECOMMERCE_COPY.added}</>
                   ) : (
                     <>
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
-                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-                      </svg>
+                      <AnimatedIcon icon={PlusIcon} size={10} />
                       {ECOMMERCE_COPY.add}</>
                   )}
                 </motion.div>
@@ -200,9 +201,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
               {/* Header */}
               <div className="flex items-center gap-2 border-b border-black/4 pb-1.5">
                 <div className="w-5 h-5 rounded-lg bg-orange-700/10 flex items-center justify-center text-orange-700">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
-                  </svg>
+                  <AnimatedIcon icon={CreditCardIcon} size={10} />
                 </div>
                 <span className="text-xs font-bold text-foreground">{ECOMMERCE_COPY.secureCheckout}</span>
                 <div className="push-inline-end flex items-center gap-1">
@@ -224,10 +223,7 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
               {/* Card input (mock) */}
               <div className="flex flex-col gap-1.5">
                 <div className="bg-white border border-black/7 rounded-lg px-2 py-1.5 flex items-center gap-2">
-                  <svg width="16" height="10" viewBox="0 0 32 20" fill="none">
-                    <rect width="32" height="20" rx="3" fill="#9F1239"/>
-                    <rect x="2" y="7" width="10" height="6" rx="1" fill="#FDA4AF"/>
-                  </svg>
+                  <AnimatedIcon icon={CreditCardIcon} size={16} className="text-rose-800" />
                   <div className="flex-1 h-1.5 rounded-full bg-slate-200" />
                   <span className="text-3xs font-mono text-muted-foreground">{ECOMMERCE_COPY.symbol}</span>
                 </div>
@@ -296,15 +292,13 @@ function EcommerceSequence({ isActive }: { isActive?: boolean }) {
                   transition={{ type: "spring", stiffness: 400, damping: 18, delay: 0.1 }}
                   className="w-14 h-14 rounded-full bg-red-500 flex items-center justify-center shadow-lg relative z-10"
                 >
-                  <motion.svg
-                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"
-                    strokeLinecap="round" strokeLinejoin="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
+                  <motion.span
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
                   >
-                    <motion.polyline points="20 6 9 17 4 12" />
-                  </motion.svg>
+                    <AnimatedIcon icon={CheckIcon} size={24} className="text-white" loop />
+                  </motion.span>
                 </motion.div>
               </div>
 

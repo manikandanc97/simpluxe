@@ -1,6 +1,6 @@
 "use client";
 
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { ERROR_COPY } from "@/lib/data/ui";
 
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ export default function ErrorPage({
           {ERROR_COPY.weEncounteredAnUnexpectedError}</p>
       </div>
       <Button onClick={() => reset()} className="gap-2">
-        <StaticIcon name="refresh" size={16} />
+        <AnimatedIcon name="refresh" size={16} />
         <span>{ERROR_COPY.tryAgain}</span>
       </Button>
     </div>

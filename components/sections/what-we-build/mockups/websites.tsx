@@ -1,6 +1,11 @@
 import { WEBSITES_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { m as motion } from "motion/react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { BriefcaseIcon } from "@animateicons/react/lucide/briefcase-icon";
+import { ImageIcon } from "@animateicons/react/lucide/image-icon";
+import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
+import { MousePointerIcon } from "@animateicons/react/lucide/mouse-pointer-icon";
 import { MockupFrame } from "./mockup-frame";
 
 export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
@@ -43,9 +48,7 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
                   transition={{ duration: 3, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
                   className="w-full h-full rounded-lg bg-orange-200 flex items-end justify-center pb-1"
                 >
-                  <svg width="36" height="24" viewBox="0 0 40 30" fill="none" className="opacity-70">
-                    <path d="M4 26 L16 10 L24 20 L30 14 L36 26 Z" fill="#C2410C" />
-                  </svg>
+                  <AnimatedIcon icon={ImageIcon} size={28} className="text-orange-700 opacity-70" />
                 </motion.div>
               </div>
             </div>
@@ -70,13 +73,13 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
               transition={{ duration: 2, repeat: isActive ? Infinity : 0 }}
               className="w-6 h-6 rounded-md bg-white shadow-xs flex items-center justify-center text-orange-700"
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <AnimatedIcon icon={ImageIcon} size={12} />
             </motion.div>
             <div className="w-6 h-6 rounded-md flex items-center justify-center text-muted-foreground">
               <span className="text-xs font-bold">{WEBSITES_COPY.tt}</span>
             </div>
             <div className="w-6 h-6 rounded-md flex items-center justify-center text-muted-foreground">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <AnimatedIcon icon={LayoutGridIcon} size={12} />
             </div>
           </div>
         </div>
@@ -87,16 +90,14 @@ export function WebsitesMockup({ isActive }: { isActive?: boolean }) {
             transition={{ duration: 9, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
             className="w-8 h-8 rounded-xl bg-orange-700 shadow-md flex items-center justify-center text-white border-2 border-white"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <AnimatedIcon icon={BriefcaseIcon} size={14} />
           </motion.div>
           <motion.div
             animate={isActive ? { x: [0, -32, -32, 0], opacity: [0, 1, 1, 0] } : { x: 0, opacity: 0 }}
             transition={{ duration: 9, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
             className="absolute -bottom-3 -right-2 transform translate-x-1 translate-y-1 drop-shadow-md z-10"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#121114" stroke="white" strokeWidth="1.5">
-              <path d="M3 3l7 18 3-7 7-3L3 3z" />
-            </svg>
+            <AnimatedIcon icon={MousePointerIcon} size={18} animateOnHover={false} />
           </motion.div>
         </div>
     </MockupFrame>

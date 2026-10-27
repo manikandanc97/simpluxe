@@ -1,5 +1,5 @@
 import { InsightCover } from "@/components/insights/insight-cover";
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import type { InsightPost } from "@/types/insight";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export function InsightCard({ index, post }: InsightCardProps) {
           {/* Metadata: Category & Reading Time */}
           <div className="flex items-center justify-between text-xs">
             <span className="inline-flex items-center gap-1.5 font-semibold text-primary">
-              <StaticIcon name={post.icon} size={14} />
+              <AnimatedIcon name={post.icon} size={14} />
               {post.category}
             </span>
             <span className="font-mono text-2xs uppercase tracking-wider text-muted-foreground">
@@ -75,7 +75,7 @@ export function InsightCard({ index, post }: InsightCardProps) {
 
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors duration-200 group-hover:text-primary-hover">
           <span>{INSIGHTS_PAGE_COPY.readArticle}</span>
-          <StaticIcon
+          <AnimatedIcon
             name="arrow-up-right"
             size={14}
             className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

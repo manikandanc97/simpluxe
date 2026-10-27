@@ -29,20 +29,31 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-background pb-16 pt-28 text-white sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36"
+      className="relative overflow-hidden bg-primary pt-28 text-white sm:pt-32 lg:pt-36"
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-screen bg-primary"
+        className="pointer-events-none absolute inset-0"
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-sky-400/15 via-transparent to-slate-950/20" />
       </div>
-      <Container className="relative z-10 flex flex-col items-center gap-12 sm:gap-16">
+      <Container className="relative z-10 flex justify-center pb-12 sm:pb-16">
         <div className="w-full max-w-4xl">
           <WorkbenchHeroIntro />
         </div>
-        <HeroCollage />
       </Container>
+
+      <div className="relative z-10 bg-background pb-16 sm:pb-20 lg:pb-24">
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-primary"
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/10" />
+        </div>
+        <Container className="relative z-10 flex justify-center">
+          <HeroCollage />
+        </Container>
+      </div>
     </section>
   );
 }

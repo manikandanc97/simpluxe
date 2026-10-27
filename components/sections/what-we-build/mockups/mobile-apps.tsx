@@ -4,6 +4,16 @@ import { MOBILE_APPS_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { ActivityIcon } from "@animateicons/react/lucide/activity-icon";
+import { CompassIcon } from "@animateicons/react/lucide/compass-icon";
+import { EyeIcon } from "@animateicons/react/lucide/eye-icon";
+import { HeartIcon } from "@animateicons/react/lucide/heart-icon";
+import { HouseIcon } from "@animateicons/react/lucide/house-icon";
+import { MessageCircleIcon } from "@animateicons/react/lucide/message-circle-icon";
+import { ShareIcon } from "@animateicons/react/lucide/share-icon";
+import { SparklesIcon } from "@animateicons/react/lucide/sparkles-icon";
+import { WifiIcon } from "@animateicons/react/lucide/wifi-icon";
 import { MockupFrame } from "./mockup-frame";
 
 type Screen = "home" | "feed" | "profile" | "activity";
@@ -12,10 +22,10 @@ const DURATIONS: Record<Screen, number> = { home: 3200, feed: 3000, profile: 320
 
 // ── Bottom Tab Bar ─────────────────────────────────────────
 const TABS = [
-  { icon: "⊞", label: MOBILE_APPS_COPY.home },
-  { icon: "◎", label: MOBILE_APPS_COPY.explore },
-  { icon: "♡", label: MOBILE_APPS_COPY.saved },
-  { icon: "◷", label: MOBILE_APPS_COPY.activity },
+  { icon: HouseIcon, label: MOBILE_APPS_COPY.home },
+  { icon: CompassIcon, label: MOBILE_APPS_COPY.explore },
+  { icon: HeartIcon, label: MOBILE_APPS_COPY.saved },
+  { icon: ActivityIcon, label: MOBILE_APPS_COPY.activity },
 ] as const;
 
 function TabBar({ active }: { active: number }) {
@@ -27,7 +37,7 @@ function TabBar({ active }: { active: number }) {
           animate={{ color: i === active ? "#7E22CE" : "#9ca3af" }}
           className="flex flex-col items-center gap-0.5"
         >
-          <span className="text-sm leading-none">{tab.icon}</span>
+          <AnimatedIcon icon={tab.icon} size={14} />
           <span className="text-micro font-semibold">{tab.label}</span>
           {i === active && (
             <motion.div layoutId="tab-dot" className="w-1 h-1 rounded-full bg-purple-700" />
@@ -101,8 +111,15 @@ function FeedScreen() {
           {/* Image placeholder */}
           <div className="w-full h-8 rounded-lg bg-slate-100 border border-slate-200/60" />
           <div className="flex items-center gap-2">
-            {[MOBILE_APPS_COPY.text48, MOBILE_APPS_COPY.text12, MOBILE_APPS_COPY.share].map((a, j) => (
-              <span key={j} className="text-micro text-muted-foreground font-medium">{a}</span>
+            {[
+              { icon: HeartIcon, label: MOBILE_APPS_COPY.text48 },
+              { icon: MessageCircleIcon, label: MOBILE_APPS_COPY.text12 },
+              { icon: ShareIcon, label: MOBILE_APPS_COPY.share },
+            ].map((action) => (
+              <span key={action.label} className="inline-flex items-center gap-0.5 text-micro text-muted-foreground font-medium">
+                <AnimatedIcon icon={action.icon} size={8} />
+                {action.label}
+              </span>
             ))}
           </div>
         </motion.div>
@@ -152,16 +169,18 @@ function ProfileScreen() {
 // ── Activity Screen ────────────────────────────────────────
 function ActivityScreen() {
   const activities = [
-    { icon: "♡", label: MOBILE_APPS_COPY.priyaLikedYourPost, time: MOBILE_APPS_COPY.activityTimes[0], color: "#7E22CE" },
-    { icon: "✦", label: MOBILE_APPS_COPY.newFollowerRahulS, time: MOBILE_APPS_COPY.activityTimes[1], color: "#7C3AED" },
-    { icon: "◎", label: MOBILE_APPS_COPY.yourPostGot48Views, time: MOBILE_APPS_COPY.activityTimes[2], color: "#A855F7" },
+    { icon: HeartIcon, label: MOBILE_APPS_COPY.priyaLikedYourPost, time: MOBILE_APPS_COPY.activityTimes[0], color: "#7E22CE" },
+    { icon: SparklesIcon, label: MOBILE_APPS_COPY.newFollowerRahulS, time: MOBILE_APPS_COPY.activityTimes[1], color: "#7C3AED" },
+    { icon: EyeIcon, label: MOBILE_APPS_COPY.yourPostGot48Views, time: MOBILE_APPS_COPY.activityTimes[2], color: "#A855F7" },
   ];
   return (
     <motion.div key="activity" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col gap-2 overflow-hidden">
       <div className="text-xs font-extrabold text-foreground">{MOBILE_APPS_COPY.activity}</div>
       {activities.map((a, i) => (
         <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex items-center gap-2 bg-slate-50 border border-black/4 rounded-xl px-2.5 py-2">
-          <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs" style={{ backgroundColor: `${a.color}18`, color: a.color }}>{a.icon}</div>
+          <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs" style={{ backgroundColor: `${a.color}18`, color: a.color }}>
+            <AnimatedIcon icon={a.icon} size={12} />
+          </div>
           <span className="text-3xs text-zinc-800 flex-1 leading-snug">{a.label}</span>
           <span className="text-3xs text-muted-foreground flex-shrink-0">{a.time}</span>
         </motion.div>
@@ -214,7 +233,7 @@ function MobileAppsSequence({ isActive }: { isActive?: boolean }) {
             <div className="flex gap-0.5 items-end h-2.5">
               {[3, 5, 7, 9].map((h, i) => <div key={i} className="w-0.5 rounded-full bg-foreground" style={{ height: h }} />)}
             </div>
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#121114" strokeWidth="2"><path d="M1 6s4-4 11-4 11 4 11 4M5 10s2.5-2 7-2 7 2 7 2M9 14s1-1 3-1 3 1 3 1M11 18h2"/></svg>
+            <AnimatedIcon icon={WifiIcon} size={9} animateOnHover={false} />
             <div className="flex items-center gap-0.5">
               <div className="w-4 h-2 rounded-xs border border-foreground/50 p-0.25">
                 <div className="h-full w-4/5 rounded-xs bg-foreground/80" />

@@ -9,7 +9,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Container } from "@/components/ui/container";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { INSIGHTS, INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import { cn } from "@/lib/utils";
 
@@ -130,7 +130,7 @@ export function InsightsView() {
             ) : (
               <div className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-border bg-white py-16 text-center">
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <StaticIcon name="info" size={24} />
+                  <AnimatedIcon name="info" size={24} />
                 </div>
                 <div className="flex max-w-md flex-col gap-1">
                   <h3 className="text-lg font-bold text-heading">
@@ -172,7 +172,7 @@ export function InsightsView() {
             )}
           >
             {INSIGHTS_PAGE_COPY.contactAction}
-            <StaticIcon name="arrow-up-right" size={16} />
+            <AnimatedIcon name="arrow-up-right" size={16} />
           </Link>
         </Container>
       </Section>

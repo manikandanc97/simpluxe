@@ -1,4 +1,4 @@
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +35,7 @@ export function Pagination({
           )}
           aria-label={INSIGHTS_PAGE_COPY.firstPage}
         >
-          <StaticIcon name="arrow-up" size={13} className="-rotate-90" />
+          <AnimatedIcon name="arrow-left" size={13} />
           <span className="hidden sm:inline">{INSIGHTS_PAGE_COPY.firstPage}</span>
         </button>
 
@@ -70,7 +70,7 @@ export function Pagination({
           aria-label={INSIGHTS_PAGE_COPY.lastPage}
         >
           <span className="hidden sm:inline">{INSIGHTS_PAGE_COPY.lastPage}</span>
-          <StaticIcon name="arrow-up" size={13} className="rotate-90" />
+          <AnimatedIcon name="arrow-right" size={13} />
         </button>
       </div>
     </nav>

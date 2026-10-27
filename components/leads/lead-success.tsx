@@ -4,6 +4,9 @@ import { useEffect, useId, useRef } from "react";
 import { LEAD_FORM_COPY } from "@/lib/data/leads";
 import { SITE } from "@/lib/data/site";
 import { startSparklerCelebration } from "@/lib/celebration";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { CheckIcon } from "@animateicons/react/lucide/check-icon";
+import { MailIcon } from "@animateicons/react/lucide/mail-icon";
 
 export function LeadSuccess({ onClose }: { onClose?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,7 +28,7 @@ export function LeadSuccess({ onClose }: { onClose?: () => void }) {
         <div className="absolute bottom-5 h-20 w-20 rounded-full border border-primary/15" />
         <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" />
         <span className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-elevated ring-4 ring-card motion-safe:animate-success-emblem">
-          <svg viewBox="0 0 32 32" fill="none" className="h-8 w-8"><path d="m8 16 5 5 11-11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <AnimatedIcon icon={CheckIcon} size={32} loop />
         </span>
       </div>
 
@@ -45,7 +48,7 @@ export function LeadSuccess({ onClose }: { onClose?: () => void }) {
 
         <div className="flex max-w-sm items-center justify-center gap-3 rounded-2xl border border-border/70 bg-card/80 px-4 py-3 text-left">
           <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4"><path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="m4 7 8 6 8-6" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>
+            <AnimatedIcon icon={MailIcon} size={16} />
           </span>
           <div className="flex flex-col gap-0.5"><p className="text-xs font-semibold text-foreground">{LEAD_FORM_COPY.successNextTitle}</p><p className="text-xs leading-relaxed text-muted-foreground">{LEAD_FORM_COPY.successNextDescription}</p></div>
         </div>

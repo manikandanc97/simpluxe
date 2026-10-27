@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { m as motion } from "motion/react";
 import { BrandLockup } from "@/components/ui/brand-lockup";
 import { Button } from "@/components/ui/button";
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { useLead } from "@/components/leads/lead-provider";
 import {
   NAV_ITEMS,
@@ -134,7 +134,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
             className="hidden gap-1.5 px-4 lg:inline-flex group"
           >
             <span>{NAVBAR_CONTENT.ctaText}</span>
-            <StaticIcon
+            <AnimatedIcon
               name="arrow-up-right"
               size={14}
               className="shrink-0 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -149,7 +149,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
             className="inline-flex size-10 items-center justify-center rounded-xl bg-primary text-white shadow-sm outline-none transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
           >
-            <StaticIcon name="phone" size={18} />
+            <AnimatedIcon name="phone" size={18} />
           </motion.a>
 
           <motion.button
@@ -167,7 +167,7 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
               transition={{ type: "spring", stiffness: 420, damping: 28 }}
               className="inline-flex"
             >
-              <StaticIcon name={mobileOpen ? "x" : "menu"} size={20} />
+              <AnimatedIcon name={mobileOpen ? "x" : "menu"} size={20} />
             </motion.span>
           </motion.button>
         </div>

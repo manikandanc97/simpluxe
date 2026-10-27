@@ -4,7 +4,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Container } from "@/components/ui/container";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
-import { StaticIcon } from "@/components/ui/static-icon";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { INSIGHTS, INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import { cn } from "@/lib/utils";
 import type { InsightPost } from "@/types/insight";
@@ -45,7 +45,7 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
               <div className="flex flex-col gap-6 rounded-3xl border border-primary-hover/50 bg-primary p-6 text-white shadow-luxury sm:p-8">
                 <div className="flex items-center gap-4">
                   <span className="flex size-12 items-center justify-center rounded-2xl border border-white/20 bg-white/15 text-white backdrop-blur-sm shadow-xs">
-                    <StaticIcon name="lightbulb" size={20} />
+                    <AnimatedIcon name="lightbulb" size={20} />
                   </span>
                   <h2 className="text-xl font-bold text-white sm:text-2xl">
                     {INSIGHTS_PAGE_COPY.keyTakeaways}
@@ -55,7 +55,7 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                   {post.takeaways.map((takeaway) => (
                     <li key={takeaway} className="flex items-start gap-4 text-sm leading-relaxed text-white/90 sm:text-base">
                       <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/20 font-mono text-xs font-bold text-white shadow-2xs">
-                        ✓
+                        <AnimatedIcon name="check" size={13} />
                       </span>
                       <span>{takeaway}</span>
                     </li>
@@ -100,7 +100,7 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                     <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                       {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-3">
-                          <span className="text-primary">→</span>
+                          <AnimatedIcon name="arrow-right" size={14} className="text-primary" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -125,7 +125,7 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                   href="/insights"
                   className={cn(buttonVariants({ variant: "outline" }), "shrink-0")}
                 >
-                  <StaticIcon name="arrow-up" size={15} className="-rotate-90" />
+                  <AnimatedIcon name="arrow-left" size={15} />
                   {INSIGHTS_PAGE_COPY.backToInsights}
                 </Link>
               </div>

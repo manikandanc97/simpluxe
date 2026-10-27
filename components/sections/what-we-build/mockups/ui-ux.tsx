@@ -4,6 +4,11 @@ import { UI_UX_COPY } from "@/lib/data/what-we-build-mockups";
 
 import { AnimatePresence, m as motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { AnimatedIcon } from "@/components/ui/animated-icon";
+import { BoxIcon } from "@animateicons/react/lucide/box-icon";
+import { LayoutGridIcon } from "@animateicons/react/lucide/layout-grid-icon";
+import { LayoutListIcon } from "@animateicons/react/lucide/layout-list-icon";
+import { PanelLeftIcon } from "@animateicons/react/lucide/panel-left-icon";
 import { MockupFrame } from "./mockup-frame";
 
 type Layout = "list" | "grid" | "card" | "split";
@@ -15,11 +20,11 @@ const LAYOUT_DURATION: Record<Layout, number> = {
   card:  3200,
   split: 3200,
 };
-const LAYOUT_META: Record<Layout, { icon: string; label: string; color: string }> = {
-  list:  { icon: "☰", label: UI_UX_COPY.list,  color: "#7C3AED" },
-  grid:  { icon: "⊞", label: UI_UX_COPY.grid,  color: "#0891B2" },
-  card:  { icon: "▭", label: UI_UX_COPY.card,  color: "#D23D78" },
-  split: { icon: "⊟", label: UI_UX_COPY.split, color: "#059669" },
+const LAYOUT_META = {
+  list:  { icon: LayoutListIcon, label: UI_UX_COPY.list,  color: "#7C3AED" },
+  grid:  { icon: LayoutGridIcon, label: UI_UX_COPY.grid,  color: "#0891B2" },
+  card:  { icon: BoxIcon, label: UI_UX_COPY.card,  color: "#D23D78" },
+  split: { icon: PanelLeftIcon, label: UI_UX_COPY.split, color: "#059669" },
 };
 
 // ── Shared skeleton atoms ──────────────────────────────────
@@ -298,7 +303,7 @@ function UIUXSequence({ isActive }: { isActive?: boolean }) {
                 transition={{ duration: 0.25 }}
                 className="w-6 h-5 rounded-md flex items-center justify-center text-2xs font-bold cursor-pointer"
               >
-                {LAYOUT_META[l].icon}
+                <AnimatedIcon icon={LAYOUT_META[l].icon} size={11} />
               </motion.div>
             ))}
           </div>
