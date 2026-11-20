@@ -1,4 +1,4 @@
-import { InsightCard } from "@/components/insights/insight-card";
+﻿import { InsightCard } from "@/components/insights/insight-card";
 import { InsightCover } from "@/components/insights/insight-cover";
 import { ArticleContents } from "@/components/insights/article-contents";
 import { AccordionList } from "@/components/sections/faq/accordion-list";
@@ -136,7 +136,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                     <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                       {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-3">
-                          <AnimatedIcon name="arrow-right" size={14} className="text-primary" />
+                          <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -157,7 +157,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                         <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                           {subsection.bullets.map((bullet) => (
                             <li key={bullet} className="flex items-start gap-3">
-                              <AnimatedIcon name="arrow-right" size={14} className="text-primary" />
+                              <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
                               <span>{bullet}</span>
                             </li>
                           ))}
@@ -195,7 +195,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                     <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                       {section.checklist.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <AnimatedIcon name="arrow-right" size={14} className="text-primary" />
+                          <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
                           <span>{item}</span>
                         </li>
                       ))}
