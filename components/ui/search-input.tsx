@@ -31,7 +31,7 @@ export function SearchInput({
         className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground"
       />
       <Input
-        type="search"
+        type="text"
         value={value}
         onChange={(event) => onValueChange(event.target.value)}
         placeholder={placeholder}
