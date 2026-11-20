@@ -58,7 +58,7 @@ export const FLOW_NODES = {
     badge: "Plan",
     badgeColor: "purple",
     title: "Weekly progress",
-    desc: "Transparent updates and real milestones every week.",
+    desc: "Transparent updates against agreed milestones.",
     icon: TrendingUpIcon,
   },
   bottomLeft: {
@@ -81,28 +81,31 @@ export const FLOW_NODES = {
 
 export const REAL_OUTCOMES = [
   {
-    value: 5,
-    suffix: "+",
-    label: "Projects shipped",
+    value: 4,
+    prefix: "",
+    suffix: "",
+    label: "Process stages",
     icon: BriefcaseIcon,
   },
   {
-    value: 3,
-    suffix: "×",
-    label: "Faster iteration",
+    value: 8,
+    prefix: "",
+    suffix: "",
+    label: "Service areas",
     icon: ZapIcon,
   },
   {
-    value: 100,
-    suffix: "%",
-    label: "Milestone visibility",
+    value: 1,
+    prefix: "",
+    suffix: "",
+    label: "Shared project plan",
     icon: TargetIcon,
   },
   {
-    value: 500,
-    prefix: "<",
-    suffix: "ms",
-    label: "Performance target",
+    value: 1,
+    prefix: "",
+    suffix: "",
+    label: "Agreed handover scope",
     icon: DatabaseIcon,
   },
 ];
@@ -111,7 +114,7 @@ export const PHILOSOPHY_SECTION_CONTENT = {
   eyebrow: "Why Simpluxe",
   title: "Less complexity.",
   highlightedText: "More momentum.",
-  description: "A focused team, a clear process, and production-ready work without unnecessary layers.",
+  description: "A focused studio model, a clear process, and project-ready work without unnecessary layers.",
 };
 
 export const FLOW_DIAGRAM_COPY = {

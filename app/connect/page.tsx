@@ -2,7 +2,7 @@ import { CONTACT_PAGE_COPY } from "@/lib/data/metadata";
 import { createPageMetadata } from "@/lib/metadata";
 import { COMMON } from "@/lib/data/common";
 import { JsonLd } from "@/components/shared/json-ld";
-import { getBreadcrumbSchema, getContactPageSchema } from "@/lib/schema";
+import { getBreadcrumbSchema, getContactPageSchema, getOrganizationSchema } from "@/lib/schema";
 import { ContactView } from "@/components/pages/contact-view";
 import type { Metadata } from "next";
 
@@ -22,6 +22,7 @@ export default function ConnectPage() {
             { name: COMMON.pages.connect, path: "/connect" },
           ]),
           getContactPageSchema(),
+          getOrganizationSchema(),
         ]}
       />
       <ContactView />

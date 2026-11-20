@@ -28,7 +28,7 @@ export const FAQS: FAQItem[] = [
     icon: FolderOpenIcon,
     question: "How do you scope and price a project?",
     answer:
-      "We scope every project individually based on your technical complexity, deliverable milestones, and dedicated team or part-time model. You'll receive a clear, transparent quote and timeline before we begin, along with a detailed proposal.",
+      "We scope each project around its requirements, dependencies and review process. Before work begins, the proposal sets out the agreed deliverables, commercial terms and delivery plan.",
     highlights: [
       { text: "Clear Milestones", icon: CircleCheckIcon },
       { text: "Transparent Pricing", icon: CalendarIcon },
@@ -42,11 +42,11 @@ export const FAQS: FAQItem[] = [
     icon: ClockIcon,
     question: "How long does a typical build take from kickoff to launch?",
     answer:
-      "A focused, production-ready MVP typically ships in 6–10 weeks. Comprehensive platforms or complex multi-tenant systems take 3–5 months. We set realistic sprint roadmaps during discovery and ship testable preview builds every single week so you see continuous progress.",
+      "Timing depends on scope, content readiness, integrations and review cycles. After discovery, we provide a phased delivery plan with milestones and an agreed preview cadence.",
     highlights: [
-      { text: "6–10 Week MVP", icon: ZapIcon },
-      { text: "Weekly Previews", icon: RefreshCwIcon },
-      { text: "Agile Sprints", icon: ActivityIcon },
+      { text: "Scoped Timeline", icon: ZapIcon },
+      { text: "Agreed Previews", icon: RefreshCwIcon },
+      { text: "Phased Delivery", icon: ActivityIcon },
     ],
   },
   {
@@ -56,11 +56,11 @@ export const FAQS: FAQItem[] = [
     icon: CodeIcon,
     question: "Will our team receive the code and project deliverables?",
     answer:
-      "Yes. Every line of clean code, architecture diagram, design system token, cloud infrastructure script, and asset is transferred to your company upon milestone completion. You receive complete project handover with no proprietary lock-in.",
+      "The project agreement defines the repositories, documentation, design files and other deliverables included in handover. Ownership and usage rights account for third-party and open-source licence terms.",
     highlights: [
-      { text: "Complete Handover", icon: ShieldCheckIcon },
-      { text: "Full Source Code", icon: CodeIcon },
-      { text: "No Vendor Lock-in", icon: LockOpenIcon },
+      { text: "Defined Handover", icon: ShieldCheckIcon },
+      { text: "Agreed Source Files", icon: CodeIcon },
+      { text: "Licence Clarity", icon: LockOpenIcon },
     ],
   },
   {
@@ -70,10 +70,10 @@ export const FAQS: FAQItem[] = [
     icon: WrenchIcon,
     question: "What happens after launch? Do you provide ongoing maintenance?",
     answer:
-      "We provide dedicated post-launch support with bug fixing and telemetry monitoring after release. Following that, flexible retainers are available for continuous feature iterations, cloud maintenance, and ongoing technical support.",
+      "Launch assistance, defect coverage and ongoing maintenance are defined in the project agreement or a separate support plan, including coverage, response expectations and included work.",
     highlights: [
-      { text: "Post-Launch Support", icon: MedalIcon },
-      { text: "Proactive Monitoring", icon: ActivityIcon },
+      { text: "Agreed Launch Support", icon: MedalIcon },
+      { text: "Optional Monitoring", icon: ActivityIcon },
       { text: COMMON.labels.guaranteedSla, icon: ThumbsUpIcon },
     ],
   },
@@ -84,11 +84,11 @@ export const FAQS: FAQItem[] = [
     icon: UsersIcon,
     question: "How closely can we get started, and what does onboarding look like?",
     answer:
-      "Click 'Start a project' or brief us with your vision. Within 48 hours, our technical architects schedule a discovery call to understand your business goals, evaluate feasibility, and deliver a comprehensive technical roadmap and proposal.",
+      "Send your brief through 'Start a project'. We review the requirements and follow up to arrange discovery where there is a fit; the next steps and any proposal depend on the project's scope.",
     highlights: [
-      { text: "48-Hour Kickoff", icon: TimerIcon },
-      { text: "Expert Architects", icon: UserCheckIcon },
-      { text: "Technical Roadmap", icon: MapIcon },
+      { text: "Brief Review", icon: TimerIcon },
+      { text: "Direct Follow-up", icon: UserCheckIcon },
+      { text: "Scoped Next Steps", icon: MapIcon },
     ],
   },
 ];

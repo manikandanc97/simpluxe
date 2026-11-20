@@ -2,6 +2,7 @@ import { PaletteIcon } from "@animateicons/react/lucide/palette-icon";
 import { LayersIcon } from "@animateicons/react/lucide/layers-icon";
 import { COMMON } from "../common";
 import type { ServiceData } from "@/types/service";
+import { SERVICE_DESCRIPTIONS } from "./service-seo";
 
 export const BRANDING_SERVICE: ServiceData = {
     "id": "branding",
@@ -10,7 +11,7 @@ export const BRANDING_SERVICE: ServiceData = {
     "category": COMMON.categories.foundation,
     "icon": PaletteIcon,
     "outcome": "A visual identity that makes the business recognizable.",
-    "shortTagline": "A distinct visual identity that makes your brand instantly recognizable and memorable.",
+    "shortTagline": "A distinct visual identity designed for consistent recognition across customer touchpoints.",
     "deliverables": [
       "Brand positioning & competitor visual audit",
       "Primary & responsive vector logo suites",
@@ -21,15 +22,15 @@ export const BRANDING_SERVICE: ServiceData = {
       "Pitch deck & corporate presentation templates",
       "Social media templates & avatar kit",
       "Print-ready stationery & business cards",
-      "Complete Brand Book & guideline PDF",
-      "Full source files (AI, SVG, PNG, Figma)"
+      "Brand guidelines document",
+      "Source file formats agreed in scope (such as AI, SVG, PNG or Figma)"
     ],
     "tabLabel": "Branding",
     "headline": {
       "normal": "Distinct visual identity systems that make ",
       "highlight": "your company unforgettable."
     },
-    "description": "We craft cohesive brand identities that communicate authority, evoke emotional resonance, and establish enduring market distinction across every physical and digital touchpoint.",
+    "description": SERVICE_DESCRIPTIONS.branding,
     "stats": [
       {
         "value": "Bespoke",
@@ -103,19 +104,19 @@ export const BRANDING_SERVICE: ServiceData = {
     "faqs": [
       {
         "question": "How many logo concepts do you present?",
-        "answer": "We present 3 distinctly different creative directions with full real-world mockups (screens, stationery, apparel) before refining your chosen path to perfection."
+        "answer": "The number of creative directions and mockups is defined in the approved brand-identity scope."
       },
       {
         "question": "Do I get full copyright and ownership of the logos?",
-        "answer": "Yes. Upon project completion, custom design deliverables and vector source assets are transferred directly to your business."
+        "answer": "Ownership and usage rights are defined in the project agreement, with third-party font, stock and software licences identified separately."
       },
       {
         "question": "Will the brand assets be ready for our web developers to use?",
-        "answer": "Yes. We supply web-ready SVG icons, CSS color tokens, and font pairing configurations ready for instant developer handoff."
+        "answer": "Developer-ready assets such as SVGs, color tokens and typography guidance can be included in the agreed handoff package."
       },
       {
         "question": "What files will I receive at the end?",
-        "answer": "You receive organized Figma libraries, vector AI/EPS files for print, SVG vectors for the web, high-res transparent PNGs, and a complete Brand Guidelines PDF."
+        "answer": "Final file formats and guidelines are listed in the project scope and may include Figma libraries, vector artwork, web assets and brand documentation."
       }
     ],
     "relatedWorkUrl": "/creations",
@@ -152,7 +153,7 @@ export const UI_UX_SERVICE: ServiceData = {
       "Micro-interaction & transition documentation",
       "Developer handoff specs with CSS tokens",
       "Micro-copy, empty states & error validations",
-      "WCAG 2.1 AA accessibility compliance check",
+      "WCAG 2.1 AA accessibility review where scoped",
       "Live Figma library link with continuous sync"
     ],
     "tabLabel": COMMON.labels.uiUxDesign,
@@ -160,11 +161,11 @@ export const UI_UX_SERVICE: ServiceData = {
       "normal": "Human-centric digital interfaces engineered with ",
       "highlight": "intuitive clarity and flow."
     },
-    "description": "We design intuitive, research-driven user journeys and high-craft design systems that transform complex product workflows into clear, frictionless digital experiences.",
+    "description": SERVICE_DESCRIPTIONS.uiUx,
     "stats": [
       {
-        "value": "Frictionless",
-        "label": "User-tested journeys"
+        "value": "Research-led",
+        "label": "Journey review and testing where scoped"
       },
       {
         "value": "Interactive",
@@ -215,7 +216,7 @@ export const UI_UX_SERVICE: ServiceData = {
       },
       {
         "title": "Engineering teams lacking design",
-        "desc": "Receiving pixel-perfect design system tokens with zero guesswork.",
+        "desc": "Receiving organized design-system tokens and documented handoff guidance.",
         "icon": "code"
       },
       {
@@ -231,19 +232,19 @@ export const UI_UX_SERVICE: ServiceData = {
     "faqs": [
       {
         "question": "Can our engineering team easily build from your Figma files?",
-        "answer": "Yes. Every component uses strict Auto-Layout, standardized 8pt spacing grids, and named design tokens that map 1:1 to Tailwind CSS classes."
+        "answer": "Figma files are organized for handoff with reusable components, layout rules and named tokens. Framework-specific mapping is agreed with the engineering team."
       },
       {
         "question": "Do you design both Desktop and Mobile responsive views?",
-        "answer": "Always. We design adaptive layouts for mobile viewports, tablets, and desktop resolutions, ensuring seamless usability across all screens."
+        "answer": "Required breakpoints and responsive states are defined in scope, typically covering the mobile, tablet and desktop contexts relevant to the product."
       },
       {
         "question": "Can we test the design on real smartphones before coding?",
-        "answer": "Yes. We configure interactive prototypes in the Figma Mirror app, so you can tap through real buttons, modals, and gestures on your actual device."
+        "answer": "Interactive prototypes can be tested on supported devices using the prototyping workflow agreed for the project."
       },
       {
         "question": "Do you include micro-animations and empty states?",
-        "answer": "Yes. We meticulously detail loading skeletons, error tooltips, empty states, and spring animations so developers don't have to guess."
+        "answer": "Loading, error, empty and motion states are documented where they are relevant and included in the agreed design scope."
       }
     ],
     "relatedWorkUrl": "/creations",

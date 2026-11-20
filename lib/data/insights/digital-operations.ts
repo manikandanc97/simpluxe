@@ -1,6 +1,7 @@
 import type { InsightPost } from "@/types/insight";
 
 export const WHEN_TO_MODERNIZE_INTERNAL_TOOLS_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "when-to-modernize-internal-tools",
   title: "Five signals your internal tools need modernization",
   excerpt:
@@ -49,6 +50,7 @@ export const WHEN_TO_MODERNIZE_INTERNAL_TOOLS_INSIGHT: InsightPost = {
 };
 
 export const MOBILE_OFFLINE_FIRST_ARCHITECTURE_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "mobile-offline-first-architecture",
   title: "Offline-first mobile apps that handle intermittent connectivity",
   excerpt:
@@ -97,6 +99,7 @@ export const MOBILE_OFFLINE_FIRST_ARCHITECTURE_INSIGHT: InsightPost = {
 };
 
 export const OBSERVABILITY_BEYOND_MONITORING_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "observability-beyond-monitoring",
   title: "Observability for business software: Tracing what actually matters",
   excerpt:

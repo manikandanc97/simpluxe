@@ -1,6 +1,7 @@
 import { ShoppingBagIcon } from "@animateicons/react/lucide/shopping-bag-icon";
 import { COMMON } from "../../common";
 import type { ServiceData } from "@/types/service";
+import { SERVICE_DESCRIPTIONS } from "../service-seo";
 
 export const ECOMMERCE_SERVICE: ServiceData = {
   id: "ecommerce",
@@ -8,9 +9,9 @@ export const ECOMMERCE_SERVICE: ServiceData = {
   name: COMMON.serviceNames.ecommerce,
   icon: ShoppingBagIcon,
   category: COMMON.categories.clientInterface,
-  outcome: "High-converting online stores that turn browsers into loyal buyers.",
+  outcome: "Conversion-focused online stores designed around clear buying journeys.",
   shortTagline:
-    "High-converting online stores built for speed, growth and seamless buying experiences.",
+    "Conversion-focused online stores built for clear, efficient buying experiences.",
   deliverables: [
     "Catalog modeling & inventory architecture",
     "Mobile-optimized checkout UX flow",
@@ -21,20 +22,19 @@ export const ECOMMERCE_SERVICE: ServiceData = {
     "Dynamic discount & coupon engine",
     "Search, filter & facet query optimization",
     "ERP & warehouse fulfillment webhooks",
-    "PCI-DSS security compliance standards",
+    "Payment-security responsibilities reviewed for the selected gateway",
     "High-concurrency flash sale caching",
   ],
   tabLabel: COMMON.serviceNames.ecommerce,
   headline: {
-    normal: "High-converting storefronts built to ",
-    highlight: "maximize speed & revenue.",
+    normal: "Conversion-focused storefronts built for ",
+    highlight: "speed and clear buying journeys.",
   },
-  description:
-    "Engineered online shopping experiences that eliminate checkout friction, load instantly on mobile, and turn first-time visitors into repeat brand advocates.",
+  description: SERVICE_DESCRIPTIONS.ecommerce,
   stats: [
     { value: "Optimized", label: "Checkout conversion UX" },
     { value: "Multi-rail", label: "Stripe & UPI gateways" },
-    { value: "Streamlined", label: "Frictionless checkout UX" },
+    { value: "Streamlined", label: "Clear checkout UX" },
   ],
   whatWeBuildSubtitle:
     "End-to-end commerce architectures designed for high volume sales.",
@@ -42,7 +42,7 @@ export const ECOMMERCE_SERVICE: ServiceData = {
     {
       title: "Custom DTC Storefronts",
       description:
-        "Bespoke digital brand experiences with fluid micro-interactions and instant cart drawers.",
+        "Bespoke digital brand experiences with fluid micro-interactions and responsive cart drawers.",
       bgColor: "bg-emerald-50",
       iconColor: "text-emerald-600",
     },
@@ -86,7 +86,7 @@ export const ECOMMERCE_SERVICE: ServiceData = {
     },
     {
       title: "Subscription businesses",
-      desc: "Retaining members with seamless renewal and flexible pause options.",
+      desc: "Planning renewal and pause options around the selected billing provider.",
       icon: "repeat",
     },
   ],
@@ -105,30 +105,30 @@ export const ECOMMERCE_SERVICE: ServiceData = {
       question:
         "Can we connect Indian payment gateways like Razorpay, PhonePe & UPI?",
       answer:
-        "Yes. We integrate native Indian gateways (Razorpay, Cashfree, UPI, NetBanking) as well as global payment rails like Stripe and PayPal with automated currency conversion.",
+        "Payment options are selected after checking business location, gateway eligibility, currencies and checkout requirements. Integrations may include Razorpay, Cashfree, UPI, Stripe or PayPal where supported.",
     },
     {
       question:
         "How do you handle inventory sync with our physical warehouse or ERP?",
       answer:
-        "We engineer automated bi-directional webhooks and background workers that synchronize stock levels with your ERP or inventory software in real time.",
+        "Inventory synchronization depends on the ERP or warehouse system's APIs and data model. We confirm direction, frequency and failure handling during integration planning.",
     },
     {
       question: "Can the checkout handle flash sale traffic spikes?",
       answer:
-        "Yes. By isolating catalog views on edge CDN and queuing checkout submissions, our architectures comfortably handle thousands of concurrent checkout requests without crashing.",
+        "Traffic requirements are established during scoping, then addressed with caching, queuing and load testing appropriate to the expected sales volume.",
     },
     {
       question: "Do you support custom subscription cycles?",
       answer:
-        "Yes. We support custom weekly, monthly, and quarterly recurring billing with automated invoice generation and customer self-serve pause/skip controls.",
+        "Subscription schedules, invoicing and pause or skip controls can be configured where supported by the selected payment provider and agreed scope.",
     },
   ],
   relatedWorkUrl: "/creations",
   mockup: {
     type: "ecommerce",
     title: "Simpluxe Storefront Engine",
-    badge: "Instant Checkout",
+    badge: "Checkout Flow",
     subtitle: "Omnichannel checkout & inventory hub",
     image: {
       publicId: "simpluxe/services/e-commerce_qpfzex",

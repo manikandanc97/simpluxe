@@ -35,7 +35,7 @@ export function InsightsView() {
         post.excerpt.toLowerCase().includes(query) ||
         post.category.toLowerCase().includes(query) ||
         post.author.toLowerCase().includes(query) ||
-        post.takeaways.some((t) => t.toLowerCase().includes(query))
+        (post.takeaways ?? []).some((t) => t.toLowerCase().includes(query))
       );
     });
 

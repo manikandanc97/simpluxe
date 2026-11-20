@@ -29,8 +29,8 @@ export const HERO_CONTENT: HeroContent = {
       icon: BriefcaseIcon,
     },
     {
-      value: "Complete",
-      label: COMMON.labels.fullCodeOwnership,
+      value: "Defined",
+      label: "Project Handover",
       icon: StarIcon,
     },
   ],
@@ -47,7 +47,7 @@ export const SELECTED_WORK_COPY = {
   canvasLabel: "Live project canvas",
   projectCountSuffix: " / 04",
   featuredBuild: "Featured build",
-  featuredDescription: "Built for clarity, conversion and scale.",
+  featuredDescription: "Built around each project's audience and requirements.",
   websiteAlt: (name: string) => `${name} website preview`,
   mobileAlt: (name: string) => `${name} mobile preview`,
 } as const;
@@ -55,7 +55,7 @@ export const HERO_COLLAGE_COPY = {
   selectedWorkEyebrow: "Selected work",
   selectedWorkTitle: "Built with purpose.",
   selectedWorkHighlightedText: "Proven in practice.",
-  selectedWorkDescription: "Explore the thinking, craft, and measurable outcomes behind a selection of our digital products.",
+  selectedWorkDescription: "Explore the thinking and craft behind a selection of our digital products.",
   featuredDescription: "Strategy, design and engineering in one focused build.",
   featuredLabel: "Featured",
   websiteAlt: (name: string) => `${name} website preview`,
@@ -74,7 +74,7 @@ export const HERO_SHOWCASE_COPY = {
     pagoda: "Artisan brand identity & creative design",
     studio: "End-to-end strategy, UI/UX, and development",
     gradient: "Design systems & 3D visual experiences",
-    creator: "Collaborative partnership with senior builders",
+    creator: "Collaborative project partnership",
     storyboard: "Interactive user journeys & agile delivery",
   },
 } as const;

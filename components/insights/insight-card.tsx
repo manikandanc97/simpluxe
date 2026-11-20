@@ -1,12 +1,12 @@
 import { InsightCover } from "@/components/insights/insight-cover";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
-import type { InsightPost } from "@/types/insight";
+import type { PublishedInsightPost } from "@/types/insight";
 import Link from "next/link";
 
 interface InsightCardProps {
   index: number;
-  post: InsightPost;
+  post: PublishedInsightPost;
 }
 
 export function InsightCard({ index, post }: InsightCardProps) {

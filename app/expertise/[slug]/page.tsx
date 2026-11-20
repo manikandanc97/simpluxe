@@ -6,13 +6,12 @@ import { COMMON } from "@/lib/data/common";
 import {
   getServiceBySlug,
   getServicePath,
+  getServiceSeo,
   getServiceSlug,
-  SERVICE_DETAIL_PAGE_COPY,
   SERVICES_LIST,
 } from "@/lib/data/services";
-import { CUSTOM_SOFTWARE_PAGE_COPY } from "@/lib/data/metadata";
 import { createPageMetadata } from "@/lib/metadata";
-import { getBreadcrumbSchema, getServiceSchema } from "@/lib/schema";
+import { getBreadcrumbSchema, getFaqPageSchema, getServiceSchema } from "@/lib/schema";
 
 type ExpertisePageProps = {
   params: Promise<{ slug: string }>;
@@ -29,14 +28,12 @@ export async function generateMetadata({ params }: ExpertisePageProps): Promise<
   const service = getServiceBySlug(slug);
   if (!service) return {};
 
-  const isCustomSoftware = service.id === "custom-software";
+  const seo = getServiceSeo(service.id);
+  if (!seo) return {};
+
   return createPageMetadata({
-    title: isCustomSoftware
-      ? CUSTOM_SOFTWARE_PAGE_COPY.title
-      : SERVICE_DETAIL_PAGE_COPY.metadataTitle(service.name),
-    description: isCustomSoftware
-      ? CUSTOM_SOFTWARE_PAGE_COPY.description
-      : service.description,
+    title: seo.title,
+    description: seo.description,
     path: getServicePath(service.id),
   });
 }
@@ -50,6 +47,8 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
   const { icon, ...viewService } = service;
   void icon;
   const path = getServicePath(service.id);
+  const seo = getServiceSeo(service.id);
+  if (!seo) notFound();
 
   return (
     <>
@@ -61,9 +60,10 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
             { name: service.name, path },
           ]),
           getServiceSchema(service),
+          getFaqPageSchema(service.faqs),
         ]}
       />
-      <ServiceDetailView service={viewService} />
+      <ServiceDetailView service={viewService} seo={seo} />
     </>
   );
 }

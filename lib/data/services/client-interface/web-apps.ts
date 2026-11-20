@@ -1,6 +1,7 @@
 import { LayoutDashboardIcon } from "@animateicons/react/lucide/layout-dashboard-icon";
 import { COMMON } from "../../common";
 import type { ServiceData } from "@/types/service";
+import { SERVICE_DESCRIPTIONS } from "../service-seo";
 
 export const WEB_APPS_SERVICE: ServiceData = {
   id: "web-apps",
@@ -29,8 +30,7 @@ export const WEB_APPS_SERVICE: ServiceData = {
     normal: "Software built around how ",
     highlight: "your business actually works.",
   },
-  description:
-    "We build modern, scalable web applications tailored to your unique workflows — from internal tools to customer-facing platforms. Designed for performance, security and growth.",
+  description: SERVICE_DESCRIPTIONS.webApps,
   stats: [
     { value: "Fullstack", label: "Next.js & TypeScript" },
     { value: "Custom", label: "Dedicated workflows" },
@@ -99,22 +99,22 @@ export const WEB_APPS_SERVICE: ServiceData = {
     {
       question: "How long does a web application project take?",
       answer:
-        "Typically between 4 to 12 weeks depending on scope, architecture complexity, and integrations. We break every project into iterative 2-week sprints with demoable increments.",
+        "Timing and delivery cadence depend on scope, integrations and review requirements. We provide a phased plan after technical discovery.",
     },
     {
       question: "Can you integrate with our existing software?",
       answer:
-        "Yes. We build robust API layers and secure webhooks to integrate seamlessly with your existing databases, legacy ERPs, payment gateways, and third-party SaaS tools.",
+        "We assess available APIs, data formats and security constraints before confirming an integration approach with existing systems.",
     },
     {
       question: "Can you build role-based dashboards?",
       answer:
-        "Absolutely. We implement granular Role-Based Access Control (RBAC) with secure session handling, audit trails, and multi-tenant permission isolation.",
+        "Role-based access, audit trails and tenant isolation can be designed where required by the product scope and security model.",
     },
     {
       question: "What happens after launch? Maintenance & support?",
       answer:
-        "We provide dedicated post-launch support after deployment, followed by flexible ongoing maintenance arrangements covering updates, security patches, and performance monitoring.",
+        "Post-launch support and ongoing maintenance are agreed separately, including coverage, response expectations and included work.",
     },
   ],
   relatedWorkUrl: "/creations?service=web-apps",

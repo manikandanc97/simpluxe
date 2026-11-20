@@ -1,7 +1,8 @@
-import { SITE } from "@/lib/data/site";
-import { LAYOUT_COPY, ABOUT_PAGE_COPY, CONTACT_PAGE_COPY, CUSTOM_SOFTWARE_PAGE_COPY } from "@/lib/data/metadata";
+import { BUSINESS_ENTITY, SITE } from "@/lib/data/site";
+import { ABOUT_PAGE_COPY, CONTACT_PAGE_COPY } from "@/lib/data/metadata";
 import {
   getServicePath,
+  getServiceSeo,
   SERVICES_LIST,
   type ServiceData,
 } from "@/lib/data/services";
@@ -13,45 +14,47 @@ export interface BreadcrumbEntry {
 }
 
 export function getOrganizationSchema() {
-  const sameAs = [
-    SITE.twitter,
-    SITE.linkedin,
-    SITE.instagram,
-    SITE.youtube,
-    SITE.github,
-  ].filter(Boolean);
+  const sameAs = Object.values(BUSINESS_ENTITY.socialProfiles).filter(Boolean);
 
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE.url}/#organization`,
-    name: SITE.name,
-    legalName: SITE.name,
-    url: SITE.url,
-    logo: DEFAULT_OG_IMAGE.url,
-    description: LAYOUT_COPY.description,
-    email: SITE.email,
-    telephone: SITE.phone,
+    name: BUSINESS_ENTITY.name,
+    alternateName: BUSINESS_ENTITY.alternateName,
+    url: BUSINESS_ENTITY.url,
+    logo: {
+      "@type": "ImageObject",
+      "@id": `${SITE.url}/#logo`,
+      url: DEFAULT_OG_IMAGE.url,
+      width: DEFAULT_OG_IMAGE.width,
+      height: DEFAULT_OG_IMAGE.height,
+    },
+    description: BUSINESS_ENTITY.description,
+    email: BUSINESS_ENTITY.email,
+    telephone: BUSINESS_ENTITY.telephone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: SITE.contactAddress,
-      addressRegion: "Tamil Nadu",
-      addressCountry: "IN",
+      streetAddress: BUSINESS_ENTITY.address.plusCode,
+      addressLocality: BUSINESS_ENTITY.address.locality,
+      addressRegion: BUSINESS_ENTITY.address.region,
+      addressCountry: BUSINESS_ENTITY.address.countryCode,
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 10.5702125,
-      longitude: 77.2514531,
+      latitude: BUSINESS_ENTITY.geo.latitude,
+      longitude: BUSINESS_ENTITY.geo.longitude,
     },
-    hasMap: SITE.contactMapUrl,
+    hasMap: BUSINESS_ENTITY.mapUrl,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     contactPoint: [
       {
         "@type": "ContactPoint",
-        contactType: "customer support",
-        email: SITE.email,
-        telephone: SITE.phone,
-        availableLanguage: ["en"],
+        "@id": `${SITE.url}/#project-contact`,
+        contactType: "project inquiries",
+        email: BUSINESS_ENTITY.email,
+        telephone: BUSINESS_ENTITY.telephone,
+        availableLanguage: BUSINESS_ENTITY.languages,
       },
     ],
   };
@@ -62,9 +65,10 @@ export function getWebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE.url}/#website`,
-    name: SITE.name,
+    name: BUSINESS_ENTITY.name,
+    alternateName: BUSINESS_ENTITY.alternateName,
     url: SITE.url,
-    description: LAYOUT_COPY.description,
+    description: BUSINESS_ENTITY.description,
     publisher: {
       "@id": `${SITE.url}/#organization`,
     },
@@ -73,9 +77,13 @@ export function getWebSiteSchema() {
 }
 
 export function getBreadcrumbSchema(items: BreadcrumbEntry[]) {
+  const currentPath = items.at(-1)?.path ?? "/";
+  const currentUrl = currentPath === "/" ? SITE.url : `${SITE.url}${currentPath}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${currentUrl}#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -90,26 +98,43 @@ export function getServicesSchema() {
 }
 
 export function getServiceSchema(service: ServiceData) {
-  const isCustomSoftware = service.id === "custom-software";
   const path = getServicePath(service.id);
+  const seo = getServiceSeo(service.id);
 
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${SITE.url}${path}#service`,
-    name: isCustomSoftware ? CUSTOM_SOFTWARE_PAGE_COPY.title : service.name,
-    description: isCustomSoftware
-      ? CUSTOM_SOFTWARE_PAGE_COPY.description
-      : service.description,
+    name: seo?.title ?? service.name,
+    description: service.description,
     url: `${SITE.url}${path}`,
+    isPartOf: {
+      "@id": `${SITE.url}/#website`,
+    },
     provider: {
       "@id": `${SITE.url}/#organization`,
     },
-    serviceType: isCustomSoftware ? "Custom Software Development" : service.name,
+    serviceType: seo?.heading ?? service.name,
     areaServed: {
       "@type": "Country",
-      name: "India",
+      identifier: BUSINESS_ENTITY.serviceArea.countryCode,
+      name: BUSINESS_ENTITY.serviceArea.name,
     },
+  };
+}
+
+export function getFaqPageSchema(faqs: ServiceData["faqs"]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 }
 
@@ -123,6 +148,9 @@ export function getAboutPageSchema() {
     description: ABOUT_PAGE_COPY.description,
     isPartOf: {
       "@id": `${SITE.url}/#website`,
+    },
+    breadcrumb: {
+      "@id": `${SITE.url}/inside#breadcrumb`,
     },
     mainEntity: {
       "@id": `${SITE.url}/#organization`,
@@ -140,6 +168,9 @@ export function getContactPageSchema() {
     description: CONTACT_PAGE_COPY.description,
     isPartOf: {
       "@id": `${SITE.url}/#website`,
+    },
+    breadcrumb: {
+      "@id": `${SITE.url}/connect#breadcrumb`,
     },
     mainEntity: {
       "@id": `${SITE.url}/#organization`,

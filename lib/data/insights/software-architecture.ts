@@ -1,6 +1,7 @@
 import type { InsightPost } from "@/types/insight";
 
 export const ARCHITECTURE_BEFORE_FEATURES_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "architecture-before-features",
   title: "Why architecture should be decided before the feature list grows",
   excerpt:
@@ -51,6 +52,7 @@ export const ARCHITECTURE_BEFORE_FEATURES_INSIGHT: InsightPost = {
 };
 
 export const API_FIRST_PRODUCT_FOUNDATIONS_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "api-first-product-foundations",
   title: "Building API-first systems that survive client-side rewrites",
   excerpt:
@@ -99,6 +101,7 @@ export const API_FIRST_PRODUCT_FOUNDATIONS_INSIGHT: InsightPost = {
 };
 
 export const SCALING_SAAS_DATA_LAYERS_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "scaling-saas-data-layers",
   title: "Multi-tenant database architectures: Isolation vs simplicity",
   excerpt:

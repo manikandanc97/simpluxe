@@ -1,19 +1,19 @@
-import { SITE } from "./site";
+import { BUSINESS_ENTITY, SITE } from "./site";
 
 // metadata
 export const HOME_PAGE_COPY = {
   title: `Custom Software & Web Development Company · ${SITE.name}`,
-  description: "Simpluxe develops custom software, scalable web applications, SaaS platforms, and mobile apps focused on clarity, performance, and clean architecture.",
+  description: BUSINESS_ENTITY.description,
 } as const;
 
 export const ABOUT_PAGE_COPY = {
   title: "Software Studio & Engineering Philosophy",
-  description: "Learn about Simpluxe's engineering philosophy: focused development, clean system architecture, complete project handover, and high-performance digital products.",
+  description: `Learn how ${BUSINESS_ENTITY.name} approaches custom software, digital product design, system architecture and project delivery.`,
 } as const;
 
 export const CONTACT_PAGE_COPY = {
   title: "Start a Project · Engineering Consultation",
-  description: "Connect with the Simpluxe team to discuss your web application, mobile product, or software architecture and plan technical requirements.",
+  description: `Contact ${BUSINESS_ENTITY.name} to discuss a website, web application, mobile app, SaaS product or custom software project.`,
 } as const;
 
 export const LAB_PAGE_COPY = {
@@ -26,22 +26,17 @@ export const EXPERTISE_PAGE_COPY = {
   description: "Explore our software engineering expertise: custom web applications, SaaS platforms, mobile apps, e-commerce, and product design built to scale.",
 } as const;
 
-export const CUSTOM_SOFTWARE_PAGE_COPY = {
-  title: "Custom Software Development Services",
-  description: "Bespoke software development services engineered for modern businesses. We build scalable business applications, workflow platforms, and custom APIs.",
-} as const;
-
 export const WORK_PAGE_COPY = {
-  title: "Selected Work & Software Case Studies",
-  description: "Explore custom web applications, mobile platforms, and high-performance digital products engineered by Simpluxe for modern businesses.",
+  title: "Selected Software & Digital Product Work",
+  description: "Explore selected websites, web applications and mobile product work by Simpluxe.",
 } as const;
 
 // pages
 export const LAYOUT_COPY = {
   title: `Custom Software & Web Development Company · ${SITE.name}`,
   titleTemplate: `%s · ${SITE.name}`,
-  description: "Simpluxe develops custom software, scalable web applications, SaaS platforms, and mobile apps focused on clarity, performance, and clean architecture.",
-  socialDescription: "Simpluxe develops custom software, scalable web applications, SaaS platforms, and mobile apps focused on clarity, performance, and clean architecture.",
+  description: BUSINESS_ENTITY.description,
+  socialDescription: BUSINESS_ENTITY.description,
   siteName: SITE.name,
   skipToContent: "Skip to content",
 } as const;

@@ -1,6 +1,7 @@
 import type { InsightPost } from "@/types/insight";
 
 export const MVP_WITHOUT_THROWAWAY_CODE_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "mvp-without-throwaway-code",
   title: "How to build an MVP without creating throwaway software",
   excerpt:
@@ -49,6 +50,7 @@ export const MVP_WITHOUT_THROWAWAY_CODE_INSIGHT: InsightPost = {
 };
 
 export const TECHNICAL_DEBT_REPAYMENT_STRATEGY_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "technical-debt-repayment-strategy",
   title: "How to pay down technical debt without pausing product delivery",
   excerpt:

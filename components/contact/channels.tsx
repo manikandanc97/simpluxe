@@ -4,7 +4,7 @@ import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { CONTACT_CHANNELS_COPY } from "@/lib/data/contact";
 
 import { useEffect, useRef, useState } from "react";
-import { SITE } from "@/lib/data/site";
+import { BUSINESS_ENTITY, SITE } from "@/lib/data/site";
 import { AnimatedMail } from "@/components/ui/animated-icons/convenience-icons";
 import { WhatsAppIcon } from "@/components/contact/whatsapp-icon";
 import { ArrowRightIcon } from "@animateicons/react/lucide/arrow-right-icon";
@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function Channels() {
   const mapQuery = encodeURIComponent(SITE.contactMapCoordinates);
+  const telephoneHref = `tel:${SITE.phone.replace(/\s/g, "")}`;
   const [copiedEmail, setCopiedEmail] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(copyTimer.current), []);
@@ -92,10 +93,12 @@ export function Channels() {
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
                     {CONTACT_CHANNELS_COPY.instantConsultation}</span>
-                  <Badge variant="emerald" size="sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    {SITE.availability}
-                  </Badge>
+                  {SITE.availability && (
+                    <Badge variant="emerald" size="sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      {SITE.availability}
+                    </Badge>
+                  )}
                 </div>
                 <span className="text-sm font-bold text-foreground transition-colors group-hover:text-emerald-700">
                   {CONTACT_CHANNELS_COPY.chatOnWhatsapp}</span>
@@ -114,6 +117,27 @@ export function Channels() {
               allowFullScreen
               className="block h-56 w-full border-0 sm:h-64"
             />
+            <div className="flex flex-col gap-2 border-t border-border p-4 text-sm">
+              <span className="font-semibold text-heading">
+                {BUSINESS_ENTITY.name}
+              </span>
+              <div className="flex flex-wrap gap-3 text-muted-foreground">
+                <a href={telephoneHref} className="font-medium text-primary hover:underline">
+                  {CONTACT_CHANNELS_COPY.phone}: {SITE.phone}
+                </a>
+                <a
+                  href={SITE.contactMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
+                  {CONTACT_CHANNELS_COPY.openInMaps}
+                </a>
+              </div>
+              <span className="text-muted-foreground">
+                {CONTACT_CHANNELS_COPY.officeLocation}: {SITE.contactAddress}
+              </span>
+            </div>
           </div>
         )}
       </CardContent>

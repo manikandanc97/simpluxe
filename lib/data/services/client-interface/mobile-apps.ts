@@ -1,6 +1,7 @@
 import { SmartphoneIcon } from "@animateicons/react/lucide/smartphone-icon";
 import { COMMON } from "../../common";
 import type { ServiceData } from "@/types/service";
+import { SERVICE_DESCRIPTIONS } from "../service-seo";
 
 export const MOBILE_APPS_SERVICE: ServiceData = {
   id: "mobile-apps",
@@ -29,8 +30,7 @@ export const MOBILE_APPS_SERVICE: ServiceData = {
     normal: "Native-grade mobile applications built for ",
     highlight: "daily user engagement.",
   },
-  description:
-    "Crafted for iOS and Android with fluid transitions, offline-first reliability, and responsive tactile gestures that users love opening every day.",
+  description: SERVICE_DESCRIPTIONS.mobileApps,
   stats: [
     { value: "Cross-platform", label: COMMON.labels.iosAndroid },
     { value: "Offline-first", label: "Local SQLite sync" },
@@ -81,7 +81,7 @@ export const MOBILE_APPS_SERVICE: ServiceData = {
     },
     {
       title: "Community & Social networks",
-      desc: "Maximizing retention through instant push updates and reactive chat.",
+      desc: "Supporting timely updates and chat where those features fit the product.",
       icon: "users",
     },
     {
@@ -103,23 +103,23 @@ export const MOBILE_APPS_SERVICE: ServiceData = {
       question:
         "Do you build separate apps for iOS and Android or one codebase?",
       answer:
-        "We usually recommend React Native with Expo to share a codebase across iOS and Android. If your app needs platform-specific features, we plan the native work around those requirements.",
+        "We evaluate React Native, Expo and platform-specific development against the app's device features, performance needs and release requirements before recommending an architecture.",
     },
     {
       question: "Can the app work when the user has no internet connection?",
       answer:
-        "Yes. We build offline-first architectures using local encrypted storage (SQLite / WatermelonDB) that automatically reconciles changes once back online.",
+        "Where offline use is required, we can design local storage and synchronization around the app's data sensitivity and conflict-resolution needs.",
     },
     {
       question:
         "Do you handle the Apple App Store and Google Play approval process?",
       answer:
-        "Yes. We handle end-to-end store provisioning, certificate signing, screenshot assets, privacy guidelines, and app submission through approval.",
+        "We can prepare signing, store assets and submissions, then respond to review feedback. Final approval remains with Apple or Google.",
     },
     {
       question: "How do updates work after the app is live in the stores?",
       answer:
-        "With Expo and EAS Over-The-Air (OTA) updates, critical bug fixes and UI updates can be deployed directly to user devices instantly without waiting for app store re-review.",
+        "Eligible JavaScript and asset updates may be delivered through Expo EAS Update. Native changes and updates covered by store policies still require a new store submission.",
     },
   ],
   relatedWorkUrl: "/creations?service=mobile-apps",
@@ -127,7 +127,7 @@ export const MOBILE_APPS_SERVICE: ServiceData = {
     type: "mobile",
     title: "Simpluxe Mobile Native Hub",
     badge: COMMON.labels.iosAndroid,
-    subtitle: "60 FPS offline-first mobile app",
+    subtitle: "Cross-platform mobile app concept",
     image: {
       publicId: "simpluxe/services/Mobile-App_tviiaz",
       version: "1791116453",

@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import { InsightDetailView } from "@/components/pages/insight-detail-view";
 import { JsonLd } from "@/components/shared/json-ld";
 import { COMMON } from "@/lib/data/common";
-import { getInsight, INSIGHTS, INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
+import {
+  getInsight,
+  INSIGHTS,
+  INSIGHTS_PAGE_COPY,
+  isPublishedInsight,
+} from "@/lib/data/insights";
 import { SITE } from "@/lib/data/site";
 import { createPageMetadata } from "@/lib/metadata";
 import { getBreadcrumbSchema } from "@/lib/schema";
@@ -23,19 +28,31 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
   const post = getInsight(slug);
 
   if (!post) return {};
+  if (!isPublishedInsight(post)) {
+    return {
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
 
-  return createPageMetadata({
-    title: post.title,
-    description: post.excerpt,
+  const metadata = createPageMetadata({
+    title: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt,
     path: INSIGHTS_PAGE_COPY.articlePath(post.slug),
   });
+
+  return post.seoTitle
+    ? { ...metadata, title: { absolute: post.seoTitle } }
+    : metadata;
 }
 
 export default async function InsightPage({ params }: InsightPageProps) {
   const { slug } = await params;
   const post = getInsight(slug);
 
-  if (!post) notFound();
+  if (!post || !isPublishedInsight(post)) notFound();
 
   const path = INSIGHTS_PAGE_COPY.articlePath(post.slug);
 
@@ -52,9 +69,9 @@ export default async function InsightPage({ params }: InsightPageProps) {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: post.title,
-            description: post.excerpt,
+            description: post.seoDescription ?? post.excerpt,
             datePublished: post.publishedAt,
-            author: { "@type": "Organization", name: SITE.name },
+            author: { "@type": "Organization", name: post.author },
             publisher: { "@id": `${SITE.url}/#organization` },
             mainEntityOfPage: `${SITE.url}${path}`,
           },

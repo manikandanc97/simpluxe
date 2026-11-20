@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
         height: 2154,
       },
     },
-    result: "Pan-India Orders",
+    result: "Artisan Showcase",
     stack: [COMMON.technology.nextjs, COMMON.technology.tailwind, COMMON.technology.typescript],
   },
   {
@@ -187,7 +187,7 @@ export const WORK_CONTROLS_COPY = {
 export const WORK_HERO_COPY = {
   engineeredDigitalProductsFor: "Software Engineering & ",
   modernBusinesses: "Digital Products Portfolio.",
-  fromHighConversionWebsitesToComplex: "Explore selected case studies: bespoke web applications, mobile platforms, and high-performance digital systems engineered by Simpluxe.",
+  fromHighConversionWebsitesToComplex: "Explore selected websites, web applications and mobile product work by Simpluxe.",
 } as const;
 
 // pages

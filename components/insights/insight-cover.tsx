@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { cn } from "@/lib/utils";
-import type { InsightPost } from "@/types/insight";
+import type { PublishedInsightPost } from "@/types/insight";
 
-const TONE_STYLES: Record<InsightPost["tone"], string> = {
+const TONE_STYLES: Record<PublishedInsightPost["tone"], string> = {
   ocean: "bg-dark text-white",
   sky: "bg-primary text-white",
   slate: "bg-slate-200 text-heading",
@@ -13,7 +13,7 @@ const TONE_STYLES: Record<InsightPost["tone"], string> = {
 interface InsightCoverProps {
   className?: string;
   index: number;
-  post: InsightPost;
+  post: PublishedInsightPost;
   priority?: boolean;
   variant?: "card" | "hero";
 }

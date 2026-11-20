@@ -1,6 +1,7 @@
 import type { InsightPost } from "@/types/insight";
 
 export const DESIGNING_CALM_BUSINESS_SOFTWARE_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "designing-calm-business-software",
   title: "Designing calm software for complex business workflows",
   excerpt:
@@ -49,6 +50,7 @@ export const DESIGNING_CALM_BUSINESS_SOFTWARE_INSIGHT: InsightPost = {
 };
 
 export const DESIGN_TOKENS_AT_SCALE_INSIGHT: InsightPost = {
+  status: "draft",
   slug: "design-tokens-at-scale",
   title: "Design tokens that engineering teams actually enjoy using",
   excerpt:

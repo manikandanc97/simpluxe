@@ -116,8 +116,8 @@ export const STEPS: StepConfig[] = [
       },
       {
         icon: ClockIcon,
-        title: "Weekly Staging Builds",
-        desc: "Live demo environments to test sprint deliverables.",
+        title: "Staging Builds",
+        desc: "Preview cadence and test environments are agreed in scope.",
       },
       {
         icon: ShieldCheckIcon,
@@ -141,17 +141,17 @@ export const STEPS: StepConfig[] = [
     headlineFirst: "Launch is just",
     headlineAccent: "the beginning.",
     summary:
-      "DNS cutover, SEO indexing check, telemetry dashboards, and post-launch support to ensure a smooth transition to production.",
+      "Production cutover, indexing checks, telemetry and launch support can be included according to the agreed deployment plan.",
     features: [
       {
         icon: RocketIcon,
         title: "Production Cutover",
-        desc: "Secure SSL, DNS propagation, and edge caching.",
+        desc: "HTTPS, DNS and caching configured where included in scope.",
       },
       {
         icon: TargetIcon,
         title: "SEO & Analytics",
-        desc: "Sitemaps, structured data, and real-time tracking.",
+        desc: "Sitemaps, structured data and agreed analytics setup.",
       },
       {
         icon: ShieldCheckIcon,
@@ -161,7 +161,7 @@ export const STEPS: StepConfig[] = [
       {
         icon: UsersIcon,
         title: "Post-Launch Support",
-        desc: "Initial deployment monitoring and ongoing maintenance options.",
+        desc: "Coverage and maintenance options agreed separately.",
       },
     ],
     nextStepName: "Start Project",
@@ -171,7 +171,7 @@ export const STEPS: StepConfig[] = [
 export const HOW_WE_WORK_TRUST_POINTS = [
   "Direct engineering focus",
   "Direct communication",
-  "Post-launch support",
+  "Scoped launch support",
 ] as const;
 
 export const HOW_WE_WORK_SECTION_CONTENT = {

@@ -1,6 +1,7 @@
 import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
 import { COMMON } from "../../common";
 import type { ServiceData } from "@/types/service";
+import { SERVICE_DESCRIPTIONS } from "../service-seo";
 
 export const WEBSITES_SERVICE: ServiceData = {
   id: "websites",
@@ -26,11 +27,10 @@ export const WEBSITES_SERVICE: ServiceData = {
   ],
   tabLabel: COMMON.serviceNames.websites,
   headline: {
-    normal: "High-converting ",
+    normal: "Conversion-focused ",
     highlight: "digital experiences.",
   },
-  description:
-    "We design and engineer bespoke websites optimized for speed, visual authority, and seamless conversions. Built with clean architecture and fast load times.",
+  description: SERVICE_DESCRIPTIONS.websites,
   stats: [
     { value: "Modern", label: "Responsive architecture" },
     { value: "Fast", label: "Optimized load performance" },
@@ -86,7 +86,7 @@ export const WEBSITES_SERVICE: ServiceData = {
     },
     {
       title: "Agencies & studios",
-      desc: "Seeking cutting-edge interactive web experiences that win awards.",
+      desc: "Seeking distinctive interactive web experiences for their audiences.",
       icon: "award",
     },
   ],
@@ -101,22 +101,22 @@ export const WEBSITES_SERVICE: ServiceData = {
     {
       question: "How long does a custom website build usually take?",
       answer:
-        "A typical custom website takes between 2 to 5 weeks from initial wireframes and visual design to final testing and global domain launch.",
+        "Timelines depend on page count, content readiness, integrations and review cycles. We confirm a delivery plan after scoping the website.",
     },
     {
       question: "Can our team easily edit text, images, and blog posts?",
       answer:
-        "Yes. We configure intuitive headless CMS solutions (or visual content blocks) so your non-technical marketing team can update content anytime without touching code.",
+        "Where content editing is required, we can configure a headless CMS or structured content blocks based on the agreed scope.",
     },
     {
       question: "Will the website be fast and rank well on Google?",
       answer:
-        "All our websites are engineered with Next.js edge caching and asset optimization designed to pass Google Lighthouse Core Web Vitals benchmarks.",
+        "We use performance-focused rendering, caching and asset optimization. Search visibility and Core Web Vitals results depend on content, hosting, third-party scripts and real-user conditions.",
     },
     {
       question: "Do you help with domain setup and SSL certificates?",
       answer:
-        "Yes, we manage full production deployment, automatic HTTPS certificate provisioning, DNS routing, and global CDN caching.",
+        "Domain, DNS, HTTPS and CDN setup can be included in the agreed deployment scope, subject to access to the relevant accounts.",
     },
   ],
   relatedWorkUrl: "/creations?service=websites",

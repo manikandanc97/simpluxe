@@ -1,5 +1,7 @@
 import { InsightCard } from "@/components/insights/insight-card";
 import { InsightCover } from "@/components/insights/insight-cover";
+import { ArticleContents } from "@/components/insights/article-contents";
+import { AccordionList } from "@/components/sections/faq/accordion-list";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { Container } from "@/components/ui/container";
 import { PageHero } from "@/components/ui/page-hero";
@@ -7,10 +9,26 @@ import { Section } from "@/components/ui/section";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
 import { INSIGHTS, INSIGHTS_PAGE_COPY } from "@/lib/data/insights";
 import { cn } from "@/lib/utils";
-import type { InsightPost } from "@/types/insight";
+import type { InsightRichText, PublishedInsightPost } from "@/types/insight";
+import { GlobeIcon } from "@animateicons/react/lucide/globe-icon";
 import Link from "next/link";
 
-export function InsightDetailView({ post }: { post: InsightPost }) {
+function RichText({ content }: { content: InsightRichText }) {
+  if (typeof content === "string") return content;
+
+  return content.map((part, index) => {
+    if (typeof part === "string") return part;
+    if (part.type === "strong") return <strong key={index}>{part.text}</strong>;
+
+    return (
+      <Link key={index} href={part.href} className="font-semibold text-primary underline underline-offset-4">
+        {part.text}
+      </Link>
+    );
+  });
+}
+
+export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
   const postIndex = INSIGHTS.findIndex((item) => item.slug === post.slug);
   const related = INSIGHTS.filter((item) => item.slug !== post.slug).slice(0, 3);
 
@@ -42,57 +60,75 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
 
           <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
             <aside className="order-2 flex flex-col gap-8 lg:order-1 lg:col-span-5 lg:sticky lg:top-24">
-              <div className="flex flex-col gap-6 rounded-3xl border border-primary-hover/50 bg-primary p-6 text-white shadow-luxury sm:p-8">
-                <div className="flex items-center gap-4">
-                  <span className="flex size-12 items-center justify-center rounded-2xl border border-white/20 bg-white/15 text-white backdrop-blur-sm shadow-xs">
-                    <AnimatedIcon name="lightbulb" size={20} />
-                  </span>
-                  <h2 className="text-xl font-bold text-white sm:text-2xl">
-                    {INSIGHTS_PAGE_COPY.keyTakeaways}
-                  </h2>
+              {post.takeaways?.length ? (
+                <div className="flex flex-col gap-6 rounded-3xl border border-primary-hover/50 bg-primary p-6 text-white shadow-luxury sm:p-8">
+                  <div className="flex items-center gap-4">
+                    <span className="flex size-12 items-center justify-center rounded-2xl border border-white/20 bg-white/15 text-white backdrop-blur-sm shadow-xs">
+                      <AnimatedIcon name="lightbulb" size={20} />
+                    </span>
+                    <h2 className="text-xl font-bold text-white sm:text-2xl">
+                      {INSIGHTS_PAGE_COPY.keyTakeaways}
+                    </h2>
+                  </div>
+                  <ul className="flex flex-col gap-5">
+                    {post.takeaways.map((takeaway) => (
+                      <li key={takeaway} className="flex items-start gap-4 text-sm leading-relaxed text-white/90 sm:text-base">
+                        <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/20 font-mono text-xs font-bold text-white shadow-2xs">
+                          <AnimatedIcon name="check" size={13} />
+                        </span>
+                        <span>{takeaway}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="flex flex-col gap-5">
-                  {post.takeaways.map((takeaway) => (
-                    <li key={takeaway} className="flex items-start gap-4 text-sm leading-relaxed text-white/90 sm:text-base">
-                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/20 font-mono text-xs font-bold text-white shadow-2xs">
-                        <AnimatedIcon name="check" size={13} />
-                      </span>
-                      <span>{takeaway}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              ) : null}
 
-              <div className="flex flex-col gap-4 border-l-2 border-primary/20 pl-5">
-                <span className="text-xs font-bold tracking-widest text-primary">
-                  {INSIGHTS_PAGE_COPY.articleContents}
-                </span>
-                <ol className="flex flex-col gap-3">
-                  {post.sections.map((section, index) => (
-                    <li key={section.heading} className="flex items-start gap-3 text-sm text-muted-foreground">
-                      <span className="font-mono text-xs font-bold text-primary">
-                        {INSIGHTS_PAGE_COPY.sectionLabel(index)}
-                      </span>
-                      <span>{section.heading}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+              <nav
+                aria-label={INSIGHTS_PAGE_COPY.articleContents}
+                className="flex flex-col gap-4 rounded-3xl border border-border bg-white p-4 shadow-card sm:p-5"
+              >
+                <div className="flex items-center gap-3 border-b border-border pb-4">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <AnimatedIcon name="list-checks" size={18} />
+                  </span>
+                  <span className="text-sm font-bold tracking-wider text-heading">
+                    {INSIGHTS_PAGE_COPY.articleContents}
+                  </span>
+                </div>
+                <ArticleContents
+                  headings={post.sections.map((section) => section.heading)}
+                  showSectionLabels={post.showSectionLabels !== false}
+                />
+              </nav>
             </aside>
 
             <article className="order-1 flex flex-col gap-12 lg:order-2 lg:col-span-7">
+              {post.introduction ? (
+                <div className="flex flex-col gap-5 text-sm leading-loose text-muted-foreground sm:text-base">
+                  {post.introduction.map((paragraph, index) => (
+                    <p key={index}><RichText content={paragraph} /></p>
+                  ))}
+                </div>
+              ) : null}
+
               {post.sections.map((section, index) => (
-                <section key={section.heading} className="flex flex-col gap-6">
+                <section
+                  id={`insight-section-${index + 1}`}
+                  key={section.heading}
+                  className="flex scroll-mt-24 flex-col gap-6"
+                >
                   <div className="flex items-start gap-4 border-b border-border pb-5">
-                    <span className="font-mono text-xs font-bold text-primary">
-                      {INSIGHTS_PAGE_COPY.sectionLabel(index)}
-                    </span>
+                    {post.showSectionLabels !== false ? (
+                      <span className="font-mono text-xs font-bold text-primary">
+                        {INSIGHTS_PAGE_COPY.sectionLabel(index)}
+                      </span>
+                    ) : null}
                     <h2 className="type-h3 text-heading">{section.heading}</h2>
                   </div>
 
                   <div className="flex flex-col gap-5 text-sm leading-loose text-muted-foreground sm:text-base">
-                    {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
+                    {section.paragraphs.map((paragraph, paragraphIndex) => (
+                      <p key={paragraphIndex}><RichText content={paragraph} /></p>
                     ))}
                   </div>
 
@@ -105,6 +141,87 @@ export function InsightDetailView({ post }: { post: InsightPost }) {
                         </li>
                       ))}
                     </ul>
+                  ) : null}
+
+                  {section.subsections?.map((subsection) => (
+                    <div key={subsection.heading} className="flex flex-col gap-4">
+                      {subsection.heading ? (
+                        <h3 className="text-xl font-bold text-heading">{subsection.heading}</h3>
+                      ) : null}
+                      {subsection.paragraphs.map((paragraph, paragraphIndex) => (
+                        <p key={paragraphIndex} className="text-sm leading-loose text-muted-foreground sm:text-base">
+                          <RichText content={paragraph} />
+                        </p>
+                      ))}
+                      {subsection.bullets ? (
+                        <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
+                          {subsection.bullets.map((bullet) => (
+                            <li key={bullet} className="flex items-start gap-3">
+                              <AnimatedIcon name="arrow-right" size={14} className="text-primary" />
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  ))}
+
+                  {section.table ? (
+                    <div className="overflow-x-auto rounded-2xl border border-border shadow-card">
+                      <table className="min-w-full border-collapse bg-white text-left text-sm">
+                        <thead className="bg-surface text-heading">
+                          <tr>
+                            {section.table.headers.map((header) => (
+                              <th key={header} scope="col" className="border-b border-border p-4 font-semibold">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="text-muted-foreground">
+                          {section.table.rows.map((row, rowIndex) => (
+                            <tr key={rowIndex} className="border-b border-border last:border-b-0">
+                              {row.map((cell, cellIndex) => (
+                                <td key={cellIndex} className="p-4 align-top leading-relaxed">{cell}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : null}
+
+                  {section.checklist ? (
+                    <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
+                      {section.checklist.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <AnimatedIcon name="arrow-right" size={14} className="text-primary" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+
+                  {section.faqs ? (
+                    <AccordionList
+                      defaultOpenId={`${post.slug}-faq-1`}
+                      faqs={section.faqs.map((faq, faqIndex) => ({
+                        id: `${post.slug}-faq-${faqIndex + 1}`,
+                        num: String(faqIndex + 1).padStart(2, "0"),
+                        category: post.category,
+                        icon: GlobeIcon,
+                        question: faq.question,
+                        answer: faq.answer,
+                      }))}
+                    />
+                  ) : null}
+
+                  {section.closingParagraphs ? (
+                    <div className="flex flex-col gap-5 text-sm leading-loose text-muted-foreground sm:text-base">
+                      {section.closingParagraphs.map((paragraph, paragraphIndex) => (
+                        <p key={paragraphIndex}><RichText content={paragraph} /></p>
+                      ))}
+                    </div>
                   ) : null}
 
                   {section.callout ? (

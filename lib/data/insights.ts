@@ -1,4 +1,4 @@
-import type { InsightPost } from "@/types/insight";
+import type { InsightPost, PublishedInsightPost } from "@/types/insight";
 import {
   API_FIRST_PRODUCT_FOUNDATIONS_INSIGHT,
   ARCHITECTURE_BEFORE_FEATURES_INSIGHT,
@@ -17,11 +17,12 @@ import {
   OBSERVABILITY_BEYOND_MONITORING_INSIGHT,
   WHEN_TO_MODERNIZE_INTERNAL_TOOLS_INSIGHT,
 } from "./insights/digital-operations";
+import { TIRUPPUR_TEXTILE_WEBSITES_INSIGHT } from "./insights/tiruppur-textile-websites";
 
 export { INSIGHTS_PAGE_COPY } from "./insights/copy";
-export type { InsightPost } from "@/types/insight";
+export type { InsightPost, PublishedInsightPost } from "@/types/insight";
 
-export const INSIGHTS: readonly InsightPost[] = [
+const ALL_INSIGHTS: readonly InsightPost[] = [
   ARCHITECTURE_BEFORE_FEATURES_INSIGHT,
   DESIGNING_CALM_BUSINESS_SOFTWARE_INSIGHT,
   MVP_WITHOUT_THROWAWAY_CODE_INSIGHT,
@@ -32,8 +33,18 @@ export const INSIGHTS: readonly InsightPost[] = [
   MOBILE_OFFLINE_FIRST_ARCHITECTURE_INSIGHT,
   TECHNICAL_DEBT_REPAYMENT_STRATEGY_INSIGHT,
   OBSERVABILITY_BEYOND_MONITORING_INSIGHT,
+  TIRUPPUR_TEXTILE_WEBSITES_INSIGHT,
 ];
 
+export function isPublishedInsight(
+  insight: InsightPost
+): insight is PublishedInsightPost {
+  return insight.status === "published";
+}
+
+/** Public article collection. Draft content must only be accessed through getInsight. */
+export const INSIGHTS: readonly PublishedInsightPost[] = ALL_INSIGHTS.filter(isPublishedInsight);
+
 export function getInsight(slug: string) {
-  return INSIGHTS.find((insight) => insight.slug === slug);
+  return ALL_INSIGHTS.find((insight) => insight.slug === slug);
 }

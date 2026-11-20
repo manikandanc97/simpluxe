@@ -2,6 +2,7 @@ import { PackageIcon } from "@animateicons/react/lucide/package-icon";
 import { CpuIcon } from "@animateicons/react/lucide/cpu-icon";
 import { COMMON } from "../common";
 import type { ServiceData } from "@/types/service";
+import { SERVICE_DESCRIPTIONS } from "./service-seo";
 
 export const SAAS_SERVICE: ServiceData = {
     "id": "saas",
@@ -18,7 +19,7 @@ export const SAAS_SERVICE: ServiceData = {
       "Role-Based Access Control (Owner/Admin/Member)",
       "API key generation & rate-limiting middleware",
       "Webhook dispatcher & failure retry system",
-      "Audit logging & enterprise compliance readiness",
+      "Audit logging and compliance-supporting controls where scoped",
       "Real-time team collaboration / websockets",
       "Automated transactional emails (Resend)",
       "Backward-compatible database migration tooling",
@@ -29,11 +30,11 @@ export const SAAS_SERVICE: ServiceData = {
       "normal": "Multi-tenant software platforms engineered from ",
       "highlight": "MVP to enterprise scale."
     },
-    "description": "We build robust, subscription-driven software platforms featuring frictionless self-serve onboarding, tiered billing, workspace permissions, and audit-ready security.",
+    "description": SERVICE_DESCRIPTIONS.saas,
     "stats": [
       {
         "value": "Cloud-native",
-        "label": "High-availability deployment"
+        "label": "Deployment plan matched to requirements"
       },
       {
         "value": "Self-serve",
@@ -41,7 +42,7 @@ export const SAAS_SERVICE: ServiceData = {
       },
       {
         "value": "Multi-tenant",
-        "label": "Isolated data security"
+        "label": "Tenant isolation by design"
       }
     ],
     "whatWeBuildSubtitle": "Modern cloud software designed for recurring subscription growth.",
@@ -66,7 +67,7 @@ export const SAAS_SERVICE: ServiceData = {
       },
       {
         "title": "Product Analytics & Audit Logs",
-        "description": "Track user events, feature usage, retention funnels, and enterprise compliance logs.",
+        "description": "Track agreed product events, feature usage and audit records for operational review.",
         "bgColor": "bg-emerald-50",
         "iconColor": "text-emerald-600"
       }
@@ -105,19 +106,19 @@ export const SAAS_SERVICE: ServiceData = {
     "faqs": [
       {
         "question": "How do you handle tenant data isolation in multi-tenant SaaS?",
-        "answer": "We implement PostgreSQL Row-Level Security (RLS) combined with organization schema namespaces, establishing strict tenant data isolation at the database engine level."
+        "answer": "Tenant isolation is designed for the application's risk model and may use PostgreSQL row-level security, separate schemas or another reviewed approach."
       },
       {
         "question": "Can we charge per seat, per usage, or a flat monthly fee?",
-        "answer": "Yes. We support all common billing models in Stripe: per-seat licensing, tier-based feature gating, and metered usage with automated overage invoicing."
+        "answer": "Billing models are selected during scoping and can include seat-based, tiered or usage-based charging where supported by the chosen payment platform."
       },
       {
         "question": "How do team invites and member permissions work?",
-        "answer": "We build magic-link team invitation workflows where workspace administrators can assign granular roles (Admin, Editor, Viewer, Billing Only) with instant permission propagation."
+        "answer": "Invitation flows, roles and permission updates are designed around the product's organization model and access requirements."
       },
       {
         "question": "Can enterprise clients use Single Sign-On (SAML / Okta)?",
-        "answer": "Yes. We can architect enterprise SSO integration (SAML 2.0, Okta, Google Workspace, Azure AD) for frictionless corporate IT compliance."
+        "answer": "Enterprise SSO can be scoped for SAML or supported identity providers after reviewing the customer's identity, security and administrative requirements."
       }
     ],
     "relatedWorkUrl": "/creations",
@@ -150,7 +151,7 @@ export const CUSTOM_SOFTWARE_SERVICE: ServiceData = {
       "normal": "Bespoke software architecture engineered for ",
       "highlight": "complex enterprise logic."
     },
-    "description": "When off-the-shelf software falls short, we engineer custom backend systems, resilient microservices, and dedicated business engines built precisely for your organizational requirements.",
+    "description": SERVICE_DESCRIPTIONS.customSoftware,
     "stats": [
       {
         "value": COMMON.labels.zero,
@@ -165,7 +166,7 @@ export const CUSTOM_SOFTWARE_SERVICE: ServiceData = {
         "label": "Scalable cloud architecture"
       }
     ],
-    "whatWeBuildSubtitle": "Dedicated software engineering tailored to your proprietary operations.",
+    "whatWeBuildSubtitle": "Custom software engineering tailored to your proprietary operations.",
     "whatWeBuild": [
       {
         "title": "Enterprise Backoffices & ERPs",
@@ -203,7 +204,7 @@ export const CUSTOM_SOFTWARE_SERVICE: ServiceData = {
       "Asynchronous background worker queues (Redis/BullMQ)",
       "Cloud infrastructure provisioning (AWS / Cloudflare)",
       "Comprehensive Swagger / OpenAPI documentation",
-      "Complete source code repository handover"
+      "Source repository handover as agreed"
     ],
     "perfectFor": [
       {
@@ -218,7 +219,7 @@ export const CUSTOM_SOFTWARE_SERVICE: ServiceData = {
       },
       {
         "title": "Companies with legacy systems",
-        "desc": "Modernizing outdated infrastructure without interrupting daily revenue operations.",
+        "desc": "Planning staged modernization around operational constraints and agreed downtime.",
         "icon": "refresh"
       },
       {
@@ -238,19 +239,19 @@ export const CUSTOM_SOFTWARE_SERVICE: ServiceData = {
     "faqs": [
       {
         "question": "Who owns the code and intellectual property of custom software?",
-        "answer": "You receive complete code repositories, database schemas, and documentation upon final delivery with no ongoing licensing lock-in."
+        "answer": "Repository, documentation and ownership terms are defined in the project agreement, including any third-party or open-source licensing constraints."
       },
       {
         "question": "Can you modernize our existing old software without stopping business?",
-        "answer": "Yes. We use the Strangler Fig pattern to build modern micro-modules around your existing system, migrating traffic gradually to minimize operational disruption."
+        "answer": "We assess operational constraints and plan staged migration where feasible. Any downtime requirements and rollback plan are agreed before implementation."
       },
       {
         "question": "Can this software be hosted on our own private cloud or on-prem servers?",
-        "answer": "Yes. We package all solutions in Docker containers with infrastructure-as-code scripts, deployable to your AWS, Azure, GCP, or private servers."
+        "answer": "Hosting and packaging are selected for the target environment. Private-cloud or on-premises deployment is confirmed after infrastructure and security review."
       },
       {
         "question": "How do you ensure data integrity and prevent system crashes?",
-        "answer": "We implement atomic database transactions, rigorous automated regression testing, database connection pooling, and automated error tracking."
+        "answer": "We reduce operational risk through project-appropriate transaction handling, testing, observability and database safeguards; no system can be guaranteed never to fail."
       }
     ],
     "relatedWorkUrl": "/creations",

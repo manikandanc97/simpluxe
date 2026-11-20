@@ -1,9 +1,9 @@
 import { COMMON } from "../common";
 
 export const SERVICES_DELIVERABLES_CONTENT = {
-  eyebrow: "Deliverables",
-  title: "Everything included",
-  description: "A complete solution from planning to launch.",
+  eyebrow: "Scope options",
+  title: "Typical deliverables",
+  description: "Final deliverables are selected and confirmed in the project scope.",
   perfectForTitle: "Perfect for",
   perfectForDesc: "Tailored for your business stage",
 };
