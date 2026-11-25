@@ -12,8 +12,10 @@ export const TIRUPPUR_TEXTILE_WEBSITES_INSIGHT: InsightPost = {
     "Learn how Tiruppur textile and garment businesses can use a website to showcase products, build buyer trust and simplify B2B enquiries.",
   category: "Website Development",
   publishedAt: "2026-11-20",
+  modifiedAt: "2026-11-25",
   publishedLabel: "20 November 2026",
-  readingTime: "7 min",
+  readingTime: "6 min",
+  wordCount: 1129,
   author: "Simpluxe Technologies",
   icon: "globe",
   tone: "sky",
@@ -152,7 +154,10 @@ export const TIRUPPUR_TEXTILE_WEBSITES_INSIGHT: InsightPost = {
     },
     {
       heading: "7. Website vs WhatsApp vs B2B Marketplace",
-      paragraphs: ["These channels do different jobs. A business may benefit from using more than one."],
+      paragraphs: [
+        "These channels do different jobs. A business may benefit from using more than one.",
+        "Before contacting a website developer, prepare a simple checklist.",
+      ],
       table: {
         headers: ["Channel", "Useful for", "Limitation"],
         rows: [
@@ -178,14 +183,6 @@ export const TIRUPPUR_TEXTILE_WEBSITES_INSIGHT: InsightPost = {
           ],
         ],
       },
-      closingParagraphs: [
-        "A website does not have to replace WhatsApp, marketplaces or referrals.",
-        "It can work alongside them.",
-      ],
-    },
-    {
-      heading: "8. What Should a Tiruppur Textile Business Website Include?",
-      paragraphs: ["Before contacting a website developer, prepare a simple checklist."],
       checklist: [
         "Company name and contact information",
         "Business introduction",
@@ -200,22 +197,9 @@ export const TIRUPPUR_TEXTILE_WEBSITES_INSIGHT: InsightPost = {
         "Content update requirements",
       ],
       closingParagraphs: [
+        "A website does not have to replace WhatsApp, marketplaces or referrals.",
+        "It can work alongside them.",
         "Not every business needs every feature. Start with what your buyers need most.",
-      ],
-    },
-    {
-      heading: "9. Common Website Mistakes to Avoid",
-      paragraphs: [
-        [{ type: "strong", text: "Using only generic product descriptions" }],
-        "Buyers may need specific information to understand whether your company can meet their requirements.",
-        [{ type: "strong", text: "Making contact details difficult to find" }],
-        "An enquiry button should be easy to locate, especially on mobile.",
-        [{ type: "strong", text: "Publishing outdated product information" }],
-        "If your catalogue changes, review the website regularly.",
-        [{ type: "strong", text: "Adding unnecessary features" }],
-        "A B2B catalogue website may be more suitable than a full e-commerce store if your business mainly works through quotations.",
-        [{ type: "strong", text: "Expecting immediate enquiries" }],
-        "A website is one part of business development. Search visibility, referrals, outreach and follow-up processes also matter.",
       ],
     },
     {

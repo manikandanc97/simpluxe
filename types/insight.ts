@@ -47,6 +47,7 @@ interface DraftInsightPost extends InsightPostBase {
   status: "draft";
   category?: string;
   publishedAt?: string;
+  modifiedAt?: string;
   publishedLabel?: string;
   readingTime?: string;
   author?: string;
@@ -55,12 +56,15 @@ interface DraftInsightPost extends InsightPostBase {
   tone?: "ocean" | "sky" | "slate" | "cyan";
   takeaways?: string[];
   image?: string;
+  imageAlt?: string;
+  wordCount?: number;
 }
 
 export interface PublishedInsightPost extends InsightPostBase {
   status: "published";
   category: string;
   publishedAt: string;
+  modifiedAt: string;
   publishedLabel: string;
   readingTime: string;
   author: string;
@@ -69,6 +73,8 @@ export interface PublishedInsightPost extends InsightPostBase {
   tone: "ocean" | "sky" | "slate" | "cyan";
   takeaways?: string[];
   image?: string;
+  imageAlt?: string;
+  wordCount?: number;
 }
 
 export type InsightPost = DraftInsightPost | PublishedInsightPost;

@@ -31,6 +31,7 @@ function RichText({ content }: { content: InsightRichText }) {
 export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
   const postIndex = INSIGHTS.findIndex((item) => item.slug === post.slug);
   const related = INSIGHTS.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const numberedSections = post.sections.filter((section) => /^\d+\./.test(section.heading));
 
   return (
     <>
@@ -96,7 +97,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                   </span>
                 </div>
                 <ArticleContents
-                  headings={post.sections.map((section) => section.heading)}
+                  headings={numberedSections.map((section) => section.heading)}
                   showSectionLabels={post.showSectionLabels !== false}
                 />
               </nav>
@@ -136,7 +137,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                     <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                       {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-3">
-                          <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                          <span aria-hidden="true" className="size-1.5 shrink-0 translate-y-2 rounded-full bg-primary" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -157,7 +158,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                         <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                           {subsection.bullets.map((bullet) => (
                             <li key={bullet} className="flex items-start gap-3">
-                              <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                              <span aria-hidden="true" className="size-1.5 shrink-0 translate-y-2 rounded-full bg-primary" />
                               <span>{bullet}</span>
                             </li>
                           ))}
@@ -195,7 +196,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                     <ul className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 text-sm leading-relaxed text-foreground shadow-card">
                       {section.checklist.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                          <span aria-hidden="true" className="size-1.5 shrink-0 translate-y-2 rounded-full bg-primary" />
                           <span>{item}</span>
                         </li>
                       ))}

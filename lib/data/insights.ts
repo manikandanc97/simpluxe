@@ -18,6 +18,7 @@ import {
   WHEN_TO_MODERNIZE_INTERNAL_TOOLS_INSIGHT,
 } from "./insights/digital-operations";
 import { TIRUPPUR_TEXTILE_WEBSITES_INSIGHT } from "./insights/tiruppur-textile-websites";
+import { UDUMALPET_PLATFORM_COMPARISON_INSIGHT } from "./insights/udumalpet-platform-comparison";
 
 export { INSIGHTS_PAGE_COPY } from "./insights/copy";
 export type { InsightPost, PublishedInsightPost } from "@/types/insight";
@@ -34,6 +35,7 @@ const ALL_INSIGHTS: readonly InsightPost[] = [
   TECHNICAL_DEBT_REPAYMENT_STRATEGY_INSIGHT,
   OBSERVABILITY_BEYOND_MONITORING_INSIGHT,
   TIRUPPUR_TEXTILE_WEBSITES_INSIGHT,
+  UDUMALPET_PLATFORM_COMPARISON_INSIGHT,
 ];
 
 export function isPublishedInsight(

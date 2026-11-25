@@ -43,9 +43,41 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
     path: INSIGHTS_PAGE_COPY.articlePath(post.slug),
   });
 
+  if (!post.image || !post.imageAlt) {
+    return post.seoTitle
+      ? { ...metadata, title: { absolute: post.seoTitle } }
+      : metadata;
+  }
+
+  const imageUrl = post.image.startsWith("http")
+    ? post.image
+    : `${SITE.url}${post.image}`;
+
+  const articleMetadata: Metadata = {
+    ...metadata,
+    openGraph: {
+      title: post.seoTitle ?? post.title,
+      description: post.seoDescription ?? post.excerpt,
+      url: INSIGHTS_PAGE_COPY.articlePath(post.slug),
+      siteName: SITE.name,
+      locale: "en_US",
+      type: "article",
+      publishedTime: post.publishedAt,
+      modifiedTime: post.modifiedAt,
+      authors: [post.author],
+      images: [{ url: imageUrl, alt: post.imageAlt, type: "image/webp" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.seoTitle ?? post.title,
+      description: post.seoDescription ?? post.excerpt,
+      images: [imageUrl],
+    },
+  };
+
   return post.seoTitle
-    ? { ...metadata, title: { absolute: post.seoTitle } }
-    : metadata;
+    ? { ...articleMetadata, title: { absolute: post.seoTitle } }
+    : articleMetadata;
 }
 
 export default async function InsightPage({ params }: InsightPageProps) {
@@ -71,9 +103,20 @@ export default async function InsightPage({ params }: InsightPageProps) {
             headline: post.title,
             description: post.seoDescription ?? post.excerpt,
             datePublished: post.publishedAt,
+            dateModified: post.modifiedAt,
             author: { "@type": "Organization", name: post.author },
             publisher: { "@id": `${SITE.url}/#organization` },
             mainEntityOfPage: `${SITE.url}${path}`,
+            ...(post.image && post.imageAlt
+              ? {
+                  image: post.image.startsWith("http")
+                    ? post.image
+                    : `${SITE.url}${post.image}`,
+                }
+              : {}),
+            ...(post.wordCount
+              ? { wordCount: post.wordCount, inLanguage: "en-US" }
+              : {}),
           },
         ]}
       />

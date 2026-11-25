@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...INSIGHTS.map((post) => ({
       url: `${SITE.url}${INSIGHTS_PAGE_COPY.articlePath(post.slug)}`,
-      lastModified: new Date(`${post.publishedAt}T00:00:00.000Z`),
+      lastModified: new Date(`${post.modifiedAt}T00:00:00.000Z`),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),

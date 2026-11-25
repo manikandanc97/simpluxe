@@ -28,7 +28,7 @@ export function InsightCover({
   if (variant === "hero") {
     return (
       <div
-        aria-hidden="true"
+        aria-hidden={post.imageAlt ? undefined : true}
         className={cn(
           "relative flex min-h-64 overflow-hidden rounded-3xl p-6 sm:min-h-96 sm:p-8",
           post.image ? "bg-dark text-white" : TONE_STYLES[post.tone],
@@ -39,7 +39,7 @@ export function InsightCover({
           <>
             <Image
               src={post.image}
-              alt={post.title}
+              alt={post.imageAlt ?? post.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1280px) 100vw, 1280px"
               className="object-cover"
@@ -74,7 +74,7 @@ export function InsightCover({
 
   return (
     <div
-      aria-hidden="true"
+      aria-hidden={post.imageAlt ? undefined : true}
       className={cn(
         "relative aspect-video w-full overflow-hidden rounded-2xl bg-surface",
         post.image ? "bg-dark text-white" : TONE_STYLES[post.tone],
@@ -85,7 +85,7 @@ export function InsightCover({
         <>
           <Image
             src={post.image}
-            alt={post.title}
+            alt={post.imageAlt ?? post.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 384px"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

@@ -61,7 +61,13 @@ export function ArticleContents({
         : "smooth",
       block: "start",
     });
-    window.history.replaceState(null, "", `#${id}`);
+    if (window.location.hash) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        `${window.location.pathname}${window.location.search}`
+      );
+    }
   };
 
   return (

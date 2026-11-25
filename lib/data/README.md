@@ -45,3 +45,7 @@ npm.cmd run build
 ```
 
 The copy check catches inline presentation text and shared labels copied into page content. Keep numerical metrics and project-specific claims with their own content so they can be edited independently.
+
+## Insights article structure
+
+Keep each Insights article to no more than seven numbered main sections. The introduction, frequently asked questions, and final enquiry call to action are separate unnumbered sections and do not count toward this limit. Merge closely related topics before adding another main section; this is an editorial guideline, not a runtime restriction.
