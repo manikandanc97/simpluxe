@@ -392,6 +392,30 @@
   scrollbar-width: none; /* Firefox */
 }
 
+/* Compact, branded horizontal scrollbar for wide article tables. */
+.table-scrollbar {
+  scrollbar-color: var(--primary) var(--surface-elevated);
+  scrollbar-width: thin;
+}
+
+.table-scrollbar::-webkit-scrollbar {
+  height: calc(var(--spacing) * 1.5);
+}
+
+.table-scrollbar::-webkit-scrollbar-track {
+  background: var(--surface-elevated);
+  border-radius: var(--radius);
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius);
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
 /* Shared Tailwind extensions */
 @theme {
   --color-whatsapp: #25D366;

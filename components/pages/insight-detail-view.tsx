@@ -59,7 +59,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
             className="min-h-72 sm:min-h-96 lg:min-h-112"
           />
 
-          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="grid min-w-0 items-start gap-12 lg:grid-cols-12 lg:gap-16">
             <aside className="order-2 flex flex-col gap-8 lg:order-1 lg:col-span-5 lg:sticky lg:top-24">
               {post.takeaways?.length ? (
                 <div className="flex flex-col gap-6 rounded-3xl border border-primary-hover/50 bg-primary p-6 text-white shadow-luxury sm:p-8">
@@ -103,7 +103,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
               </nav>
             </aside>
 
-            <article className="order-1 flex flex-col gap-12 lg:order-2 lg:col-span-7">
+            <article className="order-1 flex min-w-0 flex-col gap-12 lg:order-2 lg:col-span-7">
               {post.introduction ? (
                 <div className="flex flex-col gap-5 text-sm leading-loose text-muted-foreground sm:text-base">
                   {post.introduction.map((paragraph, index) => (
@@ -116,7 +116,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                 <section
                   id={`insight-section-${index + 1}`}
                   key={section.heading}
-                  className="flex scroll-mt-24 flex-col gap-6"
+                  className="flex min-w-0 scroll-mt-24 flex-col gap-6"
                 >
                   <div className="flex items-start gap-4 border-b border-border pb-5">
                     {post.showSectionLabels !== false ? (
@@ -168,7 +168,7 @@ export function InsightDetailView({ post }: { post: PublishedInsightPost }) {
                   ))}
 
                   {section.table ? (
-                    <div className="overflow-x-auto rounded-2xl border border-border shadow-card">
+                    <div className="table-scrollbar w-full max-w-full overflow-x-auto rounded-2xl border border-border shadow-card">
                       <table className="min-w-full border-collapse bg-white text-left text-sm">
                         <thead className="bg-surface text-heading">
                           <tr>
