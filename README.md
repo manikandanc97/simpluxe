@@ -13,7 +13,7 @@ A Next.js website for Simpluxe, with services, portfolio, about, contact, ideas,
 - Local Satoshi, Inter, Manrope, and Caveat fonts
 - Cloudinary for image delivery
 - Zod validation and Supabase for lead capture
-- Vercel Analytics and Speed Insights in production
+- Consent-gated Google Analytics 4, Vercel Analytics, and Speed Insights in production
 
 ## Setup
 
@@ -33,6 +33,18 @@ The example includes the Cloudinary cloud serving the brand mark, favicon, techn
 Set NEXT_PUBLIC_CONTACT_EMAIL and NEXT_PUBLIC_CONTACT_PHONE for direct contact. Optional NEXT_PUBLIC_TWITTER_URL, NEXT_PUBLIC_LINKEDIN_URL, NEXT_PUBLIC_INSTAGRAM_URL, NEXT_PUBLIC_YOUTUBE_URL, and NEXT_PUBLIC_GITHUB_URL configure social profiles; blank values hide their links. NEXT_PUBLIC_WHATSAPP_NUMBER is optional and should include the country code; leave it blank to hide WhatsApp links.
 
 Form submissions require Supabase. Cloudinary credentials configure images and cannot save form submissions. Without Supabase credentials, submissions return an error with direct contact options in both development and production; they are never reported as saved.
+
+### Google Reviews setup
+
+Live Google Places review fetching is temporarily disabled until the official Business Profile integration is ready. The existing typed response validation, review UI, attribution handling, and slider remain reusable, but the application exits through its graceful unavailable state before any Places request, retry, warning, quota usage, or billing can occur.
+
+Optionally copy the public review link from the Business Profile or Google Maps share flow and configure it as a non-API fallback:
+
+```dotenv
+GOOGLE_REVIEW_URL=https://g.page/r/your-profile/review
+```
+
+If no valid fallback URL is configured, the section renders nothing. If it is configured, the existing section design shows an honest unavailable message and links visitors to Google. It never invents a rating, review, or customer identity. `npm.cmd run check:google-reviews` performs a local static guard check and makes no external request.
 
 ### Production form setup
 

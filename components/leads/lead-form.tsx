@@ -26,6 +26,7 @@ import {
   type LeadState,
 } from "@/lib/leads/schema";
 import { getTurnstileSiteKey } from "@/lib/leads/turnstile";
+import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics/events";
 import { LeadSuccess } from "./lead-success";
 import { LeadVerification } from "./lead-verification";
 
@@ -101,11 +102,16 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
   };
 
   useEffect(() => {
-    if (state.ok && !successNotified.current) {
+    if (state.ok && state.accepted && !successNotified.current) {
       successNotified.current = true;
+      trackEvent(ANALYTICS_EVENTS.generateLead, {
+        form_id: "lead_form",
+        form_source: prefill?.source || "contact",
+        project_type: selectedProjectType,
+      });
       onSuccess?.();
     }
-  }, [state.ok, onSuccess]);
+  }, [onSuccess, prefill?.source, selectedProjectType, state.accepted, state.ok]);
 
   if (state.ok) {
     return <LeadSuccess onClose={onClose} />;
@@ -148,6 +154,12 @@ export function LeadForm({ prefill, onSuccess, onClose }: LeadFormProps) {
               fallbackTrigger?.focus();
             }
           }
+        } else {
+          trackEvent(ANALYTICS_EVENTS.contactFormSubmit, {
+            form_id: "lead_form",
+            form_source: prefill?.source || "contact",
+            project_type: selectedProjectType,
+          });
         }
       }}
       className="flex flex-col gap-4 text-left font-satoshi"

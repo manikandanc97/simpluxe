@@ -79,6 +79,8 @@ export function CTA({ onStartProject }: CTAProps) {
             <div className="flex flex-col items-stretch gap-3 w-full sm:flex-row sm:items-center sm:w-auto lg:flex-col lg:items-stretch lg:w-72">
               <Button
                 size="lg"
+                data-analytics-cta="start_project"
+                data-analytics-location="primary_cta_section"
                 onClick={handleStart}
                 className="w-full bg-white text-primary shadow-sm justify-center hover:bg-white/90 group"
               >
@@ -93,6 +95,8 @@ export function CTA({ onStartProject }: CTAProps) {
               <Button
                 size="lg"
                 variant="outline"
+                data-analytics-cta="schedule_discovery_call"
+                data-analytics-location="primary_cta_section"
                 onClick={handleSchedule}
                 className="w-full border-white/30 bg-transparent text-white shadow-sm justify-center hover:bg-white/10 hover:text-white hover:border-white/50"
               >

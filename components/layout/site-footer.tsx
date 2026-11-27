@@ -61,7 +61,8 @@ function FooterContactRow({ href, label, iconName }: FooterContactRowProps) {
   );
 }
 
-export function SiteFooter({ onStartProject }: SiteFooterProps) {
+export async function SiteFooter({ onStartProject }: SiteFooterProps) {
+  "use cache";
 
   return (
     <footer className="w-full bg-slate-100 text-foreground border-t border-border relative overflow-hidden">

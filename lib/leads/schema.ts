@@ -88,6 +88,7 @@ export type LeadInput = z.infer<typeof leadSchema>;
 
 export type LeadState = {
   ok: boolean;
+  accepted?: boolean;
   message?: string;
   fieldErrors?: Record<string, string[]>;
   verificationAttempt?: string;

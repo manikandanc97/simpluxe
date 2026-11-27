@@ -10,7 +10,7 @@ const cspHeader = `
     connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com;
     frame-src https://challenges.cloudflare.com https://www.google.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: https://res.cloudinary.com;
+    img-src 'self' blob: data: https://res.cloudinary.com https://*.googleusercontent.com;
     media-src 'self';
     font-src 'self';
     object-src 'none';
@@ -21,6 +21,8 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
   images: {
     loader: "custom",
     loaderFile: "./lib/cloudinary-loader.ts",
@@ -29,6 +31,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
         pathname: `/${cloudinaryCloudName}/image/upload/**`,
+      },
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
       },
     ],
   },

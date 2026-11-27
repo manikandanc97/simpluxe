@@ -54,6 +54,8 @@ export function ContactCard() {
             <Button
               size="default"
               type="button"
+              data-analytics-cta="talk_to_team"
+              data-analytics-location="faq"
               onClick={() => openLead({ description: FAQ_CONTACT_CARD_COPY.faqTechnicalConsultation })}
               className="w-full xs:w-auto"
             >

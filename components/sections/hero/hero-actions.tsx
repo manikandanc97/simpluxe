@@ -15,6 +15,8 @@ export function HeroActions() {
     <div className="flex flex-wrap items-center justify-center gap-3">
       <Button
         id="hero-start-project"
+        data-analytics-cta="start_project"
+        data-analytics-location="home_hero"
         onClick={() => openLead({ source: "cta" })}
         size="lg"
         disableScrollAnimation
@@ -30,6 +32,8 @@ export function HeroActions() {
 
       <Link
         href="/creations"
+        data-analytics-portfolio="view_portfolio"
+        data-analytics-location="home_hero"
         className="flex items-center gap-3 rounded-lg px-1.5 py-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring group"
       >
         <span className="flex flex-col gap-0.5">

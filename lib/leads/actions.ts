@@ -153,7 +153,7 @@ async function captureLead(formData: FormData): Promise<LeadState> {
         console.error("[Lead notifications] Background delivery unavailable; scheduler will retry.");
       }
     }
-    return { ok: true };
+    return { ok: true, accepted: true };
   } catch (error) {
     console.error("[Lead capture] Submission failed:", {
       name: error instanceof Error ? error.name : "UnknownError",

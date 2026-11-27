@@ -133,6 +133,8 @@ export function CommandPaletteModal({ open, onOpenChange, onStartProject }: Comm
                 <div
                   key={cmd.id}
                   id={cmd.id}
+                  data-analytics-cta={cmd.id === "cmd-start-project" ? "start_project" : undefined}
+                  data-analytics-location={cmd.id === "cmd-start-project" ? "command_palette" : undefined}
                   role="option"
                   aria-selected={isSelected}
                   onMouseEnter={() => setSelectedIndex(index)}

@@ -204,6 +204,8 @@ export function NavbarMobileMenu({
               >
                 <Button
                   size="lg"
+                  data-analytics-cta="start_project"
+                  data-analytics-location="mobile_navbar"
                   onClick={onStartProject}
                   id="mobile-navbar-start-project"
                   disableScrollAnimation

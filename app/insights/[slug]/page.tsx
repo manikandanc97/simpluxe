@@ -17,8 +17,6 @@ type InsightPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return INSIGHTS.map((post) => ({ slug: post.slug }));
 }

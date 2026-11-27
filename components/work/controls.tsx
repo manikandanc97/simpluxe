@@ -68,6 +68,8 @@ export function Controls({
           return (
             <button
               key={tab.id}
+              data-analytics-portfolio="filter_projects"
+              data-analytics-project={tab.id}
               aria-pressed={isActive}
               onClick={() => onFilterChange(tab.id)}
               className={cn(

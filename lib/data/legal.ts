@@ -1,6 +1,6 @@
 import { COMMON } from "./common";
 
-const LEGAL_LAST_UPDATED = "Last updated: October 5, 2026";
+const LEGAL_LAST_UPDATED = "Last updated: November 27, 2026";
 
 // Privacy policy
 export const PRIVACY_PAGE_COPY = {
@@ -16,7 +16,10 @@ export const PRIVACY_PAGE_COPY = {
   paymentData: "Payment Data",
   usageHeading: "3. How We Use Your Information",
   usageDescription: "We use personal information collected via our Website for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations.",
-  contactHeading: "4. Contact Us",
+  analyticsHeading: "4. Analytics and Cookies",
+  analyticsDescription: "With your permission, we use Google Analytics 4 to understand page visits and interactions such as service, article, portfolio, contact-channel, call-to-action, and successful enquiry events. Analytics is disabled until you accept analytics cookies. We do not send names, email addresses, phone numbers, enquiry contents, or other contact-form data to Google Analytics.",
+  analyticsControls: "You can accept, decline, or withdraw analytics consent at any time using the Cookie settings control. Google may process analytics data according to its own privacy terms and retention settings configured for our Analytics property.",
+  contactHeading: "5. Contact Us",
   contactIntroduction: "If you have questions or comments about this notice, please ",
   emailUsAt: "email us at ",
   contactUs: "contact us",

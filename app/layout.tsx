@@ -5,6 +5,7 @@ import { FooterBrandText } from "@/components/layout/footer-brand-text";
 import { LeadProvider } from "@/components/leads/lead-provider";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { ScrollRestorationProvider } from "@/components/providers/scroll-restoration-provider";
+import { AnalyticsProvider } from "@/components/providers/analytics-provider";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
@@ -62,6 +63,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const isProductionDeployment =
+    process.env.NODE_ENV === "production" &&
+    (!process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production");
+
   return (
     <html
       lang="en"
@@ -93,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         
         {process.env.NODE_ENV === "production" && (
           <>
+            {isProductionDeployment ? <AnalyticsProvider /> : null}
             <Analytics />
             <SpeedInsights />
           </>

@@ -45,6 +45,12 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="flex flex-col gap-3">
+            <h2 className="text-xl font-bold text-foreground">{PRIVACY_PAGE_COPY.analyticsHeading}</h2>
+            <p>{PRIVACY_PAGE_COPY.analyticsDescription}</p>
+            <p>{PRIVACY_PAGE_COPY.analyticsControls}</p>
+          </section>
+
+          <section className="flex flex-col gap-3">
             <h2 className="text-xl font-bold text-foreground">{PRIVACY_PAGE_COPY.contactHeading}</h2>
             <p>
               {PRIVACY_PAGE_COPY.contactIntroduction}

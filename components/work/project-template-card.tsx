@@ -69,6 +69,9 @@ export function ProjectTemplateCard({ project }: ProjectTemplateCardProps) {
         </h2>
         <a
           href={project.url}
+          data-analytics-portfolio="open_project"
+          data-analytics-project={project.id}
+          data-analytics-location="creations_grid"
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}

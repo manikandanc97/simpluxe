@@ -198,6 +198,8 @@ export function SelectedWorkClient({
                       return (
                         <button
                           key={project.name}
+                          data-analytics-portfolio="select_project"
+                          data-analytics-project={project.number}
                           type="button"
                           role="option"
                           aria-selected={isSelected}
@@ -244,6 +246,8 @@ export function SelectedWorkClient({
                     {showcasedProjects.map((project, index) => (
                       <button
                         key={project.name}
+                        data-analytics-portfolio="select_project"
+                        data-analytics-project={project.number}
                         type="button"
                         aria-pressed={activeProjectIndex === index}
                         onClick={() => setActiveProjectIndex(index)}

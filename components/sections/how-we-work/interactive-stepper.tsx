@@ -270,6 +270,8 @@ export function InteractiveStepper() {
             </span>
             <Button
               type="button"
+              data-analytics-cta={activeStepIndex === STEPS.length - 1 ? "start_project" : undefined}
+              data-analytics-location={activeStepIndex === STEPS.length - 1 ? "how_we_work" : undefined}
               onClick={handleNextStep}
               disableScrollAnimation
               className="rounded-lg group"

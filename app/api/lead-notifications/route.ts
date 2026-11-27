@@ -1,7 +1,6 @@
 import { timingSafeEqual } from "node:crypto";
 import { deliverLeadNotifications } from "@/lib/leads/notifications";
 
-export const runtime = "nodejs";
 export const maxDuration = 180;
 
 async function run(request: Request) {

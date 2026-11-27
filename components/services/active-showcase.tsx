@@ -59,6 +59,8 @@ export function ActiveShowcase({
             {/* Dual Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 sm:gap-4">
               <Button
+                data-analytics-cta="start_project"
+                data-analytics-location="service_showcase"
                 onClick={() =>
                   openLead({
                     source: "services-configurator",
@@ -78,6 +80,9 @@ export function ActiveShowcase({
 
               <Link
                 href={service.relatedWorkUrl}
+                data-analytics-portfolio="view_related_work"
+                data-analytics-project={service.id}
+                data-analytics-location="service_showcase"
                 className={buttonVariants({ variant: "outline", className: "gap-2" })}
               >
                 <AnimatedIcon icon={EyeIcon} size={14} />

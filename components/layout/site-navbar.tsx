@@ -128,6 +128,8 @@ export function SiteNavbar({ onStartProject }: SiteNavbarProps) {
           {/* Start a project CTA Button */}
           <Button
             size="sm"
+            data-analytics-cta="start_project"
+            data-analytics-location="navbar"
             onClick={handleStart}
             id="navbar-start-project"
             disableScrollAnimation

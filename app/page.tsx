@@ -12,6 +12,7 @@ import { TechStack } from "@/components/sections/tech-stack";
 import { FAQ } from "@/components/sections/faq";
 import { CTA } from "@/components/sections/cta";
 import { AboutPreview } from "@/components/sections/about-preview";
+import { GoogleReviews } from "@/components/sections/google-reviews";
 
 export const metadata: Metadata = createPageMetadata({
   title: HOME_PAGE_COPY.title,
@@ -30,6 +31,7 @@ export default function Home() {
       <HowWeWork />
       <WhySimpluxe />
       <TechStack />
+      <GoogleReviews />
       <FAQ />
       <CTA />
     </>
