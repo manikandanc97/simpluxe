@@ -36,15 +36,31 @@ Form submissions require Supabase. Cloudinary credentials configure images and c
 
 ### Google Reviews setup
 
-Live Google Places review fetching is temporarily disabled until the official Business Profile integration is ready. The existing typed response validation, review UI, attribution handling, and slider remain reusable, but the application exits through its graceful unavailable state before any Places request, retry, warning, quota usage, or billing can occur.
+Customer reviews are managed manually in `lib/data/google-reviews.ts`. The page performs no Places API request, retry, polling, or runtime synchronization, so it has no Google Cloud billing requirement or review-related loading delay.
 
-Optionally copy the public review link from the Business Profile or Google Maps share flow and configure it as a non-API fallback:
+Add a review only after verifying it against Google and confirming permission to republish it. Append one object to `MANUAL_GOOGLE_REVIEWS.reviews` with:
+
+- a stable internal `id` and optional future-facing `externalReviewId`;
+- `source: "google"`;
+- the exact reviewer name and optional approved `profileImageUrl`;
+- the original integer rating from 1–5;
+- the unedited original review `text`;
+- `reviewedAt` in `YYYY-MM-DD` format; and
+- the direct HTTPS `reviewUrl` on Google.
+
+Omit `profileImageUrl` when no approved image is available; the UI creates a clean initials avatar. Prefer a permissioned image stored under `public/images/` or an allowed Google-hosted profile URL. The data is validated during rendering, and UI components do not need editing.
+
+Leave `ratingSummary` absent unless the aggregate rating and total review count have been verified together. If supplied, record `rating`, `reviewCount`, and the `verifiedAt` date. The section never derives or presents a business-wide total from the manually displayed subset.
+
+Set `businessProfileUrl` in the same collection, or optionally configure the public review link as a non-API fallback:
 
 ```dotenv
-GOOGLE_REVIEW_URL=https://g.page/r/your-profile/review
+GOOGLE_REVIEW_URL=
 ```
 
-If no valid fallback URL is configured, the section renders nothing. If it is configured, the existing section design shows an honest unavailable message and links visitors to Google. It never invents a rating, review, or customer identity. `npm.cmd run check:google-reviews` performs a local static guard check and makes no external request.
+Replace the blank value with the verified HTTPS link for the Simpluxe Google Business Profile. Leaving it blank hides the review/profile action instead of sending visitors to a placeholder URL.
+
+When the collection is empty, the section shows an honest preparation message and the Google profile link when available. It never invents a rating, review, or customer identity. Multiple reviews enable accessible keyboard, touch, dot, and arrow navigation; a single review displays without carousel controls. `npm.cmd run check:google-reviews` performs a local static guard check and makes no external request.
 
 ### Production form setup
 

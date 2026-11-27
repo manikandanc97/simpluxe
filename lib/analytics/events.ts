@@ -1,7 +1,5 @@
 "use client";
 
-import { sendGAEvent } from "@next/third-parties/google";
-
 export const ANALYTICS_CONSENT_KEY = "simpluxe_analytics_consent";
 
 export type AnalyticsConsent = "granted" | "denied";
@@ -10,6 +8,7 @@ type AnalyticsValue = string | number | boolean;
 type AnalyticsParameters = Record<string, AnalyticsValue | undefined>;
 
 export const ANALYTICS_EVENTS = {
+  pageView: "page_view",
   serviceView: "service_view",
   articleView: "article_view",
   whatsappClick: "whatsapp_click",
@@ -26,6 +25,7 @@ export type AnalyticsEventName =
 
 declare global {
   interface Window {
+    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
   }
 }
@@ -56,7 +56,7 @@ export function trackEvent(
     )
   );
 
-  sendGAEvent("event", event, safeParameters);
+  window.gtag?.("event", event, safeParameters);
 }
 
 export function getPageContext(pathname: string) {

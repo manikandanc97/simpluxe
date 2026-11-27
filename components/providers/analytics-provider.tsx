@@ -8,12 +8,15 @@ import {
   trackEvent,
 } from "@/lib/analytics/events";
 import { ANALYTICS_CONSENT_COPY } from "@/lib/data/analytics";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim();
+const configuredGaId = process.env.NEXT_PUBLIC_GA_ID?.trim();
+const GA_ID = configuredGaId && /^G-[A-Z0-9]+$/.test(configuredGaId)
+  ? configuredGaId
+  : undefined;
 const IS_ANALYTICS_CONFIGURED =
   process.env.NODE_ENV === "production" && Boolean(GA_ID);
 
@@ -36,8 +39,10 @@ function writeConsent(consent: AnalyticsConsent) {
 
 function updateGoogleConsent(command: "default" | "update", consent: AnalyticsConsent) {
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag(...args: unknown[]) {
-    window.dataLayer?.push(args);
+  window.gtag = window.gtag || function gtag() {
+    // Google gtag.js expects its command queue entries to be Arguments objects.
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments);
   };
   window.gtag("consent", command, {
     analytics_storage: consent,
@@ -50,12 +55,25 @@ function updateGoogleConsent(command: "default" | "update", consent: AnalyticsCo
   });
 }
 
-function ContentViewTracker({ consent }: { consent: AnalyticsConsent | null }) {
+function configureGoogleAnalytics() {
+  if (!GA_ID) return;
+
+  window.gtag?.("js", new Date());
+  window.gtag?.("config", GA_ID, {
+    send_page_view: false,
+  });
+}
+
+function ContentViewTracker({ enabled }: { enabled: boolean }) {
   const pathname = usePathname();
   const lastTrackedPath = useRef<string | null>(null);
 
   useEffect(() => {
-    if (consent !== "granted" || lastTrackedPath.current === pathname) return;
+    if (!enabled) {
+      lastTrackedPath.current = null;
+      return;
+    }
+    if (lastTrackedPath.current === pathname) return;
 
     lastTrackedPath.current = pathname;
     const { pageType, contentSlug } = getPageContext(pathname);
@@ -63,6 +81,11 @@ function ContentViewTracker({ consent }: { consent: AnalyticsConsent | null }) {
       page_path: pathname,
       page_type: pageType,
     };
+
+    trackEvent(ANALYTICS_EVENTS.pageView, {
+      page_path: pathname,
+      page_location: `${window.location.origin}${pathname}`,
+    });
 
     if (pageType === "service" && contentSlug) {
       trackEvent(ANALYTICS_EVENTS.serviceView, {
@@ -77,9 +100,19 @@ function ContentViewTracker({ consent }: { consent: AnalyticsConsent | null }) {
         article_slug: contentSlug,
       });
     }
-  }, [consent, pathname]);
+  }, [enabled, pathname]);
 
   return null;
+}
+
+function GoogleAnalyticsScript({ gaId }: { gaId: string }) {
+  return (
+    <Script
+      id="simpluxe-ga4"
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      strategy="afterInteractive"
+    />
+  );
 }
 
 function closestWithData(element: Element, key: string) {
@@ -229,6 +262,7 @@ export function AnalyticsProvider() {
     updateGoogleConsent("default", "denied");
     if (storedConsent === "granted") {
       updateGoogleConsent("update", "granted");
+      configureGoogleAnalytics();
     }
     queueMicrotask(() => setConsent(storedConsent));
   }, []);
@@ -236,6 +270,7 @@ export function AnalyticsProvider() {
   const handleConsent = (nextConsent: AnalyticsConsent) => {
     writeConsent(nextConsent);
     updateGoogleConsent("update", nextConsent);
+    if (nextConsent === "granted") configureGoogleAnalytics();
     setConsent(nextConsent);
   };
 
@@ -251,11 +286,11 @@ export function AnalyticsProvider() {
 
   return (
     <>
-      <ContentViewTracker consent={consent} />
+      <ContentViewTracker enabled={consent === "granted" && Boolean(GA_ID)} />
       <InteractionTracker />
       <ConsentControls consent={consent} onChange={handleConsent} onReset={resetConsent} />
       {IS_ANALYTICS_CONFIGURED && consent === "granted" && GA_ID ? (
-        <GoogleAnalytics gaId={GA_ID} />
+        <GoogleAnalyticsScript gaId={GA_ID} />
       ) : null}
     </>
   );

@@ -1,3 +1,45 @@
+type GoogleReviewRating = 1 | 2 | 3 | 4 | 5;
+
+export interface NormalizedGoogleReview {
+  id: string;
+  externalReviewId?: string;
+  source: "google";
+  reviewer: {
+    name: string;
+    profileImageUrl?: string;
+  };
+  rating: GoogleReviewRating;
+  text: string;
+  reviewedAt: string;
+  reviewUrl: string;
+  languageCode?: string;
+}
+
+interface VerifiedGoogleRatingSummary {
+  rating: number;
+  reviewCount: number;
+  verifiedAt: string;
+}
+
+export interface GoogleReviewCollection {
+  source: "google";
+  businessName: string;
+  businessProfileUrl?: string;
+  ratingSummary?: VerifiedGoogleRatingSummary;
+  reviews: readonly NormalizedGoogleReview[];
+}
+
+/**
+ * Add only genuine Google reviews that Simpluxe has verified and has permission
+ * to display. The UI reads this collection directly; no component edits are needed.
+ * Keep ratingSummary absent unless its rating and total count are verified together.
+ */
+export const MANUAL_GOOGLE_REVIEWS: GoogleReviewCollection = {
+  source: "google",
+  businessName: "Simpluxe Technologies",
+  reviews: [],
+};
+
 export const GOOGLE_REVIEWS_COPY = {
   eyebrow: "Client perspectives",
   title: "Good work. Genuine feedback.",
@@ -5,14 +47,10 @@ export const GOOGLE_REVIEWS_COPY = {
   viewAll: "View on Google",
   writeReview: "Share your experience",
   viewReview: "View review on Google Maps",
-  ratingOnlyReview: "This client left a star rating without a written review.",
   readMore: "Read full review",
   readLess: "Show less",
-  published: "Published",
-  visitDate: "Visited",
-  reportReview: "Report review",
-  orderingNotice: "Reviews are selected and ordered by Google Maps by relevance. Simpluxe does not filter them by rating.",
-  verificationNotice: "Google Maps reviews are not verified by Google, but Google checks for and removes fake content when identified.",
+  published: "Reviewed",
+  verificationNotice: "Customer review information is manually verified against its linked Google review before publication.",
   reviewPolicy: "Review policy",
   providerPrefix: "Additional data attribution:",
   sliderLabel: "Google client reviews",
@@ -22,13 +60,12 @@ export const GOOGLE_REVIEWS_COPY = {
   pauseAutoplay: "Pause review rotation",
   playAutoplay: "Resume review rotation",
   goToReview: (position: number, total: number) => `Show review ${position} of ${total}`,
-  noWrittenReviewsTitle: "Client reviews on Google",
-  noWrittenReviewsBody: "Individual customer review excerpts are not currently available here.",
+  noWrittenReviewsTitle: "Verified reviews are being prepared",
+  noWrittenReviewsBody: "We are preparing customer reviews for publication with permission. You can view the current public profile directly on Google.",
   unavailable: "Current review details are temporarily unavailable.",
-  loading: "Loading current Google reviews",
   attribution: "Google Maps",
   starsLabel: (rating: number) => `${rating} out of 5 stars`,
   reviewsLabel: (count: number) => `${count} ${count === 1 ? "review" : "reviews"}`,
   overallLabel: (rating: number, count: number) => `Google rating: ${rating} out of 5 from ${count} ${count === 1 ? "review" : "reviews"}`,
-  reviewCardLabel: (position: number, total: number, author: string) => `Review ${position} of ${total} by ${author}`,
+  reviewCardLabel: (position: number, total: number, reviewer: string) => `Review ${position} of ${total} by ${reviewer}`,
 } as const;
