@@ -10,7 +10,7 @@ const cspHeader = `
     connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://www.google-analytics.com https://*.google-analytics.com;
     frame-src https://challenges.cloudflare.com https://www.google.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: https://res.cloudinary.com https://*.googleusercontent.com https://www.google-analytics.com https://*.google-analytics.com;
+    img-src 'self' blob: data: https://res.cloudinary.com https://*.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com;
     media-src 'self';
     font-src 'self';
     object-src 'none';

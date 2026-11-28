@@ -63,6 +63,10 @@ assert(
   /connect-src[^;]*https:\/\/www\.google-analytics\.com[^;]*https:\/\/\*\.google-analytics\.com/.test(allSource),
   "The CSP does not allow Google Analytics collection endpoints."
 );
+assert(
+  /img-src[^;]*https:\/\/www\.googletagmanager\.com[^;]*https:\/\/www\.google-analytics\.com[^;]*https:\/\/\*\.google-analytics\.com/.test(allSource),
+  "The CSP does not allow the Google tag image transport and Google Analytics image endpoints."
+);
 assert(/consent === "granted"/.test(allSource), "Consent gating is missing.");
 assert(/lastTrackedPath\.current === pathname/.test(allSource), "Content-view deduplication is missing.");
 assert(/send_page_view: false/.test(allSource), "Automatic initial page views are not disabled.");
