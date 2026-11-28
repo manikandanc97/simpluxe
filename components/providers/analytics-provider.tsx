@@ -58,10 +58,10 @@ function updateGoogleConsent(command: "default" | "update", consent: AnalyticsCo
 function configureGoogleAnalytics() {
   if (!GA_ID) return;
 
-  window.gtag?.("js", new Date());
   window.gtag?.("set", {
     send_page_view: false,
   });
+  window.gtag?.("js", new Date());
   window.gtag?.("config", GA_ID, {
     send_page_view: false,
   });

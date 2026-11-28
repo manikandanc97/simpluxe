@@ -70,8 +70,8 @@ assert(
 assert(/consent === "granted"/.test(allSource), "Consent gating is missing.");
 assert(/lastTrackedPath\.current === pathname/.test(allSource), "Content-view deduplication is missing.");
 assert(
-  /gtag\?\.\("set",\s*\{\s*send_page_view: false/.test(allSource),
-  "The global Google tag setting does not disable automatic page views."
+  /gtag\?\.\("set",\s*\{\s*send_page_view: false[\s\S]*?gtag\?\.\("js", new Date\(\)\)/.test(allSource),
+  "The global page-view suppression must be queued before Google tag initialization."
 );
 assert(/send_page_view: false/.test(allSource), "Automatic initial page views are not disabled.");
 assert(/pageView: "page_view"/.test(allSource), "Deterministic App Router page-view tracking is missing.");
